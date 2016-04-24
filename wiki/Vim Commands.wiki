@@ -62,8 +62,8 @@
 
 ``<mark key>` : Go to the marked position stored on the key
 
-== Keys - Edition Mode ==
 
+== Keys - Edition Mode ==
 
 `ctrl+p (previous) ; ctrl+n (next)` : Word completion
 
@@ -75,8 +75,8 @@
 
 `ctrl+o <command of normal mode>` : Allow you use command of normal mode while in insert mode
 
-== VimWiki - Plugin ==
 
+== VimWiki - Plugin ==
 
 `<enter>` : Open a new document linked with the word
 
@@ -85,6 +85,10 @@
 `:VWS /<string to search>/` : Search a string
 
 `:lopen` : if you have more than one result you can display the list of result.
+
+`:Vimwiki2HTML` : Convert the current page to HTML
+
+`:VimwikiAll2HTML` : Convert the all pages to HTML
 
 == Commands ==
 

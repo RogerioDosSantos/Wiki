@@ -469,6 +469,63 @@ origin (Server) &gt;&gt; master (Work branch) &gt;&gt; Header (Local commits) &g
 <code>git config --global credential.helper "cache --timeout=3600" </code> : configure to cache your credentials for a specific amount of time.
 </p>
 
+<p>
+<code>git stash</code> : Get the information from server replacing the information of existing files with the server content. NO MERGE
+</p>
+
+<p>
+<code>git checkout -- &lt;filename&gt;</code> : Discard added changed for a file
+</p>
+
+<p>
+<code>git fetch origin</code> : Sync local origin with the remote server 
+</p>
+
+<p>
+<code>git reset [--hard] origin/master</code> : Discard all local committed changes. If --hard is used all changes are lost. If --hard is not used all changed files will be on the untracked stage.
+</p>
+
+<p>
+<code>git checkout -b &lt;branch&gt;</code> : Create local branch
+</p>
+
+<p>
+<code>git branch -d &lt;branch&gt;</code> : Remove local branch
+</p>
+
+<p>
+<code>git checkout &lt;branch&gt;</code> : Go to the branch
+</p>
+
+<p>
+<code>git pul</code> : Update local repository with the newest commit
+</p>
+
+<p>
+<code>git merge &lt;another branch</code> : Merge another branch into your active branch. The merged files will be on the untracked stage
+</p>
+
+<p>
+<code>git diff &lt;source branch&gt; &lt;target branch&gt;</code> : Preview the branch differences. 
+</p>
+
+<p>
+<code>git show-branch</code> : Show the available branches
+</p>
+
+<p>
+<code>git rm &lt;file name&gt;</code> : Remove git file or directory
+</p>
+
+<p>
+<code>git reset --hard</code> : Undo a change that was added but not commit yet
+</p>
+
+<p>
+<code>git reset --hard origin/master</code> : Undo all changes and commits. Your code will be equivalent to the server.
+</p>
+
+
 <div id="Linux Terminal Commands-Git-Submodules:"><h3 id="Submodules:">Submodules:</h3></div>
 
 <p>
