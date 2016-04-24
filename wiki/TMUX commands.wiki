@@ -1,0 +1,53 @@
+= TMUX Commands =
+
+`tmux a <session number> ` : attach  
+
+`tmux ls ` : list sessions
+
+`tmux kill-session -t <session number or session name name> ` : kill sessions
+
+`ctrl+b` : Command mode
+
+== Command Mode - Sessions ==
+
+`:new<CR> ` : new session
+
+`s ` : list sessions
+
+`$ ` : name session
+
+`d ` : detach session
+
+== Command Mode - Windows (tabs) ==
+
+`c ` : new window
+
+`, ` : name window
+
+`w ` : list windows
+
+`f ` : find window
+
+`& ` : kill window
+
+`. ` : move window - prompted for a new number
+
+`:movew ` : move window to the next unused number
+
+== Command Mode - Panes (splits) ==
+
+`% ` : vertical split
+
+`" ` :horizontal split
+
+`o ` : Go to the next pane
+
+`ctrl+o ` : Swap pane contents
+
+`q ` : show pane numbers
+
+`x ` : kill pane
+
+`z ` :Maximaze and minimize current vi"
+
+
