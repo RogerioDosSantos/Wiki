@@ -260,6 +260,35 @@ origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git config --global credential.helper "cache --timeout=3600" ` : configure to cache your credentials for a specific amount of time.
 
+`git stash` : Get the information from server replacing the information of existing files with the server content. NO MERGE
+
+`git checkout -- <filename>` : Discard added changed for a file
+
+`git fetch origin` : Sync local origin with the remote server 
+
+`git reset [--hard] origin/master` : Discard all local committed changes. If --hard is used all changes are lost. If --hard is not used all changed files will be on the untracked stage.
+
+`git checkout -b <branch>` : Create local branch
+
+`git branch -d <branch>` : Remove local branch
+
+`git checkout <branch>` : Go to the branch
+
+`git pul` : Update local repository with the newest commit
+
+`git merge <another branch` : Merge another branch into your active branch. The merged files will be on the untracked stage
+
+`git diff <source branch> <target branch>` : Preview the branch differences. 
+
+`git show-branch` : Show the available branches
+
+`git rm <file name>` : Remove git file or directory
+
+`git reset --hard` : Undo a change that was added but not commit yet
+
+`git reset --hard origin/master` : Undo all changes and commits. Your code will be equivalent to the server.
+
+
 === Submodules: ===
 
 `git submodule add <repository url> ` : Add a submodule into a git project.
