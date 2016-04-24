@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Linux Terminal Commands</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<div id="Linux Terminal Commands"><h1 id="Linux Terminal Commands">Linux Terminal Commands</h1></div>
+
+<div id="Linux Terminal Commands-User"><h2 id="User">User</h2></div>
+
+<p>
+<code>sudo </code> : Run elevated   
+</p>
+
+<p>
+<code>su - </code> : Become root (Super User)
+</p>
+
+<p>
+<code>su &lt;username&gt; </code> : ls
+</p>
+
+<p>
+<code>adduser &lt;username&gt; </code> : Add an user
+</p>
+
+<p>
+<code>usermod -aG &lt;group1&gt;,&lt;group2&gt;,&lt;etc..&gt; &lt;user name&gt; </code> : change the group of the user
+</p>
+
+<p>
+<code>usermod -d /home/&lt;new name&gt; -m -g &lt;new name&gt; -l &lt;new name&gt; &lt;old name&gt; </code> : Change the user. This changes the name, the group, the home directory and ownership and group of of that directory to the new ones, along with all the files.
+</p>
+
+<p>
+<code>groups </code> : list all groups for the current user
+</p>
+
+<p>
+<code>/etc/passwd </code> : File with a list of all users
+</p>
+
+<p>
+<code>/etc/group </code> : File with a list of all groups
+</p>
+
+
+<div id="Linux Terminal Commands-Directories and Files"><h2 id="Directories and Files">Directories and Files</h2></div>
+
+<p>
+<code>pwd </code> : Show the directory you are
+</p>
+
+<p>
+<code>ls -all</code> : List all files and directories into the current directory 
+</p>
+
+<p>
+<code>chmod a+x &lt;filename&gt; </code> : Make a file executable
+</p>
+
+<p>
+<code>mkdir &lt;directory name&gt;</code> : Create directory
+</p>
+
+<p>
+<code>touch &lt;filename&gt; </code> : create a file
+</p>
+
+<p>
+<code>rm &lt;filename&gt; </code> : remove a file
+</p>
+
+<p>
+<code>rmdir &lt;directory&gt; </code> : remove directory
+</p>
+
+<p>
+<code>rm -rf &lt;directory&gt; </code> : remove all directory and files recursively.
+</p>
+
+<p>
+<code>cp &lt;source&gt; &lt;destination&gt;</code> : Copy command
+</p>
+
+<p>
+<code>ln -s &lt;path to be linked&gt; &lt;path where the link file will be created&gt; </code> : Create a symbolic link (Shortcut)
+</p>
+
+<p>
+<code>pwd -P </code> : Show the physical directory you are
+</p>
+
+<p>
+<code>ls -l </code> : List all files and directories into the current directory
+</p>
+
+<p>
+<code>mv </code> : Move or rename a file or directory
+</p>
+
+<p>
+<code>tree </code> : Display the tree of directories and sub directories
+</p>
+
+<p>
+<code>wget &lt;http or ftp url&gt; </code> : Get a file from the internet
+</p>
+
+<p>
+<code>wget --mirror &lt;htttp or ftp url&gt; </code> : Mirror an url 
+</p>
+
+
+<div id="Linux Terminal Commands-File Permission"><h2 id="File Permission">File Permission</h2></div>
+
+<p>
+Commands:
+</p>
+
+<p>
+<code>ls -l</code> : List file permission
+</p>
+
+<p>
+<code>chmod</code> : Change permissions. E.g.: chmod +x &lt;filename&gt;
+</p>
+
+<pre>
+
+  Identification:
+    d : Directory
+    - : File
+
+  Three permission triads:
+    first triad : what the owner can do
+    second triad : what the group members can do
+    third triad : what other users can do
+
+    Each triad
+      first character r : readable
+      second character w : writable
+      third character x : executable
+      s or t : executable and setuid/setgid/sticky
+      S or T : setuid/setgid or sticky, but not executable
+</pre>
+
+<div id="Linux Terminal Commands-Programs and OS"><h2 id="Programs and OS">Programs and OS</h2></div>
+
+<p>
+<code>info &lt;command name&gt; </code> : List the information of a specific command. If you do not mention the &lt;command name&gt; it will list the command available.
+</p>
+
+<p>
+<code>shutdown -r now </code> : Restart the device
+</p>
+
+<p>
+<code>uname -a </code> : Get the OS version
+</p>
+
+<p>
+<code>top </code> : Process monitor
+</p>
+
+<p>
+<code>&lt;program name&gt; --version </code> : Get the version of a program
+</p>
+
+<p>
+<code>printenv </code> : Shows the environment variables
+</p>
+
+<p>
+<code>getenv &lt;environment variable&gt; </code> : Shows the environment variable value. 
+</p>
+
+<p>
+<code>setenv &lt;environment variable&gt; &lt;value&gt;</code> : Set the environment variable a value
+</p>
+
+<p>
+<code>whereis &lt;program&gt; </code> : find where is the location of a specific program
+</p>
+
+<p>
+<code>lsof </code> : List all open files and its process (You need to run as super user). E.g.: lsof &gt;Result.txt
+</p>
+
+<p>
+<code>ps -aux </code> : List of all running process
+</p>
+
+<p>
+<code>vmstat </code> : Virtual Memory Statistics
+</p>
+
+<p>
+<code>compgen -c </code> : List all the commands you could run.
+</p>
+
+<p>
+<code>compgen -a </code> : List all the aliases you could run.
+</p>
+
+<p>
+<code>compgen -b  </code> : List all the built-ins you could run.
+</p>
+
+<p>
+<code>compgen -k  </code> : List all the keywords you could run.
+</p>
+
+<p>
+<code>compgen -A  </code> : List all the functions you could run.
+</p>
+
+<p>
+<code>compgen -A  </code> : function -abck will list all the above in one go.
+</p>
+
+<p>
+<code>apt-get install &lt;package name&gt; </code> : Install a package (For Debian: E.g.: Ubuntu)
+</p>
+
+<p>
+<code>apt-get --purge remove &lt;package name&gt; </code> : Uninstall a package (For Debian: E.g.: Ubuntu)
+</p>
+
+<p>
+<code>Yum install &lt;package name&gt; </code> : Install a package (For RPM: E.g.: Fedora)
+</p>
+
+<p>
+<code>free </code> : Display the amount of free and used system memory (Default: Kilobytes).
+</p>
+
+<p>
+<code>watch &lt;program to execute&gt; </code> : Execute a program every period of time (Default: 2 seconds)
+</p>
+
+<p>
+<code>sudo service &lt;service name&gt; restart </code> : Restart a Server
+</p>
+
+<p>
+<code>blkid </code> : Allow to see the available devices. Those devices can be mounted
+</p>
+
+<p>
+<code>fdisk -l </code> : Allow to see the available devices. Those devices can be mounted
+</p>
+
+<p>
+<code>mount &lt;device or network share&gt; &lt;local folder&gt; </code> : Mount a device or shared folder into a local folder.
+</p>
+
+<p>
+<code>umount &lt;local folder&gt; </code> : Mount a device or shared folder into a local folder.
+</p>
+
+<p>
+<code>cat &gt; &lt;file name&gt; </code> : Create a file and allow you to edit it. Careful! if you do it into an existing file, its content will be deleted.
+</p>
+
+<p>
+<code>find &lt;directory to start&gt; -name "&lt;file to find&gt;" </code> : Find file in all sub directories
+</p>
+
+<p>
+<code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e "&lt;text to find&gt;" </code> : Find a text into files
+</p>
+
+<p>
+<code>encfs &lt;encrypted folder content&gt; &lt;mounted folder&gt; </code> : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)
+</p>
+
+<p>
+<code>fusermount -u &lt;mounted folder&gt; </code> : unmount folder.
+</p>
+
+
+<div id="Linux Terminal Commands-Network"><h2 id="Network">Network</h2></div>
+
+<p>
+<code>lsof -i </code> : List all open files by a process. This can also be used for network since a network connection is a open file.
+</p>
+
+<p>
+<code>netstat -lptu </code> : List all the programs with open ports
+</p>
+
+<p>
+<code>netstat -an | grep </code> :&lt;port number&gt; : Check if a port is running
+</p>
+
+<p>
+<code>ssh &lt;user&gt;@&lt;ip&gt; </code> : Connect to a remote machine using ssh (exit to remove)
+</p>
+
+<p>
+<code>scp &lt;source file on the local machine&gt; &lt;user&gt;@&lt;ip&gt;</code> :&lt;destination path remote machine&gt; : Copy a file from the source machine to the destination machine.
+</p>
+
+<p>
+<code>ifconfig &lt;Adapter&gt; &lt;IP&gt; netmask &lt;Mask&gt; </code> : Change the ip (E.g.: ifconfig eth0 192.168.0.1 netmask 255.255.255.0)
+</p>
+
+<p>
+<code>route add default gw &lt;IP&gt; &lt;Adapter&gt; </code> : Change default gateway (E.g.: route add default gw 192.168.0.253 eth0)
+</p>
+
+<p>
+<code>/etc/init.d/networking restart </code> : Restart all network adapters.
+</p>
+
+<div id="Linux Terminal Commands-File Editors and Content"><h2 id="File Editors and Content">File Editors and Content</h2></div>
+
+<p>
+<code>nano &lt;file name&gt;</code> : File Editor
+</p>
+
+<p>
+<code>cat &lt;file name&gt;</code> : Show the text available into a file.
+</p>
+
+<p>
+<code>mv &lt;filename&gt;</code> : Move the file or change the name
+</p>
+
+<p>
+<code>less &lt;filename&gt;</code> : Allow you verify the content of a file (Press q to exit)
+</p>
+
+
+<div id="Linux Terminal Commands-Programming"><h2 id="Programming">Programming</h2></div>
+
+<p>
+<code>make &lt;entry cpp file without extension&gt; </code> : Compile a cpp file into an executable (E.g.: make test &gt;&gt; for test.cpp)
+</p>
+
+<p>
+<code>g++ -c [-I&lt;include_path&gt;] &lt;file_path&gt;.cpp </code> : Compile using g++ to an object file.
+</p>
+
+<p>
+<code>make &lt;target of a make file&gt; </code> : Compile a target of a make file
+</p>
+
+
+<div id="Linux Terminal Commands-Screen View"><h2 id="Screen View">Screen View</h2></div>
+
+<p>
+<code>clear </code> : Clear Console
+</p>
+
+<p>
+<code>Ctrl Alt F2 </code> : Go to console mode
+</p>
+
+<p>
+<code>Ctrl Alt F7 </code> : Go back to gui mode.
+</p>
+
+<p>
+<code>| more </code> : Add the more command on the command line 
+</p>
+
+
+<div id="Linux Terminal Commands-Initialization &#47; Service"><h2 id="Initialization &#47; Service">Initialization / Service</h2></div>
+
+<p>
+<span id="Linux Terminal Commands-Initialization &#47; Service-&#47;boot&#47;cmdline.txt"></span><strong id="&#47;boot&#47;cmdline.txt">/boot/cmdline.txt</strong>
+</p>
+<pre>
+  Control the command line initialization.
+  To init on the console command as root you can add the following command on it:
+  rw init=/bin/bash
+  This will not execute any service or initialization file.     
+</pre>
+
+<p>
+<span id="Linux Terminal Commands-Initialization &#47; Service-&#47;etc&#47;init.d&#47;"></span><strong id="&#47;etc&#47;init.d&#47;">/etc/init.d/</strong>
+</p>
+<pre>
+  On this folder is located all the initialization scripts. To add a script to be initialized you can copy the script to this file and use the command:
+</pre>
+
+<p>
+<code>update-rc.d -f &lt;shell name&gt; remove </code> : Remove any previous shell with the same name
+<code>update-rc.d &lt;shell name&gt; defaults 99 </code> : Add the shell to be executed on the initialization.
+</p>
+
+
+<div id="Linux Terminal Commands-Distributions"><h2 id="Distributions">Distributions</h2></div>
+
+<p>
+<code>Ubuntu </code> : Debian distribution
+</p>
+
+<p>
+<code>Kali Linux </code> : Penetration and security auditing distribution - Default user: root ; Default password: toor
+</p>
+
+<div id="Linux Terminal Commands-Environment variables"><h2 id="Environment variables">Environment variables</h2></div>
+
+<p>
+<code>\(&lt;variable&gt; </code> : Show the environment variable E.g.: \)PATH
+</p>
+
+<p>
+<code>PATH=$PATH: &lt;folder&gt; </code>: Put the &lt;folder&gt; into the PATH environment variable
+</p>
+
+<div id="Linux Terminal Commands-Git"><h2 id="Git">Git</h2></div>
+
+<p>
+origin (Server) &gt;&gt; master (Work branch) &gt;&gt; Header (Local commits) &gt;&gt; tracked (files added) &gt;&gt; untracked (any change)
+</p>
+
+<p>
+<code>git config --global user.email &lt;your e-mail&gt; </code> : config your e-mail account globally
+</p>
+
+<p>
+<code>git config --global user.name &lt;your name&gt; </code> : config your name globally
+</p>
+
+<p>
+<code>git  init </code> : Initialize git repository. To init the repository on the server, use the option --bare
+</p>
+
+<p>
+<code>git add &lt;folder&gt; </code> : add content to the git repository
+</p>
+
+<p>
+<code>git diff --cached --name-status </code> : Get the list of the git files added
+</p>
+
+<p>
+<code>git diff HEAD &lt;file name&gt; </code> : Compare the file with the one added.
+</p>
+
+<p>
+<code>git commit -m &lt;check-in description&gt; </code> : send the content to the git repository
+</p>
+
+<p>
+<code>git config --list </code> : List the current git configuration
+</p>
+
+<p>
+<code>git clone &lt;repository git url&gt; &lt;local folder name&gt; </code> : Clone git repository (E.g.: git clone <a href="ssh:&#47;&#47;git@192.168.56.113&#47;~&#47;git-server&#47;leel.git)">ssh://git@192.168.56.113/~/git-server/leel.git)</a>
+</p>
+
+<p>
+<code>git status </code> : Show the current status of the git repository
+</p>
+
+<p>
+<code>git push </code> : Push the changed to the server
+</p>
+
+<p>
+<code>git config --global credential.helper "cache --timeout=3600" </code> : configure to cache your credentials for a specific amount of time.
+</p>
+
+<div id="Linux Terminal Commands-Git-Submodules:"><h3 id="Submodules:">Submodules:</h3></div>
+
+<p>
+<code>git submodule add &lt;repository url&gt; </code> : Add a submodule into a git project.
+</p>
+
+<p>
+<code>git submodule add -b &lt;branch&gt; &lt;repository url&gt; </code> : Add a submodule that tracks a branch
+</p>
+
+<p>
+<code>git submodule init </code> : Initialize the submodule configuration. You should run it after you clone the project with submodule on it.
+</p>
+
+<p>
+<code>git submodule update</code> : Get the content of all submodules.
+</p>
+
+<p>
+<code>git checkout &lt;branch or label&gt; </code> : Checkout a branch to allow edition on it.
+</p>
+
+<p>
+<code>git status --ignore-submodules=dirty </code> : Ignore the dirty feature that slow down the command in case you have submodules with a lot of files. You can also change the ".gitmodules" files to add the following entry in a submodule you want to ignore: ignore == dirty
+</p>
+
+<div id="Linux Terminal Commands-Git-Tags:"><h3 id="Tags:">Tags:</h3></div>
+
+<p>
+<code>git tag -l &lt;pattern&gt; </code> : List the tags available. If &lt;pattern&gt; is nothing it will list all the tags
+</p>
+
+<p>
+<code>git describe --tags </code> : Inform in what tag you are on
+</p>
+
+<div id="Linux Terminal Commands-Git-Ignore Directory"><h3 id="Ignore Directory">Ignore Directory</h3></div>
+
+<p>
+Create a file called .gitignore into your project folder and add all folders that should be ignored. 
+</p>
+
+<div id="Linux Terminal Commands-Git-Initialize Repository"><h3 id="Initialize Repository">Initialize Repository</h3></div>
+
+<pre>
+Create repository on Github
+On Linux use the commands:
+echo "# linux_environment" &gt;&gt; README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin &lt;repository .git url&gt;
+git push -u origin master
+</pre>
+
+<div id="Linux Terminal Commands-TMUX"><h2 id="TMUX">TMUX</h2></div>
+
+<p>
+<code>tmux a &lt;session number&gt; </code> : attach  
+</p>
+
+<p>
+<code>tmux ls </code> : list sessions
+</p>
+
+<p>
+<code>tmux kill-session -t &lt;session number or session name name&gt; </code> : kill sessions
+</p>
+
+<p>
+<code>ctrl+b</code> : Command mode
+</p>
+
+<div id="Linux Terminal Commands-TMUX-Command Mode - Sessions"><h3 id="Command Mode - Sessions">Command Mode - Sessions</h3></div>
+
+<p>
+<code>:new&lt;CR&gt; </code> : new session
+</p>
+
+<p>
+<code>s </code> : list sessions
+</p>
+
+<p>
+<code>$ </code> : name session
+</p>
+
+<p>
+<code>d </code> : detach session
+</p>
+
+<div id="Linux Terminal Commands-TMUX-Command Mode - Windows (tabs)"><h3 id="Command Mode - Windows (tabs)">Command Mode - Windows (tabs)</h3></div>
+
+<p>
+<code>c </code> : new window
+</p>
+
+<p>
+<code>, </code> : name window
+</p>
+
+<p>
+<code>w </code> : list windows
+</p>
+
+<p>
+<code>f </code> : find window
+</p>
+
+<p>
+<code>&amp; </code> : kill window
+</p>
+
+<p>
+<code>. </code> : move window - prompted for a new number
+</p>
+
+<p>
+<code>:movew </code> : move window to the next unused number
+</p>
+
+<div id="Linux Terminal Commands-TMUX-Command Mode - Panes (splits)"><h3 id="Command Mode - Panes (splits)">Command Mode - Panes (splits)</h3></div>
+
+<p>
+<code>% </code> : vertical split
+</p>
+
+<p>
+<code>" </code> :horizontal split
+</p>
+
+<p>
+<code>o </code> : Go to the next pane
+</p>
+
+<p>
+<code>ctrl+o </code> : Swap pane contents
+</p>
+
+<p>
+<code>q </code> : show pane numbers
+</p>
+
+<p>
+<code>x </code> : kill pane
+</p>
+
+<p>
+<code>z </code> :Maximaze and minimize current vi"
+</p>
+
+<div id="Linux Terminal Commands-Others"><h2 id="Others">Others</h2></div>
+
+<div id="Linux Terminal Commands-Others-Launch application on double click"><h3 id="Launch application on double click">Launch application on double click</h3></div>
+
+<pre>
+Make sure your script contains the follofing identifier on the first line:
+#!/bin/bash
+
+Create a file &lt;name&gt;.desktop with the following entries:
+
+[Desktop Entry]
+Name=&lt;name of the executable&gt;
+Comment=&lt;comment about the executable&gt;
+Exec=&lt;path of the executable&gt;
+Icon=&lt;icon to be used or nothing (empty)&gt;
+Terminal=false
+Type=Application
+
+make your &lt;name&gt;.desktop to be an executable
+chmod +x &lt;name&gt;.desktop
+</pre>
+
+<div id="Linux Terminal Commands-VirtualBox Vms"><h2 id="VirtualBox Vms">VirtualBox Vms</h2></div>
+
+<p>
+<code>sudo mount -t vboxsf &lt;shade folder&gt; &lt;local folder&gt; </code> : Mount Virtual Box Shared Folder (E.g.: sudo mount -t vboxsf share /mnt/d) 
+</p>
+
+</body>
+</html>

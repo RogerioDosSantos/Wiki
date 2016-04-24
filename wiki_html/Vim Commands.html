@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Vim Commands</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<div id="Vim Commands"><h1 id="Vim Commands">Vim Commands</h1></div>
+
+<div id="Vim Commands-Leader - Normal Mode"><h2 id="Leader - Normal Mode">Leader - Normal Mode</h2></div>
+
+<p>
+   <span id="Vim Commands-Leader - Normal Mode-Note: My &lt;leader&gt; is &lt;space&gt;"></span><strong id="Note: My &lt;leader&gt; is &lt;space&gt;">Note: My &lt;leader&gt; is &lt;space&gt;</strong>
+</p>
+
+<p>
+<code>&lt;leader&gt;&lt;space&gt;</code> : Switch between documents that are open in the same split
+</p>
+
+<p>
+<code>&lt;leader&gt; z</code> : Centralize the cursor in the middle of the screen
+</p>
+
+<p>
+<code>&lt;leader&gt; zz</code> : Centralize the cursor on the bottom of the screen.
+</p>
+
+<div id="Vim Commands-Navigation - Normal Mode"><h2 id="Navigation - Normal Mode">Navigation - Normal Mode</h2></div>
+
+<p>
+<code>&lt;command&gt;i"</code> : Select the item that is inside "". 
+</p>
+
+<p>
+<code>&lt;command&gt;iw</code> : Select the word where the cursor is over.
+</p>
+
+<p>
+<code>&lt;command&gt;a"</code> : Select the item that is inside "" including the ""
+</p>
+
+<p>
+<code>&lt;command&gt;$</code> : End of line
+</p>
+
+<p>
+<code>c&lt;selection&gt;</code> : Delete the selection where the cursor is and go to insert mode
+</p>
+
+<p>
+<code>guaw</code> : Turn word to lowercase
+</p>
+
+<p>
+<code>&lt;tab number&gt;gt</code> : Go to the desired tab 
+</p>
+
+<p>
+<code>f &lt;character&gt;</code> : Jump to a character
+</p>
+
+<div id="Vim Commands-Keys - Normal Mode"><h2 id="Keys - Normal Mode">Keys - Normal Mode</h2></div>
+
+<p>
+<code>ctrl-w</code> : got to the next window
+</p>
+
+<p>
+<code>ctrl-PgUp ; ctrl-PgDown</code> : Switch Tabs
+</p>
+
+<p>
+<code>ctrl-n</code> : open NERD tree (t - Open File into a new Tab ; i - Horizontal Split ; s - Vertical Split)
+</p>
+
+<p>
+<code>ctrl+p</code> : Open CTRL+P Plugin.
+</p>
+
+<p>
+<code>shift+i</code> : Show/hide hidden files on NERD tree
+</p>
+
+<p>
+<code>ctrl-a</code> : If the cursor is over a number, inclement it
+</p>
+
+<p>
+<code>ctrl+r</code> : Redo
+</p>
+
+<div id="Vim Commands-Commands - Normal Mode"><h2 id="Commands - Normal Mode">Commands - Normal Mode</h2></div>
+
+
+<p>
+<code>:0r &lt;file path&gt;</code> : Read the file and add in your current file
+</p>
+
+<p>
+<code>:r !&lt;shell command&gt;</code> : Execute the shell command and write the result on the current file
+</p>
+
+<div id="Vim Commands-Others - Normal Mode"><h2 id="Others - Normal Mode">Others - Normal Mode</h2></div>
+
+<p>
+<code>ZZ</code> : Save and close
+</p>
+
+<p>
+<code>q&lt;macro key&gt; &lt;do your stuff&gt; </code> : Record a macro and store into the key desired. 
+<code>@&lt;macro key&gt;</code> : Play the macro
+</p>
+
+<p>
+<code>m&lt;mark key&gt;</code> : Mark a position that you are in into the key desired
+</p>
+
+<p>
+`<code>&lt;mark key&gt;</code> : Go to the marked position stored on the key
+</p>
+
+<div id="Vim Commands-Keys - Edition Mode"><h2 id="Keys - Edition Mode">Keys - Edition Mode</h2></div>
+
+
+<p>
+<code>ctrl+p (previous) ; ctrl+n (next)</code> : Word completion
+</p>
+
+<p>
+<code>ctrl+x (completion mode) + ctrl+] (Tag completion)</code> : Tag completion (requires CTags)
+</p>
+
+<p>
+<code>ctrl+x (completion mode) + ctrl+f (File name completion)</code> : File completion
+</p>
+
+<p>
+<code>ctrl+r "</code> : Past the content of the " register, aka last yank / delete
+</p>
+
+<p>
+<code>ctrl+o &lt;command of normal mode&gt;</code> : Allow you use command of normal mode while in insert mode
+</p>
+
+<div id="Vim Commands-VimWiki - Plugin"><h2 id="VimWiki - Plugin">VimWiki - Plugin</h2></div>
+
+
+<p>
+<code>&lt;enter&gt;</code> : Open a new document linked with the word
+</p>
+
+<p>
+<code>&lt;backspace&gt;</code> : Return to were it came from
+</p>
+
+<p>
+<code>:VWS /&lt;string to search&gt;/</code> : Search a string
+</p>
+
+<p>
+<code>:lopen</code> : if you have more than one result you can display the list of result.
+</p>
+
+<div id="Vim Commands-Commands"><h2 id="Commands">Commands</h2></div>
+
+<p>
+<code>:%s/search_for_this/replace_with_this/</code> : search whole file and replace
+</p>
+
+<p>
+<code>:%s/search_for_this/replace_with_this/c</code> : confirm each replace
+</p>
+
+<p>
+<code>:q!</code> : Exit without saving
+</p>
+
+<p>
+<code>:w</code> : Save
+</p>
+
+<p>
+<code>n</code> : repeat last command
+</p>
+
+<p>
+<code>:sh</code> : go to shell (Exit or Ctrl + D to return)
+</p>
+
+<p>
+<code>:r &lt;file name&gt;</code> : Read a file an put the content on the current file
+</p>
+
+<p>
+<code>:r ! &lt;shell command&gt;</code> : Execute the shell command and put the result on the current file
+</p>
+
+<p>
+<code>:PlugInstall</code> : install all plugins configured on vim-plug plugin
+</p>
+
+<p>
+<code>:e filename</code> : edit another file
+</p>
+
+<p>
+<code>:split filename</code> : split window and load another file
+</p>
+
+<p>
+<code>ctrl-w up arrow</code> : move cursor up a window
+</p>
+
+<p>
+<code>ctrl-w ctrl-w</code> : move cursor to another window (cycle)
+</p>
+
+<p>
+<code>ctrl-w_</code> : maximize current window
+</p>
+
+<p>
+<code>ctrl-w=</code> : make all equal size
+</p>
+
+<p>
+<code>10 ctrl-w+</code> : increase window size by 10 lines
+</p>
+
+<p>
+<code>:vsplit file</code> : vertical split
+</p>
+
+<p>
+<code>:sview file</code> : same as split, but readonly
+</p>
+
+<p>
+<code>:hide</code> : close current window
+</p>
+
+<p>
+<code>:only</code> : keep only this window open
+</p>
+
+<p>
+<code>:ls</code> : show current buffers
+</p>
+
+<p>
+<code>:b 2</code> : open buffer #2 in this window
+</p>
+
+</body>
+</html>

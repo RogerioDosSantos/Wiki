@@ -1,0 +1,134 @@
+= Vim Commands =
+
+== Leader - Normal Mode ==
+
+   *Note: My <leader> is <space>*
+
+`<leader><space>` : Switch between documents that are open in the same split
+
+`<leader> z` : Centralize the cursor in the middle of the screen
+
+`<leader> zz` : Centralize the cursor on the bottom of the screen.
+
+== Navigation - Normal Mode ==
+
+`<command>i"` : Select the item that is inside "". 
+
+`<command>iw` : Select the word where the cursor is over.
+
+`<command>a"` : Select the item that is inside "" including the ""
+
+`<command>$` : End of line
+
+`c<selection>` : Delete the selection where the cursor is and go to insert mode
+
+`guaw` : Turn word to lowercase
+
+`<tab number>gt` : Go to the desired tab 
+
+`f <character>` : Jump to a character
+
+== Keys - Normal Mode ==
+
+`ctrl-w` : got to the next window
+
+`ctrl-PgUp ; ctrl-PgDown` : Switch Tabs
+
+`ctrl-n` : open NERD tree (t - Open File into a new Tab ; i - Horizontal Split ; s - Vertical Split)
+
+`ctrl+p` : Open CTRL+P Plugin.
+
+`shift+i` : Show/hide hidden files on NERD tree
+
+`ctrl-a` : If the cursor is over a number, inclement it
+
+`ctrl+r` : Redo
+
+== Commands - Normal Mode ==
+
+
+`:0r <file path>` : Read the file and add in your current file
+
+`:r !<shell command>` : Execute the shell command and write the result on the current file
+
+== Others - Normal Mode ==
+
+`ZZ` : Save and close
+
+`q<macro key> <do your stuff> ` : Record a macro and store into the key desired. 
+`@<macro key>` : Play the macro
+
+`m<mark key>` : Mark a position that you are in into the key desired
+
+``<mark key>` : Go to the marked position stored on the key
+
+== Keys - Edition Mode ==
+
+
+`ctrl+p (previous) ; ctrl+n (next)` : Word completion
+
+`ctrl+x (completion mode) + ctrl+] (Tag completion)` : Tag completion (requires CTags)
+
+`ctrl+x (completion mode) + ctrl+f (File name completion)` : File completion
+
+`ctrl+r "` : Past the content of the " register, aka last yank / delete
+
+`ctrl+o <command of normal mode>` : Allow you use command of normal mode while in insert mode
+
+== VimWiki - Plugin ==
+
+
+`<enter>` : Open a new document linked with the word
+
+`<backspace>` : Return to were it came from
+
+`:VWS /<string to search>/` : Search a string
+
+`:lopen` : if you have more than one result you can display the list of result.
+
+== Commands ==
+
+`:%s/search_for_this/replace_with_this/` : search whole file and replace
+
+`:%s/search_for_this/replace_with_this/c` : confirm each replace
+
+`:q!` : Exit without saving
+
+`:w` : Save
+
+`n` : repeat last command
+
+`:sh` : go to shell (Exit or Ctrl + D to return)
+
+`:r <file name>` : Read a file an put the content on the current file
+
+`:r ! <shell command>` : Execute the shell command and put the result on the current file
+
+`:PlugInstall` : install all plugins configured on vim-plug plugin
+
+`:e filename` : edit another file
+
+`:split filename` : split window and load another file
+
+`ctrl-w up arrow` : move cursor up a window
+
+`ctrl-w ctrl-w` : move cursor to another window (cycle)
+
+`ctrl-w_` : maximize current window
+
+`ctrl-w=` : make all equal size
+
+`10 ctrl-w+` : increase window size by 10 lines
+
+`:vsplit file` : vertical split
+
+`:sview file` : same as split, but readonly
+
+`:hide` : close current window
+
+`:only` : keep only this window open
+
+`:ls` : show current buffers
+
+`:b 2` : open buffer #2 in this window
+
