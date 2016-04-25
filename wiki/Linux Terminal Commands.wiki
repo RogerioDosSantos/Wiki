@@ -131,8 +131,6 @@ Commands:
 
 `watch <program to execute> ` : Execute a program every period of time (Default: 2 seconds)
 
-`sudo service <service name> restart ` : Restart a Server
-
 `blkid ` : Allow to see the available devices. Those devices can be mounted
 
 `fdisk -l ` : Allow to see the available devices. Those devices can be mounted
@@ -202,6 +200,10 @@ Commands:
 
 
 == Initialization / Service ==
+
+`sudo service <service name> restart ` : Restart a Server
+
+`service --status-all` : Show all services
 
 */boot/cmdline.txt*
 {{{
