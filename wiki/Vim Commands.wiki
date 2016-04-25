@@ -10,6 +10,7 @@
 
 `<leader> zz` : Centralize the cursor on the bottom of the screen.
 
+
 == Navigation - Normal Mode ==
 
 `<command>i"` : Select the item that is inside "". 
@@ -26,7 +27,12 @@
 
 `<tab number>gt` : Go to the desired tab 
 
-`f <character>` : Jump to a character
+`f <character>` : Jump to the next character
+
+`F <character>` : Jump to the previous character
+
+`[<number>] ge` : Go to the previous word
+
 
 == Keys - Normal Mode ==
 
@@ -44,12 +50,18 @@
 
 `ctrl+r` : Redo
 
+`ctrl+o` : Jump to the presious search
+
+
 == Commands - Normal Mode ==
 
 
 `:0r <file path>` : Read the file and add in your current file
 
 `:r !<shell command>` : Execute the shell command and write the result on the current file
+
+
+`:colorshema` : Change the color schema (Solirized for C++ / Desert for CMake)
 
 == Others - Normal Mode ==
 
@@ -92,9 +104,13 @@
 
 == Commands ==
 
-`:%s/search_for_this/replace_with_this/` : search whole file and replace
+`/<string>` : Search a string
 
-`:%s/search_for_this/replace_with_this/c` : confirm each replace
+`:%s/<search string>/<replace string>/` : search whole file and replace
+
+`:%s/<search string>/<replace string>/c` : confirm each replace
+
+`:noh` : Clear search highlight
 
 `:q!` : Exit without saving
 

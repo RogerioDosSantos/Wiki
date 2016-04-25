@@ -27,6 +27,7 @@
 <code>&lt;leader&gt; zz</code> : Centralize the cursor on the bottom of the screen.
 </p>
 
+
 <div id="Vim Commands-Navigation - Normal Mode"><h2 id="Navigation - Normal Mode">Navigation - Normal Mode</h2></div>
 
 <p>
@@ -58,8 +59,17 @@
 </p>
 
 <p>
-<code>f &lt;character&gt;</code> : Jump to a character
+<code>f &lt;character&gt;</code> : Jump to the next character
 </p>
+
+<p>
+<code>F &lt;character&gt;</code> : Jump to the previous character
+</p>
+
+<p>
+<code>[&lt;number&gt;] ge</code> : Go to the previous word
+</p>
+
 
 <div id="Vim Commands-Keys - Normal Mode"><h2 id="Keys - Normal Mode">Keys - Normal Mode</h2></div>
 
@@ -91,6 +101,11 @@
 <code>ctrl+r</code> : Redo
 </p>
 
+<p>
+<code>ctrl+o</code> : Jump to the presious search
+</p>
+
+
 <div id="Vim Commands-Commands - Normal Mode"><h2 id="Commands - Normal Mode">Commands - Normal Mode</h2></div>
 
 
@@ -100,6 +115,11 @@
 
 <p>
 <code>:r !&lt;shell command&gt;</code> : Execute the shell command and write the result on the current file
+</p>
+
+
+<p>
+<code>:colorshema</code> : Change the color schema (Solirized for C++ / Desert for CMake)
 </p>
 
 <div id="Vim Commands-Others - Normal Mode"><h2 id="Others - Normal Mode">Others - Normal Mode</h2></div>
@@ -174,11 +194,19 @@
 <div id="Vim Commands-Commands"><h2 id="Commands">Commands</h2></div>
 
 <p>
-<code>:%s/search_for_this/replace_with_this/</code> : search whole file and replace
+<code>/&lt;string&gt;</code> : Search a string
 </p>
 
 <p>
-<code>:%s/search_for_this/replace_with_this/c</code> : confirm each replace
+<code>:%s/&lt;search string&gt;/&lt;replace string&gt;/</code> : search whole file and replace
+</p>
+
+<p>
+<code>:%s/&lt;search string&gt;/&lt;replace string&gt;/c</code> : confirm each replace
+</p>
+
+<p>
+<code>:noh</code> : Clear search highlight
 </p>
 
 <p>

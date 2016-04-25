@@ -8,3 +8,6 @@
 
 * TMUX
   - [[TMUX commands]]
+
+* CMake
+  - [[Cmake commnds]]
