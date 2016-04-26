@@ -1,13 +1,20 @@
 = Roger Wiki Index =
 
-* Linux
-  - [[Linux Terminal Commands]]
+== Linux ==
 
-* Vim
-  - [[Vim Commands]]
+-  [[Linux Terminal Commands]] 
 
-* TMUX
-  - [[TMUX commands]]
+== Vim ==
 
-* CMake
-  - [[Cmake commnds]]
+-  [[Vim Commands]] 
+-  Vim Plugins 
+  -  VimWiki 
+    -  [[VimWiki Commands]] 
+
+== TMUX ==
+
+-  [[TMUX Commands]] 
+
+== CMake ==
+
+-  [[CMake Commands]] 

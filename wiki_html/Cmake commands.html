@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>CMake Commands</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<div id="CMake Commands"><h1 id="CMake Commands">CMake Commands</h1></div>
+
+<div id="CMake Commands-Functions"><h2 id="Functions">Functions</h2></div>
+
+<p>
+<code>SET(&lt;variable name&gt; &lt;default value&gt; CACHE &lt;Type&gt; &lt;help description&gt;)</code> : Allow set a variable with imput option.
+</p>
+<blockquote>
+The variable declared can be passed trough command prompt or ccmake or cmake-gui. 
+E.g: <code>SET(FAB "po" CACHE STRING "Some user-specified option")</code>. 
+</blockquote>
+<blockquote>
+Note:You can pass the variable type when calling the CMake executale using: 
+<code>-D&lt;variable name&gt;:STRING=&lt;variable value&gt;</code> 
+E.g.: <code>-DFAB:STRING=po</code>
+</blockquote>
+
+</body>
+</html>

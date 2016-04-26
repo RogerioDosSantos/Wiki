@@ -10,19 +10,19 @@
 <div id="TMUX Commands"><h1 id="TMUX Commands">TMUX Commands</h1></div>
 
 <p>
-<code>tmux a &lt;session number&gt; </code> : attach  
+<code>TMUX a &lt;session number&gt; </code> : attach  
 </p>
 
 <p>
-<code>tmux ls </code> : list sessions
+<code>TMUX ls </code> : list sessions
 </p>
 
 <p>
-<code>tmux kill-session -t &lt;session number or session name name&gt; </code> : kill sessions
+<code>TMUX kill-session -t &lt;session number or session name name&gt; </code> : kill sessions
 </p>
 
 <p>
-<code>ctrl+b</code> : Command mode
+<code>ctrl+b</code> : TMUX Command key. Put TMUX on command mode
 </p>
 
 <div id="TMUX Commands-Command Mode - Sessions"><h2 id="Command Mode - Sessions">Command Mode - Sessions</h2></div>
@@ -102,6 +102,35 @@
 <p>
 <code>z </code> :Maximaze and minimize current vi"
 </p>
+
+<div id="TMUX Commands-Copy from a TMUX pane to another"><h2 id="Copy from a TMUX pane to another">Copy from a TMUX pane to another</h2></div>
+
+<ol>
+<li>
+<code>Ctrl+b, [</code> : Enter copy mode.
+
+<li>
+Move to start/end of text to highlight.
+
+<li>
+<code>Ctrlspace</code>
+
+<li>
+Start highlighting text.
+
+<li>
+Move to opposite end of text to copy.
+
+<li>
+<code>Alt+w</code> : Copies selected text into TMUX clipboard.
+
+<li>
+Move cursor to opposite TMUX pane, or completely different TMUX window.
+
+<li>
+<code>Ctrl+b, ]</code> : Paste copied text from TMUX clipboard.
+
+</ol>
 
 </body>
 </html>

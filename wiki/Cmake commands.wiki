@@ -1,0 +1,14 @@
+= CMake Commands = 
+
+== Functions ==
+
+`SET(<variable name> <default value> CACHE <Type> <help description>)` : Allow set a variable with imput option.
+
+    The variable declared can be passed trough command prompt or ccmake or cmake-gui. 
+      E.g: `SET(FAB "po" CACHE STRING "Some user-specified option")`. 
+    
+    Note:You can pass the variable type when calling the CMake executale using: 
+      `-D<variable name>:STRING=<variable value>` 
+        E.g.: `-DFAB:STRING=po`
+
+

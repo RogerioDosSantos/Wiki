@@ -187,6 +187,11 @@ Commands:
 
 `make <target of a make file> ` : Compile a target of a make file
 
+== Shell Script ==
+
+`<variable name>=<variable value>` : Variable declaration
+
+`$<variable name>` : Use a variable
 
 == Screen View ==
 

@@ -1,12 +1,12 @@
 = TMUX Commands =
 
-`tmux a <session number> ` : attach  
+`TMUX a <session number> ` : attach  
 
-`tmux ls ` : list sessions
+`TMUX ls ` : list sessions
 
-`tmux kill-session -t <session number or session name name> ` : kill sessions
+`TMUX kill-session -t <session number or session name name> ` : kill sessions
 
-`ctrl+b` : Command mode
+`ctrl+b` : TMUX Command key. Put TMUX on command mode
 
 == Command Mode - Sessions ==
 
@@ -49,5 +49,34 @@
 `x ` : kill pane
 
 `z ` :Maximaze and minimize current vi"
+
+== Copy from a TMUX pane to another ==
+
+# `Ctrl+b, [` : Enter copy mode.
+# Move to start/end of text to highlight.
+# `Ctrlspace`
+# Start highlighting text.
+# Move to opposite end of text to copy.
+# `Alt+w` : Copies selected text into TMUX clipboard.
+# Move cursor to opposite TMUX pane, or completely different TMUX window.
+# `Ctrl+b, ]` : Paste copied text from TMUX clipboard.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
