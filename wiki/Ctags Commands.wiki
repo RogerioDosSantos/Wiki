@@ -1,0 +1,7 @@
+= Ctags Commands =
+
+== Creating Index File ==
+
+`ctags -R .` : Create a tag file for all directories recursivelly. Note: This command does not generate tags file for external headers (e.g. stdio.h, stdlib.h).
+
+
