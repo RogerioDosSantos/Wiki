@@ -11,6 +11,10 @@
   -  VimWiki 
     -  [[VimWiki Commands]] 
 
+== Git ==
+
+-  [[Git Commands]]
+
 == TMUX ==
 
 -  [[TMUX Commands]] 
