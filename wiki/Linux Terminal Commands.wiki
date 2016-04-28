@@ -55,7 +55,7 @@
 
 `wget --mirror <htttp or ftp url> ` : Mirror an url 
 
-`<command> | tee -a "<logfile>"` : Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended.. 
+`<command> | tee -a "<logfile>"` : Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended. 
 
 == Bash Files ==
 
