@@ -117,8 +117,145 @@
 </p>
 
 <p>
-<code>&lt;command&gt; | tee -a "&lt;logfile&gt;"</code> : Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended.. 
+<code>&lt;command&gt; | tee -a "&lt;logfile&gt;"</code> : Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended. #
 </p>
+
+
+<div id="Linux Terminal Commands-Programs and OS"><h2 id="Programs and OS">Programs and OS</h2></div>
+
+
+<p>
+<code>info &lt;command name&gt;</code> : List the information of a specific command. If you do not mention the &lt;command name&gt; it will list the command available.
+</p>
+
+<p>
+<code>shutdown -r now</code> : Restart the device
+</p>
+
+<p>
+<code>uname -a</code> : Get the OS version
+</p>
+
+<p>
+<code>top</code> : Process monitor
+</p>
+
+<p>
+<code>&lt;program name&gt; --version</code> : Get the version of a program
+</p>
+
+<p>
+<code>printenv</code> : Shows the environment variables
+</p>
+
+<p>
+<code>getenv &lt;environment variable&gt;</code> : Shows the environment variable value. 
+</p>
+
+<p>
+<code>setenv &lt;environment variable&gt; &lt;value</code> : Set the environment variable a value
+</p>
+
+<p>
+<code>whereis &lt;program&gt;</code> : find where is the location of a specific program
+</p>
+
+<p>
+<code>lsof</code> : List all open files and its process (You need to run as super user). E.g.: lsof &gt;Result.txt
+</p>
+
+<p>
+<code>ps -aux</code> : List of all running process
+</p>
+
+<p>
+<code>vmstat</code> : Virtual Memory Statistics
+</p>
+
+<p>
+<code>compgen -c</code> : List all the commands you could run.
+</p>
+
+<p>
+<code>compgen -a</code> : List all the aliases you could run.
+</p>
+
+<p>
+<code>compgen -b </code> : List all the built-ins you could run.
+</p>
+
+<p>
+<code>compgen -k </code> : List all the keywords you could run.
+</p>
+
+<p>
+<code>compgen -A </code> : List all the functions you could run.
+</p>
+
+<p>
+<code>compgen -A </code> : function -abck will list all the above in one go.
+</p>
+
+<p>
+<code>apt-get install &lt;package name&gt;</code> : Install a package (For Debian: E.g.: Ubuntu)
+</p>
+
+<p>
+<code>apt-get --purge remove &lt;package name&gt;</code> : Uninstall a package (For Debian: E.g.: Ubuntu)
+</p>
+
+<p>
+<code>Yum install &lt;package name&gt;</code> : Install a package (For RPM: E.g.: Fedora)
+</p>
+
+<p>
+<code>free</code> : Display the amount of free and used system memory (Default: Kilobytes).
+</p>
+
+<p>
+<code>watch &lt;program to execute&gt;</code> : Execute a program every period of time (Default: 2 seconds)
+</p>
+
+<p>
+<code>sudo service &lt;service name&gt; restart</code> : Restart a Server
+</p>
+
+<p>
+<code>blkid</code> : Allow to see the available devices. Those devices can be mounted
+</p>
+
+<p>
+<code>fdisk -l</code> : Allow to see the available devices. Those devices can be mounted
+</p>
+
+<p>
+<code>mount &lt;device or network share&gt; &lt;local folder&gt;</code> : Mount a device or shared folder into a local folder.
+</p>
+
+<p>
+<code>umount &lt;local folder&gt;</code> : Mount a device or shared folder into a local folder.
+</p>
+
+<p>
+<code>cat &gt; &lt;file name&gt;</code> : Create a file and allow you to edit it. Careful! if you do it into an existing file, its content will be deleted.
+</p>
+
+<p>
+<code>find &lt;directory to start&gt; -name "&lt;file to find&gt;"</code> : Find file in all sub directories
+</p>
+
+<p>
+<code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e "&lt;text to find&gt;"</code> : Find a text into files
+</p>
+
+<p>
+<code>encfs &lt;encrypted folder content&gt; &lt;mounted folder&gt;</code> : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)
+</p>
+
+<p>
+<code>fusermount -u &lt;mounted folder&gt;</code> : unmount folder.
+</p>
+
 
 <div id="Linux Terminal Commands-Bash Files"><h2 id="Bash Files">Bash Files</h2></div>
 
