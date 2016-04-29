@@ -44,8 +44,6 @@ origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git merge <another branch` : Merge another branch into your active branch. The merged files will be on the untracked stage
 
-`git diff <source branch> <target branch>` : Preview the branch differences. 
-
 `git show-branch` : Show the available branches
 
 `git rm <file name>` : Remove git file or directory
@@ -53,6 +51,13 @@ origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 `git reset --hard` : Undo a change that was added but not commit yet
 
 `git reset --hard origin/master` : Undo all changes and commits. Your code will be equivalent to the server.
+
+
+== History ==
+
+`git blame` : Allow you to check the file chane history (Similar to VS anotate)
+
+`git diff <source branch> <target branch>` : Preview the branch differences. 
 
 
 == Submodules: ==
