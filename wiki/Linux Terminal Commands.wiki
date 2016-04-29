@@ -2,58 +2,58 @@
 
 == User ==
 
-`sudo ` : Run elevated   
+`sudo` : Run elevated   
 
-`su - ` : Become root (Super User)
+`su -` : Become root (Super User)
 
-`su <username> ` : ls
+`su <username>` : ls
 
-`adduser <username> ` : Add an user
+`adduser <username>` : Add an user
 
-`usermod -aG <group1>,<group2>,<etc..> <user name> ` : change the group of the user
+`usermod -aG <group1>,<group2>,<etc..> <user name>` : change the group of the user
 
-`usermod -d /home/<new name> -m -g <new name> -l <new name> <old name> ` : Change the user. This changes the name, the group, the home directory and ownership and group of of that directory to the new ones, along with all the files.
+`usermod -d /home/<new name> -m -g <new name> -l <new name> <old name>` : Change the user. This changes the name, the group, the home directory and ownership and group of of that directory to the new ones, along with all the files.
 
-`groups ` : list all groups for the current user
+`groups` : list all groups for the current user
 
-`/etc/passwd ` : File with a list of all users
+`/etc/passwd` : File with a list of all users
 
-`/etc/group ` : File with a list of all groups
+`/etc/group` : File with a list of all groups
 
 
 == Directories and Files ==
 
-`pwd ` : Show the directory you are
+`pwd` : Show the directory you are
 
 `ls -all` : List all files and directories into the current directory 
 
-`chmod a+x <filename> ` : Make a file executable
+`chmod a+x <filename>` : Make a file executable
 
 `mkdir <directory name>` : Create directory
 
-`touch <filename> ` : create a file
+`touch <filename>` : create a file
 
-`rm <filename> ` : remove a file
+`rm <filename>` : remove a file
 
-`rmdir <directory> ` : remove directory
+`rmdir <directory>` : remove directory
 
-`rm -rf <directory> ` : remove all directory and files recursively.
+`rm -rf <directory>` : remove all directory and files recursively.
 
 `cp <source> <destination>` : Copy command
 
-`ln -s <path to be linked> <path where the link file will be created> ` : Create a symbolic link (Shortcut)
+`ln -s <path to be linked> <path where the link file will be created>` : Create a symbolic link (Shortcut)
 
-`pwd -P ` : Show the physical directory you are
+`pwd -P` : Show the physical directory you are
 
-`ls -l ` : List all files and directories into the current directory
+`ls -l` : List all files and directories into the current directory
 
-`mv ` : Move or rename a file or directory
+`mv` : Move or rename a file or directory
 
-`tree ` : Display the tree of directories and sub directories
+`tree` : Display the tree of directories and sub directories
 
-`wget <http or ftp url> ` : Get a file from the internet
+`wget <http or ftp url>` : Get a file from the internet
 
-`wget --mirror <htttp or ftp url> ` : Mirror an url 
+`wget --mirror <htttp or ftp url>` : Mirror an url 
 
 `<command> | tee -a "<logfile>"` : Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended. #
 
@@ -89,13 +89,13 @@
 
 `compgen -a` : List all the aliases you could run.
 
-`compgen -b ` : List all the built-ins you could run.
+`compgen -b` : List all the built-ins you could run.
 
-`compgen -k ` : List all the keywords you could run.
+`compgen -k` : List all the keywords you could run.
 
-`compgen -A ` : List all the functions you could run.
+`compgen -A` : List all the functions you could run.
 
-`compgen -A ` : function -abck will list all the above in one go.
+`compgen -A` : function -abck will list all the above in one go.
 
 `apt-get install <package name>` : Install a package (For Debian: E.g.: Ubuntu)
 
