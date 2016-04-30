@@ -4,9 +4,9 @@
 
 *Functions* : lower_case name. Ex: `do_something(...)`
 
-*Local variables* : lower_case name. Local variables are used exclusively inside the file that contained them, and their values were simply passed as parameters to CMake functions. Ex: `set(some_variable "...")`
+*Local variables* : <variable_name> lower_case name. Local variables are used exclusively inside the file that contained them, and their values were simply passed as parameters to CMake functions. Ex: `set(some_variable "...")`
 
-*Global variables* : UPPER_CASE name. Global variables(can also be called "export variables") are intended for exporting up/down-stream via the environment variable mechanism. Ex: `set(SOME_VARIABLE "...")`
+*Global variables* : <PROJECT_NAME>_<VARIABLE_NAME> (UPPER_CASE) name. Project name is required to do not conflict with any other variable. Global variables(can also be called "export variables") are intended for exporting up/down-stream via the environment variable mechanism. Ex: `set(SOME_VARIABLE "...")`
 
 *Control statements* : lower_case name without repeat the condition in the closing brackets. Ex: If Statements
 {{{

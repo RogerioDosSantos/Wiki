@@ -18,11 +18,11 @@
 </p>
 
 <p>
-<span id="Style-Naming-Local variables"></span><strong id="Local variables">Local variables</strong> : lower_case name. Local variables are used exclusively inside the file that contained them, and their values were simply passed as parameters to CMake functions. Ex: <code>set(some_variable "...")</code>
+<span id="Style-Naming-Local variables"></span><strong id="Local variables">Local variables</strong> : &lt;variable_name&gt; lower_case name. Local variables are used exclusively inside the file that contained them, and their values were simply passed as parameters to CMake functions. Ex: <code>set(some_variable "...")</code>
 </p>
 
 <p>
-<span id="Style-Naming-Global variables"></span><strong id="Global variables">Global variables</strong> : UPPER_CASE name. Global variables(can also be called "export variables") are intended for exporting up/down-stream via the environment variable mechanism. Ex: <code>set(SOME_VARIABLE "...")</code>
+<span id="Style-Naming-Global variables"></span><strong id="Global variables">Global variables</strong> : &lt;PROJECT_NAME&gt;_&lt;VARIABLE_NAME&gt; (UPPER_CASE) name. Project name is required to do not conflict with any other variable. Global variables(can also be called "export variables") are intended for exporting up/down-stream via the environment variable mechanism. Ex: <code>set(SOME_VARIABLE "...")</code>
 </p>
 
 <p>
