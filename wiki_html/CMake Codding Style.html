@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="Stylesheet" type="text/css" href="../resources/markdown.css" />
+	<link rel="Stylesheet" type="text/css" href="../resources/github.css" />
+	<title>CMake Codding Style</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<div class="content">
+		
+<div id="Style"><h1 id="Style">Style</h1></div>
+
+<div id="Style-Naming"><h2 id="Naming">Naming</h2></div>
+
+<p>
+<span id="Style-Naming-Functions"></span><strong id="Functions">Functions</strong> : lower_case name. Ex: <code>do_something(...)</code>
+</p>
+
+<p>
+<span id="Style-Naming-Local variables"></span><strong id="Local variables">Local variables</strong> : lower_case name. Local variables are used exclusively inside the file that contained them, and their values were simply passed as parameters to CMake functions. Ex: <code>set(some_variable "...")</code>
+</p>
+
+<p>
+<span id="Style-Naming-Global variables"></span><strong id="Global variables">Global variables</strong> : UPPER_CASE name. Global variables(can also be called "export variables") are intended for exporting up/down-stream via the environment variable mechanism. Ex: <code>set(SOME_VARIABLE "...")</code>
+</p>
+
+<p>
+<span id="Style-Naming-Control statements"></span><strong id="Control statements">Control statements</strong> : lower_case name without repeat the condition in the closing brackets. Ex: If Statements
+</p>
+<pre>
+  if(condition)
+    ...
+  else() # not repeat condition
+    ...
+  endif() # not repeat condition
+</pre>
+
+<p>
+<span id="Style-Naming-Operators"></span><strong id="Operators">Operators</strong> : UPPER_CASE name. Ex: <code>if(condition STREQUAL "")</code>
+</p>
+
+<p>
+<span id="Style-Naming-Directives and&#47;or extra options"></span><strong id="Directives and&#47;or extra options">Directives and/or extra options</strong> : UPPER_CASE name. Ex: <code>do_something(... USE_THIS)</code>
+</p>
+
+	</div>
+<script type="text/javascript" src="../resources/highlight.pack.js"></script>
+<script type="text/javascript" src="../resources/zepto.min.js"></script>
+<script type="text/javascript">
+$('pre').each(function(index,item){ $(item).html('<code>'+$(item).html()+'</code>'); });
+hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
