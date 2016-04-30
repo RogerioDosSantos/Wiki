@@ -11,4 +11,7 @@
       `-D<variable name>:STRING=<variable value>` 
         E.g.: `-DFAB:STRING=po`
 
+`file(MAKE_DIRECTORY <directory>)` : Create directory
 
+
+`file(COPY "<source directory or file>" DESTINATION "<destination directory>")` : Copy file or directory

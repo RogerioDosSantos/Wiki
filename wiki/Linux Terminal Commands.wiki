@@ -130,6 +130,8 @@
 
 == Bash Files ==
 
+`read -p "Press [Enter] key to continue"` Pouse command
+
 === Function declaration and usage ===
 
 {{{
