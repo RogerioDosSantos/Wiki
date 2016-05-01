@@ -146,7 +146,11 @@ origin (Server) &gt;&gt; master (Work branch) &gt;&gt; Header (Local commits) &g
 </p>
 
 <p>
-<code>git checkout &lt;branch or label&gt; </code> : Checkout a branch to allow edition on it.
+<code>git checkout &lt;branch or label&gt; </code> : Checkout a branch to allow edition on it. IMPORTANT: If you are checkingout a lebel, you will not be allowed to modify it. Execute the command below to put the lable in another branch
+</p>
+
+<p>
+<code>git checkout -b &lt;new branch&gt; &lt;branch or label&gt; </code> : Create a new Branch for the Branch or label checked out.
 </p>
 
 <p>
