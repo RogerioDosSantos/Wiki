@@ -37,6 +37,8 @@
 
 `[<number>] ge` : Go to the previous word
 
+`gf` : Go to the files where the cursor is (Open on de same window)
+
 
 == Keys - Normal Mode ==
 

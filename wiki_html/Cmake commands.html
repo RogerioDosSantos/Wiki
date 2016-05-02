@@ -43,6 +43,10 @@ E.g.: <code>-DFAB:STRING=po</code>
 <code>include_directories([AFTER|BEFORE] [SYSTEM] &lt;directory1&gt; [&lt;directory2&gt; ...]) </code>: Add include directories
 </p>
 
+<p>
+<code>include(&lt;file|module&gt; [OPTIONAL] [RESULT_VARIABLE &lt;VAR&gt;] [NO_POLICY_SCOPE])</code> : Include another make file. IMPORTANT: The code will run on the scope of the file that included it (Original file), as if the file was copied inside the original file. As consequence, all relative paths will be relative to the original file.
+</p>
+
 <div id="CMake Commands-Variables"><h2 id="Variables">Variables</h2></div>
 
 <p>
