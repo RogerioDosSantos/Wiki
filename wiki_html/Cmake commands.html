@@ -14,7 +14,7 @@
 <div id="CMake Commands-Functions"><h2 id="Functions">Functions</h2></div>
 
 <p>
-<code>SET(&lt;variable name&gt; &lt;default value&gt; CACHE &lt;Type&gt; &lt;help description&gt;)</code> : Allow set a variable with imput option.
+<code>set(&lt;variable name&gt; &lt;default value&gt; CACHE &lt;Type&gt; &lt;help description&gt;)</code> : Allow set a variable with imput option.
 </p>
 <blockquote>
 The variable declared can be passed trough command prompt or ccmake or cmake-gui. 
@@ -41,6 +41,12 @@ E.g.: <code>-DFAB:STRING=po</code>
 
 <p>
 <code>include_directories([AFTER|BEFORE] [SYSTEM] &lt;directory1&gt; [&lt;directory2&gt; ...]) </code>: Add include directories
+</p>
+
+<div id="CMake Commands-Variables"><h2 id="Variables">Variables</h2></div>
+
+<p>
+<code>CMAKE_TOOLCHAIN_FILE=&lt;toolchain path&gt;</code> : Inform the toolchain file path
 </p>
 
 	</div>

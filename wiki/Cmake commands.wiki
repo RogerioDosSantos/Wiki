@@ -2,7 +2,7 @@
 
 == Functions ==
 
-`SET(<variable name> <default value> CACHE <Type> <help description>)` : Allow set a variable with imput option.
+`set(<variable name> <default value> CACHE <Type> <help description>)` : Allow set a variable with imput option.
 
     The variable declared can be passed trough command prompt or ccmake or cmake-gui. 
       E.g: `SET(FAB "po" CACHE STRING "Some user-specified option")`. 
@@ -19,3 +19,9 @@
 `add_subdirectory(<source_dir> [<binary_dir>] [EXCLUDE_FROM_ALL]) `: Add a subdirectory to the build. 
 
 `include_directories([AFTER|BEFORE] [SYSTEM] <directory1> [<directory2> ...]) `: Add include directories
+
+== Variables ==
+
+`CMAKE_TOOLCHAIN_FILE=<toolchain path>` : Inform the toolchain file path
+
+

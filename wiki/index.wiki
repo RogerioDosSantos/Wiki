@@ -23,6 +23,7 @@
 
 -  [[CMake Commands]] 
 -  [[CMake Codding Style]]
+-  [[CMake Toolchains]]
 
 == CTags ==
 
