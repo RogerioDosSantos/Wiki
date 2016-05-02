@@ -70,7 +70,9 @@ origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git submodule update` : Get the content of all submodules.
 
-`git checkout <branch or label> ` : Checkout a branch to allow edition on it.
+`git checkout <branch or label> ` : Checkout a branch to allow edition on it. IMPORTANT: If you are checkingout a lebel, you will not be allowed to modify it. Execute the command below to put the lable in another branch
+
+`git checkout -b <new branch> <branch or label> ` : Create a new Branch for the Branch or label checked out.
 
 `git status --ignore-submodules=dirty ` : Ignore the dirty feature that slow down the command in case you have submodules with a lot of files. You can also change the ".gitmodules" files to add the following entry in a submodule you want to ignore: ignore == dirty
 

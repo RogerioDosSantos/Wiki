@@ -25,3 +25,29 @@
 
 `-` : Bullet List
 
+`= Header1 = `: Header
+
+`== Header2 == `: Header
+
+`=== Header3 === `: Header
+
+`*bold* `: bold text
+
+`_italic_ `: italic text
+
+`[[wiki link]] `: wiki link
+
+`[[wiki link|description]] `: wiki link with description
+
+=== Key bindings ===
+
+
+*normal mode:*
+
+`<Leader>ww `: Open default wiki index file.
+
+`<Leader>wt `: Open default wiki index file in a new tab.
+
+`<Leader>ws `: Select and open wiki index file.
+
+

@@ -26,6 +26,23 @@ Note:You can pass the variable type when calling the CMake executale using:
 E.g.: <code>-DFAB:STRING=po</code>
 </blockquote>
 
+<p>
+<code>file(MAKE_DIRECTORY &lt;directory&gt;)</code> : Create directory
+</p>
+
+
+<p>
+<code>file(COPY "&lt;source directory or file&gt;" DESTINATION "&lt;destination directory&gt;")</code> : Copy file or directory
+</p>
+
+<p>
+<code>add_subdirectory(&lt;source_dir&gt; [&lt;binary_dir&gt;] [EXCLUDE_FROM_ALL]) </code>: Add a subdirectory to the build. 
+</p>
+
+<p>
+<code>include_directories([AFTER|BEFORE] [SYSTEM] &lt;directory1&gt; [&lt;directory2&gt; ...]) </code>: Add include directories
+</p>
+
 	</div>
 <script type="text/javascript" src="../resources/highlight.pack.js"></script>
 <script type="text/javascript" src="../resources/zepto.min.js"></script>
