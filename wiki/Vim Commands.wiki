@@ -144,3 +144,19 @@
 
 `:b 2` : open buffer #2 in this window
 
+`:Explore` : Open the Explore (Equivalent to Windows Explorer)
+
+== Explore Keys ==
+
+`d` : creates a new directory
+
+`%` : creates and opens a new file
+
+`D` : deletes a directory or file
+
+`R` : renames a file
+
+`o` : opens the file in a horizontal split
+
+`v` : opens the file in a vertical split
+
