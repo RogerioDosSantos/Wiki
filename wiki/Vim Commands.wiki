@@ -118,7 +118,7 @@
 
 `:PlugInstall` : install all plugins configured on vim-plug plugin
 
-`:e filename` : edit another file
+`:e filename` : Open file for edition
 
 `:split filename` : split window and load another file
 

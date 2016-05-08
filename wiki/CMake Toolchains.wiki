@@ -10,7 +10,7 @@
 
    *<os>* is for operating system: linux, none (bare metal)
 
-   *<abi>* is for application binary interface convention: eabi, gnueabi, gnueabihf
+   *<abi>* is for application binary interface convention: eabi, gnueabi, gnueabihf. Note: *hf* means hard float (floating pointers are calculated by hardware). 
 
 == Toolchain File ==
 

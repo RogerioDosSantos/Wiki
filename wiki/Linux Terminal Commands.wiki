@@ -41,8 +41,8 @@
 `chmod a+x <filename>`
   : Make a file executable
 
-`mkdir <directory name>`
-  : Create directory
+`mkdir [-p] <directory name>`
+  : Create directory. If p option is selected, create the directory only if it does not exist.
 
 `touch <filename>`
   : create a file
@@ -209,6 +209,36 @@
 `apt-cache show <program> `
   : Show the version of a program
 
+`scp <source file path> <username>@<destination device (ip)>:<destination path>`
+  : To copy a file from source to destination while logged into source device
+
+`scp <username>@<source device (ip)>:<source path> <destination file path>`
+  : To copy a file from source to destination while logged into destination device
+
+=== Conditional Statements ===
+
+{{{
+
+if [ -d "${directory}"  ]; then
+  # Control will enter here if $DIRECTORY exists.
+fi
+  
+if [ ! -d "${directory}"  ]; then
+  # Control will enter here if ${directory} does not exists.
+fi
+
+}}}
+
+=== Loopings ===
+
+{{{
+
+for <item> in "${<array>[@]}"; do
+  echo "${<item>}"
+done
+
+}}}
+
 === Function declaration and usage ===
 
 {{{
@@ -222,3 +252,9 @@ function_name $arg1 $arg2
 
 }}}
   
+== File System Hierarchy ==
+
+`/opt` : Directory used for the installation of add-on application software packages
+
+`/usr/local` : Directory used for the installation software locally.
+

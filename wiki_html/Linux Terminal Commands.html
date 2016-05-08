@@ -77,8 +77,8 @@
 </p>
 
 <p>
-<code>mkdir &lt;directory name&gt;</code>
-  : Create directory
+<code>mkdir [-p] &lt;directory name&gt;</code>
+  : Create directory. If p option is selected, create the directory only if it does not exist.
 </p>
 
 <p>
@@ -352,6 +352,40 @@
   : Show the version of a program
 </p>
 
+<p>
+<code>scp &lt;source file path&gt; &lt;username&gt;@&lt;destination device (ip)&gt;:&lt;destination path&gt;</code>
+  : To copy a file from source to destination while logged into source device
+</p>
+
+<p>
+<code>scp &lt;username&gt;@&lt;source device (ip)&gt;:&lt;source path&gt; &lt;destination file path&gt;</code>
+  : To copy a file from source to destination while logged into destination device
+</p>
+
+<div id="Linux Terminal Commands-Bash Files-Conditional Statements"><h3 id="Conditional Statements">Conditional Statements</h3></div>
+
+<pre>
+
+if [ -d "${directory}"  ]; then
+  # Control will enter here if $DIRECTORY exists.
+fi
+  
+if [ ! -d "${directory}"  ]; then
+  # Control will enter here if ${directory} does not exists.
+fi
+
+</pre>
+
+<div id="Linux Terminal Commands-Bash Files-Loopings"><h3 id="Loopings">Loopings</h3></div>
+
+<pre>
+
+for &lt;item&gt; in "${&lt;array&gt;[@]}"; do
+  echo "${&lt;item&gt;}"
+done
+
+</pre>
+
 <div id="Linux Terminal Commands-Bash Files-Function declaration and usage"><h3 id="Function declaration and usage">Function declaration and usage</h3></div>
 
 <pre>
@@ -364,6 +398,16 @@ function_name () {
 function_name $arg1 $arg2
 
 </pre>
+  
+<div id="Linux Terminal Commands-File System Hierarchy"><h2 id="File System Hierarchy">File System Hierarchy</h2></div>
+
+<p>
+<code>/opt</code> : Directory used for the installation of add-on application software packages
+</p>
+
+<p>
+<code>/usr/local</code> : Directory used for the installation software locally.
+</p>
 
 	</div>
 <script type="text/javascript" src="../resources/highlight.pack.js"></script>
