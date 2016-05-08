@@ -127,6 +127,9 @@
 
 `fusermount -u <mounted folder>` : unmount folder.
 
+`tar xjf <file path>` : Uncompress tar files (E.g.: *.tar.bz2)
+
+`rsync -u -v -e ssh <source directory>/* <user>@<remote computer (IP)>:<target directory>` : Sync all files from the source directory to the target directory.
 
 == Bash Files ==
 
@@ -135,6 +138,10 @@
 `cd "$(dirname "$0")"` : Set bash to the current directory
 
 `read -p "Press [Enter] key to continue"` Pouse command
+
+`<variable>="$(readlink -f "<relative path")" `: Convert relative path to full path.    
+
+`apt-cache show <program> `: Show the version of a program
 
 === Function declaration and usage ===
 

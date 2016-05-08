@@ -256,6 +256,13 @@
 <code>fusermount -u &lt;mounted folder&gt;</code> : unmount folder.
 </p>
 
+<p>
+<code>tar xjf &lt;file path&gt;</code> : Uncompress tar files (E.g.: *.tar.bz2)
+</p>
+
+<p>
+<code>rsync -u -v -e ssh &lt;source directory&gt;/* &lt;user&gt;@&lt;remote computer (IP)&gt;:&lt;target directory&gt;</code> : Sync all files from the source directory to the target directory.
+</p>
 
 <div id="Linux Terminal Commands-Bash Files"><h2 id="Bash Files">Bash Files</h2></div>
 
@@ -269,6 +276,14 @@
 
 <p>
 <code>read -p "Press [Enter] key to continue"</code> Pouse command
+</p>
+
+<p>
+<code>&lt;variable&gt;="$(readlink -f "&lt;relative path")" </code>: Convert relative path to full path.    
+</p>
+
+<p>
+<code>apt-cache show &lt;program&gt; </code>: Show the version of a program
 </p>
 
 <div id="Linux Terminal Commands-Bash Files-Function declaration and usage"><h3 id="Function declaration and usage">Function declaration and usage</h3></div>
