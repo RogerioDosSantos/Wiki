@@ -2,85 +2,123 @@
 
 origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (files added) >> untracked (any change)
 
-`git config --global user.email <your e-mail> ` : config your e-mail account globally
+`git config --global user.email <your e-mail> `
+  : config your e-mail account globally
 
-`git config --global user.name <your name> ` : config your name globally
+`git config --global user.name <your name> `
+  : config your name globally
 
-`git  init ` : Initialize git repository. To init the repository on the server, use the option --bare
+`git  init `
+  : Initialize git repository. To init the repository on the server, use the option --bare
 
-`git add <folder> ` : add content to the git repository
+`git add <folder> `
+  : add content to the git repository
 
-`git diff --cached --name-status ` : Get the list of the git files added
+`git diff --cached --name-status `
+  : Get the list of the git files added
 
-`git diff HEAD <file name> ` : Compare the file with the one added.
+`git diff HEAD <file name> `
+  : Compare the file with the one added.
 
-`git commit -m <check-in description> ` : send the content to the git repository
+`git commit -m <check-in description> `
+  : send the content to the git repository
 
-`git config --list ` : List the current git configuration
+`git config --list `
+  : List the current git configuration
 
-`git clone <repository git url> <local folder name> ` : Clone git repository (E.g.: git clone ssh://git@192.168.56.113/~/git-server/leel.git)
+`git clone <repository git url> <local folder name> `
+  : Clone git repository (E.g.: git clone ssh://git@192.168.56.113/~/git-server/leel.git)
 
-`git status ` : Show the current status of the git repository
+`git status `
+  : Show the current status of the git repository
 
-`git push ` : Push the changed to the server
+`git push `
+  : Push the changed to the server
 
-`git config --global credential.helper "cache --timeout=3600" ` : configure to cache your credentials for a specific amount of time.
+`git config --global credential.helper "cache --timeout=3600" `
+  : configure to cache your credentials for a specific amount of time.
 
-`git stash` : Get the information from server replacing the information of existing files with the server content. NO MERGE
+`git stash`
+  : Get the information from server replacing the information of existing files with the server content. NO MERGE
 
-`git checkout -- <filename>` : Discard added changed for a file
+`git checkout -- <filename>`
+  : Discard added changed for a file
 
-`git fetch origin` : Sync local origin with the remote server 
+`git fetch origin`
+  : Sync local origin with the remote server 
 
-`git reset [--hard] origin/master` : Discard all local committed changes. If --hard is used all changes are lost. If --hard is not used all changed files will be on the untracked stage.
+`git reset [--hard] origin/master`
+  : Discard all local committed changes. If --hard is used all changes are lost. If --hard is not used all changed files will be on the untracked stage.
 
-`git checkout -b <branch>` : Create local branch
+`git checkout -b <branch>`
+  : Create local branch
 
-`git branch -d <branch>` : Remove local branch
+`git branch -d <branch>`
+  : Remove local branch
 
-`git checkout <branch>` : Go to the branch
+`git checkout <branch>`
+  : Go to the branch
 
-`git pull` : Update local repository with the newest commit
+`git pull`
+  : Update local repository with the newest commit
 
-`git merge <another branch` : Merge another branch into your active branch. The merged files will be on the untracked stage
+`git merge <another branch`
+  : Merge another branch into your active branch. The merged files will be on the untracked stage
 
-`git show-branch` : Show the available branches
+`git show-branch`
+  : Show the available branches
 
-`git rm <file name>` : Remove git file or directory
+`git rm <file name>`
+  : Remove git file or directory
 
-`git reset --hard` : Undo a change that was added but not commit yet
+`git reset --hard`
+  : Undo a change that was added but not commit yet
 
-`git reset --hard origin/master` : Undo all changes and commits. Your code will be equivalent to the server.
+`git reset --hard origin/master`
+  : Undo all changes and commits. Your code will be equivalent to the server.
 
 
 == History ==
 
-`git blame` : Allow you to check the file chane history (Similar to VS anotate)
+`git blame`
+  : Allow you to check the file chane history (Similar to VS anotate)
 
-`git diff <source branch> <target branch>` : Preview the branch differences. 
+`git diff <source branch> <target branch>`
+  : Preview the branch differences. 
 
 
 == Submodules: ==
 
-`git submodule add <repository url> ` : Add a submodule into a git project.
+`git submodule add <repository url> `
+  : Add a submodule into a git project.
 
-`git submodule add -b <branch> <repository url> ` : Add a submodule that tracks a branch
+`git submodule add -b <branch> <repository url> `
+  : Add a submodule that tracks a branch
 
-`git submodule init ` : Initialize the submodule configuration. You should run it after you clone the project with submodule on it.
+`git submodule init `
+  : Initialize the submodule configuration. You should run it after you clone the project with submodule on it.
 
-`git submodule update` : Get the content of all submodules.
+`git submodule update`
+  : Get the content of all submodules.
 
-`git checkout <branch or label> ` : Checkout a branch to allow edition on it. IMPORTANT: If you are checkingout a lebel, you will not be allowed to modify it. Execute the command below to put the lable in another branch
+`git checkout <branch or label> `
+  : Checkout a branch to allow edition on it. IMPORTANT: If you are checkingout a lebel, you will not be allowed to modify it. Execute the command below to put the lable in another branch
 
-`git checkout -b <new branch> <branch or label> ` : Create a new Branch for the Branch or label checked out.
+`git checkout -b <new branch> <branch or label> `
+  : Create a new Branch for the Branch or label checked out.
 
-`git status --ignore-submodules=dirty ` : Ignore the dirty feature that slow down the command in case you have submodules with a lot of files. You can also change the ".gitmodules" files to add the following entry in a submodule you want to ignore: ignore == dirty
+`git status --ignore-submodules=dirty `
+  : Ignore the dirty feature that slow down the command in case you have submodules with a lot of files. You can also change the ".gitmodules" files to add the following entry in a submodule you want to ignore: ignore == dirty
+
 
 == Tags: ==
 
-`git tag -l <pattern> ` : List the tags available. If <pattern> is nothing it will list all the tags
+`git tag -l <pattern> `
+  : List the tags available. If <pattern> is nothing it will list all the tags
 
-`git describe --tags ` : Inform in what tag you are on
+`git describe --tags `
+  : Inform in what tag you are on
+
 
 == Ignore Directory ==
 

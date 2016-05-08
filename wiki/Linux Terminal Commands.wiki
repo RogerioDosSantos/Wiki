@@ -2,146 +2,212 @@
 
 == User ==
 
-`sudo` : Run elevated   
+`sudo`
+  : Run elevated   
 
-`su -` : Become root (Super User)
+`su -`
+  : Become root (Super User)
 
-`su <username>` : ls
+`su <username>`
+  : ls
 
-`adduser <username>` : Add an user
+`adduser <username>`
+  : Add an user
 
-`usermod -aG <group1>,<group2>,<etc..> <user name>` : change the group of the user
+`usermod -aG <group1>,<group2>,<etc..> <user name>`
+  : change the group of the user
 
-`usermod -d /home/<new name> -m -g <new name> -l <new name> <old name>` : Change the user. This changes the name, the group, the home directory and ownership and group of of that directory to the new ones, along with all the files.
+`usermod -d /home/<new name> -m -g <new name> -l <new name> <old name>`
+  : Change the user. This changes the name, the group, the home directory and ownership and group of of that directory to the new ones, along with all the files.
 
-`groups` : list all groups for the current user
+`groups`
+  : list all groups for the current user
 
-`/etc/passwd` : File with a list of all users
+`/etc/passwd`
+  : File with a list of all users
 
-`/etc/group` : File with a list of all groups
+`/etc/group`
+  : File with a list of all groups
 
 
 == Directories and Files ==
 
-`pwd` : Show the directory you are
+`pwd`
+  : Show the directory you are
 
-`ls -all` : List all files and directories into the current directory 
+`ls -all`
+  : List all files and directories into the current directory 
 
-`chmod a+x <filename>` : Make a file executable
+`chmod a+x <filename>`
+  : Make a file executable
 
-`mkdir <directory name>` : Create directory
+`mkdir <directory name>`
+  : Create directory
 
-`touch <filename>` : create a file
+`touch <filename>`
+  : create a file
 
-`rm <filename>` : remove a file
+`rm <filename>`
+  : remove a file
 
-`rmdir <directory>` : remove directory
+`rmdir <directory>`
+  : remove directory
 
-`rm -rf <directory>` : remove all directory and files recursively.
+`rm -rf <directory>`
+  : remove all directory and files recursively.
 
-`cp <source> <destination>` : Copy command
+`cp <source> <destination>`
+  : Copy command
 
-`ln -s <path to be linked> <path where the link file will be created>` : Create a symbolic link (Shortcut)
+`ln -s <path to be linked> <path where the link file will be created>`
+  : Create a symbolic link (Shortcut)
 
-`pwd -P` : Show the physical directory you are
+`pwd -P`
+  : Show the physical directory you are
 
-`ls -l` : List all files and directories into the current directory
+`ls -l`
+  : List all files and directories into the current directory
 
-`mv` : Move or rename a file or directory
+`mv`
+  : Move or rename a file or directory
 
-`tree` : Display the tree of directories and sub directories
+`tree`
+  : Display the tree of directories and sub directories
 
-`wget <http or ftp url>` : Get a file from the internet
+`wget <http or ftp url>`
+  : Get a file from the internet
 
-`wget --mirror <htttp or ftp url>` : Mirror an url 
+`wget --mirror <htttp or ftp url>`
+  : Mirror an url 
 
-`<command> | tee -a "<logfile>"` : Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended. #
+`<command> | tee -a "<logfile>"`
+  : Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended. #
 
 
 == Programs and OS ==
 
 
-`info <command name>` : List the information of a specific command. If you do not mention the <command name> it will list the command available.
+`info <command name>`
+  : List the information of a specific command. If you do not mention the <command name> it will list the command available.
 
-`shutdown -r now` : Restart the device
+`shutdown -r now`
+  : Restart the device
 
-`uname -a` : Get the OS version
+`uname -a`
+  : Get the OS version
 
-`top` : Process monitor
+`top`
+  : Process monitor
 
-`<program name> --version` : Get the version of a program
+`<program name> --version`
+  : Get the version of a program
 
-`printenv` : Shows the environment variables
+`printenv`
+  : Shows the environment variables
 
-`getenv <environment variable>` : Shows the environment variable value. 
+`getenv <environment variable>`
+  : Shows the environment variable value. 
 
-`setenv <environment variable> <value` : Set the environment variable a value
+`setenv <environment variable> <value`
+  : Set the environment variable a value
 
-`whereis <program>` : find where is the location of a specific program
+`whereis <program>`
+  : find where is the location of a specific program
 
-`lsof` : List all open files and its process (You need to run as super user). E.g.: lsof >Result.txt
+`lsof`
+  : List all open files and its process (You need to run as super user). E.g.: lsof >Result.txt
 
-`ps -aux` : List of all running process
+`ps -aux`
+  : List of all running process
 
-`vmstat` : Virtual Memory Statistics
+`vmstat`
+  : Virtual Memory Statistics
 
-`compgen -c` : List all the commands you could run.
+`compgen -c`
+  : List all the commands you could run.
 
-`compgen -a` : List all the aliases you could run.
+`compgen -a`
+  : List all the aliases you could run.
 
-`compgen -b` : List all the built-ins you could run.
+`compgen -b`
+  : List all the built-ins you could run.
 
-`compgen -k` : List all the keywords you could run.
+`compgen -k`
+  : List all the keywords you could run.
 
-`compgen -A` : List all the functions you could run.
+`compgen -A`
+  : List all the functions you could run.
 
-`compgen -A` : function -abck will list all the above in one go.
+`compgen -A`
+  : function -abck will list all the above in one go.
 
-`apt-get install <package name>` : Install a package (For Debian: E.g.: Ubuntu)
+`apt-get install <package name>`
+  : Install a package (For Debian: E.g.: Ubuntu)
 
-`apt-get --purge remove <package name>` : Uninstall a package (For Debian: E.g.: Ubuntu)
+`apt-get --purge remove <package name>`
+  : Uninstall a package (For Debian: E.g.: Ubuntu)
 
-`Yum install <package name>` : Install a package (For RPM: E.g.: Fedora)
+`Yum install <package name>`
+  : Install a package (For RPM: E.g.: Fedora)
 
-`free` : Display the amount of free and used system memory (Default: Kilobytes).
+`free`
+  : Display the amount of free and used system memory (Default: Kilobytes).
 
-`watch <program to execute>` : Execute a program every period of time (Default: 2 seconds)
+`watch <program to execute>`
+  : Execute a program every period of time (Default: 2 seconds)
 
-`sudo service <service name> restart` : Restart a Server
+`sudo service <service name> restart`
+  : Restart a Server
 
-`blkid` : Allow to see the available devices. Those devices can be mounted
+`blkid`
+  : Allow to see the available devices. Those devices can be mounted
 
-`fdisk -l` : Allow to see the available devices. Those devices can be mounted
+`fdisk -l`
+  : Allow to see the available devices. Those devices can be mounted
 
-`mount <device or network share> <local folder>` : Mount a device or shared folder into a local folder.
+`mount <device or network share> <local folder>`
+  : Mount a device or shared folder into a local folder.
 
-`umount <local folder>` : Mount a device or shared folder into a local folder.
+`umount <local folder>`
+  : Mount a device or shared folder into a local folder.
 
-`cat > <file name>` : Create a file and allow you to edit it. Careful! if you do it into an existing file, its content will be deleted.
+`cat > <file name>`
+  : Create a file and allow you to edit it. Careful! if you do it into an existing file, its content will be deleted.
 
-`find <directory to start> -name "<file to find>"` : Find file in all sub directories
+`find <directory to start> -name "<file to find>"`
+  : Find file in all sub directories
 
-`grep --include=\*.{cpp,h} -rnw <source directory> -e "<text to find>"` : Find a text into files
+`grep --include=\*.{cpp,h} -rnw <source directory> -e "<text to find>"`
+  : Find a text into files
 
-`encfs <encrypted folder content> <mounted folder>` : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)
+`encfs <encrypted folder content> <mounted folder>`
+  : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)
 
-`fusermount -u <mounted folder>` : unmount folder.
+`fusermount -u <mounted folder>`
+  : unmount folder.
 
-`tar xjf <file path>` : Uncompress tar files (E.g.: *.tar.bz2)
+`tar xjf <file path>`
+  : Uncompress tar files (E.g.: *.tar.bz2)
 
-`rsync -u -v -e ssh <source directory>/* <user>@<remote computer (IP)>:<target directory>` : Sync all files from the source directory to the target directory.
+`rsync -u -v -e ssh <source directory>/* <user>@<remote computer (IP)>:<target directory>`
+  : Sync all files from the source directory to the target directory.
 
 == Bash Files ==
 
-`#!/bin/bash` : Inform what interpreter should run the bash
+`#!/bin/bash`
+  : Inform what interpreter should run the bash
 
-`cd "$(dirname "$0")"` : Set bash to the current directory
+`cd "$(dirname "$0")"`
+  : Set bash to the current directory
 
-`read -p "Press [Enter] key to continue"` Pouse command
+`read -p "Press [Enter] key to continue"`
+  Pouse command
 
-`<variable>="$(readlink -f "<relative path")" `: Convert relative path to full path.    
+`<variable>="$(readlink -f "<relative path")" `
+  : Convert relative path to full path.    
 
-`apt-cache show <program> `: Show the version of a program
+`apt-cache show <program> `
+  : Show the version of a program
 
 === Function declaration and usage ===
 

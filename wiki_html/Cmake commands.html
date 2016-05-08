@@ -14,7 +14,8 @@
 <div id="CMake Commands-Functions"><h2 id="Functions">Functions</h2></div>
 
 <p>
-<code>set(&lt;variable name&gt; &lt;default value&gt; CACHE &lt;Type&gt; &lt;help description&gt;)</code> : Allow set a variable with imput option.
+<code>set(&lt;variable name&gt; &lt;default value&gt; CACHE &lt;Type&gt; &lt;help description&gt;)</code>
+  : Allow set a variable with imput option.
 </p>
 <blockquote>
 The variable declared can be passed trough command prompt or ccmake or cmake-gui. 
@@ -27,30 +28,36 @@ E.g.: <code>-DFAB:STRING=po</code>
 </blockquote>
 
 <p>
-<code>file(MAKE_DIRECTORY &lt;directory&gt;)</code> : Create directory
-</p>
-
-
-<p>
-<code>file(COPY "&lt;source directory or file&gt;" DESTINATION "&lt;destination directory&gt;")</code> : Copy file or directory
+<code>file(MAKE_DIRECTORY &lt;directory&gt;)</code>
+  : Create directory
 </p>
 
 <p>
-<code>add_subdirectory(&lt;source_dir&gt; [&lt;binary_dir&gt;] [EXCLUDE_FROM_ALL]) </code>: Add a subdirectory to the build. 
+<code>file(COPY "&lt;source directory or file&gt;" DESTINATION "&lt;destination directory&gt;")</code>
+  : Copy file or directory
 </p>
 
 <p>
-<code>include_directories([AFTER|BEFORE] [SYSTEM] &lt;directory1&gt; [&lt;directory2&gt; ...]) </code>: Add include directories
+<code>add_subdirectory(&lt;source_dir&gt; [&lt;binary_dir&gt;] [EXCLUDE_FROM_ALL]) </code>
+  : Add a subdirectory to the build. 
 </p>
 
 <p>
-<code>include(&lt;file|module&gt; [OPTIONAL] [RESULT_VARIABLE &lt;VAR&gt;] [NO_POLICY_SCOPE])</code> : Include another make file. IMPORTANT: The code will run on the scope of the file that included it (Original file), as if the file was copied inside the original file. As consequence, all relative paths will be relative to the original file.
+<code>include_directories([AFTER|BEFORE] [SYSTEM] &lt;directory1&gt; [&lt;directory2&gt; ...]) </code>
+  : Add include directories
 </p>
+
+<p>
+<code>include(&lt;file|module&gt; [OPTIONAL] [RESULT_VARIABLE &lt;VAR&gt;] [NO_POLICY_SCOPE])</code>
+  : Include another make file. IMPORTANT: The code will run on the scope of the file that included it (Original file), as if the file was copied inside the original file. As consequence, all relative paths will be relative to the original file.
+</p>
+
 
 <div id="CMake Commands-Variables"><h2 id="Variables">Variables</h2></div>
 
 <p>
-<code>CMAKE_TOOLCHAIN_FILE=&lt;toolchain path&gt;</code> : Inform the toolchain file path
+<code>CMAKE_TOOLCHAIN_FILE=&lt;toolchain path&gt;</code>
+  : Inform the toolchain file path
 </p>
 
 	</div>

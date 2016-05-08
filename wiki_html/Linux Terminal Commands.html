@@ -14,110 +14,136 @@
 <div id="Linux Terminal Commands-User"><h2 id="User">User</h2></div>
 
 <p>
-<code>sudo</code> : Run elevated   
+<code>sudo</code>
+  : Run elevated   
 </p>
 
 <p>
-<code>su -</code> : Become root (Super User)
+<code>su -</code>
+  : Become root (Super User)
 </p>
 
 <p>
-<code>su &lt;username&gt;</code> : ls
+<code>su &lt;username&gt;</code>
+  : ls
 </p>
 
 <p>
-<code>adduser &lt;username&gt;</code> : Add an user
+<code>adduser &lt;username&gt;</code>
+  : Add an user
 </p>
 
 <p>
-<code>usermod -aG &lt;group1&gt;,&lt;group2&gt;,&lt;etc..&gt; &lt;user name&gt;</code> : change the group of the user
+<code>usermod -aG &lt;group1&gt;,&lt;group2&gt;,&lt;etc..&gt; &lt;user name&gt;</code>
+  : change the group of the user
 </p>
 
 <p>
-<code>usermod -d /home/&lt;new name&gt; -m -g &lt;new name&gt; -l &lt;new name&gt; &lt;old name&gt;</code> : Change the user. This changes the name, the group, the home directory and ownership and group of of that directory to the new ones, along with all the files.
+<code>usermod -d /home/&lt;new name&gt; -m -g &lt;new name&gt; -l &lt;new name&gt; &lt;old name&gt;</code>
+  : Change the user. This changes the name, the group, the home directory and ownership and group of of that directory to the new ones, along with all the files.
 </p>
 
 <p>
-<code>groups</code> : list all groups for the current user
+<code>groups</code>
+  : list all groups for the current user
 </p>
 
 <p>
-<code>/etc/passwd</code> : File with a list of all users
+<code>/etc/passwd</code>
+  : File with a list of all users
 </p>
 
 <p>
-<code>/etc/group</code> : File with a list of all groups
+<code>/etc/group</code>
+  : File with a list of all groups
 </p>
 
 
 <div id="Linux Terminal Commands-Directories and Files"><h2 id="Directories and Files">Directories and Files</h2></div>
 
 <p>
-<code>pwd</code> : Show the directory you are
+<code>pwd</code>
+  : Show the directory you are
 </p>
 
 <p>
-<code>ls -all</code> : List all files and directories into the current directory 
+<code>ls -all</code>
+  : List all files and directories into the current directory 
 </p>
 
 <p>
-<code>chmod a+x &lt;filename&gt;</code> : Make a file executable
+<code>chmod a+x &lt;filename&gt;</code>
+  : Make a file executable
 </p>
 
 <p>
-<code>mkdir &lt;directory name&gt;</code> : Create directory
+<code>mkdir &lt;directory name&gt;</code>
+  : Create directory
 </p>
 
 <p>
-<code>touch &lt;filename&gt;</code> : create a file
+<code>touch &lt;filename&gt;</code>
+  : create a file
 </p>
 
 <p>
-<code>rm &lt;filename&gt;</code> : remove a file
+<code>rm &lt;filename&gt;</code>
+  : remove a file
 </p>
 
 <p>
-<code>rmdir &lt;directory&gt;</code> : remove directory
+<code>rmdir &lt;directory&gt;</code>
+  : remove directory
 </p>
 
 <p>
-<code>rm -rf &lt;directory&gt;</code> : remove all directory and files recursively.
+<code>rm -rf &lt;directory&gt;</code>
+  : remove all directory and files recursively.
 </p>
 
 <p>
-<code>cp &lt;source&gt; &lt;destination&gt;</code> : Copy command
+<code>cp &lt;source&gt; &lt;destination&gt;</code>
+  : Copy command
 </p>
 
 <p>
-<code>ln -s &lt;path to be linked&gt; &lt;path where the link file will be created&gt;</code> : Create a symbolic link (Shortcut)
+<code>ln -s &lt;path to be linked&gt; &lt;path where the link file will be created&gt;</code>
+  : Create a symbolic link (Shortcut)
 </p>
 
 <p>
-<code>pwd -P</code> : Show the physical directory you are
+<code>pwd -P</code>
+  : Show the physical directory you are
 </p>
 
 <p>
-<code>ls -l</code> : List all files and directories into the current directory
+<code>ls -l</code>
+  : List all files and directories into the current directory
 </p>
 
 <p>
-<code>mv</code> : Move or rename a file or directory
+<code>mv</code>
+  : Move or rename a file or directory
 </p>
 
 <p>
-<code>tree</code> : Display the tree of directories and sub directories
+<code>tree</code>
+  : Display the tree of directories and sub directories
 </p>
 
 <p>
-<code>wget &lt;http or ftp url&gt;</code> : Get a file from the internet
+<code>wget &lt;http or ftp url&gt;</code>
+  : Get a file from the internet
 </p>
 
 <p>
-<code>wget --mirror &lt;htttp or ftp url&gt;</code> : Mirror an url 
+<code>wget --mirror &lt;htttp or ftp url&gt;</code>
+  : Mirror an url 
 </p>
 
 <p>
-<code>&lt;command&gt; | tee -a "&lt;logfile&gt;"</code> : Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended. #
+<code>&lt;command&gt; | tee -a "&lt;logfile&gt;"</code>
+  : Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended Saves the imput to a file shouwing it on the stdout. -a informs that the file will be appended. #
 </p>
 
 
@@ -125,165 +151,205 @@
 
 
 <p>
-<code>info &lt;command name&gt;</code> : List the information of a specific command. If you do not mention the &lt;command name&gt; it will list the command available.
+<code>info &lt;command name&gt;</code>
+  : List the information of a specific command. If you do not mention the &lt;command name&gt; it will list the command available.
 </p>
 
 <p>
-<code>shutdown -r now</code> : Restart the device
+<code>shutdown -r now</code>
+  : Restart the device
 </p>
 
 <p>
-<code>uname -a</code> : Get the OS version
+<code>uname -a</code>
+  : Get the OS version
 </p>
 
 <p>
-<code>top</code> : Process monitor
+<code>top</code>
+  : Process monitor
 </p>
 
 <p>
-<code>&lt;program name&gt; --version</code> : Get the version of a program
+<code>&lt;program name&gt; --version</code>
+  : Get the version of a program
 </p>
 
 <p>
-<code>printenv</code> : Shows the environment variables
+<code>printenv</code>
+  : Shows the environment variables
 </p>
 
 <p>
-<code>getenv &lt;environment variable&gt;</code> : Shows the environment variable value. 
+<code>getenv &lt;environment variable&gt;</code>
+  : Shows the environment variable value. 
 </p>
 
 <p>
-<code>setenv &lt;environment variable&gt; &lt;value</code> : Set the environment variable a value
+<code>setenv &lt;environment variable&gt; &lt;value</code>
+  : Set the environment variable a value
 </p>
 
 <p>
-<code>whereis &lt;program&gt;</code> : find where is the location of a specific program
+<code>whereis &lt;program&gt;</code>
+  : find where is the location of a specific program
 </p>
 
 <p>
-<code>lsof</code> : List all open files and its process (You need to run as super user). E.g.: lsof &gt;Result.txt
+<code>lsof</code>
+  : List all open files and its process (You need to run as super user). E.g.: lsof &gt;Result.txt
 </p>
 
 <p>
-<code>ps -aux</code> : List of all running process
+<code>ps -aux</code>
+  : List of all running process
 </p>
 
 <p>
-<code>vmstat</code> : Virtual Memory Statistics
+<code>vmstat</code>
+  : Virtual Memory Statistics
 </p>
 
 <p>
-<code>compgen -c</code> : List all the commands you could run.
+<code>compgen -c</code>
+  : List all the commands you could run.
 </p>
 
 <p>
-<code>compgen -a</code> : List all the aliases you could run.
+<code>compgen -a</code>
+  : List all the aliases you could run.
 </p>
 
 <p>
-<code>compgen -b</code> : List all the built-ins you could run.
+<code>compgen -b</code>
+  : List all the built-ins you could run.
 </p>
 
 <p>
-<code>compgen -k</code> : List all the keywords you could run.
+<code>compgen -k</code>
+  : List all the keywords you could run.
 </p>
 
 <p>
-<code>compgen -A</code> : List all the functions you could run.
+<code>compgen -A</code>
+  : List all the functions you could run.
 </p>
 
 <p>
-<code>compgen -A</code> : function -abck will list all the above in one go.
+<code>compgen -A</code>
+  : function -abck will list all the above in one go.
 </p>
 
 <p>
-<code>apt-get install &lt;package name&gt;</code> : Install a package (For Debian: E.g.: Ubuntu)
+<code>apt-get install &lt;package name&gt;</code>
+  : Install a package (For Debian: E.g.: Ubuntu)
 </p>
 
 <p>
-<code>apt-get --purge remove &lt;package name&gt;</code> : Uninstall a package (For Debian: E.g.: Ubuntu)
+<code>apt-get --purge remove &lt;package name&gt;</code>
+  : Uninstall a package (For Debian: E.g.: Ubuntu)
 </p>
 
 <p>
-<code>Yum install &lt;package name&gt;</code> : Install a package (For RPM: E.g.: Fedora)
+<code>Yum install &lt;package name&gt;</code>
+  : Install a package (For RPM: E.g.: Fedora)
 </p>
 
 <p>
-<code>free</code> : Display the amount of free and used system memory (Default: Kilobytes).
+<code>free</code>
+  : Display the amount of free and used system memory (Default: Kilobytes).
 </p>
 
 <p>
-<code>watch &lt;program to execute&gt;</code> : Execute a program every period of time (Default: 2 seconds)
+<code>watch &lt;program to execute&gt;</code>
+  : Execute a program every period of time (Default: 2 seconds)
 </p>
 
 <p>
-<code>sudo service &lt;service name&gt; restart</code> : Restart a Server
+<code>sudo service &lt;service name&gt; restart</code>
+  : Restart a Server
 </p>
 
 <p>
-<code>blkid</code> : Allow to see the available devices. Those devices can be mounted
+<code>blkid</code>
+  : Allow to see the available devices. Those devices can be mounted
 </p>
 
 <p>
-<code>fdisk -l</code> : Allow to see the available devices. Those devices can be mounted
+<code>fdisk -l</code>
+  : Allow to see the available devices. Those devices can be mounted
 </p>
 
 <p>
-<code>mount &lt;device or network share&gt; &lt;local folder&gt;</code> : Mount a device or shared folder into a local folder.
+<code>mount &lt;device or network share&gt; &lt;local folder&gt;</code>
+  : Mount a device or shared folder into a local folder.
 </p>
 
 <p>
-<code>umount &lt;local folder&gt;</code> : Mount a device or shared folder into a local folder.
+<code>umount &lt;local folder&gt;</code>
+  : Mount a device or shared folder into a local folder.
 </p>
 
 <p>
-<code>cat &gt; &lt;file name&gt;</code> : Create a file and allow you to edit it. Careful! if you do it into an existing file, its content will be deleted.
+<code>cat &gt; &lt;file name&gt;</code>
+  : Create a file and allow you to edit it. Careful! if you do it into an existing file, its content will be deleted.
 </p>
 
 <p>
-<code>find &lt;directory to start&gt; -name "&lt;file to find&gt;"</code> : Find file in all sub directories
+<code>find &lt;directory to start&gt; -name "&lt;file to find&gt;"</code>
+  : Find file in all sub directories
 </p>
 
 <p>
-<code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e "&lt;text to find&gt;"</code> : Find a text into files
+<code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e "&lt;text to find&gt;"</code>
+  : Find a text into files
 </p>
 
 <p>
-<code>encfs &lt;encrypted folder content&gt; &lt;mounted folder&gt;</code> : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)
+<code>encfs &lt;encrypted folder content&gt; &lt;mounted folder&gt;</code>
+  : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)
 </p>
 
 <p>
-<code>fusermount -u &lt;mounted folder&gt;</code> : unmount folder.
+<code>fusermount -u &lt;mounted folder&gt;</code>
+  : unmount folder.
 </p>
 
 <p>
-<code>tar xjf &lt;file path&gt;</code> : Uncompress tar files (E.g.: *.tar.bz2)
+<code>tar xjf &lt;file path&gt;</code>
+  : Uncompress tar files (E.g.: *.tar.bz2)
 </p>
 
 <p>
-<code>rsync -u -v -e ssh &lt;source directory&gt;/* &lt;user&gt;@&lt;remote computer (IP)&gt;:&lt;target directory&gt;</code> : Sync all files from the source directory to the target directory.
+<code>rsync -u -v -e ssh &lt;source directory&gt;/* &lt;user&gt;@&lt;remote computer (IP)&gt;:&lt;target directory&gt;</code>
+  : Sync all files from the source directory to the target directory.
 </p>
 
 <div id="Linux Terminal Commands-Bash Files"><h2 id="Bash Files">Bash Files</h2></div>
 
 <p>
-<code>#!/bin/bash</code> : Inform what interpreter should run the bash
+<code>#!/bin/bash</code>
+  : Inform what interpreter should run the bash
 </p>
 
 <p>
-<code>cd "\((dirname "\)0")"</code> : Set bash to the current directory
+<code>cd "\((dirname "\)0")"</code>
+  : Set bash to the current directory
 </p>
 
 <p>
-<code>read -p "Press [Enter] key to continue"</code> Pouse command
+<code>read -p "Press [Enter] key to continue"</code>
+  Pouse command
 </p>
 
 <p>
-<code>&lt;variable&gt;="$(readlink -f "&lt;relative path")" </code>: Convert relative path to full path.    
+<code>&lt;variable&gt;="$(readlink -f "&lt;relative path")" </code>
+  : Convert relative path to full path.    
 </p>
 
 <p>
-<code>apt-cache show &lt;program&gt; </code>: Show the version of a program
+<code>apt-cache show &lt;program&gt; </code>
+  : Show the version of a program
 </p>
 
 <div id="Linux Terminal Commands-Bash Files-Function declaration and usage"><h3 id="Function declaration and usage">Function declaration and usage</h3></div>
