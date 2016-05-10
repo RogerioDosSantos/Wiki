@@ -21,6 +21,22 @@
 
 `<command>$` : End of line
 
+`gd` : Will take you to the local variable declaration.
+
+`gD` : Will take you to the global variable declaration.
+
+`g*` : Search for the word under the cursor (like *, but g* on 'rain' will find words like 'rainbow').
+
+`g#` : Same as g* but in backward direction.
+
+`gg` : Goes to the first line in the buffer (or provide a count before the command for a specific line).
+
+`G ` : Go to the last line (or provide a count before the command for a specific line).
+
+`gf` : Will go to the file under the cursor
+
+`g]` : And other commands will jump to a tag definition (a tag can be a function or variable name, or more).
+
 `c<selection>` : Delete the selection where the cursor is and go to insert mode
 
 `<selection> ~` : Toggle the case
