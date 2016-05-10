@@ -165,7 +165,7 @@
 
 `:Explore` : Open the Explore (Equivalent to Windows Explorer)
 
-== Explore Keys ==
+== Explore Keys and Commands ==
 
 `d` : creates a new directory
 
@@ -178,4 +178,11 @@
 `o` : opens the file in a horizontal split
 
 `v` : opens the file in a vertical split
+
+`<numeric id>mb` : Create a bookmark on the current folder with the id informed.
+
+`<numeric id>gb` : Goto bookmark
+
+`qb` : List bookmarks
+
 
