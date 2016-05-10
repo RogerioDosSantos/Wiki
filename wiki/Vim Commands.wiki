@@ -82,6 +82,9 @@
 
 `:r !<shell command>` : Execute the shell command and write the result on the current file
 
+`:ls` : List buffers
+
+`:b<buffer number>` : Go to the buffer. Use ls to list buffer
 
 `:colorshema` : Change the color schema (Solirized for C++ / Desert for CMake)
 
