@@ -74,6 +74,9 @@
 
 `ctrl+o` : Jump to the presious search
 
+`*` : Find the word under cursor forward
+
+`#` : Find the word under cursor backward
 
 == Commands - Normal Mode ==
 
