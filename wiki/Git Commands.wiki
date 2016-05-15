@@ -77,6 +77,8 @@ origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 `git reset --hard origin/master`
   : Undo all changes and commits. Your code will be equivalent to the server.
 
+`git checkout HEAD -- <file>`
+  : Reset the file with its original value
 
 == History ==
 
