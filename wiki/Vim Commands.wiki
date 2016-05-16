@@ -72,7 +72,7 @@
 
 `ctrl+r` : Redo
 
-`ctrl+o` : Jump to the presious search
+`ctrl+o` : Send you to the previous location before a jump
 
 `*` : Find the word under cursor forward
 
@@ -102,6 +102,7 @@
 
 ``<mark key>` : Go to the marked position stored on the key
 
+`:sb` : Split the current buffer
 
 == Keys - Edition Mode ==
 
