@@ -74,8 +74,8 @@
 `tree`
   : Display the tree of directories and sub directories
 
-`wget <http or ftp url>`
-  : Get a file from the internet
+`wget [-O <destination dir>] <http or ftp url>`
+  : Get a file from the internet to the destination directory
 
 `wget --mirror <htttp or ftp url>`
   : Mirror an url 
