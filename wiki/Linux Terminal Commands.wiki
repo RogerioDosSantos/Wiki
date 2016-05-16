@@ -197,7 +197,7 @@
 `#!/bin/bash`
   : Inform what interpreter should run the bash
 
-`cd "$(dirname "$0")"`
+`cd "$(dirname "$0")`
   : Set bash to the current directory
 
 `read -p "Press [Enter] key to continue"`
