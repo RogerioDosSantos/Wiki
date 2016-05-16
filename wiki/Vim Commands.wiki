@@ -55,6 +55,11 @@
 
 `gf` : Go to the files where the cursor is (Open on de same window)
 
+`m<key> `: Mark the position to a specified key
+
+``<key> `: Go to the postion of a marked key
+
+``` `: Return to the position before the marked item
 
 == Keys - Normal Mode ==
 
