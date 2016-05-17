@@ -1,5 +1,9 @@
 = Vim Commands =
 
+== Commandline ==
+
+`vim -V<log level><log filename>` : Execute vim with the log enabled. E.g.: vim -V9vim_log.txt
+
 == Leader - Normal Mode ==
 
    *Note: My <leader> is <space>*
