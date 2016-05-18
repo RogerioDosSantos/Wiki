@@ -8,8 +8,10 @@
 
 -  [[Vim Commands]] 
 -  Vim Plugins 
-  -  VimWiki 
+  - VimWiki 
     -  [[VimWiki Commands]] 
+  - Surround.vim
+    - [[Surround.vim Commands]]
 
 == Git ==
 

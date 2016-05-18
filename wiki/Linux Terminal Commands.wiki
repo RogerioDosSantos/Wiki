@@ -74,8 +74,8 @@
 `tree`
   : Display the tree of directories and sub directories
 
-`wget <http or ftp url>`
-  : Get a file from the internet
+`wget [-O <destination path>] <http or ftp url>`
+  : Get a file from the internet to the destination path
 
 `wget --mirror <htttp or ftp url>`
   : Mirror an url 
@@ -197,7 +197,7 @@
 `#!/bin/bash`
   : Inform what interpreter should run the bash
 
-`cd "$(dirname "$0")"`
+`cd "$(dirname "$0")`
   : Set bash to the current directory
 
 `read -p "Press [Enter] key to continue"`
