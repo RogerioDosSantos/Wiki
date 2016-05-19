@@ -11,6 +11,7 @@
   - [[VimWiki]] 
   - [[Surround]]
   - [[Syntastic]]
+  - [[Fugitive]]
 
 == Git ==
 

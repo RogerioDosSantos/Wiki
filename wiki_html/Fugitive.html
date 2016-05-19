@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="Stylesheet" type="text/css" href="../resources/markdown.css" />
+	<link rel="Stylesheet" type="text/css" href="../resources/github.css" />
+	<title>Fugitive</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<div class="content">
+		
+<div id="Fugitive"><h1 id="Fugitive">Fugitive</h1></div>
+
+<div id="Fugitive-Commands"><h2 id="Commands">Commands</h2></div>
+
+<p>
+<code>:Glog</code> : Load previous revisions on the quickfix
+</p>
+
+<p>
+<code>:Ggrep &lt;sentence&gt; [&lt;branch name&gt;] [&lt;tag name or commit id&gt;]</code> : Search for the sentence into the project.
+</p>
+
+<p>
+<code>GLog --grep=&lt;keyword&gt; --</code> : Return the checkins that contains the description mentioned on the keyword.
+</p>
+
+<p>
+<code>Glog -S&lt;keyword&gt; --</code> : Looks for all changeset where the keyword was removed.
+</p>
+
+<div id="Fugitive-Personal Key Mappings"><h2 id="Personal Key Mappings">Personal Key Mappings</h2></div>
+
+<p>
+<code>&lt;leader&gt;gs </code>: Git Status
+</p>
+
+<p>
+<code>&lt;leader&gt;gd </code>: Git Diff (Non commit items vs Non added items)
+</p>
+
+<p>
+<code>&lt;leader&gt;gdh </code>: Git Diff origin / HEAD (Commit items vs Non Commit items)
+</p>
+
+<p>
+<code>&lt;leader&gt;gdm </code>: Git Diff origin / master (Commit items vs Server)
+</p>
+
+<p>
+<code>&lt;leader&gt;gc </code>: Git Commit
+</p>
+
+<p>
+<code>&lt;leader&gt;gp </code>: Git Push
+</p>
+
+<p>
+<code>&lt;leader&gt;gpu </code>: Git Pull
+</p>
+
+<p>
+<code>&lt;leader&gt;gb </code>: Git Brame (Verify the history of the file)
+</p>
+
+<p>
+<code>&lt;leader&gt;gr </code>: Git checkout &lt;file name&gt; (You can execute undo before saving)
+</p>
+
+<p>
+<code>&lt;leader&gt;gl </code>: Load the log of a files into the buffer
+</p>
+
+	</div>
+<script type="text/javascript" src="../resources/highlight.pack.js"></script>
+<script type="text/javascript" src="../resources/zepto.min.js"></script>
+<script type="text/javascript">
+$('pre').each(function(index,item){ $(item).html('<code>'+$(item).html()+'</code>'); });
+hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
