@@ -1,4 +1,6 @@
-=== Surround.vim Commands ===
+= Surround =
+
+== Commands ==
 
 `<visual selection>S<surround tag>` : Surround selection with surround tag.
 

@@ -1,5 +1,4 @@
-
-= VimWiki - Plugin =
+= VimWiki =
 
 
 == Commands ==
@@ -39,10 +38,8 @@
 
 `[[wiki link|description]] `: wiki link with description
 
-=== Key bindings ===
 
-
-*normal mode:*
+== Key bindings - Normal Mode ==
 
 `<Leader>ww `: Open default wiki index file.
 

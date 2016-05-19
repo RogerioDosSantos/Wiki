@@ -8,10 +8,10 @@
 
 -  [[Vim Commands]] 
 -  Vim Plugins 
-  - VimWiki 
-    -  [[VimWiki Commands]] 
-  - Surround.vim
-    - [[Surround.vim Commands]]
+  - [[VimWiki]] 
+  - [[Surround]]
+  - [[Syntastic]]
+`cd "$(dirname "$0")"`
 
 == Git ==
 
