@@ -12,6 +12,7 @@
   - [[Surround]]
   - [[Syntastic]]
   - [[Fugitive]]
+  - [[Doxigen]]
 
 == Git ==
 
