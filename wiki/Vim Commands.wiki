@@ -71,11 +71,15 @@
 
 `'J `: Join the current line with the next line'
 
-`zo `: Open folder were the cursor are
+`zf<selection>` : Create a folding (Collapsed line)
 
-`zc `: Close folder were the cursor are
+`zo `: Open folding (Collapsed) were the cursor are
 
-`zd `: Delete a folder
+`zc `: Close folding were the cursor are
+
+`zd`: Delete a folder
+
+`zR` : Open all folding (Collapsed) lines
 
 == Keys - Normal Mode ==
 
