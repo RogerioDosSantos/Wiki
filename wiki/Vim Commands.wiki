@@ -81,6 +81,14 @@
 
 `zR` : Open all folding (Collapsed) lines
 
+`zM`: Close all folding
+
+`zss` : Set the folding method to Syntax
+
+`zsm` : Set the folding method to Manual
+
+`zsi` : Set the folding method to Indent
+
 == Keys - Normal Mode ==
 
 `ctrl-w` : got to the next window
