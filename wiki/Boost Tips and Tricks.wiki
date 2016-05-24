@@ -1,4 +1,4 @@
-= Boost Tips and Tricks = 
+= Bosst Tips and Tricks = 
 
 == Install Boost from Source ==
 
