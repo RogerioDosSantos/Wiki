@@ -33,4 +33,8 @@
 `CMAKE_TOOLCHAIN_FILE=<toolchain path>`
   : Inform the toolchain file path
 
+== Tips ==
 
+`make -C <directory>` : Execute the make file from a specific directory.
+
+`make help` : Display CMake project creation help that informs the type of compilations that can be done
