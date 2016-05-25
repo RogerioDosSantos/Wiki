@@ -224,6 +224,10 @@
 <code>#</code> : Find the word under cursor backward
 </p>
 
+<p>
+<code>"qp</code> : Paste the macro script
+</p>
+
 <div id="Vim Commands-Commands - Normal Mode"><h2 id="Commands - Normal Mode">Commands - Normal Mode</h2></div>
 
 <p>
@@ -248,6 +252,26 @@
 
 <p>
 <code>&lt;-/+ begin range&gt;, &lt;-/+ end range&gt;co. </code>: Copy range to the current position (E.g.: -10,-5co.)
+</p>
+
+<p>
+<code>:echo @% </code> : directory/name of file (relative to the current working directory of /abc). E.g.: def/my.txt 
+</p>
+
+<p>
+<code>:echo expand('%:t') </code> : name of file ('tail'). E.g.:  my.txt 
+</p>
+
+<p>
+<code>:echo expand('%:p') </code> : ull path. E.g.:  /abc/def/my.txt 
+</p>
+
+<p>
+<code>:echo expand('%:p:h') </code>/: directory containing file ('head'). E.g.: abc/def 
+</p>
+
+<p>
+<code>:echo expand('%:p:h:t') </code>d: irst get the full path with :p (/abc/def/my.txt), then get the head of that with :h (/abc/def), then get the tail of that with :t (def). E.g.: ef 
 </p>
 
 <div id="Vim Commands-Others - Normal Mode"><h2 id="Others - Normal Mode">Others - Normal Mode</h2></div>
@@ -317,11 +341,15 @@
 </p>
 
 <p>
-<code>:%s/&lt;search string&gt;/&lt;replace string&gt;/</code> : search whole file and replace
+<code>:%s/&lt;search string&gt;/&lt;replace string&gt;[/&lt;options&gt;]</code> : search whole file and replace. The options are:
 </p>
 
 <p>
-<code>:%s/&lt;search string&gt;/&lt;replace string&gt;/c</code> : confirm each replace
+  <code>/c</code> : confirm each replace
+</p>
+
+<p>
+  <code>/I</code> : Case sensitive
 </p>
 
 <p>
@@ -448,6 +476,22 @@
 
 <p>
 <code>qb</code> : List bookmarks
+</p>
+
+<div id="Vim Commands-Macros"><h2 id="Macros">Macros</h2></div>
+
+<div id="Vim Commands-Macros-Saving a Macro"><h3 id="Saving a Macro">Saving a Macro</h3></div>
+
+<p>
+To save a macro you can do:
+</p>
+
+<p>
+  From normal mode: <code>qq</code>
+  enter whatever commands
+  From normal mode: <code>q</code>
+  open .vimrc
+  <code>"qp</code> to insert the macro into your <code>let @q = '...'</code>
 </p>
 
 	</div>

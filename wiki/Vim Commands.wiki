@@ -111,6 +111,8 @@
 
 `#` : Find the word under cursor backward
 
+`"qp` : Paste the macro script
+
 == Commands - Normal Mode ==
 
 `:0r <file path>` : Read the file and add in your current file
@@ -124,6 +126,16 @@
 `:colorshema` : Change the color schema (Solirized for C++ / Desert for CMake)
 
 `<-/+ begin range>, <-/+ end range>co. `: Copy range to the current position (E.g.: -10,-5co.)
+
+`:echo @% ` : directory/name of file (relative to the current working directory of /abc). E.g.: def/my.txt 
+
+`:echo expand('%:t') ` : name of file ('tail'). E.g.:  my.txt 
+
+`:echo expand('%:p') ` : ull path. E.g.:  /abc/def/my.txt 
+
+`:echo expand('%:p:h') `/: directory containing file ('head'). E.g.: abc/def 
+
+`:echo expand('%:p:h:t') `d: irst get the full path with :p (/abc/def/my.txt), then get the head of that with :h (/abc/def), then get the tail of that with :t (def). E.g.: ef 
 
 == Others - Normal Mode ==
 
@@ -163,9 +175,11 @@
 
 `/<string>` : Search a string
 
-`:%s/<search string>/<replace string>/` : search whole file and replace
+`:%s/<search string>/<replace string>[/<options>]` : search whole file and replace. The options are:
 
-`:%s/<search string>/<replace string>/c` : confirm each replace
+  `/c` : confirm each replace
+
+  `/I` : Case sensitive
 
 `:noh` : Clear search highlight
 
@@ -231,4 +245,14 @@
 
 `qb` : List bookmarks
 
+== Macros ==
 
+=== Saving a Macro ===
+
+To save a macro you can do:
+
+  From normal mode: `qq`
+  enter whatever commands
+  From normal mode: `q`
+  open .vimrc
+  `"qp` to insert the macro into your `let @q = '...'`
