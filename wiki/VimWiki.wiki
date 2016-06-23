@@ -47,4 +47,13 @@
 
 `<Leader>ws `: Select and open wiki index file.
 
+== Key bindings - Normal Mode (Custom) ==
+
+`<Leader>wc` : Toggle callendar
+
+`<Leader>wl` : Generate a diary
+
+`<Leader>wp` : Publish current file
+
+`<Leader>wpa` : Publish all files
 

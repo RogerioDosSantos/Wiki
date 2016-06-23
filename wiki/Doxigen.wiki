@@ -8,4 +8,8 @@ Plugin to generate documentation based on source code comments
 
 `doxygen <config-file>` : Create the documentation based on the config file.
 
+== Mapped Keys ==
+gd : Add the description comment
+gl : Add the license comments 
+gs : Toggle the spell check
 
