@@ -153,6 +153,8 @@
 
 == Keys - Edition Mode ==
 
+`ctrl+k` : Complete the snippet
+
 `ctrl+p (previous) ; ctrl+n (next)` : Word completion
 
 `ctrl+x (completion mode) + ctrl+] (Tag completion)` : Tag completion (requires CTags)
