@@ -13,6 +13,7 @@
   - [[Syntastic]]
   - [[Fugitive]]
   - [[Doxigen]]
+  - [[ConqueGDB]]
 
 == Git ==
 
