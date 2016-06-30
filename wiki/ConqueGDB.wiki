@@ -1,0 +1,47 @@
+= ConqueGDB = 
+
+Plugin that allows you to use GDB inside vim
+
+`gdb <program path>` : Start a GDB session.
+
+Note: To have an executable with symbols you need to use the option -g on the gcc compile to assure it puts the symbol on the executable. If you are using CMAKE, you can set the following variable environment:
+
+`set(CMAKE_BUILD_TYPE Debug)`
+
+== Commands ==
+
+`ConqueGDB` : Open a new window with the GDB program
+
+== GDB Commands ==
+
+Note: Pressing <enter> will run the last command.
+
+`start` : Start the loaded application and stop just after the main function
+
+`list` : List the current source code where the debugger is.
+
+`step` : Step into
+
+`next` : Step over
+
+`finish` : Step out
+
+`continue` : Continue the execution until the next breakpoint. 
+
+`print <[&]variable>` : Print a variable value. Use & to get the variable type and address.
+
+`set var <variable> = <value>` : Set a value to a variable.
+
+`backtrace` : Display the stack trace
+
+`frame <stack id>` : Allow you to go to the frame of the stack in this way you can see the variable values of that frame. Note, you can get the frame id by using backtrace command.
+
+`break <line number>` : Set a breakpoint on the line.
+
+`watch <variable>` : Set a watch on the variable. When watching, everytime the variable changes, it will stop the execution and display the old and new value.
+
+`rwatch <variable>` : Set a watch on the variable that will trigger everytime the variable is read.
+
+`info <command>` : Display the current status of the command. E.g.: `info watch`.
+
+`delete <command item id>` : Delete a command item (E.g.: breakpoint) that is set. You can get the command item id using the info command.

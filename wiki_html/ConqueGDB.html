@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="Stylesheet" type="text/css" href="../resources/markdown.css" />
+	<link rel="Stylesheet" type="text/css" href="../resources/github.css" />
+	<title>ConqueGDB</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<div class="content">
+		
+<div id="ConqueGDB"><h1 id="ConqueGDB">ConqueGDB</h1></div>
+
+<p>
+Plugin that allows you to use GDB inside vim
+</p>
+
+<p>
+<code>gdb &lt;program path&gt;</code> : Start a GDB session.
+</p>
+
+<p>
+Note: To have an executable with symbols you need to use the option -g on the gcc compile to assure it puts the symbol on the executable. If you are using CMAKE, you can set the following variable environment:
+</p>
+
+<p>
+<code>set(CMAKE_BUILD_TYPE Debug)</code>
+</p>
+
+<div id="ConqueGDB-Commands"><h2 id="Commands">Commands</h2></div>
+
+<p>
+<code>ConqueGDB</code> : Open a new window with the GDB program
+</p>
+
+<div id="ConqueGDB-GDB Commands"><h2 id="GDB Commands">GDB Commands</h2></div>
+
+<p>
+Note: Pressing &lt;enter&gt; will run the last command.
+</p>
+
+<p>
+<code>start</code> : Start the loaded application and stop just after the main function
+</p>
+
+<p>
+<code>list</code> : List the current source code where the debugger is.
+</p>
+
+<p>
+<code>step</code> : Step into
+</p>
+
+<p>
+<code>next</code> : Step over
+</p>
+
+<p>
+<code>finish</code> : Step out
+</p>
+
+<p>
+<code>continue</code> : Continue the execution until the next breakpoint. 
+</p>
+
+<p>
+<code>print &lt;[&amp;]variable&gt;</code> : Print a variable value. Use &amp; to get the variable type and address.
+</p>
+
+<p>
+<code>set var &lt;variable&gt; = &lt;value&gt;</code> : Set a value to a variable.
+</p>
+
+<p>
+<code>backtrace</code> : Display the stack trace
+</p>
+
+<p>
+<code>frame &lt;stack id&gt;</code> : Allow you to go to the frame of the stack in this way you can see the variable values of that frame. Note, you can get the frame id by using backtrace command.
+</p>
+
+<p>
+<code>break &lt;line number&gt;</code> : Set a breakpoint on the line.
+</p>
+
+<p>
+<code>watch &lt;variable&gt;</code> : Set a watch on the variable. When watching, everytime the variable changes, it will stop the execution and display the old and new value.
+</p>
+
+<p>
+<code>rwatch &lt;variable&gt;</code> : Set a watch on the variable that will trigger everytime the variable is read.
+</p>
+
+<p>
+<code>info &lt;command&gt;</code> : Display the current status of the command. E.g.: <code>info watch</code>.
+</p>
+
+<p>
+<code>delete &lt;command item id&gt;</code> : Delete a command item (E.g.: breakpoint) that is set. You can get the command item id using the info command.
+</p>
+
+	</div>
+<script type="text/javascript" src="../resources/highlight.pack.js"></script>
+<script type="text/javascript" src="../resources/zepto.min.js"></script>
+<script type="text/javascript">
+$('pre').each(function(index,item){ $(item).html('<code>'+$(item).html()+'</code>'); });
+hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
