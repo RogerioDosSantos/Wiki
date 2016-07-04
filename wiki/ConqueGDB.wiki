@@ -16,7 +16,11 @@ Note: To have an executable with symbols you need to use the option -g on the gc
 
 Note: Pressing <enter> will run the last command.
 
+`file <executable>` : Load an executable to be used by the GDB
+
 `start` : Start the loaded application and stop just after the main function
+
+`kill` : Stop the program execution
 
 `list` : List the current source code where the debugger is.
 
@@ -37,6 +41,8 @@ Note: Pressing <enter> will run the last command.
 `frame <stack id>` : Allow you to go to the frame of the stack in this way you can see the variable values of that frame. Note, you can get the frame id by using backtrace command.
 
 `break <line number>` : Set a breakpoint on the line.
+
+`break <file name>:<line number>` : Set a breakpoint on the file / line.
 
 `watch <variable>` : Set a watch on the variable. When watching, everytime the variable changes, it will stop the execution and display the old and new value.
 

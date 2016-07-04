@@ -54,7 +54,11 @@
 `f <character>` : Jump to the next character
 
 `F <character>` : Jump to the previous character
+ 
+`t <character>` : Jump one character before the next character
 
+`T <character>` : Jump one character after the previous character
+ 
 `[<number>] ge` : Go to the previous word
 
 `gf` : Go to the files where the cursor is (Open on de same window)
@@ -112,6 +116,8 @@
 `#` : Find the word under cursor backward
 
 `"qp` : Paste the macro script
+
+`shift+J` : Concatenate (Join) 02 lines
 
 == Commands - Normal Mode ==
 
@@ -183,7 +189,7 @@
 
   `/I` : Case sensitive
 
-`:noh` : Clear search highlight
+`:noh` : Clear search highlight. Added custom map `<leader>,`
 
 `:q!` : Exit without saving
 
