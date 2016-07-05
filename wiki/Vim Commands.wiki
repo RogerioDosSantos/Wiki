@@ -118,7 +118,7 @@
 `"qp` : Paste the macro script
 
 `shift+J` : Concatenate (Join) 02 lines
-
+nw
 == Commands - Normal Mode ==
 
 `:0r <file path>` : Read the file and add in your current file

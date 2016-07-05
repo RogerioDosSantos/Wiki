@@ -38,6 +38,8 @@
 
 `d ` : detach session
 
+`[` : Scroll mode. Press `q` to exit. In this mode you can scroll up and down.
+
 == Command Mode - Windows (tabs) ==
 
 `c ` : new window
