@@ -38,3 +38,13 @@
 `-` : Add the file.
 
 `U` : Discart the changes done on the file (Undo). Equivalent to `checkout HEAD`
+
+`D` : Diff 
+
+`q` : Close Status
+
+`r` : Reload Status
+
+`O` : Open the file into a new tab.
+
+`o` : Open the file into a new split
