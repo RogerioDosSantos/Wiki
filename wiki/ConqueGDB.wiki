@@ -24,13 +24,13 @@ Note: Pressing <enter> will run the last command.
 
 `list` : List the current source code where the debugger is.
 
-`step` : Step into
+`step [quantity]` : Step into
 
-`next` : Step over
+`next [quantity]` : Step over
 
 `finish` : Step out
 
-`continue` : Continue the execution until the next breakpoint. 
+`continue [quantity]` : Continue the execution until the next breakpoint. 
 
 `print <[&]variable>` : Print a variable value. Use & to get the variable type and address.
 

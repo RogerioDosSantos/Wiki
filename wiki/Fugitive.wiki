@@ -32,3 +32,9 @@
 
 `<leader>gl `: Load the log of a files into the buffer
 
+== Status Window Keys ==
+
+
+`-` : Add the file.
+
+`U` : Discart the changes done on the file (Undo). Equivalent to `checkout HEAD`
