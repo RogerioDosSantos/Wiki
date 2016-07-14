@@ -30,7 +30,12 @@
 
 `<leader>gr `: Git checkout <file name> (You can execute undo before saving)
 
-`<leader>gl `: Load the log of a files into the buffer
+`<leader>glo `: (:Glog -10) Load the 10 last log of a files into the buffer and display it 
+
+`<leader>gla `: (:Glog) Load the all log of a files into the buffer and display it 
+
+`<leader>gle `: (:Gedit) Return to the current file being edited.
+
 
 == Status Window Keys ==
 
