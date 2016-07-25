@@ -13,7 +13,6 @@
   - [[Syntastic]]
   - [[Fugitive]]
   - [[Doxigen]]
-  - [[ConqueGDB]]
 
 == Git ==
 
@@ -45,3 +44,7 @@
 == Virtual Box ==
 
 - [[Virtual Box Commands]]
+
+== Debug Tools ==
+
+- [[ConqueGDB]]
