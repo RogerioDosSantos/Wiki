@@ -72,7 +72,11 @@ Note: Pressing &lt;enter&gt; will run the last command.
 </p>
 
 <p>
-<code>print &lt;[&amp;]variable&gt;</code> : Print a variable value. Use &amp; to get the variable type and address.
+<code>print &lt;[&amp;]variable&gt;</code> : Print a variable value. Use &amp; to get the variable type and address. Note: You can use <code>.</code> and cast to access inner members and varaiable names. Egs.:
+</p>
+
+<p>
+<code>p  *(char**)&lt;variable&gt;.storage_.data_.buf</code> : Print a string value of boost variant. 
 </p>
 
 <p>
@@ -92,7 +96,15 @@ Note: Pressing &lt;enter&gt; will run the last command.
 </p>
 
 <p>
-<code>break &lt;file name&gt;:&lt;line number&gt;</code> : Set a breakpoint on the file / line.
+<code>break &lt;file path&gt;:&lt;line number&gt;</code> : Set a breakpoint on the file / line.
+</p>
+
+<p>
+<code> save breakpoints &lt;file path&gt;</code> : Save the Breakpoints into a file as a script.
+</p>
+
+<p>
+<code>source &lt;file path&gt;</code> : Load a definition script. E.g.: Breakpoints
 </p>
 
 <p>
@@ -109,6 +121,134 @@ Note: Pressing &lt;enter&gt; will run the last command.
 
 <p>
 <code>delete &lt;command item id&gt;</code> : Delete a command item (E.g.: breakpoint) that is set. You can get the command item id using the info command.
+</p>
+
+<div id="ConqueGDB-Keys - CGDB Mode"><h2 id="Keys - CGDB Mode">Keys - CGDB Mode</h2></div>
+
+<p>
+<code>cgdbmodekey</code> : Puts the user into command mode. However, you are already in this mode. This is defaulted to the ESC key.
+</p>
+
+<p>
+<code>i</code> : Puts the user into GDB mode.
+</p>
+
+<p>
+<code>gg</code> : Move to the top of file.
+</p>
+
+<p>
+<code>G</code> : Move to the bottom of file.
+</p>
+
+<p>
+<code>/</code> : search from current cursor position.
+</p>
+
+<p>
+<code>?</code> : reverse search from current cursor position.
+</p>
+
+<p>
+<code>n</code> : next forward search.
+</p>
+
+<p>
+<code>N</code> : next reverse search.
+</p>
+
+<p>
+<code>o</code> : open the file dialog.
+</p>
+
+<p>
+<code>spacebar</code> : Sets a breakpoint at the current line number.
+</p>
+
+<p>
+<code>t</code> : Sets a temporary breakpoint at the current line number.
+</p>
+
+<p>
+<code>-</code> : Shrink source window 1 line.
+</p>
+
+<p>
+<code>=</code> : Grow source window 1 line.
+</p>
+
+<p>
+<code>_</code> : Shrink source window 25% (or, shrink tty window 1 line, if visible).
+</p>
+
+<p>
+<code>+</code> : Grow source window 25% (or, grow tty window 1 line, if visible).
+</p>
+
+<p>
+<code>Ctrl-l</code> : Clear and redraw the screen.
+</p>
+
+<p>
+<code>F5</code> : Send a run command to GDB.
+</p>
+
+<p>
+<code>F6</code> : Send a continue command to GDB.
+</p>
+
+<p>
+<code>F7</code> : Send a finish (Step out) command to GDB.
+</p>
+
+<p>
+<code>F8</code> : Send a next (Step over) command to GDB.
+</p>
+
+<p>
+<code>F10</code> : Send a step (Step into) command to GDB.
+</p>
+
+<div id="ConqueGDB-Keys - File Dialog Mode"><h2 id="Keys - File Dialog Mode">Keys - File Dialog Mode</h2></div>
+
+<p>
+<code>q</code> : Will exit the file dialog, and return to the source window.
+</p>
+
+<p>
+<code>k</code> or <code>up arrow</code> : Move up a line.
+</p>
+
+<p>
+<code>l</code> or <code>right arrow</code> : Move right a line.
+</p>
+
+<p>
+<code>Ctrl-b</code> or <code>page up</code> : Move up a page.
+</p>
+
+<p>
+<code>Ctrl-f</code> or <code>page down</code> : Move down a page.
+</p>
+
+<p>
+<code>/</code> : search from current cursor position.
+</p>
+
+<p>
+<code>?</code> : reverse search from current cursor position.
+</p>
+
+<p>
+<code>n</code> : next forward search.
+</p>
+
+<p>
+<code>N</code> : next reverse search.
+</p>
+
+<p>
+<code>enter</code> : Select the current file.
 </p>
 
 	</div>

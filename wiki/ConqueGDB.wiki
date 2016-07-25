@@ -32,7 +32,9 @@ Note: Pressing <enter> will run the last command.
 
 `continue [quantity]` : Continue the execution until the next breakpoint. 
 
-`print <[&]variable>` : Print a variable value. Use & to get the variable type and address.
+`print <[&]variable>` : Print a variable value. Use & to get the variable type and address. Note: You can use `.` and cast to access inner members and varaiable names. Egs.:
+
+`p  *(char**)<variable>.storage_.data_.buf` : Print a string value of boost variant. 
 
 `set var <variable> = <value>` : Set a value to a variable.
 
@@ -42,7 +44,11 @@ Note: Pressing <enter> will run the last command.
 
 `break <line number>` : Set a breakpoint on the line.
 
-`break <file name>:<line number>` : Set a breakpoint on the file / line.
+`break <file path>:<line number>` : Set a breakpoint on the file / line.
+
+` save breakpoints <file path>` : Save the Breakpoints into a file as a script.
+
+`source <file path>` : Load a definition script. E.g.: Breakpoints
 
 `watch <variable>` : Set a watch on the variable. When watching, everytime the variable changes, it will stop the execution and display the old and new value.
 
@@ -51,3 +57,70 @@ Note: Pressing <enter> will run the last command.
 `info <command>` : Display the current status of the command. E.g.: `info watch`.
 
 `delete <command item id>` : Delete a command item (E.g.: breakpoint) that is set. You can get the command item id using the info command.
+
+== Keys - CGDB Mode ==
+
+`cgdbmodekey` : Puts the user into command mode. However, you are already in this mode. This is defaulted to the ESC key.
+
+`i` : Puts the user into GDB mode.
+
+`gg` : Move to the top of file.
+
+`G` : Move to the bottom of file.
+
+`/` : search from current cursor position.
+
+`?` : reverse search from current cursor position.
+
+`n` : next forward search.
+
+`N` : next reverse search.
+
+`o` : open the file dialog.
+
+`spacebar` : Sets a breakpoint at the current line number.
+
+`t` : Sets a temporary breakpoint at the current line number.
+
+`-` : Shrink source window 1 line.
+
+`=` : Grow source window 1 line.
+
+`_` : Shrink source window 25% (or, shrink tty window 1 line, if visible).
+
+`+` : Grow source window 25% (or, grow tty window 1 line, if visible).
+
+`Ctrl-l` : Clear and redraw the screen.
+
+`F5` : Send a run command to GDB.
+
+`F6` : Send a continue command to GDB.
+
+`F7` : Send a finish (Step out) command to GDB.
+
+`F8` : Send a next (Step over) command to GDB.
+
+`F10` : Send a step (Step into) command to GDB.
+
+== Keys - File Dialog Mode ==
+
+`q` : Will exit the file dialog, and return to the source window.
+
+`k` or `up arrow` : Move up a line.
+
+`l` or `right arrow` : Move right a line.
+
+`Ctrl-b` or `page up` : Move up a page.
+
+`Ctrl-f` or `page down` : Move down a page.
+
+`/` : search from current cursor position.
+
+`?` : reverse search from current cursor position.
+
+`n` : next forward search.
+
+`N` : next reverse search.
+
+`enter` : Select the current file.
+
