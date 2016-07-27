@@ -4,6 +4,8 @@ Plugin that allows you to use GDB inside vim
 
 `gdb <program path>` : Start a GDB session.
 
+`gdb --args <program path> <argument 1> [, <argument 2>]` : start gdb with a program that contains arguments
+
 Note: To have an executable with symbols you need to use the option -g on the gcc compile to assure it puts the symbol on the executable. If you are using CMAKE, you can set the following variable environment:
 
 `set(CMAKE_BUILD_TYPE Debug)`
