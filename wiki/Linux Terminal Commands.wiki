@@ -192,6 +192,10 @@
 `rsync -u -v -e ssh <source directory>/* <user>@<remote computer (IP)>:<target directory>`
   : Sync all files from the source directory to the target directory.
 
+`nmap -p <port range> <url o ip>` : Verify if a range of port is open. Eg.: ` nmap -p 1-1000 portquiz.net`
+
+`telnet <url or ip> <port>` : Verify if a port is open.
+
 == Bash Files ==
 
 `#!/bin/bash`
