@@ -48,6 +48,14 @@ Note: Pressing <enter> will run the last command.
 
 `break <file path>:<line number>` : Set a breakpoint on the file / line.
 
+`break <function name>` : Set a breakpoint on the function (E.g.: `break Class::Function(int)`)
+
+`info Breakpoints` : List all breakpoints.
+
+`disable <breakpoint number>` : Disable the breakpoint. You can get the `<breakpoint number>` using the `info` command.
+
+`ignore <breakpoint number><quantity>` : Do not stop on the breakpoint an amount of time. You can get the `<breakpoint number>` using the `info` command.
+
 ` save breakpoints <file path>` : Save the Breakpoints into a file as a script.
 
 `source <file path>` : Load a definition script. E.g.: Breakpoints
