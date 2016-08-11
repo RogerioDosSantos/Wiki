@@ -143,6 +143,30 @@ Note: Pressing &lt;enter&gt; will run the last command.
 <code>delete &lt;command item id&gt;</code> : Delete a command item (E.g.: breakpoint) that is set. You can get the command item id using the info command.
 </p>
 
+<p>
+<code>set logging on</code> : Enable logging. 
+</p>
+
+<p>
+<code>set logging off</code> : Disable logging. 
+</p>
+
+<p>
+<code>set logging file file</code> : Change the name of the current logfile. The default logfile is gdb.txt. 
+</p>
+
+<p>
+<code>set logging overwrite [on|off]</code> : By default, gdb will append to the logfile. Set overwrite if you want set logging on to overwrite the logfile instead. 
+</p>
+
+<p>
+<code>set logging redirect [on|off]</code> : By default, gdb output will go to both the terminal and the logfile. Set redirect if you want output to go only to the log file. 
+</p>
+
+<p>
+<code>show logging</code> : Show the current values of the logging settings.
+</p>
+
 <div id="ConqueGDB-Keys - CGDB Mode"><h2 id="Keys - CGDB Mode">Keys - CGDB Mode</h2></div>
 
 <p>
