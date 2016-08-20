@@ -2,7 +2,7 @@
 
 == Commandline ==
 
-`vim -V<log level><log filename>` : Execute vim with the log enabled. E.g.: vim -V9vim_log.txt
+`vim -V<log level><log filename>` : Execute Vim with the log enabled. E.g.: Vim -V9vim_log.txt
 
 == Leader - Normal Mode ==
 
@@ -61,11 +61,11 @@
  
 `[<number>] ge` : Go to the previous word
 
-`gf` : Go to the files where the cursor is (Open on de same window)
+`gf` : Go to the files where the cursor is (Open on the same window)
 
 `m<key> `: Mark the position to a specified key. If the mark use capital letter, it will mark the position globally (Among several files even if you close VIM)
 
-``<key> `: Go to the postion of a marked key
+``<key> `: Go to the position of a marked key
 
 ``` `: Return to the position before the marked item
 
@@ -107,7 +107,7 @@
 
 `ctrl-a` : If the cursor is over a number, inclement it
 
-`ctrl-x` : If the cursor is over a number, declement it
+`ctrl-x` : If the cursor is over a number, decrement it
 
 `ctrl+r` : Redo
 
@@ -120,7 +120,25 @@
 `"qp` : Paste the macro script
 
 `shift+J` : Concatenate (Join) 02 lines
-nw
+
+`<leader> se` : Set spell check to English Language (Custom Map).
+
+`<leader> sp` : Set spell check to Portuguese Language (Custom Map).
+
+`<leader> so` : Turn spell check off (Custom Map).
+
+`]s` : Move the cursor the next misspelled word.
+
+`[s` : Move the cursor to the previous misspelled word.
+
+`z=` : Show spelling corrections options.
+
+`zg` : Add the word to a file list so it can be used again as correct words.
+
+`zG` : As `zg` but do not add the word on the file list
+
+`zw` : Remove the word from the file list
+
 == Commands - Normal Mode ==
 
 `:0r <file path>` : Read the file and add in your current file
@@ -139,11 +157,11 @@ nw
 
 `:echo expand('%:t') ` : name of file ('tail'). E.g.:  my.txt 
 
-`:echo expand('%:p') ` : ull path. E.g.:  /abc/def/my.txt 
+`:echo expand('%:p') ` : full path. E.g.:  /abc/def/my.txt 
 
 `:echo expand('%:p:h') `/: directory containing file ('head'). E.g.: abc/def 
 
-`:echo expand('%:p:h:t') `d: irst get the full path with :p (/abc/def/my.txt), then get the head of that with :h (/abc/def), then get the tail of that with :t (def). E.g.: ef 
+`:echo expand('%:p:h:t') `d: first get the full path with :p (/abc/def/my.txt), then get the head of that with :h (/abc/def), then get the tail of that with :t (def). E.g.: ef 
 
 == Others - Normal Mode ==
 
@@ -203,7 +221,7 @@ nw
 
 `n` : repeat last command
 
-`:sh` : go to shell (Exit or Ctrl + D to return)
+`:sh` : go to shell (Exit or Ctrl+D to return)
 
 `:r <file name>` : Read a file an put the content on the current file
 
@@ -227,7 +245,7 @@ nw
 
 `:vsplit file` : vertical split
 
-`:sview file` : same as split, but readonly
+`:sview file` : same as split, but read only
 
 `:hide` : close current window
 
@@ -258,6 +276,10 @@ nw
 `<numeric id>gb` : Goto bookmark
 
 `qb` : List bookmarks
+
+== Spell Check ==
+
+
 
 == Macros ==
 

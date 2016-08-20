@@ -14,7 +14,7 @@
 <div id="Vim Commands-Commandline"><h2 id="Commandline">Commandline</h2></div>
 
 <p>
-<code>vim -V&lt;log level&gt;&lt;log filename&gt;</code> : Execute vim with the log enabled. E.g.: vim -V9vim_log.txt
+<code>vim -V&lt;log level&gt;&lt;log filename&gt;</code> : Execute Vim with the log enabled. E.g.: Vim -V9vim_log.txt
 </p>
 
 <div id="Vim Commands-Leader - Normal Mode"><h2 id="Leader - Normal Mode">Leader - Normal Mode</h2></div>
@@ -127,7 +127,7 @@
 </p>
 
 <p>
-<code>gf</code> : Go to the files where the cursor is (Open on de same window)
+<code>gf</code> : Go to the files where the cursor is (Open on the same window)
 </p>
 
 <p>
@@ -135,7 +135,7 @@
 </p>
 
 <p>
-`<code>&lt;key&gt; </code>: Go to the postion of a marked key
+`<code>&lt;key&gt; </code>: Go to the position of a marked key
 </p>
 
 <p>
@@ -217,7 +217,7 @@
 </p>
 
 <p>
-<code>ctrl-x</code> : If the cursor is over a number, declement it
+<code>ctrl-x</code> : If the cursor is over a number, decrement it
 </p>
 
 <p>
@@ -242,8 +242,44 @@
 
 <p>
 <code>shift+J</code> : Concatenate (Join) 02 lines
-nw
 </p>
+
+<p>
+<code>&lt;leader&gt; se</code> : Set spell check to English Language (Custom Map).
+</p>
+
+<p>
+<code>&lt;leader&gt; sp</code> : Set spell check to Portuguese Language (Custom Map).
+</p>
+
+<p>
+<code>&lt;leader&gt; so</code> : Turn spell check off (Custom Map).
+</p>
+
+<p>
+<code>]s</code> : Move the cursor the next misspelled word.
+</p>
+
+<p>
+<code>[s</code> : Move the cursor to the previous misspelled word.
+</p>
+
+<p>
+<code>z=</code> : Show spelling corrections options.
+</p>
+
+<p>
+<code>zg</code> : Add the word to a file list so it can be used again as correct words.
+</p>
+
+<p>
+<code>zG</code> : As <code>zg</code> but do not add the word on the file list
+</p>
+
+<p>
+<code>zw</code> : Remove the word from the file list
+</p>
+
 <div id="Vim Commands-Commands - Normal Mode"><h2 id="Commands - Normal Mode">Commands - Normal Mode</h2></div>
 
 <p>
@@ -279,7 +315,7 @@ nw
 </p>
 
 <p>
-<code>:echo expand('%:p') </code> : ull path. E.g.:  /abc/def/my.txt 
+<code>:echo expand('%:p') </code> : full path. E.g.:  /abc/def/my.txt 
 </p>
 
 <p>
@@ -287,7 +323,7 @@ nw
 </p>
 
 <p>
-<code>:echo expand('%:p:h:t') </code>d: irst get the full path with :p (/abc/def/my.txt), then get the head of that with :h (/abc/def), then get the tail of that with :t (def). E.g.: ef 
+<code>:echo expand('%:p:h:t') </code>d: first get the full path with :p (/abc/def/my.txt), then get the head of that with :h (/abc/def), then get the tail of that with :t (def). E.g.: ef 
 </p>
 
 <div id="Vim Commands-Others - Normal Mode"><h2 id="Others - Normal Mode">Others - Normal Mode</h2></div>
@@ -397,7 +433,7 @@ nw
 </p>
 
 <p>
-<code>:sh</code> : go to shell (Exit or Ctrl + D to return)
+<code>:sh</code> : go to shell (Exit or Ctrl+D to return)
 </p>
 
 <p>
@@ -445,7 +481,7 @@ nw
 </p>
 
 <p>
-<code>:sview file</code> : same as split, but readonly
+<code>:sview file</code> : same as split, but read only
 </p>
 
 <p>
@@ -505,6 +541,10 @@ nw
 <p>
 <code>qb</code> : List bookmarks
 </p>
+
+<div id="Vim Commands-Spell Check"><h2 id="Spell Check">Spell Check</h2></div>
+
+
 
 <div id="Vim Commands-Macros"><h2 id="Macros">Macros</h2></div>
 
