@@ -139,6 +139,8 @@
 
 `zw` : Remove the word from the file list
 
+`<leader> sa` : Replace all. Replace all words with the same word done on the last replacement (Custom Map).
+
 == Commands - Normal Mode ==
 
 `:0r <file path>` : Read the file and add in your current file
