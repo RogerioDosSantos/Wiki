@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="Stylesheet" type="text/css" href="../resources/markdown.css" />
+	<link rel="Stylesheet" type="text/css" href="../resources/github.css" />
+	<title>OLE DB</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<div class="content">
+		
+<div id="OLE DB"><h1 id="OLE DB">OLE DB</h1></div>
+
+<div id="OLE DB-Connection Strings"><h2 id="Connection Strings">Connection Strings</h2></div>
+
+<div id="OLE DB-Connection Strings-Microsoft Access (2013 &#47; 2010 &#47; 2007)"><h3 id="Microsoft Access (2013 &#47; 2010 &#47; 2007)">Microsoft Access (2013 / 2010 / 2007)</h3></div>
+
+<div id="OLE DB-Connection Strings-Microsoft Access (2013 &#47; 2010 &#47; 2007)-Standard Security"><h4 id="Standard Security">Standard Security</h4></div>
+
+<pre>
+Provider=Microsoft.ACE.OLEDB.12.0;Data Source=&lt;file path&gt;;Persist Security Info=False;
+</pre>
+
+<div id="OLE DB-Connection Strings-Microsoft Access (2013 &#47; 2010 &#47; 2007)-With database password"><h4 id="With database password">With database password</h4></div>
+
+<pre>
+Provider=Microsoft.ACE.OLEDB.12.0;Data Source=&lt;file path&gt;;Jet OLEDB:Database Password=&lt;password&gt;;
+</pre>
+
+<div id="OLE DB-Connection Strings-CSV Files"><h3 id="CSV Files">CSV Files</h3></div>
+
+<pre>
+Provider=Microsoft.Jet.OleDb.4.0; Data Source=&lt;file path&gt;;Extended Properties="Text;HDR=YES;FMT=Delimited"
+</pre>
+
+<p>
+Connect to a CSV file indicated on the &lt;file path&gt;. 
+</p>
+
+<p>
+Note: On your SQL statment use the &lt;file name&gt; as your table. E.g.: <code>SELECT * FROM [&lt;file name&gt;]</code>
+</p>
+
+<div id="OLE DB-Connection Strings-SQL Server 2000"><h3 id="SQL Server 2000">SQL Server 2000</h3></div>
+
+<div id="OLE DB-Connection Strings-SQL Server 2000-Standard Security"><h4 id="Standard Security">Standard Security</h4></div>
+
+<pre>
+Provider=sqloledb;Data Source=&lt;server address&gt;;Initial Catalog=&lt;database&gt;;User Id=&lt;user name&gt;;Password=&lt;password&gt;;
+</pre>
+
+<div id="OLE DB-Connection Strings-SQL Server 7.0"><h3 id="SQL Server 7.0">SQL Server 7.0</h3></div>
+
+<div id="OLE DB-Connection Strings-SQL Server 7.0-Standard Security"><h4 id="Standard Security">Standard Security</h4></div>
+
+<pre>
+Provider=sqloledb;Data Source=&lt;server address&gt;;Initial Catalog=&lt;database&gt;;User Id=&lt;username&gt;;Password=&lt;password&gt;;
+</pre>
+
+<div id="OLE DB-Connection Strings-SQL Server 7.0-Trusted connection"><h4 id="Trusted connection">Trusted connection</h4></div>
+
+<pre>
+Provider=sqloledb;Data Source=&lt;server name&gt;\&lt;instance name&gt;;Initial Catalog=&lt;database&gt;;Integrated Security=SSPI;
+</pre>
+
+<div id="OLE DB-Implementation examples"><h2 id="Implementation examples">Implementation examples</h2></div>
+
+<div id="OLE DB-Implementation examples-C#"><h3 id="C#">C#</h3></div>
+
+<pre>
+Dataset GetDataset(String name, String connection_string, String sql_statement)
+{ 
+  var connection = new OleDbConnection(connection_name);
+  connection.Open();
+  var adapter = new OleDbDataAdapter(sql_statement, connection);
+  var dataset = new DataSet(name);
+  adapter.Fill(dataset);                    
+  return dataset;
+}
+</pre>
+
+	</div>
+<script type="text/javascript" src="../resources/highlight.pack.js"></script>
+<script type="text/javascript" src="../resources/zepto.min.js"></script>
+<script type="text/javascript">
+$('pre').each(function(index,item){ $(item).html('<code>'+$(item).html()+'</code>'); });
+hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
