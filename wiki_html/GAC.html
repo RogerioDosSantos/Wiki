@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="Stylesheet" type="text/css" href="../resources/markdown.css" />
+	<link rel="Stylesheet" type="text/css" href="../resources/github.css" />
+	<title>GAC</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<div class="content">
+		
+<div id="GAC (Global Assembly Cache)"><h1 id="GAC (Global Assembly Cache)">GAC (Global Assembly Cache)</h1></div>
+
+<p>
+<code>gacutil</code> : Global Assembly Caching Tool
+</p>
+
+<p>
+<code>C:\Windows\assembly</code> : Locaction of the GAC Pre .Net 4.0
+</p>
+
+<p>
+<code>C:\Windows\Microsoft.NET\assembly</code> : Location of the GAC Pos .Net 4.0
+</p>
+
+<p>
+<code>C:\Program Files\Microsoft SDKs\Windows\v6.0A\Bin</code> : Folder where is located the <code>gacutil</code> software.
+</p>
+
+<p>
+<code>gacutil -u &lt;Assembly Name&gt;</code> : Uninstall an assembly from GAC.
+</p>
+
+<p>
+<code>gacutil -l [&lt;Assembly Name&gt;]</code> : List the assemblies on the GAC.
+</p>
+
+	</div>
+<script type="text/javascript" src="../resources/highlight.pack.js"></script>
+<script type="text/javascript" src="../resources/zepto.min.js"></script>
+<script type="text/javascript">
+$('pre').each(function(index,item){ $(item).html('<code>'+$(item).html()+'</code>'); });
+hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
