@@ -1,5 +1,9 @@
 = Roger Wiki Index =
 
+== Windows ==
+
+- [[Windows Terminal Commands]]
+
 == Linux ==
 
 -  [[Linux Terminal Commands]] 
@@ -48,3 +52,11 @@
 == Debug Tools ==
 
 - [[ConqueGDB]]
+
+== Database ==
+
+- [[OLE DB]]
+
+== .Net ==
+
+- [[GAC]]
