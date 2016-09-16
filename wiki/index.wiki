@@ -1,5 +1,9 @@
 = Roger Wiki Index =
 
+== Windows ==
+
+- [[Windows Terminal Commands]]
+
 == Linux ==
 
 -  [[Linux Terminal Commands]] 
