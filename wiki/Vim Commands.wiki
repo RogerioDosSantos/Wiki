@@ -1,6 +1,6 @@
 = Vim Commands =
 
-== Commandline ==
+== Command line ==
 
 `vim -V<log level><log filename>` : Execute Vim with the log enabled. E.g.: Vim -V9vim_log.txt
 
@@ -258,6 +258,8 @@
 `:b 2` : open buffer #2 in this window
 
 `:Explore` : Open the Explore (Equivalent to Windows Explorer)
+
+`:X` : Encrypt a file. When the file is opened again it will ask you for a password to open the file.
 
 == Explore Keys and Commands ==
 
