@@ -261,6 +261,8 @@
 
 `:X` : Encrypt a file. When the file is opened again it will ask you for a password to open the file.
 
+`:set key=<nothing>` : Remove the cryptography of an open file. You need to save it after.
+
 == Explore Keys and Commands ==
 
 `d` : creates a new directory
