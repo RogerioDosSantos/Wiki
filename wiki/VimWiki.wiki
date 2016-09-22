@@ -38,6 +38,7 @@
 
 `[[wiki link|description]] `: wiki link with description
 
+`![<alternative text>](image url)` : Add an image
 
 == Key bindings - Normal Mode ==
 
