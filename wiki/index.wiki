@@ -60,3 +60,7 @@
 == .Net ==
 
 - [[GAC]]
+
+== Virtualization ==
+
+- [[VirtualBox]]
