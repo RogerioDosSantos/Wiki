@@ -10,7 +10,7 @@ Compact Framework 3.9 is supported starting with Visual Studio 2012, so, for dev
 
 You must install the Application Builder SDK from the device vendor to do any Compact Framework development.
 
-== Windows CE 6.0 / 7.0==
+== Windows CE 6.0 / 7.0 ==
 
 Windows CE 7.0 supports Compact Framework 3.5 or Compact Framework 2.0 applications. 
 
