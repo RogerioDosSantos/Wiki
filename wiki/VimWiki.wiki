@@ -16,7 +16,6 @@
 
 `:VimwikiAll2HTML` : Convert the all pages to HTML
 
-
 == VinWiki Markdown ==
 
 
@@ -34,11 +33,39 @@
 
 `_italic_ `: italic text
 
+`~~scratch~~` : scratch text
+
+`,,sub,,` : sub text
+
+`^upper^` : upper text
+
 `[[wiki link]] `: wiki link
 
 `[[wiki link|description]] `: wiki link with description
 
 `![<alternative text>](image url)` : Add an image
+
+`|text|text|text|`: Table column separator
+
+`|---|---|---|` : Table Title separator
+
+`----` : Horizontal Line
+
+`term:: definintion`: Used to describe definition (Term is bold and definition is separated from term).
+
+== Keys ==
+
+`Enter` : Create a Link
+
+`Tab / Shift + Tab` : Find the next or previous.
+
+`\wd` : Delete a link (:VimwikiDeleteLink)
+
+`\wr` : Rename a link (:VimwikiRenameLink)
+
+`=` : Increase Header level
+
+`-`: Decrease Header level
 
 == Key bindings - Normal Mode ==
 
