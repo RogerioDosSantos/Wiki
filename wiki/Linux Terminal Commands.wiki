@@ -90,7 +90,7 @@
 `info <command name>`
   : List the information of a specific command. If you do not mention the <command name> it will list the command available.
 
-`shutdown -r now`
+`[[shutdown]] -r now`
   : Restart the device
 
 `uname -a`
@@ -218,6 +218,29 @@
 
 `scp <username>@<source device (ip)>:<source path> <destination file path>`
   : To copy a file from source to destination while logged into destination device
+
+
+=== Network ===
+
+==== Set a static IP ====
+
+The file `/etc/network/interfaces` controls the startup network configuration. To config a static IP you can use the following configuration:
+
+{{{
+
+auto lo
+iface lo inet loopback
+
+#Static IP description
+# IPv4 address
+iface eth0 inet static
+  address 192.168.0.100
+  netmask 255.255.255.0 
+  network 192.168.0.0 
+  broadcast 192.168.0.255
+  gateway 192.168.0.1
+
+}}}
 
 === Conditional Statements ===
 
