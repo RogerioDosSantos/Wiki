@@ -53,6 +53,8 @@
 
 `term:: definintion`: Used to describe definition (Term is bold and definition is separated from term).
 
+`:<tag 01>:<tag 02:...:` : Define Tags to the document
+
 == Keys ==
 
 `Enter` : Create a Link
