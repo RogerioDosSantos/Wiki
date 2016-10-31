@@ -176,6 +176,8 @@
 
 `find <directory to start> -name "<file to find>"`
   : Find file in all sub directories
+  
+`find . -iname "*.<extension>" -type f` : Find extension on all sub-directories ( E.g.: `find . -iname "*.dll" -type f ` )
 
 `grep --include=\*.{cpp,h} -rnw <source directory> -e "<text to find>"`
   : Find a text into files

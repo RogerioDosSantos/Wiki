@@ -299,6 +299,10 @@
 <code>find &lt;directory to start&gt; -name "&lt;file to find&gt;"</code>
   : Find file in all sub directories
 </p>
+  
+<p>
+<code>find . -iname "*.&lt;extension&gt;" -type f</code> : Find extension on all sub-directories ( E.g.: <code>find . -iname "*.dll" -type f </code> )
+</p>
 
 <p>
 <code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e "&lt;text to find&gt;"</code>

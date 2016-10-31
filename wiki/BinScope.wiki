@@ -1,0 +1,9 @@
+= BinScope =
+
+Software that detects potential vulnerabilities
+
+`Binscope.exe /target "<path of the binary>" /OutDir "<path of the log html>"` : You should run it as Administrator.
+
+
+
+
