@@ -224,6 +224,8 @@
 
 === Network ===
 
+`sudo dhclient -v [-r]` : Visualize DHCP configuration. If you use the `-r` option, it will release the current IP address.
+
 ==== Set a static IP ====
 
 The file `/etc/network/interfaces` controls the startup network configuration. To config a static IP you can use the following configuration:
