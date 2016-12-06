@@ -176,21 +176,6 @@
 </p>
 
 <p>
-<code>printenv</code>
-  : Shows the environment variables
-</p>
-
-<p>
-<code>getenv &lt;environment variable&gt;</code>
-  : Shows the environment variable value. 
-</p>
-
-<p>
-<code>setenv &lt;environment variable&gt; &lt;value</code>
-  : Set the environment variable a value
-</p>
-
-<p>
 <code>whereis &lt;program&gt;</code>
   : find where is the location of a specific program
 </p>
@@ -448,6 +433,35 @@ function_name $arg1 $arg2
 
 <p>
 <code>/usr/local</code> : Directory used for the installation software locally.
+</p>
+
+<div id="Linux Terminal Commands-Enviroment Variable"><h2 id="Enviroment Variable">Enviroment Variable</h2></div>
+
+<p>
+<code>printenv</code>
+  : Shows the environment variables
+</p>
+
+<p>
+To add the environment variable add it to the <code>~/.bashrc</code> file the following command:
+<code>export &lt;Variable Name&gt;=&lt;Variable Value&gt;</code>
+</p>
+
+<p>
+To reload the command configuration and have the variable set without have to close the shell runn the following command:
+<code>source ~./baschrc</code>
+</p>
+
+<div id="Linux Terminal Commands-Enviroment Variable-Additional commands (Not available on all platforms)"><h3 id="Additional commands (Not available on all platforms)">Additional commands (Not available on all platforms)</h3></div>
+
+<p>
+<code>getenv &lt;environment variable&gt;</code>
+  : Shows the environment variable value.
+</p>
+
+<p>
+<code>setenv &lt;environment variable&gt; &lt;value</code>
+  : Set the environment variable a value.
 </p>
 
 	</div>

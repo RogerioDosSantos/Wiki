@@ -102,15 +102,6 @@
 `<program name> --version`
   : Get the version of a program
 
-`printenv`
-  : Shows the environment variables
-
-`getenv <environment variable>`
-  : Shows the environment variable value. 
-
-`setenv <environment variable> <value`
-  : Set the environment variable a value
-
 `whereis <program>`
   : find where is the location of a specific program
 
@@ -288,4 +279,24 @@ function_name $arg1 $arg2
 `/opt` : Directory used for the installation of add-on application software packages
 
 `/usr/local` : Directory used for the installation software locally.
+
+== Enviroment Variable ==
+
+`printenv`
+  : Shows the environment variables
+
+To add the environment variable add it to the `~/.bashrc` file the following command:
+`export <Variable Name>=<Variable Value>`
+
+To reload the command configuration and have the variable set without have to close the shell runn the following command:
+`source ~./baschrc`
+
+=== Additional commands (Not available on all platforms) ===
+
+`getenv <environment variable>`
+  : Shows the environment variable value.
+
+`setenv <environment variable> <value`
+  : Set the environment variable a value.
+  
 
