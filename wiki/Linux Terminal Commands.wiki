@@ -299,4 +299,11 @@ To reload the command configuration and have the variable set without have to cl
 `setenv <environment variable> <value`
   : Set the environment variable a value.
   
+== Web Proxy ==
+
+To give access to your command terminal access the Internet via an Web Proxy, you can set the following environment variables `http_proxy, https_proxy, ftp_proxy, socks_proxy or all_proxy` with the the following values: `http://<user>:<password>@<host>:<port>`. 
+
+E.g.: `http_proxy="http://my_user:my_password@host_ip:443"`
+
+
 
