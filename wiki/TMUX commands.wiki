@@ -58,6 +58,8 @@
 
 == Command Mode - Panes (splits) ==
 
+`?` : Help to display available commands.
+
 `% ` : vertical split
 
 `" ` :horizontal split
