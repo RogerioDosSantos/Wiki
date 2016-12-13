@@ -72,6 +72,12 @@
 
 `z ` :Maximaze and minimize current vi"
 
+== Scroll Mode - Commands ==
+
+`g` : Goto line
+
+`Ctrl+s (Down) or Ctrl+r (up)` : Search a string. Press `n` to go to next word.
+
 == Copy from a TMUX pane to another ==
 
 # `Ctrl+b, [` : Enter copy mode.
@@ -82,23 +88,4 @@
 # `Alt+w` : Copies selected text into TMUX clipboard.
 # Move cursor to opposite TMUX pane, or completely different TMUX window.
 # `Ctrl+b, ]` : Paste copied text from TMUX clipboard.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
