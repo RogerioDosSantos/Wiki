@@ -38,7 +38,7 @@
 
 `d ` : detach session
 
-`[` : Scroll mode. Press `q` to exit. In this mode you can scroll up and down.
+`[` : Scroll / Copy mode. Press `q` to exit. In this mode you can scroll up and down.
 
 == Command Mode - Windows (tabs) ==
 
@@ -76,16 +76,15 @@
 
 `g` : Goto line
 
-`Ctrl+s (Down) or Ctrl+r (up)` : Search a string. Press `n` to go to next word.
+`/` : Search a string. Press `n` to go to next word.
 
 == Copy from a TMUX pane to another ==
 
-# `Ctrl+b, [` : Enter copy mode.
-# Move to start/end of text to highlight.
-# `Ctrlspace`
-# Start highlighting text.
-# Move to opposite end of text to copy.
-# `Alt+w` : Copies selected text into TMUX clipboard.
-# Move cursor to opposite TMUX pane, or completely different TMUX window.
-# `Ctrl+b, ]` : Paste copied text from TMUX clipboard.
+`Ctrl+b, [` : Enter scroll / copy mode.
+
+`Space` : Start highlighting text.
+
+`Enter` : Copy the highlighted text.
+
+`Ctrl+b ]` : Paste the previous copied text
 

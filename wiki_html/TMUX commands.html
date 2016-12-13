@@ -76,7 +76,7 @@
 </p>
 
 <p>
-<code>[</code> : Scroll mode. Press <code>q</code> to exit. In this mode you can scroll up and down.
+<code>[</code> : Scroll / Copy mode. Press <code>q</code> to exit. In this mode you can scroll up and down.
 </p>
 
 <div id="TMUX Commands-Command Mode - Windows (tabs)"><h2 id="Command Mode - Windows (tabs)">Command Mode - Windows (tabs)</h2></div>
@@ -146,37 +146,26 @@
 </p>
 
 <p>
-<code>Ctrl+s (Down) or Ctrl+r (up)</code> : Search a string. Press <code>n</code> to go to next word.
+<code>/</code> : Search a string. Press <code>n</code> to go to next word.
 </p>
 
 <div id="TMUX Commands-Copy from a TMUX pane to another"><h2 id="Copy from a TMUX pane to another">Copy from a TMUX pane to another</h2></div>
 
-<ol>
-<li>
-<code>Ctrl+b, [</code> : Enter copy mode.
+<p>
+<code>Ctrl+b, [</code> : Enter scroll / copy mode.
+</p>
 
-<li>
-Move to start/end of text to highlight.
+<p>
+<code>Space</code> : Start highlighting text.
+</p>
 
-<li>
-<code>Ctrlspace</code>
+<p>
+<code>Enter</code> : Copy the highlighted text.
+</p>
 
-<li>
-Start highlighting text.
-
-<li>
-Move to opposite end of text to copy.
-
-<li>
-<code>Alt+w</code> : Copies selected text into TMUX clipboard.
-
-<li>
-Move cursor to opposite TMUX pane, or completely different TMUX window.
-
-<li>
-<code>Ctrl+b, ]</code> : Paste copied text from TMUX clipboard.
-
-</ol>
+<p>
+<code>Ctrl+b ]</code> : Paste the previous copied text
+</p>
 
 	</div>
 <script type="text/javascript" src="../resources/highlight.pack.js"></script>
