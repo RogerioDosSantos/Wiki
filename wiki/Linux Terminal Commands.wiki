@@ -305,5 +305,12 @@ To give access to your command terminal access the Internet via an Web Proxy, yo
 
 E.g.: `http_proxy="http://my_user:my_password@host_ip:443"`
 
-
-
+ *Note:* If your password has special characters as for example '@', you can replace is with the items of the following table:
+ 
+ | Character | Replacement |
+ |-----------|-------------|
+ | @         | %40         |
+ | :         | %3A         |
+ | !         | %21         |
+ | #         | %23         |
+ | $         | %24         |
