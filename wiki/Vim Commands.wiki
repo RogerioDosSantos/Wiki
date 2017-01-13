@@ -121,26 +121,6 @@
 
 `shift+J` : Concatenate (Join) 02 lines
 
-`<leader> se` : Set spell check to English Language (Custom Map).
-
-`<leader> sp` : Set spell check to Portuguese Language (Custom Map).
-
-`<leader> so` : Turn spell check off (Custom Map).
-
-`]s` : Move the cursor the next misspelled word.
-
-`[s` : Move the cursor to the previous misspelled word.
-
-`z=` : Show spelling corrections options.
-
-`zg` : Add the word to a file list so it can be used again as correct words.
-
-`zG` : As `zg` but do not add the word on the file list
-
-`zw` : Remove the word from the file list
-
-`<leader> sa` : Replace all. Replace all words with the same word done on the last replacement (Custom Map).
-
 == Commands - Normal Mode ==
 
 `:0r <file path>` : Read the file and add in your current file
@@ -285,7 +265,25 @@
 
 == Spell Check ==
 
+`<leader> se` : Set spell check to English Language (Custom Map).
 
+`<leader> sp` : Set spell check to Portuguese Language (Custom Map).
+
+`<leader> so` : Turn spell check off (Custom Map).
+
+`]s` : Move the cursor the next misspelled word.
+
+`[s` : Move the cursor to the previous misspelled word.
+
+`z=` : Show spelling corrections options.
+
+`zg` : Add the word to a file list so it can be used again as correct words.
+
+`zG` : As `zg` but do not add the word on the file list
+
+`zw` : Remove the word from the file list
+
+`<leader> sa` : Replace all. Replace all words with the same word done on the last replacement (Custom Map).
 
 == Macros ==
 

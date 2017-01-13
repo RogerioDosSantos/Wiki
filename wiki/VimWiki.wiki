@@ -55,6 +55,8 @@
 
 `:<tag 01>:<tag 02:...:` : Define Tags to the document
 
+`{{{<code>}}}` : Source Code that ocupies more than one line.
+
 == Keys ==
 
 `Enter` : Create a Link
