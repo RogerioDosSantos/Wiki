@@ -43,7 +43,7 @@
 
 `[[wiki link|description]] `: wiki link with description
 
-`![<alternative text>](image url)` : Add an image
+`{{<image url>}}` : Add an image embedded on the system. E.g.: `{{local:../../images/vimwiki_logo.png}}` or `{{http://vimwiki.googlecode.com/hg/images/vimwiki_logo.png}}`
 
 `|text|text|text|`: Table column separator
 
