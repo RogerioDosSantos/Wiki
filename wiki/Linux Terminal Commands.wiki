@@ -171,7 +171,10 @@
 `find . -iname "*.<extension>" -type f` : Find extension on all sub-directories ( E.g.: `find . -iname "*.dll" -type f ` )
 
 `grep --include=\*.{cpp,h} -rnw <source directory> -e "<text to find>"`
-  : Find a text into files
+  : Find a text into files (Case Sensitive)
+
+`grep --include=\*.{cpp,h} -rnwi <source directory> -e "<text to find>"`
+  : Find a text into files (Case Insensitive)
 
 `encfs <encrypted folder content> <mounted folder>`
   : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)
