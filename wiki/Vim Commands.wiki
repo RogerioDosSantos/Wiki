@@ -105,9 +105,9 @@
 
 `shift+i` : Show/hide hidden files on NERD tree
 
-`ctrl-a` : If the cursor is over a number, increment it
+`ctrl-a` : If the cursor is over a number, decrement it
 
-`ctrl-x` : If the cursor is over a number, decrement it
+`ctrl-x` : If the cursor is over a number, increment it
 
 `ctrl+r` : Redo
 
