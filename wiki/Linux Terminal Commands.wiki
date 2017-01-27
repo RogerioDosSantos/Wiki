@@ -220,6 +220,8 @@
 
 `sudo dhclient -v [-r]` : Visualize DHCP configuration. If you use the `-r` option, it will release the current IP address.
 
+`wget -qO- portquiz.net:<Port>` : Check if a port is open. The portquiz website answer calls for all available ports.
+
 ==== Set a static IP ====
 
 The file `/etc/network/interfaces` controls the startup network configuration. To config a static IP you can use the following configuration:
@@ -288,8 +290,13 @@ function_name $arg1 $arg2
 `printenv`
   : Shows the environment variables
 
-To add the environment variable add it to the `~/.bashrc` file the following command:
+To add the environment variable for your user, add it to the `~/.bashrc` file the following command:
 `export <Variable Name>=<Variable Value>`
+
+To add the environment variable for all users, add it to the `/etc/environment` file the following command:
+`<Variable Name>=<Variable Value>`
+
+*Note:* You might need to add the environment variable to all users in case you want applications like `apt-get` to use the environment variable.
 
 To reload the command configuration and have the variable set without have to close the shell runn the following command:
 `source ~./baschrc`
@@ -308,7 +315,9 @@ To give access to your command terminal access the Internet via an Web Proxy, yo
 
 E.g.: `http_proxy="http://my_user:my_password@host_ip:443"`
 
- *Note:* If your password has special characters as for example '@', you can replace is with the items of the following table:
+*Note:* Your password and user might not be needed.
+
+*Note:* If your password has special characters as for example '@', you can replace is with the items of the following table:
  
  | Character | Replacement |
  |-----------|-------------|
@@ -317,3 +326,4 @@ E.g.: `http_proxy="http://my_user:my_password@host_ip:443"`
  | !         | %21         |
  | #         | %23         |
  | $         | %24         |
+ 

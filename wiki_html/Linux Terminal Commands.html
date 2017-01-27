@@ -371,6 +371,10 @@
 <code>sudo dhclient -v [-r]</code> : Visualize DHCP configuration. If you use the <code>-r</code> option, it will release the current IP address.
 </p>
 
+<p>
+<code>wget -qO- portquiz.net:&lt;Port&gt;</code> : Check if a port is open. The portquiz website answer calls for all available ports.
+</p>
+
 <div id="Linux Terminal Commands-Bash Files-Network-Set a static IP"><h4 id="Set a static IP">Set a static IP</h4></div>
 
 <p>
@@ -448,8 +452,17 @@ function_name $arg1 $arg2
 </p>
 
 <p>
-To add the environment variable add it to the <code>~/.bashrc</code> file the following command:
+To add the environment variable for your user, add it to the <code>~/.bashrc</code> file the following command:
 <code>export &lt;Variable Name&gt;=&lt;Variable Value&gt;</code>
+</p>
+
+<p>
+To add the environment variable for all users, add it to the <code>/etc/environment</code> file the following command:
+<code>&lt;Variable Name&gt;=&lt;Variable Value&gt;</code>
+</p>
+
+<p>
+<span id="Linux Terminal Commands-Enviroment Variable-Note:"></span><strong id="Note:">Note:</strong> You might need to add the environment variable to all users in case you want applications like <code>apt-get</code> to use the environment variable.
 </p>
 
 <p>
@@ -480,8 +493,13 @@ E.g.: <code>http_proxy="http://my_user:my_password@host_ip:443"</code>
 </p>
 
 <p>
- <span id="Linux Terminal Commands-Web Proxy-Note:"></span><strong id="Note:">Note:</strong> If your password has special characters as for example '@', you can replace is with the items of the following table:
+<span id="Linux Terminal Commands-Web Proxy-Note:"></span><strong id="Note:">Note:</strong> Your password and user might not be needed.
 </p>
+
+<p>
+<span id="Linux Terminal Commands-Web Proxy-Note:"></span><strong id="Note:">Note:</strong> If your password has special characters as for example '@', you can replace is with the items of the following table:
+</p>
+ 
 <table class='center'>
 <tr>
 <th>
