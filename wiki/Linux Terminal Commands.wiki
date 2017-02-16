@@ -49,6 +49,8 @@
 
 `rm <filename>`
   : remove a file
+  
+`rm !(<filename>)` : Remove all files but this one.
 
 `rmdir <directory>`
   : remove directory
@@ -96,8 +98,11 @@
 `uname -a`
   : Get the OS version
 
-`top`
-  : Process monitor
+`top` : Process monitor
+
+`top -p $(pgrep -d',' <proccess name>)` : Monitor a specific process. Note: You do not need to enter all name. If the string name does not match any process the following error message will be displayed: _top: -p requires argument_
+
+`kill [-KILL] <process id>` : Kill a proccess. The `-KILL` parameter forces the proccess to be killed. You can get the process id using the `top` command
 
 `<program name> --version`
   : Get the version of a program
@@ -192,37 +197,17 @@
 
 `telnet <url or ip> <port>` : Verify if a port is open.
 
-== Bash Files ==
+== System ==
 
-`#!/bin/bash`
-  : Inform what interpreter should run the bash
+`dmesg` : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.
 
-`cd "$(dirname "$0")`
-  : Set bash to the current directory
-
-`read -p "Press [Enter] key to continue"`
-  Pause command
-
-`<variable>="$(readlink -f "<relative path")" `
-  : Convert relative path to full path.    
-
-`apt-cache show <program> `
-  : Show the version of a program
-
-`scp <source file path> <username>@<destination device (ip)>:<destination path>`
-  : To copy a file from source to destination while logged into source device
-
-`scp <username>@<source device (ip)>:<source path> <destination file path>`
-  : To copy a file from source to destination while logged into destination device
-
-
-=== Network ===
+== Network ==
 
 `sudo dhclient -v [-r]` : Visualize DHCP configuration. If you use the `-r` option, it will release the current IP address.
 
 `wget -qO- portquiz.net:<Port>` : Check if a port is open. The portquiz website answer calls for all available ports.
 
-==== Set a static IP ====
+=== Set a static IP ===
 
 The file `/etc/network/interfaces` controls the startup network configuration. To config a static IP you can use the following configuration:
 
@@ -241,6 +226,32 @@ iface eth0 inet static
   gateway 192.168.0.1
 
 }}}
+
+
+
+== Bash Files ==
+
+`#!/bin/bash`
+  : Inform what interpreter should run the bash
+
+`cd "$(dirname "$0")`
+  : Set bash to the current directory
+
+`read -p "Press [Enter] key to continue"`
+  Pause command
+
+`<variable>="$(readlink -f "<relative path")" `
+  : Convert relative path to full path.    
+
+`apt-cache show <program> `
+  : Show the version of a program
+
+`scp [-r] <source file path> <username>@<destination device (ip)>:<destination path>`
+  : To copy a file from source to destination while logged into source device. Use -r to copy the folder.
+
+`scp [-r] <username>@<source device (ip)>:<source path> <destination file path>`
+  : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.
+
 
 === Conditional Statements ===
 
@@ -327,3 +338,29 @@ E.g.: `http_proxy="http://my_user:my_password@host_ip:443"`
  | #         | %23         |
  | $         | %24         |
  
+ == TFS ==
+ 
+ `tf -login:<user name>,<password> -collection:<collection uri> get <folder/file to get> [-recursive]` : Get a file or folder from TFS using the Team Foundation Server Client for Linux. For details see https://msdn.microsoft.com/en-us/library/hh873092(v=vs.120).aspx
+ 
+ == I/Os ==
+ 
+ 
+`/dev/` : Location of all devices available in the device. You can use the `ls` command to list them. 
+ 
+`udevadm -n </dev/<device name>` : Provide all the information about a device. E.g.: Name, Bus, Vendor ID, Path ID, etc. Thins information can be used to configure the device. E.g.: Allow it to always receive the same name.
+
+ `/lib/udev/rules.d/` : Map rules script location. Those scripts are responsible to define the how the periphericals will be mapped on the Linux filesystem. See _udev script examples_.
+ 
+ === USB ===
+ 
+ `lsusb` : List the USB devices displaying its IDs. _<Maker ID>:<Device ID>_
+ 
+ ==== udev script examples ====
+ 
+ Map an USB port based on the Path ID. This example always map a raspberry pi port position to a fixed link
+ 
+` SUBSYSTEMS=="usb", ENV{ID_PATH}=="platform-3f980000.usb-usb-0:1.2:1.0", SYMLINK+="piusb2"`
+
+Map an USB port based on the Maker ID and Product ID
+
+`SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A6008isP", SYMLINK+="arduino"`

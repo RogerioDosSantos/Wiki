@@ -6,7 +6,8 @@
 
 == Linux ==
 
--  [[Linux Terminal Commands]] 
+- [[Linux Terminal Commands]] 
+- [[Raspberry Pi]]
 
 == Vim ==
 

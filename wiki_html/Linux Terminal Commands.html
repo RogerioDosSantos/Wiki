@@ -90,6 +90,10 @@
 <code>rm &lt;filename&gt;</code>
   : remove a file
 </p>
+  
+<p>
+<code>rm !(&lt;filename&gt;)</code> : Remove all files but this one.
+</p>
 
 <p>
 <code>rmdir &lt;directory&gt;</code>
@@ -166,8 +170,15 @@
 </p>
 
 <p>
-<code>top</code>
-  : Process monitor
+<code>top</code> : Process monitor
+</p>
+
+<p>
+<code>top -p $(pgrep -d',' &lt;proccess name&gt;)</code> : Monitor a specific process. Note: You do not need to enter all name. If the string name does not match any process the following error message will be displayed: <em>top: -p requires argument</em>
+</p>
+
+<p>
+<code>kill [-KILL] &lt;process id&gt;</code> : Kill a proccess. The <code>-KILL</code> parameter forces the proccess to be killed. You can get the process id using the <code>top</code> command
 </p>
 
 <p>
@@ -327,6 +338,46 @@
 <code>telnet &lt;url or ip&gt; &lt;port&gt;</code> : Verify if a port is open.
 </p>
 
+<div id="Linux Terminal Commands-System"><h2 id="System">System</h2></div>
+
+<p>
+<code>dmesg</code> : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.
+</p>
+
+<div id="Linux Terminal Commands-Network"><h2 id="Network">Network</h2></div>
+
+<p>
+<code>sudo dhclient -v [-r]</code> : Visualize DHCP configuration. If you use the <code>-r</code> option, it will release the current IP address.
+</p>
+
+<p>
+<code>wget -qO- portquiz.net:&lt;Port&gt;</code> : Check if a port is open. The portquiz website answer calls for all available ports.
+</p>
+
+<div id="Linux Terminal Commands-Network-Set a static IP"><h3 id="Set a static IP">Set a static IP</h3></div>
+
+<p>
+The file <code>/etc/network/interfaces</code> controls the startup network configuration. To config a static IP you can use the following configuration:
+</p>
+
+<pre>
+
+auto lo
+iface lo inet loopback
+
+#Static IP description
+# IPv4 address
+iface eth0 inet static
+  address 192.168.0.100
+  netmask 255.255.255.0 
+  network 192.168.0.0 
+  broadcast 192.168.0.255
+  gateway 192.168.0.1
+
+</pre>
+
+
+
 <div id="Linux Terminal Commands-Bash Files"><h2 id="Bash Files">Bash Files</h2></div>
 
 <p>
@@ -355,47 +406,15 @@
 </p>
 
 <p>
-<code>scp &lt;source file path&gt; &lt;username&gt;@&lt;destination device (ip)&gt;:&lt;destination path&gt;</code>
-  : To copy a file from source to destination while logged into source device
+<code>scp [-r] &lt;source file path&gt; &lt;username&gt;@&lt;destination device (ip)&gt;:&lt;destination path&gt;</code>
+  : To copy a file from source to destination while logged into source device. Use -r to copy the folder.
 </p>
 
 <p>
-<code>scp &lt;username&gt;@&lt;source device (ip)&gt;:&lt;source path&gt; &lt;destination file path&gt;</code>
-  : To copy a file from source to destination while logged into destination device
+<code>scp [-r] &lt;username&gt;@&lt;source device (ip)&gt;:&lt;source path&gt; &lt;destination file path&gt;</code>
+  : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.
 </p>
 
-
-<div id="Linux Terminal Commands-Bash Files-Network"><h3 id="Network">Network</h3></div>
-
-<p>
-<code>sudo dhclient -v [-r]</code> : Visualize DHCP configuration. If you use the <code>-r</code> option, it will release the current IP address.
-</p>
-
-<p>
-<code>wget -qO- portquiz.net:&lt;Port&gt;</code> : Check if a port is open. The portquiz website answer calls for all available ports.
-</p>
-
-<div id="Linux Terminal Commands-Bash Files-Network-Set a static IP"><h4 id="Set a static IP">Set a static IP</h4></div>
-
-<p>
-The file <code>/etc/network/interfaces</code> controls the startup network configuration. To config a static IP you can use the following configuration:
-</p>
-
-<pre>
-
-auto lo
-iface lo inet loopback
-
-#Static IP description
-# IPv4 address
-iface eth0 inet static
-  address 192.168.0.100
-  netmask 255.255.255.0 
-  network 192.168.0.0 
-  broadcast 192.168.0.255
-  gateway 192.168.0.1
-
-</pre>
 
 <div id="Linux Terminal Commands-Bash Files-Conditional Statements"><h3 id="Conditional Statements">Conditional Statements</h3></div>
 
@@ -550,6 +569,51 @@ $
 </td>
 </tr>
 </table>
+ 
+<div id="Linux Terminal Commands-TFS"><h2 id="TFS" class="justcenter">TFS</h2></div>
+ 
+<p>
+ <code>tf -login:&lt;user name&gt;,&lt;password&gt; -collection:&lt;collection uri&gt; get &lt;folder/file to get&gt; [-recursive]</code> : Get a file or folder from TFS using the Team Foundation Server Client for Linux. For details see <a href="https:&#47;&#47;msdn.microsoft.com&#47;en-us&#47;library&#47;hh873092(v=vs.120).aspx">https://msdn.microsoft.com/en-us/library/hh873092(v=vs.120).aspx</a>
+</p>
+ 
+<div id="Linux Terminal Commands-I&#47;Os"><h2 id="I&#47;Os" class="justcenter">I/Os</h2></div>
+ 
+ 
+<p>
+<code>/dev/</code> : Location of all devices available in the device. You can use the <code>ls</code> command to list them. 
+</p>
+ 
+<p>
+<code>udevadm -n &lt;/dev/&lt;device name&gt;</code> : Provide all the information about a device. E.g.: Name, Bus, Vendor ID, Path ID, etc. Thins information can be used to configure the device. E.g.: Allow it to always receive the same name.
+</p>
+
+<p>
+ <code>/lib/udev/rules.d/</code> : Map rules script location. Those scripts are responsible to define the how the periphericals will be mapped on the Linux filesystem. See <em>udev script examples</em>.
+</p>
+ 
+<div id="Linux Terminal Commands-I&#47;Os-USB"><h3 id="USB" class="justcenter">USB</h3></div>
+ 
+<p>
+ <code>lsusb</code> : List the USB devices displaying its IDs. <em>&lt;Maker ID&gt;:&lt;Device ID&gt;</em>
+</p>
+ 
+<div id="Linux Terminal Commands-I&#47;Os-USB-udev script examples"><h4 id="udev script examples" class="justcenter">udev script examples</h4></div>
+ 
+<p>
+ Map an USB port based on the Path ID. This example always map a raspberry pi port position to a fixed link
+</p>
+ 
+<p>
+<code> SUBSYSTEMS=="usb", ENV{ID_PATH}=="platform-3f980000.usb-usb-0:1.2:1.0", SYMLINK+="piusb2"</code>
+</p>
+
+<p>
+Map an USB port based on the Maker ID and Product ID
+</p>
+
+<p>
+<code>SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A6008isP", SYMLINK+="arduino"</code>
+</p>
 
 	</div>
 <script type="text/javascript" src="../resources/highlight.pack.js"></script>
