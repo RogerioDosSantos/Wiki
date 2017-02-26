@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="Stylesheet" type="text/css" href="../resources/markdown.css" />
+	<link rel="Stylesheet" type="text/css" href="../resources/github.css" />
+	<title>Docker Commands</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<div class="content">
+		
+<div id="Docker Commands"><h1 id="Docker Commands">Docker Commands</h1></div>
+
+<p>
+<code>docker images</code> : List the available ima
+</p>
+
+<p>
+<code>docker ps</code> : List the running containers
+</p>
+
+<p>
+<code>docker ps -a</code> : List all containers
+</p>
+
+<p>
+<code>docker run --name &lt;container name&gt; -it &lt;image name&gt;:&lt;image version&gt;</code> : Start a new container from image. E.g.: <code>docker run --name vim_install -it ubuntu:16.04</code>
+</p>
+
+<p>
+<code>docker start &lt;container name&gt;</code> : Start a stopped container. E.g.: <code>docker start vim_install</code>
+</p>
+
+<p>
+<code>docker attach &lt;container name&gt;</code> : Attach to a running container. E.g.: <code>docker attach vim_install</code>
+</p>
+
+<p>
+<code>docker exec -it &lt;container name&gt; &lt;program to execute&gt;</code> : Execute a program in a running container. E.g.: To execute the command line in a linux based running container you can use <code>docker exec -it &lt;container name&gt; &lt;program to execute&gt;</code>.
+</p>
+
+<p>
+<code>docker rm &lt;container name&gt;</code> : Remove a container
+</p>
+
+<p>
+<code>docker rmi &lt;image name&gt;</code> : Remove an image
+</p>
+
+	</div>
+<script type="text/javascript" src="../resources/highlight.pack.js"></script>
+<script type="text/javascript" src="../resources/zepto.min.js"></script>
+<script type="text/javascript">
+$('pre').each(function(index,item){ $(item).html('<code>'+$(item).html()+'</code>'); });
+hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

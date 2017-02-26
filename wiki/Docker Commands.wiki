@@ -1,0 +1,19 @@
+= Docker Commands =
+
+`docker images` : List the available ima
+
+`docker ps` : List the running containers
+
+`docker ps -a` : List all containers
+
+`docker run --name <container name> -it <image name>:<image version>` : Start a new container from image. E.g.: `docker run --name vim_install -it ubuntu:16.04`
+
+`docker start <container name>` : Start a stopped container. E.g.: `docker start vim_install`
+
+`docker attach <container name>` : Attach to a running container. E.g.: `docker attach vim_install`
+
+`docker exec -it <container name> <program to execute>` : Execute a program in a running container. E.g.: To execute the command line in a linux based running container you can use `docker exec -it <container name> <program to execute>`.
+
+`docker rm <container name>` : Remove a container
+
+`docker rmi <image name>` : Remove an image
