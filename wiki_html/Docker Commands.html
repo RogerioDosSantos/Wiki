@@ -12,7 +12,7 @@
 <div id="Docker Commands"><h1 id="Docker Commands">Docker Commands</h1></div>
 
 <p>
-<code>docker images</code> : List the available ima
+<code>docker images</code> : List the available images
 </p>
 
 <p>
@@ -45,6 +45,14 @@
 
 <p>
 <code>docker rmi &lt;image name&gt;</code> : Remove an image
+</p>
+
+<p>
+<code>docker cp &lt;source file&gt; &lt;destination container&gt;:&lt;destination location&gt;</code> : Copy a file from the host computer to the container. E.g.: <code>docker cp ./host/temp/Programs/CppLint/file.txt vim:/root/temp</code>
+</p>
+
+<p>
+<code>docker cp &lt;destination container&gt;:&lt;destination location&gt; &lt;source file&gt;</code> : Copy a file from the the container to host computer. E.g.: <code>docker cp vim:/root/temp/file.txt ./host/temp/Programs/CppLint/</code>
 </p>
 
 	</div>

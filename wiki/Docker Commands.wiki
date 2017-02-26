@@ -1,6 +1,6 @@
 = Docker Commands =
 
-`docker images` : List the available ima
+`docker images` : List the available images
 
 `docker ps` : List the running containers
 
@@ -17,3 +17,7 @@
 `docker rm <container name>` : Remove a container
 
 `docker rmi <image name>` : Remove an image
+
+`docker cp <source file> <destination container>:<destination location>` : Copy a file from the host computer to the container. E.g.: `docker cp ./host/temp/Programs/CppLint/file.txt vim:/root/temp`
+
+`docker cp <destination container>:<destination location> <source file>` : Copy a file from the the container to host computer. E.g.: `docker cp vim:/root/temp/file.txt ./host/temp/Programs/CppLint/`
