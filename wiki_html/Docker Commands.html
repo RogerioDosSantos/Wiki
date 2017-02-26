@@ -55,6 +55,32 @@
 <code>docker cp &lt;destination container&gt;:&lt;destination location&gt; &lt;source file&gt;</code> : Copy a file from the the container to host computer. E.g.: <code>docker cp vim:/root/temp/file.txt ./host/temp/Programs/CppLint/</code>
 </p>
 
+<p>
+<code>docker commit -a "&lt;author&gt;" -m "&lt;message&gt;" &lt;container id&gt; [&lt;dockerhub user&gt;]&lt;image name&gt;:&lt;tag&gt;</code> : Commit a container into an image. E.g.: <code>docker commit -a "Roger Santos" -m "My Comment" ec6cc8c6e490 rogersantos/vim:1.0</code>
+</p>
+
+<p>
+<code>docker diff &lt;container id&gt;</code> : Shows the difference between the current container and the original image.
+</p>
+
+<p>
+<code>docker tag &lt;image id&gt; [&lt;dockerhub user&gt;]/&lt;image name&gt;:&lt;tag&gt;</code>: Tag an image. E.g.: <code>docker tag 5ffd21ba24cf rogersantos/vim:1.0</code>
+</p>
+
+<p>
+<code>docker push [&lt;dockerhub user&gt;]/&lt;dockerhub repository name&gt;</code> : Pull an image into the DockerHub repository. Note: You need to be logged before pushing an image. E.g.: <code>docker push rogersantos/vim</code>
+</p>
+
+<p>
+<code>docker login</code> : Log into the DockerHub repository.
+</p>
+
+<div id="Docker Commands-Start &#47; Attach options"><h2 id="Start &#47; Attach options">Start / Attach options</h2></div>
+
+<p>
+<code>-v &lt;local folder&gt;:&lt;remote folder&gt;</code> : Mount a folder (volume) from the host into the container. Note the container folder should have the full path. E.g.: <code>-v ~/host:/root/host</code>. 
+</p>
+
 	</div>
 <script type="text/javascript" src="../resources/highlight.pack.js"></script>
 <script type="text/javascript" src="../resources/zepto.min.js"></script>

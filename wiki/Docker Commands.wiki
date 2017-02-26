@@ -21,3 +21,17 @@
 `docker cp <source file> <destination container>:<destination location>` : Copy a file from the host computer to the container. E.g.: `docker cp ./host/temp/Programs/CppLint/file.txt vim:/root/temp`
 
 `docker cp <destination container>:<destination location> <source file>` : Copy a file from the the container to host computer. E.g.: `docker cp vim:/root/temp/file.txt ./host/temp/Programs/CppLint/`
+
+`docker commit -a "<author>" -m "<message>" <container id> [<dockerhub user>]<image name>:<tag>` : Commit a container into an image. E.g.: `docker commit -a "Roger Santos" -m "My Comment" ec6cc8c6e490 rogersantos/vim:1.0`
+
+`docker diff <container id>` : Shows the difference between the current container and the original image.
+
+`docker tag <image id> [<dockerhub user>]/<image name>:<tag>`: Tag an image. E.g.: `docker tag 5ffd21ba24cf rogersantos/vim:1.0`
+
+`docker push [<dockerhub user>]/<dockerhub repository name>` : Pull an image into the DockerHub repository. Note: You need to be logged before pushing an image. E.g.: `docker push rogersantos/vim`
+
+`docker login` : Log into the DockerHub repository.
+
+== Start / Attach options ==
+
+`-v <local folder>:<remote folder>` : Mount a folder (volume) from the host into the container. Note the container folder should have the full path. E.g.: `-v ~/host:/root/host`. 
