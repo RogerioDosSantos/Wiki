@@ -31,6 +31,10 @@
 
 - [[Docker Commands]]
 
+== Infinit ==
+
+- [[Infinit Commands]]
+
 == CMake ==
 
 -  [[CMake Commands]] 
