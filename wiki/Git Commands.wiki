@@ -146,3 +146,4 @@ All local changes you execute on git is stored on the _.git_ folder. You can cop
 - Copy the full content of your _.git_ source folder to a temp location.
 - Remove the _.git_ your destination folder. Note: All your changes on that folder will be lost. So if you have pending check-ins publish it.
 - Copy the content of your _git_ folder from your temp location to your destination folder.
+- Use the command `git checkout HEAD` to ensure thal all your local files are updated with the information that is on the HEAD.
