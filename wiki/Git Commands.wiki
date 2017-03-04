@@ -139,3 +139,4 @@ git remote add origin <repository .git url>
 git push -u origin master
 }}}
 
+== Local commit manual tranfer ==
