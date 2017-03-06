@@ -267,26 +267,6 @@
 </p>
 
 <p>
-<code>blkid</code>
-  : Allow to see the available devices. Those devices can be mounted
-</p>
-
-<p>
-<code>fdisk -l</code>
-  : Allow to see the available devices. Those devices can be mounted
-</p>
-
-<p>
-<code>mount &lt;device or network share&gt; &lt;local folder&gt;</code>
-  : Mount a device or shared folder into a local folder.
-</p>
-
-<p>
-<code>umount &lt;local folder&gt;</code>
-  : Mount a device or shared folder into a local folder.
-</p>
-
-<p>
 <code>cat &gt; &lt;file name&gt;</code>
   : Create a file and allow you to edit it. Careful! If you do it into an existing file, its content will be deleted.
 </p>
@@ -613,6 +593,46 @@ Map an USB port based on the Maker ID and Product ID
 
 <p>
 <code>SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A6008isP", SYMLINK+="arduino"</code>
+</p>
+
+<div id="Linux Terminal Commands-Partition"><h2 id="Partition">Partition</h2></div>
+
+<p>
+<code>lsblk</code> : List the physical disk (Device mapping) and the logic partition associated to it if it was formated.
+</p>
+
+<p>
+<code>lshw -C disk</code> : View detected devices of class "DISK"
+</p>
+
+<p>
+<code>blkid</code> : List the location of the logic partition.
+</p>
+
+<p>
+<code>fdisk -l</code> : View existing partition tables
+</p>
+
+<p>
+<code>fdisk /dev/&lt;device name&gt;</code>: Create partition for the device. E.g.:<code>fdisk sdb</code>. You will need to follow the command inside fdisk. Note: If you create an extended partition, you need to create a Linux partition as well. They can occupy the same blocks.
+</p>
+
+<p>
+<code>mkfs -t ext4 /dev/&lt;linux partition&gt;</code> : Format the new partition's filesystem as type ext4. E.g.: <code>mkfs -t ext4 /dev/sdb5</code>
+</p>
+
+<p>
+<code>mkfs.ext4 /dev/&lt;partition name&gt;</code> : Format a physical disk.
+</p>
+
+<p>
+<code>mount &lt;device or network share&gt; &lt;local folder&gt;</code>
+  : Mount a device or shared folder into a local folder.
+</p>
+
+<p>
+<code>umount &lt;local folder&gt;</code>
+  : Mount a device or shared folder into a local folder.
 </p>
 
 	</div>
