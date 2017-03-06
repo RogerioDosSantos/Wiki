@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="Stylesheet" type="text/css" href="style.css">
-<title>Git Commands</title>
-<meta http-equiv="Content-Type" content="text/html; charset=latin1">
+	<link rel="Stylesheet" type="text/css" href="../resources/markdown.css" />
+	<link rel="Stylesheet" type="text/css" href="../resources/github.css" />
+	<title>Git Commands</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
-
+	<div class="content">
+		
 <div id="Git"><h1 id="Git">Git</h1></div>
 
 <p>
@@ -247,5 +249,46 @@ Use the command <code>git checkout HEAD</code> to ensure thal all your local fil
 
 </ul>
 
+<div id="Git-Transfer Git Repository"><h2 id="Transfer Git Repository">Transfer Git Repository</h2></div>
+
+<p>
+<code>git fetch origin</code> : Get the ingormation from the server (History)
+</p>
+
+<p>
+<code>git branch -a</code> : Show all branches. If you have a branch that is remote you need to get it on your computer using the command  <code>checkout</code>
+</p>
+
+<p>
+<code>git checkout -b &lt;local name&gt; &lt;remote name&gt;</code> : Checkout a Branch. E.g.: <code>git checkout -b develop origin/develop</code>
+</p>
+
+<p>
+<code>git remote add &lt;name of remote&gt; &lt;remote url of an empty repository&gt;</code> : The remote name can be any name. The remote URL should be created on the server bu not initialized, otherwise you will have an conflict error. E.g.: <code>git remote add new-origin git@github.com:manakor/manascope.git</code>
+</p>
+
+<p>
+<code>git push --all &lt;name of remote&gt;</code> : Push all changes, include the history. It does not ony push the tags information. E.g.: <code>git push --all new-origin</code>
+</p>
+
+<p>
+<code>git push --tags &lt;name of remote&gt;</code> : Push the tags. E.g.: <code>git push --tags new-origin</code>
+</p>
+
+<p>
+<code>git remote rm &lt;name of the origin remote&gt;</code> : Remove the remote name from the local repository. Note that <code>origin</code> is the default name. E.g.: <code>git remote rm origin</code> Note: To list the remotes available you can use the command <code>git remote show</code>
+</p>
+
+<p>
+<code>git remote rename &lt;name of the remote&gt; &lt;name of the origin remote&gt;</code> : Rename the remote. E.g.: <code>git remote rename new-origin origin</code> Note: To list the remotes available you can use the command <code>git remote show</code>
+</p>
+
+	</div>
+<script type="text/javascript" src="../resources/highlight.pack.js"></script>
+<script type="text/javascript" src="../resources/zepto.min.js"></script>
+<script type="text/javascript">
+$('pre').each(function(index,item){ $(item).html('<code>'+$(item).html()+'</code>'); });
+hljs.initHighlightingOnLoad();
+</script>
 </body>
 </html>

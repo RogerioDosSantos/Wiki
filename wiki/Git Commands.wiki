@@ -147,3 +147,21 @@ All local changes you execute on git is stored on the _.git_ folder. You can cop
 - Remove the _.git_ your destination folder. Note: All your changes on that folder will be lost. So if you have pending check-ins publish it.
 - Copy the content of your _git_ folder from your temp location to your destination folder.
 - Use the command `git checkout HEAD` to ensure thal all your local files are updated with the information that is on the HEAD.
+
+== Transfer Git Repository ==
+
+`git fetch origin` : Get the ingormation from the server (History)
+
+`git branch -a` : Show all branches. If you have a branch that is remote you need to get it on your computer using the command  `checkout`
+
+`git checkout -b <local name> <remote name>` : Checkout a Branch. E.g.: `git checkout -b develop origin/develop`
+
+`git remote add <name of remote> <remote url of an empty repository>` : The remote name can be any name. The remote URL should be created on the server bu not initialized, otherwise you will have an conflict error. E.g.: `git remote add new-origin git@github.com:manakor/manascope.git`
+
+`git push --all <name of remote>` : Push all changes, include the history. It does not ony push the tags information. E.g.: `git push --all new-origin`
+
+`git push --tags <name of remote>` : Push the tags. E.g.: `git push --tags new-origin`
+
+`git remote rm <name of the origin remote>` : Remove the remote name from the local repository. Note that `origin` is the default name. E.g.: `git remote rm origin` Note: To list the remotes available you can use the command `git remote show`
+
+`git remote rename <name of the remote> <name of the origin remote>` : Rename the remote. E.g.: `git remote rename new-origin origin` Note: To list the remotes available you can use the command `git remote show`
