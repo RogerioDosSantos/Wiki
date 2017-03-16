@@ -175,8 +175,9 @@
 `fusermount -u <mounted folder>`
   : unmount folder.
 
-`tar xjf <file path>`
-  : Uncompress tar files (E.g.: *.tar.bz2)
+`tar xjf <file path>` : Uncompress tar files (E.g.: *.tar.bz2)
+
+`gzip <file path>` : Compress using gzip
 
 `rsync -u -v -e ssh <source directory>/* <user>@<remote computer (IP)>:<target directory>`
   : Sync all files from the source directory to the target directory.
