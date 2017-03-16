@@ -1,3 +1,7 @@
 = Windows Terminal Commands =
 
 `<command> > "<file directory>\Log_%date:~10,4%_%date:~4,2%_%date:~7,2%__%time:~0,2%_%time:~3,2%_%time:~6,2%.txt"` : Send the output to a Log files that will have the name `Log_YYYY_MM_DD__HH_MM_SS.txt`
+
+== Powershell only commands ==
+
+`Invoke-RestMethod -Uri <url> | <answer manipulation>` : Send a rest command and manipulate the answer. E.g.: `Invoke-RestMethod -Uri https://blogs.msdn.microsoft.com/powershell/feed/ | Format-Table -Property Title, PubDate`
