@@ -75,6 +75,30 @@
 <code>docker login</code> : Log into the DockerHub repository.
 </p>
 
+<p>
+<code>docker volume rm \((docker volume ls -f dangling=true -q)</code> : Remove dangling volumes (Volumes not being used at the moment). Note: if you need sudo use: <code>sudo docker volume rm \)(sudo docker volume ls -f dangling=true -q)</code>
+</p>
+
+<p>
+<code>docker stop $(docker ps -a -q)</code>: Stop all containers.  
+</p>
+
+<p>
+<code>docker rm $(docker ps -a -q)</code>: Remove all containers.
+</p>
+
+<p>
+<code>docker rm $(docker ps -a -f status=exited -q)</code>: Remove all exited containers.
+</p>
+
+<p>
+<code>docker rmi $(docker images -a -q)</code>: Remove all images.
+</p>
+
+<p>
+<code>docker rmi $(docker images -f dangling=true -q)</code>: Remove dangling images
+</p>
+
 <div id="Docker Commands-Start &#47; Attach options"><h2 id="Start &#47; Attach options">Start / Attach options</h2></div>
 
 <p>

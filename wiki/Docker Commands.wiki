@@ -32,6 +32,18 @@
 
 `docker login` : Log into the DockerHub repository.
 
+`docker volume rm $(docker volume ls -f dangling=true -q)` : Remove dangling volumes (Volumes not being used at the moment). Note: if you need sudo use: `sudo docker volume rm $(sudo docker volume ls -f dangling=true -q)`
+
+`docker stop $(docker ps -a -q)`: Stop all containers.  
+
+`docker rm $(docker ps -a -q)`: Remove all containers.
+
+`docker rm $(docker ps -a -f status=exited -q)`: Remove all exited containers.
+
+`docker rmi $(docker images -a -q)`: Remove all images.
+
+`docker rmi $(docker images -f dangling=true -q)`: Remove dangling images
+
 == Start / Attach options ==
 
 `-v <local folder>:<remote folder>` : Mount a folder (volume) from the host into the container. Note the container folder should have the full path. E.g.: `-v ~/host:/root/host`. 
