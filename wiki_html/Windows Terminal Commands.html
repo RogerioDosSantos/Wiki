@@ -15,6 +15,12 @@
 <code>&lt;command&gt; &gt; "&lt;file directory&gt;\Log_%date:~10,4%_%date:~4,2%_%date:~7,2%__%time:~0,2%_%time:~3,2%_%time:~6,2%.txt"</code> : Send the output to a Log files that will have the name <code>Log_YYYY_MM_DD__HH_MM_SS.txt</code>
 </p>
 
+<div id="Windows Terminal Commands-Powershell only commands"><h2 id="Powershell only commands">Powershell only commands</h2></div>
+
+<p>
+<code>Invoke-RestMethod -Uri &lt;url&gt; | &lt;answer manipulation&gt;</code> : Send a rest command and manipulate the answer. E.g.: <code>Invoke-RestMethod -Uri https://blogs.msdn.microsoft.com/powershell/feed/ | Format-Table -Property Title, PubDate</code>
+</p>
+
 	</div>
 <script type="text/javascript" src="../resources/highlight.pack.js"></script>
 <script type="text/javascript" src="../resources/zepto.min.js"></script>
