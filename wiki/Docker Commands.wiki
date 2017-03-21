@@ -32,6 +32,16 @@
 
 `docker login` : Log into the DockerHub repository.
 
+<<<<<<< HEAD
+`docker-compose up [-d]` : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The `-d` option allow to start the container as service, _forking_ the process.
+
+`docker-compose stop` : Stop all running Docker containers for an application group, issue the following command in the same directory as the _docker-compose.yml_ file used to start the Docker group.
+
+`docker-compose kill` : Same as `docker-compose stop` but force the running container to stop. 
+
+`docker volume ls -qf dangling=true | xargs -r docker volume rm` : Remove all volumes that are not being used.
+
+=======
 `docker volume rm $(docker volume ls -f dangling=true -q)` : Remove dangling volumes (Volumes not being used at the moment). Note: if you need sudo use: `sudo docker volume rm $(sudo docker volume ls -f dangling=true -q)`
 
 `docker stop $(docker ps -a -q)`: Stop all containers.  
@@ -43,6 +53,7 @@
 `docker rmi $(docker images -a -q)`: Remove all images.
 
 `docker rmi $(docker images -f dangling=true -q)`: Remove dangling images
+>>>>>>> 2193581f035d015dd2d3fa97e0d2d4bd0738b6ed
 
 == Start / Attach options ==
 
@@ -51,3 +62,7 @@
 == Multi-Platform ==
 
 `docker run --rm --privileged multiarch/qemu-user-static:register --reset` : Allow you run different platforms using docker. It uses QEMU emulation to do it.
+
+== Docker Compose Files ==
+
+
