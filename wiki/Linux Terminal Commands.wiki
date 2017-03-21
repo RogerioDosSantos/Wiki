@@ -29,7 +29,6 @@
 `/etc/group`
   : File with a list of all groups
 
-
 == Directories and Files ==
 
 `pwd`
@@ -84,13 +83,15 @@
 
 `<command> | tee -a "<logfile>"`
   : Saves the input to a file showing it on the stdout. -a informs that the file will be appended Saves the input to a file showing it on the stdout. -a informs that the file will be appended. 
-`which <program>` : Inform where a program is located.
 
 == Programs and OS ==
 
-
 `info <command name>`
   : List the information of a specific command. If you do not mention the <command name> it will list the command available.
+
+`which <program>` : Inform where a program is located.
+
+`ldd <program name>` : Print the shared objects dependencies. Show the list of shared libraries a program depend.
 
 `[[shutdown]] -r now`
   : Restart the device
