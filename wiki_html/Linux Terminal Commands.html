@@ -66,8 +66,7 @@
 </p>
 
 <p>
-<code>ls -all</code>
-  : List all files and directories into the current directory 
+<code>ls -all</code> : List all files and directories into the current directory 
 </p>
 
 <p>
@@ -166,6 +165,7 @@
 
 <p>
 <code>[[shutdown]] -r now</code>
+<code>which &lt;program&gt;</code> : Inform where a program is located.
   : Restart the device
 </p>
 
@@ -277,12 +277,19 @@
 </p>
 
 <p>
-<code>find &lt;directory to start&gt; -name "&lt;file to find&gt;"</code>
-  : Find file in all sub directories
+<code>find &lt;directory to start&gt; -name "&lt;file to find&gt;"</code> : Find file in all sub directories
 </p>
   
 <p>
 <code>find . -iname "*.&lt;extension&gt;" -type f</code> : Find extension on all sub-directories ( E.g.: <code>find . -iname "*.dll" -type f </code> )
+</p>
+
+<p>
+<code>find &lt;directory to start&gt;</code> : Find all files on that directory displaying the full path.
+</p>
+
+<p>
+<code>find &lt;directory&gt; -maxdepth 1 -name "&lt;expression&gt;"</code> : Find the file into the directory without looking on the sub directories. E.g.: <code>find ../bin/Studio/Debug/ -maxdepth 1 -name "boost_*.dll"</code>
 </p>
 
 <p>
