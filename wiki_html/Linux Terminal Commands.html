@@ -333,6 +333,14 @@
 <code>telnet &lt;url or ip&gt; &lt;port&gt;</code> : Verify if a port is open.
 </p>
 
+<p>
+<code>tar -cz &lt;directory to backup&gt; | gpg -c -o ./backup.tgz.gpg</code> : Execute an encrypted compressed backup. E.g.: <code>tar -cz ./safe00/ | gpg -c -o ./backup.tgz.gpg</code>
+</p>
+
+<p>
+<code>gpg -d ./backup.tgz.gpg | tar xz</code> : Uncompress the encrypted backup into the current directory.
+</p>
+
 <div id="Linux Terminal Commands-System"><h2 id="System">System</h2></div>
 
 <p>

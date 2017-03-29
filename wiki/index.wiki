@@ -83,6 +83,7 @@
 == Security Development Lifecycle (SDL) ==
 
 - [[BinScope]] 
+- [[GPG]]
 
 == Network ==
 

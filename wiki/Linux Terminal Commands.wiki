@@ -190,6 +190,10 @@
 
 `telnet <url or ip> <port>` : Verify if a port is open.
 
+`tar -cz <directory to backup> | gpg -c -o ./backup.tgz.gpg` : Execute an encrypted compressed backup. E.g.: `tar -cz ./safe00/ | gpg -c -o ./backup.tgz.gpg`
+
+`gpg -d ./backup.tgz.gpg | tar xz` : Uncompress the encrypted backup into the current directory.
+
 == System ==
 
 `dmesg` : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.
