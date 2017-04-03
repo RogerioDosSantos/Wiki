@@ -76,7 +76,7 @@
 </p>
 
 <p>
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 <code>docker-compose up [-d]</code> : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The <code>-d</code> option allow to start the container as service, <em>forking</em> the process.
 </p>
 
@@ -92,6 +92,7 @@
 <code>docker volume ls -qf dangling=true | xargs -r docker volume rm</code> : Remove all volumes that are not being used.
 </p>
 
+<p>
 =======
 <code>docker volume rm \((docker volume ls -f dangling=true -q)</code> : Remove dangling volumes (Volumes not being used at the moment). Note: if you need sudo use: <code>sudo docker volume rm \)(sudo docker volume ls -f dangling=true -q)</code>
 </p>
@@ -114,8 +115,8 @@
 
 <p>
 <code>docker rmi $(docker images -f dangling=true -q)</code>: Remove dangling images
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2193581f035d015dd2d3fa97e0d2d4bd0738b6ed
 </p>
->>>>>>> 2193581f035d015dd2d3fa97e0d2d4bd0738b6ed
 
 <div id="Docker Commands-Start &#47; Attach options"><h2 id="Start &#47; Attach options">Start / Attach options</h2></div>
 
@@ -130,6 +131,12 @@
 </p>
 
 <div id="Docker Commands-Docker Compose Files"><h2 id="Docker Compose Files">Docker Compose Files</h2></div>
+
+<div id="Docker Commands-Docker Machine"><h2 id="Docker Machine">Docker Machine</h2></div>
+
+<p>
+<code>docker-machine.exe create &lt;machine name&gt; --driver virtualbox --virtualbox-cpu-count "-1" --virtualbox-disk-size "&lt;disk size&gt;" --virtualbox-memory "&lt;memory size&gt;" --virtualbox-boot2docker-url=https://github.com/boot2docker/boot2docker/releases/download/v17.03.1-ce/boot2docker.iso</code> : Add a docker host machine E.g.: <code>docker-machine.exe create machine1 --driver virtualbox --virtualbox-cpu-count "-1" --virtualbox-disk-size "8000" --virtualbox-memory "512" --virtualbox-boot2docker-url=https://github.com/boot2docker/boot2docker/releases/download/v17.03.1-ce/boot2docker.iso</code>
+</p>
 
 	</div>
 <script type="text/javascript" src="../resources/highlight.pack.js"></script>
