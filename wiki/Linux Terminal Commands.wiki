@@ -147,6 +147,8 @@
 `Yum install <package name>`
   : Install a package (For RPM: E.g.: Fedora)
 
+`tce` : Allow to install applications into a Tiny Core Linux
+
 `free`
   : Display the amount of free and used system memory (Default: Kilobytes).
 
