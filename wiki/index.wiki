@@ -3,6 +3,7 @@
 == Windows ==
 
 - [[Windows Terminal Commands]]
+- [[Babun]]
 
 == Linux ==
 
