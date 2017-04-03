@@ -56,6 +56,8 @@
 
 `-v <local folder>:<remote folder>` : Mount a folder (volume) from the host into the container. Note the container folder should have the full path. E.g.: `-v ~/host:/root/host`. 
 
+`--restart=always` : Allow the container to always restart
+
 == Multi-Platform ==
 
 `docker run --rm --privileged multiarch/qemu-user-static:register --reset` : Allow you run different platforms using docker. It uses QEMU emulation to do it.
