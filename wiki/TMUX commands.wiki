@@ -76,6 +76,12 @@
 
 `!` : Break the pane into a new window.
 
+`{` : Move pane to the left
+
+`}` : Move the pane to the right
+
+`<space>` : Change panes Layout
+
 `:join-pane -s <windows number>` : Join the last accessed pane from a window
 
 `:join-pane -t <windows number>` : Send the current selected pane to an window
