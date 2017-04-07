@@ -388,3 +388,15 @@ Map an USB port based on the Maker ID and Product ID
 `umount <local folder>`
   : Mount a device or shared folder into a local folder.
 
+== Cron ==
+
+`/etc/cron.hourly` : Directory that contains scrips that runs hourly. 
+
+`/etc/cron.daily` : Directory that contains scrips that runs dialy. 
+
+`/etc/cron.weekly` : Directory that contains scrips that runs weekly. 
+
+`/etc/cron.monthly` : Directory that contains scrips that runs monthly. 
+
+`etc/crontab` : Main configuration cron file.
+
