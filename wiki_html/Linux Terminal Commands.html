@@ -460,7 +460,7 @@ function_name $arg1 $arg2
 
 </pre>
   
-<div id="Linux Terminal Commands-File System Hierarchy"><h2 id="File System Hierarchy">File System Hierarchy</h2></div>
+<div id="Linux Terminal Commands-File System"><h2 id="File System">File System</h2></div>
 
 <p>
 <code>/opt</code> : Directory used for the installation of add-on application software packages
@@ -468,6 +468,10 @@ function_name $arg1 $arg2
 
 <p>
 <code>/usr/local</code> : Directory used for the installation software locally.
+</p>
+
+<p>
+<code>sshfs -o idmap=user &lt;username&gt;@&lt;remote machine IP&gt;:&lt;remote directory&gt; &lt;local directory&gt;</code> : Mount a remote machine directory on the local machine. <span class="todo">TODO:</span> This command works however I need to add the fuse configuration part of it, otherwise we will get the user denied access.
 </p>
 
 <div id="Linux Terminal Commands-Enviroment Variable"><h2 id="Enviroment Variable">Enviroment Variable</h2></div>

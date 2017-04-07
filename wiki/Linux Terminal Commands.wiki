@@ -289,11 +289,13 @@ function_name $arg1 $arg2
 
 }}}
   
-== File System Hierarchy ==
+== File System ==
 
 `/opt` : Directory used for the installation of add-on application software packages
 
 `/usr/local` : Directory used for the installation software locally.
+
+`sshfs -o idmap=user <username>@<remote machine IP>:<remote directory> <local directory>` : Mount a remote machine directory on the local machine. TODO: This command works however I need to add the fuse configuration part of it, otherwise we will get the user denied access.
 
 == Enviroment Variable ==
 
