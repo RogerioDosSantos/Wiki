@@ -103,6 +103,10 @@
 
 `top -p $(pgrep -d',' <proccess name>)` : Monitor a specific process. Note: You do not need to enter all name. If the string name does not match any process the following error message will be displayed: _top: -p requires argument_
 
+`top -H <pid>`: Monitor an specific process
+
+`pidof <process name>` : Returns the PID of a process
+
 `kill [-KILL] <process id>` : Kill a proccess. The `-KILL` parameter forces the proccess to be killed. You can get the process id using the `top` command
 
 `<program name> --version`
