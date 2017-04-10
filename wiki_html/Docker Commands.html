@@ -147,6 +147,14 @@
 <code>docker-machine create --driver generic --generic-ip-address=&lt;vm ip address&gt; --generic-ssh-key &lt;path of the public certificate&gt; &lt;name of the VM that will appear on the docker machine&gt;</code>: Add an existing vm with docker installed on it to the docker machine. (E.g.: <code>docker-machine create --driver generic --generic-ip-address=203.0.113.81 --generic-ssh-key ~/.ssh/id_rsa vm</code>)
 </p>
 
+<p>
+<code>docker-machine create -d virtualbox --virtualbox-boot2docker-url https://github.com/RogerioDosSantos/docker/raw/master/docker_machine/boot2docker/32bits/boot2docker.iso &lt;machine name&gt;</code>: create a new 32 bits host machine.
+</p>
+
+<p>
+<code>docker-machine create -d virtualbox --virtualbox-boot2docker-url https://github.com/RogerioDosSantos/docker/raw/master/docker_machine/boot2docker/64bits/boot2docker.iso &lt;machine name&gt;</code>: create a new 64 bits host machine.
+</p>
+
 	</div>
 <script type="text/javascript" src="../resources/highlight.pack.js"></script>
 <script type="text/javascript" src="../resources/zepto.min.js"></script>
