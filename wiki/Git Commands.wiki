@@ -79,6 +79,8 @@ origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git checkout HEAD -- <file>`
   : Reset the file with its original value
+  
+`git clean -fd` : Remove untracked files.
 
 == History ==
 
