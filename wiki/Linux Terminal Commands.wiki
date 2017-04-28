@@ -71,6 +71,10 @@
 `mv`
   : Move or rename a file or directory
 
+`for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "'echo $f | tr "[:upper:]" "[:lower:]"'"; done` : Rename all files of a directory to lower case.
+
+`for f in *; do mv "$f" "${f%.*}" ; done` : Remove the last extension of all files
+
 `tree`
   : Display the tree of directories and sub directories
 

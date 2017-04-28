@@ -129,6 +129,14 @@
 </p>
 
 <p>
+<code>for f in *; do mv "\(f" "\)f.tmp"; mv "\(f.tmp" "'echo \)f | tr "[:upper:]" "[:lower:]"'"; done</code> : Rename all files of a directory to lower case.
+</p>
+
+<p>
+<code>for f in *; do mv "\(f" "\){f%.*}" ; done</code> : Remove the last extension of all files
+</p>
+
+<p>
 <code>tree</code>
   : Display the tree of directories and sub directories
 </p>
