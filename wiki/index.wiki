@@ -9,6 +9,7 @@
 
 - [[Linux Terminal Commands]] 
 - [[Raspberry Pi]]
+- [[curl]]
 
 == Vim ==
 
