@@ -377,6 +377,10 @@
 <code>wget -qO- portquiz.net:&lt;Port&gt;</code> : Check if a port is open. The portquiz website answer calls for all available ports.
 </p>
 
+<p>
+<code>python -m SimpleHTTPServer</code> : Quick test server using python (localhost:8000)
+</p>
+
 <div id="Linux Terminal Commands-Network-Set a static IP"><h3 id="Set a static IP">Set a static IP</h3></div>
 
 <p>
@@ -596,6 +600,14 @@ $
 </td>
 </tr>
 </table>
+ 
+<p>
+ To add ips that should not use proxy and go direct to the destination you can add the exceptions into the <code>no_proxy</code> variable, as for example:
+</p>
+ 
+<p>
+ <code>export no_proxy="127.0.0.1"</code> : To ignore the current computer
+</p>
  
 <div id="Linux Terminal Commands-TFS"><h2 id="TFS" class="justcenter">TFS</h2></div>
  

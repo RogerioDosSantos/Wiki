@@ -214,6 +214,8 @@
 
 `wget -qO- portquiz.net:<Port>` : Check if a port is open. The portquiz website answer calls for all available ports.
 
+`python -m SimpleHTTPServer` : Quick test server using python (localhost:8000)
+
 === Set a static IP ===
 
 The file `/etc/network/interfaces` controls the startup network configuration. To config a static IP you can use the following configuration:
@@ -346,6 +348,10 @@ E.g.: `http_proxy="http://my_user:my_password@host_ip:443"`
  | !         | %21         |
  | #         | %23         |
  | $         | %24         |
+ 
+ To add ips that should not use proxy and go direct to the destination you can add the exceptions into the `no_proxy` variable, as for example:
+ 
+ `export no_proxy="127.0.0.1"` : To ignore the current computer
  
  == TFS ==
  
