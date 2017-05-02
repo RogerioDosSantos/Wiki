@@ -187,7 +187,9 @@
 
 == Commands ==
 
-`/<string>` : Search a string
+`/<string>` : Search a string down
+
+`?<string>` : Search a string up
 
 `:%s/<search string>/<replace string>[/<options>]` : search whole file and replace. The options are:
 
