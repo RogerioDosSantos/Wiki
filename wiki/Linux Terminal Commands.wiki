@@ -182,6 +182,10 @@
 
 `grep --include=\*.{cpp,h} -rnwi <source directory> -e "<text to find>"`
   : Find a text into files (Case Insensitive)
+  
+`nm <library name>` : List symbols in libraries
+
+`nm <library name> | grep -i "<function name>"` : Locate if a function is exported from a library
 
 `encfs <encrypted folder content> <mounted folder>`
   : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)
@@ -214,7 +218,7 @@
 
 `wget -qO- portquiz.net:<Port>` : Check if a port is open. The portquiz website answer calls for all available ports.
 
-`python -m SimpleHTTPServer` : Quick test server using python (localhost:8000)
+`python -m SimpleHTTPServer <port number>` : Quick test server using python (localhost:8000)
 
 === Set a static IP ===
 

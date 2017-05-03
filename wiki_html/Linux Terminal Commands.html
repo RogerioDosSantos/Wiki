@@ -321,6 +321,14 @@
 <code>grep --include=\*.{cpp,h} -rnwi &lt;source directory&gt; -e "&lt;text to find&gt;"</code>
   : Find a text into files (Case Insensitive)
 </p>
+  
+<p>
+<code>nm &lt;library name&gt;</code> : List symbols in libraries
+</p>
+
+<p>
+<code>nm &lt;library name&gt; | grep -i "&lt;function name&gt;"</code> : Locate if a function is exported from a library
+</p>
 
 <p>
 <code>encfs &lt;encrypted folder content&gt; &lt;mounted folder&gt;</code>
@@ -378,7 +386,7 @@
 </p>
 
 <p>
-<code>python -m SimpleHTTPServer</code> : Quick test server using python (localhost:8000)
+<code>python -m SimpleHTTPServer &lt;port number&gt;</code> : Quick test server using python (localhost:8000)
 </p>
 
 <div id="Linux Terminal Commands-Network-Set a static IP"><h3 id="Set a static IP">Set a static IP</h3></div>
