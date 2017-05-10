@@ -29,5 +29,45 @@
 - Look in Louis (Speach recognition API)
 - Look in Microsoft Adaptative cards (Create a JSON and display it in several platforms). It is part of the Microsoft bot framework.
 
+=== Bring your desktop app to UWP (Universal Windows Platform) and Windows Store ===
+
+- Desktop bridge - Tool that allow repack the code to use UWP.
+- They admits the mistake done before whem migrating new applications.
+- You run the intaller once and it encapsulates into a container. 
+- Note: More information the the resitry means hier hives and slower OS. The reason is because the registry loads it when the OS boots.
+- The aim is to not change the code. This does not garantee that a change in the code will not be needed, however. E.g.: Code that requires system elavation. The apps that requires changes have a very small change amount.
+- COM objects are supported.
+- Once the API was converted we can distribute on the Windows Store and also target the Windows S version
+- COM objects should be only out of proc. That was intentionally left out due security (It is the major case of GPFs). In proc is there.
+- Look in WACK
+- The new full office is on the Windows Store. It used the "Desktop bridge" to do it
+
+==== The Path to do it ====
+
+- Convert the Windows App Package.
+- For windows 8 and forward you no longer needs your old installer.
+- *InstallShield has a plugin that does it automatically. You might not need to do it manually and once it works you can integrated on the daily build.*
+- Visual Studio 2017 can also generates that Package.
+- Mordernize with Windows 10 features.
+- There are some items that is only available on the UWP. E.g.: Files
+- There is a way that you can commincation a new application UWP and talkback with the bridge application using commincation channel.
+- Look into on the Background task model.
+- Limitation is that we cannot create process on UWP (Small limitation). You native can do basically everything!
+- *Huge: On the end it puts the libraries into a folder. For maintenance you just need to put the updated libraries on the folder that was generated.*
+- They beleive the migration for Windows 10 will happens because of security!
+
+==== Questions ====
+
+- How it works with device drivers? How about regular I/Os e.g.: serial ports, USB, etc...?
+  `It talks with a kernel driver without a problem`
+- How signature of files works?
+  `You can sign your files before`
+- If I call the new API how it would work on the previous version of windows (E.g.: Windows 7)?
+  
+- When you define parts of your application target to the device, how will be the footprint when installed? Are they going only to download the component related to that devices?
+
+Our link setup: [5/10/2017 2:47 PM] Wyatt, Gary: 
+https://schneider-electric.box.com/s/oks8v3vo1nfrkctyo313y3owhlene26w
+
 
 
