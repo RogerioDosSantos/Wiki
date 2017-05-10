@@ -1,0 +1,33 @@
+= To Search =
+
+== Notes from Microsoft Build ==
+
+=== Key Note ===
+
+- They will push Microsoft store.
+- *Serverless computation (Potential to be the core of the modern distributed computer)*
+- Azure IoT Edge (Enables cloud technology to run on the device) 
+- It can export the Cloud application and they export to a docker container that can be used on the IoT device.
+- Azure cloud shell and Azure mobile app.
+- Snap point on Visual Studio to get dumps when pass to it. Similar to breakpoint but does not stop the application
+- Visual Studio is available for Mac.
+- They are proivifing MySQL as service
+- Look on Azure Cosmos DB
+- Look on Gremilin
+- *Integrated docker support on Visual Studio 2017*
+- Look at .Net IoT framework
+- *Visual Studio support cross container debugging
+- Continuous delivery on Visual Studio 2017. They are pushing to Azure.
+- Visual Studio support build pipeline
+- You can add the docker container compose direct to Azure.
+- Look in Microsoft Service Fabric
+- *Azure Stack (Run azure on the edge - without Internet - On premisses)* 
+   `Looks like you pay per usage. I need to understande the price strategy`
+- Look in Microsoft Graph (microsoft.com/AI)
+- Look in Resnet (Image recognition API)
+- Look in Cognitive Services
+- Look in Louis (Speach recognition API)
+- Look in Microsoft Adaptative cards (Create a JSON and display it in several platforms). It is part of the Microsoft bot framework.
+
+
+

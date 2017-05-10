@@ -13,8 +13,8 @@
 
 == Vim ==
 
--  [[Vim Commands]] 
--  Vim Plugins 
+- [[Vim Commands]] 
+- Vim Plugins 
   - [[VimWiki]] 
   - [[Surround]]
   - [[Syntastic]]
@@ -23,12 +23,12 @@
 
 == Git ==
 
--  [[Git Commands]]
+- [[Git Commands]]
 - [[Git TFS]]
 
 == TMUX ==
 
--  [[TMUX Commands]] 
+- [[TMUX Commands]] 
 
 == Docker ==
 
@@ -92,3 +92,7 @@
 == Network ==
 
 - [[LDAP]]
+
+== General Notes ==
+
+- [[To Search]]
