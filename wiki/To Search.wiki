@@ -69,5 +69,14 @@
 Our link setup: [5/10/2017 2:47 PM] Wyatt, Gary: 
 https://schneider-electric.box.com/s/oks8v3vo1nfrkctyo313y3owhlene26w
 
+Go to hub to try to convert our application
+
+=== Bot capabilities patterns and principles ===
+
+- Bots are little REST APIs
+- You connect the bots on the Bot framework and than it can be start to be shared into other channels.
+- They have 02 SDKs (Node and .Net). Only for interface! You can develop your REST in any language
+- LUIS is a cognitive service. So the user says it to the bot. *Natural Language process*
+
 
 
