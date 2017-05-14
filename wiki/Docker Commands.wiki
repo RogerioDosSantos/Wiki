@@ -51,11 +51,12 @@
 `docker rmi $(docker images -a -q)`: Remove all images.
 
 `docker rmi $(docker images -f dangling=true -q)`: Remove dangling images
->>>>>>> 2193581f035d015dd2d3fa97e0d2d4bd0738b6ed
 
 == Start / Attach options ==
 
 `-v <local folder>:<remote folder>` : Mount a folder (volume) from the host into the container. Note the container folder should have the full path. E.g.: `-v ~/host:/root/host`. 
+
+`--restart=always` : Allow the container to always restart
 
 == Multi-Platform ==
 
@@ -68,3 +69,11 @@
 `docker-machine.exe create <machine name> --driver virtualbox --virtualbox-cpu-count "-1" --virtualbox-disk-size "<disk size>" --virtualbox-memory "<memory size>" --virtualbox-boot2docker-url=https://github.com/boot2docker/boot2docker/releases/download/v17.03.1-ce/boot2docker.iso` : Add a docker host machine E.g.: `docker-machine.exe create machine1 --driver virtualbox --virtualbox-cpu-count "-1" --virtualbox-disk-size "8000" --virtualbox-memory "512" --virtualbox-boot2docker-url=https://github.com/boot2docker/boot2docker/releases/download/v17.03.1-ce/boot2docker.iso`
 
 `docker-machine ssh <machine name>` : Execute a ssh into a machine.
+
+`docker-machine create -d virtualbox --virtualbox-boot2docker-url https://releases.rancher.com/os/latest/machine-rancheros.iso rancher` : Create a machine using rancher image.
+
+`docker-machine create --driver generic --generic-ip-address=<vm ip address> --generic-ssh-key <path of the public certificate> <name of the VM that will appear on the docker machine>`: Add an existing vm with docker installed on it to the docker machine. (E.g.: `docker-machine create --driver generic --generic-ip-address=203.0.113.81 --generic-ssh-key ~/.ssh/id_rsa vm`)
+
+`docker-machine create -d virtualbox --virtualbox-boot2docker-url https://github.com/RogerioDosSantos/docker/raw/master/docker_machine/boot2docker/32bits/boot2docker.iso <machine name>`: create a new 32 bits host machine.
+
+`docker-machine create -d virtualbox --virtualbox-boot2docker-url https://github.com/RogerioDosSantos/docker/raw/master/docker_machine/boot2docker/64bits/boot2docker.iso <machine name>`: create a new 64 bits host machine.

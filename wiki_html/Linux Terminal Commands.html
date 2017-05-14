@@ -129,6 +129,14 @@
 </p>
 
 <p>
+<code>for f in *; do mv "\(f" "\)f.tmp"; mv "\(f.tmp" "</code>echo \)f | tr "[:upper:]" "[:lower:]"<code>"; done</code> : Rename all files of a directory to lower case.
+</p>
+
+<p>
+<code>for f in *; do mv "\(f" "\){f%.*}" ; done</code> : Remove the last extension of all files
+</p>
+
+<p>
 <code>tree</code>
   : Display the tree of directories and sub directories
 </p>
@@ -180,6 +188,14 @@
 
 <p>
 <code>top -p $(pgrep -d',' &lt;proccess name&gt;)</code> : Monitor a specific process. Note: You do not need to enter all name. If the string name does not match any process the following error message will be displayed: <em>top: -p requires argument</em>
+</p>
+
+<p>
+<code>top -H &lt;pid&gt;</code>: Monitor an specific process
+</p>
+
+<p>
+<code>pidof &lt;process name&gt;</code> : Returns the PID of a process
 </p>
 
 <p>
@@ -257,6 +273,10 @@
 </p>
 
 <p>
+<code>tce</code> : Allow to install applications into a Tiny Core Linux
+</p>
+
+<p>
 <code>free</code>
   : Display the amount of free and used system memory (Default: Kilobytes).
 </p>
@@ -300,6 +320,14 @@
 <p>
 <code>grep --include=\*.{cpp,h} -rnwi &lt;source directory&gt; -e "&lt;text to find&gt;"</code>
   : Find a text into files (Case Insensitive)
+</p>
+  
+<p>
+<code>nm &lt;library name&gt;</code> : List symbols in libraries
+</p>
+
+<p>
+<code>nm &lt;library name&gt; | grep -i "&lt;function name&gt;"</code> : Locate if a function is exported from a library
 </p>
 
 <p>
@@ -355,6 +383,10 @@
 
 <p>
 <code>wget -qO- portquiz.net:&lt;Port&gt;</code> : Check if a port is open. The portquiz website answer calls for all available ports.
+</p>
+
+<p>
+<code>python -m SimpleHTTPServer &lt;port number&gt;</code> : Quick test server using python (localhost:8000)
 </p>
 
 <div id="Linux Terminal Commands-Network-Set a static IP"><h3 id="Set a static IP">Set a static IP</h3></div>
@@ -456,7 +488,7 @@ function_name $arg1 $arg2
 
 </pre>
   
-<div id="Linux Terminal Commands-File System Hierarchy"><h2 id="File System Hierarchy">File System Hierarchy</h2></div>
+<div id="Linux Terminal Commands-File System"><h2 id="File System">File System</h2></div>
 
 <p>
 <code>/opt</code> : Directory used for the installation of add-on application software packages
@@ -464,6 +496,10 @@ function_name $arg1 $arg2
 
 <p>
 <code>/usr/local</code> : Directory used for the installation software locally.
+</p>
+
+<p>
+<code>sshfs -o idmap=user &lt;username&gt;@&lt;remote machine IP&gt;:&lt;remote directory&gt; &lt;local directory&gt;</code> : Mount a remote machine directory on the local machine. <span class="todo">TODO:</span> This command works however I need to add the fuse configuration part of it, otherwise we will get the user denied access.
 </p>
 
 <div id="Linux Terminal Commands-Enviroment Variable"><h2 id="Enviroment Variable">Enviroment Variable</h2></div>
@@ -573,6 +609,14 @@ $
 </tr>
 </table>
  
+<p>
+ To add ips that should not use proxy and go direct to the destination you can add the exceptions into the <code>no_proxy</code> variable, as for example:
+</p>
+ 
+<p>
+ <code>export no_proxy="127.0.0.1"</code> : To ignore the current computer
+</p>
+ 
 <div id="Linux Terminal Commands-TFS"><h2 id="TFS" class="justcenter">TFS</h2></div>
  
 <p>
@@ -656,6 +700,28 @@ Map an USB port based on the Maker ID and Product ID
 <p>
 <code>umount &lt;local folder&gt;</code>
   : Mount a device or shared folder into a local folder.
+</p>
+
+<div id="Linux Terminal Commands-Cron"><h2 id="Cron">Cron</h2></div>
+
+<p>
+<code>/etc/cron.hourly</code> : Directory that contains scrips that runs hourly. 
+</p>
+
+<p>
+<code>/etc/cron.daily</code> : Directory that contains scrips that runs dialy. 
+</p>
+
+<p>
+<code>/etc/cron.weekly</code> : Directory that contains scrips that runs weekly. 
+</p>
+
+<p>
+<code>/etc/cron.monthly</code> : Directory that contains scrips that runs monthly. 
+</p>
+
+<p>
+<code>etc/crontab</code> : Main configuration cron file.
 </p>
 
 	</div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="Stylesheet" type="text/css" href="../resources/markdown.css" />
+	<link rel="Stylesheet" type="text/css" href="../resources/github.css" />
+	<title>Git TFS</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<div class="content">
+		
+<div id="Git TFS"><h1 id="Git TFS">Git TFS</h1></div>
+
+<p>
+git-tfs is a two-way bridge between TFS (Team Foundation Server) and git, similar to git-svn. It fetches TFS commits into a git repository, and lets you push your updates back to TFS.
+</p>
+
+<p>
+Project url: <a href="https:&#47;&#47;github.com&#47;git-tfs&#47;git-tfs">https://github.com/git-tfs/git-tfs</a>
+</p>
+
+<div id="Git TFS-Commands"><h2 id="Commands">Commands</h2></div>
+
+<p>
+<code>git tfs list-remote-branches &lt;collection url&gt;</code> : Find a tfs repository path to clone (E.g.: <code>git tfs list-remote-branches http://tfs:8080/tfs/DefaultCollection</code>)
+</p>
+
+<p>
+<code>git tfs clone &lt;collection url&gt; &lt;tfs folder to clone&gt;</code> : clone a folder (E.g.: <code>git tfs clone http://tfs:8080/tfs/DefaultCollection $/some_project</code>). It is slow since all changesets is on it.
+</p>
+
+<p>
+<code>git tfs quick-clone &lt;collection url&gt; &lt;tfs folder to clone&gt;</code> : clone a folder (E.g.: <code>git tfs clone http://tfs:8080/tfs/DefaultCollection $/some_project</code>). It is fast since only the last changeset is on it
+</p>
+
+<p>
+<code>git tfs checkin --work-item=&lt;work item 1&gt;:&lt;work item 2&gt;</code> : Commit a change informing the Work Item.
+</p>
+
+<p>
+<code>git tfs shelve &lt;shelve name&gt;</code> : Shelve the changes 
+</p>
+
+	</div>
+<script type="text/javascript" src="../resources/highlight.pack.js"></script>
+<script type="text/javascript" src="../resources/zepto.min.js"></script>
+<script type="text/javascript">
+$('pre').each(function(index,item){ $(item).html('<code>'+$(item).html()+'</code>'); });
+hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

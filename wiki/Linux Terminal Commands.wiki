@@ -71,6 +71,10 @@
 `mv`
   : Move or rename a file or directory
 
+`for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done` : Rename all files of a directory to lower case.
+
+`for f in *; do mv "$f" "${f%.*}" ; done` : Remove the last extension of all files
+
 `tree`
   : Display the tree of directories and sub directories
 
@@ -102,6 +106,10 @@
 `top` : Process monitor
 
 `top -p $(pgrep -d',' <proccess name>)` : Monitor a specific process. Note: You do not need to enter all name. If the string name does not match any process the following error message will be displayed: _top: -p requires argument_
+
+`top -H <pid>`: Monitor an specific process
+
+`pidof <process name>` : Returns the PID of a process
 
 `kill [-KILL] <process id>` : Kill a proccess. The `-KILL` parameter forces the proccess to be killed. You can get the process id using the `top` command
 
@@ -147,6 +155,8 @@
 `Yum install <package name>`
   : Install a package (For RPM: E.g.: Fedora)
 
+`tce` : Allow to install applications into a Tiny Core Linux
+
 `free`
   : Display the amount of free and used system memory (Default: Kilobytes).
 
@@ -172,6 +182,10 @@
 
 `grep --include=\*.{cpp,h} -rnwi <source directory> -e "<text to find>"`
   : Find a text into files (Case Insensitive)
+  
+`nm <library name>` : List symbols in libraries
+
+`nm <library name> | grep -i "<function name>"` : Locate if a function is exported from a library
 
 `encfs <encrypted folder content> <mounted folder>`
   : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)
@@ -203,6 +217,8 @@
 `sudo dhclient -v [-r]` : Visualize DHCP configuration. If you use the `-r` option, it will release the current IP address.
 
 `wget -qO- portquiz.net:<Port>` : Check if a port is open. The portquiz website answer calls for all available ports.
+
+`python -m SimpleHTTPServer <port number>` : Quick test server using python (localhost:8000)
 
 === Set a static IP ===
 
@@ -287,11 +303,13 @@ function_name $arg1 $arg2
 
 }}}
   
-== File System Hierarchy ==
+== File System ==
 
 `/opt` : Directory used for the installation of add-on application software packages
 
 `/usr/local` : Directory used for the installation software locally.
+
+`sshfs -o idmap=user <username>@<remote machine IP>:<remote directory> <local directory>` : Mount a remote machine directory on the local machine. TODO: This command works however I need to add the fuse configuration part of it, otherwise we will get the user denied access.
 
 == Enviroment Variable ==
 
@@ -334,6 +352,10 @@ E.g.: `http_proxy="http://my_user:my_password@host_ip:443"`
  | !         | %21         |
  | #         | %23         |
  | $         | %24         |
+ 
+ To add ips that should not use proxy and go direct to the destination you can add the exceptions into the `no_proxy` variable, as for example:
+ 
+ `export no_proxy="127.0.0.1"` : To ignore the current computer
  
  == TFS ==
  
@@ -383,4 +405,16 @@ Map an USB port based on the Maker ID and Product ID
 
 `umount <local folder>`
   : Mount a device or shared folder into a local folder.
+
+== Cron ==
+
+`/etc/cron.hourly` : Directory that contains scrips that runs hourly. 
+
+`/etc/cron.daily` : Directory that contains scrips that runs dialy. 
+
+`/etc/cron.weekly` : Directory that contains scrips that runs weekly. 
+
+`/etc/cron.monthly` : Directory that contains scrips that runs monthly. 
+
+`etc/crontab` : Main configuration cron file.
 

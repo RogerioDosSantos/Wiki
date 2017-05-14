@@ -3,11 +3,13 @@
 == Windows ==
 
 - [[Windows Terminal Commands]]
+- [[Babun]]
 
 == Linux ==
 
 - [[Linux Terminal Commands]] 
 - [[Raspberry Pi]]
+- [[curl]]
 
 == Vim ==
 
@@ -22,6 +24,7 @@
 == Git ==
 
 -  [[Git Commands]]
+- [[Git TFS]]
 
 == TMUX ==
 
@@ -62,6 +65,7 @@
 
 - [[ConqueGDB]]
 - [[Intel Inspector]]
+- [[Valgrind]]
 
 == Database ==
 
