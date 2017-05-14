@@ -32,7 +32,6 @@
 
 `docker login` : Log into the DockerHub repository.
 
-<<<<<<< HEAD
 `docker-compose up [-d]` : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The `-d` option allow to start the container as service, _forking_ the process.
 
 `docker-compose stop` : Stop all running Docker containers for an application group, issue the following command in the same directory as the _docker-compose.yml_ file used to start the Docker group.
@@ -41,7 +40,6 @@
 
 `docker volume ls -qf dangling=true | xargs -r docker volume rm` : Remove all volumes that are not being used.
 
-=======
 `docker volume rm $(docker volume ls -f dangling=true -q)` : Remove dangling volumes (Volumes not being used at the moment). Note: if you need sudo use: `sudo docker volume rm $(sudo docker volume ls -f dangling=true -q)`
 
 `docker stop $(docker ps -a -q)`: Stop all containers.  
@@ -68,3 +66,5 @@
 == Docker Machine ==
 
 `docker-machine.exe create <machine name> --driver virtualbox --virtualbox-cpu-count "-1" --virtualbox-disk-size "<disk size>" --virtualbox-memory "<memory size>" --virtualbox-boot2docker-url=https://github.com/boot2docker/boot2docker/releases/download/v17.03.1-ce/boot2docker.iso` : Add a docker host machine E.g.: `docker-machine.exe create machine1 --driver virtualbox --virtualbox-cpu-count "-1" --virtualbox-disk-size "8000" --virtualbox-memory "512" --virtualbox-boot2docker-url=https://github.com/boot2docker/boot2docker/releases/download/v17.03.1-ce/boot2docker.iso`
+
+`docker-machine ssh <machine name>` : Execute a ssh into a machine.
