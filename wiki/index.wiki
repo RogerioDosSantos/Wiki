@@ -4,6 +4,7 @@
 
 - [[Windows Terminal Commands]]
 - [[Babun]]
+- [[Windows Store]]
 
 == Linux ==
 
@@ -93,6 +94,3 @@
 
 - [[LDAP]]
 
-== General Notes ==
-
-- [[To Search]]
