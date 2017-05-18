@@ -11,6 +11,44 @@
 		
 <div id="Windows Store"><h1 id="Windows Store">Windows Store</h1></div>
 
+<p>
+ Microsoft is pushing more and more the Windows Store as the default way to install applications. There is a commercial aspect but also a strong technical aspect related to security. 
+</p>
+
+<p>
+Application from the store does not run directly on the OS, but it run in its own containerized environment with its own registry for example. Note that even containerized, other application will still be able to talk with us and vice-versa. E.g.: ActiveX, drivers, device drivers, etc, will still work.
+</p>
+
+<p>
+They have a project called "Desktop bridge" that allow any application, including Win32 applications to be containerized and available on the store. They already converted the Microsoft office using it. Several other companies like Adobe, Evernote, etc., are already doing it and they are signalizing that their goal is that all Windows based application to be running in this way. The Windows S for instance will already lock standard Desktop application to run it on the free version.
+</p>
+
+<p>
+Some of the advantages to use the store would be among other continuous delivery of our hotfixes, patches and service packs for example.
+</p>
+
+<div id="Windows Store-Steps to convert a regular setup using the Desktop Bridge Project"><h2 id="Steps to convert a regular setup using the Desktop Bridge Project">Steps to convert a regular setup using the Desktop Bridge Project</h2></div>
+
+<ul>
+<li>
+Install the Windows 10 creator update
+
+<li>
+Install the Desktop App Converter tool
+
+<li>
+Ensure that your setup can run silently.
+
+<li>
+Call the following Desktop App Converter command:
+
+<ul>
+<li>
+<code>DesktopAppConverter.exe -Installer &lt;your silently setup command&gt; -Destination &lt;destination of the Package&gt; -PackageName "&lt;name of your Package&gt;" -Publisher "CN=&lt;publisher_name&gt;" -Version &lt;version of the Package&gt; -MakeAppx</code> E.g.: <code>DesktopAppConverter.exe -Installer C:\MySetup.MSI -Destination C:\MyAppxFolder -PackageName "MyApp" -Publisher "CN=&lt;publisher_name&gt;" -Version 1.0.0.0 -MakeAppx</code>
+
+</ul>
+</ul>
+
 	</div>
 <script type="text/javascript" src="../resources/highlight.pack.js"></script>
 <script type="text/javascript" src="../resources/zepto.min.js"></script>
