@@ -1882,7 +1882,7 @@ The Microsoft SDL yields security benefits to any software development team deve
 
 Microsoft also publishes a set of tools to help software development teams implement and execute the SDL process more efficiently. Example tools include a threat-modeling tool that helps teams identify threats early in the Design phase, and a fault-injection tool to aid with security testing efforts in the Verification phase. Microsoft has also published the Simplified SDL, a lightweight framework version of the SDL available as a spreadsheet, to help organizations realize the greatest benefits of the SDL with minimal effort.
 
-{{local::../Wiki/resources/fundamentals_of_secure_development_002.PNG}}
+{{local::../resources/fundamentals_of_secure_development_002.PNG}}
 
 ==== CWE/SANS Top 25 Most Dangerous Software Errors ====
 
