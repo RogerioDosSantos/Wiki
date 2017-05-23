@@ -31,22 +31,34 @@ Some of the advantages to use the store would be among other continuous delivery
 
 <ul>
 <li>
-Install the Windows 10 creator update
+Install the Windows 10 creator update 
 
 <li>
-Install the Desktop App Converter tool
+Install the Desktop App Converter tool (<a href="https:&#47;&#47;www.microsoft.com&#47;en-us&#47;store&#47;p&#47;desktopappconverter&#47;9nblggh4skzw)">https://www.microsoft.com/en-us/store/p/desktopappconverter/9nblggh4skzw)</a>
+
+<li>
+Install Microsoft Windows 10 SDK (<a href="https:&#47;&#47;developer.microsoft.com&#47;en-us&#47;windows&#47;downloads&#47;windows-10-sdk)">https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk)</a>
+
+<li>
+Enable Windows Feature 'Containers'
+
+<li>
+Download a base image. (<a href="http:&#47;&#47;aka.ms&#47;converterimages)">http://aka.ms/converterimages)</a>
 
 <li>
 Ensure that your setup can run silently.
 
 <li>
-Call the following Desktop App Converter command:
+Call the following commands to prepare the Desktop Application Converter:
+<pre>
+  Set-ExecutionPolicy bypass
+  DesktopAppConverter.exe -Setup -BaseImage ".\BaseImage-14393.wim" -Verbose
+</pre>
 
-<ul>
 <li>
-<code>DesktopAppConverter.exe -Installer &lt;your silently setup command&gt; -Destination &lt;destination of the Package&gt; -PackageName "&lt;name of your Package&gt;" -Publisher "CN=&lt;publisher_name&gt;" -Version &lt;version of the Package&gt; -MakeAppx</code> E.g.: <code>DesktopAppConverter.exe -Installer C:\MySetup.MSI -Destination C:\MyAppxFolder -PackageName "MyApp" -Publisher "CN=&lt;publisher_name&gt;" -Version 1.0.0.0 -MakeAppx</code>
+Call the following Desktop App Converter command:
+  <code>DesktopAppConverter.exe -Installer &lt;your silently setup command&gt; -Destination &lt;destination of the Package&gt; -PackageName "&lt;name of your Package&gt;" -Publisher "CN=&lt;publisher_name&gt;" -Version &lt;version of the Package&gt; -MakeAppx</code> E.g.: <code>DesktopAppConverter.exe -Installer C:\MySetup.MSI -Destination C:\MyAppxFolder -PackageName "MyApp" -Publisher "CN=&lt;publisher_name&gt;" -Version 1.0.0.0 -MakeAppx</code>
 
-</ul>
 </ul>
 
 	</div>
