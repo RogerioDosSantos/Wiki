@@ -89,7 +89,6 @@
 
 - [[BinScope]] 
 - [[GPG]]
-- [[Secure C and C++ Development]]
 
 == Network ==
 
