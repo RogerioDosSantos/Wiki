@@ -313,13 +313,15 @@
 </p>
 
 <p>
-<code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e "&lt;text to find&gt;"</code>
-  : Find a text into files (Case Sensitive)
+<code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e "&lt;text to find&gt;"</code> : Find a text into files (Case Sensitive)
 </p>
 
 <p>
-<code>grep --include=\*.{cpp,h} -rnwi &lt;source directory&gt; -e "&lt;text to find&gt;"</code>
-  : Find a text into files (Case Insensitive)
+<code>grep --include=\*.{cpp,h} -rnwi &lt;source directory&gt; -e "&lt;text to find&gt;"</code> : Find a text into files (Case Insensitive)
+</p>
+
+<p>
+<code>grep -rl &lt;text_to_find_inside_file&gt; &lt;start_dirrectory&gt; | xargs sed -i 's/&lt;text_to_be_replaced&gt;/&lt;new_text&gt;/g'</code> : Find files with a specific text and replace its content
 </p>
   
 <p>

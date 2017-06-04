@@ -30,7 +30,7 @@
 
 == TMUX ==
 
-- [[TMUX Commands]] 
+- [[TMUX commands]] 
 
 == Docker ==
 

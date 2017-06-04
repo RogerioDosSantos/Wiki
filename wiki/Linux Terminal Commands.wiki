@@ -177,11 +177,11 @@
 
 `find <directory> -maxdepth 1 -name "<expression>"` : Find the file into the directory without looking on the sub directories. E.g.: `find ../bin/Studio/Debug/ -maxdepth 1 -name "boost_*.dll"`
 
-`grep --include=\*.{cpp,h} -rnw <source directory> -e "<text to find>"`
-  : Find a text into files (Case Sensitive)
+`grep --include=\*.{cpp,h} -rnw <source directory> -e "<text to find>"` : Find a text into files (Case Sensitive)
 
-`grep --include=\*.{cpp,h} -rnwi <source directory> -e "<text to find>"`
-  : Find a text into files (Case Insensitive)
+`grep --include=\*.{cpp,h} -rnwi <source directory> -e "<text to find>"` : Find a text into files (Case Insensitive)
+
+`grep -rl <text_to_find_inside_file> <start_dirrectory> | xargs sed -i 's/<text_to_be_replaced>/<new_text>/g'` : Find files with a specific text and replace its content
   
 `nm <library name>` : List symbols in libraries
 
