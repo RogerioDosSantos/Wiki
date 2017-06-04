@@ -313,6 +313,10 @@
 </p>
 
 <p>
+<code>find &lt;start_directory&gt; -iname "&lt;old_name&gt;*" | sed -e 'p;s/&lt;old_name&gt;/&lt;new_name&gt;/' | xargs -n2 mv</code> : Rename all files that match an expression recursively
+</p>
+
+<p>
 <code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e "&lt;text to find&gt;"</code> : Find a text into files (Case Sensitive)
 </p>
 

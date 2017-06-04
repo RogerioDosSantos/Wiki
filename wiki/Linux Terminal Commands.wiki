@@ -177,6 +177,8 @@
 
 `find <directory> -maxdepth 1 -name "<expression>"` : Find the file into the directory without looking on the sub directories. E.g.: `find ../bin/Studio/Debug/ -maxdepth 1 -name "boost_*.dll"`
 
+`find <start_directory> -iname "<old_name>*" | sed -e 'p;s/<old_name>/<new_name>/' | xargs -n2 mv` : Rename all files that match an expression recursively
+
 `grep --include=\*.{cpp,h} -rnw <source directory> -e "<text to find>"` : Find a text into files (Case Sensitive)
 
 `grep --include=\*.{cpp,h} -rnwi <source directory> -e "<text to find>"` : Find a text into files (Case Insensitive)
