@@ -158,6 +158,15 @@
 
 `:sb` : Split the current buffer
 
+`<space>itl` : Insert locale time E.g.: Thu 27 Sep 2007 07:37:42 AM EDT (depends on locale)
+
+`<sampe>iti` : Insert iso time ISO8601/W3C E.g.: 2007-08-29T02:37:13-0400 (Custom map)
+
+`<space>its` : Insert simple time 07:36:44 (Custom map)
+
+`<space>ids` : Insert simple date E.g.: 11-23-2016 (Custom map)
+
+`<space>idr` : Insert reverse date E.g.: 2016-11-23 (Custom map)
 
 == Keys - Edition Mode ==
 
