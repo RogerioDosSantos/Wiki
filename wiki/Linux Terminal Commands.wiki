@@ -50,6 +50,8 @@
   
 `rm !(<filename>)` : Remove all files but this one.
 
+`mkdir -p <directory name>` : Create directory if it does not exits
+
 `rmdir <directory>`
   : remove directory
 
