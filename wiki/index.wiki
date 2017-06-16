@@ -5,6 +5,7 @@
 - [[Windows Terminal Commands]]
 - [[Babun]]
 - [[Windows Store]]
+- [[WSL]]
 
 == Linux ==
 
