@@ -412,6 +412,14 @@ Map an USB port based on the Maker ID and Product ID
 `umount <local folder>`
   : Mount a device or shared folder into a local folder.
 
+`mountpoint <directory>` : Inform if the directory is mounted (mountpoint) or not
+
+`df -P -T <directory> | tail -n +2 | awk '{print $2}'` : Return the mount type of a directory (E.g.: cifs, ext4, etc)
+
+`df -P -T <directory> | tail -n +2 | awk '{print $1}'`: Return the device or the network path from were a folder was mounted from. (E.g.: /dev/sda1, //MyServer/myfolder)
+
+`/etc/mtab`: Lists currently mounted file systems and is used by the mount and unmount commands when you want to list your mounts or unmount all.
+
 == Cron ==
 
 `/etc/cron.hourly` : Directory that contains scrips that runs hourly. 
