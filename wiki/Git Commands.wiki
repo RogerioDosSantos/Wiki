@@ -90,6 +90,7 @@ origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 `git diff <source branch> <target branch>`
   : Preview the branch differences. 
 
+`git remote show origin`: Show the URL a git repository is cloned from.
 
 == Submodules: ==
 
