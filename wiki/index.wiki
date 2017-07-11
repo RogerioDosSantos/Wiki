@@ -12,6 +12,7 @@
 - [[Linux Terminal Commands]] 
 - [[Raspberry Pi]]
 - [[curl]]
+- [[Linux Kernel]]
 
 == Vim ==
 
@@ -32,6 +33,8 @@
 == TMUX ==
 
 - [[TMUX commands]] 
+- TMUX Plugins
+  - [[Tmux Plugin Manager]] 
 
 == Docker ==
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="Stylesheet" type="text/css" href="../resources/markdown.css" />
+	<link rel="Stylesheet" type="text/css" href="../resources/github.css" />
+	<title>Linux Kernel</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<div class="content">
+		
+<div id="Linux Kernel"><h1 id="Linux Kernel">Linux Kernel</h1></div>
+
+<div id="Linux Kernel-Device Driver"><h2 id="Device Driver">Device Driver</h2></div>
+
+<p>
+Policy-free drivers (Prefered) have a number of typical characteristics:
+</p>
+<ul>
+<li>
+These include support for both synchronous and asynchronous operation
+
+<li>
+The ability to be opened multiple times
+
+<li>
+The ability to exploit the full capabilities of the hardware
+
+<li>
+The lack of software layers to simplify things or provide policy-related operations.
+
+</ul>
+
+<p>
+Device Types:
+</p>
+<ul>
+<li>
+Char modules: Streams (open, close, read and write)
+
+<li>
+Block modules: Allow connect per block (512 bytes or any x^2). It easily mapped to a node of the filesystem (open, close, read and write).
+
+<li>
+Network modules: Sockets and packet transmission.
+
+</ul>
+
+	</div>
+<script type="text/javascript" src="../resources/highlight.pack.js"></script>
+<script type="text/javascript" src="../resources/zepto.min.js"></script>
+<script type="text/javascript">
+$('pre').each(function(index,item){ $(item).html('<code>'+$(item).html()+'</code>'); });
+hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
