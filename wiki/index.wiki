@@ -23,6 +23,7 @@
   - [[Syntastic]]
   - [[Fugitive]]
   - [[Doxigen]]
+  - [[NeoSnippet]]
 
 == Source Control ==
 

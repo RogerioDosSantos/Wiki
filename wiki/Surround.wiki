@@ -1,5 +1,7 @@
 = Surround =
 
+Allow surround tags of a selected text
+
 == Commands ==
 
 `<visual selection>S<surround tag>` : Surround selection with surround tag.

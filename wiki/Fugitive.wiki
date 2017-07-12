@@ -1,5 +1,7 @@
 = Fugitive = 
 
+Provide integration with Git
+
 == Commands ==
 
 `:Glog` : Load previous revisions on the quickfix

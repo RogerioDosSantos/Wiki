@@ -1,5 +1,7 @@
 = Syntastic =
 
+Provide syntax check
+
 == Commands ==
 
 

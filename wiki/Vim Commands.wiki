@@ -145,6 +145,16 @@
 
 `:echo expand('%:p:h:t') `d: first get the full path with :p (/abc/def/my.txt), then get the head of that with :h (/abc/def), then get the tail of that with :t (def). E.g.: ef 
 
+`:ts <tag to search>`: Search a specific tag
+
+`:ts`: Show a list of all definitions for the last tag searched.
+
+`:tn`: Move to the next definition
+
+`:tp`: Move to the previous definition
+
+`:copen` : Open list of items on the quickfix.
+
 == Others - Normal Mode ==
 
 `ZZ` : Save and close

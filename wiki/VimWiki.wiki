@@ -1,5 +1,6 @@
 = VimWiki =
 
+Wiki on VIM
 
 == Commands ==
 
