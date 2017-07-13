@@ -155,6 +155,8 @@
 
 `:copen` : Open list of items on the quickfix.
 
+`:cw` : Open list of items on the quickfix. Note: Can be used after grep command.
+
 == Others - Normal Mode ==
 
 `ZZ` : Save and close

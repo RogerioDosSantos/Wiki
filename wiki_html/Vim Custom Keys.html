@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="Stylesheet" type="text/css" href="../resources/markdown.css" />
+	<link rel="Stylesheet" type="text/css" href="../resources/github.css" />
+	<title>Vim Custom Keys</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<div class="content">
+		
+<div id="Vim Custom Keys"><h1 id="Vim Custom Keys">Vim Custom Keys</h1></div>
+
+<div id="Vim Custom Keys-Navigation"><h2 id="Navigation">Navigation</h2></div>
+
+<div id="Vim Custom Keys-Navigation-Windows"><h3 id="Windows">Windows</h3></div>
+
+<p>
+<code>nnoremap &lt;leader&gt;x :x&lt;cr&gt;</code> : Close current window
+</p>
+
+<p>
+<code>nnoremap &lt;leader&gt;X :q!&lt;cr&gt;</code> : Close current window (Forced)
+</p>
+
+<p>
+<code>nnoremap &lt;leader&gt;&lt;leader&gt; &lt;c-^&gt;</code> : Previous Window
+</p>
+
+<div id="Vim Custom Keys-Navigation-Splits"><h3 id="Splits">Splits</h3></div>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;vv :vsplit&lt;cr&gt;</code> : Vertical Split
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;hh :split&lt;cr&gt;</code> : Horizontal Split
+</p>
+
+<div id="Vim Custom Keys-Navigation-Tabs"><h3 id="Tabs">Tabs</h3></div>
+
+<p>
+<code>nnoremap &lt;leader&gt;tf :tabe</code> : Open file in a new tab
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;tn :tabn&lt;cr&gt;</code> : Open next tab
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;tp :tabp&lt;cr&gt;</code> : Open previous tab
+</p>
+
+<div id="Vim Custom Keys-Navigation-List and Preview"><h3 id="List and Preview">List and Preview</h3></div>
+
+<p>
+<code>nnoremap &lt;leader&gt;pt :ptag &lt;C-R&gt;&lt;C-W&gt; &lt;CR&gt;</code> : Preview tag
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;lo :lopen&lt;cr&gt;</code> Open a list to show the location list for current window
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;po :cw&lt;cr&gt;</code> : Open Preview Window (If exist)
+</p>
+
+<p>
+<code>nnoremap &lt;leader&gt;pc :pc &lt;CR&gt;</code> : Close Preview
+</p>
+
+<div id="Vim Custom Keys-Buffer"><h2 id="Buffer">Buffer</h2></div>
+
+<p>
+<code>nnoremap &lt;leader&gt;bbb :buffers</code> : List Buffers
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;bbn :bnext&lt;cr&gt;</code> Go to the next buffer
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;bbp :bprevious&lt;cr&gt;</code> Go to the previous buffer
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;bbd :bdelete&lt;cr&gt;</code> : Delete current Buffer
+</p>
+
+<div id="Vim Custom Keys-Folding"><h2 id="Folding">Folding</h2></div>
+
+<p>
+<code>nnoremap &lt;silent&gt;zss :set foldmethod=syntax&lt;cr&gt;</code> : Set the folding method to Syntax
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;zsm :set foldmethod=manual&lt;cr&gt;</code> : Set the folding method to Manual
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;zsi :set foldmethod=indent&lt;cr&gt;</code> : Set the folding method to Indent
+</p>
+
+<div id="Vim Custom Keys-CTags"><h2 id="CTags">CTags</h2></div>
+
+<p>
+<code>nnoremap &lt;leader&gt;tc :! ctags -R ~/</code> : Create Custom Tags
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;ta :! ctags -a -f ~/tags -R %:p:h&lt;cr&gt;</code> : Append Custom Tags
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;tr :! rm ~/tags&lt;cr&gt;</code> : Remove Custom Tags
+</p>
+
+<div id="Vim Custom Keys-Grep"><h2 id="Grep">Grep</h2></div>
+
+<p>
+<code>nnoremap &lt;leader&gt;g0 :grep! ''</code> : Call grep function to be added a string
+</p>
+
+<p>
+<code>nnoremap &lt;leader&gt;g&lt;level 1-5&gt; :grep! '\b&lt;C-R&gt;&lt;C-W&gt;\b'&lt;CR&gt;:cw&lt;CR&gt;</code> : Grep the string on the cursor on the folder level informed. <code>E.g.: &lt;space&gt;g1</code>
+</p>
+
+<p>
+<code>vnoremap &lt;leader&gt;g&lt;level 1-5&gt; y:grep! '&lt;C-R&gt;"'&lt;CR&gt;:cw&lt;CR&gt;'"'</code> : Grep the string on the selection on the folder level informed. <code>E.g.: &lt;space&gt;g1</code>
+</p>
+
+<div id="Vim Custom Keys-Find &#47; Search"><h2 id="Find &#47; Search">Find / Search</h2></div>
+
+<p>
+<code>vnoremap // y/&lt;C-R&gt;"&lt;cr&gt;"</code> : Search Visually selected text
+</p>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;, :noh&lt;cr&gt;</code> : Stop highlight after searching
+</p>
+
+<p>
+<code>nnoremap &lt;leader&gt;fh :w&lt;cr&gt;:e %:r.h&lt;cr&gt;</code> : Find .h
+</p>
+
+<p>
+<code>nnoremap &lt;leader&gt;fhi :w&lt;cr&gt;:e ../include/%:r.h&lt;cr&gt;</code> : Find .h (include)
+</p>
+
+<p>
+<code>nnoremap &lt;leader&gt;fc :w&lt;cr&gt;:e %:r.cpp&lt;cr&gt;</code> : Find .cpp
+</p>
+
+<p>
+<code>nnoremap &lt;leader&gt;fcs :w&lt;cr&gt;:e ../source/%:r.cpp&lt;cr&gt;</code> : Find .cpp (source)
+</p>
+
+<div id="Vim Custom Keys-Files"><h2 id="Files">Files</h2></div>
+
+<p>
+<code>nnoremap &lt;silent&gt;&lt;leader&gt;e :Lexplore&lt;cr&gt;, :noh&lt;cr&gt;</code> : Stop highlight after searching
+</p>
+
+<p>
+<code>nnoremap &lt;leader&gt;fl :w&lt;cr&gt;:e ~/.location_list.wiki&lt;cr&gt;</code> : Open location List
+</p>
+
+<p>
+<code>map &lt;leader&gt;s &lt;C-S&gt;</code> : Save file
+</p>
+
+<div id="Vim Custom Keys-Shell"><h2 id="Shell">Shell</h2></div>
+
+<p>
+<code>nnoremap &lt;leader&gt;c :GetShell</code> : Shell commands
+</p>
+
+<div id="Vim Custom Keys-Spell Check"><h2 id="Spell Check">Spell Check</h2></div>
+
+<p>
+<code>nnoremap &lt;leader&gt;se :setlocal spell spelllang=en_us&lt;cr&gt;:set spellfile=$HOME/.vim/spell-en.utf-8.add&lt;cr&gt;</code> : Set spell check to English.
+</p>
+
+<p>
+<code>nnoremap &lt;leader&gt;sp :setlocal spell spelllang=pt_br&lt;cr&gt;:set spellfile=$HOME/.vim/spell-pt.utf-8.add&lt;cr&gt;</code> : Set spell check to Portuguese
+</p>
+
+<p>
+<code>nnoremap &lt;leader&gt;so :set nospell&lt;cr&gt;</code> : Stop Spell Check
+</p>
+
+<p>
+<code>nnoremap &lt;leader&gt;sa :spellrepall&lt;cr&gt;</code> : Correct all strings with the previous correction
+</p>
+
+	</div>
+<script type="text/javascript" src="../resources/highlight.pack.js"></script>
+<script type="text/javascript" src="../resources/zepto.min.js"></script>
+<script type="text/javascript">
+$('pre').each(function(index,item){ $(item).html('<code>'+$(item).html()+'</code>'); });
+hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

@@ -17,6 +17,7 @@
 == Vim ==
 
 - [[Vim Commands]] 
+- [[Vim Custom Keys]]
 - Vim Plugins 
   - [[VimWiki]] 
   - [[Surround]]
