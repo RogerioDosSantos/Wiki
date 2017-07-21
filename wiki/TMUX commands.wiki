@@ -72,7 +72,7 @@
 
 `x ` : kill pane
 
-`z ` :Maximaze and minimize current view
+`z ` : Maximaze and minimize current view (Occupy all window size)
 
 `!` : Break the pane into a new window.
 
