@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="Stylesheet" type="text/css" href="../resources/markdown.css" />
+	<link rel="Stylesheet" type="text/css" href="../resources/github.css" />
+	<title>Cpp</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<div class="content">
+		
+<div id="Cpp Patterns"><h1 id="Cpp Patterns">Cpp Patterns</h1></div>
+
+<div id="Cpp Patterns-Factory + Cache"><h2 id="Factory + Cache">Factory + Cache</h2></div>
+
+<pre>
+  
+  shared_ptr&lt;widget&gt; make_widget(int id)
+  {
+    static map&lt;int, weak_ptr&lt;widget&gt; &gt; cache;
+    static mutex mut_cache;
+    lock_guard&lt;mutex&gt; hold(mut_cache);
+    shared_ptr&lt;widget&gt; ret = cache[id].lock();
+    if(!ret)
+      cache[id] = ret = load_widget(id);
+    
+    return ret;
+  }
+
+</pre>
+
+	</div>
+<script type="text/javascript" src="../resources/highlight.pack.js"></script>
+<script type="text/javascript" src="../resources/zepto.min.js"></script>
+<script type="text/javascript">
+$('pre').each(function(index,item){ $(item).html('<code>'+$(item).html()+'</code>'); });
+hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
