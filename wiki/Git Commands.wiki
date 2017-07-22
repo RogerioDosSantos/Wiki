@@ -115,6 +115,53 @@ origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 `git status --ignore-submodules=dirty `
   : Ignore the dirty feature that slow down the command in case you have submodules with a lot of files. You can also change the ".gitmodules" files to add the following entry in a submodule you want to ignore: ignore == dirty
 
+=== Submodules Workflow ===
+
+==== Initial Checkpoint ====
+
+- git clone <url of main project>
+- cd <directory of main project>
+- git submodule update -init
+- git submodule foreach git checkout master
+
+==== Commit a modification ====
+
+- cd <directory of sub project>
+- git checkout -b <your branch name>
+- Execute the modification
+- git commit
+- git push origin <server branch>
+
+==== Updated Third-Party Library ====
+
+- cd <directory of third-party library>
+- git checkout vendor
+- git pull 
+- git checkout -b phantom_merge
+- git merge -s ours master -m phantom_merge
+- git checkout master
+- git merge --ff-only phantom_merge
+- git branch -D phantom_merge
+- git cherry-pick 924989v# etc...
+- Test
+- git push origin master:master
+
+==== Modification to Third-Party Repository ====
+
+- cd <directory of third-party>
+- Make changes
+- git commit
+- git checkout vendor
+- git merge --ff-only origin/vendor
+- git checkout -b my_change
+- git cherry-pick 293h39
+- git push <git url>:my_change:my_change
+- Use Github to make pull request
+  
+
+TODO(Roger): Search on how to make the server to update the main project submodules statepoint when after a checkin passed on the automated tests. This would be interesting for the development branch.
+
+TODO(Roger): Search about cron jobs on Github
 
 == Tags: ==
 

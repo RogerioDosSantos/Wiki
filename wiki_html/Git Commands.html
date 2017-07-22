@@ -202,6 +202,123 @@ origin (Server) &gt;&gt; master (Work branch) &gt;&gt; Header (Local commits) &g
   : Ignore the dirty feature that slow down the command in case you have submodules with a lot of files. You can also change the ".gitmodules" files to add the following entry in a submodule you want to ignore: ignore == dirty
 </p>
 
+<div id="Git-Submodules:-Submodules Workflow"><h3 id="Submodules Workflow">Submodules Workflow</h3></div>
+
+<div id="Git-Submodules:-Submodules Workflow-Initial Checkpoint"><h4 id="Initial Checkpoint">Initial Checkpoint</h4></div>
+
+<ul>
+<li>
+git clone &lt;url of main project&gt;
+
+<li>
+cd &lt;directory of main project&gt;
+
+<li>
+git submodule update -init
+
+<li>
+git submodule foreach git checkout master
+
+</ul>
+
+<div id="Git-Submodules:-Submodules Workflow-Commit a modification"><h4 id="Commit a modification">Commit a modification</h4></div>
+
+<ul>
+<li>
+cd &lt;directory of sub project&gt;
+
+<li>
+git checkout -b &lt;your branch name&gt;
+
+<li>
+Execute the modification
+
+<li>
+git commit
+
+<li>
+git push origin &lt;server branch&gt;
+
+</ul>
+
+<div id="Git-Submodules:-Submodules Workflow-Updated Third-Party Library"><h4 id="Updated Third-Party Library">Updated Third-Party Library</h4></div>
+
+<ul>
+<li>
+cd &lt;directory of third-party library&gt;
+
+<li>
+git checkout vendor
+
+<li>
+git pull 
+
+<li>
+git checkout -b phantom_merge
+
+<li>
+git merge -s ours master -m phantom_merge
+
+<li>
+git checkout master
+
+<li>
+git merge --ff-only phantom_merge
+
+<li>
+git branch -D phantom_merge
+
+<li>
+git cherry-pick 924989v# etc...
+
+<li>
+Test
+
+<li>
+git push origin master:master
+
+</ul>
+
+<div id="Git-Submodules:-Submodules Workflow-Modification to Third-Party Repository"><h4 id="Modification to Third-Party Repository">Modification to Third-Party Repository</h4></div>
+
+<ul>
+<li>
+cd &lt;directory of third-party&gt;
+
+<li>
+Make changes
+
+<li>
+git commit
+
+<li>
+git checkout vendor
+
+<li>
+git merge --ff-only origin/vendor
+
+<li>
+git checkout -b my_change
+
+<li>
+git cherry-pick 293h39
+
+<li>
+git push &lt;git url&gt;:my_change:my_change
+
+<li>
+Use Github to make pull request
+
+</ul>
+  
+
+<p>
+TODO(Roger): Search on how to make the server to update the main project submodules statepoint when after a checkin passed on the automated tests. This would be interesting for the development branch.
+</p>
+
+<p>
+TODO(Roger): Search about cron jobs on Github
+</p>
 
 <div id="Git-Tags:"><h2 id="Tags:">Tags:</h2></div>
 
