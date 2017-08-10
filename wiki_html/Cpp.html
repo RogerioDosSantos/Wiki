@@ -29,6 +29,22 @@
 
 </pre>
 
+<div id="Cpp Patterns-Unicode to Ansi"><h2 id="Unicode to Ansi">Unicode to Ansi</h2></div>
+
+<pre>
+
+	std::string ToAnsi(std::wstring unicode)
+  {
+		size_t length = unicode.lenght();
+		std::string ansi(length, ' ');
+		for (size_t index = 0; index &lt; len; ++index)
+			ansi[index] = (char)unicode[index];
+      
+    return ansi;
+  } 
+
+</pre>
+
 	</div>
 <script type="text/javascript" src="../resources/highlight.pack.js"></script>
 <script type="text/javascript" src="../resources/zepto.min.js"></script>

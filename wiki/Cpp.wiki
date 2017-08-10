@@ -17,3 +17,19 @@
   }
 
 }}}
+
+== Unicode to Ansi ==
+
+{{{
+
+	std::string ToAnsi(std::wstring unicode)
+  {
+		size_t length = unicode.lenght();
+		std::string ansi(length, ' ');
+		for (size_t index = 0; index < len; ++index)
+			ansi[index] = (char)unicode[index];
+      
+    return ansi;
+  } 
+
+}}}
