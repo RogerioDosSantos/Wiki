@@ -8,6 +8,10 @@
 
 `net use \\<server name> /u:<user domain>\<username>` : Force to connect to a network shared folder using an specific user.
 
+`setx <environment variable> <value>` : Set an environment variable in the registry so it can be available to all programs. E.g.: `setx HTTPS_PROXY http://gateway.zscaler.net:9480`
+
+`echo %<environment variable>%` : Read an environment variable
+
 == Powershell only commands ==
 
 `Invoke-RestMethod -Uri <url> | <answer manipulation>` : Send a rest command and manipulate the answer. E.g.: `Invoke-RestMethod -Uri https://blogs.msdn.microsoft.com/powershell/feed/ | Format-Table -Property Title, PubDate`
