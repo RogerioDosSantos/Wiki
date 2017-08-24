@@ -1,0 +1,19 @@
+= Pandoc =
+
+Pandoc is a document converter.
+
+== Commands ==
+
+`pandoc --version` : Display the version of the Pandoc installed.
+
+== Custom Mapped Key ==
+
+`<space> + dch `: Create the html directory. The directory created will be above the current directory of the file.
+
+`<space> + deh `: Save the document as html on the html output directory.
+
+`<space> + dcw `: Create the word directory. The directory created will be above the current directory of the file.
+
+`<space> + dew `: Save the document as word on the word output directory.
+
+

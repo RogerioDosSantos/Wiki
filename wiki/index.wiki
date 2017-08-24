@@ -25,6 +25,7 @@
   - [[Fugitive]]
   - [[Doxigen]]
   - [[NeoSnippet]]
+  - [[Pandoc]]
 
 == Source Control ==
 
