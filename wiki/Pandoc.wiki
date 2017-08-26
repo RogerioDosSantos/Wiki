@@ -16,4 +16,12 @@ Pandoc is a document converter.
 
 `<space> + dew `: Save the document as word on the word output directory.
 
+== Markdown ==
+
+`![<caption>]( <image url>  )`: Add a message. Note: The space is important othwerise the word converter might not find the image. `E.g.: ![Driver List]( ../resource/Image_29_Tatsoft.png   )`
+
+`![<caption>]( <image url> ){ <css properties> }`: Add image with any .css propery. `E.g.: ![InduSoft]( ../resource/Image_04_Indusoft.png  ){width=100% heigh=100%}`
+
+
+
 
