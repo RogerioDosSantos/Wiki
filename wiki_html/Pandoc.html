@@ -176,6 +176,71 @@ Pandoc is a document converter.
 
 <div id="Pandoc-Markdown"><h2 id="Markdown">Markdown</h2></div>
 
+<div id="Pandoc-Markdown-Headers (Setext and atx)"><h3 id="Headers (Setext and atx)">Headers (Setext and atx)</h3></div>
+
+<pre>
+# This is H1.
+## This is H2.
+### This is H3.
+#### ...  
+###### This is H6.  
+</pre>
+
+<div id="Pandoc-Markdown-Basic Emphasis"><h3 id="Basic Emphasis">Basic Emphasis</h3></div>
+
+<pre>
+*single asterisks*  
+_single underscores_  
+**double asterisks**  
+__double underscores__ 
+</pre>
+
+<div id="Pandoc-Markdown-Strikeout, superscript and subscript"><h3 id="Strikeout, superscript and subscript">Strikeout, superscript and subscript</h3></div>
+
+<pre>
+~~~deleted text~~~  
+H~2~O is a liquid.  
+2^10^ is 1024. 
+</pre>
+
+<div id="Pandoc-Markdown-Math"><h3 id="Math">Math</h3></div>
+
+<pre>
+$a^2 = b^2 + c^2$  
+$x^{17} - 1$  
+$M^\bot = \{ f \in V' : f(m) = 0 \mbox{ for all } m \in M \}.$  
+$\[ \cos(\theta + \phi) = \cos \theta \cos \phi - \sin \theta \sin \phi \]$  
+$\[ |y - x| &lt; \delta \]$ then $\[ |f(y) - f(x)| &lt; \epsilon. \]$  
+\newcommand{\tuple}[1]{\langle #1 \rangle}  
+$\tuple{a, b, c}$  
+</pre>
+
+<div id="Pandoc-Markdown-Links"><h3 id="Links">Links</h3></div>
+
+<pre>
+This is an automatic link &lt;http://www.google.com&gt;.  
+This is [inline link](http://example.com/ "Title") inline link with title.  
+This is [inline link](http://example.com/ ) inline link without title attribute.  
+This is [reference link ][ref] with ID.  
+This is [reference link][] without ID.  
+This is [Inline Internal link](#TOC).  
+This is [Internal link].  
+
+[ref]: http://example.com/  
+[reference link]: http://www.google.com  
+[Internal link]: #pandocs-markdown-reference 
+</pre>
+
+<div id="Pandoc-Markdown-Images"><h3 id="Images">Images</h3></div>
+
+<pre>
+![](http://3.bp.bloGspot.com/-BLhmfBdELH0/UBT3uUd7r5I/AAAAAAAAADw/-rnn2kz5vjY/s220/oops_monk01_120.jpg "OopsMonk")
+
+![Alt text][pic2]
+
+[pic2]: http://3.bp.bloGspot.com/-BLhmfBdELH0/UBT3uUd7r5I/AAAAAAAAADw/-rnn2kz5vjY/s220/oops_monk01_120.jpg 
+</pre>
+
 <p>
 <code>![&lt;caption&gt;]( &lt;image url&gt;  )</code>: Add a message. Note: The space is important othwerise the word converter might not find the image. <code>E.g.: ![Driver List]( ../resource/Image_29_Tatsoft.png   )</code>
 </p>
@@ -183,6 +248,154 @@ Pandoc is a document converter.
 <p>
 <code>![&lt;caption&gt;]( &lt;image url&gt; ){ &lt;css properties&gt; }</code>: Add image with any .css propery. <code>E.g.: ![InduSoft]( ../resource/Image_04_Indusoft.png  ){width=100% heigh=100%}</code>
 </p>
+
+<div id="Pandoc-Markdown-Embedded Video"><h3 id="Embedded Video">Embedded Video</h3></div>
+
+<pre>
+&lt;iframe src="http://embed.ted.com/talks/lang/zh-tw/ken_robinson_how_to_escape_education_s_death_valley.html"
+width="560" height="315" frameborder="0" scrolling="no" 
+webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;
+</pre>
+
+<div id="Pandoc-Markdown-Basic Code block"><h3 id="Basic Code block">Basic Code block</h3></div>
+
+<p>
+Force code block(more then three ~)
+</p>
+
+<pre>
+~~~~~~~
+if (a &gt; 3) {
+  moveShip(5 * gravity, DOWN);
+  }
+~~~~~~~
+</pre>
+
+<div id="Pandoc-Markdown-Code Syntax highlight"><h3 id="Code Syntax highlight">Code Syntax highlight</h3></div>
+
+<pre>
+```python
+import os
+import sys
+
+def application(env, start_response):  
+    start_response('200 OK', [('Content-Type','text/html')])  
+    return "Hello WSGI!!"
+```
+</pre>
+
+<div id="Pandoc-Markdown-Line Number"><h3 id="Line Number">Line Number</h3></div>
+
+<pre>
+~~~~ {#pycode .python .numberLines startFrom="10"}
+import os
+import sys
+
+def application(env, start_response):  
+    start_response('200 OK', [('Content-Type','text/html')])  
+    return "Hello WSGI!!"
+~~~~
+</pre>
+
+<div id="Pandoc-Markdown-Blockquotes"><h3 id="Blockquotes">Blockquotes</h3></div>
+
+<pre>
+&gt; This is a block quote.
+&gt;
+&gt; &gt; A block quote within a block quote.
+&gt; &gt; 
+&gt; &gt; &gt; Nets.
+</pre>
+
+<div id="Pandoc-Markdown-Unordered (Bulleted)"><h3 id="Unordered (Bulleted)">Unordered (Bulleted)</h3></div>
+
+<pre>
+* fruits
+    + apples
+        - macintosh
+        - red delicious
+    + pears
+    + peaches
+* vegetables
+    + brocolli
+    + chard
+</pre>
+
+<div id="Pandoc-Markdown-Ordered (Numbered)"><h3 id="Ordered (Numbered)">Ordered (Numbered)</h3></div>
+
+<pre>
+1. list1.
+1. list2.
+1. list3.
+1. list4.
+</pre>
+
+<div id="Pandoc-Markdown-Lists"><h3 id="Lists">Lists</h3></div>
+
+<pre>
+(@)  My first example will be numbered (1).
+(@)  My second example will be numbered (2).
+
+Explanation of examples.
+
+(@)  My third example will be numbered (3).  
+
+(@good)  This is a good example.
+
+As (@good) illustrates, ...  
+</pre>
+
+<div id="Pandoc-Markdown-Footnotes"><h3 id="Footnotes">Footnotes</h3></div>
+
+<pre>
+Here is an inline note.^[Inlines notes are easier to write, since
+you don't have to pick an identifier and move down to type the
+note.]  
+
+Here is a footnote reference,^[^[^1]^]^ and another.[^longnote]
+
+[^1]: Here is the footnote.
+
+[^longnote]: Here's one with multiple blocks.
+
+    Subsequent paragraphs are indented to show that they
+belong to the previous footnote.
+
+        { some.code }
+
+    The whole paragraph can be indented, or just the first
+    line.  In this way, multi-paragraph footnotes work like
+    multi-paragraph list items.
+
+This paragraph won't be part of the note, because it
+isn't indented.
+</pre>
+
+<div id="Pandoc-Markdown-Simple tables"><h3 id="Simple tables">Simple tables</h3></div>
+
+<pre>
+ Right     Left     Center     Default
+-------     ------ ----------   -------
+     12     12        12            12
+    123     123       123          123
+      1     1          1             1
+</pre>
+
+<div id="Pandoc-Markdown-Multiline tables"><h3 id="Multiline tables">Multiline tables</h3></div>
+
+<pre>
+--------------------------
+ Centered   Default           Right Left
+  Header    Aligned         Aligned Aligned
+----------- ------- --------------- -------------------------
+   First    row                12.0 Example of a row that
+                                    spans multiple lines.
+
+  Second    row                 5.0 Here's another one. Note
+                                    the blank line between
+                                    rows.
+--------------------------
+</pre>
 
 
     </span>
