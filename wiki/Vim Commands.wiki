@@ -41,6 +41,10 @@
 
 `g]` : And other commands will jump to a tag definition (a tag can be a function or variable name, or more).
 
+`ctrl+]` : Jump to definition using tags
+
+`ctrl+T` : Jump back from the definition using tags.
+
 `c<selection>` : Delete the selection where the cursor is and go to insert mode
 
 `<selection> ~` : Toggle the case
