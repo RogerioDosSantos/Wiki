@@ -41,6 +41,24 @@
 
 `g]` : And other commands will jump to a tag definition (a tag can be a function or variable name, or more).
 
+`ctrl+]` : Jump to definition using tags
+
+`ctrl+T` : Jump back from the definition using tags.
+
+`[{` : Jump to beginning of a code block
+
+`]}`: Jump to the end of a code block
+
+`[(` : Jump to beginning of a parentheses
+
+`])`: Jump to the end of a parentheses
+
+`[[`: Sections backward or to the previous '{' in the first column.
+
+`]]`: Sections forward or to the next '{' in the first column.
+
+`[]`: Sections backward or to the previous '}' in the first column.
+
 `c<selection>` : Delete the selection where the cursor is and go to insert mode
 
 `<selection> ~` : Toggle the case
