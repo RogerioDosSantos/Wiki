@@ -52,7 +52,7 @@ Provider=sqloledb;Data Source=<server name>\<instance name>;Initial Catalog=<dat
 
 ### C# ###
 
-````
+```csharp
 Dataset GetDataset(String name, String connection_string, String sql_statement)
 { 
   var connection = new OleDbConnection(connection_name);
