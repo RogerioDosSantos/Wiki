@@ -83,7 +83,7 @@ This is [Internal link].
 [pic2]: http://3.bp.bloGspot.com/-BLhmfBdELH0/UBT3uUd7r5I/AAAAAAAAADw/-rnn2kz5vjY/s220/oops_monk01_120.jpg 
 ````
 
-`![<caption>]( <image url>  )`: Add a message. Note: The space is important othwerise the word converter might not find the image. `E.g.: ![Driver List]( ../resource/Image_29_Tatsoft.png   )`
+`![<caption>]( <image url>  )`: Add a message. Note: The space is important otherwise the word converter might not find the image. `E.g.: ![Driver List]( ../resource/Image_29.png   )`
 
 `![<caption>]( <image url> ){ <css properties> }`: Add image with any .css propery. `E.g.: ![InduSoft]( ../resource/Image_04_Indusoft.png  ){width=100% heigh=100%}`
 

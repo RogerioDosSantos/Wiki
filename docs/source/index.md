@@ -1,119 +1,118 @@
-# Roger Wiki Index #
+#Roger Wiki Index #
 
 ## Windows ##
 
-- [[Windows Terminal Commands]]
-- [[Babun]]
-- [[Windows Store]]
-- [[WSL]]
+- [Windows Terminal Commands]( ./windows_terminal_commands.html )
+- [Babun]( ./babun.html )
+- [Windows Store]( ./windows_store.html )
+- [WSL]( ./wsl.html )
 
 ## Linux ##
 
-- [[Linux Terminal Commands]] 
-- [[Raspberry Pi]]
-- [[curl]]
-- [[Linux Kernel]]
+- [Linux Terminal Commands]( ./linux_terminal_commands.html )
+- [Raspberry Pi]( ./raspberry_pi.html )
+- [curl]( ./curl.html )
+- [Linux Kernel]( ./linux_kernel.html )
 
 ## Vim ##
 
-- [[Vim Commands]] 
-- [[Vim Custom Keys]]
+- [Vim Commands]( ./vim_commands.html )
+- [Vim Custom Keys]( ./vim_custom_keys.html )
 - Vim Plugins 
-  - [[VimWiki]] 
-  - [[Surround]]
-  - [[Syntastic]]
-  - [[Fugitive]]
-  - [[Doxigen]]
-  - [[NeoSnippet]]
-  - [[Pandoc]]
-	- [[Marvim]]
+    - [VimWiki](./vimwiki.html )
+    - [Surround]( ./surround.html )
+    - [Syntastic]( ./syntastic.html )
+    - [Fugitive]( ./fugitive.html )
+    - [Doxigen]( ./doxigen.html )
+    - [NeoSnippet]( ./neosnippet.html )
+    - [Pandoc]( ./pandoc.html )
+  	- [Marvim](	./marvim.html )
 
 ## Source Control ##
 
-- [[Git Commands]]
-- [[Git TFS]]
-- [[TFS Online]]
+- [Git Commands]( ./git_commands.html )
+- [Git TFS]( ./git_tfs.html )
+- [TFS Online]( ./tfs_online.html )
 
 ## TMUX ##
 
-- [[TMUX commands]] 
+- [TMUX commands]( ./tmux_commands.html )
 - TMUX Plugins
-  - [[Tmux Plugin Manager]] 
+    - [Tmux Plugin Manager]( ./tmux_plugin_manager.html )
 
 ## Docker ##
 
-- [[Docker Commands]]
+- [Docker Commands]( ./docker_commands.html )
 
 ## Infinit ##
 
-- [[Infinit Commands]]
+- [Infinit Commands]( ./infinit_commands.html )
 
 ## CMake ##
 
--  [[CMake Commands]] 
--  [[CMake Codding Style]]
--  [[CMake Toolchains]]
--  [[CrossTool-ng]]
+-  [CMake Commands]( ./cmake_commands.html )
+-  [CMake Codding Style]( ./cmake_codding_style.html )
+-  [CMake Toolchains]( ./cmake_toolchains.html )
+-  [CrossTool-ng]( ./crosstool-ng.html )
 
 ## CTags ##
 
-- [[Ctags Commands]]
+- [Ctags Commands]( ./ctags_commands.html )
 
 ## Boost ##
 
-- [[Boost Tips and Tricks]]
+- [Boost Tips and Tricks]( ./boost_tips_and_tricks.html )
 
 ## Google Test ##
 
-- [[Gtest Commands]]
+- [Gtest Commands]( ./gtest_commands.html )
 
 ## ReactJS ##
 
-- [[ReactJS Commands]]
+- [ReactJS Commands]( ./reactjs_commands.html )
 
 ## NodeJS ##
 
-- [[NodeJS Commands]]
+- [NodeJS Commands]( ./nodejs_commands.html )
 
 ## Virtual Box ##
 
-- [[Virtual Box Commands]]
+- [Virtual Box Commands]( ./virtual_box_commands.html )
 
 ## Debug Tools ##
 
-- [[ConqueGDB]]
-- [[Intel Inspector]]
-- [[Valgrind]]
+- [ConqueGDB]( ./conquegdb.html )
+- [Intel Inspector]( ./intel_inspector.html )
+- [Valgrind]( ./valgrind.html )
 
 ## Database ##
 
-- [[OLE DB]]
+- [OLE DB]( ./ole_db.html )
 
 ## .Net ##
 
-- [[GAC]]
-- [[.Net Versions]]
+- [GAC]( ./gac.html )
+<!-- - [.Net Versions]( ./.net_versions.html ) -->
 
 ## Virtualization ##
 
-- [[VirtualBox]]
+- [VirtualBox]( ./virtualbox.html )
 
 ## Windows CE (Compact Embedded) ##
 
-- [[Windows CE Development Tools]]
+- [Windows CE Development Tools]( ./windows_ce_development_tools.html )
 
 ## Security Development Lifecycle (SDL) ##
 
-- [[BinScope]] 
-- [[GPG]]
-- [[MOSS]]
+- [BinScope]( ./binscope.html )
+- [GPG]( ./gpg.html )
+- [MOSS]( ./moss.html )
 
 ## Network ##
 
-- [[LDAP]]
+- [LDAP]( ./ldap.html )
 
 ## Patterns ##
 
-
-- [[Cpp]]
+- [Cpp]( ./cpp.html )
 
