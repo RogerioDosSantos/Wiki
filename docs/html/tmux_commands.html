@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC">
+<ul>
+<li><a href="#tmux-commands">TMUX Commands</a><ul>
+<li><a href="#command-mode---sessions">Command Mode - Sessions</a></li>
+<li><a href="#command-mode---windows-tabs">Command Mode - Windows (tabs)</a></li>
+<li><a href="#command-mode---panes-splits">Command Mode - Panes (splits)</a></li>
+<li><a href="#scroll-mode---commands">Scroll Mode - Commands</a></li>
+<li><a href="#copy-from-a-tmux-pane-to-another">Copy from a TMUX pane to another</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="tmux-commands">TMUX Commands</h1>
+<p><code>TMUX a &lt;session number&gt;</code> : attach</p>
+<p><code>TMUX ls</code> : list sessions</p>
+<p><code>TMUX kill-session -t &lt;session number or session name name&gt;</code> : kill sessions</p>
+<p><code>ctrl+b</code> : TMUX Command key. Put TMUX on command mode</p>
+<p><code>tmux new -s session_name</code> : creates a new tmux session named session_name</p>
+<p><code>tmux attach -t session_name</code> : attaches to an existing tmux session named session_name</p>
+<p><code>tmux switch -t session_name</code> : switches to an existing session named session_name</p>
+<p><code>tmux list-sessions</code> : lists existing tmux sessions</p>
+<p><code>tmux detach (prefix + d)</code> : detach the currently attached session</p>
+<h2 id="command-mode---sessions">Command Mode - Sessions</h2>
+<p><code>:new&lt;CR&gt;</code> : new session</p>
+<p><code>s</code> : list sessions</p>
+<p><code>$</code> : name session</p>
+<p><code>d</code> : detach session</p>
+<p><code>[</code> : Scroll / Copy mode. Press <code>q</code> to exit. In this mode you can scroll up and down.</p>
+<h2 id="command-mode---windows-tabs">Command Mode - Windows (tabs)</h2>
+<p><code>c</code> : new window</p>
+<p><code>,</code> : name window</p>
+<p><code>w</code> : list windows</p>
+<p><code>f</code> : find window</p>
+<p><code>&amp;</code> : kill window</p>
+<p><code>.</code> : move window - prompted for a new number</p>
+<p><code>:movew</code> : move window to the next unused number</p>
+<h2 id="command-mode---panes-splits">Command Mode - Panes (splits)</h2>
+<p><code>?</code> : Help to display available commands.</p>
+<p><code>%</code> : vertical split</p>
+<p><code>&quot;</code> :horizontal split</p>
+<p><code>o</code> : Go to the next pane</p>
+<p><code>ctrl+o</code> : Swap pane contents</p>
+<p><code>q</code> : show pane numbers</p>
+<p><code>x</code> : kill pane</p>
+<p><code>z</code> : Maximaze and minimize current view (Occupy all window size)</p>
+<p><code>!</code> : Break the pane into a new window.</p>
+<p><code>{</code> : Move pane to the left</p>
+<p><code>}</code> : Move the pane to the right</p>
+<p><code>&lt;space&gt;</code> : Change panes Layout</p>
+<p><code>:join-pane -s &lt;windows number&gt;</code> : Join the last accessed pane from a window</p>
+<p><code>:join-pane -t &lt;windows number&gt;</code> : Send the current selected pane to an window</p>
+<h2 id="scroll-mode---commands">Scroll Mode - Commands</h2>
+<p><code>g</code> : Goto line</p>
+<p><code>/</code> : Search a string. Press <code>n</code> to go to next word.</p>
+<h2 id="copy-from-a-tmux-pane-to-another">Copy from a TMUX pane to another</h2>
+<p><code>Ctrl+b, [</code> : Enter scroll / copy mode.</p>
+<p><code>Space</code> : Start highlighting text.</p>
+<p><code>Enter</code> : Copy the highlighted text.</p>
+<p><code>Ctrl+b ]</code> : Paste the previous copied text</p>
+</body>
+</html>

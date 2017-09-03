@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC">
+<ul>
+<li><a href="#vim-commands">Vim Commands</a><ul>
+<li><a href="#command-line">Command line</a></li>
+<li><a href="#leader---normal-mode">Leader - Normal Mode</a></li>
+<li><a href="#navigation---normal-mode">Navigation - Normal Mode</a></li>
+<li><a href="#keys---normal-mode">Keys - Normal Mode</a></li>
+<li><a href="#commands---normal-mode">Commands - Normal Mode</a></li>
+<li><a href="#others---normal-mode">Others - Normal Mode</a></li>
+<li><a href="#keys---edition-mode">Keys - Edition Mode</a></li>
+<li><a href="#keys-visual-mode">Keys Visual Mode</a></li>
+<li><a href="#keys-any-mode">Keys Any mode</a></li>
+<li><a href="#commands">Commands</a></li>
+<li><a href="#explore-keys-and-commands">Explore Keys and Commands</a></li>
+<li><a href="#spell-check">Spell Check</a></li>
+<li><a href="#macros">Macros</a><ul>
+<li><a href="#saving-a-macro">Saving a Macro</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="vim-commands">Vim Commands</h1>
+<h2 id="command-line">Command line</h2>
+<p><code>vim -V&lt;log level&gt;&lt;log filename&gt;</code> : Execute Vim with the log enabled. E.g.: Vim -V9vim_log.txt</p>
+<h2 id="leader---normal-mode">Leader - Normal Mode</h2>
+<p><em>Note: My <leader> is <space></em></p>
+<p><code>&lt;leader&gt;&lt;space&gt;</code> : Switch between documents that are open in the same split</p>
+<p><code>&lt;leader&gt; z</code> : Centralize the cursor in the middle of the screen</p>
+<p><code>&lt;leader&gt; zz</code> : Centralize the cursor on the bottom of the screen.</p>
+<h2 id="navigation---normal-mode">Navigation - Normal Mode</h2>
+<p><code>&lt;command&gt;i&quot;</code> : Select the item that is inside &quot;&quot;.</p>
+<p><code>&lt;command&gt;iw</code> : Select the word where the cursor is over.</p>
+<p><code>&lt;command&gt;a&quot;</code> : Select the item that is inside &quot;&quot; including the &quot;&quot;</p>
+<p><code>&lt;command&gt;$</code> : End of line</p>
+<p><code>gd</code> : Will take you to the local variable declaration.</p>
+<p><code>gD</code> : Will take you to the global variable declaration.</p>
+<p><code>g*</code> : Search for the word under the cursor (like *, but g* on 'rain' will find words like 'rainbow').</p>
+<p><code>g#</code> : Same as g* but in backward direction.</p>
+<p><code>gg</code> : Goes to the first line in the buffer (or provide a count before the command for a specific line).</p>
+<p><code>G</code> : Go to the last line (or provide a count before the command for a specific line).</p>
+<p><code>gf</code> : Will go to the file under the cursor</p>
+<p><code>g]</code> : And other commands will jump to a tag definition (a tag can be a function or variable name, or more).</p>
+<p><code>ctrl+]</code> : Jump to definition using tags</p>
+<p><code>ctrl+T</code> : Jump back from the definition using tags.</p>
+<p><code>[{</code> : Jump to beginning of a code block</p>
+<p><code>]}</code>: Jump to the end of a code block</p>
+<p><code>[(</code> : Jump to beginning of a parentheses</p>
+<p><code>])</code>: Jump to the end of a parentheses</p>
+<p><code>[[</code>: Sections backward or to the previous '{' in the first column.</p>
+<p><code>]]</code>: Sections forward or to the next '{' in the first column.</p>
+<p><code>[]</code>: Sections backward or to the previous '}' in the first column.</p>
+<p><code>c&lt;selection&gt;</code> : Delete the selection where the cursor is and go to insert mode</p>
+<p><code>&lt;selection&gt; ~</code> : Toggle the case</p>
+<p><code>&lt;selection&gt; u</code> : Lower case</p>
+<p><code>&lt;selection&gt; U</code> : Upper case</p>
+<p><code>&lt;tab number&gt;gt</code> : Go to the desired tab</p>
+<p><code>f &lt;character&gt;</code> : Jump to the next character</p>
+<p><code>F &lt;character&gt;</code> : Jump to the previous character</p>
+<p><code>t &lt;character&gt;</code> : Jump one character before the next character</p>
+<p><code>T &lt;character&gt;</code> : Jump one character after the previous character</p>
+<p><code>[&lt;number&gt;] ge</code> : Go to the previous word</p>
+<p><code>gf</code> : Go to the files where the cursor is (Open on the same window)</p>
+<p><code>m&lt;key&gt;</code>: Mark the position to a specified key. If the mark use capital letter, it will mark the position globally (Among several files even if you close VIM)</p>
+<p>`<code>&lt;key&gt;</code>: Go to the position of a marked key</p>
+<p>``` `: Return to the position before the marked item</p>
+<p><code>z.</code>: Move the current cursor position to the middle of the screen</p>
+<p><code>z&lt;return&gt;</code>: Move the current cursor to the top of the screen</p>
+<p><code>'J</code>: Join the current line with the next line'</p>
+<p><code>zf&lt;selection&gt;</code> : Create a folding (Collapsed line)</p>
+<p><code>zo</code>: Open folding (Collapsed) were the cursor are</p>
+<p><code>zc</code>: Close folding were the cursor are</p>
+<p><code>zd</code>: Delete a folder</p>
+<p><code>zR</code> : Open all folding (Collapsed) lines</p>
+<p><code>zM</code>: Close all folding</p>
+<p><code>zss</code> : Set the folding method to Syntax</p>
+<p><code>zsm</code> : Set the folding method to Manual</p>
+<p><code>zsi</code> : Set the folding method to Indent</p>
+<h2 id="keys---normal-mode">Keys - Normal Mode</h2>
+<p><code>ctrl-w</code> : got to the next window</p>
+<p><code>ctrl-PgUp ; ctrl-PgDown</code> : Switch Tabs</p>
+<p><code>ctrl-n</code> : open NERD tree (t - Open File into a new Tab ; i - Horizontal Split ; s - Vertical Split)</p>
+<p><code>ctrl+p</code> : Open CTRL+P Plugin.</p>
+<p><code>shift+i</code> : Show/hide hidden files on NERD tree</p>
+<p><code>ctrl-x</code> : If the cursor is over a number, decrement it</p>
+<p><code>ctrl-a</code> : If the cursor is over a number, increment it</p>
+<p><code>ctrl+r</code> : Redo</p>
+<p><code>ctrl+o</code> : Send you to the previous location before a jump</p>
+<p><code>*</code> : Find the word under cursor forward</p>
+<p><code>#</code> : Find the word under cursor backward</p>
+<p><code>&quot;qp</code> : Paste the macro script</p>
+<p><code>shift+J</code> : Concatenate (Join) 02 lines</p>
+<p><code>g]</code> : Show the list of tags</p>
+<h2 id="commands---normal-mode">Commands - Normal Mode</h2>
+<p><code>:0r &lt;file path&gt;</code> : Read the file and add in your current file</p>
+<p><code>:r !&lt;shell command&gt;</code> : Execute the shell command and write the result on the current file</p>
+<p><code>:ls</code> : List buffers</p>
+<p><code>:b&lt;buffer number&gt;</code> : Go to the buffer. Use ls to list buffer</p>
+<p><code>:colorshema</code> : Change the color schema (Solirized for C++ / Desert for CMake)</p>
+<p><code>&lt;-/+ begin range&gt;, &lt;-/+ end range&gt;co.</code>: Copy range to the current position (E.g.: -10,-5co.)</p>
+<p><code>:echo @%</code> : directory/name of file (relative to the current working directory of /abc). E.g.: def/my.txt</p>
+<p><code>:echo expand('%:t')</code> : name of file ('tail'). E.g.: my.txt</p>
+<p><code>:echo expand('%:p')</code> : full path. E.g.: /abc/def/my.txt</p>
+<p><code>:echo expand('%:p:h')</code>/: directory containing file ('head'). E.g.: abc/def</p>
+<p><code>:echo expand('%:p:h:t')</code>d: first get the full path with :p (/abc/def/my.txt), then get the head of that with :h (/abc/def), then get the tail of that with :t (def). E.g.: ef</p>
+<p><code>:tag</code> : Jump to the previous tag location. Util to return to a location when you used ctrl-t.</p>
+<p><code>:ts &lt;tag to search&gt;</code>: Search a specific tag</p>
+<p><code>:ts</code>: Show a list of all definitions for the last tag searched.</p>
+<p><code>:tn</code>: Move to the next definition</p>
+<p><code>:tp</code>: Move to the previous definition</p>
+<p><code>:copen</code> : Open list of items on the quickfix.</p>
+<p><code>:cw</code> : Open list of items on the quickfix. Note: Can be used after grep command.</p>
+<h2 id="others---normal-mode">Others - Normal Mode</h2>
+<p><code>ZZ</code> : Save and close</p>
+<p><code>q&lt;macro key&gt; &lt;do your stuff&gt;</code> : Record a macro and store into the key desired. <code>@&lt;macro key&gt;</code> : Play the macro</p>
+<p><code>m&lt;mark key&gt;</code> : Mark a position that you are in into the key desired</p>
+<p><code>\</code><mark key>` : Go to the marked position stored on the key</p>
+<p><code>:sb</code> : Split the current buffer</p>
+<p><code>&lt;space&gt;itl</code> : Insert locale time E.g.: Thu 27 Sep 2007 07:37:42 AM EDT (depends on locale)</p>
+<p><code>&lt;sampe&gt;iti</code> : Insert iso time ISO8601/W3C E.g.: 2007-08-29T02:37:13-0400 (Custom map)</p>
+<p><code>&lt;space&gt;its</code> : Insert simple time 07:36:44 (Custom map)</p>
+<p><code>&lt;space&gt;ids</code> : Insert simple date E.g.: 11-23-2016 (Custom map)</p>
+<p><code>&lt;space&gt;idr</code> : Insert reverse date E.g.: 2016-11-23 (Custom map)</p>
+<h2 id="keys---edition-mode">Keys - Edition Mode</h2>
+<p><code>ctrl+k</code> : Complete the snippet</p>
+<p><code>ctrl+p (previous) ; ctrl+n (next)</code> : Word completion</p>
+<p><code>ctrl+x (completion mode) + ctrl+] (Tag completion)</code> : Tag completion (requires CTags)</p>
+<p><code>ctrl+x (completion mode) + ctrl+f (File name completion)</code> : File completion</p>
+<p><code>ctrl+r &quot;</code> : Past the content of the &quot; register, aka last yank / delete</p>
+<p><code>ctrl+o &lt;command of normal mode&gt;</code> : Allow you use command of normal mode while in insert mode</p>
+<p><code>:marks</code>: List all marks</p>
+<p><code>:delmark&lt;key&gt;</code>: Delete mark</p>
+<h2 id="keys-visual-mode">Keys Visual Mode</h2>
+<p><code>gf</code>: Create a folder from the selection</p>
+<p><code>//</code> : Search the selected text (Custom map)</p>
+<p><code>*</code> : Select until the next word. Execute command in multiple lines.</p>
+<h2 id="keys-any-mode">Keys Any mode</h2>
+<p><code>F2</code> : Toggle Paste Mode (Custom map to set pastetoggle)</p>
+<h2 id="commands">Commands</h2>
+<p><code>/&lt;string&gt;</code> : Search a string down</p>
+<p><code>?&lt;string&gt;</code> : Search a string up</p>
+<p><code>:%s/&lt;search string&gt;/&lt;replace string&gt;[/&lt;options&gt;]</code> : search whole file and replace. The options are:</p>
+<p><code>/c</code> : confirm each replace</p>
+<p><code>/I</code> : Case sensitive</p>
+<p><code>:noh</code> : Clear search highlight. Added custom map <code>&lt;leader&gt;,</code></p>
+<p><code>:q!</code> : Exit without saving</p>
+<p><code>:w</code> : Save</p>
+<p><code>n</code> : repeat last command</p>
+<p><code>:sh</code> : go to shell (Exit or Ctrl+D to return)</p>
+<p><code>:r &lt;file name&gt;</code> : Read a file an put the content on the current file</p>
+<p><code>:r ! &lt;shell command&gt;</code> : Execute the shell command and put the result on the current file</p>
+<p><code>:PlugInstall</code> : install all plugins configured on vim-plug plugin</p>
+<p><code>:e filename</code> : Open file for edition</p>
+<p><code>:split filename</code> : split window and load another file</p>
+<p><code>ctrl-w up arrow</code> : move cursor up a window</p>
+<p><code>ctrl-w ctrl-w</code> : move cursor to another window (cycle)</p>
+<p><code>ctrl-w_</code> : maximize current window</p>
+<p><code>ctrl-w=</code> : make all equal size</p>
+<p><code>10 ctrl-w+</code> : increase window size by 10 lines</p>
+<p><code>:vsplit file</code> : vertical split</p>
+<p><code>:sview file</code> : same as split, but read only</p>
+<p><code>:hide</code> : close current window</p>
+<p><code>:only</code> : keep only this window open</p>
+<p><code>:ls</code> : show current buffers</p>
+<p><code>:b 2</code> : open buffer #2 in this window</p>
+<p><code>:Explore</code> : Open the Explore (Equivalent to Windows Explorer)</p>
+<p><code>:X</code> : Encrypt a file. When the file is opened again it will ask you for a password to open the file.</p>
+<p><code>:set key=&lt;nothing&gt;</code> : Remove the cryptography of an open file. You need to save it after.</p>
+<h2 id="explore-keys-and-commands">Explore Keys and Commands</h2>
+<p><code>d</code> : creates a new directory</p>
+<p><code>%</code> : creates and opens a new file</p>
+<p><code>D</code> : deletes a directory or file</p>
+<p><code>R</code> : renames a file</p>
+<p><code>o</code> : opens the file in a horizontal split</p>
+<p><code>v</code> : opens the file in a vertical split</p>
+<p><code>&lt;numeric id&gt;mb</code> : Create a bookmark on the current folder with the id informed.</p>
+<p><code>&lt;numeric id&gt;gb</code> : Goto bookmark</p>
+<p><code>qb</code> : List bookmarks</p>
+<h2 id="spell-check">Spell Check</h2>
+<p><code>&lt;leader&gt; se</code> : Set spell check to English Language (Custom Map).</p>
+<p><code>&lt;leader&gt; sp</code> : Set spell check to Portuguese Language (Custom Map).</p>
+<p><code>&lt;leader&gt; so</code> : Turn spell check off (Custom Map).</p>
+<p><code>]s</code> : Move the cursor the next misspelled word.</p>
+<p><code>[s</code> : Move the cursor to the previous misspelled word.</p>
+<p><code>z=</code> : Show spelling corrections options.</p>
+<p><code>zg</code> : Add the word to a file list so it can be used again as correct words.</p>
+<p><code>zG</code> : As <code>zg</code> but do not add the word on the file list</p>
+<p><code>zw</code> : Remove the word from the file list</p>
+<p><code>&lt;leader&gt; sa</code> : Replace all. Replace all words with the same word done on the last replacement (Custom Map).</p>
+<h2 id="macros">Macros</h2>
+<h3 id="saving-a-macro">Saving a Macro</h3>
+<p>To save a macro you can do:</p>
+<p>From normal mode: <code>qq</code> enter whatever commands From normal mode: <code>q</code> open .vimrc <code>&quot;qp</code> to insert the macro into your <code>let @q = '...'</code></p>
+</body>
+</html>

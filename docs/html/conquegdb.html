@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC">
+<ul>
+<li><a href="#conquegdb">ConqueGDB</a><ul>
+<li><a href="#commands">Commands</a></li>
+<li><a href="#gdb-commands">GDB Commands</a></li>
+<li><a href="#keys---cgdb-mode">Keys - CGDB Mode</a></li>
+<li><a href="#keys---file-dialog-mode">Keys - File Dialog Mode</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="conquegdb">ConqueGDB</h1>
+<p>Plugin that allows you to use GDB inside vim</p>
+<p><code>gdb &lt;program path&gt;</code> : Start a GDB session.</p>
+<p><code>gdb --args &lt;program path&gt; &lt;argument 1&gt; [, &lt;argument 2&gt;]</code> : start gdb with a program that contains arguments</p>
+<p>Note: To have an executable with symbols you need to use the option -g on the gcc compile to assure it puts the symbol on the executable. If you are using CMAKE, you can set the following variable environment:</p>
+<p><code>set(CMAKE_BUILD_TYPE Debug)</code></p>
+<h2 id="commands">Commands</h2>
+<p><code>ConqueGDB</code> : Open a new window with the GDB program</p>
+<h2 id="gdb-commands">GDB Commands</h2>
+<p>Note: Pressing <enter> will run the last command.</p>
+<p><code>file &lt;executable&gt;</code> : Load an executable to be used by the GDB</p>
+<p><code>start</code> : Start the loaded application and stop just after the main function</p>
+<p><code>kill</code> : Stop the program execution</p>
+<p><code>list</code> : List the current source code where the debugger is.</p>
+<p><code>step [quantity]</code> : Step into</p>
+<p><code>next [quantity]</code> : Step over</p>
+<p><code>finish</code> : Step out</p>
+<p><code>continue [quantity]</code> : Continue the execution until the next breakpoint.</p>
+<p><code>print &lt;[&amp;]variable&gt;</code> : Print a variable value. Use &amp; to get the variable type and address. Note: You can use <code>.</code> and cast to access inner members and variable names.</p>
+<p><code>p  *(char**)&lt;variable&gt;.storage_.data_.buf</code> : Print a string value of boost variant.</p>
+<p><code>set var &lt;variable&gt; = &lt;value&gt;</code> : Set a value to a variable.</p>
+<p><code>backtrace [&lt;quantity&gt;]</code>: Display the stack trace shortcut <code>bt</code></p>
+<p><code>frame &lt;stack id&gt;</code> : Allow you to go to the frame of the stack in this way you can see the variable values of that frame. Note, you can get the frame id by using backtrace command.</p>
+<p><code>break &lt;line number&gt;</code> : Set a breakpoint on the line.</p>
+<p><code>break &lt;file path&gt;:&lt;line number&gt;</code> : Set a breakpoint on the file / line.</p>
+<p><code>break &lt;function name&gt;</code> : Set a breakpoint on the function (E.g.: <code>break Class::Function(int)</code>)</p>
+<p><code>info Breakpoints</code> : List all breakpoints.</p>
+<p><code>disable &lt;breakpoint number&gt;</code> : Disable the breakpoint. You can get the <code>&lt;breakpoint number&gt;</code> using the <code>info</code> command.</p>
+<p><code>ignore &lt;breakpoint number&gt;&lt;quantity&gt;</code> : Do not stop on the breakpoint an amount of time. You can get the <code>&lt;breakpoint number&gt;</code> using the <code>info</code> command.</p>
+<p><code>save breakpoints &lt;file path&gt;</code> : Save the Breakpoints into a file as a script.</p>
+<p><code>source &lt;file path&gt;</code> : Load a definition script. E.g.: Breakpoints</p>
+<p><code>watch &lt;variable&gt;</code> : Set a watch on the variable. When watching, every time the variable changes, it will stop the execution and display the old and new value.</p>
+<p><code>rwatch &lt;variable&gt;</code> : Set a watch on the variable that will trigger every time the variable is read.</p>
+<p><code>info &lt;command&gt;</code> : Display the current status of the command. E.g.: <code>info watch</code>.</p>
+<p><code>delete &lt;command item id&gt;</code> : Delete a command item (E.g.: breakpoint) that is set. You can get the command item id using the info command.</p>
+<p><code>set logging on</code> : Enable logging.</p>
+<p><code>set logging off</code> : Disable logging.</p>
+<p><code>set logging file file</code> : Change the name of the current logfile. The default logfile is gdb.txt.</p>
+<p><code>set logging overwrite [on|off]</code> : By default, gdb will append to the logfile. Set overwrite if you want set logging on to overwrite the logfile instead.</p>
+<p><code>set logging redirect [on|off]</code> : By default, gdb output will go to both the terminal and the logfile. Set redirect if you want output to go only to the log file.</p>
+<p><code>show logging</code> : Show the current values of the logging settings.</p>
+<h2 id="keys---cgdb-mode">Keys - CGDB Mode</h2>
+<p><code>cgdbmodekey</code> : Puts the user into command mode. However, you are already in this mode. This is defaulted to the ESC key.</p>
+<p><code>i</code> : Puts the user into GDB mode.</p>
+<p><code>gg</code> : Move to the top of file.</p>
+<p><code>G</code> : Move to the bottom of file.</p>
+<p><code>/</code> : search from current cursor position.</p>
+<p><code>?</code> : reverse search from current cursor position.</p>
+<p><code>n</code> : next forward search.</p>
+<p><code>N</code> : next reverse search.</p>
+<p><code>o</code> : open the file dialog.</p>
+<p><code>spacebar</code> : Sets a breakpoint at the current line number.</p>
+<p><code>t</code> : Sets a temporary breakpoint at the current line number.</p>
+<p><code>-</code> : Shrink source window 1 line.</p>
+<p><code>=</code> : Grow source window 1 line.</p>
+<p><code>_</code> : Shrink source window 25% (or, shrink tty window 1 line, if visible).</p>
+<p><code>+</code> : Grow source window 25% (or, grow tty window 1 line, if visible).</p>
+<p><code>Ctrl-l</code> : Clear and redraw the screen.</p>
+<p><code>F5</code> : Send a run command to GDB.</p>
+<p><code>F6</code> : Send a continue command to GDB.</p>
+<p><code>F7</code> : Send a finish (Step out) command to GDB.</p>
+<p><code>F8</code> : Send a next (Step over) command to GDB.</p>
+<p><code>F10</code> : Send a step (Step into) command to GDB.</p>
+<h2 id="keys---file-dialog-mode">Keys - File Dialog Mode</h2>
+<p><code>q</code> : Will exit the file dialog, and return to the source window.</p>
+<p><code>k</code> or <code>up arrow</code> : Move up a line.</p>
+<p><code>l</code> or <code>right arrow</code> : Move right a line.</p>
+<p><code>Ctrl-b</code> or <code>page up</code> : Move up a page.</p>
+<p><code>Ctrl-f</code> or <code>page down</code> : Move down a page.</p>
+<p><code>/</code> : search from current cursor position.</p>
+<p><code>?</code> : reverse search from current cursor position.</p>
+<p><code>n</code> : next forward search.</p>
+<p><code>N</code> : next reverse search.</p>
+<p><code>enter</code> : Select the current file.</p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC">
+<ul>
+<li><a href="#cmake-commands">CMAKE Commands</a><ul>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#tips">Tips</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="cmake-commands">CMAKE Commands</h1>
+<h2 id="functions">Functions</h2>
+<p><code>set(&lt;variable name&gt; &lt;default value&gt; CACHE &lt;Type&gt; &lt;help description&gt;)</code> : Allow set a variable with input option.</p>
+<pre><code>The variable declared can be passed trough command prompt or ccmake or cmake-gui. 
+
+  E.g: `SET(FAB &quot;po&quot; CACHE STRING &quot;Some user-specified option&quot;)`. 
+
+Note:You can pass the variable type when calling the CMake executale using: 
+
+  `-D&lt;variable name&gt;:STRING=&lt;variable value&gt;` 
+
+    E.g.: `-DFAB:STRING=po`</code></pre>
+<p><code>file(MAKE_DIRECTORY &lt;directory&gt;)</code> : Create directory</p>
+<p><code>file(COPY &quot;&lt;source directory or file&gt;&quot; DESTINATION &quot;&lt;destination directory&gt;&quot;)</code> : Copy file or directory</p>
+<p><code>add_subdirectory(&lt;source_dir&gt; [&lt;binary_dir&gt;] [EXCLUDE_FROM_ALL])</code> : Add a subdirectory to the build.</p>
+<p><code>include_directories([AFTER|BEFORE] [SYSTEM] &lt;directory1&gt; [&lt;directory2&gt; ...])</code> : Add include directories</p>
+<p><code>include(&lt;file|module&gt; [OPTIONAL] [RESULT_VARIABLE &lt;VAR&gt;] [NO_POLICY_SCOPE])</code> : Include another make file. IMPORTANT: The code will run on the scope of the file that included it (Original file), as if the file was copied inside the original file. As consequence, all relative paths will be relative to the original file.</p>
+<h2 id="variables">Variables</h2>
+<p><code>CMAKE_TOOLCHAIN_FILE=&lt;toolchain path&gt;</code> : Inform the toolchain file path</p>
+<h2 id="tips">Tips</h2>
+<p><code>make -C &lt;directory&gt;</code> : Execute the make file from a specific directory.</p>
+<p><code>make help</code> : Display CMAKE project creation help that informs the type of compilations that can be done</p>
+</body>
+</html>

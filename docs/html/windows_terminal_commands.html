@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC">
+<ul>
+<li><a href="#windows-terminal-commands">Windows Terminal Commands</a><ul>
+<li><a href="#powershell-only-commands">Powershell only commands</a></li>
+<li><a href="#visual-studio-commands">Visual Studio Commands</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="windows-terminal-commands">Windows Terminal Commands</h1>
+<p><code>&lt;command&gt; &gt; &quot;&lt;file directory&gt;\Log_%date:~10,4%_%date:~4,2%_%date:~7,2%__%time:~0,2%_%time:~3,2%_%time:~6,2%.txt&quot;</code> : Send the output to a Log files that will have the name <code>Log_YYYY_MM_DD__HH_MM_SS.txt</code></p>
+<p><code>net use &lt;driveletter&gt;: \\&lt;server&gt;\&lt;sharename&gt; /USER:&lt;domain&gt;\&lt;username&gt; &lt;password&gt; /PERSISTENT:YES</code> : Allow to map a windows network using the credentials needed.</p>
+<p><code>runas /user:&lt;user&gt; &lt;command&gt;</code> : Run as specific command on windows using a specific user.</p>
+<p><code>net use \\&lt;server name&gt; /u:&lt;user domain&gt;\&lt;username&gt;</code> : Force to connect to a network shared folder using an specific user.</p>
+<p><code>setx &lt;environment variable&gt; &lt;value&gt;</code> : Set an environment variable in the registry so it can be available to all programs. E.g.: <code>setx HTTPS_PROXY http://gateway.zscaler.net:9480</code></p>
+<p><code>echo %&lt;environment variable&gt;%</code> : Read an environment variable</p>
+<h2 id="powershell-only-commands">Powershell only commands</h2>
+<p><code>Invoke-RestMethod -Uri &lt;url&gt; | &lt;answer manipulation&gt;</code> : Send a rest command and manipulate the answer. E.g.: <code>Invoke-RestMethod -Uri https://blogs.msdn.microsoft.com/powershell/feed/ | Format-Table -Property Title, PubDate</code></p>
+<h2 id="visual-studio-commands">Visual Studio Commands</h2>
+<p><code>lib /list &lt;lib file name&gt;</code> : Verify if a library was compiled statically or if is an import library that depends on an <code>.dll</code>. If the library is a statically linked library it will show the <code>.obj</code> files inside it. Otherwise will show you the <code>.dll</code> it is linking with.</p>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC">
+<ul>
+<li><a href="#linux-terminal-commands">Linux Terminal Commands</a><ul>
+<li><a href="#user">User</a></li>
+<li><a href="#directories-and-files">Directories and Files</a></li>
+<li><a href="#programs-and-os">Programs and OS</a></li>
+<li><a href="#system">System</a></li>
+<li><a href="#network">Network</a><ul>
+<li><a href="#set-a-static-ip">Set a static IP</a></li>
+</ul></li>
+<li><a href="#bash-files">Bash Files</a><ul>
+<li><a href="#conditional-statements">Conditional Statements</a></li>
+<li><a href="#looping">Looping</a></li>
+<li><a href="#function-declaration-and-usage">Function declaration and usage</a></li>
+</ul></li>
+<li><a href="#file-system">File System</a></li>
+<li><a href="#enviroment-variable">Enviroment Variable</a><ul>
+<li><a href="#additional-commands-not-available-on-all-platforms">Additional commands (Not available on all platforms)</a></li>
+</ul></li>
+<li><a href="#web-proxy">Web Proxy</a></li>
+<li><a href="#partition">Partition</a></li>
+<li><a href="#cron">Cron</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="linux-terminal-commands">Linux Terminal Commands</h1>
+<h2 id="user">User</h2>
+<p><code>sudo</code> : Run elevated</p>
+<p><code>su -</code> : Become root (Super User)</p>
+<p><code>su &lt;username&gt;</code> : ls</p>
+<p><code>adduser &lt;username&gt;</code> : Add an user</p>
+<p><code>usermod -aG &lt;group1&gt;,&lt;group2&gt;,&lt;etc..&gt; &lt;user name&gt;</code> : change the group of the user</p>
+<p><code>usermod -d /home/&lt;new name&gt; -m -g &lt;new name&gt; -l &lt;new name&gt; &lt;old name&gt;</code> : Change the user. This changes the name, the group, the home directory and ownership and group of of that directory to the new ones, along with all the files.</p>
+<p><code>groups</code> : list all groups for the current user</p>
+<p><code>/etc/passwd</code> : File with a list of all users</p>
+<p><code>/etc/group</code> : File with a list of all groups</p>
+<h2 id="directories-and-files">Directories and Files</h2>
+<p><code>pwd</code> : Show the directory you are</p>
+<p><code>ls -all</code> : List all files and directories into the current directory</p>
+<p><code>chmod a+x &lt;filename&gt;</code> : Make a file executable</p>
+<p><code>mkdir [-p] &lt;directory name&gt;</code> : Create directory. If p option is selected, create the directory only if it does not exist.</p>
+<p><code>touch &lt;filename&gt;</code> : create a file</p>
+<p><code>rm &lt;filename&gt;</code> : remove a file</p>
+<p><code>rm !(&lt;filename&gt;)</code> : Remove all files but this one.</p>
+<p><code>mkdir -p &lt;directory name&gt;</code> : Create directory if it does not exits</p>
+<p><code>rmdir &lt;directory&gt;</code> : remove directory</p>
+<p><code>rm -rf &lt;directory&gt;</code> : remove all directory and files recursively.</p>
+<p><code>cp &lt;source&gt; &lt;destination&gt;</code> : Copy command</p>
+<p><code>ln -s &lt;path to be linked&gt; &lt;path where the link file will be created&gt;</code> : Create a symbolic link (Shortcut)</p>
+<p><code>pwd -P</code> : Show the physical directory you are</p>
+<p><code>ls -l</code> : List all files and directories into the current directory</p>
+<p><code>mv</code> : Move or rename a file or directory</p>
+<p><code>for f in *; do mv &quot;$f&quot; &quot;$f.tmp&quot;; mv &quot;$f.tmp&quot; &quot;`echo $f | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot;`&quot;; done</code> : Rename all files of a directory to lower case.</p>
+<p><code>for f in *; do mv &quot;$f&quot; &quot;${f%.*}&quot; ; done</code> : Remove the last extension of all files</p>
+<p><code>tree</code> : Display the tree of directories and sub directories</p>
+<p><code>wget [-O &lt;destination path&gt;] &lt;http or ftp url&gt;</code> : Get a file from the Internet to the destination path</p>
+<p><code>wget --mirror &lt;htttp or ftp url&gt;</code> : Mirror an URL</p>
+<p><code>&lt;command&gt; | tee -a &quot;&lt;logfile&gt;&quot;</code> : Saves the input to a file showing it on the stdout. -a informs that the file will be appended Saves the input to a file showing it on the stdout. -a informs that the file will be appended.</p>
+<h2 id="programs-and-os">Programs and OS</h2>
+<dl>
+<dt><code>info &lt;command name&gt;</code></dt>
+<dd>List the information of a specific command. If you do not mention the <command name> it will list the command available.
+</dd>
+</dl>
+<p><code>which &lt;program&gt;</code> : Inform where a program is located.</p>
+<p><code>ldd &lt;program name&gt;</code> : Print the shared objects dependencies. Show the list of shared libraries a program depend.</p>
+<p><code>[[shutdown]] -r now</code> : Restart the device</p>
+<p><code>which &lt;program&gt;</code> : Inform where a program is located.</p>
+<p><code>uname -a</code> : Get the OS version</p>
+<p><code>top</code> : Process monitor</p>
+<p><code>top -p $(pgrep -d',' &lt;proccess name&gt;)</code> : Monitor a specific process. Note: You do not need to enter all name. If the string name does not match any process the following error message will be displayed: <em>top: -p requires argument</em></p>
+<p><code>top -H &lt;pid&gt;</code>: Monitor an specific process</p>
+<p><code>pidof &lt;process name&gt;</code> : Returns the PID of a process</p>
+<p><code>kill [-KILL] &lt;process id&gt;</code> : Kill a proccess. The <code>-KILL</code> parameter forces the proccess to be killed. You can get the process id using the <code>top</code> command</p>
+<p><code>&lt;program name&gt; --version</code> : Get the version of a program</p>
+<p><code>whereis &lt;program&gt;</code> : find where is the location of a specific program</p>
+<p><code>lsof</code> : List all open files and its process (You need to run as super user). E.g.: lsof &gt;Result.txt</p>
+<p><code>ps -aux</code> : List of all running process</p>
+<p><code>vmstat</code> : Virtual Memory Statistics</p>
+<p><code>compgen -c</code> : List all the commands you could run.</p>
+<p><code>compgen -a</code> : List all the aliases you could run.</p>
+<p><code>compgen -b</code> : List all the built-ins you could run.</p>
+<p><code>compgen -k</code> : List all the keywords you could run.</p>
+<p><code>compgen -A</code> : List all the functions you could run.</p>
+<p><code>compgen -A</code> : function -abck will list all the above in one go.</p>
+<p><code>apt-get install &lt;package name&gt;</code> : Install a package (For Debian: E.g.: Ubuntu)</p>
+<p><code>apt-get --purge remove &lt;package name&gt;</code> : Install a package (For Debian: E.g.: Ubuntu)</p>
+<p><code>Yum install &lt;package name&gt;</code> : Install a package (For RPM: E.g.: Fedora)</p>
+<p><code>tce</code> : Allow to install applications into a Tiny Core Linux</p>
+<p><code>free</code> : Display the amount of free and used system memory (Default: Kilobytes).</p>
+<p><code>watch &lt;program to execute&gt;</code> : Execute a program every period of time (Default: 2 seconds)</p>
+<p><code>sudo service &lt;service name&gt; restart</code> : Restart a Server</p>
+<p><code>cat &gt; &lt;file name&gt;</code> : Create a file and allow you to edit it. Careful! If you do it into an existing file, its content will be deleted.</p>
+<p><code>find &lt;directory to start&gt; -name &quot;&lt;file to find&gt;&quot;</code> : Find file in all sub directories</p>
+<p><code>find . -iname &quot;*.&lt;extension&gt;&quot; -type f</code> : Find extension on all sub-directories ( E.g.: <code>find . -iname &quot;*.dll&quot; -type f</code> )</p>
+<p><code>find &lt;directory to start&gt;</code> : Find all files on that directory displaying the full path.</p>
+<p><code>find &lt;directory&gt; -maxdepth 1 -name &quot;&lt;expression&gt;&quot;</code> : Find the file into the directory without looking on the sub directories. E.g.: <code>find ../bin/Studio/Debug/ -maxdepth 1 -name &quot;boost_*.dll&quot;</code></p>
+<p><code>find &lt;start_directory&gt; -iname &quot;&lt;old_name&gt;*&quot; | sed -e 'p;s/&lt;old_name&gt;/&lt;new_name&gt;/' | xargs -n2 mv</code> : Rename all files that match an expression recursively</p>
+<p><code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e &quot;&lt;text to find&gt;&quot;</code> : Find a text into files (Case Sensitive)</p>
+<p><code>grep --include=\*.{cpp,h} -rnwi &lt;source directory&gt; -e &quot;&lt;text to find&gt;&quot;</code> : Find a text into files (Case Insensitive)</p>
+<p><code>grep -rl &lt;text_to_find_inside_file&gt; &lt;start_dirrectory&gt; | xargs sed -i 's/&lt;text_to_be_replaced&gt;/&lt;new_text&gt;/g'</code> : Find files with a specific text and replace its content</p>
+<p><code>nm &lt;library name&gt;</code> : List symbols in libraries</p>
+<p><code>nm &lt;library name&gt; | grep -i &quot;&lt;function name&gt;&quot;</code> : Locate if a function is exported from a library</p>
+<p><code>encfs &lt;encrypted folder content&gt; &lt;mounted folder&gt;</code> : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)</p>
+<p><code>fusermount -u &lt;mounted folder&gt;</code> : unmount folder.</p>
+<p><code>tar xjf &lt;file path&gt;</code> : Uncompress tar files (E.g.: *.tar.bz2)</p>
+<p><code>gzip &lt;file path&gt;</code> : Compress using gzip</p>
+<p><code>rsync -u -v -e ssh &lt;source directory&gt;/* &lt;user&gt;@&lt;remote computer (IP)&gt;:&lt;target directory&gt;</code> : Sync all files from the source directory to the target directory.</p>
+<p><code>nmap -p &lt;port range&gt; &lt;url o ip&gt;</code> : Verify if a range of port is open. E.g.: <code>nmap -p 1-1000 portquiz.net</code></p>
+<p><code>telnet &lt;url or ip&gt; &lt;port&gt;</code> : Verify if a port is open.</p>
+<p><code>tar -cz &lt;directory to backup&gt; | gpg -c -o ./backup.tgz.gpg</code> : Execute an encrypted compressed backup. E.g.: <code>tar -cz ./safe00/ | gpg -c -o ./backup.tgz.gpg</code></p>
+<p><code>gpg -d ./backup.tgz.gpg | tar xz</code> : Uncompress the encrypted backup into the current directory.</p>
+<p><code>uuidgen</code> : Create a GUID</p>
+<h2 id="system">System</h2>
+<p><code>dmesg</code> : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.</p>
+<h2 id="network">Network</h2>
+<p><code>sudo dhclient -v [-r]</code> : Visualize DHCP configuration. If you use the <code>-r</code> option, it will release the current IP address.</p>
+<p><code>wget -qO- portquiz.net:&lt;Port&gt;</code> : Check if a port is open. The portquiz website answer calls for all available ports.</p>
+<p><code>python -m SimpleHTTPServer &lt;port number&gt;</code> : Quick test server using python (localhost:8000)</p>
+<h3 id="set-a-static-ip">Set a static IP</h3>
+<p>The file <code>/etc/network/interfaces</code> controls the startup network configuration. To config a static IP you can use the following configuration:</p>
+<pre><code>
+auto lo
+iface lo inet loopback
+
+#Static IP description
+# IPv4 address
+iface eth0 inet static
+  address 192.168.0.100
+  netmask 255.255.255.0 
+  network 192.168.0.0 
+  broadcast 192.168.0.255
+  gateway 192.168.0.1
+</code></pre>
+<h2 id="bash-files">Bash Files</h2>
+<p><code>#!/bin/bash</code> : Inform what interpreter should run the bash</p>
+<p><code>cd &quot;$(dirname &quot;$0&quot;)</code> : Set bash to the current directory</p>
+<p><code>read -p &quot;Press [Enter] key to continue&quot;</code> : Pause command</p>
+<p><code>&lt;variable&gt;=&quot;$(readlink -f &quot;&lt;relative path&quot;)&quot;</code> : Convert relative path to full path.</p>
+<p><code>apt-cache show &lt;program&gt;</code> : Show the version of a program</p>
+<p><code>scp [-r] &lt;source file path&gt; &lt;username&gt;@&lt;destination device (ip)&gt;:&lt;destination path&gt;</code> : To copy a file from source to destination while logged into source device. Use -r to copy the folder.</p>
+<p><code>scp [-r] &lt;username&gt;@&lt;source device (ip)&gt;:&lt;source path&gt; &lt;destination file path&gt;</code> : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.</p>
+<h3 id="conditional-statements">Conditional Statements</h3>
+<pre><code>
+if [ -d &quot;${directory}&quot;  ]; then
+  # Control will enter here if $DIRECTORY exists.
+fi
+  
+if [ ! -d &quot;${directory}&quot;  ]; then
+  # Control will enter here if ${directory} does not exists.
+fi
+</code></pre>
+<h3 id="looping">Looping</h3>
+<pre><code>
+for &lt;item&gt; in &quot;${&lt;array&gt;[@]}&quot;; do
+  echo &quot;${&lt;item&gt;}&quot;
+done
+</code></pre>
+<h3 id="function-declaration-and-usage">Function declaration and usage</h3>
+<pre><code>
+function_name () {
+  echo &quot;arg1 = $1&quot;
+  echo &quot;arg2 = $2&quot;
+}
+
+function_name $arg1 $arg2
+</code></pre>
+<h2 id="file-system">File System</h2>
+<p><code>/opt</code> : Directory used for the installation of add-on application software packages</p>
+<p><code>/usr/local</code> : Directory used for the installation software locally.</p>
+<p><code>sshfs -o idmap=user &lt;username&gt;@&lt;remote machine IP&gt;:&lt;remote directory&gt; &lt;local directory&gt;</code> : Mount a remote machine directory on the local machine. TODO: This command works however I need to add the fuse configuration part of it, otherwise we will get the user denied access.</p>
+<h2 id="enviroment-variable">Enviroment Variable</h2>
+<p><code>printenv</code> : Shows the environment variables</p>
+<p>To add the environment variable for your user, add it to the <code>~/.bashrc</code> file the following command: <code>export &lt;Variable Name&gt;=&lt;Variable Value&gt;</code></p>
+<p>To add the environment variable for all users, add it to the <code>/etc/environment</code> file the following command: <code>&lt;Variable Name&gt;=&lt;Variable Value&gt;</code></p>
+<p><em>Note:</em> You might need to add the environment variable to all users in case you want applications like <code>apt-get</code> to use the environment variable.</p>
+<p>To reload the command configuration and have the variable set without have to close the shell runn the following command: <code>source ~./baschrc</code></p>
+<h3 id="additional-commands-not-available-on-all-platforms">Additional commands (Not available on all platforms)</h3>
+<p><code>getenv &lt;environment variable&gt;</code> : Shows the environment variable value.</p>
+<p><code>setenv &lt;environment variable&gt; &lt;value</code> : Set the environment variable a value.</p>
+<h2 id="web-proxy">Web Proxy</h2>
+<p>To give access to your command terminal access the Internet via an Web Proxy, you can set the following environment variables <code>http_proxy, https_proxy, ftp_proxy, socks_proxy or all_proxy</code> with the the following values: <code>http://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;</code>.</p>
+<p>E.g.: <code>http_proxy=&quot;http://my_user:my_password@host_ip:443&quot;</code></p>
+<p><em>Note:</em> Your password and user might not be needed.</p>
+<p><em>Note:</em> If your password has special characters as for example '@', you can replace is with the items of the following table:</p>
+<p>| Character | Replacement | |-----------|-------------| | @ | %40 | | : | %3A | | ! | %21 | | # | %23 | | $ | %24 |</p>
+<p>To add ips that should not use proxy and go direct to the destination you can add the exceptions into the <code>no_proxy</code> variable, as for example:</p>
+<p><code>export no_proxy=&quot;127.0.0.1&quot;</code> : To ignore the current computer</p>
+<p>## TFS ##</p>
+<p><code>tf -login:&lt;user name&gt;,&lt;password&gt; -collection:&lt;collection uri&gt; get &lt;folder/file to get&gt; [-recursive]</code> : Get a file or folder from TFS using the Team Foundation Server Client for Linux. For details see https://msdn.microsoft.com/en-us/library/hh873092(v=vs.120).aspx</p>
+<p>## I/Os ##</p>
+<p><code>/dev/</code> : Location of all devices available in the device. You can use the <code>ls</code> command to list them.</p>
+<p><code>udevadm -n &lt;/dev/&lt;device name&gt;</code> : Provide all the information about a device. E.g.: Name, Bus, Vendor ID, Path ID, etc. Thins information can be used to configure the device. E.g.: Allow it to always receive the same name.</p>
+<p><code>/lib/udev/rules.d/</code> : Map rules script location. Those scripts are responsible to define the how the periphericals will be mapped on the Linux filesystem. See <em>udev script examples</em>.</p>
+<p>### USB ###</p>
+<p><code>lsusb</code> : List the USB devices displaying its IDs. <em><Maker ID>:<Device ID></em></p>
+<p>#### udev script examples ####</p>
+<p>Map an USB port based on the Path ID. This example always map a raspberry pi port position to a fixed link</p>
+<p><code>SUBSYSTEMS##&quot;usb&quot;, ENV{ID_PATH}##&quot;platform-3f980000.usb-usb-0:1.2:1.0&quot;, SYMLINK+=&quot;piusb2&quot;</code></p>
+<p>Map an USB port based on the Maker ID and Product ID</p>
+<p><code>SUBSYSTEM##&quot;tty&quot;, ATTRS{idVendor}##&quot;0403&quot;, ATTRS{idProduct}##&quot;6001&quot;, ATTRS{serial}##&quot;A6008isP&quot;, SYMLINK+=&quot;arduino&quot;</code></p>
+<h2 id="partition">Partition</h2>
+<p><code>lsblk</code> : List the physical disk (Device mapping) and the logic partition associated to it if it was formatted.</p>
+<p><code>lshw -C disk</code> : View detected devices of class &quot;DISK&quot;</p>
+<p><code>blkid</code> : List the location of the logic partition.</p>
+<p><code>fdisk -l</code> : View existing partition tables</p>
+<p><code>fdisk /dev/&lt;device name&gt;</code>: Create partition for the device. E.g.:<code>fdisk sdb</code>. You will need to follow the command inside fdisk. Note: If you create an extended partition, you need to create a Linux partition as well. They can occupy the same blocks.</p>
+<p><code>mkfs -t ext4 /dev/&lt;linux partition&gt;</code> : Format the new partition's filesystem as type ext4. E.g.: <code>mkfs -t ext4 /dev/sdb5</code></p>
+<p><code>mkfs.ext4 /dev/&lt;partition name&gt;</code> : Format a physical disk.</p>
+<p><code>mount &lt;device or network share&gt; &lt;local folder&gt;</code> : Mount a device or shared folder into a local folder.</p>
+<p><code>umount &lt;local folder&gt;</code> : Mount a device or shared folder into a local folder.</p>
+<p><code>mountpoint &lt;directory&gt;</code> : Inform if the directory is mounted (mountpoint) or not</p>
+<p><code>df -P -T &lt;directory&gt; | tail -n +2 | awk '{print $2}'</code> : Return the mount type of a directory (E.g.: cifs, ext4, etc)</p>
+<p><code>df -P -T &lt;directory&gt; | tail -n +2 | awk '{print $1}'</code>: Return the device or the network path from were a folder was mounted from. (E.g.: /dev/sda1, //MyServer/myfolder)</p>
+<p><code>/etc/mtab</code>: Lists currently mounted file systems and is used by the mount and unmount commands when you want to list your mounts or unmount all.</p>
+<p><code>/etc/fstab</code>: Configuration file that contains information of all the partitions and storage devices in your computer. <code>Important Note: Be careful with this file because if it is configured wrongly you system will not boot anymore</code></p>
+<h2 id="cron">Cron</h2>
+<p><code>/etc/cron.hourly</code> : Directory that contains scrips that runs hourly.</p>
+<p><code>/etc/cron.daily</code> : Directory that contains scrips that runs dialy.</p>
+<p><code>/etc/cron.weekly</code> : Directory that contains scrips that runs weekly.</p>
+<p><code>/etc/cron.monthly</code> : Directory that contains scrips that runs monthly.</p>
+<p><code>etc/crontab</code> : Main configuration cron file.</p>
+</body>
+</html>
