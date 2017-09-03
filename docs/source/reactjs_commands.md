@@ -7,3 +7,5 @@
 `npm start` : From the created application directory will run the development server.
 
 `npm run build` : Build the application for release.
+
+`npm install <package_name> --save` : Install a package updating the package.json
