@@ -1,0 +1,119 @@
+# Roger Wiki Index #
+
+## Windows ##
+
+- [[Windows Terminal Commands]]
+- [[Babun]]
+- [[Windows Store]]
+- [[WSL]]
+
+## Linux ##
+
+- [[Linux Terminal Commands]] 
+- [[Raspberry Pi]]
+- [[curl]]
+- [[Linux Kernel]]
+
+## Vim ##
+
+- [[Vim Commands]] 
+- [[Vim Custom Keys]]
+- Vim Plugins 
+  - [[VimWiki]] 
+  - [[Surround]]
+  - [[Syntastic]]
+  - [[Fugitive]]
+  - [[Doxigen]]
+  - [[NeoSnippet]]
+  - [[Pandoc]]
+	- [[Marvim]]
+
+## Source Control ##
+
+- [[Git Commands]]
+- [[Git TFS]]
+- [[TFS Online]]
+
+## TMUX ##
+
+- [[TMUX commands]] 
+- TMUX Plugins
+  - [[Tmux Plugin Manager]] 
+
+## Docker ##
+
+- [[Docker Commands]]
+
+## Infinit ##
+
+- [[Infinit Commands]]
+
+## CMake ##
+
+-  [[CMake Commands]] 
+-  [[CMake Codding Style]]
+-  [[CMake Toolchains]]
+-  [[CrossTool-ng]]
+
+## CTags ##
+
+- [[Ctags Commands]]
+
+## Boost ##
+
+- [[Boost Tips and Tricks]]
+
+## Google Test ##
+
+- [[Gtest Commands]]
+
+## ReactJS ##
+
+- [[ReactJS Commands]]
+
+## NodeJS ##
+
+- [[NodeJS Commands]]
+
+## Virtual Box ##
+
+- [[Virtual Box Commands]]
+
+## Debug Tools ##
+
+- [[ConqueGDB]]
+- [[Intel Inspector]]
+- [[Valgrind]]
+
+## Database ##
+
+- [[OLE DB]]
+
+## .Net ##
+
+- [[GAC]]
+- [[.Net Versions]]
+
+## Virtualization ##
+
+- [[VirtualBox]]
+
+## Windows CE (Compact Embedded) ##
+
+- [[Windows CE Development Tools]]
+
+## Security Development Lifecycle (SDL) ##
+
+- [[BinScope]] 
+- [[GPG]]
+- [[MOSS]]
+
+## Network ##
+
+- [[LDAP]]
+
+## Patterns ##
+
+
+- [[Cpp]]
+
