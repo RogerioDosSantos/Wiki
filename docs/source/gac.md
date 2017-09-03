@@ -2,9 +2,9 @@
 
 `gacutil` : Global Assembly Caching Tool
 
-`C:\Windows\assembly` : Locaction of the GAC Pre .Net 4.0
+`C:\Windows\assembly` : Location of the GAC Pre .Net 4.0
 
-`C:\Windows\Microsoft.NET\assembly` : Location of the GAC Pos .Net 4.0
+`C:\Windows\Microsoft.NET\assembly` : Location of the GAC pos .Net 4.0
 
 `C:\Program Files\Microsoft SDKs\Windows\v6.0A\Bin` : Folder where is located the `gacutil` software.
 

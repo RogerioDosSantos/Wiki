@@ -102,7 +102,7 @@
 
 - [Windows CE Development Tools]( ./windows_ce_development_tools.html )
 
-## Security Development Lifecycle (SDL) ##
+## Security Development Life cycle (SDL) ##
 
 - [BinScope]( ./binscope.html )
 - [GPG]( ./gpg.html )
