@@ -7,7 +7,9 @@
     "react-desktop": "^0.3.1",
     "react-document-meta": "^2.1.2",
     "react-dom": "^15.6.1",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.72.0"
   },
   "devDependencies": {},
   "scripts": {
