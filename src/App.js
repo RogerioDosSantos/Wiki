@@ -1,30 +1,30 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {
+    Component
+} from 'react';
 
-import InputWithSend from './react_compponents/input_with_send/input_with_send.js';
+import DocumentMeta from 'react-document-meta';
 
-class App extends Component
-{
-    render()
-    {
-    return (
-      <div className="App">
+class App extends Component {
+    render() {
 
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
+        const meta = {
+            title: "Roger's Wiki",
+            description: 'Roger Wiki page with several notes about Programming in C++, JavaScript and OS information as Windows, Linux, Windows CE, etc.',
+            canonical: 'http://rogeriodossantos.github.io/Wiki',
+            meta: {
+                charset: 'utf-8',
+                name: {
+                    keywords: 'wiki,windows,linux,c++,reactjs'
+                }
+            }
+        };
 
-        <div className="App-body">
-
-          <InputWithSend title="Title" buttonCaption="Request"/>
-
-        </div>
-
-      </div>
-    );
-  }
+        return (
+            <div>
+              <DocumentMeta {...meta} />
+            </div>
+        );
+    }
 }
 
 export default App;
