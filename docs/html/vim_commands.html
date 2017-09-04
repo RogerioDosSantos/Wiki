@@ -23,6 +23,7 @@
 <li><a href="#others---normal-mode">Others - Normal Mode</a></li>
 <li><a href="#keys---edition-mode">Keys - Edition Mode</a></li>
 <li><a href="#keys-visual-mode">Keys Visual Mode</a></li>
+<li><a href="#navigation---visual-mode">Navigation - Visual Mode</a></li>
 <li><a href="#keys-any-mode">Keys Any mode</a></li>
 <li><a href="#commands">Commands</a></li>
 <li><a href="#explore-keys-and-commands">Explore Keys and Commands</a></li>
@@ -63,6 +64,7 @@
 <p><code>[[</code>: Sections backward or to the previous '{' in the first column.</p>
 <p><code>]]</code>: Sections forward or to the next '{' in the first column.</p>
 <p><code>[]</code>: Sections backward or to the previous '}' in the first column.</p>
+<p><code>%</code>: Jump to the next tag</p>
 <p><code>c&lt;selection&gt;</code> : Delete the selection where the cursor is and go to insert mode</p>
 <p><code>&lt;selection&gt; ~</code> : Toggle the case</p>
 <p><code>&lt;selection&gt; u</code> : Lower case</p>
@@ -147,6 +149,9 @@
 <p><code>gf</code>: Create a folder from the selection</p>
 <p><code>//</code> : Search the selected text (Custom map)</p>
 <p><code>*</code> : Select until the next word. Execute command in multiple lines.</p>
+<h2 id="navigation---visual-mode">Navigation - Visual Mode</h2>
+<p><code>at</code> : Jump to the next tag (html, xml, etc). Press <code>escape</code> to exit and <code>o</code> to move forward and backward. The selection will include the tag.</p>
+<p><code>it</code> : Jump to the next tag (html, xml, etc). Press <code>escape</code> to exit and <code>o</code> to move forward and backward. The selection will be inside tag.</p>
 <h2 id="keys-any-mode">Keys Any mode</h2>
 <p><code>F2</code> : Toggle Paste Mode (Custom map to set pastetoggle)</p>
 <h2 id="commands">Commands</h2>

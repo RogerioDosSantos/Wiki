@@ -59,6 +59,8 @@
 
 `[]`: Sections backward or to the previous '}' in the first column.
 
+`%`:  Jump to the next tag
+
 `c<selection>` : Delete the selection where the cursor is and go to insert mode
 
 `<selection> ~` : Toggle the case
@@ -227,6 +229,12 @@
 `//` : Search the selected text (Custom map)
 
 `*` : Select until the next word. Execute command in multiple lines.
+
+## Navigation - Visual Mode ##
+
+`at` : Jump to the next tag (html, xml, etc). Press `escape` to exit and `o` to move forward and backward. The selection will include the tag.
+
+`it` : Jump to the next tag (html, xml, etc). Press `escape` to exit and `o` to move forward and backward. The selection will be inside tag.
 
 ## Keys Any mode ##
 

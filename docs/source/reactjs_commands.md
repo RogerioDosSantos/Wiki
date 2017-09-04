@@ -9,3 +9,5 @@
 `npm run build` : Build the application for release.
 
 `npm install <package_name> --save` : Install a package updating the package.json
+
+`{/* Comment */}` : Add a comment on the jsx
