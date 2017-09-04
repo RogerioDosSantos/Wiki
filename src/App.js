@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import InputWithSend from './react_compponents/input_with_send.js';
+import InputWithSend from './react_compponents/input_with_send/input_with_send.js';
 
 class App extends Component
 {
@@ -12,14 +12,13 @@ class App extends Component
       <div className="App">
 
         <div className="App-header">
-          <img src={
-            logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
 
         <div className="App-body">
 
-          <InputWithSend />
+          <InputWithSend title="Title" buttonCaption="Request"/>
 
         </div>
 
