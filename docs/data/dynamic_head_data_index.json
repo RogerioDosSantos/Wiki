@@ -1,0 +1,11 @@
+{
+   "title":"Roger's Wiki",
+   "description":"Roger's Wiki page",
+   "canonical":"http://rogeriodossantos.github.io/Wiki",
+   "meta":{
+      "charset":"utf-8",
+      "name":{
+         "keywords":"wiki,windows,linux,c++,reactjs"
+      }
+   }
+}

@@ -4,31 +4,61 @@ import React, {
 
 import DocumentMeta from 'react-document-meta';
 
+import Log from '../log/log.js'
+
+import configData from './config.json'
+
 class DynamicHead extends Component {
 
     constructor() {
         super();
+
+        this.setConfig = this.setConfig.bind(this);
+
         this.state = {
-            headData: {
-                title: "Roger's Wiki",
-                description: 'Roger Wiki page with several notes about Programming in C++, JavaScript and OS information as Windows, Linux, Windows CE, etc.',
-                canonical: 'http://rogeriodossantos.github.io/Wiki',
-                meta: {
-                    charset: 'utf-8',
-                    name: {
-                        keywords: 'wiki,windows,linux,c++,reactjs'
-                    }
-                }
-            }
+            configUrl: null,
+            configData: configData
         };
     };
 
+    callServer(url) {
+        return fetch(url).then((promisse) => {
+            return promisse.json();
+        });
+    }
+
+    setConfig(url) {
+        if (this.state.configUrl === this.props.configUrl)
+            return;
+
+        Log.log('DynamicHead - setConfig - Requested Url: ' + url, 'info', 5);
+        this.callServer(url)
+            .then((response) => {
+                this.setState({
+                    configUrl: url,
+                    configData: response
+                });
+
+                Log.log('DynamicHead - setConfig: Config:' + JSON.stringify(this.state.configData), 'info', 5);
+            })
+            .catch((error) => {
+                this.setState({
+                    configUrl: url
+                });
+
+                Log.log('DynamicHead - setConfig - Fail to get configuration. Url: ' + url + ' ; Error: ' + error, 'error', 1);
+            });
+    }
+
     render() {
+        this.setConfig(this.props.configUrl);
+
         return (
             <div>
-                <DocumentMeta {...this.state.headData} />
-            </div>
-					)};
+								<DocumentMeta {...this.state.configData} />
+						</div>
+        )
+    };
 }
 
 export default DynamicHead;

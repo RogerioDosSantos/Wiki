@@ -64,7 +64,6 @@ class SmartMenu extends Component {
         </Container>
     );
 
-    
     render() {
         return (
         <Visibility onBottomPassed={this.showFixedMenu} onBottomVisible={this.hideFixedMenu}
@@ -73,8 +72,7 @@ class SmartMenu extends Component {
               <Segment inverted textAlign='center' style={{ minHeight: 80, padding: '1em 0em'
                   }} vertical>
 
-                  { this.state.showFixedMenu ?
-                  <this.FixedMenu /> : null }
+                  { this.state.showFixedMenu ?  <this.FixedMenu /> : null }
 
                   <this.Menu />
 
