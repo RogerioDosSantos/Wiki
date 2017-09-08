@@ -181,6 +181,10 @@
 
 `:cw` : Open list of items on the quickfix. Note: Can be used after grep command.
 
+`:sb` : Split the current buffer
+
+`:sort` : Sort lines alphabetically. If used on Visual mode will sort the selection.
+
 ## Others - Normal Mode ##
 
 `ZZ` : Save and close
@@ -191,8 +195,6 @@
 `m<mark key>` : Mark a position that you are in into the key desired
 
 `\`<mark key>` : Go to the marked position stored on the key
-
-`:sb` : Split the current buffer
 
 `<space>itl` : Insert locale time E.g.: Thu 27 Sep 2007 07:37:42 AM EDT (depends on locale)
 
