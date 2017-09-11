@@ -3,11 +3,24 @@ import React, {
 } from 'react';
 
 import Log from './react_compponents/log/log.js';
-import DynamicHead from './react_compponents/dynamic_head/dynamic_head.jsx';
 import SmartMenu from './react_compponents/semantic_smart_menu/semantic_smart_menu.jsx';
 import Banner from './react_compponents/semantic_banner/semantic_banner.jsx';
-import Announcements from './react_compponents/semantic_announcements/semantic_announcements.jsx';
 import Footer from './react_compponents/semantic_footer/semantic_footer.jsx';
+import Divider from './react_compponents/semantic_divider/semantic_divider.jsx'
+import ImageAnnouncements from './react_compponents/semantic_image_announcements/semantic_image_announcements.jsx'
+
+// import 'semantic-ui-css/semantic.min.css';
+//
+// import {
+//     Container,
+// 		Card,
+//     Image,
+// 		Dimmer,
+// 		Segment,
+//     Header,
+//     Grid
+// } from 'semantic-ui-react';
+
 
 class App extends Component {
 
@@ -20,19 +33,14 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-
-            <DynamicHead configUrl="/data/dynamic_head_data_index.json" />
-
-              <SmartMenu />
-
-              <Banner />
-
-              <Announcements />
-
-              <Footer />
-
-          </div>
+						<div>
+								<SmartMenu />
+								<Banner />
+								<Divider title='Recent Posts' />
+								<ImageAnnouncements />
+								<Divider />
+								<Footer />
+						</div>
         );
     }
 }
