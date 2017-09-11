@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="fugitive">Fugitive</h1>
+<p>Provide integration with Git</p>
+<h2 id="commands">Commands</h2>
+<p><code>:Glog</code> : Load previous revisions on the quickfix</p>
+<p><code>:Ggrep &lt;sentence&gt; [&lt;branch name&gt;] [&lt;tag name or commit id&gt;]</code> : Search for the sentence into the project.</p>
+<p><code>GLog --grep=&lt;keyword&gt; --</code> : Return the check-ins that contains the description mentioned on the keyword.</p>
+<p><code>Glog -S&lt;keyword&gt; --</code> : Looks for all changeset where the keyword was removed.</p>
+<h2 id="personal-key-mappings">Personal Key Mappings</h2>
+<p><code>&lt;leader&gt;gs</code>: Git Status</p>
+<p><code>&lt;leader&gt;gd</code>: Git Diff (Non commit items vs Non added items)</p>
+<p><code>&lt;leader&gt;gdh</code>: Git Diff origin / HEAD (Commit items vs Non Commit items)</p>
+<p><code>&lt;leader&gt;gdm</code>: Git Diff origin / master (Commit items vs Server)</p>
+<p><code>&lt;leader&gt;gc</code>: Git Commit</p>
+<p><code>&lt;leader&gt;gp</code>: Git Push</p>
+<p><code>&lt;leader&gt;gpu</code>: Git Pull</p>
+<p><code>&lt;leader&gt;gb</code>: Git Brame (Verify the history of the file)</p>
+<p><code>&lt;leader&gt;gr</code>: Git checkout <file name> (You can execute undo before saving)</p>
+<p><code>&lt;leader&gt;glo</code>: (:Glog -10) Load the 10 last log of a files into the buffer and display it</p>
+<p><code>&lt;leader&gt;gla</code>: (:Glog) Load the all log of a files into the buffer and display it</p>
+<p><code>&lt;leader&gt;gle</code>: (:Gedit) Return to the current file being edited.</p>
+<h2 id="status-window-keys">Status Window Keys</h2>
+<p><code>-</code> : Add the file.</p>
+<p><code>U</code> : Discard the changes done on the file (Undo). Equivalent to <code>checkout HEAD</code></p>
+<p><code>D</code> : Diff</p>
+<p><code>q</code> : Close Status</p>
+<p><code>r</code> : Reload Status</p>
+<p><code>O</code> : Open the file into a new tab.</p>
+<p><code>o</code> : Open the file into a new split</p>
+</body>
+</html>

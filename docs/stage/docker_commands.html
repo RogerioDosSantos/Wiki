@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="docker-commands">Docker Commands</h1>
+<p><code>docker images</code> : List the available images</p>
+<p><code>docker ps</code> : List the running containers</p>
+<p><code>docker ps -a</code> : List all containers</p>
+<p><code>docker run --name &lt;container name&gt; -it &lt;image name&gt;:&lt;image version&gt;</code> : Start a new container from image. E.g.: <code>docker run --name vim_install -it ubuntu:16.04</code></p>
+<p><code>docker start &lt;container name&gt;</code> : Start a stopped container. E.g.: <code>docker start vim_install</code></p>
+<p><code>docker attach &lt;container name&gt;</code> : Attach to a running container. E.g.: <code>docker attach vim_install</code></p>
+<p><code>docker exec -it &lt;container name&gt; &lt;program to execute&gt;</code> : Execute a program in a running container. E.g.: To execute the command line in a Linux based running container you can use <code>docker exec -it &lt;container name&gt; &lt;program to execute&gt;</code>.</p>
+<p><code>docker rm &lt;container name&gt;</code> : Remove a container</p>
+<p><code>docker rmi &lt;image name&gt;</code> : Remove an image</p>
+<p><code>docker cp &lt;source file&gt; &lt;destination container&gt;:&lt;destination location&gt;</code> : Copy a file from the host computer to the container. E.g.: <code>docker cp ./host/temp/Programs/CppLint/file.txt vim:/root/temp</code></p>
+<p><code>docker cp &lt;destination container&gt;:&lt;destination location&gt; &lt;source file&gt;</code> : Copy a file from the container to host computer. E.g.: <code>docker cp vim:/root/temp/file.txt ./host/temp/Programs/CppLint/</code></p>
+<p><code>docker commit -a &quot;&lt;author&gt;&quot; -m &quot;&lt;message&gt;&quot; &lt;container id&gt; [&lt;dockerhub user&gt;]&lt;image name&gt;:&lt;tag&gt;</code> : Commit a container into an image. E.g.: <code>docker commit -a &quot;Roger Santos&quot; -m &quot;My Comment&quot; ec6cc8c6e490 rogersantos/vim:1.0</code></p>
+<p><code>docker diff &lt;container id&gt;</code> : Shows the difference between the current container and the original image.</p>
+<p><code>docker tag &lt;image id&gt; [&lt;dockerhub user&gt;]/&lt;image name&gt;:&lt;tag&gt;</code>: Tag an image. E.g.: <code>docker tag 5ffd21ba24cf rogersantos/vim:1.0</code></p>
+<p><code>docker push [&lt;dockerhub user&gt;]/&lt;dockerhub repository name&gt;</code> : Pull an image into the DockerHub repository. Note: You need to be logged before pushing an image. E.g.: <code>docker push rogersantos/vim</code></p>
+<p><code>docker login</code> : Log into the DockerHub repository.</p>
+<p><code>docker-compose up [-d]</code> : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The <code>-d</code> option allow to start the container as service, <em>forking</em> the process.</p>
+<p><code>docker-compose stop</code> : Stop all running Docker containers for an application group, issue the following command in the same directory as the <em>docker-compose.yml</em> file used to start the Docker group.</p>
+<p><code>docker-compose kill</code> : Same as <code>docker-compose stop</code> but force the running container to stop.</p>
+<p><code>docker volume ls -qf dangling=true | xargs -r docker volume rm</code> : Remove all volumes that are not being used.</p>
+<p><code>docker volume rm $(docker volume ls -f dangling=true -q)</code> : Remove dangling volumes (Volumes not being used at the moment). Note: if you need sudo use: <code>sudo docker volume rm $(sudo docker volume ls -f dangling=true -q)</code></p>
+<p><code>docker stop $(docker ps -a -q)</code>: Stop all containers.</p>
+<p><code>docker rm $(docker ps -a -q)</code>: Remove all containers.</p>
+<p><code>docker rm $(docker ps -a -f status=exited -q)</code>: Remove all exited containers.</p>
+<p><code>docker rmi $(docker images -a -q)</code>: Remove all images.</p>
+<p><code>docker rmi $(docker images -f dangling=true -q)</code>: Remove dangling images</p>
+<h2 id="start-attach-options">Start / Attach options</h2>
+<p><code>-v &lt;local folder&gt;:&lt;remote folder&gt;</code> : Mount a folder (volume) from the host into the container. Note the container folder should have the full path. E.g.: <code>-v ~/host:/root/host</code>.</p>
+<p><code>--restart=always</code> : Allow the container to always restart</p>
+<h2 id="multi-platform">Multi-Platform</h2>
+<p><code>docker run --rm --privileged multiarch/qemu-user-static:register --reset</code> : Allow you run different platforms using docker. It uses QEMU emulation to do it.</p>
+<h2 id="docker-compose-files">Docker Compose Files</h2>
+<h2 id="docker-machine">Docker Machine</h2>
+<p><code>docker-machine.exe create &lt;machine name&gt; --driver virtualbox --virtualbox-cpu-count &quot;-1&quot; --virtualbox-disk-size &quot;&lt;disk size&gt;&quot; --virtualbox-memory &quot;&lt;memory size&gt;&quot; --virtualbox-boot2docker-url=https://github.com/boot2docker/boot2docker/releases/download/v17.03.1-ce/boot2docker.iso</code> : Add a docker host machine E.g.: <code>docker-machine.exe create machine1 --driver virtualbox --virtualbox-cpu-count &quot;-1&quot; --virtualbox-disk-size &quot;8000&quot; --virtualbox-memory &quot;512&quot; --virtualbox-boot2docker-url=https://github.com/boot2docker/boot2docker/releases/download/v17.03.1-ce/boot2docker.iso</code></p>
+<p><code>docker-machine ssh &lt;machine name&gt;</code> : Execute a ssh into a machine.</p>
+<p><code>docker-machine create -d virtualbox --virtualbox-boot2docker-url https://releases.rancher.com/os/latest/machine-rancheros.iso rancher</code> : Create a machine using rancher image.</p>
+<p><code>docker-machine create --driver generic --generic-ip-address=&lt;vm ip address&gt; --generic-ssh-key &lt;path of the public certificate&gt; &lt;name of the VM that will appear on the docker machine&gt;</code>: Add an existing vm with docker installed on it to the docker machine. (E.g.: <code>docker-machine create --driver generic --generic-ip-address=203.0.113.81 --generic-ssh-key ~/.ssh/id_rsa vm</code>)</p>
+<p><code>docker-machine create -d virtualbox --virtualbox-boot2docker-url https://github.com/RogerioDosSantos/docker/raw/master/docker_machine/boot2docker/32bits/boot2docker.iso &lt;machine name&gt;</code>: create a new 32 bits host machine.</p>
+<p><code>docker-machine create -d virtualbox --virtualbox-boot2docker-url https://github.com/RogerioDosSantos/docker/raw/master/docker_machine/boot2docker/64bits/boot2docker.iso &lt;machine name&gt;</code>: create a new 64 bits host machine.</p>
+</body>
+</html>

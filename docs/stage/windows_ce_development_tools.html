@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="windows-ce-development-tools">Windows CE Development Tools</h1>
+<h2 id="windows-embedded-compact-2013">Windows Embedded Compact 2013</h2>
+<p>Windows Embedded Compact 2013 supports only Compact Framework 3.9.</p>
+<p>Assemblies targeting previous Compact Framework versions should be recompiled even if they still run. If not recompiled, memory allocation problems can arise.</p>
+<p>Compact Framework 3.9 is supported starting with Visual Studio 2012, so, for development, you should use VS2012 or later to be able to install the SDK.</p>
+<p>You must install the Application Builder SDK from the device vendor to do any Compact Framework development.</p>
+<h2 id="windows-ce-6.0-7.0">Windows CE 6.0 / 7.0</h2>
+<p>Windows CE 7.0 supports Compact Framework 3.5 or Compact Framework 2.0 applications.</p>
+<p>Generally the devices are only delivered with Compact Framework 3.5.</p>
+<h2 id="windows-ce-5.0-and-windows-mobile-5.0-6.x">Windows CE 5.0 and Windows Mobile 5.0-6.x</h2>
+<p>Same requirements as Windows CE 7.0 with the addition that those platforms also support Compact Framework 1.0.</p>
+<p>To develop for Compact Framework 1.0, you should use Visual Studio 2005 Standard or Visual Studio 2003 Professional.</p>
+<h2 id="known-issues">Known Issues</h2>
+<h3 id="c1xx-fatal-error-c1023-windows-10">c1xx fatal error c1023 windows 10</h3>
+<p>This message is displayed in some computers when compiling on Windows 10 using Visual Studio 2008. The cause is that Visual Studio 2008 is not able to operate properly when ASLR (address space layout randomization) is enabled. To thisable ASLR you can download EMET (Enhanced Mitigation Experience Toolkit) from <a href="https://www.microsoft.com/en-us/download/details.aspx?id=50766" class="uri">https://www.microsoft.com/en-us/download/details.aspx?id=50766</a>. Once you run the program disable the ASLR option and restart the computer.</p>
+</body>
+</html>

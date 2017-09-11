@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="vimwiki">VimWiki</h1>
+<p>Wiki on VIM</p>
+<h2 id="commands">Commands</h2>
+<p><code>&lt;enter&gt;</code> : Open a new document linked with the word</p>
+<p><code>&lt;backspace&gt;</code> : Return to were it came from</p>
+<p><code>:VWS /&lt;string to search&gt;/</code> : Search a string</p>
+<p><code>:lopen</code> : if you have more than one result you can display the list of result.</p>
+<p><code>:Vimwiki2HTML</code> : Convert the current page to HTML</p>
+<p><code>:VimwikiAll2HTML</code> : Convert the all pages to HTML</p>
+<h2 id="vinwiki-markdown">VinWiki Markdown</h2>
+<p><code>#</code> : Numbered List</p>
+<p><code>-</code> : Bullet List</p>
+<p><code>= Header1 =</code>: Header</p>
+<p><code>== Header2 ==</code>: Header</p>
+<p><code>=== Header3 ===</code>: Header</p>
+<p><code>*bold*</code>: bold text</p>
+<p><code>_italic_</code>: italic text</p>
+<p><code>~~scratch~~</code> : scratch text</p>
+<p><code>,,sub,,</code> : sub text</p>
+<p><code>^upper^</code> : upper text</p>
+<p><code>[[wiki link]]</code>: wiki link</p>
+<p><code>[[wiki link|description]]</code>: wiki link with description</p>
+<p><code>{{&lt;image url&gt;}}</code> : Add an image embedded on the system. E.g.: <code>{{local:../../images/vimwiki_logo.png}}</code> or <code>{{http://vimwiki.googlecode.com/hg/images/vimwiki_logo.png}}</code></p>
+<p><code>|text|text|text|</code>: Table column separator</p>
+<p><code>|---|---|---|</code> : Table Title separator</p>
+<p><code>----</code> : Horizontal Line</p>
+<p><code>term:: definintion</code>: Used to describe definition (Term is bold and definition is separated from term).</p>
+<p><code>:&lt;tag 01&gt;:&lt;tag 02:...:</code> : Define Tags to the document</p>
+<p><code>{{{&lt;code&gt;}}}</code> : Source Code that occupies more than one line.</p>
+<h2 id="keys">Keys</h2>
+<p><code>Enter</code> : Create a Link</p>
+<p><code>Tab / Shift + Tab</code> : Find the next or previous.</p>
+<p><code>\wd</code> : Delete a link (:VimwikiDeleteLink)</p>
+<p><code>\wr</code> : Rename a link (:VimwikiRenameLink)</p>
+<p><code>=</code> : Increase Header level</p>
+<p><code>-</code>: Decrease Header level</p>
+<h2 id="key-bindings---normal-mode">Key bindings - Normal Mode</h2>
+<p><code>&lt;Leader&gt;ww</code>: Open default wiki index file.</p>
+<p><code>&lt;Leader&gt;wt</code>: Open default wiki index file in a new tab.</p>
+<p><code>&lt;Leader&gt;ws</code>: Select and open wiki index file.</p>
+<h2 id="key-bindings---normal-mode-custom">Key bindings - Normal Mode (Custom)</h2>
+<p><code>&lt;Leader&gt;wc</code> : Toggle callendar</p>
+<p><code>&lt;Leader&gt;wl</code> : Generate a diary</p>
+<p><code>&lt;Leader&gt;wp</code> : Publish current file</p>
+<p><code>&lt;Leader&gt;wpa</code> : Publish all files</p>
+</body>
+</html>

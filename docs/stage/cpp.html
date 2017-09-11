@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="cpp-patterns">Cpp Patterns</h1>
+<h2 id="factory-cache">Factory + Cache</h2>
+<pre><code>  
+  shared_ptr&lt;widget&gt; make_widget(int id)
+  {
+    static map&lt;int, weak_ptr&lt;widget&gt; &gt; cache;
+    static mutex mut_cache;
+    lock_guard&lt;mutex&gt; hold(mut_cache);
+    shared_ptr&lt;widget&gt; ret = cache[id].lock();
+    if(!ret)
+      cache[id] = ret = load_widget(id);
+    
+    return ret;
+  }
+</code></pre>
+<h2 id="unicode-to-ansi">Unicode to Ansi</h2>
+<pre><code>
+    std::string ToAnsi(std::wstring unicode)
+  {
+        size_t length = unicode.lenght();
+        std::string ansi(length, &#39; &#39;);
+        for (size_t index = 0; index &lt; len; ++index)
+            ansi[index] = (char)unicode[index];
+      
+    return ansi;
+  } 
+</code></pre>
+</body>
+</html>
