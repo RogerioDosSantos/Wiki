@@ -104,3 +104,7 @@
 `nnoremap <leader>so :set nospell<cr>` : Stop Spell Check
 
 `nnoremap <leader>sa :spellrepall<cr>` : Correct all strings with the previous correction
+
+## Text Objects ##
+
+`f` : Allow to select inside files (E.g.: vif, yif, vaf, yaf etc.)

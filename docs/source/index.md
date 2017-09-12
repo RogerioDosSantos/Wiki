@@ -33,7 +33,7 @@
 - [Git Commands]( ./git_commands.html )
 - [Git TFS]( ./git_tfs.html )
 - [TFS Online]( ./tfs_online.html )
-- [TFS Client]( ./tfs_client.html )
+- [TFS Client](./tfs_client.html )
 
 ## TMUX ##
 
