@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="cmake-toolchains">CMake Toolchains</h1>
+<h2 id="naming-convention">Naming convention</h2>
+<p>Toolchains have a loose name convention like <arch>[-<vendor>][-<os>]-<abi>.</p>
+<p><em><arch></em> is for architecture: arm, mips, x86, i686...</p>
+<p><em><vendor></em> is tool chain supplier: apple,</p>
+<p><em><os></em> is for operating system: linux, none (bare metal)</p>
+<p><em><abi></em> is for application binary interface convention: eabi, gnueabi, gnueabihf. Note: <em>hf</em> means hard float (floating pointers are calculated by hardware).</p>
+<h2 id="toolchain-file">Toolchain File</h2>
+<p>The toolchain file should have the following CMake variables set:</p>
+<h3 id="system-information-and-version">System Information and version</h3>
+<p><code>CMAKE_SYSTEM_NAME</code> : E.g.: Linux</p>
+<p><code>CMAKE_SYSTEM_VERSION</code> : E.g.: 1</p>
+<h3 id="cross-compiler-information">Cross compiler information</h3>
+<p><code>CMAKE_C_COMPILER</code> : E.g.: /opt/arm-bcm2708-linux-gnueabi/bin/arm-bcm2708-linux-gnueabi-gcc</p>
+<p><code>CMAKE_CXX_COMPILER</code> : E.g.: /opt/arm-bcm2708-linux-gnueabi/bin/arm-bcm2708-linux-gnueabi-g++</p>
+<p><code>CMAKE_STRIP</code> : E.g.: /opt/arm-bcm2708-linux-gnueabi/bin/arm-bcm2708-linux-gnueabi-strip</p>
+<h3 id="target-environment">Target environment</h3>
+<p><code>CMAKE_FIND_ROOT_PATH</code> : E.g.: /opt/arm-bcm2708-linux-gnueabi/arm-bcm2708-linux-gnueabi</p>
+<h3 id="search-for-programs-in-the-build-host-directorie">Search for programs in the build host directorie</h3>
+<p><code>CMAKE_FIND_ROOT_PATH_MODE_PROGRAM</code> : E.g.: NEVER</p>
+<h3 id="for-libraries-and-headers-in-the-target-directorie"># for libraries and headers in the target directorie</h3>
+<p><code>CMAKE_FIND_ROOT_PATH_MODE_LIBRARY</code> : E.g.: ONLY</p>
+<p><code>CMAKE_FIND_ROOT_PATH_MODE_INCLUDE</code> : E.g.: ONLY</p>
+</body>
+</html>

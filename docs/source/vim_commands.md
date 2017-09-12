@@ -45,6 +45,10 @@
 
 `ctrl+T` : Jump back from the definition using tags.
 
+`{` : Jump to the first empty line upward direction
+
+`}` : Jump to the first empty line downward direction
+
 `[{` : Jump to beginning of a code block
 
 `]}`: Jump to the end of a code block
@@ -143,6 +147,8 @@
 
 `g]` : Show the list of tags
 
+`ctrl+v` : Go to Visual Block mode
+
 ## Commands - Normal Mode ##
 
 `:0r <file path>` : Read the file and add in your current file
@@ -181,9 +187,14 @@
 
 `:cw` : Open list of items on the quickfix. Note: Can be used after grep command.
 
+<<<<<<< HEAD
 `:sb` : Split the current buffer
 
 `:sort` : Sort lines alphabetically. If used on Visual mode will sort the selection.
+=======
+`let @<buffer>=<command or buffer>.<command or buffer>` : Concatenate buffer and commands. (E.g.: `let
+@r=10.@q.5.@w`)
+>>>>>>> 81d133d2a343dd359b00ef3f56917b3645da40ee
 
 ## Others - Normal Mode ##
 
@@ -223,6 +234,10 @@
 `:marks `: List all marks
 
 `:delmark<key> `: Delete mark
+
+## Commands - Visual Block Mode ##
+
+`:normal @<macro key> <CR>`: Execute a macro on all selection
 
 ## Keys Visual Mode ##
 

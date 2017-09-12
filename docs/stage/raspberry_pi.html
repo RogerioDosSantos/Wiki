@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="raspberry-pi">Raspberry Pi</h1>
+<h2 id="usb-ports">USB ports</h2>
+<p>The Raspberry PI3 has four external USB ports. Numbered as shown below:</p>
+<figure>
+<img src="../resources/raspberry_pi_ports_170216.png" />
+</figure>
+<p>If a USB to serial converter is connected to one of those physical ports, then the respective port is mapped to a Linux serial ports as follows:</p>
+<p><em>2</em> &gt;&gt; <em>/dev/serial/by-path/platform-3f980000.usb-usb-0:1.2:1.0-port0</em></p>
+<p><em>3</em> &gt;&gt; <em>/dev/serial/by-path/platform-3f980000.usb-usb-0:1.3:1.0-port0</em></p>
+<p><em>4</em> &gt;&gt; <em>/dev/serial/by-path/platform-3f980000.usb-usb-0:1.4:1.0-port0</em></p>
+<p><em>5</em> &gt;&gt; <em>/dev/serial/by-path/platform-3f980000.usb-usb-0:1.5:1.0-port0</em></p>
+</body>
+</html>

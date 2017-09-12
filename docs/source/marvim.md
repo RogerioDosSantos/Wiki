@@ -38,3 +38,8 @@ o Recall macro/template through a search
 3)  press <Tab> or <Control-D> to auto-complete until you find the macro
 4)  macro is now run and also loaded for further use into the q register
 
+o Load a macro into a different register
+
+1)  let g:marvim_register = '<new register (E.g.: v)>'
+
+

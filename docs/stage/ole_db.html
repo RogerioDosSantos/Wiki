@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="ole-db">OLE DB</h1>
+<h2 id="connection-strings">Connection Strings</h2>
+<h3 id="microsoft-access-2013-2010-2007">Microsoft Access (2013 / 2010 / 2007)</h3>
+<h4 id="standard-security">Standard Security</h4>
+<pre><code>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=&lt;file path&gt;;Persist Security Info=False;</code></pre>
+<h4 id="with-database-password">With database password</h4>
+<pre><code>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=&lt;file path&gt;;Jet OLEDB:Database Password=&lt;password&gt;;</code></pre>
+<h3 id="csv-files">CSV Files</h3>
+<pre><code>Provider=Microsoft.Jet.OleDb.4.0; Data Source=&lt;file path&gt;;Extended Properties=&quot;Text;HDR=YES;FMT=Delimited&quot;</code></pre>
+<p>Connect to a CSV file indicated on the <file path>.</p>
+<p>Note: On your SQL statment use the <file name> as your table. E.g.: <code>SELECT * FROM [&lt;file name&gt;]</code></p>
+<h3 id="sql-server-2000">SQL Server 2000</h3>
+<h4 id="standard-security-1">Standard Security</h4>
+<pre><code>Provider=sqloledb;Data Source=&lt;server address&gt;;Initial Catalog=&lt;database&gt;;User Id=&lt;user name&gt;;Password=&lt;password&gt;;</code></pre>
+<h3 id="sql-server-7.0">SQL Server 7.0</h3>
+<h4 id="standard-security-2">Standard Security</h4>
+<pre><code>Provider=sqloledb;Data Source=&lt;server address&gt;;Initial Catalog=&lt;database&gt;;User Id=&lt;username&gt;;Password=&lt;password&gt;;</code></pre>
+<h4 id="trusted-connection">Trusted connection</h4>
+<pre><code>Provider=sqloledb;Data Source=&lt;server name&gt;\&lt;instance name&gt;;Initial Catalog=&lt;database&gt;;Integrated Security=SSPI;</code></pre>
+<h2 id="implementation-examples">Implementation examples</h2>
+<h3 id="c">C#</h3>
+<pre class="csharp"><code>Dataset GetDataset(String name, String connection_string, String sql_statement)
+{ 
+  var connection = new OleDbConnection(connection_name);
+  connection.Open();
+  var adapter = new OleDbDataAdapter(sql_statement, connection);
+  var dataset = new DataSet(name);
+  adapter.Fill(dataset);                    
+  return dataset;
+}</code></pre>
+</body>
+</html>
