@@ -12,11 +12,12 @@
 
 `echo %<environment variable>%` : Read an environment variable
 
+`netstat -an |find /i "listening"` : Find all open ports being listened on your computer
+
 ## Powershell only commands ##
 
 `Invoke-RestMethod -Uri <url> | <answer manipulation>` : Send a rest command and manipulate the answer. E.g.: `Invoke-RestMethod -Uri https://blogs.msdn.microsoft.com/powershell/feed/ | Format-Table -Property Title, PubDate`
 
 ## Visual Studio Commands ##
-
 
 `lib /list <lib file name>` : Verify if a library was compiled statically or if is an import library that depends on an `.dll`. If the library is a statically linked library it will show the `.obj` files inside it. Otherwise will show you the `.dll` it is linking with.
