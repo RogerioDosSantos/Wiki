@@ -28,6 +28,7 @@
     - [NeoSnippet]( ./neosnippet.html )
     - [Pandoc]( ./pandoc.html )
   	- [Marvim](	./marvim.html )
+    - [FZF](./fzf.html)
 
 ## Source Control ##
 
