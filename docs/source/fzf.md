@@ -39,3 +39,44 @@ FZF executes a live fuzzy finding on text
 `Snippets` : Sinppets (UtilSnips)
 
 `Commits` : Git commits (requires fugitive)
+
+##Custom mapped keys
+
+`<silent><leader>sf ` : Files
+
+`<silent><leader>sgf ` : GFiles
+
+`<silent><leader>sgs ` : GFiles?
+
+`<silent><leader>sgc ` : Commits
+
+`<silent><leader>sb ` : Buffers
+
+`<silent><leader>sc ` : Colors
+
+`<silent><leader>sag ` Ag 
+
+`<silent><leader>sl ` : Lines
+
+`<silent><leader>sbl ` : BLines
+
+`<silent><leader>st ` : Tags
+
+`<silent><leader>sbt ` : BTags
+
+`<silent><leader>sm ` : Marks
+
+`<silent><leader>sw ` : Windows
+
+`<silent><leader>slo ` Locate
+
+`<silent><leader>sh ` : History
+
+`<silent><leader>shc ` : History:
+
+`<silent><leader>shs ` : History/
+
+`<silent><leader>ss ` : Snippets
+
+
+
