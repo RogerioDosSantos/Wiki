@@ -114,6 +114,7 @@
 ## Network ##
 
 - [LDAP]( ./ldap.html )
+- [0MQ](./0mq.html)
 
 ## Patterns ##
 
