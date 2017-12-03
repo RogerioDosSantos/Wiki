@@ -41,6 +41,12 @@
 
 `g]` : And other commands will jump to a tag definition (a tag can be a function or variable name, or more).
 
+`g;` : Go to the last edition you did (backwards).
+
+`g,` : Go to the last edition you did (forwards).
+
+`S` : Remove the line and start insertion
+
 `ctrl+]` : Jump to definition using tags
 
 `ctrl+T` : Jump back from the definition using tags.
@@ -191,8 +197,9 @@
 
 `:sort` : Sort lines alphabetically. If used on Visual mode will sort the selection.
 
-`let @<buffer>=<command or buffer>.<command or buffer>` : Concatenate buffer and commands. (E.g.: `let
-@r=10.@q.5.@w`)
+`let @<buffer>=<command or buffer>.<command or buffer>` : Concatenate buffer and commands. (E.g.: `let @r=10.@q.5.@w`)
+
+`:reg` : Show all registers
 
 ## Others - Normal Mode ##
 
@@ -226,6 +233,18 @@
 `ctrl+x (completion mode) + ctrl+f (File name completion)` : File completion
 
 `ctrl+r "` : Past the content of the " register, aka last yank / delete
+
+`crtl+=` : Paste a mathematical equation result
+
+`crtl+/` : Paste the last search
+
+`crtl+:` : Paste the last command
+
+`crtl+.` : Paste the last inserted text
+
+`crtl+%` : Paste the filename of the current file. 
+
+`crtl+#` : Paste the filename of the alternate file. 
 
 `ctrl+o <command of normal mode>` : Allow you use command of normal mode while in insert mode
 

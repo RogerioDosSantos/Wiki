@@ -33,6 +33,9 @@
 <p><code>G</code> : Go to the last line (or provide a count before the command for a specific line).</p>
 <p><code>gf</code> : Will go to the file under the cursor</p>
 <p><code>g]</code> : And other commands will jump to a tag definition (a tag can be a function or variable name, or more).</p>
+<p><code>g;</code> : Go to the last edition you did (backwards).</p>
+<p><code>g,</code> : Go to the last edition you did (forwards).</p>
+<p><code>S</code> : Remove the line and start insertion</p>
 <p><code>ctrl+]</code> : Jump to definition using tags</p>
 <p><code>ctrl+T</code> : Jump back from the definition using tags.</p>
 <p><code>{</code> : Jump to the first empty line upward direction</p>
@@ -109,6 +112,7 @@
 <p><code>:sb</code> : Split the current buffer</p>
 <p><code>:sort</code> : Sort lines alphabetically. If used on Visual mode will sort the selection.</p>
 <p><code>let @&lt;buffer&gt;=&lt;command or buffer&gt;.&lt;command or buffer&gt;</code> : Concatenate buffer and commands. (E.g.: <code>let @r=10.@q.5.@w</code>)</p>
+<p><code>:reg</code> : Show all registers</p>
 <h2 id="others---normal-mode">Others - Normal Mode</h2>
 <p><code>ZZ</code> : Save and close</p>
 <p><code>q&lt;macro key&gt; &lt;do your stuff&gt;</code> : Record a macro and store into the key desired. <code>@&lt;macro key&gt;</code> : Play the macro</p>
@@ -125,6 +129,12 @@
 <p><code>ctrl+x (completion mode) + ctrl+] (Tag completion)</code> : Tag completion (requires CTags)</p>
 <p><code>ctrl+x (completion mode) + ctrl+f (File name completion)</code> : File completion</p>
 <p><code>ctrl+r &quot;</code> : Past the content of the &quot; register, aka last yank / delete</p>
+<p><code>crtl+=</code> : Paste a mathematical equation result</p>
+<p><code>crtl+/</code> : Paste the last search</p>
+<p><code>crtl+:</code> : Paste the last command</p>
+<p><code>crtl+.</code> : Paste the last inserted text</p>
+<p><code>crtl+%</code> : Paste the filename of the current file.</p>
+<p><code>crtl+#</code> : Paste the filename of the alternate file.</p>
 <p><code>ctrl+o &lt;command of normal mode&gt;</code> : Allow you use command of normal mode while in insert mode</p>
 <p><code>:marks</code>: List all marks</p>
 <p><code>:delmark&lt;key&gt;</code>: Delete mark</p>
