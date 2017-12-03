@@ -187,14 +187,12 @@
 
 `:cw` : Open list of items on the quickfix. Note: Can be used after grep command.
 
-<<<<<<< HEAD
 `:sb` : Split the current buffer
 
 `:sort` : Sort lines alphabetically. If used on Visual mode will sort the selection.
-=======
+
 `let @<buffer>=<command or buffer>.<command or buffer>` : Concatenate buffer and commands. (E.g.: `let
 @r=10.@q.5.@w`)
->>>>>>> 81d133d2a343dd359b00ef3f56917b3645da40ee
 
 ## Others - Normal Mode ##
 

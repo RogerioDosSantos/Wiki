@@ -1,5 +1,6 @@
 % Roger's Wiki 
 
+
 ## Windows ##
 
 - [Windows Terminal Commands]( ./windows_terminal_commands.html )
@@ -27,6 +28,7 @@
     - [NeoSnippet]( ./neosnippet.html )
     - [Pandoc]( ./pandoc.html )
   	- [Marvim](	./marvim.html )
+    - [FZF](./fzf.html)
 
 ## Source Control ##
 
@@ -112,6 +114,7 @@
 ## Network ##
 
 - [LDAP]( ./ldap.html )
+- [0MQ](./0mq.html)
 
 ## Patterns ##
 
