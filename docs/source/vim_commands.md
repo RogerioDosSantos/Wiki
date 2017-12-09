@@ -389,3 +389,15 @@ To save a macro you can do:
   From normal mode: `q`
   open .vimrc
   `"qp` to insert the macro into your `let @q = '...'`
+
+### Argument list
+
+{{{
+
+args `<command>` : Load the argument list with a command. E.g.: args `ls`
+
+}}}
+
+`args` : Display the list of files
+
+`argdo <command>` : Play the command on all files of the argument list. E.g.: `argdo normal @q` play de macro q on all files.
