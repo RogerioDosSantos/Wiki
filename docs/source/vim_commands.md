@@ -334,6 +334,8 @@
 
 `:set key=<nothing>` : Remove the cryptography of an open file. You need to save it after.
 
+`:sort` : Sort selection. Note: To select a paragraph you can use `vip`
+
 ## Explore Keys and Commands ##
 
 `d` : creates a new directory
