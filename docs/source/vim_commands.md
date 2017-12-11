@@ -41,6 +41,12 @@
 
 `g]` : And other commands will jump to a tag definition (a tag can be a function or variable name, or more).
 
+`g;` : Go to the last edition you did (backwards).
+
+`g,` : Go to the last edition you did (forwards).
+
+`S` : Remove the line and start insertion
+
 `ctrl+]` : Jump to definition using tags
 
 `ctrl+T` : Jump back from the definition using tags.
@@ -104,6 +110,8 @@
 `zo `: Open folding (Collapsed) were the cursor are
 
 `zc `: Close folding were the cursor are
+
+`za` : Toggle folding
 
 `zd`: Delete a folder
 
@@ -191,8 +199,9 @@
 
 `:sort` : Sort lines alphabetically. If used on Visual mode will sort the selection.
 
-`let @<buffer>=<command or buffer>.<command or buffer>` : Concatenate buffer and commands. (E.g.: `let
-@r=10.@q.5.@w`)
+`let @<buffer>=<command or buffer>.<command or buffer>` : Concatenate buffer and commands. (E.g.: `let @r=10.@q.5.@w`)
+
+`:reg` : Show all registers
 
 ## Others - Normal Mode ##
 
@@ -226,6 +235,18 @@
 `ctrl+x (completion mode) + ctrl+f (File name completion)` : File completion
 
 `ctrl+r "` : Past the content of the " register, aka last yank / delete
+
+`crtl+=` : Paste a mathematical equation result
+
+`crtl+/` : Paste the last search
+
+`crtl+:` : Paste the last command
+
+`crtl+.` : Paste the last inserted text
+
+`crtl+%` : Paste the filename of the current file. 
+
+`crtl+#` : Paste the filename of the alternate file. 
 
 `ctrl+o <command of normal mode>` : Allow you use command of normal mode while in insert mode
 
@@ -315,6 +336,8 @@
 
 `:set key=<nothing>` : Remove the cryptography of an open file. You need to save it after.
 
+`:sort` : Sort selection. Note: To select a paragraph you can use `vip`
+
 ## Explore Keys and Commands ##
 
 `d` : creates a new directory
@@ -368,3 +391,15 @@ To save a macro you can do:
   From normal mode: `q`
   open .vimrc
   `"qp` to insert the macro into your `let @q = '...'`
+
+### Argument list
+
+{{{
+
+args `<command>` : Load the argument list with a command. E.g.: args `ls`
+
+}}}
+
+`args` : Display the list of files
+
+`argdo <command>` : Play the command on all files of the argument list. E.g.: `argdo normal @q` play de macro q on all files.

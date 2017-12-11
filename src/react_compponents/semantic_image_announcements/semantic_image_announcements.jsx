@@ -5,56 +5,26 @@ import React, {
 
 import 'semantic-ui-css/semantic.min.css';
 import {
-    Container,
-		Card,
-    Image,
-		Dimmer,
-		Segment,
-    Header,
+		Card
 } from 'semantic-ui-react';
 
-import Log from '../log/log.js';
+// import Log from '../log/log.js';
+import ImageAnnouncement from '../semantic_image_announcement/semantic_image_announcement.jsx'
 
 import configData from './config.json'
 
 class ImageAnnouncements extends Component {
 
-
-    constructor() {
-        super();
-        this.state = {};
-    };
-
-    handleShow = () => this.setState({
-        active: true
-    });
-
-    handleHide = () => this.setState({
-        active: false
-    });
-
-	ImageAnnouncement = (props) => {
-			return (
-				<Container textAlign='center'>
-						<Dimmer.Dimmable as={Segment} dimmed={this.state.active}>
-								<Dimmer active={this.state.active} onClickOutside={this.handleHide}>
-										<Header as='h2' icon inverted>
-												### Description ###
-										</Header>
-								</Dimmer>
-								<Image centered size='medium' src='http://rogeriodossantos.github.io/MainPage/resources/page/Post/post_scada.jpg'
-										onClick={this.handleShow} />
-								<Header as='h3'>### Title ###</Header>
-						</Dimmer.Dimmable>
-				</Container>
-				);
-			}
+    // constructor() {
+    //     super();
+    //     this.state = {};
+    // };
 
     CreateCard = (props) => {
 			return (
           <Card centered>
               <Card.Content>
-                  <this.ImageAnnouncement />
+                  <ImageAnnouncement config={props.config}/>
               </Card.Content>
           </Card>
 				);
@@ -62,11 +32,11 @@ class ImageAnnouncements extends Component {
 
 		render() {
       
-        Log.log('ImageAnnouncements - : ' + JSON.stringify(configData), 'info', 5);
         var  cards = [];
         for (var index = 0; index < configData.cards.length; index++)
         {
-          cards.push(<this.CreateCard key={index} />); 
+          let config = configData.cards[index];
+          cards.push(<this.CreateCard key={index} config={config}/>); 
         }
 
 			return (

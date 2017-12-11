@@ -95,7 +95,7 @@
 ## .Net ##
 
 - [GAC]( ./gac.html )
-<!-- - [.Net Versions]( ./.net_versions.html ) -->
+- [.Net Versions]( ./.net_versions.html )
 
 ## Virtualization ##
 
