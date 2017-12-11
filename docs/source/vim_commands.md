@@ -111,6 +111,8 @@
 
 `zc `: Close folding were the cursor are
 
+`za` : Toggle folding
+
 `zd`: Delete a folder
 
 `zR` : Open all folding (Collapsed) lines
