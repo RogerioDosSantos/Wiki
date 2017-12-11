@@ -274,7 +274,7 @@ To add the environment variable for all users, add it to the `/etc/environment` 
 
 *Note:* You might need to add the environment variable to all users in case you want applications like `apt-get` to use the environment variable.
 
-To reload the command configuration and have the variable set without have to close the shell runn the following command:
+To reload the command configuration and have the variable set without have to close the shell run the following command:
 `source ~./baschrc`
 
 ### Additional commands (Not available on all platforms) ###
