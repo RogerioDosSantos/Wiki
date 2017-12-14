@@ -158,12 +158,12 @@ function_name $arg1 $arg2
 <p><code>/opt</code> : Directory used for the installation of add-on application software packages</p>
 <p><code>/usr/local</code> : Directory used for the installation software locally.</p>
 <p><code>sshfs -o idmap=user &lt;username&gt;@&lt;remote machine IP&gt;:&lt;remote directory&gt; &lt;local directory&gt;</code> : Mount a remote machine directory on the local machine. TODO: This command works however I need to add the fuse configuration part of it, otherwise we will get the user denied access.</p>
-<h2 id="enviroment-variable">Enviroment Variable</h2>
+<h2 id="environment-variable">Environment Variable</h2>
 <p><code>printenv</code> : Shows the environment variables</p>
 <p>To add the environment variable for your user, add it to the <code>~/.bashrc</code> file the following command: <code>export &lt;Variable Name&gt;=&lt;Variable Value&gt;</code></p>
 <p>To add the environment variable for all users, add it to the <code>/etc/environment</code> file the following command: <code>&lt;Variable Name&gt;=&lt;Variable Value&gt;</code></p>
 <p><em>Note:</em> You might need to add the environment variable to all users in case you want applications like <code>apt-get</code> to use the environment variable.</p>
-<p>To reload the command configuration and have the variable set without have to close the shell runn the following command: <code>source ~./baschrc</code></p>
+<p>To reload the command configuration and have the variable set without have to close the shell run the following command: <code>source ~./baschrc</code></p>
 <h3 id="additional-commands-not-available-on-all-platforms">Additional commands (Not available on all platforms)</h3>
 <p><code>getenv &lt;environment variable&gt;</code> : Shows the environment variable value.</p>
 <p><code>setenv &lt;environment variable&gt; &lt;value</code> : Set the environment variable a value.</p>

@@ -262,7 +262,7 @@ function_name $arg1 $arg2
 
 `sshfs -o idmap=user <username>@<remote machine IP>:<remote directory> <local directory>` : Mount a remote machine directory on the local machine. TODO: This command works however I need to add the fuse configuration part of it, otherwise we will get the user denied access.
 
-## Enviroment Variable ##
+## Environment Variable ##
 
 `printenv` : Shows the environment variables
 
