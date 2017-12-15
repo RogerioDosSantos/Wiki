@@ -30,11 +30,11 @@ Pandoc is a document converter.
 
 ### Basic Emphasis ###
 
-````
-*single asterisks*  
-_single underscores_  
-**double asterisks**  
-__double underscores__ 
+```
+*single asterisks*  - Italic
+_single underscores_ - Italic
+**double asterisks**  - Bold
+__double underscores__  - Bold
 ````
 
 ### Strikeout, superscript and subscript ###
