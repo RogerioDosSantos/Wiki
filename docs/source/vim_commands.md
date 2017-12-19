@@ -236,17 +236,17 @@
 
 `ctrl+r "` : Past the content of the " register, aka last yank / delete
 
-`crtl+=` : Paste a mathematical equation result
+`crtl+r =` : Paste any command result you type on the command line.
 
-`crtl+/` : Paste the last search
+`crtl+r /` : Paste the last search
 
-`crtl+:` : Paste the last command
+`crtl+r :` : Paste the last command
 
-`crtl+.` : Paste the last inserted text
+`crtl+r .` : Paste the last inserted text
 
-`crtl+%` : Paste the filename of the current file. 
+`crtl+r %` : Paste the filename of the current file. 
 
-`crtl+#` : Paste the filename of the alternate file. 
+`crtl+r #` : Paste the filename of the alternate file. 
 
 `ctrl+o <command of normal mode>` : Allow you use command of normal mode while in insert mode
 
