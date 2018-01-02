@@ -53,6 +53,7 @@
 <p><code>git checkout &lt;branch or label&gt;</code> : Checkout a branch to allow edition on it. IMPORTANT: If you are checkingout a lebel, you will not be allowed to modify it. Execute the command below to put the lable in another branch</p>
 <p><code>git checkout -b &lt;new branch&gt; &lt;branch or label&gt;</code> : Create a new Branch for the Branch or label checked out.</p>
 <p><code>git status --ignore-submodules=dirty</code> : Ignore the dirty feature that slow down the command in case you have submodules with a lot of files. You can also change the &quot;.gitmodules&quot; files to add the following entry in a submodule you want to ignore: ignore ## dirty</p>
+<p><code>git config --global --edit</code> : Edit the global configuration</p>
 <h3 id="submodules-workflow">Submodules Workflow</h3>
 <h4 id="initial-checkpoint">Initial Checkpoint</h4>
 <ul>
@@ -127,6 +128,6 @@ git push -u origin master</code></pre>
 <p><code>git push --all &lt;name of remote&gt;</code> : Push all changes, include the history. It does not only push the tags information. E.g.: <code>git push --all new-origin</code></p>
 <p><code>git push --tags &lt;name of remote&gt;</code> : Push the tags. E.g.: <code>git push --tags new-origin</code></p>
 <p><code>git remote rm &lt;name of the origin remote&gt;</code> : Remove the remote name from the local repository. Note that <code>origin</code> is the default name. E.g.: <code>git remote rm origin</code> Note: To list the remotes available you can use the command <code>git remote show</code></p>
-<p><code>git remote rename &lt;name of the remote&gt; &lt;name of the origin remote&gt;</code> : Rename the remote. E.g.: <code>git remote rename new-origin origin</code> Note: To list the remotes available you can use the command <code>git remote show</code></p>
+<p><code>git remote rename &lt;name of the remote&gt; &lt;name of the origin remote&gt;</code> : Rename the remote. E.g.: <code>git remote rename new-origin origin</code> Note: To list the remotes available you can use the command <code>git remote show</code> t</p>
 </body>
 </html>

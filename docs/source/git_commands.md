@@ -80,6 +80,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git status --ignore-submodules=dirty ` : Ignore the dirty feature that slow down the command in case you have submodules with a lot of files. You can also change the ".gitmodules" files to add the following entry in a submodule you want to ignore: ignore ## dirty
 
+`git config --global --edit` : Edit the global configuration
+
 ### Submodules Workflow ###
 
 #### Initial Checkpoint ####
@@ -179,4 +181,4 @@ All local changes you execute on git is stored on the _.git_ folder. You can cop
 `git remote rm <name of the origin remote>` : Remove the remote name from the local repository. Note that `origin` is the default name. E.g.: `git remote rm origin` Note: To list the remotes available you can use the command `git remote show`
 
 `git remote rename <name of the remote> <name of the origin remote>` : Rename the remote. E.g.: `git remote rename new-origin origin` Note: To list the remotes available you can use the command `git remote show`
-
+t
