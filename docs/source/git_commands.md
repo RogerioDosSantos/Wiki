@@ -40,6 +40,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git checkout <branch>` : Go to the branch
 
+`git checkout -`: Go to the latest commit on that branch.
+
 `git pull` : Update local repository with the newest commit
 
 `git merge <another branch` : Merge another branch into your active branch. The merged files will be on the untracked stage
