@@ -6,6 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="../resources/style.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -106,6 +143,7 @@
 <p><code>sudo dhclient -v [-r]</code> : Visualize DHCP configuration. If you use the <code>-r</code> option, it will release the current IP address.</p>
 <p><code>wget -qO- portquiz.net:&lt;Port&gt;</code> : Check if a port is open. The portquiz website answer calls for all available ports.</p>
 <p><code>python -m SimpleHTTPServer &lt;port number&gt;</code> : Quick test server using python (localhost:8000)</p>
+<p><code>/etc/hosts</code> : File with host mapping. If you want to resolve a name to a specific address you can add the <code>&lt;IP&gt; &lt;Name&gt;</code> on the beginning of this file.</p>
 <h3 id="set-a-static-ip">Set a static IP</h3>
 <p>The file <code>/etc/network/interfaces</code> controls the startup network configuration. To config a static IP you can use the following configuration:</p>
 <pre><code>
@@ -121,6 +159,20 @@ iface eth0 inet static
   broadcast 192.168.0.255
   gateway 192.168.0.1
 </code></pre>
+<h3 id="installing-certificates">Installing Certificates</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">
+<span class="co"># Create a directory for extra CA certificates in /usr/share/ca-certificates:</span>
+<span class="kw">sudo</span> mkdir /usr/share/ca-certificates/extra
+
+<span class="co"># Copy the CA .crt file to this directory:</span>
+<span class="kw">sudo</span> cp my_certificate.crt /usr/share/ca-certificates/extra/ my_certificate.crt<span class="kw">`</span> 
+
+<span class="co"># Ensure the cert is in pem format:</span>
+<span class="kw">openssl</span> x509 -inform DER -outform PEM -in  my_certificate.crt -out my_certificate.crt
+
+<span class="co"># Let Ubuntu add the .crt file&#39;s path relative to /usr/share/ca-certificates to /etc/ca-certificates.conf:</span>
+<span class="kw">sudo</span> dpkg-reconfigure ca-certificates</code></pre></div>
+<p><strong>Note</strong>: If you are using Ubuntu you might need to rename the certificate to *.pem to the dpkg-reconfigure command detected the certificate.</p>
 <h2 id="bash-files">Bash Files</h2>
 <p><code>#!/bin/bash</code> : Inform what interpreter should run the bash</p>
 <p><code>cd &quot;$(dirname &quot;$0&quot;)</code> : Set bash to the current directory</p>
