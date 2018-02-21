@@ -7,6 +7,7 @@
 - [Babun]( ./babun.html )
 - [Windows Store]( ./windows_store.html )
 - [WSL]( ./wsl.html )
+- [Credential Manager]( ./credential_manager.html )
 
 ## Linux ##
 

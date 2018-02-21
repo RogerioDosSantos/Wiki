@@ -181,6 +181,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `python -m SimpleHTTPServer <port number>` : Quick test server using python (localhost:8000)
 
+`/etc/hosts` : File with host mapping. If you want to resolve a name to a specific address you can add the `<IP> <Name>` on the beginning of this file.
+
 ### Set a static IP ###
 
 The file `/etc/network/interfaces` controls the startup network configuration. To config a static IP you can use the following configuration:
@@ -200,6 +202,26 @@ iface eth0 inet static
   gateway 192.168.0.1
 
 ````
+
+### Installing Certificates
+
+``` bash
+
+# Create a directory for extra CA certificates in /usr/share/ca-certificates:
+sudo mkdir /usr/share/ca-certificates/extra
+
+# Copy the CA .crt file to this directory:
+sudo cp my_certificate.crt /usr/share/ca-certificates/extra/ my_certificate.crt` 
+
+# Ensure the cert is in pem format:
+openssl x509 -inform DER -outform PEM -in  my_certificate.crt -out my_certificate.crt
+
+# Let Ubuntu add the .crt file's path relative to /usr/share/ca-certificates to /etc/ca-certificates.conf:
+sudo dpkg-reconfigure ca-certificates
+
+``````
+
+**Note**: If you are using Ubuntu you might need to rename the certificate to *.pem to the dpkg-reconfigure command detected the certificate.
 
 ## Bash Files ##
 
