@@ -234,4 +234,12 @@ isn't indented.
 --------------------------
 ````
 
+# Document Conversion Examples
+
+## .docx to .md
+
+- Pandoc
+
+`pandoc -f docx -t markdown_mmd ./t1.docx --output=t1.md --atx-headers --wrap=none --toc --extract-media="resource"`
+
 
