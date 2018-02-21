@@ -27,9 +27,13 @@
     - [Fugitive]( ./fugitive.html )
     - [Doxigen]( ./doxigen.html )
     - [NeoSnippet]( ./neosnippet.html )
-    - [Pandoc]( ./pandoc.html )
   	- [Marvim](	./marvim.html )
     - [FZF](./fzf.html)
+
+## Markdown
+
+- [Markdown Syntax (Pandoc)]( ./pandoc_markdown.html )
+- [Pandoc]( ./pandoc.html )
 
 ## Source Control ##
 

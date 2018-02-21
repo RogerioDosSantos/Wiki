@@ -6,6 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="../resources/style.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -16,161 +53,131 @@
 <p>Pandoc is a document converter.</p>
 <h2 id="commands">Commands</h2>
 <p><code>pandoc --version</code> : Display the version of the Pandoc installed.</p>
-<h2 id="custom-mapped-key">Custom Mapped Key</h2>
-<p><code>&lt;space&gt; + dch</code>: Create the html directory. The directory created will be above the current directory of the file.</p>
-<p><code>&lt;space&gt; + deh</code>: Save the document as html on the html output directory.</p>
-<p><code>&lt;space&gt; + dcw</code>: Create the word directory. The directory created will be above the current directory of the file.</p>
-<p><code>&lt;space&gt; + dew</code>: Save the document as word on the word output directory.</p>
-<h2 id="markdown">Markdown</h2>
-<h3 id="headers">Headers</h3>
-<pre><code># This is H1.
-## This is H2.
-### This is H3.
-#### ...  
-###### This is H6.  </code></pre>
-<h3 id="basic-emphasis">Basic Emphasis</h3>
-<pre><code>*single asterisks*  - Italic
-_single underscores_ - Italic
-**double asterisks**  - Bold
-__double underscores__  - Bold</code></pre>
-<h3 id="strikeout-superscript-and-subscript">Strikeout, superscript and subscript</h3>
-<pre><code>~~~deleted text~~~  
-H~2~O is a liquid.  
-2^10^ is 1024. </code></pre>
-<h3 id="math">Math</h3>
-<pre><code>$a^2 = b^2 + c^2$  
-$x^{17} - 1$  
-$M^\bot = \{ f \in V&#39; : f(m) = 0 \mbox{ for all } m \in M \}.$  
-$\[ \cos(\theta + \phi) = \cos \theta \cos \phi - \sin \theta \sin \phi \]$  
-$\[ |y - x| &lt; \delta \]$ then $\[ |f(y) - f(x)| &lt; \epsilon. \]$  
-\newcommand{\tuple}[1]{\langle #1 \rangle}  
-$\tuple{a, b, c}$  </code></pre>
-<h3 id="links">Links</h3>
-<pre><code>This is an automatic link &lt;http://www.google.com&gt;.  
-This is [inline link](http://example.com/ &quot;Title&quot;) inline link with title.  
-This is [inline link](http://example.com/ ) inline link without title attribute.  
-This is [reference link ][ref] with ID.  
-This is [reference link][] without ID.  
-This is [Inline Internal link](#TOC).  
-This is [Internal link].  
-
-[ref]: http://example.com/  
-[reference link]: http://www.google.com  
-[Internal link]: #pandocs-markdown-reference </code></pre>
-<h3 id="images">Images</h3>
-<pre><code>![](http://3.bp.bloGspot.com/-BLhmfBdELH0/UBT3uUd7r5I/AAAAAAAAADw/-rnn2kz5vjY/s220/oops_monk01_120.jpg &quot;OopsMonk&quot;)
-
-![Alt text][pic2]
-
-[pic2]: http://3.bp.bloGspot.com/-BLhmfBdELH0/UBT3uUd7r5I/AAAAAAAAADw/-rnn2kz5vjY/s220/oops_monk01_120.jpg </code></pre>
-<p><code>![&lt;caption&gt;]( &lt;image url&gt;  )</code>: Add a message. Note: The space is important otherwise the word converter might not find the image. <code>E.g.: ![Driver List]( ../resource/Image_29.png   )</code></p>
-<p><code>![&lt;caption&gt;]( &lt;image url&gt; ){ &lt;css properties&gt; }</code>: Add image with any .css propery. <code>E.g.: ![InduSoft]( ../resource/Image_04_Indusoft.png  ){width=100% heigh=100%}</code></p>
-<h3 id="embedded-video">Embedded Video</h3>
-<pre><code>&lt;iframe src=&quot;http://embed.ted.com/talks/lang/zh-tw/ken_robinson_how_to_escape_education_s_death_valley.html&quot;
-width=&quot;560&quot; height=&quot;315&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; 
-webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;</code></pre>
-<h3 id="basic-code-block">Basic Code block</h3>
-<p>Force code block(more then three ~)</p>
-<pre><code>~~~~~~~
-if (a &gt; 3) {
-  moveShip(5 * gravity, DOWN);
-  }
-~~~~~~~</code></pre>
-<h3 id="code-syntax-highlight">Code Syntax highlight</h3>
-<pre><code>```python
-import os
-import sys
-
-def application(env, start_response):  
-    start_response(&#39;200 OK&#39;, [(&#39;Content-Type&#39;,&#39;text/html&#39;)])  
-    return &quot;Hello WSGI!!&quot;
-```</code></pre>
-<h3 id="line-number">Line Number</h3>
-<pre><code>~~~~ {#pycode .python .numberLines startFrom=&quot;10&quot;}
-import os
-import sys
-
-def application(env, start_response):  
-    start_response(&#39;200 OK&#39;, [(&#39;Content-Type&#39;,&#39;text/html&#39;)])  
-    return &quot;Hello WSGI!!&quot;
-~~~~</code></pre>
-<h3 id="blockquotes">Blockquotes</h3>
-<pre><code>&gt; This is a block quote.
-&gt;
-&gt; &gt; A block quote within a block quote.
-&gt; &gt; 
-&gt; &gt; &gt; Nets.</code></pre>
-<h3 id="unordered-bulleted">Unordered (Bulleted)</h3>
-<pre><code>* fruits
-    + apples
-        - macintosh
-        - red delicious
-    + pears
-    + peaches
-* vegetables
-    + brocolli
-    + chard</code></pre>
-<h3 id="ordered-numbered">Ordered (Numbered)</h3>
-<pre><code>1. list1.
-1. list2.
-1. list3.
-1. list4.</code></pre>
-<h3 id="lists">Lists</h3>
-<pre><code>(@)  My first example will be numbered (1).
-(@)  My second example will be numbered (2).
-
-Explanation of examples.
-
-(@)  My third example will be numbered (3).  
-
-(@good)  This is a good example.
-
-As (@good) illustrates, ...  </code></pre>
-<h3 id="footnotes">Footnotes</h3>
-<pre><code>Here is an inline note.^[Inlines notes are easier to write, since
-you don&#39;t have to pick an identifier and move down to type the
-note.]  
-
-Here is a footnote reference,^[^[^1]^]^ and another.[^longnote]
-
-[^1]: Here is the footnote.
-
-[^longnote]: Here&#39;s one with multiple blocks.
-
-    Subsequent paragraphs are indented to show that they
-belong to the previous footnote.
-
-        { some.code }
-
-    The whole paragraph can be indented, or just the first
-    line.  In this way, multi-paragraph footnotes work like
-    multi-paragraph list items.
-
-This paragraph won&#39;t be part of the note, because it
-isn&#39;t indented.</code></pre>
-<h3 id="simple-tables">Simple tables</h3>
-<pre><code> Right     Left     Center     Default
--------     ------ ----------   -------
-     12     12        12            12
-    123     123       123          123
-      1     1          1             1</code></pre>
-<h3 id="multiline-tables">Multiline tables</h3>
-<pre><code>--------------------------
- Centered   Default           Right Left
-  Header    Aligned         Aligned Aligned
------------ ------- --------------- -------------------------
-   First    row                12.0 Example of a row that
-                                    spans multiple lines.
-
-  Second    row                 5.0 Here&#39;s another one. Note
-                                    the blank line between
-                                    rows.
---------------------------</code></pre>
-<h1 id="document-conversion-examples">Document Conversion Examples</h1>
-<h2 id="docx-to-.md">.docx to .md</h2>
+<h2 id="document-conversion-examples">Document Conversion Examples</h2>
+<h3 id="docx-to-.md">.docx to .md</h3>
 <ul>
-<li>Pandoc</li>
+<li>Pandoc: <code>pandoc -f docx -t markdown_mmd ./t1.docx --output=t1.md --atx-headers --wrap=none --toc --extract-media=&quot;resource&quot;</code></li>
 </ul>
-<p><code>pandoc -f docx -t markdown_mmd ./t1.docx --output=t1.md --atx-headers --wrap=none --toc --extract-media=&quot;resource&quot;</code></p>
+<h3 id="md-to-.html">.md to .html</h3>
+<p>HTML5:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t html5 -c ../resources/style.css -o doc.html</code></pre></div>
+<p>HTML5 with index:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t html5 --toc -c ../resources/style.css -o doc.html</code></pre></div>
+<p>Slide Show (Slidy):</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t slidy -s --webtex --base-header-level=1 -i -o doc.html</code></pre></div>
+<p>Slide Show (DZSlides):</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t dzslides -o doc.html</code></pre></div>
+<p>Slide Show (RevealJS):</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t revealjs -o doc.html</code></pre></div>
+<p>Slide Show (Slideous):</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t slideous -o doc.html</code></pre></div>
+<p>Slide Show (S5):</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t s5 -o doc.html</code></pre></div>
+<p>Slide Show (Haddock):</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t haddock -o doc.html</code></pre></div>
+<h3 id="md-to-.docx">.md to .docx</h3>
+<p>Word with index:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">echo</span> pandoc -s doc.md -t docx --toc -o doc.docx</code></pre></div>
+<p>Word without index:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t rtf -o doc.rtf</code></pre></div>
+<h3 id="md-to-.pdf">.md to .pdf</h3>
+<p>PDF without index:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t --latex-engine=xelatex -o doc.pdf</code></pre></div>
+<p>PDF with index:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t --latex-engine=xelatex --toc -o doc.pdf</code></pre></div>
+<h3 id="md-to-.txt">.md to .txt</h3>
+<ul>
+<li>det - Plain Text: <code>pandoc -s doc.md -t plain -o doc.txt</code></li>
+<li><p>detm - Linux Manual: <code>pandoc -s doc.md -t man -o doc.txt</code> <a href="http://asciidoc.org/">AsciiDoc</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t asciidoc -o doc.txt</code></pre></div></li>
+</ul>
+<p><a href="https://www.latex-project.org/">LaTex</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t latex -o doc.txt</code></pre></div>
+<p><a href="http://wiki.contextgarden.net/What_is_ConTeXt">ConTeXt</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t context -o doc.txt</code></pre></div>
+<p><a href="https://orgmode.org/">Org</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t org -o doc.org</code></pre></div>
+<p><a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t rst -o doc.text</code></pre></div>
+<p><a href="https://www.gnu.org/software/texinfo/">Texinfo - The GNU Documentation System</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t texinfo -o doc.texi</code></pre></div>
+<p><a href="https://www.ntcolorado.com/">Native</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t native -o doc.txt</code></pre></div>
+<p><a href="https://txstyle.org/">TxStyle</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t textile -o doc.textile</code></pre></div>
+<p><a href="https://www.mediawiki.org">MediaWiki</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t mediawiki -o doc.wiki</code></pre></div>
+<p><a href="https://www.dokuwiki.org">DokuWiki</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t dokuwiki -o doc.wiki</code></pre></div>
+<h3 id="md-to-.xml">.md to .xml</h3>
+<p><a href="https://en.wikipedia.org/wiki/OpenDocument">OpenDocument</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t opendocument -o doc.xml</code></pre></div>
+<p><a href="https://en.wikipedia.org/wiki/OPML">OPML</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t opml -o doc.xml</code></pre></div>
+<p><a href="http://docbook.org/">DocBook</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t docbook -o doc.xml</code></pre></div>
+<p><a href="https://en.wikipedia.org/wiki/Adobe_InCopy">Adobe InCopy</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t icml -o doc.icml</code></pre></div>
+<h3 id="md-to-.md">.md to .md</h3>
+<p>Regular Markdown:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t markdown -o doc.md</code></pre></div>
+<p>Github:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t markdown_github -o doc.html</code></pre></div>
+<p><a href="http://fletcherpenney.net/multimarkdown/">MultiMarkdown</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t markdown_mmd -o doc.md</code></pre></div>
+<p><a href="https://michelf.ca/projects/php-markdown/extra/">php Markdown Extra</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t markdown_phpextra  -o doc.md</code></pre></div>
+<p><a href="http://commonmark.org/">CommonMark</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t commonmark -o doc.md</code></pre></div>
+<p><a href="http://spec.commonmark.org/0.28/">CommonMark</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t markdown_strict -o doc.md</code></pre></div>
+<p>Github README:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s source.md -t markdown_github -o ../../README.md</code></pre></div>
+<h3 id="md-to-.epub-ebook">.md to .epub (Ebook)</h3>
+<p><a href="http://idpf.org/epub/30">EPUB 3.0</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t epub3 -o doc.epub</code></pre></div>
+<p><a href="http://idpf.org/epub">EPUB</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t epub -o doc.epub</code></pre></div>
+<h2 id="batch-conversions">Batch conversions</h2>
+<h3 id="export-all-files-from-a-folder-to-html">Export all files from a folder to html</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">find</span> . -name <span class="st">&#39;*.md&#39;</span> -exec basename <span class="dt">{}</span> .md <span class="dt">\;</span> <span class="kw">|</span> <span class="kw">xargs</span> -n1 -I XXX pandoc -s XXX.md -t html5 -c ../resources/style.css -o ../stage/XXX.html</code></pre></div>
+<h2 id="vim-custom-mapped-key">Vim Custom Mapped Key</h2>
+<p><code>&lt;space&gt; + deh</code>: Convert from markdown to HTML5</p>
+<p><code>&lt;space&gt; + deht</code>: Convert from markdown to HTML5 with index</p>
+<p><code>&lt;space&gt; + des</code>: Convert from markdown to Slide Show (Slidy)</p>
+<p><code>&lt;space&gt; + des2</code>: Convert from markdown to Slide Show (DZSlides)</p>
+<p><code>&lt;space&gt; + des3</code>: Convert from markdown to Slide Show (RevealJS)</p>
+<p><code>&lt;space&gt; + des4</code>: Convert from markdown to Slide Show (Slideous)</p>
+<p><code>&lt;space&gt; + des5</code>: Convert from markdown to Slide Show (S5)</p>
+<p><code>&lt;space&gt; + des6</code>: Convert from markdown to Slide Show (Haddock)</p>
+<p><code>&lt;space&gt; + dew</code>: Convert from markdown to Word with index</p>
+<p><code>&lt;space&gt; + dewr</code>: Convert from markdown to Word without index</p>
+<p><code>&lt;space&gt; + dep</code>: Convert from markdown to PDF without index</p>
+<p><code>&lt;space&gt; + dept</code>: Convert from markdown to PDF with index</p>
+<p><code>&lt;space&gt; + det</code>: Convert from markdown to Plain Text</p>
+<p><code>&lt;space&gt; + detm</code>: Convert from markdown to Linux Manual</p>
+<p><code>&lt;space&gt; + deta</code>: Convert from markdown to <a href="http://asciidoc.org/">AsciiDoc</a></p>
+<p><code>&lt;space&gt; + detl</code>: Convert from markdown to <a href="https://www.latex-project.org/">LaTex</a></p>
+<p><code>&lt;space&gt; + detc</code>: Convert from markdown to <a href="http://wiki.contextgarden.net/What_is_ConTeXt">ConTeXt</a></p>
+<p><code>&lt;space&gt; + deto</code>: Convert from markdown to <a href="https://orgmode.org/">Org</a></p>
+<p><code>&lt;space&gt; + detr</code>: Convert from markdown to <a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a></p>
+<p><code>&lt;space&gt; + deti</code>: Convert from markdown to <a href="https://www.gnu.org/software/texinfo/">Texinfo - The GNU Documentation System</a></p>
+<p><code>&lt;space&gt; + detn</code>: Convert from markdown to <a href="https://www.ntcolorado.com/">Native</a></p>
+<p><code>&lt;space&gt; + dett</code>: Convert from markdown to <a href="https://txstyle.org/">TxStyle</a></p>
+<p><code>&lt;space&gt; + detw</code>: Convert from markdown to <a href="https://www.mediawiki.org">MediaWiki</a></p>
+<p><code>&lt;space&gt; + detd</code>: Convert from markdown to <a href="https://www.dokuwiki.org">DokuWiki</a></p>
+<p><code>&lt;space&gt; + dex</code>: Convert from markdown to <a href="https://en.wikipedia.org/wiki/OpenDocument">OpenDocument</a></p>
+<p><code>&lt;space&gt; + dexo</code>: Convert from markdown to <a href="https://en.wikipedia.org/wiki/OPML">OPML</a></p>
+<p><code>&lt;space&gt; + dexd</code>: Convert from markdown to <a href="http://docbook.org/">DocBook</a></p>
+<p><code>&lt;space&gt; + dexi</code>: Convert from markdown to <a href="https://en.wikipedia.org/wiki/Adobe_InCopy">Adobe InCopy</a></p>
+<p><code>&lt;space&gt; + dem</code>: Convert from markdown to Regular Markdown</p>
+<p><code>&lt;space&gt; + demg</code>: Convert from markdown to Github</p>
+<p><code>&lt;space&gt; + demm</code>: Convert from markdown to <a href="http://fletcherpenney.net/multimarkdown/">MultiMarkdown</a></p>
+<p><code>&lt;space&gt; + demp</code>: Convert from markdown to <a href="https://michelf.ca/projects/php-markdown/extra/">php Markdown Extra</a></p>
+<p><code>&lt;space&gt; + demc</code>: Convert from markdown to <a href="http://commonmark.org/">CommonMark</a></p>
+<p><code>&lt;space&gt; + dems</code>: Convert from markdown to <a href="http://spec.commonmark.org/0.28/">CommonMark</a></p>
+<p><code>&lt;space&gt; + demr</code>: Convert from markdown to Github README</p>
+<p><code>&lt;space&gt; + deb</code>: Convert from markdown to <a href="http://idpf.org/epub/30">EPUB 3.0</a></p>
+<p><code>&lt;space&gt; + deb1</code>: Convert from markdown to <a href="http://idpf.org/epub">EPUB</a></p>
 </body>
 </html>

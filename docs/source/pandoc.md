@@ -1,245 +1,290 @@
-# Pandoc #
+# Pandoc 
 
 Pandoc is a document converter.
 
-## Commands ##
+## Commands 
 
 `pandoc --version` : Display the version of the Pandoc installed.
 
-## Custom Mapped Key ##
+## Document Conversion Examples
 
-`<space> + dch `: Create the html directory. The directory created will be above the current directory of the file.
+### .docx to .md
 
-`<space> + deh `: Save the document as html on the html output directory.
+- Pandoc: `pandoc -f docx -t markdown_mmd ./t1.docx --output=t1.md --atx-headers --wrap=none --toc --extract-media="resource"`
 
-`<space> + dcw `: Create the word directory. The directory created will be above the current directory of the file.
+### .md to .html
 
-`<space> + dew `: Save the document as word on the word output directory.
+HTML5: 
+``` bash
+pandoc -s doc.md -t html5 -c ../resources/style.css -o doc.html
+``````
 
-## Markdown ##
+HTML5 with index:
+``` bash 
+pandoc -s doc.md -t html5 --toc -c ../resources/style.css -o doc.html
+``````
 
-### Headers ###
+Slide Show (Slidy):
+``` bash 
+pandoc -s doc.md -t slidy -s --webtex --base-header-level=1 -i -o doc.html
+``````
 
-````
-# This is H1.
-## This is H2.
-### This is H3.
-#### ...  
-###### This is H6.  
-````
+Slide Show (DZSlides):
+``` bash 
+pandoc -s doc.md -t dzslides -o doc.html
+``````
 
-### Basic Emphasis ###
+Slide Show (RevealJS):
+``` bash 
+pandoc -s doc.md -t revealjs -o doc.html
+``````
 
-```
-*single asterisks*  - Italic
-_single underscores_ - Italic
-**double asterisks**  - Bold
-__double underscores__  - Bold
-````
+Slide Show (Slideous):
+``` bash 
+pandoc -s doc.md -t slideous -o doc.html
+``````
 
-### Strikeout, superscript and subscript ###
+Slide Show (S5):
+``` bash 
+pandoc -s doc.md -t s5 -o doc.html
+``````
 
-````
-~~~deleted text~~~  
-H~2~O is a liquid.  
-2^10^ is 1024. 
-````
+Slide Show (Haddock):
+``` bash 
+pandoc -s doc.md -t haddock -o doc.html
+``````
 
-### Math ###
+### .md to .docx
 
-````
-$a^2 = b^2 + c^2$  
-$x^{17} - 1$  
-$M^\bot = \{ f \in V' : f(m) = 0 \mbox{ for all } m \in M \}.$  
-$\[ \cos(\theta + \phi) = \cos \theta \cos \phi - \sin \theta \sin \phi \]$  
-$\[ |y - x| < \delta \]$ then $\[ |f(y) - f(x)| < \epsilon. \]$  
-\newcommand{\tuple}[1]{\langle #1 \rangle}  
-$\tuple{a, b, c}$  
-````
+Word with index:
+``` bash 
+echo pandoc -s doc.md -t docx --toc -o doc.docx
+``````
 
-### Links ###
+Word without index:
+``` bash 
+pandoc -s doc.md -t rtf -o doc.rtf
+``````
 
-````
-This is an automatic link <http://www.google.com>.  
-This is [inline link](http://example.com/ "Title") inline link with title.  
-This is [inline link](http://example.com/ ) inline link without title attribute.  
-This is [reference link ][ref] with ID.  
-This is [reference link][] without ID.  
-This is [Inline Internal link](#TOC).  
-This is [Internal link].  
+### .md to .pdf
 
-[ref]: http://example.com/  
-[reference link]: http://www.google.com  
-[Internal link]: #pandocs-markdown-reference 
-````
+PDF without index: 
+``` bash 
+pandoc -s doc.md -t --latex-engine=xelatex -o doc.pdf
+``````
 
-### Images ###
+PDF with index: 
+``` bash 
+pandoc -s doc.md -t --latex-engine=xelatex --toc -o doc.pdf
+``````
 
-````
-![](http://3.bp.bloGspot.com/-BLhmfBdELH0/UBT3uUd7r5I/AAAAAAAAADw/-rnn2kz5vjY/s220/oops_monk01_120.jpg "OopsMonk")
+### .md to .txt
 
-![Alt text][pic2]
+- det - Plain Text: `pandoc -s doc.md -t plain -o doc.txt`
+- detm - Linux Manual: `pandoc -s doc.md -t man -o doc.txt`
+[AsciiDoc](http://asciidoc.org/): 
+``` bash 
+pandoc -s doc.md -t asciidoc -o doc.txt
+``````
 
-[pic2]: http://3.bp.bloGspot.com/-BLhmfBdELH0/UBT3uUd7r5I/AAAAAAAAADw/-rnn2kz5vjY/s220/oops_monk01_120.jpg 
-````
+[LaTex](https://www.latex-project.org/): 
+``` bash 
+pandoc -s doc.md -t latex -o doc.txt
+``````
 
-`![<caption>]( <image url>  )`: Add a message. Note: The space is important otherwise the word converter might not find the image. `E.g.: ![Driver List]( ../resource/Image_29.png   )`
+[ConTeXt](http://wiki.contextgarden.net/What_is_ConTeXt): 
+``` bash 
+pandoc -s doc.md -t context -o doc.txt
+``````
 
-`![<caption>]( <image url> ){ <css properties> }`: Add image with any .css propery. `E.g.: ![InduSoft]( ../resource/Image_04_Indusoft.png  ){width=100% heigh=100%}`
+[Org](https://orgmode.org/): 
+``` bash 
+pandoc -s doc.md -t org -o doc.org
+``````
 
-### Embedded Video ###
+[reStructuredText](http://docutils.sourceforge.net/rst.html): 
+``` bash 
+pandoc -s doc.md -t rst -o doc.text
+``````
 
-````
-<iframe src="http://embed.ted.com/talks/lang/zh-tw/ken_robinson_how_to_escape_education_s_death_valley.html"
-width="560" height="315" frameborder="0" scrolling="no" 
-webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-````
+[Texinfo - The GNU Documentation System](https://www.gnu.org/software/texinfo/): 
+``` bash 
+pandoc -s doc.md -t texinfo -o doc.texi
+``````
 
-### Basic Code block ###
+[Native](https://www.ntcolorado.com/): 
+``` bash 
+pandoc -s doc.md -t native -o doc.txt
+``````
 
-Force code block(more then three ~)
+[TxStyle](https://txstyle.org/): 
+``` bash 
+pandoc -s doc.md -t textile -o doc.textile
+``````
 
-````
-~~~~~~~
-if (a > 3) {
-  moveShip(5 * gravity, DOWN);
-  }
-~~~~~~~
-````
+[MediaWiki](https://www.mediawiki.org): 
+``` bash 
+pandoc -s doc.md -t mediawiki -o doc.wiki
+``````
 
-### Code Syntax highlight ###
+[DokuWiki](https://www.dokuwiki.org): 
+``` bash 
+pandoc -s doc.md -t dokuwiki -o doc.wiki
+``````
 
-````
-```python
-import os
-import sys
+### .md to .xml
 
-def application(env, start_response):  
-    start_response('200 OK', [('Content-Type','text/html')])  
-    return "Hello WSGI!!"
-```
-````
+[OpenDocument](https://en.wikipedia.org/wiki/OpenDocument): 
+``` bash 
+pandoc -s doc.md -t opendocument -o doc.xml
+``````
 
-### Line Number ###
+[OPML](https://en.wikipedia.org/wiki/OPML): 
+``` bash 
+pandoc -s doc.md -t opml -o doc.xml
+``````
 
-````
-~~~~ {#pycode .python .numberLines startFrom="10"}
-import os
-import sys
+[DocBook](http://docbook.org/): 
+``` bash 
+pandoc -s doc.md -t docbook -o doc.xml
+``````
 
-def application(env, start_response):  
-    start_response('200 OK', [('Content-Type','text/html')])  
-    return "Hello WSGI!!"
-~~~~
-````
+[Adobe InCopy](https://en.wikipedia.org/wiki/Adobe_InCopy): 
+``` bash 
+pandoc -s doc.md -t icml -o doc.icml
+``````
 
-### Blockquotes ###
+### .md to .md
 
-````
-> This is a block quote.
->
-> > A block quote within a block quote.
-> > 
-> > > Nets.
-````
+Regular Markdown: 
+``` bash 
+pandoc -s doc.md -t markdown -o doc.md
+``````
 
-### Unordered (Bulleted) ###
+Github: 
+``` bash 
+pandoc -s doc.md -t markdown_github -o doc.html
+``````
 
-````
-* fruits
-    + apples
-        - macintosh
-        - red delicious
-    + pears
-    + peaches
-* vegetables
-    + brocolli
-    + chard
-````
+[MultiMarkdown](http://fletcherpenney.net/multimarkdown/): 
+``` bash 
+pandoc -s doc.md -t markdown_mmd -o doc.md
+``````
 
-### Ordered (Numbered) ###
+[php Markdown Extra](https://michelf.ca/projects/php-markdown/extra/): 
+``` bash 
+pandoc -s doc.md -t markdown_phpextra  -o doc.md
+``````
 
-````
-1. list1.
-1. list2.
-1. list3.
-1. list4.
-````
+[CommonMark](http://commonmark.org/): 
+``` bash 
+pandoc -s doc.md -t commonmark -o doc.md
+``````
 
-### Lists ###
+[CommonMark](http://spec.commonmark.org/0.28/): 
+``` bash 
+pandoc -s doc.md -t markdown_strict -o doc.md
+``````
 
-````
-(@)  My first example will be numbered (1).
-(@)  My second example will be numbered (2).
+Github README: 
+``` bash 
+pandoc -s source.md -t markdown_github -o ../../README.md
+``````
 
-Explanation of examples.
+### .md to .epub (Ebook)
 
-(@)  My third example will be numbered (3).  
+[EPUB 3.0](http://idpf.org/epub/30): 
+``` bash 
+pandoc -s doc.md -t epub3 -o doc.epub
+``````
 
-(@good)  This is a good example.
+[EPUB](http://idpf.org/epub): 
+``` bash 
+pandoc -s doc.md -t epub -o doc.epub
+``````
 
-As (@good) illustrates, ...  
-````
+## Batch conversions
 
-### Footnotes ###
+### Export all files from a folder to html
 
-````
-Here is an inline note.^[Inlines notes are easier to write, since
-you don't have to pick an identifier and move down to type the
-note.]  
-
-Here is a footnote reference,^[^[^1]^]^ and another.[^longnote]
-
-[^1]: Here is the footnote.
-
-[^longnote]: Here's one with multiple blocks.
-
-    Subsequent paragraphs are indented to show that they
-belong to the previous footnote.
-
-        { some.code }
-
-    The whole paragraph can be indented, or just the first
-    line.  In this way, multi-paragraph footnotes work like
-    multi-paragraph list items.
-
-This paragraph won't be part of the note, because it
-isn't indented.
-````
-
-### Simple tables ###
-
-````
- Right     Left     Center     Default
--------     ------ ----------   -------
-     12     12        12            12
-    123     123       123          123
-      1     1          1             1
+```` bash 
+find . -name '*.md' -exec basename {} .md \; | xargs -n1 -I XXX pandoc -s XXX.md -t html5 -c ../resources/style.css -o ../stage/XXX.html
 ````
 
-### Multiline tables ###
+## Vim Custom Mapped Key 
 
+`<space> + deh `: Convert from markdown to HTML5
 
-````
---------------------------
- Centered   Default           Right Left
-  Header    Aligned         Aligned Aligned
------------ ------- --------------- -------------------------
-   First    row                12.0 Example of a row that
-                                    spans multiple lines.
+`<space> + deht `: Convert from markdown to HTML5 with index
 
-  Second    row                 5.0 Here's another one. Note
-                                    the blank line between
-                                    rows.
---------------------------
-````
+`<space> + des `: Convert from markdown to Slide Show (Slidy)
 
-# Document Conversion Examples
+`<space> + des2 `: Convert from markdown to Slide Show (DZSlides)
 
-## .docx to .md
+`<space> + des3 `: Convert from markdown to Slide Show (RevealJS)
 
-- Pandoc
+`<space> + des4 `: Convert from markdown to Slide Show (Slideous)
 
-`pandoc -f docx -t markdown_mmd ./t1.docx --output=t1.md --atx-headers --wrap=none --toc --extract-media="resource"`
+`<space> + des5 `: Convert from markdown to Slide Show (S5)
+
+`<space> + des6 `: Convert from markdown to Slide Show (Haddock)
+
+`<space> + dew `: Convert from markdown to Word with index
+
+`<space> + dewr `: Convert from markdown to Word without index
+
+`<space> + dep `: Convert from markdown to PDF without index
+
+`<space> + dept `: Convert from markdown to PDF with index
+
+`<space> + det `: Convert from markdown to Plain Text
+
+`<space> + detm `: Convert from markdown to Linux Manual
+
+`<space> + deta `: Convert from markdown to [AsciiDoc](http://asciidoc.org/)
+
+`<space> + detl `: Convert from markdown to [LaTex](https://www.latex-project.org/)
+
+`<space> + detc `: Convert from markdown to [ConTeXt](http://wiki.contextgarden.net/What_is_ConTeXt)
+
+`<space> + deto `: Convert from markdown to [Org](https://orgmode.org/)
+
+`<space> + detr `: Convert from markdown to [reStructuredText](http://docutils.sourceforge.net/rst.html)
+
+`<space> + deti `: Convert from markdown to [Texinfo - The GNU Documentation System](https://www.gnu.org/software/texinfo/)
+
+`<space> + detn `: Convert from markdown to [Native](https://www.ntcolorado.com/)
+
+`<space> + dett `: Convert from markdown to [TxStyle](https://txstyle.org/)
+
+`<space> + detw `: Convert from markdown to [MediaWiki](https://www.mediawiki.org)
+
+`<space> + detd `: Convert from markdown to [DokuWiki](https://www.dokuwiki.org)
+
+`<space> + dex `: Convert from markdown to [OpenDocument](https://en.wikipedia.org/wiki/OpenDocument)
+
+`<space> + dexo `: Convert from markdown to [OPML](https://en.wikipedia.org/wiki/OPML)
+
+`<space> + dexd `: Convert from markdown to [DocBook](http://docbook.org/)
+
+`<space> + dexi `: Convert from markdown to [Adobe InCopy](https://en.wikipedia.org/wiki/Adobe_InCopy)
+
+`<space> + dem `: Convert from markdown to Regular Markdown
+
+`<space> + demg `: Convert from markdown to Github
+
+`<space> + demm `: Convert from markdown to [MultiMarkdown](http://fletcherpenney.net/multimarkdown/)
+
+`<space> + demp `: Convert from markdown to [php Markdown Extra](https://michelf.ca/projects/php-markdown/extra/)
+
+`<space> + demc `: Convert from markdown to [CommonMark](http://commonmark.org/)
+
+`<space> + dems `: Convert from markdown to [CommonMark](http://spec.commonmark.org/0.28/)
+
+`<space> + demr `: Convert from markdown to Github README
+
+`<space> + deb `: Convert from markdown to [EPUB 3.0](http://idpf.org/epub/30)
+
+`<space> + deb1 `: Convert from markdown to [EPUB](http://idpf.org/epub)
 
 

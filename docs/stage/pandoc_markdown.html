@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="markdown-pandoc-style">Markdown (Pandoc Style)</h1>
+<h2 id="headers">Headers</h2>
+<pre><code># This is H1.
+## This is H2.
+### This is H3.
+#### ...  
+###### This is H6.  </code></pre>
+<h2 id="basic-emphasis">Basic Emphasis</h2>
+<pre><code>*single asterisks*  - Italic
+_single underscores_ - Italic
+**double asterisks**  - Bold
+__double underscores__  - Bold</code></pre>
+<h2 id="strikeout-superscript-and-subscript">Strikeout, superscript and subscript</h2>
+<pre><code>~~~deleted text~~~  
+H~2~O is a liquid.  
+2^10^ is 1024. </code></pre>
+<h2 id="math">Math</h2>
+<pre><code>$a^2 = b^2 + c^2$  
+$x^{17} - 1$  
+$M^\bot = \{ f \in V&#39; : f(m) = 0 \mbox{ for all } m \in M \}.$  
+$\[ \cos(\theta + \phi) = \cos \theta \cos \phi - \sin \theta \sin \phi \]$  
+$\[ |y - x| &lt; \delta \]$ then $\[ |f(y) - f(x)| &lt; \epsilon. \]$  
+\newcommand{\tuple}[1]{\langle #1 \rangle}  
+$\tuple{a, b, c}$  </code></pre>
+<h2 id="links">Links</h2>
+<pre><code>This is an automatic link &lt;http://www.google.com&gt;.  
+This is [inline link](http://example.com/ &quot;Title&quot;) inline link with title.  
+This is [inline link](http://example.com/ ) inline link without title attribute.  
+This is [reference link ][ref] with ID.  
+This is [reference link][] without ID.  
+This is [Inline Internal link](#TOC).  
+This is [Internal link].  
+
+[ref]: http://example.com/  
+[reference link]: http://www.google.com  
+[Internal link]: #pandocs-markdown-reference </code></pre>
+<h2 id="images">Images</h2>
+<pre><code>![](http://3.bp.bloGspot.com/-BLhmfBdELH0/UBT3uUd7r5I/AAAAAAAAADw/-rnn2kz5vjY/s220/oops_monk01_120.jpg &quot;OopsMonk&quot;)
+
+![Alt text][pic2]
+
+[pic2]: http://3.bp.bloGspot.com/-BLhmfBdELH0/UBT3uUd7r5I/AAAAAAAAADw/-rnn2kz5vjY/s220/oops_monk01_120.jpg </code></pre>
+<p><code>![&lt;caption&gt;]( &lt;image url&gt;  )</code>: Add a message. Note: The space is important otherwise the word converter might not find the image. <code>E.g.: ![Driver List]( ../resource/Image_29.png   )</code></p>
+<p><code>![&lt;caption&gt;]( &lt;image url&gt; ){ &lt;css properties&gt; }</code>: Add image with any .css propery. <code>E.g.: ![InduSoft]( ../resource/Image_04_Indusoft.png  ){width=100% heigh=100%}</code></p>
+<h2 id="embedded-video">Embedded Video</h2>
+<pre><code>&lt;iframe src=&quot;http://embed.ted.com/talks/lang/zh-tw/ken_robinson_how_to_escape_education_s_death_valley.html&quot;
+width=&quot;560&quot; height=&quot;315&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; 
+webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;</code></pre>
+<h2 id="basic-code-block">Basic Code block</h2>
+<p>Force code block(more then three ~)</p>
+<pre><code>~~~~~~~
+if (a &gt; 3) {
+  moveShip(5 * gravity, DOWN);
+  }
+~~~~~~~</code></pre>
+<h2 id="code-syntax-highlight">Code Syntax highlight</h2>
+<pre><code>```python
+import os
+import sys
+
+def application(env, start_response):  
+    start_response(&#39;200 OK&#39;, [(&#39;Content-Type&#39;,&#39;text/html&#39;)])  
+    return &quot;Hello WSGI!!&quot;
+```</code></pre>
+<h2 id="line-number">Line Number</h2>
+<pre><code>~~~~ {#pycode .python .numberLines startFrom=&quot;10&quot;}
+import os
+import sys
+
+def application(env, start_response):  
+    start_response(&#39;200 OK&#39;, [(&#39;Content-Type&#39;,&#39;text/html&#39;)])  
+    return &quot;Hello WSGI!!&quot;
+~~~~</code></pre>
+<h2 id="blockquotes">Blockquotes</h2>
+<pre><code>&gt; This is a block quote.
+&gt;
+&gt; &gt; A block quote within a block quote.
+&gt; &gt; 
+&gt; &gt; &gt; Nets.</code></pre>
+<h2 id="unordered-bulleted">Unordered (Bulleted)</h2>
+<pre><code>* fruits
+    + apples
+        - macintosh
+        - red delicious
+    + pears
+    + peaches
+* vegetables
+    + brocolli
+    + chard</code></pre>
+<h2 id="ordered-numbered">Ordered (Numbered)</h2>
+<pre><code>1. list1.
+1. list2.
+1. list3.
+1. list4.</code></pre>
+<h2 id="lists">Lists</h2>
+<pre><code>(@)  My first example will be numbered (1).
+(@)  My second example will be numbered (2).
+
+Explanation of examples.
+
+(@)  My third example will be numbered (3).  
+
+(@good)  This is a good example.
+
+As (@good) illustrates, ...  </code></pre>
+<h2 id="footnotes">Footnotes</h2>
+<pre><code>Here is an inline note.^[Inlines notes are easier to write, since
+you don&#39;t have to pick an identifier and move down to type the
+note.]  
+
+Here is a footnote reference,^[^[^1]^]^ and another.[^longnote]
+
+[^1]: Here is the footnote.
+
+[^longnote]: Here&#39;s one with multiple blocks.
+
+    Subsequent paragraphs are indented to show that they
+belong to the previous footnote.
+
+        { some.code }
+
+    The whole paragraph can be indented, or just the first
+    line.  In this way, multi-paragraph footnotes work like
+    multi-paragraph list items.
+
+This paragraph won&#39;t be part of the note, because it
+isn&#39;t indented.</code></pre>
+<h2 id="simple-tables">Simple tables</h2>
+<pre><code> Right     Left     Center     Default
+-------     ------ ----------   -------
+     12     12        12            12
+    123     123       123          123
+      1     1          1             1</code></pre>
+<h2 id="multiline-tables">Multiline tables</h2>
+<pre><code>--------------------------
+ Centered   Default           Right Left
+  Header    Aligned         Aligned Aligned
+----------- ------- --------------- -------------------------
+   First    row                12.0 Example of a row that
+                                    spans multiple lines.
+
+  Second    row                 5.0 Here&#39;s another one. Note
+                                    the blank line between
+                                    rows.
+--------------------------</code></pre>
+</body>
+</html>
