@@ -10,7 +10,10 @@ Pandoc is a document converter.
 
 ### .docx to .md
 
-- Pandoc: `pandoc -f docx -t markdown_mmd ./t1.docx --output=t1.md --atx-headers --wrap=none --toc --extract-media="resource"`
+- Pandoc: 
+`````` bash 
+pandoc -f docx -t markdown_mmd ./t1.docx --output=t1.md --atx-headers --wrap=none --toc --extract-media="resource"
+``````
 
 ### .md to .html
 
