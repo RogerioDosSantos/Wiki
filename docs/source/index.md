@@ -51,6 +51,7 @@
 ## Docker ##
 
 - [Docker Commands]( ./docker_commands.html )
+- [Installation Procedures]( ./docker_installation_procedures.md )
 
 ## Infinit ##
 
@@ -125,3 +126,6 @@
 
 - [Cpp]( ./cpp.html )
 
+## Cloud
+
+- [IoT-Edge]( ./iot_edge.html )
