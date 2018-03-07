@@ -18,11 +18,25 @@
 <p>An IoT-Edge machine is a machine that has a IoT-Edge runtime module on it.</p>
 <h2 id="commands">Commands</h2>
 <p><code>pip install -U azure-iot-edge-runtime-ctl</code> : Install the IoT-Edge runtime module</p>
+<p><code>pip install azure-iot-edge-runtime-ctl==1.0.0rc19</code>: Install a specific version of the iotedgectl</p>
 <p><code>iotedgectl setup --connection-string &quot;&lt;device_connection_string&gt;&quot; --auto-cert-gen-force-no-passwords</code>: Setup the IoT-Edge runtime linking to an Azure device. The default configuration will be located at <code>/etc/azure-iot-edge/config.json</code></p>
 <p><code>iotedgectl start</code> Start the IoT-Edge agent with the default configuration located at <code>/etc/azure-iot-edge/config.json</code></p>
+<p><code>iotedgectl --verbose DEBUG start</code>: Start the application with additional logs.</p>
 <p><code>iotedgectl update</code>: Update the current container. You can use this command if you want to force the update configuration in the device</p>
+<p><code>iotedgectl status</code>: Provides the status of the iotedgectl</p>
 <p><code>docker logs -f &lt;module_name&gt;</code>: Allow to know the messages being sent by a module</p>
 <p><code>iotedgectl login --address &lt;your container registry address&gt; --username &lt;username&gt; --password &lt;password&gt;</code>: Add the registry credentials to Edge runtime.</p>
+<p><code>docker rm $(docker ps -a -q)</code> : Remove all docker containers</p>
+<p><code>docker rmi $(docker images -a -q)</code>: Remove all docker images</p>
+<p><code>docker login -u &lt;registry_user&gt; -p &lt;password&gt; &lt;registry_url&gt;</code>: Allow docker to login on the Azure registry</p>
+<p><code>docker image prune</code> : Clean old docker images</p>
+<p><code>docker volume prune</code>: Clean old volumes</p>
+<p><code>docker system prune</code>: Clean all old images and volumes</p>
+<p><code>docker system prune -a</code>: Clean all containers</p>
+<h2 id="how-iotedge-launch-the-containers">How IoTEdge Launch the Containers</h2>
+<pre class="sh"><code>docker pull iotedgemodule01.azurecr.io/filtermodule:latest
+docker create --name filterModule iotedgemodule01.azurecr.io/filtermodule:latest
+docker start filterModule</code></pre>
 <h2 id="preparing-an-iot-edge-device">Preparing an IoT-Edge Device</h2>
 <pre class="sh"><code># Pre-requirements
 sudo apt-get install python-pip
@@ -31,7 +45,14 @@ sudo apt-get install python-pip
 
 # Install and start the IoT Edge runtime
 sudo pip install -U azure-iot-edge-runtime-ctl
+
+## Setup device configuration
 sudo iotedgectl setup --connection-string &quot;{device connection string}&quot; --auto-cert-gen-force-no-passwords
+
+## Add Image Registry Credentials
+sudo iotedgectl login --address &lt;your container registry address&gt; --username &lt;username&gt; --password &lt;password&gt;&lt;/password&gt;&lt;/username&gt;&lt;/your&gt;
+
+## Start IoTEdge
 sudo iotedgectl start</code></pre>
 <p>At this point you should be able to see the IoT Edge agent is running as a module</p>
 <pre class="sh"><code>sudo docker ps</code></pre>

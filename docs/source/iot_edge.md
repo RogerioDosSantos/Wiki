@@ -10,15 +10,43 @@ An IoT-Edge machine is a machine that has a IoT-Edge runtime module on it.
 
 `pip install -U azure-iot-edge-runtime-ctl` : Install the IoT-Edge runtime module
 
+`pip install azure-iot-edge-runtime-ctl==1.0.0rc19`: Install a specific version of the iotedgectl
+
 `iotedgectl setup --connection-string "<device_connection_string>" --auto-cert-gen-force-no-passwords`: Setup the IoT-Edge runtime linking to an Azure device. The default configuration will be located at `/etc/azure-iot-edge/config.json`
 
 `iotedgectl start` Start the IoT-Edge agent with the default configuration located at `/etc/azure-iot-edge/config.json`
 
+`iotedgectl --verbose DEBUG start`: Start the application with additional logs.
+
 `iotedgectl update`: Update the current container. You can use this command if you want to force the update configuration in the device
+
+`iotedgectl status`: Provides the status of the iotedgectl
 
 `docker logs -f <module_name>`: Allow to know the messages being sent by a module
 
 `iotedgectl login --address <your container registry address> --username <username> --password <password>`: Add the registry credentials to Edge runtime.
+
+`docker rm $(docker ps -a -q)` : Remove all docker containers
+
+`docker rmi $(docker images -a -q)`: Remove all docker images
+
+`docker login -u <registry_user> -p <password> <registry_url>`:  Allow docker to login on the Azure registry
+
+`docker image prune` : Clean old docker images
+
+`docker volume prune`: Clean old volumes
+
+`docker system prune`: Clean all old images and volumes
+
+`docker system prune -a`: Clean all containers
+
+## How IoTEdge Launch the Containers
+
+``` sh
+docker pull iotedgemodule01.azurecr.io/filtermodule:latest
+docker create --name filterModule iotedgemodule01.azurecr.io/filtermodule:latest
+docker start filterModule
+```
 
 ## Preparing an IoT-Edge Device
 
@@ -30,7 +58,14 @@ sudo apt-get install python-pip
 
 # Install and start the IoT Edge runtime
 sudo pip install -U azure-iot-edge-runtime-ctl
+
+## Setup device configuration
 sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+
+## Add Image Registry Credentials
+sudo iotedgectl login --address <your container registry address> --username <username> --password <password></password></username></your>
+
+## Start IoTEdge
 sudo iotedgectl start
 ```
 
