@@ -22,6 +22,10 @@
 
 ## Directories and Files ##
 
+`pushd <directory>`: Go to a directory and keep the previous directory in memory so you can return to it using the command `popd`
+
+`popd` : Return to the previous memory directory saved by the command `pushd`
+
 `pwd` : Show the directory you are
 
 `ls -all` : List all files and directories into the current directory 
