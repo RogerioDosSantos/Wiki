@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="net-core">.Net Core</h1>
+<h2 id="commands">Commands</h2>
+<p><code>dotnet new console</code> : Create a new console application project</p>
+<p><code>dotnet restore</code> : Calls into NuGet (.NET package manager) to restore the tree of dependencies. The <em>.csproj</em> project file is analyzed to get the dependencies. Note: Starting with .NET Core 2.0, you don't have to run dotnet restore because it's run implicitly by all commands, such as dotnet build and dotnet run, that require a restore to occur.</p>
+<p><code>dotnet run</code> : Calls dotnet build to ensure that the build targets have been built, and then calls dotnet <code>&lt;assembly.dll&gt;</code> to run the target application.</p>
+<p><code>dotnet build</code> : Compile the project</p>
+<p><code>dotnet &lt;dotnet_assembly_dll&gt;</code> : Run an .Net assembly dll.</p>
+<p><code>dotnet build --runtime &lt;platform&gt;&lt;/platform&gt;</code> : Build the assembly for a specific platform. <code>E.g.: dotnet build --runtime ubuntu.16.04-x64</code></p>
+</body>
+</html>
