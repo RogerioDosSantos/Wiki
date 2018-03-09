@@ -188,6 +188,14 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `sha1sum -c <file>.sha1`: Check if the file changed. It should show OK if the sha1 is correct.
 
+#### MD5 hashes
+
+`md5sum <file>` : Print or check MD5 (Message-Digest algorithm 5) 128-bit cryptographic hash checksums. With no file, or when file is -, read standard input
+
+`md5sum <file> > <file>.sha1`: If you want to send the file together with its sha1sum output redirect the output to a file
+
+`md5sum -c <file>.sha1`: Check if the file changed. It should show OK if the sha1 is correct.
+
 ## System ##
 
 `dmesg` : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.
