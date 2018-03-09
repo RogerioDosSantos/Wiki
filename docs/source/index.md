@@ -100,6 +100,7 @@
 
 ## .Net ##
 
+- [.Net Core]( ./dotnet_core.html )
 - [GAC]( ./gac.html )
 - [.Net Versions]( ./.net_versions.html )
 
@@ -126,6 +127,7 @@
 
 - [Cpp]( ./cpp.html )
 
-## Cloud
+## Azure
 
 - [IoT-Edge]( ./iot_edge.html )
+- [Storage]( ./azure_storage.html )

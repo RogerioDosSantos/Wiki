@@ -40,6 +40,8 @@ An IoT-Edge machine is a machine that has a IoT-Edge runtime module on it.
 
 `docker system prune -a`: Clean all containers
 
+`az iot hub module-twin update --device-id jong1 --hub-name jongiothub1 --module-id filtermodule --set properties.desired.TemperatureThreshold=22` : E.g.: `az iot hub module-twin update --device-id jong1 --hub-name jongiothub1 --module-id filtermodule --set properties.desired.TemperatureThreshold=22`
+
 ## How IoTEdge Launch the Containers
 
 ``` sh
@@ -78,11 +80,22 @@ sudo docker ps
 Now you can deploy the module from the Azure Portal
 
 
-
-
 ## References
 
 [Microsoft Documentation]( https://docs.microsoft.com/en-us/azure/iot-edge/ )
 
 [How to Simulate an edge device on Linux]( https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux )
+
+### Important
+
+[Azure IoT CLI]( https://github.com/Azure/azure-cli ) - CLI to work with Azure 
+
+[Azure IoT CLI extension]( https://github.com/Azure/azure-iot-cli-extension ) - CLI to work with Edge devices
+
+[Azure IoT CLI extension Commands]( https://github.com/Azure/azure-iot-cli-extension/wiki/Commands ) - CLI Commands
+
+
+[Azure IoT SDK]( https://github.com/Azure/azure-iot-sdks ) - It allow to edit the Twins
+
+[Azure IoT SDK C]( https://github.com/Azure/azure-iot-sdk-c/tree/modules-preview ) - It allow to edit the Twins (C SDK)
 

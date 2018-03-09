@@ -173,6 +173,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `uuidgen` : Create a GUID
 
+`lsb_release -a`: Display the Operation System ID, Description. Codename and version.
+
 ## System ##
 
 `dmesg` : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.

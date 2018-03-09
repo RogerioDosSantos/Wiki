@@ -30,7 +30,7 @@
 
 `docker push [<dockerhub user>]/<dockerhub repository name>` : Pull an image into the DockerHub repository. Note: You need to be logged before pushing an image. E.g.: `docker push rogersantos/vim`
 
-`docker login` : Log into the DockerHub repository.
+`docker login` : Log into a repository
 
 `docker-compose up [-d]` : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The `-d` option allow to start the container as service, _forking_ the process.
 

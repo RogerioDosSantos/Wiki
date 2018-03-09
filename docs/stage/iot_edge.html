@@ -33,6 +33,7 @@
 <p><code>docker volume prune</code>: Clean old volumes</p>
 <p><code>docker system prune</code>: Clean all old images and volumes</p>
 <p><code>docker system prune -a</code>: Clean all containers</p>
+<p><code>az iot hub module-twin update --device-id jong1 --hub-name jongiothub1 --module-id filtermodule --set properties.desired.TemperatureThreshold=22</code> : E.g.: <code>az iot hub module-twin update --device-id jong1 --hub-name jongiothub1 --module-id filtermodule --set properties.desired.TemperatureThreshold=22</code></p>
 <h2 id="how-iotedge-launch-the-containers">How IoTEdge Launch the Containers</h2>
 <pre class="sh"><code>docker pull iotedgemodule01.azurecr.io/filtermodule:latest
 docker create --name filterModule iotedgemodule01.azurecr.io/filtermodule:latest
@@ -60,5 +61,11 @@ sudo iotedgectl start</code></pre>
 <h2 id="references">References</h2>
 <p><a href="https://docs.microsoft.com/en-us/azure/iot-edge/">Microsoft Documentation</a></p>
 <p><a href="https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux">How to Simulate an edge device on Linux</a></p>
+<h3 id="important">Important</h3>
+<p><a href="https://github.com/Azure/azure-cli">Azure IoT CLI</a> - CLI to work with Azure</p>
+<p><a href="https://github.com/Azure/azure-iot-cli-extension">Azure IoT CLI extension</a> - CLI to work with Edge devices</p>
+<p><a href="https://github.com/Azure/azure-iot-cli-extension/wiki/Commands">Azure IoT CLI extension Commands</a> - CLI Commands</p>
+<p><a href="https://github.com/Azure/azure-iot-sdks">Azure IoT SDK</a> - It allow to edit the Twins</p>
+<p><a href="https://github.com/Azure/azure-iot-sdk-c/tree/modules-preview">Azure IoT SDK C</a> - It allow to edit the Twins (C SDK)</p>
 </body>
 </html>

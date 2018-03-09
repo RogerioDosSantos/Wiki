@@ -139,6 +139,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>tar -cz &lt;directory to backup&gt; | gpg -c -o ./backup.tgz.gpg</code> : Execute an encrypted compressed backup. E.g.: <code>tar -cz ./safe00/ | gpg -c -o ./backup.tgz.gpg</code></p>
 <p><code>gpg -d ./backup.tgz.gpg | tar xz</code> : Uncompress the encrypted backup into the current directory.</p>
 <p><code>uuidgen</code> : Create a GUID</p>
+<p><code>lsb_release -a</code>: Display the Operation System ID, Description. Codename and version.</p>
 <h2 id="system">System</h2>
 <p><code>dmesg</code> : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.</p>
 <h2 id="network">Network</h2>

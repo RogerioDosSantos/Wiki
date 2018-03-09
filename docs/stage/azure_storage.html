@@ -49,20 +49,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <![endif]-->
 </head>
 <body>
-<h1 id="net-core">.Net Core</h1>
+<h1 id="azure-storage">Azure Storage</h1>
 <h2 id="commands">Commands</h2>
-<p><code>dotnet new console</code> : Create a new console application project</p>
-<p><code>dotnet restore</code> : Calls into NuGet (.NET package manager) to restore the tree of dependencies. The <em>.csproj</em> project file is analyzed to get the dependencies. Note: Starting with .NET Core 2.0, you don't have to run dotnet restore because it's run implicitly by all commands, such as dotnet build and dotnet run, that require a restore to occur.</p>
-<p><code>dotnet run</code> : Calls dotnet build to ensure that the build targets have been built, and then calls dotnet <code>&lt;assembly.dll&gt;</code> to run the target application.</p>
-<p><code>dotnet build</code> : Compile the project</p>
-<p><code>dotnet &lt;dotnet_assembly_dll&gt;</code> : Run an .Net assembly dll.</p>
-<p><code>dotnet build --runtime &lt;platform&gt;&lt;/platform&gt;</code> : Build the assembly for a specific platform. <code>E.g.: dotnet build --runtime ubuntu.16.04-x64</code></p>
+<p><code>azcopy --source &lt;source&gt; --destination &lt;destination&gt; [Options]</code> : Download/Upload applications</p>
 <h2 id="installations">Installations</h2>
-<h3 id="net-core-1">.Net Core</h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">curl</span> https://packages.microsoft.com/keys/microsoft.asc <span class="kw">|</span> <span class="kw">gpg</span> --dearmor <span class="kw">&gt;</span> microsoft.gpg
-<span class="kw">sudo</span> mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-<span class="kw">sudo</span> sh -c <span class="st">&#39;echo &quot;deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main&quot; &gt; /etc/apt/sources.list.d/dotnetdev.list&#39;</span>
-<span class="kw">sudo</span> apt-get update
-<span class="kw">sudo</span> apt-get install dotnet-sdk-2.0.2</code></pre></div>
+<h3 id="azcopy">AzCopy</h3>
+<p>AzCopy requires .Net Core</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mkdir</span> ~/temp
+<span class="kw">cd</span> ~/temp
+<span class="kw">wget</span> -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
+<span class="kw">tar</span> -xf azcopy.tar.gz
+<span class="kw">sudo</span> ./install.sh</code></pre></div>
 </body>
 </html>
