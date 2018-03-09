@@ -58,7 +58,8 @@
 
 ```
 for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
-``` : Rename all files of a directory to lower case.
+``` 
+: Rename all files of a directory to lower case.
 
 `for f in *; do mv "$f" "${f%.*}" ; done` : Remove the last extension of all files
 
@@ -99,7 +100,7 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `whereis <program>` : find where is the location of a specific program
 
-`lsof` : List all open files and its process (You need to run as super user). E.g.: lsof >Result.txt
+`lsof` : List all open files and its process (You need to run as super user). E.g.:` lsof > Result.txt`
 
 `ps -aux` : List of all running process
 
@@ -175,6 +176,18 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `lsb_release -a`: Display the Operation System ID, Description. Codename and version.
 
+## Security
+
+### Hashes
+
+#### SHA-1 hashes
+
+`sha1sum <file>` : Print or check SHA1 (160-bit) checksums. With no file, or when file is -, read standard input
+
+`sha1sum <file> > <file>.sha1`: If you want to send the file together with its sha1sum output redirect the output to a file
+
+`sha1sum -c <file>.sha1`: Check if the file changed. It should show OK if the sha1 is correct.
+
 ## System ##
 
 `dmesg` : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.
@@ -193,7 +206,7 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 The file `/etc/network/interfaces` controls the startup network configuration. To config a static IP you can use the following configuration:
 
-````
+```
 
 auto lo
 iface lo inet loopback
@@ -207,7 +220,7 @@ iface eth0 inet static
   broadcast 192.168.0.255
   gateway 192.168.0.1
 
-````
+```
 
 ### Installing Certificates
 
@@ -225,9 +238,9 @@ openssl x509 -inform DER -outform PEM -in  my_certificate.crt -out my_c
 # Let Ubuntu add the .crt file's path relative to /usr/share/ca-certificates to /etc/ca-certificates.conf:
 sudo dpkg-reconfigure ca-certificates
 
-``````
+```
 
-**Note**: If you are using Ubuntu you might need to rename the certificate to *.pem to the dpkg-reconfigure command detected the certificate.
+**Note**: If you are using Ubuntu you might need to rename the certificate to `*.pem` to the dpkg-reconfigure command detected the certificate.
 
 ## Bash Files ##
 
@@ -247,7 +260,7 @@ sudo dpkg-reconfigure ca-certificates
 
 ### Conditional Statements ###
 
-````
+```
 
 if [ -d "${directory}"  ]; then
   # Control will enter here if $DIRECTORY exists.
@@ -257,21 +270,21 @@ if [ ! -d "${directory}"  ]; then
   # Control will enter here if ${directory} does not exists.
 fi
 
-````
+```
 
 ### Looping ###
 
-````
+```
 
 for <item> in "${<array>[@]}"; do
   echo "${<item>}"
 done
 
-````
+```
 
 ### Function declaration and usage ###
 
-````
+```
 
 function_name () {
   echo "arg1 = $1"
@@ -280,7 +293,7 @@ function_name () {
 
 function_name $arg1 $arg2
 
-````
+```
   
 ## File System ##
 
@@ -346,7 +359,7 @@ E.g.: `http_proxy="http://my_user:my_password@host_ip:443"`
 
  `/lib/udev/rules.d/` : Map rules script location. Those scripts are responsible to define the how the periphericals will be mapped on the Linux filesystem. See _udev script examples_.
  
- ### USB ###
+### USB
  
  `lsusb` : List the USB devices displaying its IDs. _<Maker ID>:<Device ID>_
  

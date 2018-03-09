@@ -78,7 +78,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>pwd -P</code> : Show the physical directory you are</p>
 <p><code>ls -l</code> : List all files and directories into the current directory</p>
 <p><code>mv</code> : Move or rename a file or directory</p>
-<p><code>for f in *; do mv &quot;$f&quot; &quot;$f.tmp&quot;; mv &quot;$f.tmp&quot; &quot;`echo $f | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot;`&quot;; done</code> : Rename all files of a directory to lower case.</p>
+<pre><code>for f in *; do mv &quot;$f&quot; &quot;$f.tmp&quot;; mv &quot;$f.tmp&quot; &quot;`echo $f | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot;`&quot;; done</code></pre>
+<p>: Rename all files of a directory to lower case.</p>
 <p><code>for f in *; do mv &quot;$f&quot; &quot;${f%.*}&quot; ; done</code> : Remove the last extension of all files</p>
 <p><code>tree</code> : Display the tree of directories and sub directories</p>
 <p><code>wget [-O &lt;destination path&gt;] &lt;http or ftp url&gt;</code> : Get a file from the Internet to the destination path</p>
@@ -102,7 +103,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>kill [-KILL] &lt;process id&gt;</code> : Kill a proccess. The <code>-KILL</code> parameter forces the proccess to be killed. You can get the process id using the <code>top</code> command</p>
 <p><code>&lt;program name&gt; --version</code> : Get the version of a program</p>
 <p><code>whereis &lt;program&gt;</code> : find where is the location of a specific program</p>
-<p><code>lsof</code> : List all open files and its process (You need to run as super user). E.g.: lsof &gt;Result.txt</p>
+<p><code>lsof</code> : List all open files and its process (You need to run as super user). E.g.:<code>lsof &gt; Result.txt</code></p>
 <p><code>ps -aux</code> : List of all running process</p>
 <p><code>vmstat</code> : Virtual Memory Statistics</p>
 <p><code>compgen -c</code> : List all the commands you could run.</p>
@@ -140,6 +141,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>gpg -d ./backup.tgz.gpg | tar xz</code> : Uncompress the encrypted backup into the current directory.</p>
 <p><code>uuidgen</code> : Create a GUID</p>
 <p><code>lsb_release -a</code>: Display the Operation System ID, Description. Codename and version.</p>
+<h2 id="security">Security</h2>
+<h3 id="hashes">Hashes</h3>
+<h4 id="sha-1-hashes">SHA-1 hashes</h4>
+<p><code>sha1sum &lt;file&gt;</code> : Print or check SHA1 (160-bit) checksums. With no file, or when file is -, read standard input</p>
+<p><code>sha1sum &lt;file&gt; &gt; &lt;file&gt;.sha1</code>: If you want to send the file together with its sha1sum output redirect the output to a file</p>
+<p><code>sha1sum -c &lt;file&gt;.sha1</code>: Check if the file changed. It should show OK if the sha1 is correct.</p>
 <h2 id="system">System</h2>
 <p><code>dmesg</code> : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.</p>
 <h2 id="network">Network</h2>
@@ -175,7 +182,7 @@ iface eth0 inet static
 
 <span class="co"># Let Ubuntu add the .crt file&#39;s path relative to /usr/share/ca-certificates to /etc/ca-certificates.conf:</span>
 <span class="kw">sudo</span> dpkg-reconfigure ca-certificates</code></pre></div>
-<p><strong>Note</strong>: If you are using Ubuntu you might need to rename the certificate to *.pem to the dpkg-reconfigure command detected the certificate.</p>
+<p><strong>Note</strong>: If you are using Ubuntu you might need to rename the certificate to <code>*.pem</code> to the dpkg-reconfigure command detected the certificate.</p>
 <h2 id="bash-files">Bash Files</h2>
 <p><code>#!/bin/bash</code> : Inform what interpreter should run the bash</p>
 <p><code>cd &quot;$(dirname &quot;$0&quot;)</code> : Set bash to the current directory</p>
@@ -236,7 +243,7 @@ function_name $arg1 $arg2
 <p><code>/dev/</code> : Location of all devices available in the device. You can use the <code>ls</code> command to list them.</p>
 <p><code>udevadm -n &lt;/dev/&lt;device name&gt;</code> : Provide all the information about a device. E.g.: Name, Bus, Vendor ID, Path ID, etc. Thins information can be used to configure the device. E.g.: Allow it to always receive the same name.</p>
 <p><code>/lib/udev/rules.d/</code> : Map rules script location. Those scripts are responsible to define the how the periphericals will be mapped on the Linux filesystem. See <em>udev script examples</em>.</p>
-<p>### USB ###</p>
+<h3 id="usb">USB</h3>
 <p><code>lsusb</code> : List the USB devices displaying its IDs. <em><Maker ID>:<Device ID></em></p>
 <p>#### udev script examples ####</p>
 <p>Map an USB port based on the Path ID. This example always map a raspberry pi port position to a fixed link</p>
