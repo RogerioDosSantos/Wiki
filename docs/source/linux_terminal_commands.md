@@ -73,6 +73,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `<command> | tee -a "<logfile>"` : Saves the input to a file showing it on the stdout. -a informs that the file will be appended Saves the input to a file showing it on the stdout. -a informs that the file will be appended. 
 
+`$(pwd -P | sed 's/\/mnt\/c\//c:\\\\/g' | sed 's/\//\\\\/g')`: Convert Linux path to Windows path when using Windows Linux Subsystem
+
 ## Programs and OS ##
 
 `info <command name>`

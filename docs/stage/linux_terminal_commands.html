@@ -86,6 +86,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>wget [-O &lt;destination path&gt;] &lt;http or ftp url&gt;</code> : Get a file from the Internet to the destination path</p>
 <p><code>wget --mirror &lt;htttp or ftp url&gt;</code> : Mirror an URL</p>
 <p><code>&lt;command&gt; | tee -a &quot;&lt;logfile&gt;&quot;</code> : Saves the input to a file showing it on the stdout. -a informs that the file will be appended Saves the input to a file showing it on the stdout. -a informs that the file will be appended.</p>
+<p><code>$(pwd -P | sed 's/\/mnt\/c\//c:\\\\/g' | sed 's/\//\\\\/g')</code>: Convert Linux path to Windows path when using Windows Linux Subsystem</p>
 <h2 id="programs-and-os">Programs and OS</h2>
 <dl>
 <dt><code>info &lt;command name&gt;</code></dt>
