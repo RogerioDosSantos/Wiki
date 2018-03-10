@@ -28,6 +28,8 @@
 
 `pwd` : Show the directory you are
 
+`pwd -P` : Show the directory you are without symlink
+
 `ls -all` : List all files and directories into the current directory 
 
 `chmod a+x <filename>` : Make a file executable
