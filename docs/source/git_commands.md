@@ -58,6 +58,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
   
 `git clean -fd` : Remove untracked files.
 
+`git rev-parse [--short] HEAD` : Display the HEAD id. Use short for the short version.
+
 ## History ##
 
 `git blame` : Allow you to check the file chain history (Similar to VS annotate)
