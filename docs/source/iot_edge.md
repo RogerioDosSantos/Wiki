@@ -79,6 +79,39 @@ sudo docker ps
 
 Now you can deploy the module from the Azure Portal
 
+## IoTEdge DEV
+
+### Commands
+
+`docker run -it -v <iot_edge_project_dir>:/home/iotedge -v /var/run/docker.sock:/var/run/docker.sock jongallant/iotedgedev`: Load the IoTEdge DEV environment.
+
+`iotedgedev solution <edgesolution1>`: Create a solution
+
+`iotedgedev build --deploy`: Build and Deploy Modules
+
+`iotedgedev start` : Setup and Start the IoT Edge Runtime. Note: The start command will apply the /.config/runtime.json file to your IoT Edge device
+
+`iotedgedev monitor` : Monitor Messages
+
+`iotedgedev stop`: Stops Edge Runtime. Calls iotedgectl stop.
+
+`dotnet new -i Microsoft.Azure.IoT.Edge.Module` : Install the .NET Core Module Template
+
+`dotnet new aziotedgemodule -o modules/<module_name>` : Create a new module using the template
+
+### .env 
+
+`IOTHUB_CONNECTION_STRING` : IoTHub connection string
+
+`DEVICE_CONNECTION_STRING` : Device connection string
+
+`ACTIVE_MODULES` : Define modules that will be compiled
+
+`ACTIVE_DOCKER_DIRS` : Define each dockerfile that will be used to build the image
+
+`CONTAINER_REGISTRY_SERVER` : Define what container will be used
+
+
 
 ## References
 
@@ -98,4 +131,8 @@ Now you can deploy the module from the Azure Portal
 [Azure IoT SDK]( https://github.com/Azure/azure-iot-sdks ) - It allow to edit the Twins
 
 [Azure IoT SDK C]( https://github.com/Azure/azure-iot-sdk-c/tree/modules-preview ) - It allow to edit the Twins (C SDK)
+
+[IoTEdge DEV]( https://github.com/jonbgallant/azure-iot-edge-dev-tool )
+
+
 

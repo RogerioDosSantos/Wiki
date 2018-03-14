@@ -58,6 +58,22 @@ sudo iotedgectl start</code></pre>
 <p>At this point you should be able to see the IoT Edge agent is running as a module</p>
 <pre class="sh"><code>sudo docker ps</code></pre>
 <p>Now you can deploy the module from the Azure Portal</p>
+<h2 id="iotedge-dev">IoTEdge DEV</h2>
+<h3 id="commands-1">Commands</h3>
+<p><code>docker run -it -v &lt;iot_edge_project_dir&gt;:/home/iotedge -v /var/run/docker.sock:/var/run/docker.sock jongallant/iotedgedev</code>: Load the IoTEdge DEV environment.</p>
+<p><code>iotedgedev solution &lt;edgesolution1&gt;</code>: Create a solution</p>
+<p><code>iotedgedev build --deploy</code>: Build and Deploy Modules</p>
+<p><code>iotedgedev start</code> : Setup and Start the IoT Edge Runtime. Note: The start command will apply the /.config/runtime.json file to your IoT Edge device</p>
+<p><code>iotedgedev monitor</code> : Monitor Messages</p>
+<p><code>iotedgedev stop</code>: Stops Edge Runtime. Calls iotedgectl stop.</p>
+<p><code>dotnet new -i Microsoft.Azure.IoT.Edge.Module</code> : Install the .NET Core Module Template</p>
+<p><code>dotnet new aziotedgemodule -o modules/&lt;module_name&gt;</code> : Create a new module using the template</p>
+<h3 id="env">.env</h3>
+<p><code>IOTHUB_CONNECTION_STRING</code> : IoTHub connection string</p>
+<p><code>DEVICE_CONNECTION_STRING</code> : Device connection string</p>
+<p><code>ACTIVE_MODULES</code> : Define modules that will be compiled</p>
+<p><code>ACTIVE_DOCKER_DIRS</code> : Define each dockerfile that will be used to build the image</p>
+<p><code>CONTAINER_REGISTRY_SERVER</code> : Define what container will be used</p>
 <h2 id="references">References</h2>
 <p><a href="https://docs.microsoft.com/en-us/azure/iot-edge/">Microsoft Documentation</a></p>
 <p><a href="https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux">How to Simulate an edge device on Linux</a></p>
@@ -67,5 +83,6 @@ sudo iotedgectl start</code></pre>
 <p><a href="https://github.com/Azure/azure-iot-cli-extension/wiki/Commands">Azure IoT CLI extension Commands</a> - CLI Commands</p>
 <p><a href="https://github.com/Azure/azure-iot-sdks">Azure IoT SDK</a> - It allow to edit the Twins</p>
 <p><a href="https://github.com/Azure/azure-iot-sdk-c/tree/modules-preview">Azure IoT SDK C</a> - It allow to edit the Twins (C SDK)</p>
+<p><a href="https://github.com/jonbgallant/azure-iot-edge-dev-tool">IoTEdge DEV</a></p>
 </body>
 </html>

@@ -277,5 +277,10 @@ function_name $arg1 $arg2
 <p><code>/etc/cron.weekly</code> : Directory that contains scrips that runs weekly.</p>
 <p><code>/etc/cron.monthly</code> : Directory that contains scrips that runs monthly.</p>
 <p><code>etc/crontab</code> : Main configuration cron file.</p>
+<h2 id="run-32bits-application-into-64bits-os">Run 32bits application into 64bits OS</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> dpkg --add-architecture i386
+<span class="kw">sudo</span> apt-get update
+<span class="kw">sudo</span> apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+<span class="kw">sudo</span> apt-get install multiarch-support</code></pre></div>
 </body>
 </html>

@@ -39,6 +39,7 @@
 <p><code>docker rm $(docker ps -a -f status=exited -q)</code>: Remove all exited containers.</p>
 <p><code>docker rmi $(docker images -a -q)</code>: Remove all images.</p>
 <p><code>docker rmi $(docker images -f dangling=true -q)</code>: Remove dangling images</p>
+<p><code>docker build -f &lt;docker_file_name&gt; -t &lt;image_tag&gt;</code> : E.g: docker build -f ./DockerFile -t rogersantos/image_01:latest</p>
 <h2 id="start-attach-options">Start / Attach options</h2>
 <p><code>-v &lt;local folder&gt;:&lt;remote folder&gt;</code> : Mount a folder (volume) from the host into the container. Note the container folder should have the full path. E.g.: <code>-v ~/host:/root/host</code>.</p>
 <p><code>--restart=always</code> : Allow the container to always restart</p>
@@ -52,5 +53,8 @@
 <p><code>docker-machine create --driver generic --generic-ip-address=&lt;vm ip address&gt; --generic-ssh-key &lt;path of the public certificate&gt; &lt;name of the VM that will appear on the docker machine&gt;</code>: Add an existing vm with docker installed on it to the docker machine. (E.g.: <code>docker-machine create --driver generic --generic-ip-address=203.0.113.81 --generic-ssh-key ~/.ssh/id_rsa vm</code>)</p>
 <p><code>docker-machine create -d virtualbox --virtualbox-boot2docker-url https://github.com/RogerioDosSantos/docker/raw/master/docker_machine/boot2docker/32bits/boot2docker.iso &lt;machine name&gt;</code>: create a new 32 bits host machine.</p>
 <p><code>docker-machine create -d virtualbox --virtualbox-boot2docker-url https://github.com/RogerioDosSantos/docker/raw/master/docker_machine/boot2docker/64bits/boot2docker.iso &lt;machine name&gt;</code>: create a new 64 bits host machine.</p>
+<h2 id="share-folder">Share folder</h2>
+<h3 id="using-virtualbox">Using VirtualBox</h3>
+<p><code>-v /c/Users:/home/host</code>: Share user folder with home directory</p>
 </body>
 </html>
