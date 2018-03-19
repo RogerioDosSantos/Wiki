@@ -87,6 +87,8 @@ Now you can deploy the module from the Azure Portal
 
 `iotedgedev solution <edgesolution1>`: Create a solution
 
+`iotedgedev deploy`: Build and Deploy Modules
+
 `iotedgedev build --deploy`: Build and Deploy Modules
 
 `iotedgedev start` : Setup and Start the IoT Edge Runtime. Note: The start command will apply the /.config/runtime.json file to your IoT Edge device
@@ -111,6 +113,7 @@ Now you can deploy the module from the Azure Portal
 
 `CONTAINER_REGISTRY_SERVER` : Define what container will be used
 
+`ACTIVE_DOCKER_ARCH` : Define what platform will be compiled
 
 
 ## References
