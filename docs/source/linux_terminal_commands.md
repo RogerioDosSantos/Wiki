@@ -427,3 +427,14 @@ Map an USB port based on the Maker ID and Product ID
 
 `etc/crontab` : Main configuration cron file.
 
+## Run 32bits application into 64bits OS
+
+```bash
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+sudo apt-get install multiarch-support
+```
+
+
+

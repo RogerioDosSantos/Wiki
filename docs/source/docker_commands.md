@@ -52,6 +52,8 @@
 
 `docker rmi $(docker images -f dangling=true -q)`: Remove dangling images
 
+`docker build -f <docker_file_name> -t <image_tag>` : E.g: docker build -f ./DockerFile -t rogersantos/image_01:latest
+
 ## Start / Attach options ##
 
 `-v <local folder>:<remote folder>` : Mount a folder (volume) from the host into the container. Note the container folder should have the full path. E.g.: `-v ~/host:/root/host`. 
@@ -78,3 +80,9 @@
 `docker-machine create -d virtualbox --virtualbox-boot2docker-url https://github.com/RogerioDosSantos/docker/raw/master/docker_machine/boot2docker/32bits/boot2docker.iso <machine name>`: create a new 32 bits host machine.
 
 `docker-machine create -d virtualbox --virtualbox-boot2docker-url https://github.com/RogerioDosSantos/docker/raw/master/docker_machine/boot2docker/64bits/boot2docker.iso <machine name>`: create a new 64 bits host machine.
+
+## Share folder
+
+### Using VirtualBox
+
+`-v /c/Users:/home/host`: Share user folder with home directory
