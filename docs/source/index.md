@@ -15,6 +15,7 @@
 - [Raspberry Pi]( ./raspberry_pi.html )
 - [curl]( ./curl.html )
 - [Linux Kernel]( ./linux_kernel.html )
+- [Apache Web Server]( ./apache.html )
 
 ## Vim ##
 
@@ -136,6 +137,3 @@
 - [IoT-Edge]( ./iot_edge.html )
 - [Storage]( ./azure_storage.html )
 
-## Aveva
-
-- [IoTView]( ./iotview.html )
