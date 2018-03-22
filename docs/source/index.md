@@ -31,6 +31,10 @@
   	- [Marvim](	./marvim.html )
     - [FZF](./fzf.html)
 
+## Editors
+
+[Notepad++]( ./notepadpp.html )
+
 ## Markdown
 
 - [Markdown Syntax (Pandoc)]( ./pandoc_markdown.html )
