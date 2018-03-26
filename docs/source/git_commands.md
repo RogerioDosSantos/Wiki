@@ -16,6 +16,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git commit -m <check-in description> ` : send the content to the git repository
 
+`git commit --amend`: Allow to amend a message committed.
+
 `git config --list ` : List the current git configuration
 
 `git clone <repository git url> <local folder name> ` : Clone git repository (E.g.: git clone ssh://git@192.168.56.113/~/git-server/leel.git)
