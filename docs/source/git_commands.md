@@ -28,6 +28,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git config --global credential.helper "cache --timeout=3600" ` : configure to cache your credentials for a specific amount of time.
 
+`git config credential.helper store` : Configure the user and password to be stored into the `~/.git-credentials` file. Note: The password is stored without encryption. The only protection is that the file will be set to only have read and write access to your user. If this is not an acceptable level of security, please user the *credential.helper with cache option*
+
 `git stash` : Get the information from server replacing the information of existing files with the server content. NO MERGE
 
 `git checkout -- <filename>` : Discard added changed for a file
