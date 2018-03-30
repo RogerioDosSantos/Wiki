@@ -38,6 +38,11 @@ Provide integration with Git
 
 `<leader>gle `: (:Gedit) Return to the current file being edited.
 
+`<leader>gpc`: Past the last commit message `git log -1 --pretty="%B"`
+
+`<leader>gpc2`: Past the second last commit message `git log -2 --pretty="%B"`
+
+`<leader>gpc3`: Past the thirde last commit message `git log -3 --pretty="%B"`
 
 ## Status Window Keys ##
 
