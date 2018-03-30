@@ -41,12 +41,6 @@ Provide integration with Git
 
 ## Status Window Keys ##
 
-`-` : Add the file.
-
-`U` : Discard the changes done on the file (Undo). Equivalent to `checkout HEAD`
-
-`D` : Diff 
-
 `q` : Close Status
 
 `r` : Reload Status
@@ -54,3 +48,52 @@ Provide integration with Git
 `O` : Open the file into a new tab.
 
 `o` : Open the file into a new split
+
+`g?`: show this help
+
+`<C-N>`: next file
+
+`<C-P>`: previous file
+
+`<CR>`: :Gedit
+
+`-`: :Git add
+
+`-`: :Git reset (staged files)
+
+`a`: Show alternative format
+
+`cA`: :Gcommit --amend --reuse-message=HEAD
+
+`ca`: :Gcommit --amend
+
+`cc`: :Gcommit
+
+`cva`: :Gcommit --amend --verbose
+
+`cvc`: :Gcommit --verbose
+
+`ds`: :Gsdiff
+
+`dp`: :Git! diff (p for patch; use :Gw to apply)
+
+`dv`: :Gvdiff
+
+`p`: :Git add --patch
+
+`p`: :Git reset --patch (staged files)
+
+`q`: close status
+
+`r`: reload status
+
+`S`: :Gvsplit
+
+`U`: :Git checkout
+
+`U`: :Git checkout HEAD (staged files)
+
+`U`: :Git clean (untracked files)
+
+`U`: :Git rm (unmerged files)
+
