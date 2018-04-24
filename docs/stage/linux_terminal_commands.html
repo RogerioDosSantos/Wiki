@@ -97,7 +97,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>ldd &lt;program name&gt;</code> : Print the shared objects dependencies. Show the list of shared libraries a program depend.</p>
 <p><code>[[shutdown]] -r now</code> : Restart the device</p>
 <p><code>which &lt;program&gt;</code> : Inform where a program is located.</p>
-<p><code>uname -a</code> : Get the OS version</p>
+<p><code>uname -a</code> : Get the full OS version</p>
+<p><code>ldd --version</code>: Get the version of the <em>GLIBC</em>.</p>
+<p><code>/sbin/ldconfig -p</code>: Show the list of libraries that were used by the system and/or is available on the <em>cache</em></p>
+<p><code>/sbin/ldconfig -p | grep stdc++.so</code>: Return the libstdc++ library version installed on the machine. Example of return: <code>libstdc++.so.6 (libc6,soft-float) =&gt; /usr/lib/libstdc++.so.6</code>. You can get the compatible versions for <em>libstdc++</em> by using the following command on the lib found: <code>strings /usr/lib/libstdc++.so.6 | grep LIBCXX</code></p>
+<p><code>/sbin/ldconfig -p | grep libc.so</code>: Return the <em>libc</em> library version installed on the machine.</p>
 <p><code>top</code> : Process monitor</p>
 <p><code>top -p $(pgrep -d',' &lt;proccess name&gt;)</code> : Monitor a specific process. Note: You do not need to enter all name. If the string name does not match any process the following error message will be displayed: <em>top: -p requires argument</em></p>
 <p><code>top -H &lt;pid&gt;</code>: Monitor an specific process</p>
@@ -130,6 +134,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e &quot;&lt;text to find&gt;&quot;</code> : Find a text into files (Case Sensitive)</p>
 <p><code>grep --include=\*.{cpp,h} -rnwi &lt;source directory&gt; -e &quot;&lt;text to find&gt;&quot;</code> : Find a text into files (Case Insensitive)</p>
 <p><code>grep -rl &lt;text_to_find_inside_file&gt; &lt;start_dirrectory&gt; | xargs sed -i 's/&lt;text_to_be_replaced&gt;/&lt;new_text&gt;/g'</code> : Find files with a specific text and replace its content</p>
+<p><code>&lt;command&gt; | grep -i &lt;search_word&gt;</code>: Filter the result of the command to an specific word case Insensitive.</p>
+<p><code>&lt;command&gt; | grep -v &lt;unwanted_word&gt;</code>: Filter the result of a command removing an specific word.</p>
 <p><code>nm &lt;library name&gt;</code> : List symbols in libraries</p>
 <p><code>nm &lt;library name&gt; | grep -i &quot;&lt;function name&gt;&quot;</code> : Locate if a function is exported from a library</p>
 <p><code>encfs &lt;encrypted folder content&gt; &lt;mounted folder&gt;</code> : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)</p>
@@ -143,6 +149,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>gpg -d ./backup.tgz.gpg | tar xz</code> : Uncompress the encrypted backup into the current directory.</p>
 <p><code>uuidgen</code> : Create a GUID</p>
 <p><code>lsb_release -a</code>: Display the Operation System ID, Description. Codename and version.</p>
+<p><code>strings &lt;file_path&gt;</code>: Show all printable strings of a file.</p>
+<p><code>strings &lt;file_path&gt; | grep &lt;search_item&gt;</code>: Search for an string in any file. Can be used to also search on binary files.</p>
 <h2 id="security">Security</h2>
 <h3 id="hashes">Hashes</h3>
 <h4 id="sha-1-hashes">SHA-1 hashes</h4>
