@@ -160,6 +160,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>wget -qO- portquiz.net:&lt;Port&gt;</code> : Check if a port is open. The portquiz website answer calls for all available ports.</p>
 <p><code>python -m SimpleHTTPServer &lt;port number&gt;</code> : Quick test server using python (localhost:8000)</p>
 <p><code>/etc/hosts</code> : File with host mapping. If you want to resolve a name to a specific address you can add the <code>&lt;IP&gt; &lt;Name&gt;</code> on the beginning of this file.</p>
+<p><code>ssh &lt;user_name&gt;@&lt;computer&gt;</code>: Connect using <em>ssh</em> to a remote computer.</p>
+<p><code>ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 &lt;user_name&gt;@&lt;computer&gt;</code>: Connect to a device that contains the old <em>diffie-hellman-group1-sha1</em> encryption algorithm. The <em>OpenSSH</em> does not allows you to connect with old encryption algorithm by default. When this happens the following message will be displayed: <code>no matching key exchange method found. Their offer: diffie-hellman-group1-sha1</code>. If you want a more permanent solution without having to type it all the time, you can add the following on the <code>~/.ssh/config</code> file:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Host</span> <span class="kw">&lt;</span>device_ip<span class="kw">&gt;</span> KexAlgorithms +diffie-hellman-group1-sha1</code></pre></div>
+<p><code>scp [-r] &lt;source file path&gt; &lt;username&gt;@&lt;destination device (ip)&gt;:&lt;destination path&gt;</code> : To copy a file from source to destination while logged into source device. Use -r to copy the folder.</p>
+<p><code>scp [-r] &lt;username&gt;@&lt;source device (ip)&gt;:&lt;source path&gt; &lt;destination file path&gt;</code> : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.</p>
 <h3 id="set-a-static-ip">Set a static IP</h3>
 <p>The file <code>/etc/network/interfaces</code> controls the startup network configuration. To config a static IP you can use the following configuration:</p>
 <pre><code>
@@ -195,8 +200,6 @@ iface eth0 inet static
 <p><code>read -p &quot;Press [Enter] key to continue&quot;</code> : Pause command</p>
 <p><code>&lt;variable&gt;=&quot;$(readlink -f &quot;&lt;relative path&quot;)&quot;</code> : Convert relative path to full path.</p>
 <p><code>apt-cache show &lt;program&gt;</code> : Show the version of a program</p>
-<p><code>scp [-r] &lt;source file path&gt; &lt;username&gt;@&lt;destination device (ip)&gt;:&lt;destination path&gt;</code> : To copy a file from source to destination while logged into source device. Use -r to copy the folder.</p>
-<p><code>scp [-r] &lt;username&gt;@&lt;source device (ip)&gt;:&lt;source path&gt; &lt;destination file path&gt;</code> : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.</p>
 <h3 id="conditional-statements">Conditional Statements</h3>
 <pre><code>
 if [ -d &quot;${directory}&quot;  ]; then

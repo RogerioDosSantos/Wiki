@@ -214,6 +214,18 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `/etc/hosts` : File with host mapping. If you want to resolve a name to a specific address you can add the `<IP> <Name>` on the beginning of this file.
 
+`ssh <user_name>@<computer>`: Connect using *ssh* to a remote computer.
+
+`ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 <user_name>@<computer>`: Connect to a device that contains the old *diffie-hellman-group1-sha1* encryption algorithm. The *OpenSSH* does not allows you to connect with old encryption algorithm by default. When this happens the following message will be displayed: `no matching key exchange method found. Their offer: diffie-hellman-group1-sha1`. If you want a more permanent solution without having to type it all the time, you can add the following on the `~/.ssh/config` file:
+
+```bash
+Host <device_ip> KexAlgorithms +diffie-hellman-group1-sha1
+```
+
+`scp [-r] <source file path> <username>@<destination device (ip)>:<destination path>` : To copy a file from source to destination while logged into source device. Use -r to copy the folder.
+
+`scp [-r] <username>@<source device (ip)>:<source path> <destination file path>` : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.
+
 ### Set a static IP ###
 
 The file `/etc/network/interfaces` controls the startup network configuration. To config a static IP you can use the following configuration:
@@ -265,10 +277,6 @@ sudo dpkg-reconfigure ca-certificates
 `<variable>="$(readlink -f "<relative path")" ` : Convert relative path to full path.    
 
 `apt-cache show <program> ` : Show the version of a program
-
-`scp [-r] <source file path> <username>@<destination device (ip)>:<destination path>` : To copy a file from source to destination while logged into source device. Use -r to copy the folder.
-
-`scp [-r] <username>@<source device (ip)>:<source path> <destination file path>` : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.
 
 ### Conditional Statements ###
 
