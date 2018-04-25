@@ -196,6 +196,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `strings <file_path> | grep <search_item>`: Search for an string in any file. Can be used to also search on binary files.
 
+`<command> &> <file_path>`: Redirect all commands output to a file. The *&* means "redirect *stdout* and *stderr*". Note that depending on the shell you will need to use: `>&`, `&>` or `> <file_path> 2>&1`
+
 ## Security
 
 ### Hashes

@@ -151,6 +151,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>lsb_release -a</code>: Display the Operation System ID, Description. Codename and version.</p>
 <p><code>strings &lt;file_path&gt;</code>: Show all printable strings of a file.</p>
 <p><code>strings &lt;file_path&gt; | grep &lt;search_item&gt;</code>: Search for an string in any file. Can be used to also search on binary files.</p>
+<p><code>&lt;command&gt; &amp;&gt; &lt;file_path&gt;</code>: Redirect all commands output to a file. The <em>&amp;</em> means &quot;redirect <em>stdout</em> and <em>stderr</em>&quot;. Note that depending on the shell you will need to use: <code>&gt;&amp;</code>, <code>&amp;&gt;</code> or <code>&gt; &lt;file_path&gt; 2&gt;&amp;1</code></p>
 <h2 id="security">Security</h2>
 <h3 id="hashes">Hashes</h3>
 <h4 id="sha-1-hashes">SHA-1 hashes</h4>
