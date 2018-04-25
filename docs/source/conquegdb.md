@@ -10,11 +10,11 @@ Note: To have an executable with symbols you need to use the option -g on the gc
 
 `set(CMAKE_BUILD_TYPE Debug)`
 
-## Commands ##
+## Commands
 
 `ConqueGDB` : Open a new window with the GDB program
 
-## GDB Commands ##
+## GDB Commands
 
 Note: Pressing <enter> will run the last command.
 
@@ -124,7 +124,7 @@ Note: Pressing <enter> will run the last command.
 
 `F10` : Send a step (Step into) command to GDB.
 
-## Keys - File Dialog Mode ##
+## Keys - File Dialog Mode 
 
 `q` : Will exit the file dialog, and return to the source window.
 
@@ -145,4 +145,26 @@ Note: Pressing <enter> will run the last command.
 `N` : next reverse search.
 
 `enter` : Select the current file.
+
+## Remote Debugging
+
+### Installation and execution
+
+The [Linaro Toolchains](https://launchpad.net/linaro-toolchain-binaries) have a more stable set of remote debugging tools.
+
+You can for instance download *ARM Linux tools* to run on linux (**gcc-linaro-arm-linux-gnueabihf-4.8-2013.10_linux**) and to run on windows (**gcc-linaro-arm-linux-gnueabihf-4.8-2013.10_win32**), etc.
+
+`gdbserver --multi :<port_number>` : Start a GDB client from *Linaro Toolchains*. E.g.: `gdbserver --multi :2345`. You should run it on the device you would like to debug.
+
+`arm-linux-gnueabihf-gdb` : Start a GDB server from *Linaro Toolchains*. **Note**: This is a 32bits application. You should run it on the device that you want to use the debugger.
+ 
+### Remote Debugging Commands
+
+`target extended <device_ip>:<device_port>`: Connect to the GDB Server.
+
+`set remote exec-file <executable_path>` : Set the executable to be called.
+
+`show remote exec-file` : Show the remote to be executed.
+
+`run` : Run the executable set by the `set remote exec-file` command.
 

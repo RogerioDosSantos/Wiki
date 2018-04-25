@@ -86,5 +86,16 @@
 <p><code>n</code> : next forward search.</p>
 <p><code>N</code> : next reverse search.</p>
 <p><code>enter</code> : Select the current file.</p>
+<h2 id="remote-debugging">Remote Debugging</h2>
+<h3 id="installation-and-execution">Installation and execution</h3>
+<p>The <a href="https://launchpad.net/linaro-toolchain-binaries">Linaro Toolchains</a> have a more stable set of remote debugging tools.</p>
+<p>You can for instance download <em>ARM Linux tools</em> to run on linux (<strong>gcc-linaro-arm-linux-gnueabihf-4.8-2013.10_linux</strong>) and to run on windows (<strong>gcc-linaro-arm-linux-gnueabihf-4.8-2013.10_win32</strong>), etc.</p>
+<p><code>gdbserver --multi :&lt;port_number&gt;</code> : Start a GDB client from <em>Linaro Toolchains</em>. E.g.: <code>gdbserver --multi :2345</code>. You should run it on the device you would like to debug.</p>
+<p><code>arm-linux-gnueabihf-gdb</code> : Start a GDB server from <em>Linaro Toolchains</em>. <strong>Note</strong>: This is a 32bits application. You should run it on the device that you want to use the debugger.</p>
+<h3 id="remote-debugging-commands">Remote Debugging Commands</h3>
+<p><code>target extended &lt;device_ip&gt;:&lt;device_port&gt;</code>: Connect to the GDB Server.</p>
+<p><code>set remote exec-file &lt;executable_path&gt;</code> : Set the executable to be called.</p>
+<p><code>show remote exec-file</code> : Show the remote to be executed.</p>
+<p><code>run</code> : Run the executable set by the <code>set remote exec-file</code> command.</p>
 </body>
 </html>
