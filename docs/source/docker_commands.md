@@ -54,6 +54,10 @@
 
 `docker build -f <docker_file_name> -t <image_tag>` : E.g: docker build -f ./DockerFile -t rogersantos/image_01:latest
 
+## Volumes Credentials
+
+Be aware that when changing your password, you will need to go to settings >> shared drivers >> reset credentials. Once you select the drivers you want to share again and enter the new password, everything will start working again.
+
 ## Start / Attach options ##
 
 `-v <local folder>:<remote folder>` : Mount a folder (volume) from the host into the container. Note the container folder should have the full path. E.g.: `-v ~/host:/root/host`. 
