@@ -22,13 +22,14 @@
 <p><code>ConqueGDB</code> : Open a new window with the GDB program</p>
 <h2 id="gdb-commands">GDB Commands</h2>
 <p>Note: Pressing <enter> will run the last command.</p>
-<p><code>file &lt;executable&gt;</code> : Load an executable to be used by the GDB</p>
+<p><code>file &lt;executable&gt;</code> : Load an executable to be used by the GDB. GDB will read symbols from this executable</p>
 <p><code>start</code> : Start the loaded application and stop just after the main function</p>
+<p><code>run [&lt;argument&gt;]</code> : Run the executable until a breakpoint is reached or any stop event is called. If the <em>arguments</em> parameters is passed, the same arguments will be passed to the <em>eecutable</em></p>
 <p><code>kill</code> : Stop the program execution</p>
 <p><code>list</code> : List the current source code where the debugger is.</p>
 <p><code>step [quantity]</code> : Step into</p>
 <p><code>next [quantity]</code> : Step over</p>
-<p><code>finish</code> : Step out</p>
+<p><code>finish</code> : Stop the program execution.</p>
 <p><code>continue [quantity]</code> : Continue the execution until the next breakpoint.</p>
 <p><code>print &lt;[&amp;]variable&gt;</code> : Print a variable value. Use &amp; to get the variable type and address. Note: You can use <code>.</code> and cast to access inner members and variable names.</p>
 <p><code>p  *(char**)&lt;variable&gt;.storage_.data_.buf</code> : Print a string value of boost variant.</p>
@@ -39,6 +40,9 @@
 <p><code>break &lt;file path&gt;:&lt;line number&gt;</code> : Set a breakpoint on the file / line.</p>
 <p><code>break &lt;function name&gt;</code> : Set a breakpoint on the function (E.g.: <code>break Class::Function(int)</code>)</p>
 <p><code>info Breakpoints</code> : List all breakpoints.</p>
+<p><code>info sharedlibrary</code> : Display the symbols status of the shared libraries (Equivalent with <em>Visual Studio</em> modules).</p>
+<p><code>set solib-search-path &lt;library_path&gt;[:&lt;additional_library_path&gt;]</code>: Set the search directory to find the <em>library symbols</em>.</p>
+<p><code>show solib-search-path</code> : Display the value set on the <em>solib-search-path</em></p>
 <p><code>disable &lt;breakpoint number&gt;</code> : Disable the breakpoint. You can get the <code>&lt;breakpoint number&gt;</code> using the <code>info</code> command.</p>
 <p><code>ignore &lt;breakpoint number&gt;&lt;quantity&gt;</code> : Do not stop on the breakpoint an amount of time. You can get the <code>&lt;breakpoint number&gt;</code> using the <code>info</code> command.</p>
 <p><code>save breakpoints &lt;file path&gt;</code> : Save the Breakpoints into a file as a script.</p>
@@ -96,6 +100,5 @@
 <p><code>target extended &lt;device_ip&gt;:&lt;device_port&gt;</code>: Connect to the GDB Server.</p>
 <p><code>set remote exec-file &lt;executable_path&gt;</code> : Set the executable to be called.</p>
 <p><code>show remote exec-file</code> : Show the remote to be executed.</p>
-<p><code>run</code> : Run the executable set by the <code>set remote exec-file</code> command.</p>
 </body>
 </html>

@@ -18,9 +18,11 @@ Note: To have an executable with symbols you need to use the option -g on the gc
 
 Note: Pressing <enter> will run the last command.
 
-`file <executable>` : Load an executable to be used by the GDB
+`file <executable>` : Load an executable to be used by the GDB. GDB will read symbols from this executable
 
 `start` : Start the loaded application and stop just after the main function
+
+`run [<argument>]` : Run the executable until a breakpoint is reached or any stop event is called. If the *arguments* parameters is passed, the same arguments will be passed to the *eecutable*
 
 `kill` : Stop the program execution
 
@@ -30,7 +32,7 @@ Note: Pressing <enter> will run the last command.
 
 `next [quantity]` : Step over
 
-`finish` : Step out
+`finish` : Stop the program execution.
 
 `continue [quantity]` : Continue the execution until the next breakpoint. 
 
@@ -51,6 +53,12 @@ Note: Pressing <enter> will run the last command.
 `break <function name>` : Set a breakpoint on the function (E.g.: `break Class::Function(int)`)
 
 `info Breakpoints` : List all breakpoints.
+
+`info sharedlibrary` : Display the symbols status of the shared libraries (Equivalent with *Visual Studio* modules). 
+
+`set solib-search-path <library_path>[:<additional_library_path>]`: Set the search directory to find the *library symbols*.
+
+`show solib-search-path` : Display the value set on the *solib-search-path*
 
 `disable <breakpoint number>` : Disable the breakpoint. You can get the `<breakpoint number>` using the `info` command.
 
@@ -165,6 +173,4 @@ You can for instance download *ARM Linux tools* to run on linux (**gcc-linaro-ar
 `set remote exec-file <executable_path>` : Set the executable to be called.
 
 `show remote exec-file` : Show the remote to be executed.
-
-`run` : Run the executable set by the `set remote exec-file` command.
 
