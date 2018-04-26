@@ -184,3 +184,13 @@ All local changes you execute on git is stored on the _.git_ folder. You can cop
 
 `git remote rename <name of the remote> <name of the origin remote>` : Rename the remote. E.g.: `git remote rename new-origin origin` Note: To list the remotes available you can use the command `git remote show`
 t
+
+## Merge Branches
+
+### test branch to master
+```shell
+git checkout master
+git pull origin master
+git merge test
+git push origin master
+```
