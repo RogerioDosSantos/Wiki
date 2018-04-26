@@ -10,17 +10,19 @@ Note: To have an executable with symbols you need to use the option -g on the gc
 
 `set(CMAKE_BUILD_TYPE Debug)`
 
-## Commands ##
+## Commands
 
 `ConqueGDB` : Open a new window with the GDB program
 
-## GDB Commands ##
+## GDB Commands
 
 Note: Pressing <enter> will run the last command.
 
-`file <executable>` : Load an executable to be used by the GDB
+`file <executable>` : Load an executable to be used by the GDB. GDB will read symbols from this executable
 
 `start` : Start the loaded application and stop just after the main function
+
+`run [<argument>]` : Run the executable until a breakpoint is reached or any stop event is called. If the *arguments* parameters is passed, the same arguments will be passed to the *eecutable*
 
 `kill` : Stop the program execution
 
@@ -30,7 +32,7 @@ Note: Pressing <enter> will run the last command.
 
 `next [quantity]` : Step over
 
-`finish` : Step out
+`finish` : Stop the program execution.
 
 `continue [quantity]` : Continue the execution until the next breakpoint. 
 
@@ -51,6 +53,12 @@ Note: Pressing <enter> will run the last command.
 `break <function name>` : Set a breakpoint on the function (E.g.: `break Class::Function(int)`)
 
 `info Breakpoints` : List all breakpoints.
+
+`info sharedlibrary` : Display the symbols status of the shared libraries (Equivalent with *Visual Studio* modules). 
+
+`set solib-search-path <library_path>[:<additional_library_path>]`: Set the search directory to find the *library symbols*.
+
+`show solib-search-path` : Display the value set on the *solib-search-path*
 
 `disable <breakpoint number>` : Disable the breakpoint. You can get the `<breakpoint number>` using the `info` command.
 
@@ -124,7 +132,7 @@ Note: Pressing <enter> will run the last command.
 
 `F10` : Send a step (Step into) command to GDB.
 
-## Keys - File Dialog Mode ##
+## Keys - File Dialog Mode 
 
 `q` : Will exit the file dialog, and return to the source window.
 
@@ -145,4 +153,24 @@ Note: Pressing <enter> will run the last command.
 `N` : next reverse search.
 
 `enter` : Select the current file.
+
+## Remote Debugging
+
+### Installation and execution
+
+The [Linaro Toolchains](https://launchpad.net/linaro-toolchain-binaries) have a more stable set of remote debugging tools.
+
+You can for instance download *ARM Linux tools* to run on linux (**gcc-linaro-arm-linux-gnueabihf-4.8-2013.10_linux**) and to run on windows (**gcc-linaro-arm-linux-gnueabihf-4.8-2013.10_win32**), etc.
+
+`gdbserver --multi :<port_number>` : Start a GDB client from *Linaro Toolchains*. E.g.: `gdbserver --multi :2345`. You should run it on the device you would like to debug.
+
+`arm-linux-gnueabihf-gdb` : Start a GDB server from *Linaro Toolchains*. **Note**: This is a 32bits application. You should run it on the device that you want to use the debugger.
+ 
+### Remote Debugging Commands
+
+`target extended <device_ip>:<device_port>`: Connect to the GDB Server.
+
+`set remote exec-file <executable_path>` : Set the executable to be called.
+
+`show remote exec-file` : Show the remote to be executed.
 

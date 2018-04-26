@@ -1,6 +1,6 @@
-IoTView
+# Apache
 
-## Apache Installation and Configuration
+## Installation and Configuration
 
 `apt-get update --yes && apt-get install --no-install-recommends --yes apache2 -y`: Install Apache
 

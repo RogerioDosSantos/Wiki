@@ -32,13 +32,37 @@
 <p><code>&lt;leader&gt;glo</code>: (:Glog -10) Load the 10 last log of a files into the buffer and display it</p>
 <p><code>&lt;leader&gt;gla</code>: (:Glog) Load the all log of a files into the buffer and display it</p>
 <p><code>&lt;leader&gt;gle</code>: (:Gedit) Return to the current file being edited.</p>
+<p><code>&lt;leader&gt;gpc</code>: Past the last commit message <code>git log -1 --pretty=&quot;%B&quot;</code></p>
+<p><code>&lt;leader&gt;gpc2</code>: Past the second last commit message <code>git log -2 --pretty=&quot;%B&quot;</code></p>
+<p><code>&lt;leader&gt;gpc3</code>: Past the thirde last commit message <code>git log -3 --pretty=&quot;%B&quot;</code></p>
 <h2 id="status-window-keys">Status Window Keys</h2>
-<p><code>-</code> : Add the file.</p>
-<p><code>U</code> : Discard the changes done on the file (Undo). Equivalent to <code>checkout HEAD</code></p>
-<p><code>D</code> : Diff</p>
 <p><code>q</code> : Close Status</p>
 <p><code>r</code> : Reload Status</p>
 <p><code>O</code> : Open the file into a new tab.</p>
 <p><code>o</code> : Open the file into a new split</p>
+<p><code>g?</code>: show this help</p>
+<p><code>&lt;C-N&gt;</code>: next file</p>
+<p><code>&lt;C-P&gt;</code>: previous file</p>
+<p><code>&lt;CR&gt;</code>: :Gedit</p>
+<p><code>-</code>: :Git add</p>
+<p><code>-</code>: :Git reset (staged files)</p>
+<p><code>a</code>: Show alternative format</p>
+<p><code>cA</code>: :Gcommit --amend --reuse-message=HEAD</p>
+<p><code>ca</code>: :Gcommit --amend</p>
+<p><code>cc</code>: :Gcommit</p>
+<p><code>cva</code>: :Gcommit --amend --verbose</p>
+<p><code>cvc</code>: :Gcommit --verbose</p>
+<p><code>ds</code>: :Gsdiff</p>
+<p><code>dp</code>: :Git! diff (p for patch; use :Gw to apply)</p>
+<p><code>dv</code>: :Gvdiff</p>
+<p><code>p</code>: :Git add --patch</p>
+<p><code>p</code>: :Git reset --patch (staged files)</p>
+<p><code>q</code>: close status</p>
+<p><code>r</code>: reload status</p>
+<p><code>S</code>: :Gvsplit</p>
+<p><code>U</code>: :Git checkout</p>
+<p><code>U</code>: :Git checkout HEAD (staged files)</p>
+<p><code>U</code>: :Git clean (untracked files)</p>
+<p><code>U</code>: :Git rm (unmerged files)</p>
 </body>
 </html>

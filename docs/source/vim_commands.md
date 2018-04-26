@@ -9,7 +9,7 @@
    *Note: My <leader> is <space>*
 
 `<leader><space>` : Switch between documents that are open in the same split
-
+ 
 `<leader> z` : Centralize the cursor in the middle of the screen
 
 `<leader> zz` : Centralize the cursor on the bottom of the screen.
@@ -293,6 +293,8 @@
 `:q!` : Exit without saving
 
 `:w` : Save
+
+`:up` : save to the file only if the content was modified
 
 `n` : repeat last command
 

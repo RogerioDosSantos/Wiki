@@ -97,7 +97,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>ldd &lt;program name&gt;</code> : Print the shared objects dependencies. Show the list of shared libraries a program depend.</p>
 <p><code>[[shutdown]] -r now</code> : Restart the device</p>
 <p><code>which &lt;program&gt;</code> : Inform where a program is located.</p>
-<p><code>uname -a</code> : Get the OS version</p>
+<p><code>uname -a</code> : Get the full OS version</p>
+<p><code>ldd --version</code>: Get the version of the <em>GLIBC</em>.</p>
+<p><code>/sbin/ldconfig -p</code>: Show the list of libraries that were used by the system and/or is available on the <em>cache</em></p>
+<p><code>/sbin/ldconfig -p | grep stdc++.so</code>: Return the libstdc++ library version installed on the machine. Example of return: <code>libstdc++.so.6 (libc6,soft-float) =&gt; /usr/lib/libstdc++.so.6</code>. You can get the compatible versions for <em>libstdc++</em> by using the following command on the lib found: <code>strings /usr/lib/libstdc++.so.6 | grep LIBCXX</code></p>
+<p><code>/sbin/ldconfig -p | grep libc.so</code>: Return the <em>libc</em> library version installed on the machine.</p>
 <p><code>top</code> : Process monitor</p>
 <p><code>top -p $(pgrep -d',' &lt;proccess name&gt;)</code> : Monitor a specific process. Note: You do not need to enter all name. If the string name does not match any process the following error message will be displayed: <em>top: -p requires argument</em></p>
 <p><code>top -H &lt;pid&gt;</code>: Monitor an specific process</p>
@@ -130,6 +134,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e &quot;&lt;text to find&gt;&quot;</code> : Find a text into files (Case Sensitive)</p>
 <p><code>grep --include=\*.{cpp,h} -rnwi &lt;source directory&gt; -e &quot;&lt;text to find&gt;&quot;</code> : Find a text into files (Case Insensitive)</p>
 <p><code>grep -rl &lt;text_to_find_inside_file&gt; &lt;start_dirrectory&gt; | xargs sed -i 's/&lt;text_to_be_replaced&gt;/&lt;new_text&gt;/g'</code> : Find files with a specific text and replace its content</p>
+<p><code>&lt;command&gt; | grep -i &lt;search_word&gt;</code>: Filter the result of the command to an specific word case Insensitive.</p>
+<p><code>&lt;command&gt; | grep -v &lt;unwanted_word&gt;</code>: Filter the result of a command removing an specific word.</p>
 <p><code>nm &lt;library name&gt;</code> : List symbols in libraries</p>
 <p><code>nm &lt;library name&gt; | grep -i &quot;&lt;function name&gt;&quot;</code> : Locate if a function is exported from a library</p>
 <p><code>encfs &lt;encrypted folder content&gt; &lt;mounted folder&gt;</code> : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)</p>
@@ -143,6 +149,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>gpg -d ./backup.tgz.gpg | tar xz</code> : Uncompress the encrypted backup into the current directory.</p>
 <p><code>uuidgen</code> : Create a GUID</p>
 <p><code>lsb_release -a</code>: Display the Operation System ID, Description. Codename and version.</p>
+<p><code>strings &lt;file_path&gt;</code>: Show all printable strings of a file.</p>
+<p><code>strings &lt;file_path&gt; | grep &lt;search_item&gt;</code>: Search for an string in any file. Can be used to also search on binary files.</p>
+<p><code>&lt;command&gt; &amp;&gt; &lt;file_path&gt;</code>: Redirect all commands output to a file. The <em>&amp;</em> means &quot;redirect <em>stdout</em> and <em>stderr</em>&quot;. Note that depending on the shell you will need to use: <code>&gt;&amp;</code>, <code>&amp;&gt;</code> or <code>&gt; &lt;file_path&gt; 2&gt;&amp;1</code></p>
 <h2 id="security">Security</h2>
 <h3 id="hashes">Hashes</h3>
 <h4 id="sha-1-hashes">SHA-1 hashes</h4>
@@ -160,6 +169,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>wget -qO- portquiz.net:&lt;Port&gt;</code> : Check if a port is open. The portquiz website answer calls for all available ports.</p>
 <p><code>python -m SimpleHTTPServer &lt;port number&gt;</code> : Quick test server using python (localhost:8000)</p>
 <p><code>/etc/hosts</code> : File with host mapping. If you want to resolve a name to a specific address you can add the <code>&lt;IP&gt; &lt;Name&gt;</code> on the beginning of this file.</p>
+<p><code>ssh &lt;user_name&gt;@&lt;computer&gt;</code>: Connect using <em>ssh</em> to a remote computer.</p>
+<p><code>ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 &lt;user_name&gt;@&lt;computer&gt;</code>: Connect to a device that contains the old <em>diffie-hellman-group1-sha1</em> encryption algorithm. The <em>OpenSSH</em> does not allows you to connect with old encryption algorithm by default. When this happens the following message will be displayed: <code>no matching key exchange method found. Their offer: diffie-hellman-group1-sha1</code>. If you want a more permanent solution without having to type it all the time, you can add the following on the <code>~/.ssh/config</code> file:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Host</span> <span class="kw">&lt;</span>device_ip<span class="kw">&gt;</span> KexAlgorithms +diffie-hellman-group1-sha1</code></pre></div>
+<p><code>scp [-r] &lt;source file path&gt; &lt;username&gt;@&lt;destination device (ip)&gt;:&lt;destination path&gt;</code> : To copy a file from source to destination while logged into source device. Use -r to copy the folder.</p>
+<p><code>scp [-r] &lt;username&gt;@&lt;source device (ip)&gt;:&lt;source path&gt; &lt;destination file path&gt;</code> : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.</p>
 <h3 id="set-a-static-ip">Set a static IP</h3>
 <p>The file <code>/etc/network/interfaces</code> controls the startup network configuration. To config a static IP you can use the following configuration:</p>
 <pre><code>
@@ -195,8 +209,6 @@ iface eth0 inet static
 <p><code>read -p &quot;Press [Enter] key to continue&quot;</code> : Pause command</p>
 <p><code>&lt;variable&gt;=&quot;$(readlink -f &quot;&lt;relative path&quot;)&quot;</code> : Convert relative path to full path.</p>
 <p><code>apt-cache show &lt;program&gt;</code> : Show the version of a program</p>
-<p><code>scp [-r] &lt;source file path&gt; &lt;username&gt;@&lt;destination device (ip)&gt;:&lt;destination path&gt;</code> : To copy a file from source to destination while logged into source device. Use -r to copy the folder.</p>
-<p><code>scp [-r] &lt;username&gt;@&lt;source device (ip)&gt;:&lt;source path&gt; &lt;destination file path&gt;</code> : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.</p>
 <h3 id="conditional-statements">Conditional Statements</h3>
 <pre><code>
 if [ -d &quot;${directory}&quot;  ]; then

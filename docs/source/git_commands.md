@@ -16,15 +16,19 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git commit -m <check-in description> ` : send the content to the git repository
 
+`git commit --amend`: Allow to change a message committed.
+
 `git config --list ` : List the current git configuration
 
 `git clone <repository git url> <local folder name> ` : Clone git repository (E.g.: git clone ssh://git@192.168.56.113/~/git-server/leel.git)
 
-`git status ` : Show the current status of the git repository
+`g123.123.123.123it status ` : Show the current status of the git repository
 
 `git push ` : Push the changed to the server
 
 `git config --global credential.helper "cache --timeout=3600" ` : configure to cache your credentials for a specific amount of time.
+
+`git config credential.helper store` : Configure the user and password to be stored into the `~/.git-credentials` file. Note: The password is stored without encryption. The only protection is that the file will be set to only have read and write access to your user. If this is not an acceptable level of security, please user the *credential.helper with cache option*
 
 `git stash` : Get the information from server replacing the information of existing files with the server content. NO MERGE
 
@@ -57,6 +61,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 `git checkout HEAD -- <file>` : Reset the file with its original value
   
 `git clean -fd` : Remove untracked files.
+
+`git rev-parse [--short] HEAD` : Display the HEAD id. Use short for the short version.
 
 ## History ##
 

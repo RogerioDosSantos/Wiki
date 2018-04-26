@@ -1,6 +1,6 @@
 # Linux Terminal Commands #
 
-## User ##
+## User
 
 `sudo` : Run elevated   
 
@@ -20,7 +20,7 @@
 
 `/etc/group` : File with a list of all groups
 
-## Directories and Files ##
+## Directories and Files
 
 `pushd <directory>`: Go to a directory and keep the previous directory in memory so you can return to it using the command `popd`
 
@@ -88,7 +88,15 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `which <program>` : Inform where a program is located.
 
-`uname -a` : Get the OS version
+`uname -a` : Get the full OS version
+
+`ldd --version`: Get the version of the *GLIBC*. 
+
+`/sbin/ldconfig -p`: Show the list of libraries that were used by the system and/or is available on the *cache*
+
+`/sbin/ldconfig -p | grep stdc++.so`: Return the libstdc++ library version installed on the machine. Example of return: `libstdc++.so.6 (libc6,soft-float) => /usr/lib/libstdc++.so.6`. You can get the compatible versions for *libstdc++* by using the following command on the lib found: `strings /usr/lib/libstdc++.so.6 | grep LIBCXX`
+
+`/sbin/ldconfig -p | grep libc.so`: Return the *libc* library version installed on the machine. 
 
 `top` : Process monitor
 
@@ -153,6 +161,10 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `grep --include=\*.{cpp,h} -rnwi <source directory> -e "<text to find>"` : Find a text into files (Case Insensitive)
 
 `grep -rl <text_to_find_inside_file> <start_dirrectory> | xargs sed -i 's/<text_to_be_replaced>/<new_text>/g'` : Find files with a specific text and replace its content
+
+`<command> | grep -i <search_word>`: Filter the result of the command to an specific word case Insensitive.
+
+`<command> | grep -v <unwanted_word>`: Filter the result of a command removing an specific word.
   
 `nm <library name>` : List symbols in libraries
 
@@ -179,6 +191,12 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `uuidgen` : Create a GUID
 
 `lsb_release -a`: Display the Operation System ID, Description. Codename and version.
+
+`strings <file_path>`: Show all printable strings of a file.
+
+`strings <file_path> | grep <search_item>`: Search for an string in any file. Can be used to also search on binary files.
+
+`<command> &> <file_path>`: Redirect all commands output to a file. The *&* means "redirect *stdout* and *stderr*". Note that depending on the shell you will need to use: `>&`, `&>` or `> <file_path> 2>&1`
 
 ## Security
 
@@ -213,6 +231,18 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `python -m SimpleHTTPServer <port number>` : Quick test server using python (localhost:8000)
 
 `/etc/hosts` : File with host mapping. If you want to resolve a name to a specific address you can add the `<IP> <Name>` on the beginning of this file.
+
+`ssh <user_name>@<computer>`: Connect using *ssh* to a remote computer.
+
+`ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 <user_name>@<computer>`: Connect to a device that contains the old *diffie-hellman-group1-sha1* encryption algorithm. The *OpenSSH* does not allows you to connect with old encryption algorithm by default. When this happens the following message will be displayed: `no matching key exchange method found. Their offer: diffie-hellman-group1-sha1`. If you want a more permanent solution without having to type it all the time, you can add the following on the `~/.ssh/config` file:
+
+```bash
+Host <device_ip> KexAlgorithms +diffie-hellman-group1-sha1
+```
+
+`scp [-r] <source file path> <username>@<destination device (ip)>:<destination path>` : To copy a file from source to destination while logged into source device. Use -r to copy the folder.
+
+`scp [-r] <username>@<source device (ip)>:<source path> <destination file path>` : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.
 
 ### Set a static IP ###
 
@@ -265,10 +295,6 @@ sudo dpkg-reconfigure ca-certificates
 `<variable>="$(readlink -f "<relative path")" ` : Convert relative path to full path.    
 
 `apt-cache show <program> ` : Show the version of a program
-
-`scp [-r] <source file path> <username>@<destination device (ip)>:<destination path>` : To copy a file from source to destination while logged into source device. Use -r to copy the folder.
-
-`scp [-r] <username>@<source device (ip)>:<source path> <destination file path>` : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.
 
 ### Conditional Statements ###
 
