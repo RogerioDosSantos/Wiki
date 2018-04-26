@@ -58,7 +58,7 @@
 
 `mv` : Move or rename a file or directory
 
-```
+```bash
 for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
 ``` 
 : Rename all files of a directory to lower case.
@@ -252,8 +252,7 @@ Host <device_ip> KexAlgorithms +diffie-hellman-group1-sha1
 
 The file `/etc/network/interfaces` controls the startup network configuration. To config a static IP you can use the following configuration:
 
-```
-
+```bash
 auto lo
 iface lo inet loopback
 
@@ -265,13 +264,11 @@ iface eth0 inet static
   network 192.168.0.0 
   broadcast 192.168.0.255
   gateway 192.168.0.1
-
 ```
 
 ### Installing Certificates
 
 ``` bash
-
 # Create a directory for extra CA certificates in /usr/share/ca-certificates:
 sudo mkdir /usr/share/ca-certificates/extra
 
@@ -283,7 +280,6 @@ openssl x509 -inform DER -outform PEM -in  my_certificate.crt -out my_c
 
 # Let Ubuntu add the .crt file's path relative to /usr/share/ca-certificates to /etc/ca-certificates.conf:
 sudo dpkg-reconfigure ca-certificates
-
 ```
 
 **Note**: If you are using Ubuntu you might need to rename the certificate to `*.pem` to the dpkg-reconfigure command detected the certificate.
@@ -302,7 +298,7 @@ sudo dpkg-reconfigure ca-certificates
 
 ### Conditional Statements ###
 
-```
+```bash
 
 if [ -d "${directory}"  ]; then
   # Control will enter here if $DIRECTORY exists.
@@ -316,7 +312,7 @@ fi
 
 ### Looping ###
 
-```
+```bash
 
 for <item> in "${<array>[@]}"; do
   echo "${<item>}"
@@ -326,7 +322,7 @@ done
 
 ### Function declaration and usage ###
 
-```
+```bash
 
 function_name () {
   echo "arg1 = $1"
