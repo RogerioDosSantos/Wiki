@@ -133,5 +133,11 @@ git push -u origin master</code></pre>
 <p><code>git push --tags &lt;name of remote&gt;</code> : Push the tags. E.g.: <code>git push --tags new-origin</code></p>
 <p><code>git remote rm &lt;name of the origin remote&gt;</code> : Remove the remote name from the local repository. Note that <code>origin</code> is the default name. E.g.: <code>git remote rm origin</code> Note: To list the remotes available you can use the command <code>git remote show</code></p>
 <p><code>git remote rename &lt;name of the remote&gt; &lt;name of the origin remote&gt;</code> : Rename the remote. E.g.: <code>git remote rename new-origin origin</code> Note: To list the remotes available you can use the command <code>git remote show</code> t</p>
+<h2 id="merge-branches">Merge Branches</h2>
+<h3 id="test-branch-to-master">test branch to master</h3>
+<pre class="shell"><code>git checkout master
+git pull origin master
+git merge test
+git push origin master</code></pre>
 </body>
 </html>
