@@ -38,6 +38,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git reset [--hard] origin/master` : Discard all local committed changes. If --hard is used all changes are lost. If --hard is not used all changed files will be on the untracked stage.
 
+`git show-branch` : Show the available branches
+
 `git checkout -b <branch>` : Create local branch
 
 `git branch -d <branch>` : Remove local branch
@@ -49,8 +51,6 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 `git pull` : Update local repository with the newest commit
 
 `git merge <another branch` : Merge another branch into your active branch. The merged files will be on the untracked stage
-
-`git show-branch` : Show the available branches
 
 `git rm <file name>` : Remove git file or directory
 
