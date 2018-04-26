@@ -82,6 +82,10 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `which <program>` : Inform where a program is located.
 
+`date` : Display the Date and Time on the local computer timezone.
+
+`date -u`: Display the Date and Time in UTC format.
+
 `ldd <program name>` : Print the shared objects dependencies. Show the list of shared libraries a program depend.
 
 `[[shutdown]] -r now` : Restart the device
