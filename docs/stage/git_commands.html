@@ -28,6 +28,7 @@
 <p><code>git push</code> : Push the changed to the server</p>
 <p><code>git config --global credential.helper &quot;cache --timeout=3600&quot;</code> : configure to cache your credentials for a specific amount of time.</p>
 <p><code>git config credential.helper store</code> : Configure the user and password to be stored into the <code>~/.git-credentials</code> file. Note: The password is stored without encryption. The only protection is that the file will be set to only have read and write access to your user. If this is not an acceptable level of security, please user the <em>credential.helper with cache option</em></p>
+<p><code>kill $(pidof git-credential-cache--daemon)</code>: Close the process responsible for the credential cache. This will make the password to be asked again next time you use a git command that requires it.</p>
 <p><code>git stash</code> : Get the information from server replacing the information of existing files with the server content. NO MERGE</p>
 <p><code>git checkout -- &lt;filename&gt;</code> : Discard added changed for a file</p>
 <p><code>git fetch origin</code> : Sync local origin with the remote server</p>
