@@ -62,7 +62,7 @@
 
 `x ` : kill pane
 
-`z ` : Maximaze and minimize current view (Occupy all window size)
+`z ` : Maximize and minimize current view (Occupy all window size)
 
 `!` : Break the pane into a new window.
 
@@ -75,6 +75,8 @@
 `:join-pane -s <windows number>` : Join the last accessed pane from a window
 
 `:join-pane -t <windows number>` : Send the current selected pane to an window
+
+`join-pane -s <source_window_number> -t <destination_window_number>`: Join two windows into one.
 
 ## Scroll Mode - Commands ##
 
