@@ -174,3 +174,11 @@ You can for instance download *ARM Linux tools* to run on linux (**gcc-linaro-ar
 
 `show remote exec-file` : Show the remote to be executed.
 
+`generate-core-file <file_path>`: Create a *Core file* with the with the current state of the debugged process, that allow you to debug using *GDB* later. To debug latter, you will need the *executable* and the *core-file*. Them you can execute the command `gdb <executable> <core-file_path>`
+
+`shell <command>`: Execute a shell command from *GDB*
+
+`thread apply all <command>`: Run *GDB* command in all threads available on the *debug* session. E.g.: `thread apply all bt`
+
+`quit` : Exit *GDB*
+

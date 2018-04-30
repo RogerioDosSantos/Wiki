@@ -100,5 +100,9 @@
 <p><code>target extended &lt;device_ip&gt;:&lt;device_port&gt;</code>: Connect to the GDB Server.</p>
 <p><code>set remote exec-file &lt;executable_path&gt;</code> : Set the executable to be called.</p>
 <p><code>show remote exec-file</code> : Show the remote to be executed.</p>
+<p><code>generate-core-file &lt;file_path&gt;</code>: Create a <em>Core file</em> with the with the current state of the debugged process, that allow you to debug using <em>GDB</em> later. To debug latter, you will need the <em>executable</em> and the <em>core-file</em>. Them you can execute the command <code>gdb &lt;executable&gt; &lt;core-file_path&gt;</code></p>
+<p><code>shell &lt;command&gt;</code>: Execute a shell command from <em>GDB</em></p>
+<p><code>thread apply all &lt;command&gt;</code>: Run <em>GDB</em> command in all threads available on the <em>debug</em> session. E.g.: <code>thread apply all bt</code></p>
+<p><code>quit</code> : Exit <em>GDB</em></p>
 </body>
 </html>
