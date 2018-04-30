@@ -40,6 +40,12 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git reset [--hard] origin/master` : Discard all local committed changes. If --hard is used all changes are lost. If --hard is not used all changed files will be on the untracked stage.
 
+`git show`: Display the last git commit.
+
+`git log -<quantity>`: Shows the lasts <quantity> commits.
+
+`git log --pretty=oneline -<quantity>`: Shows the lasts <quantity> commits. Only the commit line.
+
 `git show-branch` : Show the available branches
 
 `git checkout -b <branch>` : Create local branch
