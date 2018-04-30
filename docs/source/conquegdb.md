@@ -182,4 +182,6 @@ You can for instance download *ARM Linux tools* to run on linux (**gcc-linaro-ar
 
 `show remote exec-file` : Show the remote to be executed.
 
+`monitor exit`: Close the remote *gdbserver*.
+
 
