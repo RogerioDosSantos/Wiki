@@ -26,6 +26,8 @@
 
 `popd` : Return to the previous memory directory saved by the command `pushd`
 
+`dirs` : List the directory history. It is convenient to know the stack when you use the `pushd` command.
+
 `pwd` : Show the directory you are
 
 `pwd -P` : Show the directory you are without symlink
