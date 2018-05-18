@@ -98,7 +98,7 @@
 
 ## Debug Tools 
 
-- [Debugging Techniques Article]( ./debug_techiniques_article.md )
+- [Debugging Techniques Article]( ./debug_techiniques_article.html )
 - [ConqueGDB]( ./conquegdb.html )
 - [Intel Inspector]( ./intel_inspector.html )
 - [Valgrind]( ./valgrind.html )
