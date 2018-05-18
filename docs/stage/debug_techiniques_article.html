@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="debugging-techniques-article">Debugging Techniques Article</h1>
+<p><strong>Credit</strong>: This is a reproduction of a great series of articles on <em>Code Project</em> website done by [Shailesh]</p>
+<h1 id="part-1-windows-debugging-techniques---debugging-application-crash-windbg">Part 1: Windows Debugging Techniques - Debugging Application Crash (Windbg)</h1>
+<h2 id="pre-requisites">Pre-Requisites</h2>
+<p>To do the practical assignments explained in the article below, the following is required:</p>
+<ol type="1">
+<li><a href="http://technet.microsoft.com/en-in/sysinternals/dd996900.aspx">Procdump</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551063(v=vs.85).aspx">Debugging Tools for Windows</a></li>
+</ol>
+<h2 id="background">Background</h2>
+<p>While using or working on Windows applications, we all have seen applications stop working for unknown reasons. A General Dialog, which we all have seen, is somewhat similar to this.</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/707488/AppCrashDlg.png" />
+</figure>
+<p>When we see this, we generally select the option &quot;Close Program&quot; and then try to launch the application again. If the same repeats and it is a third party application, then we report the issue and wait for a solution.</p>
+<p>Now, we will move to the other side of the coin, which is the team that will be analyzing this issue and give a solution as soon as possible, because this has stopped production on the customer site. Let's go into a little bit of detail and see step-by-step why exactly the application crashed, why it happened, and how can we solve this.</p>
+<h3 id="definition">Definition</h3>
+<p>An application crash is an unexpected situation which stops the normal functioning of the program. Let's consider the following source code for example:</p>
+<p>Hide   Copy Code</p>
+<p>int main() { int <em>p = NULL; cout&lt;&lt;&quot;This is Start&quot;; </em>p = 10; cout&lt;&lt;&quot;This is End&quot;; return 0; }</p>
+<p>When we execute this sample, we get the same dialog as shown above related to the Application Crash. What is the reason for this application crash, &quot;<code>*p=10</code>&quot;, &quot;assigning value to an unallocated pointer&quot; or in other words &quot;assigning value to a NULL pointer&quot;. We can say this since we have the code and it is small enough to figure out the source of the problem. Identifying this issue in millions of lines of code is not easy and fixing it is far more difficult. So this boils down to the conclusion that we need to have some technique by which we could get to the precise root cause of the issue (or at least around it) without digging through the entire code.</p>
+<h2 id="debugging-techniques">Debugging Techniques</h2>
+<p>There are many different techniques used to identify why an app crashes, but some things remain common across different techniques.</p>
+<h3 id="step-1-identify-the-faulty-module">Step 1: Identify the Faulty Module</h3>
+<p>Identification of faulty module can be done using the event viewer. Consider our current example, i.e., <em>AppCrash.exe</em>, once it has crashed, it would have generated an event in the event viewer. Go to &quot;Run&quot; type &quot;<code>eventvwr</code>&quot;:</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/707488/AppCrashEvtVwr.png" />
+</figure>
+<p>Have a look at the Text written in the General Tab, there are two interesting points in that:</p>
+<ol type="1">
+<li><strong>Faulting Application Name</strong>: Indicates the application which is faulty. In this case, it is <em>AppCrash.exe</em>.</li>
+<li><strong>Faulting Module Name</strong>: Indicates which module in this application or executable has misbehaved. In this case (again), it is <em>AppCrash.exe</em>.</li>
+</ol>
+<p>This makes it clear that the issue resides in <em>AppCrash.exe</em>. If the faulting module had been, for example, <em>AppCrashLib.DLL&quot;,</em> then that would have been the culprit and we would have had to debug that.</p>
+<p>Another important point is Exception Code this explains what exactly this error means. In the current case, exception code is 0xC0000005 which means Access Violation, which means application is trying to access invalid memory location. To get the list of all the Exception codes, please refer to the link below:</p>
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/cc704588(d=lightweight,l=en-us,v=PROT.10).aspx"></a><a href="http://msdn.microsoft.com/en-us/library/cc704588(d=lightweight,l=en-us,v=PROT.10).aspx" class="uri">http://msdn.microsoft.com/en-us/library/cc704588(d=lightweight,l=en-us,v=PROT.10).aspx</a>[[^](http://msdn.microsoft.com/en-us/library/cc704588(d=lightweight,l=en-us,v=PROT.10).aspx &quot;New Window&quot;)]</li>
+</ul>
+<p>This really helps in nailing down the issue.</p>
+<p>Step 2: Take the Crash Dump</p>
+<p>Crash dump basically contains the current working state of the program which has terminated abnormally. Crash dump can also give us a complete state of the current memory, i.e., RAM, which can be used for analyzing the problem. The simplest way to take the crash dump is &quot;<code>procdump</code>.&quot; <code>procdump </code>should be configured before the application crashes, <em>procdump -ma -x c:&quot;E:InternalsCode64.exe&quot;</em>. This is one of the most basic examples of <code>procdump</code>, more options can be explored. With this option, it will launch the process and it will take the full memory dump when the application crashes and save it to *c:.</p>
+<h3 id="step-3-analyze-the-crash-dump">Step 3: Analyze the Crash Dump</h3>
+<p>Now that we have got the dump, we need to analyze the dump. The best way to analyze the dump is &quot;<code>Windbg</code>.&quot;<code>WinDbg </code>is the father of all the debugging tools available (as of the writing of this article) on Windows. We will not get into the intricacies of <code>Windbg</code>, this is out of scope of this article. We will be concentrating only on how we analyze the dumps with <code>Windbg</code>. To start analyzing the dump, we need the pdb files corresponding to the executable version, which has crashed. pdb is nothing but program database, it contains all the debugging information required for debugging an application. The only constraint is the pdb and executable should be of the same timestamp or else the program database symbols do not match and hence we cannot analyze the dump.</p>
+<p>In the next step, we launch the <code>Windbg </code>and configure the pdb files as shown below:</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/707488/WindbgSymbolConfig.png" />
+</figure>
+<ol type="1">
+<li><p>In <code>Windbg</code>, Goto File-&gt;Open Crash Dump, select the Dump File and click on open:</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/707488/OpenCrashDump.png" />
+</figure></li>
+<li><p>It will show the below screen after dump file is being loaded successfully:</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/707488/DumpFileLoad.png" />
+</figure></li>
+<li><p>Just go to the command window and &quot;<code>!analyze -v</code>&quot; like below:</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/707488/DumpFileLoad.png" />
+</figure></li>
+<li><p>After typing the above command, we do get the below output:</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/707488/DumpAnalysis.png" />
+</figure></li>
+</ol>
+<p>Now, we need to concentrate on different parameters to identify the issue. If we see the stack trace, it says the crash happened in <em>Appcrash.exe</em>, in function main at Offset of 0x39. This does not give us the exact faulty source code which may have caused the problem.</p>
+<p>Let's check what the below statement says, <strong>AppCrash!main+39 [e:internalscode.cpp @ 9]</strong>. This gives us the exact location where the crash happened and the lines below give us more details:</p>
+<p>Hide   Copy Code</p>
+<p>FAULTING_SOURCE_CODE: 5: { 6: int <em>p = NULL; 7: cout&lt;&lt;&quot;This is Start&quot;; 8: </em>p = 10; &gt; 9: cout&lt;&lt;&quot;This is End&quot;; 10: return 0; 11: }</p>
+<p>In the above analysis, the crash actually happened at line number 8, but <code>windbg </code>points to line number 9. This is due to optimizations which are enabled during the compilation. So if I want to identify the exact line which is having the issue, it is line number 8. Since the NULL pointer is being assigned a value, I tried to write to a location which does not exist.</p>
+<h3 id="step-4-fix-the-issue-and-release">Step 4: Fix the Issue and Release</h3>
+<p>Since we know the issue, we can now allocate the memory for the pointer and then assign the value. So the new code would be:</p>
+<p>Hide   Copy Code</p>
+<p>int main() { int <em>p = NULL; cout&lt;&lt;&quot;This is Start&quot;; p = new(std::nothrow)int; if(p == NULL) { return false; } </em>p = 10; cout&lt;&lt;&quot;This is End&quot;; return 0; }</p>
+<h2 id="optimizations">Optimizations</h2>
+<p>We discussed that due to optimizations being set, we were not able to get the exact point where the crash is happening. Let's discuss optimizations some more.</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/707488/Optmizations.png" />
+</figure>
+<p>Optimizations mean to what level we are asking the compiler to do optimizations. As we move up the levels like &quot;Full Optimization&quot; means that binary size would be lesser and less debugging information would be there with the pdb file. As we move more down the level, for example, &quot;Disable Optimization,&quot; we will have more debugging information and a larger sized binary and pdb. Similarly, if we build the binary in debug mode, we do get more debugging information and more the size of binary.</p>
+<p>We see that, overall, there are four options available to be configured. Normally, the option selected in most projects is &quot;Maximize Speed,&quot; which is enough for debugging the crashes being reported by customer. In the above mentioned example, if we disable the optimizations, then we do get the following result.</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/707488/DisableOptimizations.png" />
+</figure>
+<p>So here, we see that it points exactly to the position where the problem is i.e <code>*p=10</code>. This happens since the debugging information is sufficient to identify the root cause of the issue. So as a rule of thumb, when we make the release, we should maintain the pdb files so that they can be used to analyze the crash dumps on customer site.</p>
+<p>If the issue is reproduced locally, then it is recommended that optimization be disabled, then rebuild the EXE and collect the latest dumps and analyze them to make life easier. Debug mode is not advisable, since there are lot of issues which will not occur in debug mode.</p>
+<h2 id="pdb-files">pdb Files</h2>
+<p>For any unmanaged code which is being built, pdb files are being created along with EXE files. These pdb files contain the debugging information, which is necessary for debugging any issues. In other words, this file is also known as <strong>Symbol file</strong>. Symbol File contains different symbols which are useful for debugging. To name few of them Local Variables,Global Variables, Function names, Source Line numbers, etc. Each of this information is known as symbol. There are 2 Types of Symbols available:</p>
+<ol type="1">
+<li><strong>Private Symbols</strong>: This includes Functions, Local Variables,Global Variables, user defined data structures, source line numbers.</li>
+<li><strong>Public Symbols</strong>: Functions, global Variables.</li>
+</ol>
+<p>Public Symbols contain relatively very less information as compared to private symbols. Public symbols contain only that information which can be viewed across different files. So this calls out that local variables, will not be available as part of public symbols. Even most of the functions in Public symbols will have decorated names.</p>
+<p>Debugging with private symbols will even give line number of where the problem is (as explained in the above example), but this will not be the case with public symbols.</p>
+<p>Most of the companies do maintain two symbol servers, one private for internal use and public symbols for external distribution.</p>
+<p>By default, Visual Studio Build generates Private Symbols, to make it public add the flag /pdbstripped under linker section. Follow <a href="http://msdn.microsoft.com/en-us/library/y87kw2fd.aspx">this link</a> for more details.</p>
+<h1 id="part-2-windows-debugging-techniques---debugging-application-crash-debugdiag-appverifier">Part 2: Windows Debugging Techniques - Debugging Application Crash (DebugDiag, AppVerifier)</h1>
+<h2 id="pre-requisites-1">Pre-Requisites</h2>
+<p>To do the practical assignments explained in the article below, the following are required:</p>
+<ol type="1">
+<li><a href="http://www.microsoft.com/en-in/download/details.aspx?id=26798">DebugDiag</a></li>
+<li><a href="http://www.microsoft.com/en-in/download/details.aspx?id=20028">Application Verifier</a></li>
+</ol>
+<h2 id="background-1">Background</h2>
+<p>This article will explain other techniques in the dump analysis. These techniques are a lot simpler than windbg, but they have their own limitations. Let's have a look at them one by one.</p>
+<h2 id="debugdiag">DebugDiag</h2>
+<p>&quot;The Debug Diagnostic Tool (DebugDiag) is designed to assist in troubleshooting issues such as hangs, slow performance, memory leaks or fragmentation, and crashes in any user-mode process.&quot; (<a href="http://www.microsoft.com/en-ca/download/details.aspx?id=26798">microsoft.com</a>) DebugDiag Tool is much simpler to use compared to other tools for debugging. The best part being an HTML report, which is being generated that gives all detailed information. DebugDiag can do a lot of things like:</p>
+<ol type="1">
+<li>Crash Analysis</li>
+<li>Hang analysis</li>
+<li>Memory Leak Analysis</li>
+<li>Performance analysis</li>
+</ol>
+<p>Currently, the scope of our article is limited to Crash Analysis. Let's start step-by-step.  </p>
+<h4 id="step-1-launch-the-debugdiag-you-would-be-presented-with-this-screen">Step 1: Launch the DebugDiag, You Would be Presented with this Screen</h4>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/708098/DebugDiagStart.png" />
+</figure>
+<p>This shows the different options available with DebugDiag, as of now just click Cancel and continue.</p>
+<h4 id="step-2-configure-the-application-symbols">Step 2: Configure the Application Symbols</h4>
+<p>Goto Tools-&gt;Options &amp; settings, you would be presented with the following screen.</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/708098/Configure.png" />
+</figure>
+<p>Goto Second Text box, Symbol search path, add the path to the pdb file. We are continuing with the same example which we took in Part 1, i.e., <em>Appcrash.exe</em>.</p>
+<p>Hide   Copy Code</p>
+<p>int main() { int <em>p = NULL; cout&lt;&lt;&quot;This is Start&quot;; </em>p = 10; cout&lt;&lt;&quot;This is End&quot;; return 0; }</p>
+<h4 id="step-3-initiate-the-dump-analysis">Step 3: Initiate the Dump Analysis</h4>
+<p>Click on AdvancedAnalysis Tab and select Crash/Hang Analyzers as shown below.</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/708098/CrashAnalysis.png" />
+</figure>
+<h4 id="step-4-add-the-dump-file-for-analysis">Step 4: Add The Dump File for Analysis </h4>
+<p>Click on &quot;Add Data Files&quot; Button, and select the dump file as shown below:</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/708098/DumpFileSelect.png" />
+</figure>
+<h4 id="step-5-start-analysis">Step 5: Start Analysis</h4>
+<p>Click on &quot;Start Analysis&quot; button, you will be presented with the following report.</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/708098/Report.png" />
+</figure>
+<p>The actual report will be a lot more than this, but I have cut the most interesting information. This stack trace looks quite similar to what we have seen in windbg, <strong>AppCrash!main+39 [e:internalscode.cpp @ 9]</strong>. So again, this is pointing to line number 9, but the actual issue is on line number 8 (the details for which we have explained in <a href="http://www.codeproject.com/Articles/707488/Part-1-Debugging-Windows-Applications">Part 1</a>).</p>
+<p>We are presented with some other information also like, PID, time spent in user mode, time spent in kernel mode, etc. All this is available in Windbg too, but this information is presented in an easy to read, understandable and transferable format. The only drawback with this approach being that we can just see the report being presented and cannot run any commands for real analysis as in Windbg. This is useful if we just want a quick report of the dump and not actually sit and analyze.</p>
+<h2 id="application-verifier">Application Verifier</h2>
+<p>&quot;Application Verifier assists developers in quickly finding subtle programming errors that can be extremely difficult to identify with normal application testing. Using Application Verifier in Visual Studio makes it easier to create reliable applications by identifying errors caused by heap corruption, incorrect handle and critical section usage.&quot; (<a href="http://msdn.microsoft.com/en-us/library/ms220948%28v=vs.90%29.aspx">MSDN</a>) We will be using Application Verifier for generating and analyzing the crash dump.</p>
+<h4 id="step-1-launch-the-application-verifier">Step 1: Launch the Application Verifier</h4>
+<p>Go to run prompt and Type &quot;<em>AppVerif.EXE</em>&quot; as shown below: </p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/708098/AppV1Start.png" />
+</figure>
+<p>You will be getting screen as shown below:</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/708098/AppV2Start.png" />
+</figure>
+<h4 id="step-2-add-the-application-which-needs-to-be-verified-in-our-case-it-is-appcrash.exe">Step 2: Add the Application which Needs to be Verified, in our Case it is AppCrash.exe</h4>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/708098/AppV3AddApp.png" />
+</figure>
+<p>We also need to configure different parameters for debugging. In our case, we will be selecting on &quot;Basics&quot;:</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/708098/AppV4Configure.png" />
+</figure>
+<h4 id="step-3-click-on-save-and-then-click-on-exit">Step 3: Click on save and then click on Exit</h4>
+<h4 id="step-4-run-the-application-in-our-case-it-is-appcrash.exe">Step 4: Run the Application, in our case it is AppCrash.exe</h4>
+<h4 id="step-5-once-it-has-finished-open-the-appverifier-again-like-in-step-1">Step 5: Once it has finished, open the AppVerifier again, like in Step 1</h4>
+<h4 id="step-6-configure-the-symbols">Step 6: Configure the Symbols</h4>
+<p>Click on View-&gt;Logs, go to bottom of the screen and enter the path to pdb file of <em>AppCrash.exe</em>. </p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/708098/AppV5Symbols.png" />
+</figure>
+<h4 id="step-7-click-on-view-button">Step 7: Click on view Button</h4>
+<p>It will show up in the below screen, which will have similar analysis data like Windbg and DebugDiag.</p>
+<figure>
+<img src="https://www.codeproject.com/KB/testing/708098/AppV6Analyze.png" />
+</figure>
+<p>So the question is, what did we achieve by using Application verifier that was not there with other methods? The main thing is that there is no need to worry about taking the crash dump, it will be taken care of automatically. We can just configure the application once and start using it normally, whenever it fails we can always check the report. The drawback with this approach is, this needs to be installed on a target machine, which is normally not feasible. Application Verifier is the tool to identify issues during development cycles and on the developers system, this way we assess potential issues in the application even before we make the release.</p>
+<h1 id="part-3-windows-debugging-techniques---debugging-application-crash-self-dump-generation">Part 3: Windows Debugging Techniques - Debugging Application Crash (Self Dump Generation)</h1>
+<h2 id="background-2">Background</h2>
+<p>As you have noticed in the first two parts we were generating dumps when required, which means we need to reproduce the problem and also we need to put procdump on the target machine to get the dump. On a production system customers will very often not agree to installation of any applications on the system. The other side of the coin is we might not get the issue again, it might be an intermittent, which would still be production but the customer is not able to give the exact steps to reproduce the problem. This could be a really problematic situation for the product management. It would be really great if when the application crashes it generates its crash dump on its own which could be collected later for analysis.</p>
+<h2 id="definition-1">Definition</h2>
+<p> A dump file is a snapshot of an app at the point in time the dump is taken. It shows what process was executing and what modules were loaded. Dumps are primarily used for debugging issues that occur on machines that the developer doesn't have access to. For example, you can use a dump file from a customer's machine when you can't reproduce the customer's crash or hang on your machine. </p>
+<p> There are 2 kinds of Dumps</p>
+<p><strong>1. Mini Dump</strong> : Stores only a Subset of Process Information, Typically some information related to Threads Stack, Process Environment etc. A Mini Dump is smaller in size typically 1.5 MB or even less.</p>
+<p><strong>2. Full Dump</strong> : Stores all information concerning the virtual memory of the process, like Threads, Call Stack, heap state, Library Loaded. Basically every information related to a process is available. Full Dump is as big as process's virtual memory Typically some hundreds of MB's or even GB's.</p>
+<p>To Analyze what is going wrong in our process it is better to have a Full Dump, MiniDump could also be helpful in some cases.</p>
+<p> Let's understand step by step how can we do a Self Dump Generation.</p>
+<h2 id="the-source-code">The Source Code</h2>
+<p>The exception is an unexpected situation, that, when encountered, leads to the application exiting. So we should keep a tabs on this exception. How do we do that? On Windows Platform there is an API.</p>
+<p>Hide   Copy Code</p>
+<p>LPTOP_LEVEL_EXCEPTION_FILTER WINAPI SetUnhandledExceptionFilter( <em>In</em> LPTOP_LEVEL_EXCEPTION_FILTER lpTopLevelExceptionFilter );</p>
+<p>This API would be called for any unhandled exception in any thread inside a given process. This API should be called in the first entry point of the application [normally in unmanaged code it is main()]. This API expects a parameter that is an exception handler, which defines what should be done when this situation arrives. So now code would look something like this:</p>
+<p>Hide   Copy Code</p>
+<p>int main() { SetUnhandledExceptionFilter( unhandled_handler); }</p>
+<p>LONG CALLBACK unhandled_handler(EXCEPTION_POINTERS* e) { return EXCEPTION_CONTINUE_SEARCH; }</p>
+<p>Now we need to decide what should be done inside the <code>unhandled_handler</code>, in our case create the dump</p>
+<p>Hide   Shrink <img src="https://www.codeproject.com/images/arrow-up-16.png" />   Copy Code</p>
+<p>int main() { SetUnhandledExceptionFilter( unhandled_handler); }</p>
+<p>LONG CALLBACK unhandled_handler(EXCEPTION_POINTERS* e) { make_minidump(e); return EXCEPTION_CONTINUE_SEARCH; }</p>
+<p>void make_minidump(EXCEPTION_POINTERS* e) { TCHAR tszFileName[MAX_BUFF_SIZE] = {0}; TCHAR tszPath[MAX_BUFF_SIZE] = {0}; SYSTEMTIME stTime = {0}; GetSystemTime(&amp;stTime); SHGetSpecialFolderPath(NULL,tszPath, CSIDL_APPDATA, FALSE); StringCbPrintf(tszFileName, _countof(tszFileName), _T(&quot;%s\%s__%4d%02d%02d_%02d%02d%02d.dmp&quot;), tszPath, _T(&quot;CrashDump&quot;), stTime.wYear, stTime.wMonth, stTime.wDay, stTime.wHour, stTime.wMinute, stTime.wSecond);</p>
+<pre><code>HANDLE hFile = CreateFile(tszFileName, GENERIC_WRITE, FILE_SHARE_READ, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
+if(hFile == INVALID_HANDLE_VALUE)
+    return;
+
+MINIDUMP_EXCEPTION_INFORMATION exceptionInfo;
+exceptionInfo.ThreadId = GetCurrentThreadId();
+exceptionInfo.ExceptionPointers = e;
+exceptionInfo.ClientPointers = FALSE;
+
+MiniDumpWriteDump(
+    GetCurrentProcess(),
+    GetCurrentProcessId(),
+    hFile,
+    MINIDUMP_TYPE(MiniDumpWithIndirectlyReferencedMemory | MiniDumpScanMemory | MiniDumpWithFullMemory),
+    e ? &amp;exceptionInfo : NULL,
+    NULL,
+    NULL);
+
+if(hFile)
+{
+    CloseHandle(hFile);
+    hFile = NULL;
+}
+return;</code></pre>
+<p>}</p>
+<p>So now inside the function <code>unhandled_handler</code> we are calling <code>make_minidump</code>, which actually writes the dump. The function <code>unhandled_handler</code> is a callback function which receives the <code>EXCEPTION_POINTERS</code>. This structure contains the exception information based on the machine generating it. <code>EXCEPTION_POINTERS</code> is being passed to function <code>make_minidump</code>, which actually writes the dump to the disk. The first portion of the function <code>make_minidump</code> is just creating the name of the file based on the application name and the timestamp. Then the file is being created using &quot;CreateFile&quot;.</p>
+<p>&quot;MINIDUMP_EXCEPTION_INFORMATION&quot; structure is being filled with <code>CurrentThreadID</code> and Exception pointers which we received from the parent function. Then call the function <code>MiniDumpWriteDump</code>. The interesting parameter here is <code>MINIDUMP_TYPE</code>. If we see msdn help on this API there is quite a big list, but based on my analysis I have added three flags, out of these the third is the most important is <code>MiniDumpWithFullMemory</code>. This gives all the referenced locations of the particular process in the main memory, which really helps in debugging.</p>
+<p>With a full memory dump the size of the dump is quite big, but this really helps in analyzing the dump. With similar flows you can explore more on types of dumps and change it according to your requirements. Let's take an example and see how this works.</p>
+<p>Hide   Shrink <img src="https://www.codeproject.com/images/arrow-up-16.png" />   Copy Code</p>
+<h1 id="include-include-include-include-include-include">include <Windows.h> #include <Dbghelp.h> #include <iostream> #include <tchar.h> #include <strsafe.h> #include <shlobj.h></h1>
+<h1 id="pragma-commentlib-dbghelp-define-max_buff_size-1024">pragma comment(lib, &quot;DbgHelp&quot;) #define MAX_BUFF_SIZE 1024</h1>
+<p>using namespace std; DWORD WINAPI func();</p>
+<p>void make_minidump(EXCEPTION_POINTERS* e) { TCHAR tszFileName[MAX_BUFF_SIZE] = {0}; TCHAR tszPath[MAX_BUFF_SIZE] = {0}; SYSTEMTIME stTime = {0}; GetSystemTime(&amp;stTime); SHGetSpecialFolderPath(NULL,tszPath, CSIDL_APPDATA, FALSE); StringCbPrintf(tszFileName, _countof(tszFileName), _T(&quot;%s\%s__%4d%02d%02d_%02d%02d%02d.dmp&quot;), tszPath, _T(&quot;CrashDump&quot;), stTime.wYear, stTime.wMonth, stTime.wDay, stTime.wHour, stTime.wMinute, stTime.wSecond);</p>
+<pre><code>HANDLE hFile = CreateFile(tszFileName, GENERIC_WRITE, FILE_SHARE_READ, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
+if(hFile == INVALID_HANDLE_VALUE)
+    return;
+
+MINIDUMP_EXCEPTION_INFORMATION exceptionInfo;
+exceptionInfo.ThreadId = GetCurrentThreadId();
+exceptionInfo.ExceptionPointers = e;
+exceptionInfo.ClientPointers = FALSE;
+
+MiniDumpWriteDump(
+    GetCurrentProcess(),
+    GetCurrentProcessId(),
+    hFile,
+    MINIDUMP_TYPE(MiniDumpWithIndirectlyReferencedMemory | MiniDumpScanMemory | MiniDumpWithFullMemory),
+    e ? &amp;exceptionInfo : NULL,
+    NULL,
+    NULL);
+
+if(hFile)
+{
+    CloseHandle(hFile);
+    hFile = NULL;
+}
+return;</code></pre>
+<p>}</p>
+<p>LONG CALLBACK unhandled_handler(EXCEPTION_POINTERS* e) { make_minidump(e); return EXCEPTION_CONTINUE_SEARCH; }</p>
+<p>int main() { SetUnhandledExceptionFilter( unhandled_handler); DWORD dwThreadID = 0; HANDLE hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)func, NULL, 0, &amp;dwThreadID); if(hThread == NULL) { return 1; } WaitForSingleObject(hThread, INFINITE); return 0;</p>
+<p>}</p>
+<p>DWORD WINAPI func() { int <em>p = NULL; </em>p = 10; return 0; }</p>
+<p>This is the same example from <a href="http://www.codeproject.com/Articles/707488/Part-1-Windows-Debugging-Techniques-Debugging-Appl">Part 1</a>, with a slight deviation of adding a thread that will crash. After executing this code the Dump file will be generated in the <em>%Appdata%</em> folder. Launch Windbg, set the symbols and analyze you should get the following.</p>
+<p><a href="https://www.codeproject.com/KB/testing/708670/Windbg.png"><img src="https://www.codeproject.com/KB/testing/708670/Windbg-small.png" /></a></p>
+<p>So here we see some interesting facts:</p>
+<ol type="1">
+<li>DEFAULT_BUCKET_ID: NULL_POINTER_WRITE, since we are writing to a NULL Pointer</li>
+<li><p>CrashDump!func+2 [e:internalscode.cpp @ 82]</p>
+<p>This is exactly the line number on which the crash happened</p></li>
+<li><p>Stack Trace</p>
+<p>Hide   Copy Code</p>
+<p>00000080<code>26ddf7f8 00007ffb</code>87c115cd : 00000000<code>00000000 00000000</code>00000000 00000000<code>00000000 00000000</code>00000000 : CrashDump!func+0x2 00000080<code>26ddf800 00007ffb</code>884c43d1 : 00000000<code>00000000 00000000</code>00000000 00000000<code>00000000 00000000</code>00000000 : kernel32!BaseThreadInitThunk+0xd 00000080<code>26ddf830 00000000</code>00000000 : 00000000<code>00000000 00000000</code>00000000 00000000<code>00000000 00000000</code>00000000 : ntdll!RtlUserThreadStart+0x1d</p>
+<p>This gives the stack trace of the faulty thread and not the one starting from the main.</p></li>
+</ol>
+<h1 id="part-4-windows-debugging-techniques---debugging-memory-leaks-perfmon">Part 4: Windows Debugging Techniques - Debugging Memory Leaks (Perfmon)</h1>
+<p>Background One of the most common problems with native code is memory leaks, the major reason being that memory management is left to the application itself. It is the Application's responsibility to allocate and de-allocate the memory. When an application dynamically allocates memory, and does not free that memory when it is finished using it, that program has a memory leak. The memory is not being used by the application anymore, but it cannot be used by the system or any other program either.</p>
+<p>Definition First let's try and understand the basics of the memory. Let's begin with &quot;Virtual Address Space.&quot; The virtual address space for a process is the set of a virtual memory addresses that it can use. The address space for each process is private and cannot be accessed by other processes unless it is shared. Any operation which is being done in the process like allocating memory, creating static objects etc.</p>
+<p>Everything resides inside VAS. All four segments of memory: Code Segment, Stack Segment, Data Segment and Heap reside inside VAS. Consider the picture below:</p>
+<p>We see here that the Address space is being divided into two parts user mode and kernel mode. Both user mode and Kernel mode have 2GB of VAS. The difference is that 2GB of Kernel mode is shared across the processes running system wide. The user mode space is dedicated for the process, i.e. all the memory allocations resides in this space. This is something private to the process. For example, allocating memory using &quot;new&quot; will add to the user mode space. Creating an Event Object, Mutex Object etc. will add up to the kernel mode space, since these are Kernel mode objects.</p>
+<p>Now let's discuss how to understand whether a particular API will occupy user mode space or a kernel mode space. If an API has SECURITY_ATTRIBUTES as a parameter than it means it will create a kernel mode object and SECURITY_ATTRIBUTES will decide its accessibility to other processes.</p>
+<p>Few examples of these APIs are</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">HANDLE WINAPI CreateEvent(
+  _In_opt_  LPSECURITY_ATTRIBUTES lpEventAttributes,
+  _In_      BOOL bManualReset,
+  _In_      BOOL bInitialState,
+  _In_opt_  LPCTSTR lpName
+);</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">HANDLE WINAPI CreateMutex(
+  _In_opt_  LPSECURITY_ATTRIBUTES lpMutexAttributes,
+  _In_      BOOL bInitialOwner,
+  _In_opt_  LPCTSTR lpName
+);</code></pre></div>
+<p>CreateThread is little different in this case</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">HANDLE WINAPI CreateThread(
+  _In_opt_   LPSECURITY_ATTRIBUTES lpThreadAttributes,
+  _In_       SIZE_T dwStackSize,
+  _In_       LPTHREAD_START_ROUTINE lpStartAddress,
+  _In_opt_   LPVOID lpParameter,
+  _In_       DWORD dwCreationFlags,
+  _Out_opt_  LPDWORD lpThreadId
+);</code></pre></div>
+<p>Even though Thread is a kernel mode object, when it gets created it occupies 1MB of stack space in the user mode by default. This means we can have maximum of 2048 threads on a 32 bit OS since this will occupy complete 2GB of user mode space. The default stack size can be altered via Project Settings in Visual Studio this will allow to create more threads. This is a general distribution of VAS on 32 bit OS.</p>
+<p>Further, VAS is divided into pages with each page being size of 4KB. So the max number of pages that a VAS can have is <code>1024*1024=1048576</code>. So now we understand when we cross this our application will stop working since there is no more memory available. And when we are close to this System, it gives a message saying, &quot;Low on Virtual Memory.&quot;</p>
+<p>On 64Bit System User mode space is 6TB and Kernel Mode space is 2TB. So the process has a much, much bigger space to grow as compared to 32 bit. This is just the basics of memory, to understand in more detail please refer Windows Internals book.</p>
+<p>What Causes Memory Leaks ?? There are three very basic reasons:</p>
+<ol type="1">
+<li>Growing Heap : Memory is allocated but not de-allocated i.e malloc is being called but free is not called / new is called but delete is not called. This indirectly means Heap is growing but is not released back, which in turn keeps increasing Virtual memory, if it crosses the specified limit, application would certainly crash</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> main()
+{
+    <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; i++)
+    {
+        <span class="dt">char</span>* p = <span class="kw">new</span> <span class="dt">char</span>[<span class="dv">100</span>];
+    }
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div>
+<ol start="2" type="1">
+<li><p>Handle Leaks : This would happen with different handles that are created but not freed, Example File Handle, Thread Handle, Process Handle etc.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> main()
+{
+HANDLE hEvent = NULL;
+hEvent = CreateEvent(NULL, TRUE, FALSE, TEXT(<span class="st">&quot;WriteEvent&quot;</span>));
+<span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre></div></li>
+<li><p>Thread Count: This would happen if the threads are continuously getting created but are not actually exiting after their task completion. As explained earlier this would actually occupy 1MB of user mode space by default, so if threads keep on increasing and they do not get released. This would eventually lead to increase in Virtual Memory. Debugging Techniques Debugging Memory Leaks is one of the most complex problems. There are tools available like Rational Purifier, Insure++ etc. But finding the precise issue requires a great deal of walking through code and an overall understanding of the scenario. Apart from this, most of the tools for memory leak analysis are paid ones, and not all organisations really promote that. So it should be possible to fix such issues with freely available tools with Windows OS.</p></li>
+</ol>
+<p>The first and the most handy tool to simply identify whether there is a leak or not is &quot;Performance Monitor&quot;. Performance monitor is an inbuilt tool with windows OS which is used to measure various parameters such as: memory, CPU, Disk etc. of an application or on system wide level.</p>
+<p>Consider the code below as an Example for memory leak:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;iostream&gt;</span>
+<span class="ot">#include &lt;Windows.h&gt;</span>
+<span class="ot">#include &lt;tchar.h&gt;</span>
+<span class="ot">#include &lt;string&gt;</span>
+
+<span class="kw">using</span> <span class="kw">namespace</span> std;
+
+<span class="dt">bool</span> GetComputerName(wstring&amp; wstrCompName);
+<span class="dt">bool</span> fileread(<span class="dt">const</span> wstring&amp; filepath);
+<span class="dt">bool</span> GetUserName(wstring&amp; wstrUserName);
+
+<span class="dt">int</span> main()
+{
+    <span class="dt">int</span> nChoice = <span class="dv">0</span>;
+    wstring wstrCompName;
+    wstring wstrUserName;
+    <span class="dt">char</span> ccontinue = <span class="st">&#39;</span><span class="ch">\0</span><span class="st">&#39;</span>; 
+
+    <span class="kw">do</span>
+    {
+        wcout&lt;&lt;<span class="st">L&quot;Enter your choice&quot;</span>&lt;&lt;endl;
+        wcout&lt;&lt;<span class="st">L&quot;1.Read Computer name&quot;</span>&lt;&lt;endl;
+        wcout&lt;&lt;<span class="st">L&quot;2.Read User Name&quot;</span>&lt;&lt;endl;
+        cin&gt;&gt;nChoice;
+
+        <span class="kw">switch</span>(nChoice)
+        {
+        <span class="kw">case</span> <span class="dv">1</span>:
+            GetComputerName(wstrCompName);
+            wcout&lt;&lt;<span class="st">L&quot;Computer name read is&quot;</span>&lt;&lt;wstrCompName.c_str()&lt;&lt;endl;
+            <span class="kw">break</span>;
+        <span class="kw">case</span> <span class="dv">2</span>:
+            GetUserName(wstrUserName);
+            wcout&lt;&lt;<span class="st">L&quot;user name read is&quot;</span>&lt;&lt;wstrUserName.c_str()&lt;&lt;endl;
+            <span class="kw">break</span>;
+        <span class="kw">default</span>:
+            wcout&lt;&lt;<span class="st">L&quot;Invalid option&quot;</span>;
+        }
+        wcout&lt;&lt;<span class="st">&quot;Do you want to continue Y or N&quot;</span>;
+        cin&gt;&gt;ccontinue;
+    }<span class="kw">while</span>(ccontinue == <span class="st">&#39;y&#39;</span> || ccontinue == <span class="st">&#39;Y&#39;</span>);
+    <span class="kw">return</span> <span class="dv">0</span>;
+}
+
+<span class="dt">bool</span> GetComputerName(wstring&amp; wstrCompName)
+{
+    <span class="dt">wchar_t</span>* pwszCompName = NULL;
+    DWORD dwSize = <span class="dv">0</span>;
+    <span class="dt">bool</span> bRet = <span class="kw">false</span>;
+
+    <span class="kw">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
+    {
+        <span class="kw">if</span>(GetLastError() != ERROR_MORE_DATA)
+        {
+            wcout&lt;&lt;<span class="st">L&quot;GetComputerNameEx Failed with Error Code&quot;</span>&lt;&lt;GetLastError();
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+        pwszCompName = <span class="kw">new</span>(std::nothrow) <span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>];
+        <span class="kw">if</span>(pwszCompName == NULL)
+        {
+            wcout&lt;&lt;<span class="st">L&quot;unable to allocate memory&quot;</span>&lt;&lt;endl;
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+        memset(pwszCompName, <span class="st">L&#39;</span><span class="ch">\0</span><span class="st">&#39;</span>, dwSize + <span class="dv">1</span>);
+        <span class="kw">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
+        {   
+            wcou&lt;&lt;<span class="st">L&quot;GetComputerNameEx Failed with Error Code&quot;</span>&lt;&lt;GetLastError();
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+    }
+    <span class="dt">char</span>* test = <span class="kw">new</span> <span class="dt">char</span>[<span class="dv">1024</span>*<span class="dv">1024</span>];
+    wstrCompName.assign(pwszCompName);
+    <span class="kw">return</span> <span class="kw">true</span>;            
+}
+
+<span class="dt">bool</span> GetUserName(wstring&amp; wstrUserName)
+{
+    <span class="dt">wchar_t</span>* pwszUserName = NULL;
+    DWORD dwSize = <span class="dv">0</span>;
+
+    <span class="kw">if</span>(!GetUserName(pwszUserName, &amp;dwSize))
+    {
+        <span class="kw">if</span>(GetLastError() != ERROR_INSUFFICIENT_BUFFER)     
+        {
+            wcout&lt;&lt;<span class="st">&quot;GetUserName returned with Error&quot;</span>&lt;&lt;GetLastError();
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+        pwszUserName = <span class="kw">new</span>(std::nothrow)<span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>]();
+        <span class="kw">if</span>(pwszUserName == NULL)
+        {
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+        <span class="kw">if</span>(!GetUserName(pwszUserName, &amp;dwSize))
+        {
+            <span class="kw">if</span>(pwszUserName)
+            {
+                <span class="kw">delete</span> [] pwszUserName;
+                pwszUserName = NULL;
+            }
+            wcout&lt;&lt;<span class="st">&quot;GetUserName returned with Error&quot;</span>&lt;&lt;GetLastError();
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+    }
+    wstrUserName.assign(pwszUserName);
+    <span class="kw">if</span>(pwszUserName)
+    {
+        <span class="kw">delete</span> [] pwszUserName;
+        pwszUserName = NULL;
+    }
+    <span class="kw">return</span> <span class="kw">true</span>;
+}</code></pre></div>
+<p>Having a look at the code we can make out that there is a leak in the function GetComputerName, which should be fixed. There are two leaks: One is that the variable pwszCompName not been freed and the variable test is being allocated and not freed. But this won't always be the case, and we will be have much more complex code to deal with.</p>
+<p>Let's go Step-by-Step, identifying and fixing the problem</p>
+<p>Step1:Add the performance counters in the perfmon tool Launch the performance monitor as shown below</p>
+<p>Add the performance counters for the Application, by selecting the parameters under process section</p>
+<p>View the graph of the Added Parameters</p>
+<p>Step 2: Run the use cases and monitor the graph As per our current implementation, select option 1 and then see the growth of the &quot;private bytes&quot; Select Y to continue and again select option 1 and see the growth of &quot;private bytes&quot;</p>
+<p>Now once select option 2 and observe the growth. Private Bytes are growing only when option 1 is being selected. The growth of private bytes indicates that there is a dynamic allocation happening which is not being released. In other words, new/malloc is being done but free/delete is not being called.</p>
+<p>Below shown is the graph for the current use case, Private Bytes is the Red Line which keeps growing.</p>
+<p>Step 3: Trace the Code Flow and Fix the issue As now we have identified that issue is there by selecting option 1, which means we should start tracing the code in that direction. Let's enter the function GetComputerName. So we see that the variable pwszCompName is not being freed and variable test is not being freed. Let's change the above code below which will eventually fix the issue.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">bool</span> GetComputerName(wstring&amp; wstrCompName)
+{
+    <span class="dt">wchar_t</span>* pwszCompName = NULL;
+    DWORD dwSize = <span class="dv">0</span>;
+    <span class="dt">bool</span> bRet = <span class="kw">false</span>;
+
+    <span class="kw">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
+    {
+        <span class="kw">if</span>(GetLastError() != ERROR_MORE_DATA)
+        {
+            wcout&lt;&lt;<span class="st">L&quot;GetComputerNameEx Failed with Error Code&quot;</span>&lt;&lt;GetLastError();
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+        pwszCompName = <span class="kw">new</span>(std::nothrow) <span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>];
+        <span class="kw">if</span>(pwszCompName == NULL)
+        {
+            wcout&lt;&lt;<span class="st">L&quot;unable to allocate memory&quot;</span>&lt;&lt;endl;
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+        memset(pwszCompName, <span class="st">L&#39;</span><span class="ch">\0</span><span class="st">&#39;</span>, dwSize + <span class="dv">1</span>);
+        <span class="kw">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
+        {  
+            <span class="kw">if</span>(pwszCompName)
+            {
+                <span class="kw">delete</span> [] pwszCompName;
+                pwszCompName = NULL;
+            }               
+            wcout&lt;&lt;<span class="st">L&quot;GetComputerNameEx Failed with Error Code&quot;</span>&lt;&lt;GetLastError();
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+    }
+    <span class="dt">char</span>* test = <span class="kw">new</span> <span class="dt">char</span>[<span class="dv">1024</span>*<span class="dv">1024</span>];   
+    wstrCompName.assign(pwszCompName);
+        
+    <span class="kw">if</span>(test)
+    {
+        <span class="kw">delete</span>[] test;
+        test = NULL;
+    }
+    <span class="kw">if</span>(pwszCompName)
+    {
+        <span class="kw">delete</span> [] pwszCompName;
+        pwszCompName = NULL;
+    }
+    <span class="kw">return</span> <span class="kw">true</span>;            
+}</code></pre></div>
+<h1 id="part-5-windows-debugging-techniques---debugging-memory-leaks-crt-apis">Part 5: Windows Debugging Techniques - Debugging Memory Leaks (CRT APIs)</h1>
+<p>Background As observed in Part 4, it can be difficult to trace the issue with just the help of perfmon tool. It would be so easy if someone could actually point where the precise location of the leak is and we all we have to do is fix it. There are CRT APIs available which does this for us and makes life easier.</p>
+<p>Definition We all know when we allocate memory dynamically using new/malloc/calloc/realloc it actually goes to the heap memory. Debugging Memory Leak issues means debugging the heap memory and checking to see if there is a problem there. CRT Debug Heap provides this arrangement by providing a set of APIs which allocate more memory than actually requested to track the memory details and dump the same on application exit.</p>
+<p>So if we allocate 10 bytes in release mode using malloc, then only 10 bytes will get allocated. But once we enable debugging using CRT APIs close to 46 bytes will get allocated. This extra 36 bytes are there for tracing the memory leaks.</p>
+<p>Apart from this, instead of malloc, debug version i.e &quot;_malloc_dbg&quot; will be called. For more information on this please refer to: http://msdn.microsoft.com/en-us/library/974tc9t1.aspx</p>
+<p>Debugging Techniques Let's go Step-by-Step in using the CRT APIs</p>
+<p>Step 1: Add the Includes for CRT Debug API Add the below code as part of the application after all other includes are completed.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#define _CRTDBG_MAP_ALLOC</span>
+<span class="ot">#include &lt;stdlib.h&gt;</span>
+<span class="ot">#include &lt;crtdbg.h&gt;</span></code></pre></div>
+<p>Macro <code>_CRTDBG_MAP_ALLOC</code> informs the compiler to map the heap functions to their debug version i.e. malloc should get mapped to <code>_malloc_dbg</code></p>
+<p>Step 2: Map new operator to its debug version By default, new does not get mapped to its debug version, we need to forcefully do it. To do this add the below code to the application. By default, malloc/calloc/realloc gets mapped to their debug version. New needs to be done explicitly.</p>
+<p>This step can be avoided if you do not have the usage of the new operator in your code.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#ifdef _DEBUG   </span>
+<span class="ot">#ifndef DBG_NEW      </span>
+<span class="ot">#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )     </span>
+<span class="ot">#define new DBG_NEW   </span>
+<span class="ot">#endif</span>
+<span class="ot">#endif</span></code></pre></div>
+<p>Step 3: Set the Debug Flag and Set the report mode Debug flags needs to be set, which defines what we want to debug. Report Mode needs to be set to define if the output needs to be redirected to the debug window like DebugView or needs to be sent to a file.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">_CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);</code></pre></div>
+<p>Let's understand the above code.</p>
+<p><code>_CRTDBG_ALLOC_MEM_DF</code> turns on debug allocations <code>_CRTDBG_LEAK_CHECK_DF</code> will cause memory leak checking to be performed on application exit. <code>_CRTDBG_MODE_DEBUG</code> will cause the output to be redirected to a debug window like DebugView or Output Window in Visual Studio. There are a lot more options available for debugging. Please refer to: http://msdn.microsoft.com/en-us/library/974tc9t1.aspx</p>
+<p>After the above steps the code mentioned in part 4 would become like this.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;iostream&gt;</span>
+<span class="ot">#include &lt;Windows.h&gt;</span>
+<span class="ot">#include &lt;tchar.h&gt;</span>
+<span class="ot">#include &lt;string&gt;</span>
+<span class="ot">#define _CRTDBG_MAP_ALLOC</span>
+<span class="ot">#include &lt;stdlib.h&gt;</span>
+<span class="ot">#include &lt;crtdbg.h&gt;</span>
+
+<span class="ot">#ifdef _DEBUG   </span>
+<span class="ot">#ifndef DBG_NEW      </span>
+<span class="ot">#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )     </span>
+<span class="ot">#define new DBG_NEW   </span>
+<span class="ot">#endif</span>
+<span class="ot">#endif  </span><span class="co">// _DEBUG</span>
+
+<span class="kw">using</span> <span class="kw">namespace</span> std;
+
+<span class="dt">bool</span> GetComputerName(wstring&amp; wstrCompName);
+<span class="dt">bool</span> fileread(<span class="dt">const</span> wstring&amp; filepath);
+<span class="dt">bool</span> GetUserName(wstring&amp; wstrUserName);
+
+<span class="dt">int</span> main()
+{
+    _CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+    _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
+
+    <span class="dt">int</span> nChoice = <span class="dv">0</span>;
+    wstring wstrCompName;
+    wstring wstrUserName;
+    <span class="dt">char</span> ccontinue = <span class="st">&#39;</span><span class="ch">\0</span><span class="st">&#39;</span>; 
+
+    <span class="kw">do</span>
+    {
+        wcout&lt;&lt;<span class="st">L&quot;Enter your choice&quot;</span>&lt;&lt;endl;
+        wcout&lt;&lt;<span class="st">L&quot;1.Read Computer name&quot;</span>&lt;&lt;endl;
+        wcout&lt;&lt;<span class="st">L&quot;2.Read User Name&quot;</span>&lt;&lt;endl;
+        cin&gt;&gt;nChoice;
+
+        <span class="kw">switch</span>(nChoice)
+        {
+        <span class="kw">case</span> <span class="dv">1</span>:
+            GetComputerName(wstrCompName);  
+            wcout&lt;&lt;<span class="st">L&quot;Computer name read is&quot;</span>&lt;&lt;wstrCompName.c_str()&lt;&lt;endl;
+            <span class="kw">break</span>;
+        <span class="kw">case</span> <span class="dv">2</span>:
+            GetUserName(wstrUserName);
+            wcout&lt;&lt;<span class="st">L&quot;user name read is&quot;</span>&lt;&lt;wstrUserName.c_str()&lt;&lt;endl;
+            <span class="kw">break</span>;
+        <span class="kw">default</span>:
+            wcout&lt;&lt;<span class="st">L&quot;Invalid option&quot;</span>;
+        }
+        wcout&lt;&lt;<span class="st">&quot;Do you want to continue Y or N&quot;</span>;
+        cin&gt;&gt;ccontinue;
+    }<span class="kw">while</span>(ccontinue == <span class="st">&#39;y&#39;</span> || ccontinue == <span class="st">&#39;Y&#39;</span>);
+    <span class="kw">return</span> <span class="dv">0</span>;
+}
+
+<span class="dt">bool</span> GetComputerName(wstring&amp; wstrCompName)
+{
+    <span class="dt">wchar_t</span>* pwszCompName = NULL;
+    DWORD dwSize = <span class="dv">0</span>;
+    <span class="dt">bool</span> bRet = <span class="kw">false</span>;
+
+    <span class="kw">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
+    {
+        <span class="kw">if</span>(GetLastError() != ERROR_MORE_DATA)
+        {
+            wcout&lt;&lt;<span class="st">L&quot;GetComputerNameEx Failed with Error Code&quot;</span>&lt;&lt;GetLastError();
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+        pwszCompName = <span class="kw">new</span> <span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>];
+        <span class="kw">if</span>(pwszCompName == NULL)
+        {
+            wcout&lt;&lt;<span class="st">L&quot;unable to allocate memory&quot;</span>&lt;&lt;endl;
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+        memset(pwszCompName, <span class="st">L&#39;</span><span class="ch">\0</span><span class="st">&#39;</span>, dwSize + <span class="dv">1</span>);
+        <span class="kw">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
+        {   
+            wcout&lt;&lt;<span class="st">L&quot;GetComputerNameEx Failed with Error Code&quot;</span>&lt;&lt;GetLastError();
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+    }
+    <span class="dt">char</span>* test = <span class="kw">new</span> <span class="dt">char</span>[<span class="dv">1024</span>*<span class="dv">1024</span>];
+    wstrCompName.assign(pwszCompName);
+    <span class="kw">return</span> <span class="kw">true</span>;            
+}
+
+<span class="dt">bool</span> GetUserName(wstring&amp; wstrUserName)
+{
+    <span class="dt">wchar_t</span>* pwszUserName = NULL;
+    DWORD dwSize = <span class="dv">0</span>;
+
+    <span class="kw">if</span>(!GetUserName(pwszUserName, &amp;dwSize))
+    {
+        <span class="kw">if</span>(GetLastError() != ERROR_INSUFFICIENT_BUFFER)     
+        {
+            wcout&lt;&lt;<span class="st">&quot;GetUserName returned with Error&quot;</span>&lt;&lt;GetLastError();
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+        pwszUserName = <span class="kw">new</span> <span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>]();
+        <span class="kw">if</span>(pwszUserName == NULL)
+        {
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+        <span class="kw">if</span>(!GetUserName(pwszUserName, &amp;dwSize))
+        {
+            <span class="kw">if</span>(pwszUserName)
+            {
+                <span class="kw">delete</span> [] pwszUserName;
+                pwszUserName = NULL;
+            }
+            wcout&lt;&lt;<span class="st">&quot;GetUserName returned with Error&quot;</span>&lt;&lt;GetLastError();
+            <span class="kw">return</span> <span class="kw">false</span>;
+        }
+    }
+    wstrUserName.assign(pwszUserName);
+    <span class="kw">if</span>(pwszUserName)
+    {
+        <span class="kw">delete</span> [] pwszUserName;
+        pwszUserName = NULL;
+    }
+    <span class="kw">return</span> <span class="kw">true</span>;
+}</code></pre></div>
+<p>Step 4: Rebuild the Project in the Debug Mode One drawback of this approach is it requires code to be rebuilt in debug mode without which it cannot report memory leaks. So rebuild the source in the Debug Mode.</p>
+<p>Step 5: Launch the DebugView, Run the use case and see the output Launch the DebugView. If not available, download it from: http://technet.microsoft.com/en-in/sysinternals/bb896647.aspx</p>
+<p>In the current case, build the above mentioned code in Debug Mode, Run the Application, select option 1, and then select y. Repeat this three to four times, and press n and exit the application. Observe the debugView output. It will look something like this:</p>
+<p>With this now we get exactly which file and which line of code is causing the memory and how much leak. When it says source.cpp line no 73, it is actually pwszCompName = new wchar_t[dwSize + 1];. Similarly, line no 86 points to <code>char* test = new char[1024*1024];</code>. Now it is very clear where the problem is and we can fix the issue easily.</p>
+</body>
+</html>

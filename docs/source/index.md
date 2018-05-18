@@ -98,9 +98,15 @@
 
 ## Debug Tools 
 
+- [Debugging Techniques Article]( ./debug_techiniques_article.md )
 - [ConqueGDB]( ./conquegdb.html )
 - [Intel Inspector]( ./intel_inspector.html )
 - [Valgrind]( ./valgrind.html )
+- [Application Verifier]( ./application_verifier.html )
+- [Debug Diag]( ./debug_diag.html )
+- [WinDbg]( ./windbg.html )
+- [Perfmon]( ./perfmon.html )
+- [CRT APIs]( ./crt_apis.html )
 
 ## Database 
 
