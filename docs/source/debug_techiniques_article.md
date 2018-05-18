@@ -1,6 +1,6 @@
 # Debugging Techniques Article
 
-**Credit**: This is a reproduction of a great series of articles on *Code Project* website done by [Shailesh]
+**Credit**: This is a reproduction of a great series of articles on *Code Project* website done by [Shailesh](https://www.codeproject.com/script/Membership/View.aspx?mid=2117734)
 
 # Part 1: Windows Debugging Techniques - Debugging Application Crash (Windbg) 
 
