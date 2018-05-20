@@ -1,12 +1,12 @@
 # TMUX Commands #
 
-`TMUX a <session number> ` : attach  
+`tmux a <session number> ` : attach  
 
-`TMUX ls ` : list sessions
+`tmux ls ` : list sessions
 
-`TMUX kill-session -t <session number or session name name> ` : kill sessions
+`tmux kill-session -t <session number or session name name> ` : kill sessions
 
-`ctrl+b` : TMUX Command key. Put TMUX on command mode
+`ctrl+b` : tmux Command key. Put tmux on command mode
 
 `tmux new -s session_name` : creates a new tmux session named session_name
 
@@ -17,6 +17,14 @@
 `tmux list-sessions` : lists existing tmux sessions
 
 `tmux detach (prefix + d)` : detach the currently attached session
+
+`tmux split-window <command>`: Run command in a new horizontal split and go to the new split.
+
+`tmux split-window -d <command>`: Run command in a new horizontal split and return to the current split.
+
+`tmux display-pane`: Display the number of each pane
+
+`tmux kill-pane -t <target_pane>`: Close a pane
 
 ## Command Mode - Sessions ##
 

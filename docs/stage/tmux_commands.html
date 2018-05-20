@@ -13,15 +13,19 @@
 </head>
 <body>
 <h1 id="tmux-commands">TMUX Commands</h1>
-<p><code>TMUX a &lt;session number&gt;</code> : attach</p>
-<p><code>TMUX ls</code> : list sessions</p>
-<p><code>TMUX kill-session -t &lt;session number or session name name&gt;</code> : kill sessions</p>
-<p><code>ctrl+b</code> : TMUX Command key. Put TMUX on command mode</p>
+<p><code>tmux a &lt;session number&gt;</code> : attach</p>
+<p><code>tmux ls</code> : list sessions</p>
+<p><code>tmux kill-session -t &lt;session number or session name name&gt;</code> : kill sessions</p>
+<p><code>ctrl+b</code> : tmux Command key. Put tmux on command mode</p>
 <p><code>tmux new -s session_name</code> : creates a new tmux session named session_name</p>
 <p><code>tmux attach -t session_name</code> : attaches to an existing tmux session named session_name</p>
 <p><code>tmux switch -t session_name</code> : switches to an existing session named session_name</p>
 <p><code>tmux list-sessions</code> : lists existing tmux sessions</p>
 <p><code>tmux detach (prefix + d)</code> : detach the currently attached session</p>
+<p><code>tmux split-window &lt;command&gt;</code>: Run command in a new horizontal split and go to the new split.</p>
+<p><code>tmux split-window -d &lt;command&gt;</code>: Run command in a new horizontal split and return to the current split.</p>
+<p><code>tmux display-pane</code>: Display the number of each pane</p>
+<p><code>tmux kill-pane -t &lt;target_pane&gt;</code>: Close a pane</p>
 <h2 id="command-mode---sessions">Command Mode - Sessions</h2>
 <p><code>:new&lt;CR&gt;</code> : new session</p>
 <p><code>s</code> : list sessions</p>
