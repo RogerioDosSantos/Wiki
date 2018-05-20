@@ -18,6 +18,8 @@
 
 `tmux detach (prefix + d)` : detach the currently attached session
 
+`tmux split-window -d`: Split a pane without closing it and return to the current pane.
+
 `tmux split-window <command>`: Run command in a new horizontal split and go to the new split.
 
 `tmux split-window -d <command>`: Run command in a new horizontal split and return to the current split.
@@ -25,6 +27,8 @@
 `tmux display-pane`: Display the number of each pane
 
 `tmux kill-pane -t <target_pane>`: Close a pane
+
+`tmux send-keys -t <target_pane> <commands>`: Send keys to a pane. E.g.: `tmux send-keys -t 1 "clear" C-m "ls" C-m "pwd" C-m`
 
 ## Command Mode - Sessions ##
 
