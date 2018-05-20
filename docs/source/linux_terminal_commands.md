@@ -345,7 +345,9 @@ function_name $arg1 $arg2
 
 ## Environment Variable ##
 
-`printenv` : Shows the environment variables
+`printenv <variable>` : Shows the environment variables
+
+`echo $<variable>` : Shows the environment variables
 
 To add the environment variable for your user, add it to the `~/.bashrc` file the following command:
 `export <Variable Name>=<Variable Value>`
@@ -357,6 +359,8 @@ To add the environment variable for all users, add it to the `/etc/environment` 
 
 To reload the command configuration and have the variable set without have to close the shell run the following command:
 `source ~./baschrc`
+
+`printenv TERM`: Show the color schema of the terminal.
 
 ### Additional commands (Not available on all platforms) ###
 
