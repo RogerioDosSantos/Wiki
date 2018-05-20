@@ -161,6 +161,12 @@
 
 `:0r <file path>` : Read the file and add in your current file
 
+`!<command>`: Call a shell command. You need to hit enter to return.
+
+`:silent !<command>`: Call a shell command without the need to hit Enter.
+
+`!!`: Repeat the last command.
+
 `:r !<shell command>` : Execute the shell command and write the result on the current file
 
 `:ls` : List buffers
@@ -381,6 +387,12 @@
 `zw` : Remove the word from the file list
 
 `<leader> sa` : Replace all. Replace all words with the same word done on the last replacement (Custom Map).
+
+## Expension
+
+`!echo "%:p"` : Show file path
+
+`!echo "%:p:h"` : Show file directory
 
 ## Macros ##
 

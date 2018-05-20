@@ -93,6 +93,8 @@
 <p><code>ctrl+v</code> : Go to Visual Block mode</p>
 <h2 id="commands---normal-mode">Commands - Normal Mode</h2>
 <p><code>:0r &lt;file path&gt;</code> : Read the file and add in your current file</p>
+<p><code>!&lt;command&gt;</code>: Call a shell command. You need to hit enter to return.</p>
+<p><code>:silent !&lt;command&gt;</code>: Call a shell command without the need to hit Enter.</p>
 <p><code>:r !&lt;shell command&gt;</code> : Execute the shell command and write the result on the current file</p>
 <p><code>:ls</code> : List buffers</p>
 <p><code>:b&lt;buffer number&gt;</code> : Go to the buffer. Use ls to list buffer</p>
@@ -203,6 +205,9 @@
 <p><code>zG</code> : As <code>zg</code> but do not add the word on the file list</p>
 <p><code>zw</code> : Remove the word from the file list</p>
 <p><code>&lt;leader&gt; sa</code> : Replace all. Replace all words with the same word done on the last replacement (Custom Map).</p>
+<h2 id="expension">Expension</h2>
+<p><code>!echo &quot;%:p&quot;</code> : Show file path</p>
+<p><code>!echo &quot;%:p:h&quot;</code> : Show file directory</p>
 <h2 id="macros">Macros</h2>
 <h3 id="saving-a-macro">Saving a Macro</h3>
 <p>To save a macro you can do:</p>

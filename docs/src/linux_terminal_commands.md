@@ -28,6 +28,8 @@
 
 `dirs` : List the directory history. It is convenient to know the stack when you use the `pushd` command.
 
+`dirs -c` : Clean all directories stack from `pushd` command.
+
 `pwd` : Show the directory you are
 
 `pwd -P` : Show the directory you are without symlink
