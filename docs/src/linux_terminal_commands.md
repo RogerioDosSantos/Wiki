@@ -206,6 +206,10 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `<command> &> <file_path>`: Redirect all commands output to a file. The *&* means "redirect *stdout* and *stderr*". Note that depending on the shell you will need to use: `>&`, `&>` or `> <file_path> 2>&1`
 
+`exec <command>`: Execute the command. In case the command fails, the script will stop its execution.
+
+`eval <command>`: Equivalent to `exec` function but the script will not stop its execution if the command exits with a code different than 0.
+
 ## Security
 
 ### Hashes
