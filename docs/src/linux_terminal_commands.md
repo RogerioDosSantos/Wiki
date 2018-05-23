@@ -210,6 +210,12 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `eval <command>`: Equivalent to `exec` function but the script will not stop its execution if the command exits with a code different than 0.
 
+`unset -f <function_name>`: Unset (un-declare) a function. 
+
+`declare -F <name>`: Verify if a function or item is declared.
+
+`( set -o posix ; set  )`: Display all variables.
+
 ## Security
 
 ### Hashes
@@ -330,9 +336,15 @@ done
 
 ### Function declaration and usage ###
 
+`type <command>`: Inform the type of command. If it is a function it will show the function.
+
+`declare -F [<function_to_search>]`: Inform all  or a specific function.
+
 ```bash
 
-function_name () {
+function_name () 
+{
+  # Usage: function_name <out:arg1> <in:arg2>
   echo "arg1 = $1"
   echo "arg2 = $2"
 }

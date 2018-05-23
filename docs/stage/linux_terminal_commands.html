@@ -158,6 +158,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>&lt;command&gt; &amp;&gt; &lt;file_path&gt;</code>: Redirect all commands output to a file. The <em>&amp;</em> means &quot;redirect <em>stdout</em> and <em>stderr</em>&quot;. Note that depending on the shell you will need to use: <code>&gt;&amp;</code>, <code>&amp;&gt;</code> or <code>&gt; &lt;file_path&gt; 2&gt;&amp;1</code></p>
 <p><code>exec &lt;command&gt;</code>: Execute the command. In case the command fails, the script will stop its execution.</p>
 <p><code>eval &lt;command&gt;</code>: Equivalent to <code>exec</code> function but the script will not stop its execution if the command exits with a code different than 0.</p>
+<p><code>unset -f &lt;function_name&gt;</code>: Unset (un-declare) a function.</p>
+<p><code>declare -F &lt;name&gt;</code>: Verify if a function or item is declared.</p>
+<p><code>( set -o posix ; set  )</code>: Display all variables.</p>
 <h2 id="security">Security</h2>
 <h3 id="hashes">Hashes</h3>
 <h4 id="sha-1-hashes">SHA-1 hashes</h4>
@@ -227,8 +230,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <span class="kw">echo</span> <span class="st">&quot;${&lt;item&gt;}&quot;</span>
 <span class="kw">done</span></code></pre></div>
 <h3 id="function-declaration-and-usage">Function declaration and usage</h3>
+<p><code>type &lt;command&gt;</code>: Inform the type of command. If it is a function it will show the function.</p>
+<p><code>declare -F [&lt;function_to_search&gt;]</code>: Inform all or a specific function.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">
-<span class="fu">function_name ()</span> <span class="kw">{</span>
+<span class="fu">function_name ()</span> 
+<span class="kw">{</span>
+  <span class="co"># Usage: function_name &lt;out:arg1&gt; &lt;in:arg2&gt;</span>
   <span class="kw">echo</span> <span class="st">&quot;arg1 = </span><span class="ot">$1</span><span class="st">&quot;</span>
   <span class="kw">echo</span> <span class="st">&quot;arg2 = </span><span class="ot">$2</span><span class="st">&quot;</span>
 <span class="kw">}</span>
