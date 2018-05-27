@@ -216,6 +216,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `( set -o posix ; set  )`: Display all variables.
 
+`pandoc <markdown_file_path> | lynx -stdin` : Display Markdown on the command line.
+
 ## Security
 
 ### Hashes
