@@ -218,6 +218,10 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `pandoc <markdown_file_path> | lynx -stdin` : Display Markdown on the command line.
 
+`w3m -dump http://google.com` : Show url
+
+`echo "$LINENO -  $FUNCNAME"` : Show Function and Line Number of a script file
+
 ## Security
 
 ### Hashes
