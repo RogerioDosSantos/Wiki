@@ -52,7 +52,7 @@
 
 `docker rmi $(docker images -f dangling=true -q)`: Remove dangling images
 
-`docker build -f <docker_file_name> -t <image_tag>` : E.g: docker build -f ./DockerFile -t rogersantos/image_01:latest
+`docker build -f <docker_file_name> [--build-arg http_proxy=<proxy url>] -t <image_tag>` : E.g: docker build -f ./DockerFile -t rogersantos/image_01:latest
 
 ## Volumes Credentials
 
