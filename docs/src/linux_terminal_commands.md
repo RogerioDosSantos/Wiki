@@ -216,6 +216,10 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `( set -o posix ; set  )`: Display all variables.
 
+`printf '%q' "<string>"`: Format string for shell scape
+
+`local <variable_name>=$(cat)` : Get Input from std in (Pipe) and put into a variable.
+
 ## Security
 
 ### Hashes
@@ -235,6 +239,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `md5sum <file> > <file>.sha1`: If you want to send the file together with its sha1sum output redirect the output to a file
 
 `md5sum -c <file>.sha1`: Check if the file changed. It should show OK if the sha1 is correct.
+
+`echo -n <string> | md5sum`: Calculate the MD5 of an string
 
 ## System ##
 
