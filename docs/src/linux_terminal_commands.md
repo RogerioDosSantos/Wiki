@@ -220,6 +220,12 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `local <variable_name>=$(cat)` : Get Input from std in (Pipe) and put into a variable.
 
+`pandoc <markdown_file_path> | lynx -stdin` : Display Markdown on the command line.
+
+`w3m -dump http://google.com` : Show url
+
+`echo "$LINENO -  $FUNCNAME"` : Show Function and Line Number of a script file
+
 ## Security
 
 ### Hashes
