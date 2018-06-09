@@ -161,6 +161,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>unset -f &lt;function_name&gt;</code>: Unset (un-declare) a function.</p>
 <p><code>declare -F &lt;name&gt;</code>: Verify if a function or item is declared.</p>
 <p><code>( set -o posix ; set  )</code>: Display all variables.</p>
+<p><code>printf '%q' &quot;&lt;string&gt;&quot;</code>: Format string for shell scape</p>
+<p><code>local &lt;variable_name&gt;=$(cat)</code> : Get Input from std in (Pipe) and put into a variable.</p>
 <p><code>pandoc &lt;markdown_file_path&gt; | lynx -stdin</code> : Display Markdown on the command line.</p>
 <p><code>w3m -dump http://google.com</code> : Show url</p>
 <p><code>echo &quot;$LINENO -  $FUNCNAME&quot;</code> : Show Function and Line Number of a script file</p>
@@ -174,6 +176,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>md5sum &lt;file&gt;</code> : Print or check MD5 (Message-Digest algorithm 5) 128-bit cryptographic hash checksums. With no file, or when file is -, read standard input</p>
 <p><code>md5sum &lt;file&gt; &gt; &lt;file&gt;.sha1</code>: If you want to send the file together with its sha1sum output redirect the output to a file</p>
 <p><code>md5sum -c &lt;file&gt;.sha1</code>: Check if the file changed. It should show OK if the sha1 is correct.</p>
+<p><code>echo -n &lt;string&gt; | md5sum</code>: Calculate the MD5 of an string</p>
 <h2 id="system">System</h2>
 <p><code>dmesg</code> : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.</p>
 <h2 id="network">Network</h2>
