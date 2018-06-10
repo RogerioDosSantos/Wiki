@@ -1,6 +1,6 @@
 # Docker Commands #
 
-`docker search <text>` : Search for a docker image into online repositories
+`docker search [-s <number_of_stars>] <text>` : Search for a docker image into online repositories
 
 `docker images` : List the available images
 
