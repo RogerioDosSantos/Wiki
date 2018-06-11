@@ -146,3 +146,10 @@
 - [IoT-Edge]( ./iot_edge.html )
 - [Storage]( ./azure_storage.html )
 
+## Stock Market
+
+- [Stock Indicators]( ./stock_indicators.html )
+
+## Artificial Intelligence
+
+- [AI tools]( ./ai_tools.html )
