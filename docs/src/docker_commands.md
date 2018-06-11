@@ -28,7 +28,7 @@
 
 `docker tag <image id> [<dockerhub user>]/<image name>:<tag>`: Tag an image. E.g.: `docker tag 5ffd21ba24cf rogersantos/vim:1.0`
 
-`docker push [<dockerhub user>]/<dockerhub repository name>` : Pull an image into the DockerHub repository. Note: You need to be logged before pushing an image. E.g.: `docker push rogersantos/vim`
+`docker push [<dockerhub user>]/<dockerhub repository name>` : Push an image into the DockerHub repository. Note: You need to be logged before pushing an image. E.g.: `docker push rogersantos/vim`
 
 `docker login` : Log into a repository
 

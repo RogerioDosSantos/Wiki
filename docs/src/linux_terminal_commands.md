@@ -226,6 +226,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `echo "$LINENO -  $FUNCNAME"` : Show Function and Line Number of a script file
 
+`<command> &` : Run command in background
+
 ## Security
 
 ### Hashes
