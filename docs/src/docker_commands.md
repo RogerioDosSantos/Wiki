@@ -1,5 +1,7 @@
 # Docker Commands #
 
+`docker search [-s <number_of_stars>] <text>` : Search for a docker image into online repositories
+
 `docker images` : List the available images
 
 `docker ps` : List the running containers
@@ -53,6 +55,8 @@
 `docker rmi $(docker images -f dangling=true -q)`: Remove dangling images
 
 `docker build -f <docker_file_name> [--build-arg http_proxy=<proxy url>] -t <image_tag>` : E.g: docker build -f ./DockerFile -t rogersantos/image_01:latest
+
+`docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_name_or_id>`
 
 ## Volumes Credentials
 

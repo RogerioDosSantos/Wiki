@@ -13,6 +13,7 @@
 </head>
 <body>
 <h1 id="docker-commands">Docker Commands</h1>
+<p><code>docker search [-s &lt;number_of_stars&gt;] &lt;text&gt;</code> : Search for a docker image into online repositories</p>
 <p><code>docker images</code> : List the available images</p>
 <p><code>docker ps</code> : List the running containers</p>
 <p><code>docker ps -a</code> : List all containers</p>
@@ -27,7 +28,7 @@
 <p><code>docker commit -a &quot;&lt;author&gt;&quot; -m &quot;&lt;message&gt;&quot; &lt;container id&gt; [&lt;dockerhub user&gt;]&lt;image name&gt;:&lt;tag&gt;</code> : Commit a container into an image. E.g.: <code>docker commit -a &quot;Roger Santos&quot; -m &quot;My Comment&quot; ec6cc8c6e490 rogersantos/vim:1.0</code></p>
 <p><code>docker diff &lt;container id&gt;</code> : Shows the difference between the current container and the original image.</p>
 <p><code>docker tag &lt;image id&gt; [&lt;dockerhub user&gt;]/&lt;image name&gt;:&lt;tag&gt;</code>: Tag an image. E.g.: <code>docker tag 5ffd21ba24cf rogersantos/vim:1.0</code></p>
-<p><code>docker push [&lt;dockerhub user&gt;]/&lt;dockerhub repository name&gt;</code> : Push an image into the DockerHub repository. Note: You need to be logged before pushing an image. E.g.: <code>docker push rogersantos/vim</code></p>
+<p><code>docker push [&lt;dockerhub user&gt;]/&lt;dockerhub repository name&gt;</code> : Pull an image into the DockerHub repository. Note: You need to be logged before pushing an image. E.g.: <code>docker push rogersantos/vim</code></p>
 <p><code>docker login</code> : Log into a repository</p>
 <p><code>docker-compose up [-d]</code> : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The <code>-d</code> option allow to start the container as service, <em>forking</em> the process.</p>
 <p><code>docker-compose stop</code> : Stop all running Docker containers for an application group, issue the following command in the same directory as the <em>docker-compose.yml</em> file used to start the Docker group.</p>
@@ -40,6 +41,7 @@
 <p><code>docker rmi $(docker images -a -q)</code>: Remove all images.</p>
 <p><code>docker rmi $(docker images -f dangling=true -q)</code>: Remove dangling images</p>
 <p><code>docker build -f &lt;docker_file_name&gt; [--build-arg http_proxy=&lt;proxy url&gt;] -t &lt;image_tag&gt;</code> : E.g: docker build -f ./DockerFile -t rogersantos/image_01:latest</p>
+<p><code>docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' &lt;container_name_or_id&gt;</code></p>
 <h2 id="volumes-credentials">Volumes Credentials</h2>
 <p>Be aware that when changing your password, you will need to go to settings &gt;&gt; shared drivers &gt;&gt; reset credentials. Once you select the drivers you want to share again and enter the new password, everything will start working again.</p>
 <h2 id="start-attach-options">Start / Attach options</h2>
