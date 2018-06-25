@@ -1,6 +1,6 @@
 # Checkmarks
 
-Checkmarks is a company that contains several security tools. They provide as for example tools that allow to execute code analysis on several different languages (C++, JavaScript, etc). 
+[Checkmarks](https://www.checkmarx.com/) is a company that contains several security tools. They provide as for example tools that allow to execute code analysis on several different languages (C++, JavaScript, etc). 
 
 If you are looking to unify your the Security tools **Checkmarks** is a suite for you look for.
 
