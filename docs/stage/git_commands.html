@@ -58,6 +58,7 @@
 <p><code>git submodule add -b &lt;branch&gt; &lt;repository url&gt;</code> : Add a submodule that tracks a branch</p>
 <p><code>git submodule init</code> : Initialize the submodule configuration. You should run it after you clone the project with submodule on it.</p>
 <p><code>git submodule update</code> : Get the content of all submodules.</p>
+<p><code>git submodule update --recursive --remote</code> : Update all submodules to the latest commit</p>
 <p><code>git checkout &lt;branch or label&gt;</code> : Checkout a branch to allow edition on it. IMPORTANT: If you are checkingout a lebel, you will not be allowed to modify it. Execute the command below to put the lable in another branch</p>
 <p><code>git checkout -b &lt;new branch&gt; &lt;branch or label&gt;</code> : Create a new Branch for the Branch or label checked out.</p>
 <p><code>git status --ignore-submodules=dirty</code> : Ignore the dirty feature that slow down the command in case you have submodules with a lot of files. You can also change the &quot;.gitmodules&quot; files to add the following entry in a submodule you want to ignore: ignore ## dirty</p>
@@ -143,5 +144,10 @@ git push -u origin master</code></pre>
 git pull origin master
 git merge test
 git push origin master</code></pre>
+<h2 id="update-git">Update Git</h2>
+<h3 id="ubuntu---get-latest-version">Ubuntu - Get Latest version</h3>
+<p><code>sudo add-apt-repository ppa:git-core/ppa</code> : Add the PPA to the local index</p>
+<p><code>add the PPA to the local index</code>: Update the local repository index</p>
+<p><code>sudo apt-get install git</code>: Install the git package</p>
 </body>
 </html>

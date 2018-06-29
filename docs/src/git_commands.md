@@ -90,6 +90,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git submodule update` : Get the content of all submodules.
 
+`git submodule update --recursive --remote` : Update all submodules to the latest commit
+
 `git checkout <branch or label> ` : Checkout a branch to allow edition on it. IMPORTANT: If you are checkingout a lebel, you will not be allowed to modify it. Execute the command below to put the lable in another branch
 
 `git checkout -b <new branch> <branch or label> ` : Create a new Branch for the Branch or label checked out.
@@ -208,3 +210,14 @@ git pull origin master
 git merge test
 git push origin master
 ```
+
+## Update Git
+
+### Ubuntu - Get Latest version
+
+`sudo add-apt-repository ppa:git-core/ppa` : Add the PPA to the local index
+
+`add the PPA to the local index`: Update the local repository index
+
+`sudo apt-get install git`: Install the git package
+
