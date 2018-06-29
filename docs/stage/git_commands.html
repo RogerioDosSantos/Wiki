@@ -6,6 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="../resources/style.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -113,14 +150,14 @@
 <h2 id="ignore-directory">Ignore Directory</h2>
 <p>Create a file called .gitignore into your project folder and add all folders that should be ignored.</p>
 <h2 id="initialize-repository">Initialize Repository</h2>
-<pre><code>Create repository on Github
-On Linux use the commands:
-echo &quot;# linux_environment&quot; &gt;&gt; README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git remote add origin &lt;repository .git url&gt;
-git push -u origin master</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Create</span> repository on Github
+<span class="kw">On</span> Linux use the commands:
+<span class="kw">echo</span> <span class="st">&quot;# linux_environment&quot;</span> <span class="kw">&gt;&gt;</span> README.md
+<span class="kw">git</span> init
+<span class="kw">git</span> add README.md
+<span class="kw">git</span> commit -m <span class="st">&quot;first commit&quot;</span>
+<span class="kw">git</span> remote add origin <span class="kw">&lt;</span>repository .git url<span class="kw">&gt;</span>
+<span class="kw">git</span> push -u origin master</code></pre></div>
 <h2 id="local-commit-manual-transfer">Local commit manual transfer</h2>
 <p>All local changes you execute on git is stored on the <em>.git</em> folder. You can copy this folder between same git projects located on different git repositories. In this way you can for example continue your work on different computers. To transfer the content, please follow the sequence below:</p>
 <ul>
@@ -130,6 +167,14 @@ git push -u origin master</code></pre>
 <li>Use the command <code>git checkout HEAD</code> to ensure thal all your local files are updated with the information that is on the HEAD.</li>
 </ul>
 <h2 id="transfer-git-repository">Transfer Git Repository</h2>
+<h3 id="moving-git-repository-content-to-another-repository-preserving-history">Moving Git repository content to another repository preserving history</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> <span class="kw">&lt;</span>target_repository<span class="kw">&gt;</span>
+<span class="kw">git</span> checkout master
+<span class="kw">git</span> remote add <span class="kw">&lt;</span>temp_branch_name<span class="kw">&gt;</span> <span class="kw">&lt;</span>repository_url<span class="kw">&gt;</span>
+<span class="kw">git</span> fetch <span class="kw">&lt;</span>temp_branch_name<span class="kw">&gt;</span>
+<span class="kw">git</span> merge <span class="kw">&lt;</span>temp_branch_name<span class="kw">&gt;</span>/master --allow-unrelated-histories
+<span class="kw">git</span> remote rm <span class="kw">&lt;</span>temp_branch_name<span class="kw">&gt;</span></code></pre></div>
+<h3 id="commands">Commands</h3>
 <p><code>git fetch origin</code> : Get the information from the server (History)</p>
 <p><code>git branch -a</code> : Show all branches. If you have a branch that is remote you need to get it on your computer using the command <code>checkout</code></p>
 <p><code>git checkout -b &lt;local name&gt; &lt;remote name&gt;</code> : Checkout a Branch. E.g.: <code>git checkout -b develop origin/develop</code></p>

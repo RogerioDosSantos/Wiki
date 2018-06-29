@@ -161,7 +161,7 @@ Create a file called .gitignore into your project folder and add all folders tha
 
 ## Initialize Repository ##
 
-````
+``` bash
 Create repository on Github
 On Linux use the commands:
 echo "# linux_environment" >> README.md
@@ -170,7 +170,7 @@ git add README.md
 git commit -m "first commit"
 git remote add origin <repository .git url>
 git push -u origin master
-````
+```
 
 ## Local commit manual transfer ##
 
@@ -181,8 +181,20 @@ All local changes you execute on git is stored on the _.git_ folder. You can cop
 - Copy the content of your _git_ folder from your temp location to your destination folder.
 - Use the command `git checkout HEAD` to ensure thal all your local files are updated with the information that is on the HEAD.
 
-## Transfer Git Repository ##
+## Transfer Git Repository
 
+### Moving Git repository content to another repository preserving history
+
+```bash
+cd <target_repository>
+git checkout master
+git remote add <temp_branch_name> <repository_url>
+git fetch <temp_branch_name>
+git merge <temp_branch_name>/master --allow-unrelated-histories
+git remote rm <temp_branch_name>
+```
+
+### Commands
 
 `git fetch origin` : Get the information from the server (History)
 
