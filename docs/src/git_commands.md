@@ -72,6 +72,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git rev-parse [--short] HEAD` : Display the HEAD id. Use short for the short version.
 
+`git revert <commit_id>` : Revert command changes all the files for a specific commit back to their state before that commit was completed
+
 ## History ##
 
 `git blame` : Allow you to check the file chain history (Similar to VS annotate)
