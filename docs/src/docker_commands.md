@@ -34,6 +34,8 @@ Push Note: You need to be logged before pushing an image. E.g.: `docker push rog
 
 `docker login` : Log into a repository
 
+`docker login --username <user_name> --password <password> <server>` : Login into a repository into a specific server.
+
 `docker-compose up [-d]` : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The `-d` option allow to start the container as service, _forking_ the process.
 
 `docker-compose stop` : Stop all running Docker containers for an application group, issue the following command in the same directory as the _docker-compose.yml_ file used to start the Docker group.

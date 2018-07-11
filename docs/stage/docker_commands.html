@@ -30,6 +30,7 @@
 <p><code>docker tag &lt;image id&gt; [&lt;dockerhub user&gt;]/&lt;image name&gt;:&lt;tag&gt;</code>: Tag an image. E.g.: <code>docker tag 5ffd21ba24cf rogersantos/vim:1.0</code></p>
 <p>Push Note: You need to be logged before pushing an image. E.g.: <code>docker push rogersantos/vim</code></p>
 <p><code>docker login</code> : Log into a repository</p>
+<p><code>docker login --username &lt;user_name&gt; --password &lt;password&gt; &lt;server&gt;</code> : Login into a repository into a specific server.</p>
 <p><code>docker-compose up [-d]</code> : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The <code>-d</code> option allow to start the container as service, <em>forking</em> the process.</p>
 <p><code>docker-compose stop</code> : Stop all running Docker containers for an application group, issue the following command in the same directory as the <em>docker-compose.yml</em> file used to start the Docker group.</p>
 <p><code>docker-compose kill</code> : Same as <code>docker-compose stop</code> but force the running container to stop.</p>
