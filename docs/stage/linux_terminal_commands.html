@@ -161,12 +161,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>unset -f &lt;function_name&gt;</code>: Unset (un-declare) a function.</p>
 <p><code>declare -F &lt;name&gt;</code>: Verify if a function or item is declared.</p>
 <p><code>( set -o posix ; set  )</code>: Display all variables.</p>
-<p><code>printf '%q' &quot;&lt;string&gt;&quot;</code>: Format string for shell scape</p>
 <p><code>local &lt;variable_name&gt;=$(cat)</code> : Get Input from std in (Pipe) and put into a variable.</p>
 <p><code>pandoc &lt;markdown_file_path&gt; | lynx -stdin</code> : Display Markdown on the command line.</p>
 <p><code>w3m -dump http://google.com</code> : Show url</p>
 <p><code>echo &quot;$LINENO -  $FUNCNAME&quot;</code> : Show Function and Line Number of a script file</p>
 <p><code>&lt;command&gt; &amp;</code> : Run command in background</p>
+<h3 id="strings-manipulations">Strings Manipulations</h3>
+<p><code>printf '%q' &quot;&lt;string&gt;&quot;</code>: Format string for shell scape</p>
+<p><code>echo &lt;string_delimiter&gt; | cut -d'&lt;delimiter&gt;' -f &lt;position&gt;</code>: Get a substring between delimiters. E.g.: <code>echo &quot;S1;S2;S3&quot; | cut -d';' -f 2</code></p>
+<p><code>${&lt;string_delimiter&gt;##*&lt;character&gt;}</code>: Return a string after a specific character.</p>
+<p><code>${&lt;string_delimiter&gt;%%&lt;character&gt;*}</code>: Get the string before a specific character.</p>
 <h2 id="security">Security</h2>
 <h3 id="hashes">Hashes</h3>
 <h4 id="sha-1-hashes">SHA-1 hashes</h4>

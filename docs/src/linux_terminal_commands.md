@@ -216,8 +216,6 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `( set -o posix ; set  )`: Display all variables.
 
-`printf '%q' "<string>"`: Format string for shell scape
-
 `local <variable_name>=$(cat)` : Get Input from std in (Pipe) and put into a variable.
 
 `pandoc <markdown_file_path> | lynx -stdin` : Display Markdown on the command line.
@@ -227,6 +225,16 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `echo "$LINENO -  $FUNCNAME"` : Show Function and Line Number of a script file
 
 `<command> &` : Run command in background
+
+### Strings Manipulations
+
+`printf '%q' "<string>"`: Format string for shell scape
+
+`echo <string_delimiter> | cut -d'<delimiter>' -f <position>`: Get a substring between delimiters. E.g.: `echo "S1;S2;S3" | cut -d';' -f 2`
+
+`${<string_delimiter>##*<character>}`: Return a string after a specific character.
+
+`${<string_delimiter>%%<character>*}`: Get the string before a specific character.
 
 ## Security
 
