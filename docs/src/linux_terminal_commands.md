@@ -236,6 +236,10 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `${<string_delimiter>%%<character>*}`: Get the string before a specific character.
 
+`${<string>/<character_to_search>/<character_to_replace>}`: Replace the first occurrence of a character
+
+`${<string>//<character_to_search>/<character_to_replace>}`: Replace the all occurrences of a character
+
 ## Security
 
 ### Hashes

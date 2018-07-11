@@ -171,6 +171,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>echo &lt;string_delimiter&gt; | cut -d'&lt;delimiter&gt;' -f &lt;position&gt;</code>: Get a substring between delimiters. E.g.: <code>echo &quot;S1;S2;S3&quot; | cut -d';' -f 2</code></p>
 <p><code>${&lt;string_delimiter&gt;##*&lt;character&gt;}</code>: Return a string after a specific character.</p>
 <p><code>${&lt;string_delimiter&gt;%%&lt;character&gt;*}</code>: Get the string before a specific character.</p>
+<p><code>${&lt;string&gt;/&lt;character_to_search&gt;/&lt;character_to_replace&gt;}</code>: Replace the first occurrence of a character</p>
+<p><code>${&lt;string&gt;//&lt;character_to_search&gt;/&lt;character_to_replace&gt;}</code>: Replace the all occurrences of a character</p>
 <h2 id="security">Security</h2>
 <h3 id="hashes">Hashes</h3>
 <h4 id="sha-1-hashes">SHA-1 hashes</h4>
