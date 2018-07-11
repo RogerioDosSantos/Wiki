@@ -10,6 +10,8 @@
 
 `docker run --name <container name> -it <image name>:<image version>` : Start a new container from image. E.g.: `docker run --name vim_install -it ubuntu:16.04`
 
+`docker run --name <container name> --env-file <environment_config_file> <image name>:<image version>` : Start a new container from image and sets the environment variables based into a file configuration. This is useful when you want to enter credentials.
+
 `docker start <container name>` : Start a stopped container. E.g.: `docker start vim_install`
 
 `docker attach <container name>` : Attach to a running container. E.g.: `docker attach vim_install`

@@ -18,6 +18,7 @@
 <p><code>docker ps</code> : List the running containers</p>
 <p><code>docker ps -a</code> : List all containers</p>
 <p><code>docker run --name &lt;container name&gt; -it &lt;image name&gt;:&lt;image version&gt;</code> : Start a new container from image. E.g.: <code>docker run --name vim_install -it ubuntu:16.04</code></p>
+<p><code>docker run --name &lt;container name&gt; --env-file &lt;environment_config_file&gt; &lt;image name&gt;:&lt;image version&gt;</code> : Start a new container from image and sets the environment variables based into a file configuration. This is useful when you want to enter credentials.</p>
 <p><code>docker start &lt;container name&gt;</code> : Start a stopped container. E.g.: <code>docker start vim_install</code></p>
 <p><code>docker attach &lt;container name&gt;</code> : Attach to a running container. E.g.: <code>docker attach vim_install</code></p>
 <p><code>docker exec -it &lt;container name&gt; &lt;program to execute&gt;</code> : Execute a program in a running container. E.g.: To execute the command line in a Linux based running container you can use <code>docker exec -it &lt;container name&gt; &lt;program to execute&gt;</code>.</p>
