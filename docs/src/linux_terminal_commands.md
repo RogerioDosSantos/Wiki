@@ -62,6 +62,10 @@
 
 `mv` : Move or rename a file or directory
 
+`if [ -d <directory> ]; then; <code>; fi`: Check if directory exits
+
+`if [ -f <file_path> ]; then; <code>; fi`: Check if file exits
+
 ```bash
 for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
 ``` 
@@ -239,6 +243,10 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `${<string>/<character_to_search>/<character_to_replace>}`: Replace the first occurrence of a character
 
 `${<string>//<character_to_search>/<character_to_replace>}`: Replace the all occurrences of a character
+
+`${<string>%<character>}`: Remove the last occurrence of a character.
+
+`${<string>#<character>}`: Remove the first occurrence of a character.
 
 ## Security
 

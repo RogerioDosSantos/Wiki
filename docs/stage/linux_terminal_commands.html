@@ -81,6 +81,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>pwd -P</code> : Show the physical directory you are</p>
 <p><code>ls -l</code> : List all files and directories into the current directory</p>
 <p><code>mv</code> : Move or rename a file or directory</p>
+<p><code>if [ -d &lt;directory&gt; ]; then; &lt;code&gt;; fi</code>: Check if directory exits</p>
+<p><code>if [ -f &lt;file_path&gt; ]; then; &lt;code&gt;; fi</code>: Check if file exits</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="kw">f</span> in *<span class="kw">;</span> <span class="kw">do</span> <span class="kw">mv</span> <span class="st">&quot;</span><span class="ot">$f</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="ot">$f</span><span class="st">.tmp&quot;</span><span class="kw">;</span> <span class="kw">mv</span> <span class="st">&quot;</span><span class="ot">$f</span><span class="st">.tmp&quot;</span> <span class="st">&quot;</span><span class="kw">`echo</span> <span class="ot">$f</span> <span class="kw">|</span> <span class="kw">tr</span> <span class="st">&quot;[:upper:]&quot;</span> <span class="st">&quot;[:lower:]&quot;</span><span class="kw">`</span><span class="st">&quot;</span><span class="kw">;</span> <span class="kw">done</span></code></pre></div>
 <p>: Rename all files of a directory to lower case.</p>
 <p><code>for f in *; do mv &quot;$f&quot; &quot;${f%.*}&quot; ; done</code> : Remove the last extension of all files</p>
@@ -173,6 +175,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>${&lt;string_delimiter&gt;%%&lt;character&gt;*}</code>: Get the string before a specific character.</p>
 <p><code>${&lt;string&gt;/&lt;character_to_search&gt;/&lt;character_to_replace&gt;}</code>: Replace the first occurrence of a character</p>
 <p><code>${&lt;string&gt;//&lt;character_to_search&gt;/&lt;character_to_replace&gt;}</code>: Replace the all occurrences of a character</p>
+<p><code>${&lt;string&gt;%&lt;character&gt;}</code>: Remove the last occurrence of a character.</p>
+<p><code>${&lt;string&gt;#&lt;character&gt;}</code>: Remove the first occurrence of a character.</p>
 <h2 id="security">Security</h2>
 <h3 id="hashes">Hashes</h3>
 <h4 id="sha-1-hashes">SHA-1 hashes</h4>
