@@ -73,7 +73,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>touch &lt;filename&gt;</code> : create a file</p>
 <p><code>rm &lt;filename&gt;</code> : remove a file</p>
 <p><code>rm !(&lt;filename&gt;)</code> : Remove all files but this one.</p>
-<p><code>mkdir -p &lt;directory name&gt;</code> : Create directory if it does not exits</p>
 <p><code>rmdir &lt;directory&gt;</code> : remove directory</p>
 <p><code>rm -rf &lt;directory&gt;</code> : remove all directory and files recursively.</p>
 <p><code>cp &lt;source&gt; &lt;destination&gt;</code> : Copy command</p>
@@ -170,8 +169,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>&lt;command&gt; &amp;</code> : Run command in background</p>
 <h3 id="strings-manipulations">Strings Manipulations</h3>
 <p><code>printf '%q' &quot;&lt;string&gt;&quot;</code>: Format string for shell scape</p>
-<p><code>echo &lt;string_delimiter&gt; | cut -d'&lt;delimiter&gt;' -f &lt;position&gt;</code>: Get a substring between delimiters. E.g.: <code>echo &quot;S1;S2;S3&quot; | cut -d';' -f 2</code></p>
-<p><code>${&lt;string_delimiter&gt;##*&lt;character&gt;}</code>: Return a string after a specific character.</p>
+<p><code>echo &lt;string_delimiter&gt; | cut -d'&lt;delimiter&gt;' -f&lt;position&gt;</code>: Get a substring between delimiters. E.g.: <code>echo &quot;S1;S2;S3&quot; | cut -d';' -f2</code></p>
+<p><code>echo &lt;string_delimiter&gt; | rev | cut -d'&lt;delimiter&gt;' -f&lt;position&gt;</code>: Get a substring between delimiters in reverse order. E.g.: <code>echo &quot;S1;S2;S3&quot; | rev | cut -d';' -f1</code></p>
+<p><code>${&lt;string_delimiter&gt;##*&lt;character&gt;}</code>: Trim everything until the last specified character.</p>
 <p><code>${&lt;string_delimiter&gt;%%&lt;character&gt;*}</code>: Get the string before a specific character.</p>
 <p><code>${&lt;string&gt;/&lt;character_to_search&gt;/&lt;character_to_replace&gt;}</code>: Replace the first occurrence of a character</p>
 <p><code>${&lt;string&gt;//&lt;character_to_search&gt;/&lt;character_to_replace&gt;}</code>: Replace the all occurrences of a character</p>

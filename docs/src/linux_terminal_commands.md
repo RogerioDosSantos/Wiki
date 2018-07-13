@@ -46,8 +46,6 @@
  
 `rm !(<filename>)` : Remove all files but this one. 
 
-`mkdir -p <directory name>` : Create directory if it does not exits
-
 `rmdir <directory>` : remove directory
 
 `rm -rf <directory>` : remove all directory and files recursively.
@@ -234,9 +232,11 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `printf '%q' "<string>"`: Format string for shell scape
 
-`echo <string_delimiter> | cut -d'<delimiter>' -f <position>`: Get a substring between delimiters. E.g.: `echo "S1;S2;S3" | cut -d';' -f 2`
+`echo <string_delimiter> | cut -d'<delimiter>' -f<position>`: Get a substring between delimiters. E.g.: `echo "S1;S2;S3" | cut -d';' -f2`
 
-`${<string_delimiter>##*<character>}`: Return a string after a specific character.
+`echo <string_delimiter> | rev | cut -d'<delimiter>' -f<position>`: Get a substring between delimiters in reverse order. E.g.: `echo "S1;S2;S3" | rev | cut -d';' -f1`
+
+`${<string_delimiter>##*<character>}`: Trim everything until the last specified character.
 
 `${<string_delimiter>%%<character>*}`: Get the string before a specific character.
 
