@@ -234,7 +234,7 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `echo <string_delimiter> | cut -d'<delimiter>' -f<position>`: Get a substring between delimiters. E.g.: `echo "S1;S2;S3" | cut -d';' -f2`
 
-`echo <string_delimiter> | rev | cut -d'<delimiter>' -f<position>`: Get a substring between delimiters in reverse order. E.g.: `echo "S1;S2;S3" | rev | cut -d';' -f1`
+`echo <string_delimiter> | rev | cut -d'<delimiter> | rev' -f<position>`: Get a substring between delimiters in reverse order. E.g.: `echo "S1;S2;S3" | rev | cut -d';' -f1 | rev`
 
 `${<string_delimiter>##*<character>}`: Trim everything until the last specified character.
 
