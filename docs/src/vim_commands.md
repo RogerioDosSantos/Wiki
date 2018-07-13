@@ -1,4 +1,4 @@
-# Vim Commands #
+Added additional split commands# Vim Commands #
 
 ## Command line ##
 
