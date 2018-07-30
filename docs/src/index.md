@@ -7,6 +7,7 @@
 - [Windows Store]( ./windows_store.html )
 - [WSL]( ./wsl.html )
 - [Credential Manager]( ./credential_manager.html )
+- [MFC]( ./mfc.html )
 
 ## Linux 
 
