@@ -88,7 +88,7 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `which <program>` : Inform where a program is located.
 
-`date` : Display the Date and Time on the local computer timezone.
+`date` : Display the Date and Time on the local computer timezone. You can access a list of example for Date and Time format [here]( ./date_time_format_list.html )
 
 `date -u`: Display the Date and Time in UTC format.
 

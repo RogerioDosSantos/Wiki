@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="date-and-time-format-list">Date and Time Format List</h1>
+<table style="width:17%;">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Format/result</th>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">YYYY-MM-DD_hh:mm:ss</td>
+<td style="text-align: left;">date +%F_%T</td>
+<td style="text-align: left;">$(date +%F_%T)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">YYYYMMDD_hhmmss</td>
+<td style="text-align: left;">date +%Y%m%d_%H%M%S</td>
+<td style="text-align: left;">$(date +%Y%m%d_%H%M%S)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">YYYYMMDD_hhmmss (UTC version)</td>
+<td style="text-align: left;">date --utc +%Y%m%d_%H%M%SZ</td>
+<td style="text-align: left;">$(date --utc +%Y%m%d_%H%M%SZ)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">YYYYMMDD_hhmmss (with local TZ)</td>
+<td style="text-align: left;">date +%Y%m%d_%H%M%S%Z</td>
+<td style="text-align: left;">$(date +%Y%m%d_%H%M%S%Z)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">YYYYMMSShhmmss</td>
+<td style="text-align: left;">date +%Y%m%d%H%M%S</td>
+<td style="text-align: left;">$(date +%Y%m%d%H%M%S)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">YYYYMMSShhmmssnnnnnnnnn</td>
+<td style="text-align: left;">date +%Y%m%d%H%M%S%N</td>
+<td style="text-align: left;">$(date +%Y%m%d%H%M%S%N)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">YYMMDD_hhmmss</td>
+<td style="text-align: left;">date +%y%m%d_%H%M%S</td>
+<td style="text-align: left;">$(date +%y%m%d_%H%M%S)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Seconds since UNIX epoch:</td>
+<td style="text-align: left;">date +%s</td>
+<td style="text-align: left;">$(date +%s)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nanoseconds only:</td>
+<td style="text-align: left;">date +%N</td>
+<td style="text-align: left;">$(date +%N)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nanoseconds since UNIX epoch:</td>
+<td style="text-align: left;">date +%s%N</td>
+<td style="text-align: left;">$(date +%s%N)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ISO8601 UTC timestamp</td>
+<td style="text-align: left;">date --utc +%FT%TZ</td>
+<td style="text-align: left;">$(date --utc +%FT%TZ)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ISO8601 UTC timestamp + ms</td>
+<td style="text-align: left;">date --utc +%FT%T.%3NZ</td>
+<td style="text-align: left;">$(date --utc +%FT%T.%3NZ)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ISO8601 Local TZ timestamp</td>
+<td style="text-align: left;">date +%FT%T%Z</td>
+<td style="text-align: left;">$(date +%FT%T%Z)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">YYYY-MM-DD (Short day)</td>
+<td style="text-align: left;">date +%F(%a)</td>
+<td style="text-align: left;">$(date +%F(%a))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">YYYY-MM-DD (Long day)</td>
+<td style="text-align: left;">date +%F(%A)</td>
+<td style="text-align: left;">$(date +%F(%A))</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">YYYY-MM-DD_hh:mm:ss</td>
+<td style="text-align: left;">date +%F_%T</td>
+<td style="text-align: left;">2018-01-24_13:06:51</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">YYYYMMDD_hhmmss</td>
+<td style="text-align: left;">date +%Y%m%d_%H%M%S</td>
+<td style="text-align: left;">20180124_130651</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">YYYYMMDD_hhmmss (UTC version)</td>
+<td style="text-align: left;">date --utc +%Y%m%d_%H%M%SZ</td>
+<td style="text-align: left;">20180124_040651Z</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">YYYYMMDD_hhmmss (with local TZ)</td>
+<td style="text-align: left;">date +%Y%m%d_%H%M%S%Z</td>
+<td style="text-align: left;">20180124_130651JST</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">YYYYMMSShhmmss</td>
+<td style="text-align: left;">date +%Y%m%d%H%M%S</td>
+<td style="text-align: left;">20180124130651</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">YYYYMMSShhmmssnnnnnnnnn</td>
+<td style="text-align: left;">date +%Y%m%d%H%M%S%N</td>
+<td style="text-align: left;">20180124130651170243401</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">YYMMDD_hhmmss</td>
+<td style="text-align: left;">date +%y%m%d_%H%M%S</td>
+<td style="text-align: left;">180124_130651</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Seconds since UNIX epoch:</td>
+<td style="text-align: left;">date +%s</td>
+<td style="text-align: left;">1516766811</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nanoseconds only:</td>
+<td style="text-align: left;">date +%N</td>
+<td style="text-align: left;">174236092</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nanoseconds since UNIX epoch:</td>
+<td style="text-align: left;">date +%s%N</td>
+<td style="text-align: left;">1516766811175655627</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ISO8601 UTC timestamp</td>
+<td style="text-align: left;">date --utc +%FT%TZ</td>
+<td style="text-align: left;">2018-01-24T04:06:51Z</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ISO8601 UTC timestamp + ms</td>
+<td style="text-align: left;">date --utc +%FT%T.%3NZ</td>
+<td style="text-align: left;">2018-01-24T04:06:51.178Z</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ISO8601 Local TZ timestamp</td>
+<td style="text-align: left;">date +%FT%T%Z</td>
+<td style="text-align: left;">2018-01-24T13:06:51JST</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">YYYY-MM-DD (Short day)</td>
+<td style="text-align: left;">date +%F(%a)</td>
+<td style="text-align: left;">2018-01-24(chinese)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">YYYY-MM-DD (Long day)</td>
+<td style="text-align: left;">date +%F(%A)</td>
+<td style="text-align: left;">2018-01-24(chinese)</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
