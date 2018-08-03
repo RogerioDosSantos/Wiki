@@ -26,13 +26,6 @@
 <p><code>iotedgectl status</code>: Provides the status of the iotedgectl</p>
 <p><code>docker logs -f &lt;module_name&gt;</code>: Allow to know the messages being sent by a module</p>
 <p><code>iotedgectl login --address &lt;your container registry address&gt; --username &lt;username&gt; --password &lt;password&gt;</code>: Add the registry credentials to Edge runtime.</p>
-<p><code>docker rm $(docker ps -a -q)</code> : Remove all docker containers</p>
-<p><code>docker rmi $(docker images -a -q)</code>: Remove all docker images</p>
-<p><code>docker login -u &lt;registry_user&gt; -p &lt;password&gt; &lt;registry_url&gt;</code>: Allow docker to login on the Azure registry</p>
-<p><code>docker image prune</code> : Clean old docker images</p>
-<p><code>docker volume prune</code>: Clean old volumes</p>
-<p><code>docker system prune</code>: Clean all old images and volumes</p>
-<p><code>docker system prune -a</code>: Clean all containers</p>
 <p><code>az iot hub module-twin update --device-id jong1 --hub-name jongiothub1 --module-id filtermodule --set properties.desired.TemperatureThreshold=22</code> : E.g.: <code>az iot hub module-twin update --device-id jong1 --hub-name jongiothub1 --module-id filtermodule --set properties.desired.TemperatureThreshold=22</code></p>
 <h2 id="how-iotedge-launch-the-containers">How IoTEdge Launch the Containers</h2>
 <pre class="sh"><code>docker pull iotedgemodule01.azurecr.io/filtermodule:latest
@@ -60,6 +53,7 @@ sudo iotedgectl start</code></pre>
 <p>Now you can deploy the module from the Azure Portal</p>
 <h2 id="iotedge-dev">IoTEdge DEV</h2>
 <h3 id="commands-1">Commands</h3>
+<p><code>npm install -g edge-explorer@latest --registry http://edgenpm.southcentralus.cloudapp.azure.com/</code> : Install IoTEdge explorer</p>
 <p><code>docker run -it -v &lt;iot_edge_project_dir&gt;:/home/iotedge -v /var/run/docker.sock:/var/run/docker.sock jongallant/iotedgedev</code>: Load the IoTEdge DEV environment.</p>
 <p><code>iotedgedev solution &lt;edgesolution1&gt;</code>: Create a solution</p>
 <p><code>iotedgedev deploy</code>: Build and Deploy Modules</p>

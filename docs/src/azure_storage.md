@@ -4,6 +4,9 @@
 
 `azcopy --source <source> --destination <destination> [Options]` : Download/Upload applications
 
+
+`azcopy --source <source> --destination <destination> --dest-key <key> --resume <log_file_path> --quiet` : Download/Upload applications silently and put the result into a log file
+
 ## Installations
 
 ### AzCopy

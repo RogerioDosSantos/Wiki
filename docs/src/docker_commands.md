@@ -62,6 +62,22 @@ Push Note: You need to be logged before pushing an image. E.g.: `docker push rog
 
 `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_name_or_id>`
 
+`docker rm $(docker ps -a -q)` : Remove all docker containers
+
+`docker rmi $(docker images -a -q)`: Remove all docker images
+
+`docker login -u <registry_user> -p <password> <registry_url>`:  Allow docker to login on the Azure registry
+
+`docker image prune` : Clean old docker images
+
+`docker volume prune`: Clean old volumes
+
+`docker system prune`: Clean all old images and volumes
+
+`docker system prune -a`: Clean all containers
+
+`docker logs -f <container>` : View the logs of a container.
+
 ## Volumes Credentials
 
 Be aware that when changing your password, you will need to go to settings >> shared drivers >> reset credentials. Once you select the drivers you want to share again and enter the new password, everything will start working again.

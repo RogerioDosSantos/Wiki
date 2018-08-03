@@ -26,20 +26,6 @@ An IoT-Edge machine is a machine that has a IoT-Edge runtime module on it.
 
 `iotedgectl login --address <your container registry address> --username <username> --password <password>`: Add the registry credentials to Edge runtime.
 
-`docker rm $(docker ps -a -q)` : Remove all docker containers
-
-`docker rmi $(docker images -a -q)`: Remove all docker images
-
-`docker login -u <registry_user> -p <password> <registry_url>`:  Allow docker to login on the Azure registry
-
-`docker image prune` : Clean old docker images
-
-`docker volume prune`: Clean old volumes
-
-`docker system prune`: Clean all old images and volumes
-
-`docker system prune -a`: Clean all containers
-
 `az iot hub module-twin update --device-id jong1 --hub-name jongiothub1 --module-id filtermodule --set properties.desired.TemperatureThreshold=22` : E.g.: `az iot hub module-twin update --device-id jong1 --hub-name jongiothub1 --module-id filtermodule --set properties.desired.TemperatureThreshold=22`
 
 ## How IoTEdge Launch the Containers
@@ -82,6 +68,8 @@ Now you can deploy the module from the Azure Portal
 ## IoTEdge DEV
 
 ### Commands
+
+`npm install -g edge-explorer@latest --registry http://edgenpm.southcentralus.cloudapp.azure.com/` : Install IoTEdge explorer
 
 `docker run -it -v <iot_edge_project_dir>:/home/iotedge -v /var/run/docker.sock:/var/run/docker.sock jongallant/iotedgedev`: Load the IoTEdge DEV environment.
 

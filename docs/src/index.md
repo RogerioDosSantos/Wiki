@@ -160,3 +160,7 @@
 ## Jargon
 
 - [Acronyms]( ./acronyms.html )
+
+## Aveva
+
+- [InduSoft Web Studio Tips and Tricks]( ./indusoft_web_studio_tips_and_tricks.html )
