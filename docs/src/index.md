@@ -156,3 +156,7 @@
 ## Artificial Intelligence
 
 - [AI tools]( ./ai_tools.html )
+
+## Jargon
+
+- [Acronyms]( ./acronyms.html )
