@@ -188,7 +188,9 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `gzip <file path>` : Compress using gzip
 
-`rsync -u -v -e ssh <source directory>/* <user>@<remote computer (IP)>:<target directory>` : Sync all files from the source directory to the target directory.
+`rsync -uve ssh <source directory>/* <user>@<remote computer (IP)>:<target directory>` : Sync all files from the source directory to the target directory.
+
+`rsync -vah <source_folder> <destination_folder>`: Execute the synchronization between folders.
 
 `nmap -p <port range> <url o ip>` : Verify if a range of port is open. E.g.: ` nmap -p 1-1000 portquiz.net`
 

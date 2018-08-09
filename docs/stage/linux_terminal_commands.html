@@ -147,7 +147,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>fusermount -u &lt;mounted folder&gt;</code> : unmount folder.</p>
 <p><code>tar xjf &lt;file path&gt;</code> : Uncompress tar files (E.g.: *.tar.bz2)</p>
 <p><code>gzip &lt;file path&gt;</code> : Compress using gzip</p>
-<p><code>rsync -u -v -e ssh &lt;source directory&gt;/* &lt;user&gt;@&lt;remote computer (IP)&gt;:&lt;target directory&gt;</code> : Sync all files from the source directory to the target directory.</p>
+<p><code>rsync -uve ssh &lt;source directory&gt;/* &lt;user&gt;@&lt;remote computer (IP)&gt;:&lt;target directory&gt;</code> : Sync all files from the source directory to the target directory.</p>
+<p><code>rsync -vah &lt;source_folder&gt; &lt;destination_folder&gt;</code>: Execute the synchronization between folders.</p>
 <p><code>nmap -p &lt;port range&gt; &lt;url o ip&gt;</code> : Verify if a range of port is open. E.g.: <code>nmap -p 1-1000 portquiz.net</code></p>
 <p><code>telnet &lt;url or ip&gt; &lt;port&gt;</code> : Verify if a port is open.</p>
 <p><code>tar -cz &lt;directory to backup&gt; | gpg -c -o ./backup.tgz.gpg</code> : Execute an encrypted compressed backup. E.g.: <code>tar -cz ./safe00/ | gpg -c -o ./backup.tgz.gpg</code></p>
