@@ -42,8 +42,12 @@ sudo apt-get install default-jre
 The mapping below will only work when *Grammarous* is active: 
 
 `nmap <buffer><C-n> <Plug>(grammarous-move-to-next-error)`
+
 `nmap <buffer><C-p> <Plug>(grammarous-move-to-previous-error)`
+
 `nmap <buffer><C-f> <Plug>(grammarous-fixit)`
+
 `nmap <buffer><C-a> <Plug>(grammarous-fixall)`
+
 `nmap <buffer><C-i> <Plug>(grammarous-remove-error)`
 
