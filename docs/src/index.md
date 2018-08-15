@@ -31,6 +31,7 @@
     - [NeoSnippet]( ./neosnippet.html )
   	- [Marvim](	./marvim.html )
     - [FZF](./fzf.html)
+    - [Grammarous]( ./grammarous.html )
 
 ## Editors
 
@@ -65,9 +66,9 @@
 
 ## CMake 
 
--  [CMake Commands]( ./cmake_commands.html )
--  [CMake Codding Style]( ./cmake_codding_style.html )
--  [CMake Toolchains]( ./cmake_toolchains.html )
+- [CMake Commands]( ./cmake_commands.html )
+- [CMake Codding Style]( ./cmake_codding_style.html )
+- [CMake Toolchains]( ./cmake_toolchains.html )
 
 ## Cross Compilations
 
