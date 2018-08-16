@@ -52,7 +52,7 @@ FZF executes a live fuzzy finding on text
 
 `<silent><leader>sb ` : Buffers
 
-`<silent><leader>sc ` : Colors
+`<silent><leader>sco ` : Colors
 
 `<silent><leader>sag ` Ag 
 
@@ -78,5 +78,8 @@ FZF executes a live fuzzy finding on text
 
 `<silent><leader>ss ` : Snippets
 
+## Linux shell keys
+
+`ctrl-t` : Launch the fuzzy finder in the command line
 
 
