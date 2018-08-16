@@ -166,6 +166,10 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `find <start_directory> -iname "<old_name>*" | sed -e 'p;s/<old_name>/<new_name>/' | xargs -n2 mv` : Rename all files that match an expression recursively
 
+`find <start_directory> -type d -name "<expression>"` : Find directories
+
+`find <start_directory> -ctime +<days>` : Find directories older than the amount of days informed.
+
 `grep --include=\*.{cpp,h} -rnw <source directory> -e "<text to find>"` : Find a text into files (Case Sensitive)
 
 `grep --include=\*.{cpp,h} -rnwi <source directory> -e "<text to find>"` : Find a text into files (Case Insensitive)
