@@ -288,6 +288,8 @@ Added additional split commands# Vim Commands #
 
 `?<string>` : Search a string up
 
+`GN` : Search the current selection backwards
+
 `:%s/<search string>/<replace string>[/<options>]` : search whole file and replace. The options are:
 
   `/c` : confirm each replace
