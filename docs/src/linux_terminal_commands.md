@@ -146,6 +146,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `Yum install <package name>` : Install a package (For RPM: E.g.: Fedora)
 
+`smart install <package name>` : Install a package. The [smart package manager]( https://labix.org/smart ) supports several distributions and can replace the following package managers: APT, APT-RPM, YUM, URPMI, etc.
+
 `tce` : Allow to install applications into a Tiny Core Linux
 
 `free` : Display the amount of free and used system memory (Default: Kilobytes).
