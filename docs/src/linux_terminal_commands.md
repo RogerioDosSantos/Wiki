@@ -64,6 +64,8 @@
 
 `if [ -f <file_path> ]; then; <code>; fi`: Check if file exits
 
+`wc -l <file_path>`: Get the amount of lines into a file.
+
 ```bash
 for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
 ``` 

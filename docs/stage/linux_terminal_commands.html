@@ -82,6 +82,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>mv</code> : Move or rename a file or directory</p>
 <p><code>if [ -d &lt;directory&gt; ]; then; &lt;code&gt;; fi</code>: Check if directory exits</p>
 <p><code>if [ -f &lt;file_path&gt; ]; then; &lt;code&gt;; fi</code>: Check if file exits</p>
+<p><code>wc -l &lt;file_path&gt;</code>: Get the amount of lines into a file.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="kw">f</span> in *<span class="kw">;</span> <span class="kw">do</span> <span class="kw">mv</span> <span class="st">&quot;</span><span class="ot">$f</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="ot">$f</span><span class="st">.tmp&quot;</span><span class="kw">;</span> <span class="kw">mv</span> <span class="st">&quot;</span><span class="ot">$f</span><span class="st">.tmp&quot;</span> <span class="st">&quot;</span><span class="kw">`echo</span> <span class="ot">$f</span> <span class="kw">|</span> <span class="kw">tr</span> <span class="st">&quot;[:upper:]&quot;</span> <span class="st">&quot;[:lower:]&quot;</span><span class="kw">`</span><span class="st">&quot;</span><span class="kw">;</span> <span class="kw">done</span></code></pre></div>
 <p>: Rename all files of a directory to lower case.</p>
 <p><code>for f in *; do mv &quot;$f&quot; &quot;${f%.*}&quot; ; done</code> : Remove the last extension of all files</p>
