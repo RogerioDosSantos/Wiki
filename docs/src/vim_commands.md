@@ -266,6 +266,8 @@ Added additional split commands# Vim Commands #
 
 `:s/\%V<search>/<replace>/g` Replace all text into a selection. E.g.: `:s/\%V /\\ /g` - replace <space> to \<space>
 
+`:s/\%V\s\+/\\ /e` - Replace all <spaces> to \<space>
+
 ## Keys Visual Mode ##
 
 `gf `: Create a folder from the selection
