@@ -264,6 +264,8 @@ Added additional split commands# Vim Commands #
 
 `:normal @<macro key> <CR>`: Execute a macro on all selection
 
+`:s/\s\+//e` Replace all white space in the selection.
+
 ## Keys Visual Mode ##
 
 `gf `: Create a folder from the selection
