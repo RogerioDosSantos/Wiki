@@ -264,7 +264,7 @@ Added additional split commands# Vim Commands #
 
 `:normal @<macro key> <CR>`: Execute a macro on all selection
 
-`:s/\s\+//e` Replace all white space in the selection.
+`:s/\%V<search>/<replace>/g` Replace all text into a selection. E.g.: `:s/\%V /\\ /g` - replace <space> to \<space>
 
 ## Keys Visual Mode ##
 

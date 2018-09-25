@@ -144,7 +144,7 @@
 <p><code>:delmark&lt;key&gt;</code>: Delete mark</p>
 <h2 id="commands---visual-block-mode">Commands - Visual Block Mode</h2>
 <p><code>:normal @&lt;macro key&gt; &lt;CR&gt;</code>: Execute a macro on all selection</p>
-<p><code>:s/\s\+//e</code> Replace all white space in the selection.</p>
+<p><code>:s/\%V&lt;search&gt;/&lt;replace&gt;/g</code> Replace all text into a selection. E.g.: <code>:s/\%V /\\ /g</code> - replace <space> to &lt;space&gt;</p>
 <h2 id="keys-visual-mode">Keys Visual Mode</h2>
 <p><code>gf</code>: Create a folder from the selection</p>
 <p><code>//</code> : Search the selected text (Custom map)</p>
