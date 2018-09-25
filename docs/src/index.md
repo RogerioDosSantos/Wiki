@@ -120,6 +120,7 @@
 - [.Net Core]( ./dotnet_core.html )
 - [GAC]( ./gac.html )
 - [.Net Versions]( ./.net_versions.html )
+- [Serilog]( ./serilog.html )
 
 ## Virtualization 
 
