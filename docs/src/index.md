@@ -9,6 +9,7 @@
 - [Credential Manager]( ./credential_manager.html )
 - [MFC]( ./mfc.html )
 - [Windows Event Log]( ./windows_event_log.html )
+- [Explorer]( ./windows_explorer.html )
 
 ## Linux 
 
