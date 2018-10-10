@@ -76,6 +76,10 @@
 - [CrossTool-ng]( ./crosstool-ng.html )
 - [DockCross]( ./dockcross.html )
 
+## Package Manager
+
+- [Conan]( ./conan.html )
+
 ## CTags 
 
 - [Ctags Commands]( ./ctags_commands.html )
