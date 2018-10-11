@@ -17,6 +17,7 @@
 <p><code>docker images</code> : List the available images</p>
 <p><code>docker ps</code> : List the running containers</p>
 <p><code>docker ps -a</code> : List all containers</p>
+<p><code>docker ps --format '{{.Names}}'</code>: List the running container displaying only the container names.</p>
 <p><code>docker run --name &lt;container name&gt; -it &lt;image name&gt;:&lt;image version&gt;</code> : Start a new container from image. E.g.: <code>docker run --name vim_install -it ubuntu:16.04</code></p>
 <p><code>docker run --name &lt;container name&gt; --env-file &lt;environment_config_file&gt; &lt;image name&gt;:&lt;image version&gt;</code> : Start a new container from image and sets the environment variables based into a file configuration. This is useful when you want to enter credentials.</p>
 <p><code>docker start &lt;container name&gt;</code> : Start a stopped container. E.g.: <code>docker start vim_install</code></p>
@@ -35,6 +36,7 @@
 <p><code>docker-compose up [-d]</code> : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The <code>-d</code> option allow to start the container as service, <em>forking</em> the process.</p>
 <p><code>docker-compose stop</code> : Stop all running Docker containers for an application group, issue the following command in the same directory as the <em>docker-compose.yml</em> file used to start the Docker group.</p>
 <p><code>docker-compose kill</code> : Same as <code>docker-compose stop</code> but force the running container to stop.</p>
+<p><code>docker volume create &lt;volume_name&gt;</code>: <code>Create a volume</code></p>
 <p><code>docker volume ls -qf dangling=true | xargs -r docker volume rm</code> : Remove all volumes that are not being used.</p>
 <p><code>docker volume rm $(docker volume ls -f dangling=true -q)</code> : Remove dangling volumes (Volumes not being used at the moment). Note: if you need sudo use: <code>sudo docker volume rm $(sudo docker volume ls -f dangling=true -q)</code></p>
 <p><code>docker stop $(docker ps -a -q)</code>: Stop all containers.</p>

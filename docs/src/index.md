@@ -50,6 +50,10 @@
 - [TFS Online]( ./tfs_online.html )
 - [TFS Client](./tfs_client.html )
 
+## Dev/Ops
+
+- [Jenkins]( ./jenkins.html )
+
 ## TMUX 
 
 - [TMUX commands]( ./tmux_commands.html )

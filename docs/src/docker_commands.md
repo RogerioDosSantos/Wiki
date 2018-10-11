@@ -8,6 +8,8 @@
 
 `docker ps -a` : List all containers
 
+`docker ps --format '{{.Names}}'`: List the running container displaying only the container names.
+
 `docker run --name <container name> -it <image name>:<image version>` : Start a new container from image. E.g.: `docker run --name vim_install -it ubuntu:16.04`
 
 `docker run --name <container name> --env-file <environment_config_file> <image name>:<image version>` : Start a new container from image and sets the environment variables based into a file configuration. This is useful when you want to enter credentials.
@@ -43,6 +45,8 @@ Push Note: You need to be logged before pushing an image. E.g.: `docker push rog
 `docker-compose stop` : Stop all running Docker containers for an application group, issue the following command in the same directory as the _docker-compose.yml_ file used to start the Docker group.
 
 `docker-compose kill` : Same as `docker-compose stop` but force the running container to stop. 
+
+`docker volume create <volume_name>`: `Create a volume`
 
 `docker volume ls -qf dangling=true | xargs -r docker volume rm` : Remove all volumes that are not being used.
 
