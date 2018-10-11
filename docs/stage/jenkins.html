@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="jenkins">Jenkins</h1>
+<p>The <a href="https://jenkins.io/">Jenkins</a> Continuous Integration and Delivery server</p>
+<h2 id="commands">Commands</h2>
+<p><code>docker run --rm -d --name jenkins -p 8080:8080 -p 50000:50000 -v jenkins_data:/var/jenkins_home jenkins/jenkins:lts</code>: Run <em>Jenkins</em> server using docker. The persistent data and configuration will be stored into a volume called <em>jerkins_data</em>. The container name will be called <em>jenkins</em></p>
+<p><code>docker logs jenkins</code> : Display the status of the server.</p>
+<p><code>docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword</code> : Retrieve the initial Administrator password</p>
+<h2 id="proxy">Proxy</h2>
+<p>If even after the proxy is configured in the docker image you still getting the <strong>Offiline</strong> message because the <em>proxy certificate</em> is not installed. You can change the configuration to do not use <em>SSL</em> by executing the commands below:</p>
+<p><code>docker cp jenkins:/var/jenkins_home/hudson.model.UpdateCenter.xml .</code> : Copy the configuration file to your local machine</p>
+<p>Change the line: <code>&lt;url&gt;https://updates.jenkins.io/update-center.json&lt;/url&gt;&lt;/url&gt;</code> to <code>&lt;url&gt;http://updates.jenkins.io/update-center.json&lt;/url&gt;</code></p>
+<p><code>docker cp ./hudson.model.UpdateCenter.xml jenkins:/var/jenkins_home/</code>: Copy the configuration file back to the docker container</p>
+<p>Restart the Server</p>
+</body>
+</html>
