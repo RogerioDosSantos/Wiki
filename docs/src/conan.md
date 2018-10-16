@@ -20,6 +20,12 @@
 
 `conan create <source_folder> <package_name>/<package_state>`: Create a package from the source. The `<source_folder>` is the folder where the `conanfile.py` is located. E.g.: `conan create . my_project/dev`
 
+`conan remote add <repository_server_name> <repository_server_url> [false]`: Add a *repository server*. If `false` is informed the remote will not look for *SSL* autentication `[Verify SSL: True]`
+
+`conan user -p <password> -r <repository_server_name> <user_name>`: Log an user to the a *repository server*
+
+`conan upload <full_package_name> -r <repository_server_name> -all`: Upload a package to a repository server. The `<full_package_name>` uses the `<NAME>/<VERSION>@<USER>/<CHANNEL>` format.
+
 ## Environment Variables
 
 `CONAN_USER_HOME` : Define the location of the cache directory (Default: ~/.conan/data)
@@ -27,11 +33,11 @@
 
 ## Package Manager Repository
 
-The [Artifactory - jfrog:artifactory-cpp-ce](https://jfrog.com/blog/announcing-jfrog-artifactory-community-edition-c-c/) is a free version of the *Conan Package Manager Repository* with an *HTML* user interface that allows you to manage the packages. The *Community edition* is *free* and can run using *Docker*
+The [Artifactory - jfrog:artifactory-cpp-ce](https://jfrog.com/blog/announcing-jfrog-artifactory-community-edition-c-c/) is a free version of the *Conan Package Manager Repository* with an *HTML* user interface that allows you to manage the packages. The *Community edition* is *free* and [can run using *Docker*](https://www.jfrog.com/confluence/display/RTF/Installing+with+Docker)
 
 `docker pull docker.bintray.io/jfrog/artifactory-cpp-ce` : Pull the Artifactory CE Docker Image
 
-`docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-cpp-ce:latest`: Run the *Artifactory* into a container. Note: When running an Artifactory Docker container, you can pass in Java arguments using the -e EXTRA_JAVA_OPTIONS flag. For example, to specify a maximum memory allocation of 8 GB, you could run `run --name artifactory -d -p 8081:8081 -e EXTRA_JAVA_OPTIONS=-Xmx8g docker.bintray.io/jfrog/artifactory-pro:latest`
+`docker run --name artifactory -d -p 8081:8081 -v conan_repository_data:/var/opt/jfrog/artifactory docker.bintray.io/jfrog/artifactory-cpp-ce:latest`: Run the *Artifactory* into a container. Note: When running an Artifactory Docker container, you can pass in Java arguments using the -e EXTRA_JAVA_OPTIONS flag. For example, to specify a maximum memory allocation of 8 GB, you could run `run --name artifactory -d -p 8081:8081 -e EXTRA_JAVA_OPTIONS=-Xmx8g docker.bintray.io/jfrog/artifactory-pro:latest`
 
 
 
