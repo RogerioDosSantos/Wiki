@@ -286,6 +286,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 ## Network ##
 
+`netstat -lptu` : List the tcp ports in use and what programs are using it.
+
 `sudo dhclient -v [-r]` : Visualize DHCP configuration. If you use the `-r` option, it will release the current IP address.
 
 `wget -qO- portquiz.net:<Port>` : Check if a port is open. The portquiz website answer calls for all available ports.

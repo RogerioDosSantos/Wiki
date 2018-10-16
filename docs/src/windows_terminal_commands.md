@@ -14,6 +14,8 @@
 
 `netstat -an |find /i "listening"` : Find all open ports being listened on your computer
 
+`netstat -a -o` : Find all ports being in use and show the *PID* of the program used it.
+
 ## Powershell only commands ##
 
 `Invoke-RestMethod -Uri <url> | <answer manipulation>` : Send a rest command and manipulate the answer. E.g.: `Invoke-RestMethod -Uri https://blogs.msdn.microsoft.com/powershell/feed/ | Format-Table -Property Title, PubDate`
