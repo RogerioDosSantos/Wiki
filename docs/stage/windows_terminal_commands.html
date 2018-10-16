@@ -20,6 +20,7 @@
 <p><code>setx &lt;environment variable&gt; &lt;value&gt;</code> : Set an environment variable in the registry so it can be available to all programs. E.g.: <code>setx HTTPS_PROXY http://gateway.zscaler.net:9480</code></p>
 <p><code>echo %&lt;environment variable&gt;%</code> : Read an environment variable</p>
 <p><code>netstat -an |find /i &quot;listening&quot;</code> : Find all open ports being listened on your computer</p>
+<p><code>netstat -a -o</code> : Find all ports being in use and show the <em>PID</em> of the program used it.</p>
 <h2 id="powershell-only-commands">Powershell only commands</h2>
 <p><code>Invoke-RestMethod -Uri &lt;url&gt; | &lt;answer manipulation&gt;</code> : Send a rest command and manipulate the answer. E.g.: <code>Invoke-RestMethod -Uri https://blogs.msdn.microsoft.com/powershell/feed/ | Format-Table -Property Title, PubDate</code></p>
 <h2 id="visual-studio-commands">Visual Studio Commands</h2>

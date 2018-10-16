@@ -1,4 +1,4 @@
-# Docker Commands #
+# Docker Commands 
 
 `docker search [-s <number_of_stars>] <text>` : Search for a docker image into online repositories
 
@@ -34,7 +34,7 @@
 
 `docker tag <image id> [<dockerhub user>]/<image name>:<tag>`: Tag an image. E.g.: `docker tag 5ffd21ba24cf rogersantos/vim:1.0`
 
-Push Note: You need to be logged before pushing an image. E.g.: `docker push rogersantos/vim`
+`docker push <full image name>`: Publish the image into the docker hub. Note: You need to be logged before pushing an image. E.g.: `docker push rogersantos/vim`
 
 `docker login` : Log into a repository
 
@@ -81,6 +81,10 @@ Push Note: You need to be logged before pushing an image. E.g.: `docker push rog
 `docker system prune -a`: Clean all containers
 
 `docker logs -f <container>` : View the logs of a container.
+
+## Keys
+
+`crtl+p ctrl+q`: Detach from a session.
 
 ## Volumes Credentials
 
