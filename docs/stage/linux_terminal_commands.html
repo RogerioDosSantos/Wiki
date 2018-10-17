@@ -234,6 +234,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>Note</strong>: If you are using Ubuntu you might need to rename the certificate to <code>*.pem</code> to the dpkg-reconfigure command detected the certificate.</p>
 <h2 id="bash-files">Bash Files</h2>
 <p><code>#!/bin/bash</code> : Inform what interpreter should run the bash</p>
+<p><code>#!/usr/bin/env bash</code> : Inform what interpreter should run the bash. This <a href="https://bash.cyberciti.biz/guide/Shebang">shebang</a> is preferable over the <code>#!/bin/bash</code> since it will make the script portable.</p>
 <p><code>cd &quot;$(dirname &quot;$0&quot;)</code> : Set bash to the current directory</p>
 <p><code>read -p &quot;Press [Enter] key to continue&quot;</code> : Pause command</p>
 <p><code>&lt;variable&gt;=&quot;$(readlink -f &quot;&lt;relative path&quot;)&quot;</code> : Convert relative path to full path.</p>

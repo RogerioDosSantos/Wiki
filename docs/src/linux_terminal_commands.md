@@ -348,6 +348,8 @@ sudo dpkg-reconfigure ca-certificates
 
 `#!/bin/bash` : Inform what interpreter should run the bash
 
+`#!/usr/bin/env bash` : Inform what interpreter should run the bash. This [shebang](https://bash.cyberciti.biz/guide/Shebang) is preferable over the `#!/bin/bash` since it will make the script portable.
+
 `cd "$(dirname "$0")` : Set bash to the current directory
 
 `read -p "Press [Enter] key to continue"` : Pause command
