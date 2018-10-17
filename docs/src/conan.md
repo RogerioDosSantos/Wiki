@@ -30,7 +30,6 @@
 
 `CONAN_USER_HOME` : Define the location of the cache directory (Default: ~/.conan/data)
 
-
 ## Package Manager Repository
 
 The [Artifactory - jfrog:artifactory-cpp-ce](https://jfrog.com/blog/announcing-jfrog-artifactory-community-edition-c-c/) is a free version of the *Conan Package Manager Repository* with an *HTML* user interface that allows you to manage the packages. The *Community edition* is *free* and [can run using *Docker*](https://www.jfrog.com/confluence/display/RTF/Installing+with+Docker)
