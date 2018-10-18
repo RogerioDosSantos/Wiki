@@ -6,6 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="../resources/style.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -28,6 +65,21 @@
 <p><code>conan upload &lt;full_package_name&gt; -r &lt;repository_server_name&gt; -all</code>: Upload a package to a repository server. The <code>&lt;full_package_name&gt;</code> uses the <code>&lt;NAME&gt;/&lt;VERSION&gt;@&lt;USER&gt;/&lt;CHANNEL&gt;</code> format.</p>
 <h2 id="environment-variables">Environment Variables</h2>
 <p><code>CONAN_USER_HOME</code> : Define the location of the cache directory (Default: ~/.conan/data)</p>
+<h2 id="cmake-configuration">CMake Configuration</h2>
+<h3 id="basic-configuration">Basic configuration</h3>
+<div class="sourceCode"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span class="kw">project</span>(project_name)
+<span class="kw">cmake_minimum_required</span>(<span class="ot">VERSION</span> 2.8.12)
+<span class="co"># add_definitions(&quot;-std=c++11&quot;)</span>
+<span class="kw">include</span>(<span class="dv">${CMAKE_BINARY_DIR}</span>/conanbuildinfo.cmake)
+<span class="fu">conan_basic_setup</span>()
+<span class="kw">add_executable</span>(project_name ./src/main.cpp)
+<span class="kw">target_link_libraries</span>(project_name <span class="dv">${CONAN_LIBS}</span>)</code></pre></div>
+<h3 id="allow-a-different-configuration-if-is-using-conan">Allow a different configuration if is using Conan</h3>
+<div class="sourceCode"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span class="kw">if</span>(CONAN_SYSREQUIRES_MODE)
+    <span class="kw">message</span>(<span class="st">&quot;*** Compiling using Conan ***&quot;</span>)
+    <span class="kw">include</span>(./build.cmake)
+    <span class="kw">return</span>()
+<span class="kw">endif</span>()</code></pre></div>
 <h2 id="package-manager-repository">Package Manager Repository</h2>
 <p>The <a href="https://jfrog.com/blog/announcing-jfrog-artifactory-community-edition-c-c/">Artifactory - jfrog:artifactory-cpp-ce</a> is a free version of the <em>Conan Package Manager Repository</em> with an <em>HTML</em> user interface that allows you to manage the packages. The <em>Community edition</em> is <em>free</em> and <a href="https://www.jfrog.com/confluence/display/RTF/Installing+with+Docker">can run using <em>Docker</em></a></p>
 <p><code>docker pull docker.bintray.io/jfrog/artifactory-cpp-ce</code> : Pull the Artifactory CE Docker Image</p>

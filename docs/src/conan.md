@@ -30,6 +30,30 @@
 
 `CONAN_USER_HOME` : Define the location of the cache directory (Default: ~/.conan/data)
 
+## CMake Configuration
+
+### Basic configuration
+
+```cmake
+project(project_name)
+cmake_minimum_required(VERSION 2.8.12)
+# add_definitions("-std=c++11")
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+add_executable(project_name ./src/main.cpp)
+target_link_libraries(project_name ${CONAN_LIBS})
+```
+
+### Allow a different configuration if is using Conan
+
+```cmake
+if(CONAN_SYSREQUIRES_MODE)
+	message("*** Compiling using Conan ***")
+	include(./build.cmake)
+	return()
+endif()
+```
+
 ## Package Manager Repository
 
 The [Artifactory - jfrog:artifactory-cpp-ce](https://jfrog.com/blog/announcing-jfrog-artifactory-community-edition-c-c/) is a free version of the *Conan Package Manager Repository* with an *HTML* user interface that allows you to manage the packages. The *Community edition* is *free* and [can run using *Docker*](https://www.jfrog.com/confluence/display/RTF/Installing+with+Docker)
