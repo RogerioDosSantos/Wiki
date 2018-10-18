@@ -52,6 +52,8 @@
 
 `cp <source> <destination>` : Copy command
 
+`cp -r -u <source> <destination>` : Copy recursively updating only newer files
+
 `ln -s <path to be linked> <path where the link file will be created>` : Create a symbolic link (Shortcut)
 
 `pwd -P` : Show the physical directory you are
