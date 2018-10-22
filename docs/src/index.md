@@ -127,6 +127,7 @@
 ## Programming Languages
 
 - [VBScript]( ./vbscript.html )
+- [Python]( ./python.html )
 
 ## .Net 
 
