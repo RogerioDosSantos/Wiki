@@ -215,6 +215,16 @@ git remote rm <temp_branch_name>
 `git remote rename <name of the remote> <name of the origin remote>` : Rename the remote. E.g.: `git remote rename new-origin origin` Note: To list the remotes available you can use the command `git remote show`
 t
 
+## Commits
+
+### Detached HEAD
+```shell
+git branch temp
+git checkout master
+git merge temp
+git branch -d temp
+```
+
 ## Merge Branches
 
 ### test branch to master
