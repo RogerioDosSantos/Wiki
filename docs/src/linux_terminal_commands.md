@@ -96,15 +96,11 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `date -u`: Display the Date and Time in UTC format.
 
-`ldd <program name>` : Print the shared objects dependencies. Show the list of shared libraries a program depend.
-
 `[[shutdown]] -r now` : Restart the device
 
 `which <program>` : Inform where a program is located.
 
 `uname -a` : Get the full OS version
-
-`ldd --version`: Get the version of the *GLIBC*. 
 
 `/sbin/ldconfig -p`: Show the list of libraries that were used by the system and/or is available on the *cache*
 
@@ -535,6 +531,24 @@ sudo apt-get update
 sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
 sudo apt-get install multiarch-support
 ```
+
+## Shared Libraries
+
+Shared libraries on Linux should always be installed in the **Linux system libraries path**. 
+
+You can use the *LD_LIBRARY_PATH* environment variable with a colon-separated set of directories where libraries should be searched for first, before the standard set of directories; this is useful when debugging a new library or using a nonstandard library for special purposes 
+
+Please note that while LD_LIBRARY_PATH works on many Unix-like systems, it doesn't work on all; for example, this functionality is available on HP-UX but as the environment variable SHLIB_PATH, and on AIX this functionality is through the variable LIBPATH (with the same syntax, a colon-separated list).
+
+`/usr/lib` : **Linux system libraries path** 
+
+`/usr/lib/i386-linux-gnu` : **Linux system libraries path** for *x86* applications in an *Linux x64*
+
+`ldd --version`: Get the version of the *GLIBC*. 
+
+`ldd <program name>` : Print the shared objects dependencies. Show the list of shared libraries a program depend.
+
+`/lib/ld-linux.so.2 --library-path <library_path> <executable_command>`: Allow to inform an additional path than the **linux system library path** where a library would be located.
 
 
 
