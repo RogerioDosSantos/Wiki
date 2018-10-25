@@ -47,7 +47,11 @@ This is [Internal link].
 
 [ref]: http://example.com/  
 [reference link]: http://www.google.com  
-[Internal link]: #pandocs-markdown-reference </code></pre>
+[Internal link]: #pandocs-markdown-reference 
+
+# Destination &lt;a name=&quot;destination_link&quot;&gt;&lt;/a&gt;
+&lt;in other part ot the document&gt;
+[&lt;descriptions&gt;](#destination_link)</code></pre>
 <h2 id="images">Images</h2>
 <pre><code>![](http://3.bp.bloGspot.com/-BLhmfBdELH0/UBT3uUd7r5I/AAAAAAAAADw/-rnn2kz5vjY/s220/oops_monk01_120.jpg &quot;OopsMonk&quot;)
 
@@ -68,14 +72,11 @@ if (a &gt; 3) {
   }
 ~~~~~~~</code></pre>
 <h2 id="code-syntax-highlight">Code Syntax highlight</h2>
-<pre><code>```python
-import os
-import sys
-
-def application(env, start_response):  
-    start_response(&#39;200 OK&#39;, [(&#39;Content-Type&#39;,&#39;text/html&#39;)])  
-    return &quot;Hello WSGI!!&quot;
-```</code></pre>
+<p><code></code>python import os import sys</p>
+<p>def application(env, start_response):<br />
+start_response('200 OK', [('Content-Type','text/html')])<br />
+return &quot;Hello WSGI!!&quot;</p>
+<pre><code></code></pre>
 <h2 id="line-number">Line Number</h2>
 <pre><code>~~~~ {#pycode .python .numberLines startFrom=&quot;10&quot;}
 import os
