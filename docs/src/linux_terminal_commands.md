@@ -172,6 +172,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `find <start_directory> -ctime +<days>` : Find directories older than the amount of days informed.
 
+`find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n'`: Return only the directory names
+
 `grep --include=\*.{cpp,h} -rnw <source directory> -e "<text to find>"` : Find a text into files (Case Sensitive)
 
 `grep --include=\*.{cpp,h} -rnwi <source directory> -e "<text to find>"` : Find a text into files (Case Insensitive)

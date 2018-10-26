@@ -139,6 +139,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>find &lt;start_directory&gt; -iname &quot;&lt;old_name&gt;*&quot; | sed -e 'p;s/&lt;old_name&gt;/&lt;new_name&gt;/' | xargs -n2 mv</code> : Rename all files that match an expression recursively</p>
 <p><code>find &lt;start_directory&gt; -type d -name &quot;&lt;expression&gt;&quot;</code> : Find directories</p>
 <p><code>find &lt;start_directory&gt; -ctime +&lt;days&gt;</code> : Find directories older than the amount of days informed.</p>
+<p><code>find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n'</code>: Return only the directory names</p>
 <p><code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e &quot;&lt;text to find&gt;&quot;</code> : Find a text into files (Case Sensitive)</p>
 <p><code>grep --include=\*.{cpp,h} -rnwi &lt;source directory&gt; -e &quot;&lt;text to find&gt;&quot;</code> : Find a text into files (Case Insensitive)</p>
 <p><code>grep -rl &lt;text_to_find_inside_file&gt; &lt;start_dirrectory&gt; | xargs sed -i 's/&lt;text_to_be_replaced&gt;/&lt;new_text&gt;/g'</code> : Find files with a specific text and replace its content</p>
