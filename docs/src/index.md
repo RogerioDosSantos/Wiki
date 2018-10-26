@@ -128,6 +128,7 @@
 
 - [VBScript]( ./vbscript.html )
 - [Python]( ./python.html )
+- [Regular Expressions]( ./regular_expressions.html )
 
 ## .Net 
 
