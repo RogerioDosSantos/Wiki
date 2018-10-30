@@ -186,6 +186,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
   
 `nm <library name>` : List symbols in libraries. Note: *T* indicates that the symbol is are exported by the library. *U* indicated that the symbol is not in the library but loaded in another shared library.
 
+`nm -C <library_path> | grep -i "<function_name>"`: Show how the function is declared in the library.
+
 `nm <library name> | grep -i "<function name>"` : Locate if a function is exported from a library
 
 `encfs <encrypted folder content> <mounted folder>` : Enable cryptography on the mounted folder saving the content into the encrypted folder. (E.g.: encfs ~/.encrypted ~/encrypted)
