@@ -184,7 +184,7 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `<command> | grep -v <unwanted_word>`: Filter the result of a command removing an specific word.
   
-`nm <library name>` : List symbols in libraries
+`nm <library name>` : List symbols in libraries. Note: *T* indicates that the symbol is are exported by the library. *U* indicated that the symbol is not in the library but loaded in another shared library.
 
 `nm <library name> | grep -i "<function name>"` : Locate if a function is exported from a library
 
