@@ -122,3 +122,17 @@ Be aware that when changing your password, you will need to go to settings >> sh
 ### Using VirtualBox
 
 `-v /c/Users:/home/host`: Share user folder with home directory
+
+## Run docker client from inside a container
+
+You can run a docker client from inside a container and connect to your host machine by sharing the *Docker unix socket* and install the *docker client* in your container.
+
+E.g:
+
+```bash
+# Start Continer sharing the docker.sock and install the docker client in the container
+docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:latest sh -c "apt-get update ; apt-get install docker.io -y ; bash"
+
+# Execute the docker images command (Note to execute docker commands you need to use sudo)
+sudo docker images
+```
