@@ -136,3 +136,29 @@ docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:latest sh -c 
 # Execute the docker images command (Note to execute docker commands you need to use sudo)
 sudo docker images
 ```
+
+## Installation
+
+## Install on the WSL
+
+* Install Docker for Windows
+https://store.docker.com/editions/community/docker-ce-desktop-windows
+
+* Enable WSL
+https://docs.microsoft.com/en-us/windows/wsl/install-win10
+
+* Install Docker in WSL
+https://docs.docker.com/install/linux/docker-ce/debian/
+
+* Install docker-compose in WSL
+https://docs.docker.com/compose/install/
+
+* Make relay WSL->Docker for Windows with GO
+https://blogs.msdn.microsoft.com/commandline/2017/12/08/cross-post-wsl-interoperability-with-docker/
+
+* Fix drive paths for volume mount
+```
+sudo ln -s /mnt/c /c
+sudo ln -s /mnt/d /d
+...
+```

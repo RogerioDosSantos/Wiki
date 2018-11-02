@@ -119,5 +119,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="co"># Execute the docker images command (Note to execute docker commands you need to use sudo)</span>
 <span class="kw">sudo</span> docker images</code></pre></div>
+<h2 id="installation">Installation</h2>
+<h2 id="install-on-the-wsl">Install on the WSL</h2>
+<ul>
+<li><p>Install Docker for Windows https://store.docker.com/editions/community/docker-ce-desktop-windows</p></li>
+<li><p>Enable WSL https://docs.microsoft.com/en-us/windows/wsl/install-win10</p></li>
+<li><p>Install Docker in WSL https://docs.docker.com/install/linux/docker-ce/debian/</p></li>
+<li><p>Install docker-compose in WSL https://docs.docker.com/compose/install/</p></li>
+<li><p>Make relay WSL-&gt;Docker for Windows with GO https://blogs.msdn.microsoft.com/commandline/2017/12/08/cross-post-wsl-interoperability-with-docker/</p></li>
+<li><p>Fix drive paths for volume mount</p>
+<pre><code>sudo ln -s /mnt/c /c
+sudo ln -s /mnt/d /d
+...</code></pre></li>
+</ul>
 </body>
 </html>
