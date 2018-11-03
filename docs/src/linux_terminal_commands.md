@@ -92,7 +92,7 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `screenfetch` : Display the linux logo and information of the system.
 
-![](http://tinyurl.com/ycyz3u3o)
+![](http://tinyurl.com/yayn3tst){ width=500px }
 
 `which <program>` : Inform where a program is located.
 
