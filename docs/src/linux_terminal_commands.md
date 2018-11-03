@@ -90,6 +90,10 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `info <command name>`
   : List the information of a specific command. If you do not mention the <command name> it will list the command available.
 
+`screenfetch` : Display the linux logo and information of the system.
+
+![](http://tinyurl.com/ycyz3u3o)
+
 `which <program>` : Inform where a program is located.
 
 `date` : Display the Date and Time on the local computer timezone. You can access a list of example for Date and Time format [here]( ./date_time_format_list.html )
