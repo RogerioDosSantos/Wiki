@@ -127,10 +127,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>Install Docker in WSL https://docs.docker.com/install/linux/docker-ce/debian/</p></li>
 <li><p>Install docker-compose in WSL https://docs.docker.com/compose/install/</p></li>
 <li><p>Make relay WSL-&gt;Docker for Windows with GO https://blogs.msdn.microsoft.com/commandline/2017/12/08/cross-post-wsl-interoperability-with-docker/</p></li>
-<li><p>Fix drive paths for volume mount</p>
-<pre><code>sudo ln -s /mnt/c /c
-sudo ln -s /mnt/d /d
-...</code></pre></li>
+<li><p>Fix drive paths for volume mount</p></li>
 </ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> mkdir /c
+<span class="kw">sudo</span> mount --bind /mnt/c /c</code></pre></div>
+<p>To make the bind mount permanent you can change the <code>/etc/fstab</code> file</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># &lt;device&gt;  &lt;dir&gt; &lt;type&gt; &lt;options&gt; &lt;dump&gt; &lt;pass&gt;</span>
+<span class="kw">/mnt/c</span>  /c  none  bind  0 0</code></pre></div>
 </body>
 </html>
