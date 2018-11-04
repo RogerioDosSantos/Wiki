@@ -17,5 +17,29 @@
 **express** : MVC Framework
 **nodemon** : Allow refresh  the server every time  we do a change.
 
+## Installation
 
+### Upgrade NodeJS to the latest version
+
+Use n module from npm in order to upgrade node
+
+```bash
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+```
+
+To upgrade to latest version (and not current stable) version, you can use
+
+```bash
+sudo n latest
+```
+
+To undo:
+
+```bash
+sudo apt-get install --reinstall nodejs-legacy     # fix /usr/bin/node
+sudo n rm 6.0.0     # replace number with version of Node that was installed
+sudo npm uninstall -g n
+```
 
