@@ -157,8 +157,15 @@ https://docs.docker.com/compose/install/
 https://blogs.msdn.microsoft.com/commandline/2017/12/08/cross-post-wsl-interoperability-with-docker/
 
 * Fix drive paths for volume mount
+
+```bash
+sudo mkdir /c
+sudo mount --bind /mnt/c /c
 ```
-sudo ln -s /mnt/c /c
-sudo ln -s /mnt/d /d
-...
+
+To make the bind mount permanent you can  change the `/etc/fstab` file
+
+```bash
+# <device>  <dir> <type> <options> <dump> <pass>
+/mnt/c  /c  none  bind  0 0
 ```
