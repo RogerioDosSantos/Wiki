@@ -66,6 +66,10 @@
 - [Docker Commands]( ./docker_commands.html )
 - [Installation Procedures]( ./docker_installation_procedures.html )
 
+## NGINX
+
+- [NGINX]( ./nginx.html )
+
 ## Infinit 
 
 - [Infinit Commands]( ./infinit_commands.html )
