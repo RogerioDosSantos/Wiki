@@ -13,6 +13,10 @@
 - Written in Go
 - Simple yet powerful extensibility
 
+## Installation
+
+
+
 ## Commands
 
 `fn init --runtime node`: Init the current foln with a template function using NodeJS.
