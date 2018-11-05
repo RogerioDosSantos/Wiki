@@ -376,6 +376,13 @@ if [ ! -d "${directory}"  ]; then
   # Control will enter here if ${directory} does not exists.
 fi
 
+if [ ! -S "${socket_file_path}" ]; then
+  # Control will enter if a socket file does not exists
+fi
+
+if [ ! -f "${file_path}" ]; then
+  # Control will enter if a file does not exists
+fi
 ```
 
 ### Looping ###
