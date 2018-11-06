@@ -9,5 +9,5 @@ Highlights
 - Portable - runs on existing hardware or public/private cloud - Kubernetes and Docker Swarm native
 - CLI available with YAML format for templating and defining functions
 - Auto-scales as demand increases
-
+- Has a nice [Workshop](https://github.com/openfaas/workshop/blob/master/README.md) which allows to learn the basics.
 
