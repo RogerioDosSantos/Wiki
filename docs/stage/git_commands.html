@@ -50,6 +50,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 <body>
 <h1 id="git">Git</h1>
+<h2 id="commands">Commands</h2>
 <p>Origin (Server) &gt;&gt; master (Work branch) &gt;&gt; Header (Local commits) &gt;&gt; tracked (files added) &gt;&gt; untracked (any change)</p>
 <p><code>git config --global user.email &lt;your e-mail&gt;</code> : config your e-mail account globally</p>
 <p><code>git config --global user.name &lt;your name&gt;</code> : config your name globally</p>
@@ -87,11 +88,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>git clean -fd</code> : Remove untracked files.</p>
 <p><code>git rev-parse [--short] HEAD</code> : Display the HEAD id. Use short for the short version.</p>
 <p><code>git revert &lt;commit_id&gt;</code> : Revert command changes all the files for a specific commit back to their state before that commit was completed</p>
-<h2 id="history">History</h2>
 <p><code>git blame</code> : Allow you to check the file chain history (Similar to VS annotate)</p>
 <p><code>git diff &lt;source branch&gt; &lt;target branch&gt;</code> : Preview the branch differences.</p>
 <p><code>git remote show origin</code>: Show the URL a git repository is cloned from.</p>
-<h2 id="submodules">Submodules:</h2>
 <p><code>git submodule add &lt;repository url&gt;</code> : Add a submodule into a git project.</p>
 <p><code>git submodule add -b &lt;branch&gt; &lt;repository url&gt;</code> : Add a submodule that tracks a branch</p>
 <p><code>git submodule init</code> : Initialize the submodule configuration. You should run it after you clone the project with submodule on it.</p>
@@ -101,81 +100,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>git checkout -b &lt;new branch&gt; &lt;branch or label&gt;</code> : Create a new Branch for the Branch or label checked out.</p>
 <p><code>git status --ignore-submodules=dirty</code> : Ignore the dirty feature that slow down the command in case you have submodules with a lot of files. You can also change the &quot;.gitmodules&quot; files to add the following entry in a submodule you want to ignore: ignore ## dirty</p>
 <p><code>git config --global --edit</code> : Edit the global configuration</p>
-<h3 id="submodules-workflow">Submodules Workflow</h3>
-<h4 id="initial-checkpoint">Initial Checkpoint</h4>
-<ul>
-<li>git clone <url of main project></li>
-<li>cd <directory of main project></li>
-<li>git submodule update -init</li>
-<li>git submodule foreach git checkout master</li>
-</ul>
-<h4 id="commit-a-modification">Commit a modification</h4>
-<ul>
-<li>cd <directory of sub project></li>
-<li>git checkout -b <your branch name></li>
-<li>Execute the modification</li>
-<li>git commit</li>
-<li>git push origin <server branch></li>
-</ul>
-<h4 id="updated-third-party-library">Updated Third-Party Library</h4>
-<ul>
-<li>cd <directory of third-party library></li>
-<li>git checkout vendor</li>
-<li>git pull</li>
-<li>git checkout -b phantom_merge</li>
-<li>git merge -s ours master -m phantom_merge</li>
-<li>git checkout master</li>
-<li>git merge --ff-only phantom_merge</li>
-<li>git branch -D phantom_merge</li>
-<li>git cherry-pick 924989v# etc...</li>
-<li>Test</li>
-<li>git push origin master:master</li>
-</ul>
-<h4 id="modification-to-third-party-repository">Modification to Third-Party Repository</h4>
-<ul>
-<li>cd <directory of third-party></li>
-<li>Make changes</li>
-<li>git commit</li>
-<li>git checkout vendor</li>
-<li>git merge --ff-only origin/vendor</li>
-<li>git checkout -b my_change</li>
-<li>git cherry-pick 293h39</li>
-<li>git push <git url>:my_change:my_change</li>
-<li>Use Github to make pull request</li>
-</ul>
-<p>TODO(Roger): Search on how to make the server to update the main project sub modules state point when after a check-in passed on the automated tests. This would be interesting for the development branch.</p>
-<p>TODO(Roger): Search about cron jobs on GitHub</p>
-<h2 id="tags">Tags:</h2>
 <p><code>git tag -l &lt;pattern&gt;</code> : List the tags available. If <pattern> is nothing it will list all the tags</p>
 <p><code>git describe --tags</code> : Inform in what tag you are on</p>
-<h2 id="ignore-directory">Ignore Directory</h2>
-<p>Create a file called .gitignore into your project folder and add all folders that should be ignored.</p>
-<h2 id="initialize-repository">Initialize Repository</h2>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Create</span> repository on Github
-<span class="kw">On</span> Linux use the commands:
-<span class="kw">echo</span> <span class="st">&quot;# linux_environment&quot;</span> <span class="kw">&gt;&gt;</span> README.md
-<span class="kw">git</span> init
-<span class="kw">git</span> add README.md
-<span class="kw">git</span> commit -m <span class="st">&quot;first commit&quot;</span>
-<span class="kw">git</span> remote add origin <span class="kw">&lt;</span>repository .git url<span class="kw">&gt;</span>
-<span class="kw">git</span> push -u origin master</code></pre></div>
-<h2 id="local-commit-manual-transfer">Local commit manual transfer</h2>
-<p>All local changes you execute on git is stored on the <em>.git</em> folder. You can copy this folder between same git projects located on different git repositories. In this way you can for example continue your work on different computers. To transfer the content, please follow the sequence below:</p>
-<ul>
-<li>Copy the full content of your <em>.git</em> source folder to a temp location.</li>
-<li>Remove the <em>.git</em> your destination folder. Note: All your changes on that folder will be lost. So if you have pending check-ins publish it.</li>
-<li>Copy the content of your <em>git</em> folder from your temp location to your destination folder.</li>
-<li>Use the command <code>git checkout HEAD</code> to ensure thal all your local files are updated with the information that is on the HEAD.</li>
-</ul>
-<h2 id="transfer-git-repository">Transfer Git Repository</h2>
-<h3 id="moving-git-repository-content-to-another-repository-preserving-history">Moving Git repository content to another repository preserving history</h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> <span class="kw">&lt;</span>target_repository<span class="kw">&gt;</span>
-<span class="kw">git</span> checkout master
-<span class="kw">git</span> remote add <span class="kw">&lt;</span>temp_branch_name<span class="kw">&gt;</span> <span class="kw">&lt;</span>repository_url<span class="kw">&gt;</span>
-<span class="kw">git</span> fetch <span class="kw">&lt;</span>temp_branch_name<span class="kw">&gt;</span>
-<span class="kw">git</span> merge <span class="kw">&lt;</span>temp_branch_name<span class="kw">&gt;</span>/master --allow-unrelated-histories
-<span class="kw">git</span> remote rm <span class="kw">&lt;</span>temp_branch_name<span class="kw">&gt;</span></code></pre></div>
-<h3 id="commands">Commands</h3>
 <p><code>git fetch origin</code> : Get the information from the server (History)</p>
 <p><code>git branch -a</code> : Show all branches. If you have a branch that is remote you need to get it on your computer using the command <code>checkout</code></p>
 <p><code>git checkout -b &lt;local name&gt; &lt;remote name&gt;</code> : Checkout a Branch. E.g.: <code>git checkout -b develop origin/develop</code></p>
@@ -184,22 +110,128 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>git push --tags &lt;name of remote&gt;</code> : Push the tags. E.g.: <code>git push --tags new-origin</code></p>
 <p><code>git remote rm &lt;name of the origin remote&gt;</code> : Remove the remote name from the local repository. Note that <code>origin</code> is the default name. E.g.: <code>git remote rm origin</code> Note: To list the remotes available you can use the command <code>git remote show</code></p>
 <p><code>git remote rename &lt;name of the remote&gt; &lt;name of the origin remote&gt;</code> : Rename the remote. E.g.: <code>git remote rename new-origin origin</code> Note: To list the remotes available you can use the command <code>git remote show</code> t</p>
-<h2 id="commits">Commits</h2>
-<h3 id="detached-head">Detached HEAD</h3>
-<pre class="shell"><code>git branch temp
-git checkout master
-git merge temp
-git branch -d temp</code></pre>
-<h2 id="merge-branches">Merge Branches</h2>
-<h3 id="test-branch-to-master">test branch to master</h3>
+<p><code>git push --recurse-submodules=on-demand</code>: Look into the histories of submodules bound to the superproject and push them out.</p>
+<h2 id="how-to">How-To</h2>
+<h3 id="initializing-a-local-repository-that-is-not-on-github-yet">Initializing a local repository that is not on GitHub yet</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Create</span> repository on Github
+<span class="kw">On</span> Linux use the commands:
+<span class="kw">echo</span> <span class="st">&quot;# linux_environment&quot;</span> <span class="kw">&gt;&gt;</span> README.md
+<span class="kw">git</span> init
+<span class="kw">git</span> add README.md
+<span class="kw">git</span> commit -m <span class="st">&quot;first commit&quot;</span>
+<span class="kw">git</span> remote add origin <span class="kw">&lt;</span>repository .git url<span class="kw">&gt;</span>
+<span class="kw">git</span> push -u origin master</code></pre></div>
+<h3 id="initializing-a-project-that-contains-submodules">Initializing a project that contains submodules</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> clone <span class="kw">&lt;</span>url of main project<span class="kw">&gt;</span>
+<span class="kw">cd</span> <span class="kw">&lt;</span>directory of main project<span class="kw">&gt;</span>
+<span class="kw">git</span> submodule update -init --recursive</code></pre></div>
+<h3 id="editing-a-submodule-and-committing-a-modification">Editing a submodule and committing a modification</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> <span class="kw">&lt;</span>directory of sub project<span class="kw">&gt;</span>
+<span class="kw">git</span> checkout -b <span class="kw">&lt;</span>your branch name<span class="kw">&gt;</span>
+
+<span class="co"># Execute the modification...</span>
+
+<span class="kw">git</span> commit
+<span class="kw">git</span> push origin <span class="kw">&lt;</span>server branch<span class="kw">&gt;</span></code></pre></div>
+<h3 id="updating-a-third-party-library">Updating a Third-Party Library</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> <span class="kw">&lt;</span>directory of third-party library<span class="kw">&gt;</span>
+<span class="kw">git</span> checkout vendor
+<span class="kw">git</span> pull 
+<span class="kw">git</span> checkout -b phantom_merge
+<span class="kw">git</span> merge -s ours master -m phantom_merge
+<span class="kw">git</span> checkout master
+<span class="kw">git</span> merge --ff-only phantom_merge
+<span class="kw">git</span> branch -D phantom_merge
+<span class="kw">git</span> cherry-pick 924989v# etc...
+
+<span class="co"># Test...</span>
+
+<span class="kw">git</span> push origin master:master</code></pre></div>
+<h3 id="contributing-with-changes-in-a-third-party-repository">Contributing with changes in a Third-Party Repository</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> <span class="kw">&lt;</span>directory of third-party<span class="kw">&gt;</span>
+
+<span class="co"># Execute desired changes...</span>
+
+<span class="kw">git</span> commit
+<span class="kw">git</span> checkout vendor
+<span class="kw">git</span> merge --ff-only origin/vendor
+<span class="kw">git</span> checkout -b my_change
+<span class="kw">git</span> cherry-pick 293h39
+<span class="kw">git</span> push <span class="kw">&lt;</span>git url<span class="kw">&gt;</span>:my_change:my_change
+
+<span class="co"># Use Github to execute a pull request</span></code></pre></div>
+<h3 id="removing-submodule">Removing Submodule</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Remove the submodule entry from .git/config</span>
+<span class="kw">git</span> submodule deinit -f path/to/submodule
+
+<span class="co"># Remove the submodule directory from the superproject&#39;s .git/modules directory</span>
+<span class="kw">rm</span> -rf .git/modules/path/to/submodule
+
+<span class="co"># Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule</span>
+<span class="kw">git</span> rm -f path/to/submodule</code></pre></div>
+<h3 id="updating-the-main-project-automatically-when-a-submodule-passes-on-the-continuous-integration-build">Updating the main project automatically when a submodule passes on the continuous integration build</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#TODO(Roger)</span></code></pre></div>
+<h3 id="working-with-github-cron-jobs">Working with GitHub cron jobs</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#TODO(Roger)</span></code></pre></div>
+<h3 id="ignoring-directories-and-files">Ignoring directories and files</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> <span class="kw">&lt;</span>project_folder<span class="kw">&gt;</span>
+<span class="kw">touch</span> -a .gitignore
+
+<span class="co"># Edit .gitignore adding folders and files that should be ignored. </span></code></pre></div>
+<p>Git ignore examples</p>
+<pre class=".gitignore"><code># Ignore version.h in the include folder
+/include/version.h
+
+# Ignore temp folder
+/temp
+
+# Ignote all stage folders
+**/stage
+
+# Ignore all .vs folders
+**/.vs
+
+# ignore all files under build folder but the specific extensions and files
+**/build/** 
+!**/build/*.sh
+!**/build/*.bat
+!**/build/*.cmake
+!**/build/*.in
+!**/build/DockerFile</code></pre>
+<h3 id="transferring-local-commits-without-a-server">Transferring local commits without a server</h3>
+<p>All local changes you execute on git is stored on the <em>.git</em> folder. You can copy this folder between same git projects located on different git repositories. In this way you can for example continue your work on different computers. To transfer the content, please follow the sequence below:</p>
+<ul>
+<li>Copy the full content of your <em>.git</em> source folder to a temp location.</li>
+<li>Remove the <em>.git</em> your destination folder. Note: All your changes on that folder will be lost. So if you have pending check-ins publish it.</li>
+<li>Copy the content of your <em>git</em> folder from your temp location to your destination folder.</li>
+<li>Use the command <code>git checkout HEAD</code> to ensure thal all your local files are updated with the information that is on the HEAD.</li>
+</ul>
+<h3 id="transferring-git-repository-to-another-server">Transferring Git repository to another server</h3>
+<p>Moving Git repository content to another repository preserving history</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> <span class="kw">&lt;</span>target_repository<span class="kw">&gt;</span>
+<span class="kw">git</span> checkout master
+<span class="kw">git</span> remote add <span class="kw">&lt;</span>temp_branch_name<span class="kw">&gt;</span> <span class="kw">&lt;</span>repository_url<span class="kw">&gt;</span>
+<span class="kw">git</span> fetch <span class="kw">&lt;</span>temp_branch_name<span class="kw">&gt;</span>
+<span class="kw">git</span> merge <span class="kw">&lt;</span>temp_branch_name<span class="kw">&gt;</span>/master --allow-unrelated-histories
+<span class="kw">git</span> remote rm <span class="kw">&lt;</span>temp_branch_name<span class="kw">&gt;</span></code></pre></div>
+<h3 id="solving-detached-head">Solving detached HEAD</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> branch temp
+<span class="kw">git</span> checkout master
+<span class="kw">git</span> merge temp
+<span class="kw">git</span> branch -d temp</code></pre></div>
+<h3 id="merging-branches">Merging branches</h3>
+<p>The example below merge the test branch into the master branch</p>
 <pre class="shell"><code>git checkout master
 git pull origin master
 git merge test
 git push origin master</code></pre>
-<h2 id="update-git">Update Git</h2>
-<h3 id="ubuntu---get-latest-version">Ubuntu - Get Latest version</h3>
-<p><code>sudo add-apt-repository ppa:git-core/ppa</code> : Add the PPA to the local index</p>
-<p><code>add the PPA to the local index</code>: Update the local repository index</p>
-<p><code>sudo apt-get install git</code>: Install the git package</p>
+<h2 id="installation">Installation</h2>
+<h3 id="getting-the-latest-git-version-on-ubuntu">Getting the latest git version on Ubuntu</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Add the PPA to the local package index</span>
+<span class="kw">add-apt-repository</span> ppa:git-core/ppa
+<span class="kw">apt-get</span> update
+
+<span class="co"># Install Git</span>
+<span class="kw">sudo</span> apt-get install git</code></pre></div>
 </body>
 </html>

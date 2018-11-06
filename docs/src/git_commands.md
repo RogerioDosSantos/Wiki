@@ -1,4 +1,6 @@
-# Git #
+# Git
+
+## Commands
 
 Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (files added) >> untracked (any change)
 
@@ -74,15 +76,11 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git revert <commit_id>` : Revert command changes all the files for a specific commit back to their state before that commit was completed
 
-## History ##
-
 `git blame` : Allow you to check the file chain history (Similar to VS annotate)
 
 `git diff <source branch> <target branch>` : Preview the branch differences. 
 
 `git remote show origin`: Show the URL a git repository is cloned from.
-
-## Submodules: ##
 
 `git submodule add <repository url> ` : Add a submodule into a git project.
 
@@ -102,101 +100,9 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git config --global --edit` : Edit the global configuration
 
-### Submodules Workflow ###
-
-#### Initial Checkpoint ####
-
-- git clone <url of main project>
-- cd <directory of main project>
-- git submodule update -init
-- git submodule foreach git checkout master
-
-#### Commit a modification ####
-
-- cd <directory of sub project>
-- git checkout -b <your branch name>
-- Execute the modification
-- git commit
-- git push origin <server branch>
-
-#### Updated Third-Party Library ####
-
-- cd <directory of third-party library>
-- git checkout vendor
-- git pull 
-- git checkout -b phantom_merge
-- git merge -s ours master -m phantom_merge
-- git checkout master
-- git merge --ff-only phantom_merge
-- git branch -D phantom_merge
-- git cherry-pick 924989v# etc...
-- Test
-- git push origin master:master
-
-#### Modification to Third-Party Repository ####
-
-- cd <directory of third-party>
-- Make changes
-- git commit
-- git checkout vendor
-- git merge --ff-only origin/vendor
-- git checkout -b my_change
-- git cherry-pick 293h39
-- git push <git url>:my_change:my_change
-- Use Github to make pull request
-  
-
-TODO(Roger): Search on how to make the server to update the main project sub modules state point when after a check-in passed on the automated tests. This would be interesting for the development branch.
-
-TODO(Roger): Search about cron jobs on GitHub
-
-## Tags: ##
-
 `git tag -l <pattern> ` : List the tags available. If <pattern> is nothing it will list all the tags
 
 `git describe --tags ` : Inform in what tag you are on
-
-
-## Ignore Directory ##
-
-Create a file called .gitignore into your project folder and add all folders that should be ignored. 
-
-## Initialize Repository ##
-
-``` bash
-Create repository on Github
-On Linux use the commands:
-echo "# linux_environment" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin <repository .git url>
-git push -u origin master
-```
-
-## Local commit manual transfer ##
-
-All local changes you execute on git is stored on the _.git_ folder. You can copy this folder between same git projects located on different git repositories. In this way you can for example continue your work on different computers. To transfer the content, please follow the sequence below:
-
-- Copy the full content of your _.git_ source folder to a temp location.
-- Remove the _.git_ your destination folder. Note: All your changes on that folder will be lost. So if you have pending check-ins publish it.
-- Copy the content of your _git_ folder from your temp location to your destination folder.
-- Use the command `git checkout HEAD` to ensure thal all your local files are updated with the information that is on the HEAD.
-
-## Transfer Git Repository
-
-### Moving Git repository content to another repository preserving history
-
-```bash
-cd <target_repository>
-git checkout master
-git remote add <temp_branch_name> <repository_url>
-git fetch <temp_branch_name>
-git merge <temp_branch_name>/master --allow-unrelated-histories
-git remote rm <temp_branch_name>
-```
-
-### Commands
 
 `git fetch origin` : Get the information from the server (History)
 
@@ -215,19 +121,171 @@ git remote rm <temp_branch_name>
 `git remote rename <name of the remote> <name of the origin remote>` : Rename the remote. E.g.: `git remote rename new-origin origin` Note: To list the remotes available you can use the command `git remote show`
 t
 
-## Commits
+`git push --recurse-submodules=on-demand`: Look into the histories of submodules bound to the superproject and push them out.
 
-### Detached HEAD
-```shell
+## How-To
+
+### Initializing a local repository that is not on GitHub yet
+
+``` bash
+Create repository on Github
+On Linux use the commands:
+echo "# linux_environment" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin <repository .git url>
+git push -u origin master
+```
+
+### Initializing a project that contains submodules
+
+```bash
+git clone <url of main project>
+cd <directory of main project>
+git submodule update -init --recursive
+```
+
+### Editing a submodule and committing a modification
+
+```bash
+cd <directory of sub project>
+git checkout -b <your branch name>
+
+# Execute the modification...
+
+git commit
+git push origin <server branch>
+```
+
+### Updating a Third-Party Library
+
+```bash
+cd <directory of third-party library>
+git checkout vendor
+git pull 
+git checkout -b phantom_merge
+git merge -s ours master -m phantom_merge
+git checkout master
+git merge --ff-only phantom_merge
+git branch -D phantom_merge
+git cherry-pick 924989v# etc...
+
+# Test...
+
+git push origin master:master
+```
+
+### Contributing with changes in a Third-Party Repository
+
+```bash
+cd <directory of third-party>
+
+# Execute desired changes...
+
+git commit
+git checkout vendor
+git merge --ff-only origin/vendor
+git checkout -b my_change
+git cherry-pick 293h39
+git push <git url>:my_change:my_change
+
+# Use Github to execute a pull request
+```
+
+### Removing Submodule
+
+```bash
+# Remove the submodule entry from .git/config
+git submodule deinit -f path/to/submodule
+
+# Remove the submodule directory from the superproject's .git/modules directory
+rm -rf .git/modules/path/to/submodule
+
+# Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule
+git rm -f path/to/submodule
+```
+
+### Updating the main project automatically when a submodule passes on the continuous integration build
+
+```bash
+#TODO(Roger)
+```
+
+### Working with GitHub cron jobs
+
+```bash
+#TODO(Roger)
+```
+
+### Ignoring directories and files
+
+```bash
+cd <project_folder>
+touch -a .gitignore
+
+# Edit .gitignore adding folders and files that should be ignored. 
+```
+
+Git ignore examples
+
+```.gitignore
+# Ignore version.h in the include folder
+/include/version.h
+
+# Ignore temp folder
+/temp
+
+# Ignote all stage folders
+**/stage
+
+# Ignore all .vs folders
+**/.vs
+
+# ignore all files under build folder but the specific extensions and files
+**/build/** 
+!**/build/*.sh
+!**/build/*.bat
+!**/build/*.cmake
+!**/build/*.in
+!**/build/DockerFile
+```
+
+### Transferring local commits without a server
+
+All local changes you execute on git is stored on the _.git_ folder. You can copy this folder between same git projects located on different git repositories. In this way you can for example continue your work on different computers. To transfer the content, please follow the sequence below:
+
+- Copy the full content of your _.git_ source folder to a temp location.
+- Remove the _.git_ your destination folder. Note: All your changes on that folder will be lost. So if you have pending check-ins publish it.
+- Copy the content of your _git_ folder from your temp location to your destination folder.
+- Use the command `git checkout HEAD` to ensure thal all your local files are updated with the information that is on the HEAD.
+
+### Transferring Git repository to another server
+
+Moving Git repository content to another repository preserving history
+
+```bash
+cd <target_repository>
+git checkout master
+git remote add <temp_branch_name> <repository_url>
+git fetch <temp_branch_name>
+git merge <temp_branch_name>/master --allow-unrelated-histories
+git remote rm <temp_branch_name>
+```
+
+### Solving detached HEAD
+
+```bash
 git branch temp
 git checkout master
 git merge temp
 git branch -d temp
 ```
 
-## Merge Branches
+### Merging branches
 
-### test branch to master
+The example below merge the test branch into the master branch
+
 ```shell
 git checkout master
 git pull origin master
@@ -235,13 +293,16 @@ git merge test
 git push origin master
 ```
 
-## Update Git
+## Installation
 
-### Ubuntu - Get Latest version
+### Getting the latest git version on Ubuntu
 
-`sudo add-apt-repository ppa:git-core/ppa` : Add the PPA to the local index
+```bash
+# Add the PPA to the local package index
+add-apt-repository ppa:git-core/ppa
+apt-get update
 
-`add the PPA to the local index`: Update the local repository index
-
-`sudo apt-get install git`: Install the git package
+# Install Git
+sudo apt-get install git
+```
 
