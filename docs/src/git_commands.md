@@ -121,6 +121,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 `git remote rename <name of the remote> <name of the origin remote>` : Rename the remote. E.g.: `git remote rename new-origin origin` Note: To list the remotes available you can use the command `git remote show`
 t
 
+`git push --recurse-submodules=on-demand`: Look into the histories of submodules bound to the superproject and push them out.
+
 ## How-To
 
 ### Initializing a local repository that is not on GitHub yet
@@ -189,6 +191,19 @@ git cherry-pick 293h39
 git push <git url>:my_change:my_change
 
 # Use Github to execute a pull request
+```
+
+### Removing Submodule
+
+```bash
+# Remove the submodule entry from .git/config
+git submodule deinit -f path/to/submodule
+
+# Remove the submodule directory from the superproject's .git/modules directory
+rm -rf .git/modules/path/to/submodule
+
+# Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule
+git rm -f path/to/submodule
 ```
 
 ### Updating the main project automatically when a submodule passes on the continuous integration build
