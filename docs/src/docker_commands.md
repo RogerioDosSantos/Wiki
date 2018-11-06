@@ -66,6 +66,8 @@
 
 `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_name_or_id>`
 
+`docker inspect -f '{{ range .Mounts  }}{{ if eq .Destination "/home/conan/workspace"  }}{{ .Source  }}{{ end  }}{{ end  }}' builder_linux_x86`: Get the path of the host machine of a volume of a container path that was mounted.
+
 `docker rm $(docker ps -a -q)` : Remove all docker containers
 
 `docker rmi $(docker images -a -q)`: Remove all docker images

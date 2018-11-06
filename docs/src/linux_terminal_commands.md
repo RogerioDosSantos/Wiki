@@ -10,6 +10,8 @@
 
 `adduser <username>` : Add an user
 
+`groupadd <group_name>`: Add a group
+
 `usermod -aG <group1>,<group2>,<etc..> <user name>` : change the group of the user
 
 `usermod -d /home/<new name> -m -g <new name> -l <new name> <old name>` : Change the user. This changes the name, the group, the home directory and ownership and group of of that directory to the new ones, along with all the files.
@@ -218,6 +220,12 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `lsb_release -a`: Display the Operation System ID, Description. Codename and version.
 
+`dpkg --print-architecture`: Display the user space architecture the package manager uses.
+
+`dpkg --add-architecture amd64`: Add 64bits user space architecture on the package manager.
+
+`apt-get -f install`: Fix system with broken dependencies in place
+
 `strings <file_path>`: Show all printable strings of a file.
 
 `strings <file_path> | grep <search_item>`: Search for an string in any file. Can be used to also search on binary files.
@@ -243,6 +251,12 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `echo "$LINENO -  $FUNCNAME"` : Show Function and Line Number of a script file
 
 `<command> &` : Run command in background
+
+`<command> || true`: Run a command and ignore the return error.
+
+`alias <name>="<command>"`: Create a alias to a command
+
+`alias search=<name>`: Search if an alias already exist
 
 ### Strings Manipulations
 
