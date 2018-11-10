@@ -71,7 +71,7 @@ This is [Internal link].
 
 `![<caption>]( <image url>  )`: Add a message. Note: The space is important otherwise the word converter might not find the image. `E.g.: ![Driver List]( ../resource/Image_29.png   )`
 
-`![<caption>]( <image url> ){ <css properties> }`: Add image with any .css propery. `E.g.: ![InduSoft]( ../resource/Image_04_Indusoft.png  ){width=80% heigh=auto}`
+`![<caption>]( <image url> ){ <css properties> }`: Add image with any .css propery. `E.g.: ![InduSoft]( ../resource/Image_04_Indusoft.png  ){width=80% heigh=100%}`
 
 ## Embedded Video
 
