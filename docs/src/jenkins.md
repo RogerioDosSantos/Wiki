@@ -30,11 +30,11 @@ Share a volume with Jenkins Server Docker container. E.g.: `-v $/c/Users:/var/je
 
 On Jenkins, configure to monitor the pipeline:
 
-![](http://tinyurl.com/yblfcvbm)
+![](http://tinyurl.com/yblfcvbm){width=80% heigh=auto}
 
 Enable the *Pool SCM* trigger but do not put any schedule there.
 
-![](http://tinyurl.com/yazn2r74)
+![](http://tinyurl.com/yazn2r74){width=80% heigh=auto}
 
 Now, the [Git Plugin](https://wiki.jenkins.io/display/JENKINS/Git+Plugin) will allow you to trigger a build calling the following url:
 
@@ -46,7 +46,7 @@ E.g.:
 
 Once this url is called you should be able to see some activity on the *Git Pooling Log*:
 
-![](http://tinyurl.com/y9qnole6)
+![](http://tinyurl.com/y9qnole6){width=80% heigh=auto}
 
 Now you can create a *git hook* that will trigger this *URL* on every commit.
 

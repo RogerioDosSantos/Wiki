@@ -66,11 +66,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Share a volume with Jenkins Server Docker container. E.g.: <code>-v $/c/Users:/var/jenkins_home/host</code></p>
 <p>On Jenkins, configure to monitor the pipeline:</p>
 <figure>
-<img src="http://tinyurl.com/yblfcvbm" />
+<img src="http://tinyurl.com/yblfcvbm" heigh="auto" style="width:80.0%" />
 </figure>
 <p>Enable the <em>Pool SCM</em> trigger but do not put any schedule there.</p>
 <figure>
-<img src="http://tinyurl.com/yazn2r74" />
+<img src="http://tinyurl.com/yazn2r74" heigh="auto" style="width:80.0%" />
 </figure>
 <p>Now, the <a href="https://wiki.jenkins.io/display/JENKINS/Git+Plugin">Git Plugin</a> will allow you to trigger a build calling the following url:</p>
 <p><code>http://yourserver/git/notifyCommit?url=&lt;path_of_git_repository&gt;[&amp;branches=branch1[,branch2]*][&amp;sha1=&lt;commit ID&gt;]</code></p>
@@ -78,7 +78,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>http://localhost:8080/git/notifyCommit?url=~/host/roger/git/roger/examples/jenkins</code></p>
 <p>Once this url is called you should be able to see some activity on the <em>Git Pooling Log</em>:</p>
 <figure>
-<img src="http://tinyurl.com/y9qnole6" />
+<img src="http://tinyurl.com/y9qnole6" heigh="auto" style="width:80.0%" />
 </figure>
 <p>Now you can create a <em>git hook</em> that will trigger this <em>URL</em> on every commit.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Add a hook command on git</span>
