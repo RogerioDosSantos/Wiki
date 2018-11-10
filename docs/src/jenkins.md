@@ -10,7 +10,6 @@ The [Jenkins]( https://jenkins.io/ ) Continuous Integration and Delivery server
 
 `docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword` : Retrieve the initial Administrator password
 
-
 ## Proxy
 
 If even after the proxy is configured in the docker image you still getting the **Offiline** message because the *proxy certificate* is not installed. You can change the configuration to do not use *SSL* by executing the commands below:
@@ -23,5 +22,40 @@ Change the line: `<url>https://updates.jenkins.io/update-center.json</url></url>
 
 Restart the Server
 
+## How-To
 
+### CI/CD from local git repository
+
+Share a volume with Jenkins Server Docker container. E.g.: `-v $/c/Users:/var/jenkins_home/host`
+
+On Jenkins, configure to monitor the pipeline:
+
+![](http://tinyurl.com/yblfcvbm)
+
+Enable the *Pool SCM* trigger but do not put any schedule there.
+
+![](http://tinyurl.com/yazn2r74)
+
+Now, the [Git Plugin](https://wiki.jenkins.io/display/JENKINS/Git+Plugin) will allow you to trigger a build calling the following url:
+
+`http://yourserver/git/notifyCommit?url=<path_of_git_repository>[&branches=branch1[,branch2]*][&sha1=<commit ID>]`
+
+E.g.: 
+
+`http://localhost:8080/git/notifyCommit?url=~/host/roger/git/roger/examples/jenkins`
+
+Once this url is called you should be able to see some activity on the *Git Pooling Log*:
+
+![](http://tinyurl.com/y9qnole6)
+
+Now you can create a *git hook* that will trigger this *URL* on every commit.
+
+```bash
+# Add a hook command on git
+echo 'curl http://yourserver/git/notifyCommit?url=<path_of_git_repository>' >> <your_repository>/.git/hooks/post-commit
+```
+
+**Note** if you are in a *sub-module*, your hooks folder will be inside the main repository:
+
+`<main_repository>/.git/modules/<your_submodule_location>/hooks`
 

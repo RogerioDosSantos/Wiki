@@ -6,6 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="../resources/style.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -24,5 +61,29 @@
 <p>Change the line: <code>&lt;url&gt;https://updates.jenkins.io/update-center.json&lt;/url&gt;&lt;/url&gt;</code> to <code>&lt;url&gt;http://updates.jenkins.io/update-center.json&lt;/url&gt;</code></p>
 <p><code>docker cp ./hudson.model.UpdateCenter.xml jenkins:/var/jenkins_home/</code>: Copy the configuration file back to the docker container</p>
 <p>Restart the Server</p>
+<h2 id="how-to">How-To</h2>
+<h3 id="cicd-from-local-git-repository">CI/CD from local git repository</h3>
+<p>Share a volume with Jenkins Server Docker container. E.g.: <code>-v $/c/Users:/var/jenkins_home/host</code></p>
+<p>On Jenkins, configure to monitor the pipeline:</p>
+<figure>
+<img src="http://tinyurl.com/yblfcvbm" />
+</figure>
+<p>Enable the <em>Pool SCM</em> trigger but do not put any schedule there.</p>
+<figure>
+<img src="http://tinyurl.com/yazn2r74" />
+</figure>
+<p>Now, the <a href="https://wiki.jenkins.io/display/JENKINS/Git+Plugin">Git Plugin</a> will allow you to trigger a build calling the following url:</p>
+<p><code>http://yourserver/git/notifyCommit?url=&lt;path_of_git_repository&gt;[&amp;branches=branch1[,branch2]*][&amp;sha1=&lt;commit ID&gt;]</code></p>
+<p>E.g.:</p>
+<p><code>http://localhost:8080/git/notifyCommit?url=~/host/roger/git/roger/examples/jenkins</code></p>
+<p>Once this url is called you should be able to see some activity on the <em>Git Pooling Log</em>:</p>
+<figure>
+<img src="http://tinyurl.com/y9qnole6" />
+</figure>
+<p>Now you can create a <em>git hook</em> that will trigger this <em>URL</em> on every commit.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Add a hook command on git</span>
+<span class="kw">echo</span> <span class="st">&#39;curl http://yourserver/git/notifyCommit?url=&lt;path_of_git_repository&gt;&#39;</span> <span class="kw">&gt;&gt;</span> <span class="kw">&lt;</span>your_repository<span class="kw">&gt;</span>/.git/hooks/post-commit</code></pre></div>
+<p><strong>Note</strong> if you are in a <em>sub-module</em>, your hooks folder will be inside the main repository:</p>
+<p><code>&lt;main_repository&gt;/.git/modules/&lt;your_submodule_location&gt;/hooks</code></p>
 </body>
 </html>
