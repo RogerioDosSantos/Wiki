@@ -16,6 +16,8 @@
 
 `usermod -d /home/<new name> -m -g <new name> -l <new name> <old name>` : Change the user. This changes the name, the group, the home directory and ownership and group of of that directory to the new ones, along with all the files.
 
+`usermod --password <password> <user>`: Change a password of an user.
+
 `groups` : list all groups for the current user
 
 `/etc/passwd` : File with a list of all users
@@ -109,6 +111,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `which <program>` : Inform where a program is located.
 
 `uname -a` : Get the full OS version
+
+`lsb_release -a`: Display the Linux distribution. Operational System ID, Description. Codename and version. In case lsb_release is not available you can execute the following: `cat /etc/*-release`
 
 `/sbin/ldconfig -p`: Show the list of libraries that were used by the system and/or is available on the *cache*
 
@@ -219,8 +223,6 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `gpg -d ./backup.tgz.gpg | tar xz` : Uncompress the encrypted backup into the current directory.
 
 `uuidgen` : Create a GUID
-
-`lsb_release -a`: Display the Operation System ID, Description. Codename and version.
 
 `dpkg --print-architecture`: Display the user space architecture the package manager uses.
 

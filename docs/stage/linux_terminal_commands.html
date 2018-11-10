@@ -58,6 +58,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>groupadd &lt;group_name&gt;</code>: Add a group</p>
 <p><code>usermod -aG &lt;group1&gt;,&lt;group2&gt;,&lt;etc..&gt; &lt;user name&gt;</code> : change the group of the user</p>
 <p><code>usermod -d /home/&lt;new name&gt; -m -g &lt;new name&gt; -l &lt;new name&gt; &lt;old name&gt;</code> : Change the user. This changes the name, the group, the home directory and ownership and group of of that directory to the new ones, along with all the files.</p>
+<p><code>usermod --password &lt;password&gt; &lt;user&gt;</code>: Change a password of an user.</p>
 <p><code>groups</code> : list all groups for the current user</p>
 <p><code>/etc/passwd</code> : File with a list of all users</p>
 <p><code>/etc/group</code> : File with a list of all groups</p>
@@ -110,6 +111,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>[[shutdown]] -r now</code> : Restart the device</p>
 <p><code>which &lt;program&gt;</code> : Inform where a program is located.</p>
 <p><code>uname -a</code> : Get the full OS version</p>
+<p><code>lsb_release -a</code>: Display the Linux distribution. Operational System ID, Description. Codename and version. In case lsb_release is not available you can execute the following: <code>cat /etc/*-release</code></p>
 <p><code>/sbin/ldconfig -p</code>: Show the list of libraries that were used by the system and/or is available on the <em>cache</em></p>
 <p><code>/sbin/ldconfig -p | grep stdc++.so</code>: Return the libstdc++ library version installed on the machine. Example of return: <code>libstdc++.so.6 (libc6,soft-float) =&gt; /usr/lib/libstdc++.so.6</code>. You can get the compatible versions for <em>libstdc++</em> by using the following command on the lib found: <code>strings /usr/lib/libstdc++.so.6 | grep LIBCXX</code></p>
 <p><code>/sbin/ldconfig -p | grep libc.so</code>: Return the <em>libc</em> library version installed on the machine.</p>
@@ -165,7 +167,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>tar -cz &lt;directory to backup&gt; | gpg -c -o ./backup.tgz.gpg</code> : Execute an encrypted compressed backup. E.g.: <code>tar -cz ./safe00/ | gpg -c -o ./backup.tgz.gpg</code></p>
 <p><code>gpg -d ./backup.tgz.gpg | tar xz</code> : Uncompress the encrypted backup into the current directory.</p>
 <p><code>uuidgen</code> : Create a GUID</p>
-<p><code>lsb_release -a</code>: Display the Operation System ID, Description. Codename and version.</p>
 <p><code>dpkg --print-architecture</code>: Display the user space architecture the package manager uses.</p>
 <p><code>dpkg --add-architecture amd64</code>: Add 64bits user space architecture on the package manager.</p>
 <p><code>apt-get -f install</code>: Fix system with broken dependencies in place</p>
