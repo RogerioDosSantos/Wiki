@@ -85,5 +85,63 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">echo</span> <span class="st">&#39;curl http://yourserver/git/notifyCommit?url=&lt;path_of_git_repository&gt;&#39;</span> <span class="kw">&gt;&gt;</span> <span class="kw">&lt;</span>your_repository<span class="kw">&gt;</span>/.git/hooks/post-commit</code></pre></div>
 <p><strong>Note</strong> if you are in a <em>sub-module</em>, your hooks folder will be inside the main repository:</p>
 <p><code>&lt;main_repository&gt;/.git/modules/&lt;your_submodule_location&gt;/hooks</code></p>
+<h3 id="pipeline---run-commands-from-container">Pipeline - Run commands from Container</h3>
+<pre class="jenkins"><code>pipeline {
+    agent {
+        label &#39;master&#39;
+    }
+    stages {
+        stage(&#39;build&#39;) {
+            agent {
+                docker {
+                    image &#39;conanio/gcc49-x86&#39;
+                }
+            }
+            steps {
+                echo &quot; - Building&quot;
+                sh &#39;conan -v&#39;
+            }
+        }
+    }
+}</code></pre>
+<h3 id="pipeline---run-commands-from-container-file">Pipeline - Run commands from Container file</h3>
+<pre class="jenkins"><code>pipeline {
+    agent {
+        label &#39;master&#39;
+    }
+    stages {
+        stage(&#39;build&#39;) {
+            agent {
+                dockerfile {
+                    filename &#39;build.docker&#39;
+                    additionalBuildArgs &#39;--build-arg version=0.0.1&#39;
+                    args &#39;-v builder_data:/home/conan/.conan/data&#39;
+                }
+            }
+            steps {
+                echo &quot; - Building&quot;
+                sh &#39;conan -v&#39;
+            }
+        }
+    }
+}</code></pre>
+<h3 id="pipeline---cleanup-of-images-volumes-and-containers">Pipeline - Cleanup of Images, Volumes and Containers</h3>
+<pre class="jenkins"><code>pipeline {
+    agent {
+        label &#39;master&#39;
+    }
+
+    stage(&#39;Dangling Containers&#39;) {
+        sh &#39;docker ps -q -f status=exited | xargs --no-run-if-empty docker rm&#39;
+    }
+
+    stage(&#39;Dangling Images&#39;) {
+        sh &#39;docker images -q -f dangling=true | xargs --no-run-if-empty docker rmi&#39;
+    }
+
+    stage(&#39;Dangling Volumes&#39;) {
+        sh &#39;docker volume ls -qf dangling=true | xargs -r docker volume rm&#39;
+    }
+}</code></pre>
 </body>
 </html>

@@ -59,3 +59,72 @@ echo 'curl http://yourserver/git/notifyCommit?url=<path_of_git_repository>' >> <
 
 `<main_repository>/.git/modules/<your_submodule_location>/hooks`
 
+### Pipeline - Run commands from Container
+
+```jenkins
+pipeline {
+    agent {
+        label 'master'
+    }
+    stages {
+        stage('build') {
+            agent {
+                docker {
+                    image 'conanio/gcc49-x86'
+                }
+            }
+            steps {
+                echo " - Building"
+                sh 'conan -v'
+            }
+        }
+    }
+}
+``` 
+
+### Pipeline - Run commands from Container file
+
+```jenkins
+pipeline {
+    agent {
+        label 'master'
+    }
+    stages {
+        stage('build') {
+            agent {
+                dockerfile {
+                    filename 'build.docker'
+                    additionalBuildArgs '--build-arg version=0.0.1'
+                    args '-v builder_data:/home/conan/.conan/data'
+                }
+            }
+            steps {
+                echo " - Building"
+                sh 'conan -v'
+            }
+        }
+    }
+}
+``` 
+
+### Pipeline - Cleanup of Images, Volumes and Containers
+
+```jenkins
+pipeline {
+    agent {
+        label 'master'
+    }
+
+    stage('Dangling Containers') {
+        sh 'docker ps -q -f status=exited | xargs --no-run-if-empty docker rm'
+    }
+
+    stage('Dangling Images') {
+        sh 'docker images -q -f dangling=true | xargs --no-run-if-empty docker rmi'
+    }
+
+    stage('Dangling Volumes') {
+        sh 'docker volume ls -qf dangling=true | xargs -r docker volume rm'
+    }
+}
+``` 
