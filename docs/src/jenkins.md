@@ -128,3 +128,52 @@ pipeline {
     }
 }
 ``` 
+
+### Configure Global Pipelines
+
+The descriptions below has a summary on how to configure *Global Pipelines*, limited to its basic. [Here](https://jenkins.io/doc/book/pipeline/syntax/) you can find the full document for additional information. 
+
+#### Create the Global Pipeline project
+
+The project should have at least the following folder structure
+
+```
+/<project_directory>
+└── vars
+    └── <function_name>.groovy
+```
+
+The function name should be in the following format:
+
+```groovy
+//vars/<function_name>.groovy
+
+def call(String project_name) {
+    pipeline {
+        agent any
+        parameters {
+            string(name: 'string_parameter', defaultValue: 'default_value', description: 'description')
+            choice(name: 'choice_parameter', choices: ['value_0', 'value_2', 'value_2'], description: 'description')
+        }
+        ...
+    }
+}
+```
+
+#### Add your function in the Global Pipelines configuration
+
+Then *Global Pipelines configuration* can be found in the *Configure System*
+
+![](http://tinyurl.com/y8vd8ogn)
+
+#### Use the Global Pipeline
+
+You can consume the configuration in the following way into the *Jenkins* file:
+
+```groovy
+// JenkinsFile
+
+@Library('common_pipelline') _
+<function_name>('build')
+```
+

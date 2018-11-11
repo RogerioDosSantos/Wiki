@@ -143,5 +143,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         sh &#39;docker volume ls -qf dangling=true | xargs -r docker volume rm&#39;
     }
 }</code></pre>
+<h3 id="configure-global-pipelines">Configure Global Pipelines</h3>
+<p>The descriptions below has a summary on how to configure <em>Global Pipelines</em>, limited to its basic. <a href="https://jenkins.io/doc/book/pipeline/syntax/">Here</a> you can find the full document for additional information.</p>
+<h4 id="create-the-global-pipeline-project">Create the Global Pipeline project</h4>
+<p>The project should have at least the following folder structure</p>
+<pre><code>/&lt;project_directory&gt;
+└── vars
+    └── &lt;function_name&gt;.groovy</code></pre>
+<p>The function name should be in the following format:</p>
+<pre class="groovy"><code>//vars/&lt;function_name&gt;.groovy
+
+def call(String project_name) {
+    pipeline {
+        agent any
+        parameters {
+            string(name: &#39;string_parameter&#39;, defaultValue: &#39;default_value&#39;, description: &#39;description&#39;)
+            choice(name: &#39;choice_parameter&#39;, choices: [&#39;value_0&#39;, &#39;value_2&#39;, &#39;value_2&#39;], description: &#39;description&#39;)
+        }
+        ...
+    }
+}</code></pre>
+<h4 id="add-your-function-in-the-global-pipelines-configuration">Add your function in the Global Pipelines configuration</h4>
+<p>Then <em>Global Pipelines configuration</em> can be found in the <em>Configure System</em></p>
+<figure>
+<img src="http://tinyurl.com/y8vd8ogn" />
+</figure>
+<h4 id="use-the-global-pipeline">Use the Global Pipeline</h4>
+<p>You can consume the configuration in the following way into the <em>Jenkins</em> file:</p>
+<pre class="groovy"><code>// JenkinsFile
+
+@Library(&#39;common_pipelline&#39;) _
+commonPipeline(&#39;build&#39;)</code></pre>
 </body>
 </html>
