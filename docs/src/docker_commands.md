@@ -166,3 +166,47 @@ To make the bind mount permanent you can  change the `/etc/fstab` file
 # <device>  <dir> <type> <options> <dump> <pass>
 /mnt/c  /c  none  bind  0 0
 ```
+
+## How-To
+
+### Create an alpine image with docker client
+
+To have the most recent client go to the [URL below](https://download.docker.com/linux/static/stable/x86_64)
+
+```DockerFile
+ARG DOCKER_CLI_VERSION="docker-18.06.1-ce"
+ENV DOWNLOAD_URL="https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLI_VERSION.tgz"
+
+# install docker client
+RUN apk --update add curl \
+    && mkdir -p /tmp/download \
+    # && curl -L $DOWNLOAD_URL | tar -xz -C /tmp/download \
+		&& curl -L https://download.docker.com/linux/static/stable/x86_64/docker-docker-18.06.1-ce.tgz | tar -xz -C /tmp/download
+    && mv /tmp/download/docker/docker /usr/local/bin/ \
+    && rm -rf /tmp/download \
+    && apk del curl \
+    && rm -rf /var/cache/apk/*
+```
+
+### Create an debian image with docker client
+
+```DockerFile
+# Install Docker Client
+RUN echo "*** Install Docker Client - Start" \
+    && apt-get update \
+    && apt-get install sudo -y \
+    && usermod -aG sudo jenkins \
+    && echo '%sudo ALL=(ALL:ALL) ALL' | EDITOR='tee -a' visudo \
+    && echo 'jenkins ALL=(ALL) NOPASSWD: ALL' | EDITOR='tee -a' visudo \
+    && mkdir -p /tmp/docker \
+    && wget -P /tmp/docker https://download.docker.com/linux/debian/dists/stretch/pool/stable/amd64/docker-ce_18.06.1~ce~3-0~debian_amd64.deb \
+    && dpkg -i /tmp/docker/docker-ce_18.06.1~ce~3-0~debian_amd64.deb || true \
+    && apt-get -f -y install \
+    && dpkg -i /tmp/docker/docker-ce_18.06.1~ce~3-0~debian_amd64.deb \
+    && rm -rf /tmp/docker \
+    && mv /usr/bin/docker /usr/bin/docker_program \
+    && echo '#!/usr/bin/env bash' | tee -a /usr/bin/docker \
+    && echo 'sudo docker_program "$@"' | tee -a /usr/bin/docker \
+    && chmod +x /usr/bin/docker \
+    && echo "*** Install Docker Client - END"
+```

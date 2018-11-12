@@ -135,5 +135,39 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>To make the bind mount permanent you can change the <code>/etc/fstab</code> file</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># &lt;device&gt;  &lt;dir&gt; &lt;type&gt; &lt;options&gt; &lt;dump&gt; &lt;pass&gt;</span>
 <span class="kw">/mnt/c</span>  /c  none  bind  0 0</code></pre></div>
+<h2 id="how-to">How-To</h2>
+<h3 id="create-an-alpine-image-with-docker-client">Create an alpine image with docker client</h3>
+<p>To have the most recent client go to the <a href="https://download.docker.com/linux/static/stable/x86_64">URL below</a></p>
+<div class="sourceCode"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile">ARG DOCKER_CLI_VERSION=<span class="st">&quot;docker-18.06.1-ce&quot;</span>
+<span class="kw">ENV</span> DOWNLOAD_URL=<span class="st">&quot;https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLI_VERSION.tgz&quot;</span>
+
+<span class="co"># install docker client</span>
+<span class="kw">RUN</span> apk --update add curl \
+    &amp;&amp; mkdir -p /tmp/download \
+    <span class="co"># &amp;&amp; curl -L $DOWNLOAD_URL | tar -xz -C /tmp/download \</span>
+<span class="co">        &amp;&amp; curl -L https://download.docker.com/linux/static/stable/x86_64/docker-docker-18.06.1-ce.tgz | tar -xz -C /tmp/download</span>
+    &amp;&amp; mv /tmp/download/docker/docker /usr/local/bin/ \
+    &amp;&amp; rm -rf /tmp/download \
+    &amp;&amp; apk del curl \
+    &amp;&amp; rm -rf /var/cache/apk/*</code></pre></div>
+<h3 id="create-an-debian-image-with-docker-client">Create an debian image with docker client</h3>
+<div class="sourceCode"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span class="co"># Install Docker Client</span>
+<span class="kw">RUN</span> echo <span class="st">&quot;*** Install Docker Client - Start&quot;</span> \
+    &amp;&amp; apt-get update \
+    &amp;&amp; apt-get install sudo -y \
+    &amp;&amp; usermod -aG sudo jenkins \
+    &amp;&amp; echo <span class="st">&#39;%sudo ALL=(ALL:ALL) ALL&#39;</span> | EDITOR=<span class="st">&#39;tee -a&#39;</span> visudo \
+    &amp;&amp; echo <span class="st">&#39;jenkins ALL=(ALL) NOPASSWD: ALL&#39;</span> | EDITOR=<span class="st">&#39;tee -a&#39;</span> visudo \
+    &amp;&amp; mkdir -p /tmp/docker \
+    &amp;&amp; wget -P /tmp/docker https://download.docker.com/linux/debian/dists/stretch/pool/stable/amd64/docker-ce_18.06.1~ce~3-0~debian_amd64.deb \
+    &amp;&amp; dpkg -i /tmp/docker/docker-ce_18.06.1~ce~3-0~debian_amd64.deb || true \
+    &amp;&amp; apt-get -f -y install \
+    &amp;&amp; dpkg -i /tmp/docker/docker-ce_18.06.1~ce~3-0~debian_amd64.deb \
+    &amp;&amp; rm -rf /tmp/docker \
+    &amp;&amp; mv /usr/bin/docker /usr/bin/docker_program \
+    &amp;&amp; echo <span class="st">&#39;#!/usr/bin/env bash&#39;</span> | tee -a /usr/bin/docker \
+    &amp;&amp; echo <span class="st">&#39;sudo docker_program &quot;$@&quot;&#39;</span> | tee -a /usr/bin/docker \
+    &amp;&amp; chmod +x /usr/bin/docker \
+    &amp;&amp; echo <span class="st">&quot;*** Install Docker Client - END&quot;</span></code></pre></div>
 </body>
 </html>
