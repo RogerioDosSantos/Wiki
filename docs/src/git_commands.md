@@ -293,6 +293,16 @@ git merge test
 git push origin master
 ```
 
+The example below merge the test branch into the master branch in a single new commit.
+
+```shell
+git checkout master
+git pull origin master
+git merge --squash test
+git commit -m "New commit message"
+git push origin master
+```
+
 ## Installation
 
 ### Getting the latest git version on Ubuntu

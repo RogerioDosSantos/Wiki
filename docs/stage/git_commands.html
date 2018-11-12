@@ -225,6 +225,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 git pull origin master
 git merge test
 git push origin master</code></pre>
+<p>The example below merge the test branch into the master branch in a single new commit.</p>
+<pre class="shell"><code>git checkout master
+git pull origin master
+git merge --squash test
+git commit -m &quot;New commit message&quot;
+git push origin master</code></pre>
 <h2 id="installation">Installation</h2>
 <h3 id="getting-the-latest-git-version-on-ubuntu">Getting the latest git version on Ubuntu</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Add the PPA to the local package index</span>
