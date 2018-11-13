@@ -4,6 +4,7 @@
 
 [Conan](https://docs.conan.io) is a decentralized package manager with a client-server architecture. This means that clients can fetch packages from, as well as upload packages to, different servers ("remotes"), similar to the "git" push-pull model to/from git remotes.
 
+
 ## Commands
 
 `pip install conan`: Install *Conan* client. Note: You need to have *Python 2.7 or 3.X* distribution installed on your machine.
@@ -15,6 +16,8 @@
 `conan remove <package_name>` : Removes a package from the cache. Note: You can use expressions (E.g.:  conan remove boost*)
 
 `conan search "<search_word>*" -r=conan-center` : Search for a package based in the search word passed.
+
+`conan install <package_name>/<package_version>@<package_owner>/<package_chanel>` : Install a specific package. E.g.: `Poco/1.9.0@pocoproject/stable`
 
 `conan install <source_folder> --install-folder <stage_folder>`: Prepare a folder for compilation. The source folde is the folder where the `conanfile.py` file is located. After the preparation you can call the command `conan build` to build the application. E.g.: `conan install . --install-folder stage`
 
@@ -28,9 +31,49 @@
 
 `conan upload <full_package_name> -r <repository_server_name> -all`: Upload a package to a repository server. The `<full_package_name>` uses the `<NAME>/<VERSION>@<USER>/<CHANNEL>` format.
 
+`conan profile show <profile>`: Show the content of a profile. If only the profile name is passed, it will look on the default path '.conan/profiles'. If a custom directory is passed it will display the profile of the custom directory. E.g.: `conan profile show default`
+
+`conan profile update <options> <profile>`: Update the options of a profile. E.g.: `conan profile update options.branch=dev default`
+
+``
+
 ## Environment Variables
 
 `CONAN_USER_HOME` : Define the location of the cache directory (Default: ~/.conan/data)
+
+## conanfile.py
+
+### Methods Calling Sequence
+
+#### When executing conan install command
+
+1- config_options()
+2- configure()
+3- requirements()
+4- build_requirements()
+5- package_id()
+6- package_info()
+7- deploy()
+
+#### When executing conan build command
+
+1- imports()
+2- build()
+
+#### When executing conan create command
+
+1- config_options()
+2- configure()
+3- requirements()
+4- package_id()
+5- build_requirements()
+6- build_id()
+7- system_requirements()
+8- source()
+9- imports()
+10- build()
+11- package()
+12- package_info()
 
 ## CMake Configuration
 

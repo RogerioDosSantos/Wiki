@@ -60,23 +60,35 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>conan search &lt;package_name&gt;</code> : Details on the package manager</p>
 <p><code>conan remove &lt;package_name&gt;</code> : Removes a package from the cache. Note: You can use expressions (E.g.: conan remove boost*)</p>
 <p><code>conan search &quot;&lt;search_word&gt;*&quot; -r=conan-center</code> : Search for a package based in the search word passed.</p>
+<p><code>conan install &lt;package_name&gt;/&lt;package_version&gt;@&lt;package_owner&gt;/&lt;package_chanel&gt;</code> : Install a specific package. E.g.: <code>Poco/1.9.0@pocoproject/stable</code></p>
 <p><code>conan install &lt;source_folder&gt; --install-folder &lt;stage_folder&gt;</code>: Prepare a folder for compilation. The source folde is the folder where the <code>conanfile.py</code> file is located. After the preparation you can call the command <code>conan build</code> to build the application. E.g.: <code>conan install . --install-folder stage</code></p>
 <p><code>conan build &lt;source_folder&gt; --build-folder &lt;stage_folder&gt;</code>: Build the application in the folder. The <code>&lt;source_folder&gt;</code> is the folder where the <code>conanfile.py</code> is located. The end result will be in the <code>&lt;stage_folder&gt;/bin</code> folder. Note: You can execute all process for creating the package (<code>install</code>, <code>build</code>, <code>packaging</code>) by using the command <code>conan create</code>. E.g.: <code>conan build . --build-folder stage</code></p>
 <p><code>conan create &lt;source_folder&gt; &lt;package_name&gt;/&lt;package_state&gt;</code>: Create a package from the source. The <code>&lt;source_folder&gt;</code> is the folder where the <code>conanfile.py</code> is located. E.g.: <code>conan create . my_project/dev</code></p>
 <p><code>conan remote add &lt;repository_server_name&gt; &lt;repository_server_url&gt; [false]</code>: Add a <em>repository server</em>. If <code>false</code> is informed the remote will not look for <em>SSL</em> autentication <code>[Verify SSL: True]</code></p>
 <p><code>conan user -p &lt;password&gt; -r &lt;repository_server_name&gt; &lt;user_name&gt;</code>: Log an user to the a <em>repository server</em></p>
 <p><code>conan upload &lt;full_package_name&gt; -r &lt;repository_server_name&gt; -all</code>: Upload a package to a repository server. The <code>&lt;full_package_name&gt;</code> uses the <code>&lt;NAME&gt;/&lt;VERSION&gt;@&lt;USER&gt;/&lt;CHANNEL&gt;</code> format.</p>
+<p><code>conan profile show &lt;profile&gt;</code>: Show the content of a profile. If only the profile name is passed, it will look on the default path '.conan/profiles'. If a custom directory is passed it will display the profile of the custom directory. E.g.: <code>conan profile show default</code></p>
+<p><code>conan profile update &lt;options&gt; &lt;profile&gt;</code>: Update the options of a profile. E.g.: <code>conan profile update options.branch=dev default</code></p>
+<p>``</p>
 <h2 id="environment-variables">Environment Variables</h2>
 <p><code>CONAN_USER_HOME</code> : Define the location of the cache directory (Default: ~/.conan/data)</p>
+<h2 id="conanfile.py">conanfile.py</h2>
+<h3 id="methods-calling-sequence">Methods Calling Sequence</h3>
+<h4 id="when-executing-conan-install-command">When executing conan install command</h4>
+<p>1- config_options() 2- configure() 3- requirements() 4- build_requirements() 5- package_id() 6- package_info() 7- deploy()</p>
+<h4 id="when-executing-conan-build-command">When executing conan build command</h4>
+<p>1- imports() 2- build()</p>
+<h4 id="when-executing-conan-create-command">When executing conan create command</h4>
+<p>1- config_options() 2- configure() 3- requirements() 4- package_id() 5- build_requirements() 6- build_id() 7- system_requirements() 8- source() 9- imports() 10- build() 11- package() 12- package_info()</p>
 <h2 id="cmake-configuration">CMake Configuration</h2>
 <h3 id="basic-configuration">Basic configuration</h3>
 <div class="sourceCode"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span class="kw">project</span>(project_name)
 <span class="kw">cmake_minimum_required</span>(<span class="ot">VERSION</span> 2.8.12)
 <span class="co"># add_definitions(&quot;-std=c++11&quot;)</span>
-<span class="kw">include</span>(<span class="dv">${CMAKE_BINARY_DIR}</span>/conanbuildinfo.cmake)
+<span class="kw">include</span>(<span class="va">${CMAKE_BINARY_DIR}</span>/conanbuildinfo.cmake)
 <span class="fu">conan_basic_setup</span>()
 <span class="kw">add_executable</span>(project_name ./src/main.cpp)
-<span class="kw">target_link_libraries</span>(project_name <span class="dv">${CONAN_LIBS}</span>)</code></pre></div>
+<span class="kw">target_link_libraries</span>(project_name <span class="va">${CONAN_LIBS}</span>)</code></pre></div>
 <h3 id="allow-a-different-configuration-if-is-using-conan">Allow a different configuration if is using Conan</h3>
 <div class="sourceCode"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span class="kw">if</span>(CONAN_SYSREQUIRES_MODE)
     <span class="kw">message</span>(<span class="st">&quot;*** Compiling using Conan ***&quot;</span>)
