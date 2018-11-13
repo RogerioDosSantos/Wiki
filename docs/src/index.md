@@ -160,6 +160,7 @@
 
 - [LDAP]( ./ldap.html )
 - [0MQ](./0mq.html)
+- [OpenSSL]( ./openssl.html )
 
 ## Patterns 
 
