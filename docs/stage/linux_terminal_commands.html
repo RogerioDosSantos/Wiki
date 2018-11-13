@@ -86,7 +86,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>if [ -d &lt;directory&gt; ]; then; &lt;code&gt;; fi</code>: Check if directory exits</p>
 <p><code>if [ -f &lt;file_path&gt; ]; then; &lt;code&gt;; fi</code>: Check if file exits</p>
 <p><code>wc -l &lt;file_path&gt;</code>: Get the amount of lines into a file.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="kw">f</span> in *<span class="kw">;</span> <span class="kw">do</span> <span class="kw">mv</span> <span class="st">&quot;</span><span class="ot">$f</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="ot">$f</span><span class="st">.tmp&quot;</span><span class="kw">;</span> <span class="kw">mv</span> <span class="st">&quot;</span><span class="ot">$f</span><span class="st">.tmp&quot;</span> <span class="st">&quot;</span><span class="kw">`echo</span> <span class="ot">$f</span> <span class="kw">|</span> <span class="kw">tr</span> <span class="st">&quot;[:upper:]&quot;</span> <span class="st">&quot;[:lower:]&quot;</span><span class="kw">`</span><span class="st">&quot;</span><span class="kw">;</span> <span class="kw">done</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="ex">f</span> in *<span class="kw">;</span> <span class="kw">do</span> <span class="fu">mv</span> <span class="st">&quot;</span><span class="va">$f</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$f</span><span class="st">.tmp&quot;</span><span class="kw">;</span> <span class="fu">mv</span> <span class="st">&quot;</span><span class="va">$f</span><span class="st">.tmp&quot;</span> <span class="st">&quot;</span><span class="kw">`</span><span class="bu">echo</span> <span class="va">$f</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="st">&quot;[:upper:]&quot;</span> <span class="st">&quot;[:lower:]&quot;</span><span class="kw">`</span><span class="st">&quot;</span><span class="kw">;</span> <span class="kw">done</span></code></pre></div>
 <p>: Rename all files of a directory to lower case.</p>
 <p><code>for f in *; do mv &quot;$f&quot; &quot;${f%.*}&quot; ; done</code> : Remove the last extension of all files</p>
 <p><code>tree</code> : Display the tree of directories and sub directories</p>
@@ -217,34 +217,34 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>/etc/hosts</code> : File with host mapping. If you want to resolve a name to a specific address you can add the <code>&lt;IP&gt; &lt;Name&gt;</code> on the beginning of this file.</p>
 <p><code>ssh &lt;user_name&gt;@&lt;computer&gt;</code>: Connect using <em>ssh</em> to a remote computer.</p>
 <p><code>ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 &lt;user_name&gt;@&lt;computer&gt;</code>: Connect to a device that contains the old <em>diffie-hellman-group1-sha1</em> encryption algorithm. The <em>OpenSSH</em> does not allows you to connect with old encryption algorithm by default. When this happens the following message will be displayed: <code>no matching key exchange method found. Their offer: diffie-hellman-group1-sha1</code>. If you want a more permanent solution without having to type it all the time, you can add the following on the <code>~/.ssh/config</code> file:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Host</span> <span class="kw">&lt;</span>device_ip<span class="kw">&gt;</span> KexAlgorithms +diffie-hellman-group1-sha1</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">Host</span> <span class="op">&lt;</span>device_ip<span class="op">&gt;</span> KexAlgorithms +diffie-hellman-group1-sha1</code></pre></div>
 <p><code>scp [-r] &lt;source file path&gt; &lt;username&gt;@&lt;destination device (ip)&gt;:&lt;destination path&gt;</code> : To copy a file from source to destination while logged into source device. Use -r to copy the folder.</p>
 <p><code>scp [-r] &lt;username&gt;@&lt;source device (ip)&gt;:&lt;source path&gt; &lt;destination file path&gt;</code> : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.</p>
 <h3 id="set-a-static-ip">Set a static IP</h3>
 <p>The file <code>/etc/network/interfaces</code> controls the startup network configuration. To config a static IP you can use the following configuration:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">auto</span> lo
-<span class="kw">iface</span> lo inet loopback
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">auto</span> lo
+<span class="ex">iface</span> lo inet loopback
 
 <span class="co">#Static IP description</span>
 <span class="co"># IPv4 address</span>
-<span class="kw">iface</span> eth0 inet static
-  <span class="kw">address</span> 192.168.0.100
-  <span class="kw">netmask</span> 255.255.255.0 
-  <span class="kw">network</span> 192.168.0.0 
-  <span class="kw">broadcast</span> 192.168.0.255
-  <span class="kw">gateway</span> 192.168.0.1</code></pre></div>
+<span class="ex">iface</span> eth0 inet static
+  <span class="ex">address</span> 192.168.0.100
+  <span class="ex">netmask</span> 255.255.255.0 
+  <span class="ex">network</span> 192.168.0.0 
+  <span class="ex">broadcast</span> 192.168.0.255
+  <span class="ex">gateway</span> 192.168.0.1</code></pre></div>
 <h3 id="installing-certificates">Installing Certificates</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Create a directory for extra CA certificates in /usr/share/ca-certificates:</span>
-<span class="kw">sudo</span> mkdir /usr/share/ca-certificates/extra
+<span class="ex">sudo</span> mkdir /usr/share/ca-certificates/extra
 
 <span class="co"># Copy the CA .crt file to this directory:</span>
-<span class="kw">sudo</span> cp my_certificate.crt /usr/share/ca-certificates/extra/ my_certificate.crt<span class="kw">`</span> 
+<span class="ex">sudo</span> cp my_certificate.crt /usr/share/ca-certificates/extra/ my_certificate.crt<span class="kw">`</span> 
 
 <span class="co"># Ensure the cert is in pem format:</span>
-<span class="kw">openssl</span> x509 -inform DER -outform PEM -in  my_certificate.crt -out my_certificate.crt
+<span class="ex">openssl</span> x509 -inform DER -outform PEM -in  my_certificate.crt -out my_certificate.crt
 
 <span class="co"># Let Ubuntu add the .crt file&#39;s path relative to /usr/share/ca-certificates to /etc/ca-certificates.conf:</span>
-<span class="kw">sudo</span> dpkg-reconfigure ca-certificates</code></pre></div>
+<span class="ex">sudo</span> dpkg-reconfigure ca-certificates</code></pre></div>
 <p><strong>Note</strong>: If you are using Ubuntu you might need to rename the certificate to <code>*.pem</code> to the dpkg-reconfigure command detected the certificate.</p>
 <h2 id="bash-files">Bash Files</h2>
 <p><code>#!/bin/bash</code> : Inform what interpreter should run the bash</p>
@@ -253,27 +253,28 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>read -p &quot;Press [Enter] key to continue&quot;</code> : Pause command</p>
 <p><code>&lt;variable&gt;=&quot;$(readlink -f &quot;&lt;relative path&quot;)&quot;</code> : Convert relative path to full path.</p>
 <p><code>apt-cache show &lt;program&gt;</code> : Show the version of a program</p>
+<p><code>apt-cache search &lt;program&gt;</code>: Search a package for the program</p>
 <h3 id="conditional-statements">Conditional Statements</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">
-<span class="kw">if [</span> <span class="ot">-d</span> <span class="st">&quot;</span><span class="ot">${directory}</span><span class="st">&quot;</span> <span class="kw"> ]</span>; <span class="kw">then</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="ot">-d</span> <span class="st">&quot;</span><span class="va">${directory}</span><span class="st">&quot;</span>  ]; then
   <span class="co"># Control will enter here if $DIRECTORY exists.</span>
-<span class="kw">fi</span>
+fi
   
-<span class="kw">if [</span> <span class="ot">!</span> <span class="ot">-d</span> <span class="st">&quot;</span><span class="ot">${directory}</span><span class="st">&quot;</span> <span class="kw"> ]</span>; <span class="kw">then</span>
+if [ <span class="ot">!</span> <span class="ot">-d</span> <span class="st">&quot;</span><span class="va">${directory}</span><span class="st">&quot;</span>  ]; then
   <span class="co"># Control will enter here if ${directory} does not exists.</span>
-<span class="kw">fi</span>
+fi
 
-<span class="kw">if [</span> <span class="ot">!</span> <span class="ot">-S</span> <span class="st">&quot;</span><span class="ot">${socket_file_path}</span><span class="st">&quot;</span><span class="kw"> ]</span>; <span class="kw">then</span>
+if [ <span class="ot">!</span> <span class="ot">-S</span> <span class="st">&quot;</span><span class="va">${socket_file_path}</span><span class="st">&quot;</span><span class="bu"> ]</span>; <span class="kw">then</span>
   <span class="co"># Control will enter if a socket file does not exists</span>
 <span class="kw">fi</span>
 
-<span class="kw">if [</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="st">&quot;</span><span class="ot">${file_path}</span><span class="st">&quot;</span><span class="kw"> ]</span>; <span class="kw">then</span>
+<span class="kw">if</span><span class="bu"> [</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="st">&quot;</span><span class="va">${file_path}</span><span class="st">&quot;</span><span class="bu"> ]</span>; <span class="kw">then</span>
   <span class="co"># Control will enter if a file does not exists</span>
 <span class="kw">fi</span></code></pre></div>
 <h3 id="looping">Looping</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">
-<span class="kw">for</span> <span class="kw">&lt;item&gt;</span> in <span class="st">&quot;${&lt;array&gt;[@]}&quot;</span><span class="kw">;</span> <span class="kw">do</span>
-  <span class="kw">echo</span> <span class="st">&quot;${&lt;item&gt;}&quot;</span>
+<span class="kw">for</span> <span class="op">&lt;</span><span class="ex">item</span><span class="op">&gt;</span> in <span class="st">&quot;${&lt;array&gt;[@]}&quot;</span><span class="kw">;</span> <span class="kw">do</span>
+  <span class="bu">echo</span> <span class="st">&quot;${&lt;item&gt;}&quot;</span>
 <span class="kw">done</span></code></pre></div>
 <h3 id="function-declaration-and-usage">Function declaration and usage</h3>
 <p><code>type &lt;command&gt;</code>: Inform the type of command. If it is a function it will show the function.</p>
@@ -282,11 +283,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="fu">function_name ()</span> 
 <span class="kw">{</span>
   <span class="co"># Usage: function_name &lt;out:arg1&gt; &lt;in:arg2&gt;</span>
-  <span class="kw">echo</span> <span class="st">&quot;arg1 = </span><span class="ot">$1</span><span class="st">&quot;</span>
-  <span class="kw">echo</span> <span class="st">&quot;arg2 = </span><span class="ot">$2</span><span class="st">&quot;</span>
+  <span class="bu">echo</span> <span class="st">&quot;arg1 = </span><span class="va">$1</span><span class="st">&quot;</span>
+  <span class="bu">echo</span> <span class="st">&quot;arg2 = </span><span class="va">$2</span><span class="st">&quot;</span>
 <span class="kw">}</span>
 
-<span class="kw">function_name</span> <span class="ot">$arg1</span> <span class="ot">$arg2</span></code></pre></div>
+<span class="ex">function_name</span> <span class="va">$arg1</span> <span class="va">$arg2</span></code></pre></div>
 <h2 id="file-system">File System</h2>
 <p><code>/opt</code> : Directory used for the installation of add-on application software packages</p>
 <p><code>/usr/local</code> : Directory used for the installation software locally.</p>
@@ -307,7 +308,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>E.g.: <code>http_proxy=&quot;http://my_user:my_password@host_ip:443&quot;</code></p>
 <p><em>Note:</em> Your password and user might not be needed.</p>
 <p><em>Note:</em> If your password has special characters as for example '@', you can replace is with the items of the following table:</p>
-<p>| Character | Replacement | |-----------|-------------| | @ | %40 | | : | %3A | | ! | %21 | | # | %23 | | $ | %24 |</p>
+<table>
+<thead>
+<tr class="header">
+<th>Character</th>
+<th>Replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>@</td>
+<td>%40</td>
+</tr>
+<tr class="even">
+<td>:</td>
+<td>%3A</td>
+</tr>
+<tr class="odd">
+<td>!</td>
+<td>%21</td>
+</tr>
+<tr class="even">
+<td>#</td>
+<td>%23</td>
+</tr>
+<tr class="odd">
+<td>$</td>
+<td>%24</td>
+</tr>
+</tbody>
+</table>
 <p>To add ips that should not use proxy and go direct to the destination you can add the exceptions into the <code>no_proxy</code> variable, as for example:</p>
 <p><code>export no_proxy=&quot;127.0.0.1&quot;</code> : To ignore the current computer</p>
 <p>## TFS ##</p>
@@ -345,10 +375,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>/etc/cron.monthly</code> : Directory that contains scrips that runs monthly.</p>
 <p><code>etc/crontab</code> : Main configuration cron file.</p>
 <h2 id="run-32bits-application-into-64bits-os">Run 32bits application into 64bits OS</h2>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> dpkg --add-architecture i386
-<span class="kw">sudo</span> apt-get update
-<span class="kw">sudo</span> apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
-<span class="kw">sudo</span> apt-get install multiarch-support</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> dpkg --add-architecture i386
+<span class="fu">sudo</span> apt-get update
+<span class="fu">sudo</span> apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+<span class="fu">sudo</span> apt-get install multiarch-support</code></pre></div>
 <h2 id="shared-libraries">Shared Libraries</h2>
 <p>Shared libraries on Linux should always be installed in the <strong>Linux system libraries path</strong>.</p>
 <p>You can use the <em>LD_LIBRARY_PATH</em> environment variable with a colon-separated set of directories where libraries should be searched for first, before the standard set of directories; this is useful when debugging a new library or using a nonstandard library for special purposes</p>

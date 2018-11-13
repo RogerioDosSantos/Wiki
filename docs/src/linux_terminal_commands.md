@@ -382,6 +382,8 @@ sudo dpkg-reconfigure ca-certificates
 
 `apt-cache show <program> ` : Show the version of a program
 
+`apt-cache search <program>`: Search a package for the program
+
 ### Conditional Statements ###
 
 ```bash
