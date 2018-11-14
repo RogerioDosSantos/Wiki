@@ -1,4 +1,4 @@
-# Linux Terminal Commands #
+# Linux Terminal Commands 
 
 ## User
 
@@ -89,7 +89,7 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `$(pwd -P | sed 's/\/mnt\/c\//c:\\\\/g' | sed 's/\//\\\\/g')`: Convert Linux path to Windows path when using Windows Linux Subsystem
 
-## Programs and OS ##
+## Programs and OS 
 
 `info <command name>`
   : List the information of a specific command. If you do not mention the <command name> it will list the command available.
@@ -262,6 +262,10 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `alias search=<name>`: Search if an alias already exist
 
+`apt-cache show <program> ` : Show the version of a program
+
+`apt-cache search <program>`: Search a package for the program
+
 ### Strings Manipulations
 
 `printf '%q' "<string>"`: Format string for shell scape
@@ -271,6 +275,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `echo <string_delimiter> | rev | cut -d'<delimiter> | rev' -f<position>`: Get a substring between delimiters in reverse order. E.g.: `echo "S1;S2;S3" | rev | cut -d';' -f1 | rev`
 
 `${<string_delimiter>##*<character>}`: Trim everything until the last specified character.
+
+`${<string_delimiter>#*<character>}`: Trim everything inclding the last specified character. E.g.: `${key=value#*=} >> "value"`
 
 `${<string_delimiter>%%<character>*}`: Get the string before a specific character.
 
@@ -379,10 +385,6 @@ sudo dpkg-reconfigure ca-certificates
 `read -p "Press [Enter] key to continue"` : Pause command
 
 `<variable>="$(readlink -f "<relative path")" ` : Convert relative path to full path.    
-
-`apt-cache show <program> ` : Show the version of a program
-
-`apt-cache search <program>`: Search a package for the program
 
 ### Conditional Statements ###
 
