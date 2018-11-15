@@ -395,5 +395,23 @@ if [ <span class="ot">!</span> <span class="ot">-S</span> <span class="st">&quot
 <span class="fu">sudo</span> mkdir -p /r
 <span class="fu">sudo</span> mount --bind /mnt/c /r
 <span class="bu">echo</span> <span class="st">&quot;DONE (New volume: /r=/mnt/c)&quot;</span></code></pre></div>
+<h3 id="read-user-input-with-defaut-value">Read user input with defaut value</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Read User into the us_user local variable with default value User</span>
+
+<span class="bu">local</span> <span class="va">us_user</span>
+<span class="bu">read</span> -p <span class="st">&quot;Enter user (Default: User): &quot;</span> <span class="va">us_user</span>
+<span class="va">us_user=${us_user:-</span>User<span class="va">}</span>
+
+<span class="bu">echo</span> <span class="st">&quot;Welcome: </span><span class="va">${us_user}</span><span class="st">&quot;</span></code></pre></div>
+<h3 id="ask-user-input-with-limited-options">Ask user input with limited options</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">local</span> <span class="va">ui_yes_no</span>
+<span class="kw">while</span> <span class="fu">true</span><span class="kw">;</span> <span class="kw">do</span>
+  <span class="bu">read</span> -p <span class="st">&quot;Would you like to install/update programs (yes(y)/no(n))? &quot;</span> <span class="va">ui_yes_no</span>
+  <span class="kw">case</span> <span class="va">$ui_yes_no</span><span class="kw"> in</span>
+      [Yy]* <span class="kw">)</span> <span class="ex">InstallPrograms</span><span class="kw">;</span> <span class="bu">break</span><span class="kw">;;</span>
+      [<span class="ex">Nn</span>]* ) <span class="bu">break</span><span class="kw">;;</span>
+      <span class="ex">*</span> ) <span class="bu">echo</span> <span class="st">&quot;Please answer yes or no.&quot;</span><span class="kw">;;</span>
+  <span class="kw">esac</span>
+<span class="kw">done</span></code></pre></div>
 </body>
 </html>

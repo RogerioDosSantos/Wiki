@@ -598,6 +598,50 @@ sudo mount --bind /mnt/c /r
 echo "DONE (New volume: /r=/mnt/c)"
 ```
 
+### Read user input with defaut value
+
+```bash
+# Read User into the us_user local variable with default value User
+
+local us_user
+read -p "Enter user (Default: User): " us_user
+us_user=${us_user:-User}
+
+echo "Welcome: ${us_user}"
+```
+
+### Ask user input with limited options
+
+```bash
+local ui_yes_no
+while true; do
+  read -p "Would you like to install/update programs (yes(y)/no(n))? " ui_yes_no
+  case $ui_yes_no in
+      [Yy]* ) InstallPrograms; break;;
+      [Nn]* ) break;;
+      * ) echo "Please answer yes or no.";;
+  esac
+done
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
