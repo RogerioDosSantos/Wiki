@@ -310,11 +310,11 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `echo -n <string> | md5sum`: Calculate the MD5 of an string
 
-## System ##
+## System 
 
 `dmesg` : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.
 
-## Network ##
+## Network 
 
 `netstat -lptu` : List the tcp ports in use and what programs are using it.
 
@@ -338,7 +338,7 @@ Host <device_ip> KexAlgorithms +diffie-hellman-group1-sha1
 
 `scp [-r] <username>@<source device (ip)>:<source path> <destination file path>` : To copy a file from source to destination while logged into destination device. Use -r to copy the folder.
 
-### Set a static IP ###
+### Set a static IP 
 
 The file `/etc/network/interfaces` controls the startup network configuration. To config a static IP you can use the following configuration:
 
@@ -374,7 +374,7 @@ sudo dpkg-reconfigure ca-certificates
 
 **Note**: If you are using Ubuntu you might need to rename the certificate to `*.pem` to the dpkg-reconfigure command detected the certificate.
 
-## Bash Files ##
+## Bash Files 
 
 `#!/bin/bash` : Inform what interpreter should run the bash
 
@@ -386,7 +386,7 @@ sudo dpkg-reconfigure ca-certificates
 
 `<variable>="$(readlink -f "<relative path")" ` : Convert relative path to full path.    
 
-### Conditional Statements ###
+### Conditional Statements 
 
 ```bash
 
@@ -407,7 +407,7 @@ if [ ! -f "${file_path}" ]; then
 fi
 ```
 
-### Looping ###
+### Looping 
 
 ```bash
 
@@ -417,7 +417,7 @@ done
 
 ```
 
-### Function declaration and usage ###
+### Function declaration and usage 
 
 `type <command>`: Inform the type of command. If it is a function it will show the function.
 
@@ -436,7 +436,7 @@ function_name $arg1 $arg2
 
 ```
   
-## File System ##
+## File System 
 
 `/opt` : Directory used for the installation of add-on application software packages
 
@@ -444,7 +444,7 @@ function_name $arg1 $arg2
 
 `sshfs -o idmap=user <username>@<remote machine IP>:<remote directory> <local directory>` : Mount a remote machine directory on the local machine. TODO: This command works however I need to add the fuse configuration part of it, otherwise we will get the user denied access.
 
-## Environment Variable ##
+## Environment Variable 
 
 `printenv <variable>` : Shows the environment variables
 
@@ -463,13 +463,13 @@ To reload the command configuration and have the variable set without have to cl
 
 `printenv TERM`: Show the color schema of the terminal.
 
-### Additional commands (Not available on all platforms) ###
+### Additional commands (Not available on all platforms) 
 
 `getenv <environment variable>` : Shows the environment variable value.
 
 `setenv <environment variable> <value` : Set the environment variable a value.
  
-## Web Proxy ##
+## Web Proxy 
 
 To give access to your command terminal access the Internet via an Web Proxy, you can set the following environment variables `http_proxy, https_proxy, ftp_proxy, socks_proxy or all_proxy` with the the following values: `http://<user>:<password>@<host>:<port>`. 
 
@@ -491,11 +491,11 @@ E.g.: `http_proxy="http://my_user:my_password@host_ip:443"`
  
  `export no_proxy="127.0.0.1"` : To ignore the current computer
  
- ## TFS ##
+ ## TFS 
  
  `tf -login:<user name>,<password> -collection:<collection uri> get <folder/file to get> [-recursive]` : Get a file or folder from TFS using the Team Foundation Server Client for Linux. For details see https://msdn.microsoft.com/en-us/library/hh873092(v=vs.120).aspx
  
- ## I/Os ##
+ ## I/Os 
  
  
 `/dev/` : Location of all devices available in the device. You can use the `ls` command to list them. 
@@ -508,7 +508,7 @@ E.g.: `http_proxy="http://my_user:my_password@host_ip:443"`
  
  `lsusb` : List the USB devices displaying its IDs. _<Maker ID>:<Device ID>_
  
- #### udev script examples ####
+ #### udev script examples 
  
  Map an USB port based on the Path ID. This example always map a raspberry pi port position to a fixed link
  
@@ -518,7 +518,7 @@ Map an USB port based on the Maker ID and Product ID
 
 `SUBSYSTEM##"tty", ATTRS{idVendor}##"0403", ATTRS{idProduct}##"6001", ATTRS{serial}##"A6008isP", SYMLINK+="arduino"`
 
-## Partition ##
+## Partition 
 
 `lsblk` : List the physical disk (Device mapping) and the logic partition associated to it if it was formatted.
 
@@ -548,7 +548,7 @@ Map an USB port based on the Maker ID and Product ID
 
 `/etc/fstab`: Configuration file that contains information of all the partitions and storage devices in your computer. `Important Note: Be careful with this file because if it is configured wrongly you system will not boot anymore`
 
-## Cron ##
+## Cron 
 
 `/etc/cron.hourly` : Directory that contains scrips that runs hourly. 
 
@@ -559,15 +559,6 @@ Map an USB port based on the Maker ID and Product ID
 `/etc/cron.monthly` : Directory that contains scrips that runs monthly. 
 
 `etc/crontab` : Main configuration cron file.
-
-## Run 32bits application into 64bits OS
-
-```bash
-sudo dpkg --add-architecture i386
-sudo apt-get update
-sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
-sudo apt-get install multiarch-support
-```
 
 ## Shared Libraries
 
@@ -586,6 +577,28 @@ Please note that while LD_LIBRARY_PATH works on many Unix-like systems, it doesn
 `ldd <program name>` : Print the shared objects dependencies. Show the list of shared libraries a program depend.
 
 `/lib/ld-linux.so.2 --library-path <library_path> <executable_command>`: Allow to inform an additional path than the **linux system library path** where a library would be located.
+
+## How-to
+
+### Run 32bits application into 64bits OS
+
+```bash
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+sudo apt-get install multiarch-support
+```
+
+### Mount Bind Volume
+
+```bash
+echo -ne "Mouting volume /r from /mnt/c ... "
+sudo mkdir -p /r
+sudo mount --bind /mnt/c /r
+echo "DONE (New volume: /r=/mnt/c)"
+```
+
+
 
 
 
