@@ -84,6 +84,8 @@
 
 `docker logs -f <container>` : View the logs of a container.
 
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock rogersantos/docker_runlike <image_name>`: Get the run command of a docker image.
+
 ## Keys
 
 `crtl+p ctrl+q`: Detach from a session.
@@ -92,19 +94,19 @@
 
 Be aware that when changing your password, you will need to go to settings >> shared drivers >> reset credentials. Once you select the drivers you want to share again and enter the new password, everything will start working again.
 
-## Start / Attach options ##
+## Start / Attach options 
 
 `-v <local folder>:<remote folder>` : Mount a folder (volume) from the host into the container. Note the container folder should have the full path. E.g.: `-v ~/host:/root/host`. 
 
 `--restart=always` : Allow the container to always restart
 
-## Multi-Platform ##
+## Multi-Platform 
 
 `docker run --rm --privileged multiarch/qemu-user-static:register --reset` : Allow you run different platforms using docker. It uses QEMU emulation to do it.
 
-## Docker Compose Files ##
+## Docker Compose Files 
 
-## Docker Machine ##
+## Docker Machine 
 
 
 `docker-machine.exe create <machine name> --driver virtualbox --virtualbox-cpu-count "-1" --virtualbox-disk-size "<disk size>" --virtualbox-memory "<memory size>" --virtualbox-boot2docker-url=https://github.com/boot2docker/boot2docker/releases/download/v17.03.1-ce/boot2docker.iso` : Add a docker host machine E.g.: `docker-machine.exe create machine1 --driver virtualbox --virtualbox-cpu-count "-1" --virtualbox-disk-size "8000" --virtualbox-memory "512" --virtualbox-boot2docker-url=https://github.com/boot2docker/boot2docker/releases/download/v17.03.1-ce/boot2docker.iso`
@@ -210,3 +212,8 @@ RUN echo "*** Install Docker Client - Start" \
     && chmod +x /usr/bin/docker \
     && echo "*** Install Docker Client - END"
 ```
+
+### Get the run command of a docker container
+
+
+
