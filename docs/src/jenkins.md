@@ -177,6 +177,15 @@ You can consume the configuration in the following way into the *Jenkins* file:
 <function_name>('build')
 ```
 
+Note that you can also inform a version for the *shared library*. The example below will request the *shared script* from the *dev* branch
+
+```groovy
+// JenkinsFile
+
+@Library('common_pipelline@dev') _
+<function_name>('build')
+```
+
 ### Pipeline - Run steps in parallel
 
 ```groovy
