@@ -1,10 +1,6 @@
-Added additional split commands# Vim Commands #
+# Vim
 
-## Command line ##
-
-`vim -V<log level><log filename>` : Execute Vim with the log enabled. E.g.: Vim -V9vim_log.txt
-
-## Leader - Normal Mode ##
+## Leader - Normal Mode
 
    *Note: My <leader> is <space>*
 
@@ -14,8 +10,7 @@ Added additional split commands# Vim Commands #
 
 `<leader> zz` : Centralize the cursor on the bottom of the screen.
 
-
-## Navigation - Normal Mode ##
+## Navigation - Normal Mode
 
 `<command>i"` : Select the item that is inside "". 
 
@@ -105,27 +100,7 @@ Added additional split commands# Vim Commands #
 
 `'J `: Join the current line with the next line'
 
-`zf<selection>` : Create a folding (Collapsed line)
-
-`zo `: Open folding (Collapsed) were the cursor are
-
-`zc `: Close folding were the cursor are
-
-`za` : Toggle folding
-
-`zd`: Delete a folder
-
-`zR` : Open all folding (Collapsed) lines
-
-`zM`: Close all folding
-
-`zss` : Set the folding method to Syntax
-
-`zsm` : Set the folding method to Manual
-
-`zsi` : Set the folding method to Indent
-
-## Keys - Normal Mode ##
+## Keys - Normal Mode
 
 `ctrl-w` : got to the next window
 
@@ -157,7 +132,7 @@ Added additional split commands# Vim Commands #
 
 `ctrl+v` : Go to Visual Block mode
 
-## Commands - Normal Mode ##
+## Commands - Normal Mode
 
 `:0r <file path>` : Read the file and add in your current file
 
@@ -209,7 +184,7 @@ Added additional split commands# Vim Commands #
 
 `:reg` : Show all registers
 
-## Others - Normal Mode ##
+## Others - Normal Mode
 
 `ZZ` : Save and close
 
@@ -230,7 +205,7 @@ Added additional split commands# Vim Commands #
 
 `<space>idr` : Insert reverse date E.g.: 2016-11-23 (Custom map)
 
-## Keys - Edition Mode ##
+## Keys - Edition Mode
 
 `ctrl+k` : Complete the snippet
 
@@ -260,7 +235,7 @@ Added additional split commands# Vim Commands #
 
 `:delmark<key> `: Delete mark
 
-## Commands - Visual Block Mode ##
+## Commands - Visual Block Mode
 
 `:normal @<macro key> <CR>`: Execute a macro on all selection
 
@@ -268,7 +243,7 @@ Added additional split commands# Vim Commands #
 
 `:s/\%V\s\+/\\ /e` - Replace all <spaces> to \<space>
 
-## Keys Visual Mode ##
+## Keys Visual Mode
 
 `gf `: Create a folder from the selection
 
@@ -276,17 +251,17 @@ Added additional split commands# Vim Commands #
 
 `*` : Select until the next word. Execute command in multiple lines.
 
-## Navigation - Visual Mode ##
+## Navigation - Visual Mode
 
 `at` : Jump to the next tag (html, xml, etc). Press `escape` to exit and `o` to move forward and backward. The selection will include the tag.
 
 `it` : Jump to the next tag (html, xml, etc). Press `escape` to exit and `o` to move forward and backward. The selection will be inside tag.
 
-## Keys Any mode ##
+## Keys Any mode
 
 `F2` : Toggle Paste Mode (Custom map to set pastetoggle)
 
-## Commands ##
+## Commands
 
 `/<string>` : Search a string down
 
@@ -352,7 +327,7 @@ Added additional split commands# Vim Commands #
 
 `:sort` : Sort selection. Note: To select a paragraph you can use `vip`
 
-## Explore Keys and Commands ##
+## Explore Keys and Commands
 
 `d` : creates a new directory
 
@@ -372,7 +347,7 @@ Added additional split commands# Vim Commands #
 
 `qb` : List bookmarks
 
-## Spell Check ##
+## Spell Check
 
 `<leader> se` : Set spell check to English Language (Custom Map).
 
@@ -400,9 +375,9 @@ Added additional split commands# Vim Commands #
 
 `!echo "%:p:h"` : Show file directory
 
-## Macros ##
+## Macros
 
-### Saving a Macro ###
+### Saving a Macro
 
 To save a macro you can do:
 
@@ -423,3 +398,29 @@ args `<command>` : Load the argument list with a command. E.g.: args `ls`
 `args` : Display the list of files
 
 `argdo <command>` : Play the command on all files of the argument list. E.g.: `argdo normal @q` play de macro q on all files.
+
+## Navigation
+
+### Folding
+
+`zf<selection>` : Create a folding (Collapsed line)
+
+`zo `: Open folding (Collapsed) were the cursor are
+
+`zc `: Close folding were the cursor are
+
+`za` : Toggle folding
+
+`zd`: Delete a folder
+
+`zR` : Open all folding (Collapsed) lines
+
+`zM`: Close all folding
+
+`zss` : Set the folding method to Syntax
+
+`zsm` : Set the folding method to Manual
+
+`zsi` : Set the folding method to Indent
+
+
