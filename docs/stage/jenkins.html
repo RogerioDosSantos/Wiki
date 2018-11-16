@@ -173,6 +173,48 @@ def call(String project_name) {
 <pre class="groovy"><code>// JenkinsFile
 
 @Library(&#39;common_pipelline&#39;) _
-commonPipeline(&#39;build&#39;)</code></pre>
+&lt;function_name&gt;(&#39;build&#39;)</code></pre>
+<h3 id="pipeline---run-steps-in-parallel">Pipeline - Run steps in parallel</h3>
+<pre class="groovy"><code>stage(&#39;S1&#39;) {
+    parallel {
+        stage(&#39;S11&#39;) {
+            steps {
+                echo &quot;Stage S11&quot;
+            }
+        }
+        stage(&#39;S12&#39;) {
+            steps {
+                echo &quot;Stage S12&quot;
+            }
+        }
+    }
+}</code></pre>
+<h3 id="pipeline---create-parallel-steps-dynamically">Pipeline - Create parallel steps dynamically</h3>
+<pre class="groovy"><code>stage(&#39;Dynamic Parallel Steps&#39;) {
+    steps {
+        script {
+            def tests = [:]
+            for (int i = 0; i &lt; 10; i++) {
+                tests[&quot;${i}&quot;] = {
+                    node {
+                        stage(&quot;Step ${i}&quot;) {
+                            echo &quot;Step ${i}&quot;
+                        }
+                    }
+                }
+            }
+            parallel tests
+        }
+    }
+}</code></pre>
+<h3 id="pipeline---request-user-input">Pipeline - Request user input</h3>
+<pre class="groovy"><code>input {
+    message &quot;Shoud we publish the changes&quot;
+    ok &quot;Publish it!&quot;
+    submitter &quot;alice,bob,roger&quot;
+    parameters {
+        string(name: &#39;deployment_server&#39;, defaultValue: &#39;www.docker.com&#39;, description: &#39;What is the server you would like to publish?&#39;)
+    }
+}</code></pre>
 </body>
 </html>

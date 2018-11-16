@@ -177,3 +177,57 @@ You can consume the configuration in the following way into the *Jenkins* file:
 <function_name>('build')
 ```
 
+### Pipeline - Run steps in parallel
+
+```groovy
+stage('S1') {
+    parallel {
+        stage('S11') {
+            steps {
+                echo "Stage S11"
+            }
+        }
+        stage('S12') {
+            steps {
+                echo "Stage S12"
+            }
+        }
+    }
+}
+```
+
+### Pipeline - Create parallel steps dynamically
+
+```groovy
+stage('Dynamic Parallel Steps') {
+    steps {
+        script {
+            def tests = [:]
+            for (int i = 0; i < 10; i++) {
+                tests["${i}"] = {
+                    node {
+                        stage("Step ${i}") {
+                            echo "Step ${i}"
+                        }
+                    }
+                }
+            }
+            parallel tests
+        }
+    }
+}
+```
+
+### Pipeline - Request user input
+
+```groovy
+input {
+    message "Shoud we publish the changes"
+    ok "Publish it!"
+    submitter "alice,bob,roger"
+    parameters {
+        string(name: 'deployment_server', defaultValue: 'www.docker.com', description: 'What is the server you would like to publish?')
+    }
+}
+```
+
