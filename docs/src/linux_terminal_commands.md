@@ -644,24 +644,17 @@ su - ubuntu
 whoami
 ```
 
+### Populate a file in one command
 
+```bash
+cat > /tmp/config_file <<-EOF
+[Session_01]
+o1=1
+o2=2
+[Session_02]
+o3=3
+o4=4
+EOF
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+cat /tmp/config_file
+```
