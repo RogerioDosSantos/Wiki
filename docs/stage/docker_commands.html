@@ -170,7 +170,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     &amp;&amp; echo <span class="st">&#39;sudo docker_program &quot;$@&quot;&#39;</span> | tee -a /usr/bin/docker \
     &amp;&amp; chmod +x /usr/bin/docker \
     &amp;&amp; echo <span class="st">&quot;*** Install Docker Client - END&quot;</span></code></pre></div>
-<h3 id="pipe-stdin-into-the-docker">Pipe stdin into the docker</h3>
+<h3 id="pipe-into-docker-container">Pipe into docker container</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run -it -d --rm --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful
 
 <span class="co"># Display item piped</span>

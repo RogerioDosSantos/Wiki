@@ -213,7 +213,7 @@ RUN echo "*** Install Docker Client - Start" \
     && echo "*** Install Docker Client - END"
 ```
 
-### Pipe stdin into the docker
+### Pipe into docker container
 
 ```bash
 docker run -it -d --rm --name "my_container" ubuntu:artful
