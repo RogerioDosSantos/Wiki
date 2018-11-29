@@ -170,6 +170,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     &amp;&amp; echo <span class="st">&#39;sudo docker_program &quot;$@&quot;&#39;</span> | tee -a /usr/bin/docker \
     &amp;&amp; chmod +x /usr/bin/docker \
     &amp;&amp; echo <span class="st">&quot;*** Install Docker Client - END&quot;</span></code></pre></div>
-<h3 id="get-the-run-command-of-a-docker-container">Get the run command of a docker container</h3>
+<h3 id="pipe-stdin-into-the-docker">Pipe stdin into the docker</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run -it -d --rm --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful
+
+<span class="co"># Display item piped</span>
+<span class="bu">echo</span> <span class="st">&quot;test&quot;</span> <span class="kw">|</span> <span class="ex">docker</span> exec --interactive <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat&quot;</span>
+
+<span class="co"># Save piped item into a file</span>
+<span class="bu">echo</span> <span class="st">&quot;content to file&quot;</span> <span class="kw">|</span> <span class="ex">docker</span> exec --interactive <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat &gt; ~/t1.txt&quot;</span>
+
+<span class="ex">docker</span> exec <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat ~/t1.txt&quot;</span>
+
+<span class="ex">docker</span> stop <span class="st">&quot;my_container&quot;</span></code></pre></div>
 </body>
 </html>

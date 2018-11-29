@@ -213,7 +213,22 @@ RUN echo "*** Install Docker Client - Start" \
     && echo "*** Install Docker Client - END"
 ```
 
-### Get the run command of a docker container
+### Pipe stdin into the docker
+
+```bash
+docker run -it -d --rm --name "my_container" ubuntu:artful
+
+# Display item piped
+echo "test" | docker exec --interactive "my_container" bash -c "cat"
+
+# Save piped item into a file
+echo "content to file" | docker exec --interactive "my_container" bash -c "cat > ~/t1.txt"
+
+docker exec "my_container" bash -c "cat ~/t1.txt"
+
+docker stop "my_container"
+```
+
 
 
 
