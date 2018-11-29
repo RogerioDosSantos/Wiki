@@ -303,6 +303,13 @@ git commit -m "New commit message"
 git push origin master
 ```
 
+### Creating new remote branch
+
+```shell
+git checkout -b dev
+git push origin dev
+```
+
 ## Installation
 
 ### Getting the latest git version on Ubuntu
