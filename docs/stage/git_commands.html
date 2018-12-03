@@ -59,7 +59,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>git diff --cached --name-status</code> : Get the list of the git files added</p>
 <p><code>git diff HEAD &lt;file name&gt;</code> : Compare the file with the one added.</p>
 <p><code>git commit -m &lt;check-in description&gt;</code> : send the content to the git repository</p>
-<p><code>git commit --amend</code>: Allow to change a message committed.</p>
+<p><code>git commit --amend</code>: Allow to change a message committed and files commited.</p>
 <p><code>git config --list</code> : List the current git configuration</p>
 <p><code>git clone &lt;repository git url&gt; &lt;local folder name&gt;</code> : Clone git repository (E.g.: git clone ssh://git@192.168.56.113/~/git-server/leel.git)</p>
 <p><code>g123.123.123.123it status</code> : Show the current status of the git repository</p>
@@ -233,7 +233,8 @@ git commit -m &quot;New commit message&quot;
 git push origin master</code></pre>
 <h3 id="creating-new-remote-branch">Creating new remote branch</h3>
 <pre class="shell"><code>git checkout -b dev
-git push origin dev</code></pre>
+git push origin dev
+git branch --set-upstream-to=origin/dev dev</code></pre>
 <h2 id="installation">Installation</h2>
 <h3 id="getting-the-latest-git-version-on-ubuntu">Getting the latest git version on Ubuntu</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Add the PPA to the local package index</span>

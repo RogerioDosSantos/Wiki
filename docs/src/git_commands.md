@@ -18,7 +18,7 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git commit -m <check-in description> ` : send the content to the git repository
 
-`git commit --amend`: Allow to change a message committed.
+`git commit --amend`: Allow to change a message committed and files commited.
 
 `git config --list ` : List the current git configuration
 
@@ -308,6 +308,7 @@ git push origin master
 ```shell
 git checkout -b dev
 git push origin dev
+git branch --set-upstream-to=origin/dev dev
 ```
 
 ## Installation
