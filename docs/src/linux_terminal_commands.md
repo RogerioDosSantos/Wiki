@@ -72,6 +72,8 @@
 
 `wc -l <file_path>`: Get the amount of lines into a file.
 
+`stat --format '%a' <file_or_dirctory>`: Get the `chmod` numerical value of a file or directory.
+
 ```bash
 for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
 ``` 
