@@ -229,6 +229,19 @@ docker exec "my_container" bash -c "cat ~/t1.txt"
 docker stop "my_container"
 ```
 
+### Allow a container restart always
+
+```bash
+# Start a container that will always restart
+docker run -it -d --rm --restart=always --name "my_container" ubuntu:artful
+
+# To stop the container you can:
+docker update --restart=no my_container
+
+# Allow container restart always unless docker stop is executed:
+docker run -it -d --rm --restart=unless-stopped --name "my_container" ubuntu:artful
+```
+
 
 
 

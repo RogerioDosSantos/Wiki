@@ -182,5 +182,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="ex">docker</span> exec <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat ~/t1.txt&quot;</span>
 
 <span class="ex">docker</span> stop <span class="st">&quot;my_container&quot;</span></code></pre></div>
+<h3 id="allow-a-container-restart-always">Allow a container restart always</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Start a container that will always restart</span>
+<span class="ex">docker</span> run -it -d --rm --restart=always --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful
+
+<span class="co"># To stop the container you can:</span>
+<span class="ex">docker</span> update --restart=no my_container
+
+<span class="co"># Allow container restart always unless docker stop is executed:</span>
+<span class="ex">docker</span> run -it -d --rm --restart=unless-stopped --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful</code></pre></div>
 </body>
 </html>
