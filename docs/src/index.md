@@ -10,6 +10,7 @@
 - [MFC]( ./mfc.html )
 - [Windows Event Log]( ./windows_event_log.html )
 - [Explorer]( ./windows_explorer.html )
+- [Nano Server]( ./nano_server.html )
 
 ## Linux 
 
