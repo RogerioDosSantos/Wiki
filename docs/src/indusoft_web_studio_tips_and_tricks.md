@@ -16,3 +16,14 @@ BlindDevice=1
 ### Configure IIS to run both ISSymbol and SMA
 
 ![](http://tinyurl.com/ybby4k2a)
+
+
+### Change CEView Application manually
+
+- Change the *CEApp.ini* file to point to the desired application.
+
+```ini
+[Application]
+Configuration=C:\Users\iws\app\app.app
+Directory=C:\Users\iws\app\
+```
