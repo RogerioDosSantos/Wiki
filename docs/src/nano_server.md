@@ -16,5 +16,9 @@ Windows have a [Windows Nano Server Docker Image](https://hub.docker.com/r/micro
 
 ## How-to
 
+### Install the Nano Server Project Extension in Visual Studio
+
+![](http://tinyurl.com/ycnkv2hz)
+
 
 
