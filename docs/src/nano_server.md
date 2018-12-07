@@ -4,6 +4,17 @@
 
 Windows have a [Windows Nano Server Docker Image](https://hub.docker.com/r/microsoft/nanoserver/) *microsoft/nanoserver* available on *Docker Hub*.
 
+*Visual Studio* also contains the [NanoServerProjectExtensions](https://marketplace.visualstudio.com/items?itemName=VenkatYallaMSFT.NanoServerProjectExtensions) which allows:
+
+- Show Intellisense for APIs that are supported on Nano Server
+- Red error squiggles are shown for APIs that are not supported on Nano Server
+
+## Commands
+
+`powershell`: Start Poweshell
+
+
 ## How-to
+
 
 

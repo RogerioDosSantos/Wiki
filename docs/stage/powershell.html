@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="powershell">PowerShell</h1>
+<h2 id="powershell-core">PowerShell Core</h2>
+<p>Built on .NET Core and provides compatibility with scripts and modules targeting versions of PowerShell running on reduced footprint editions of Windows such as Nano Server and Windows IoT.</p>
+<h3 id="commands">Commands</h3>
+<p><code>Get-Process</code>: List running processes.</p>
+<p><code>Start-Process &lt;locaction&gt;</code>: Start a process.</p>
+<p><code>Stop-Process &lt;name&gt;</code>: Stop a process.</p>
+<p><code>&lt;command&gt; | Select-String -Pattern &lt;filter&gt;</code>: Equivalent to <em>grep</em>. E.g.: <code>Get-Process | Select-String -Pattern ceview</code></p>
+<p><code>Get-WindowsFeature</code>: Inform the windows features installed in the system.</p>
+<p><code>Invoke-WebRequest -OutFile &lt;file_path&gt; &quot;&lt;url&gt;&quot;</code>: Download a file. Equivalent to <em>wget</em></p>
+<p><code>Write-Host &quot;text&quot;</code>: Write a text to the console. Equivalent to <em>echo</em></p>
+</body>
+</html>
