@@ -191,5 +191,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="co"># Allow container restart always unless docker stop is executed:</span>
 <span class="ex">docker</span> run -it -d --rm --restart=unless-stopped --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful</code></pre></div>
+<h3 id="implement-health-check">Implement Health Check</h3>
+<p>Health checks can be any single command. They run inside the container and if the command exit code is 0, the container is reported as healthy, and if the output is 1, the container is marked as unhealthy.</p>
+<p>The example below checks if you are getting answer from the port 3000</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">HEALTHCHECK</span> CMD curl --fail http://localhost:3000/ <span class="kw">||</span> <span class="bu">exit</span> 1</code></pre></div>
+<p>Calling the <code>docker ps</code> command, it will show the following in case the <em>Health Check</em> returns <em>1</em>:</p>
+<figure>
+<img src="http://tinyurl.com/y73vdma5" />
+</figure>
 </body>
 </html>

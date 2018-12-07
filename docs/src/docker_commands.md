@@ -242,6 +242,22 @@ docker update --restart=no my_container
 docker run -it -d --rm --restart=unless-stopped --name "my_container" ubuntu:artful
 ```
 
+### Implement Health Check
+
+Health checks can be any single command. They run inside the container and if the command exit code is 0, the container is reported as healthy, and if the output is 1, the container is marked as unhealthy.
+
+The example below checks if you are getting answer from the port 3000
+
+```bash
+HEALTHCHECK CMD curl --fail http://localhost:3000/ || exit 1
+```
+Calling the `docker ps` command, it will show the following in case the *Health Check* returns *1*:
+
+![](http://tinyurl.com/y73vdma5)
+
+
+
+
 
 
 
