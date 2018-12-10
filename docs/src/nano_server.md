@@ -20,5 +20,30 @@ Windows have a [Windows Nano Server Docker Image](https://hub.docker.com/r/micro
 
 ![](http://tinyurl.com/ycnkv2hz)
 
+### Debug missing dependencies
+
+To debug missing dependencies we will use [GFlags](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/gflags) to enable advanced diagnostic and [CDB](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/cdb-command-line-options) for debugging.
+
+- Install [Debugging Tools for Windows](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools) into an *Windows 10* machine. You will need the *Windows 10 (x64) debuggers* which is located in the following folder after installation:
+
+`C:\Program Files (x86)\Windows Kits\10\Debuggers\x64`
+
+- Copy or share the *Windows 10 (x64) debuggers* inside the docker container
+
+- Execute the following commands:
+
+```ps
+# Mark your application to be monitored by gflags.
+gflags.exe -i <your_application_without_path>.exe +sls
+
+# Start your application with the cdb debugger
+cdb.exe <path_of_your_application>
+```
+
+**Note**: Inside *cdb* you can type `?` for a full list of commands and `Q` to exit.
+
+![](http://tinyurl.com/y8tad6z7)
+
+
 
 
