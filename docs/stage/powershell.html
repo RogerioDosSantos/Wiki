@@ -112,7 +112,7 @@ Enter-PSSession -ContainerId $container_id
 # Open the remote PowerShell session <span class="st">(Remote Container)</span> as Administrator
 $container_id = &quot;$<span class="st">(docker inspect --format=&#39;{{.Id}}&#39; &lt;container_name&gt;)</span>&quot;
 Enter-PSSession -ContainerId $container_id -RunAsAdministrator</code></pre></div>
-<h4 id="kill-a-process">Kill a process</h4>
+<h4 id="monitor-and-close-a-process">Monitor and Close a process</h4>
 <p>The example below monitor and closed the <em>MyProcess</em> program.</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> the process
 $my_process = <span class="kw">Get</span>-Process MyProcess
