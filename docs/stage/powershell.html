@@ -60,6 +60,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>Get-WindowsFeature</code>: Inform the windows features installed in the system.</p>
 <p><code>Invoke-WebRequest -OutFile &lt;file_path&gt; &quot;&lt;url&gt;&quot;</code>: Download a file. Equivalent to <em>wget</em></p>
 <p><code>Write-Host &quot;text&quot;</code>: Write a text to the console. Equivalent to <em>echo</em></p>
+<p><code>[environment]::OSVersion.VersionString</code>: Return the version of the OS.</p>
+<p><code>Get-Content -Path &lt;file_path&gt;</code>: Read the content of a file. Similar to Linux <code>cat</code></p>
+<p><code>Get-ChildItem -Path &lt;start_path&gt; -Filter &lt;find_expression&gt; -Recurse -ErrorAction SilentlyContinue -Force</code>: Find a file in sub folders. Equivalent to Linux <code>find</code> command</p>
 <h3 id="how-to">How-to</h3>
 <h4 id="assign-variable">Assign Variable</h4>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">$value = &quot;string value&quot;
@@ -109,5 +112,19 @@ Enter-PSSession -ContainerId $container_id
 # Open the remote PowerShell session <span class="st">(Remote Container)</span> as Administrator
 $container_id = &quot;$<span class="st">(docker inspect --format=&#39;{{.Id}}&#39; &lt;container_name&gt;)</span>&quot;
 Enter-PSSession -ContainerId $container_id -RunAsAdministrator</code></pre></div>
+<h4 id="kill-a-process">Kill a process</h4>
+<p>The example below monitor and closed the <em>MyProcess</em> program.</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> the process
+$my_process = <span class="kw">Get</span>-Process MyProcess
+
+# Close the process gracefully
+$my_process.CloseMainWindow<span class="st">()</span>
+
+# Return <span class="kw">true</span> id the process was closed
+$my_process.HasExited
+
+
+# <span class="kw">For</span> <span class="kw">stop</span> the process
+$my_process | <span class="kw">Stop</span>-Process -Force</code></pre></div>
 </body>
 </html>

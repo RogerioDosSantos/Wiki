@@ -20,6 +20,12 @@ Built on .NET Core and provides compatibility with scripts and modules targeting
 
 `Write-Host "text"`: Write a text to the console. Equivalent to *echo*
 
+`[environment]::OSVersion.VersionString`: Return the version of the OS.
+
+`Get-Content -Path <file_path>`: Read the content of a file. Similar to Linux `cat`
+
+`Get-ChildItem -Path <start_path> -Filter <find_expression> -Recurse -ErrorAction SilentlyContinue -Force`: Find a file in sub folders. Equivalent to Linux `find` command
+
 ### How-to
 
 #### Assign Variable
@@ -81,6 +87,25 @@ Enter-PSSession -ContainerId $container_id
 # Open the remote PowerShell session (Remote Container) as Administrator
 $container_id = "$(docker inspect --format='{{.Id}}' <container_name>)"
 Enter-PSSession -ContainerId $container_id -RunAsAdministrator
+```
+
+#### Kill a process
+
+The example below monitor and closed the *MyProcess* program.
+
+```ps
+# Get the process
+$my_process = Get-Process MyProcess
+
+# Close the process gracefully
+$my_process.CloseMainWindow()
+
+# Return true id the process was closed
+$my_process.HasExited
+
+
+# For stop the process
+$my_process | Stop-Process -Force
 ```
 
 
