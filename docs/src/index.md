@@ -36,9 +36,10 @@
     - [FZF](./fzf.html)
     - [Grammarous]( ./grammarous.html )
 
-## Editors
+## Editors and Develpment Tools
 
 [Notepad++]( ./notepadpp.html )
+[Visual Studio]( ./visual_studio.html )
 
 ## Markdown
 
