@@ -117,10 +117,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>You can run a docker client from inside a container and connect to your host machine by sharing the <em>Docker unix socket</em> and install the <em>docker client</em> in your container.</p>
 <p>E.g:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Start Continer sharing the docker.sock and install the docker client in the container</span>
-<span class="ex">docker</span> run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:latest sh -c <span class="st">&quot;apt-get update ; apt-get install docker.io -y ; bash&quot;</span>
+<span class="kw">docker</span> run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:latest sh -c <span class="st">&quot;apt-get update ; apt-get install docker.io -y ; bash&quot;</span>
 
 <span class="co"># Execute the docker images command (Note to execute docker commands you need to use sudo)</span>
-<span class="fu">sudo</span> docker images</code></pre></div>
+<span class="kw">sudo</span> docker images</code></pre></div>
 <h2 id="installation">Installation</h2>
 <h3 id="install-on-the-wsl">Install on the WSL</h3>
 <ul>
@@ -131,15 +131,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p><a href="https://blogs.msdn.microsoft.com/commandline/2017/12/08/cross-post-wsl-interoperability-with-docker/">Make relay WSL-&gt;Docker for Windows with GO</a></p></li>
 <li><p>Fix drive paths for volume mount</p></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> mkdir /c
-<span class="fu">sudo</span> mount --bind /mnt/c /c</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> mkdir /c
+<span class="kw">sudo</span> mount --bind /mnt/c /c</code></pre></div>
 <p>To make the bind mount permanent you can change the <code>/etc/fstab</code> file</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># &lt;device&gt;  &lt;dir&gt; &lt;type&gt; &lt;options&gt; &lt;dump&gt; &lt;pass&gt;</span>
-<span class="ex">/mnt/c</span>  /c  none  bind  0 0</code></pre></div>
+<span class="kw">/mnt/c</span>  /c  none  bind  0 0</code></pre></div>
 <h2 id="how-to">How-To</h2>
 <h3 id="create-an-alpine-image-with-docker-client">Create an alpine image with docker client</h3>
 <p>To have the most recent client go to the <a href="https://download.docker.com/linux/static/stable/x86_64">URL below</a></p>
-<div class="sourceCode"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span class="kw">ARG</span> DOCKER_CLI_VERSION=<span class="st">&quot;docker-18.06.1-ce&quot;</span>
+<div class="sourceCode"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile">ARG DOCKER_CLI_VERSION=<span class="st">&quot;docker-18.06.1-ce&quot;</span>
 <span class="kw">ENV</span> DOWNLOAD_URL=<span class="st">&quot;https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLI_VERSION.tgz&quot;</span>
 
 <span class="co"># install docker client</span>
@@ -171,33 +171,39 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     &amp;&amp; chmod +x /usr/bin/docker \
     &amp;&amp; echo <span class="st">&quot;*** Install Docker Client - END&quot;</span></code></pre></div>
 <h3 id="pipe-into-docker-container">Pipe into docker container</h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run -it -d --rm --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">docker</span> run -it -d --rm --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful
 
 <span class="co"># Display item piped</span>
-<span class="bu">echo</span> <span class="st">&quot;test&quot;</span> <span class="kw">|</span> <span class="ex">docker</span> exec --interactive <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat&quot;</span>
+<span class="kw">echo</span> <span class="st">&quot;test&quot;</span> <span class="kw">|</span> <span class="kw">docker</span> exec --interactive <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat&quot;</span>
 
 <span class="co"># Save piped item into a file</span>
-<span class="bu">echo</span> <span class="st">&quot;content to file&quot;</span> <span class="kw">|</span> <span class="ex">docker</span> exec --interactive <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat &gt; ~/t1.txt&quot;</span>
+<span class="kw">echo</span> <span class="st">&quot;content to file&quot;</span> <span class="kw">|</span> <span class="kw">docker</span> exec --interactive <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat &gt; ~/t1.txt&quot;</span>
 
-<span class="ex">docker</span> exec <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat ~/t1.txt&quot;</span>
+<span class="kw">docker</span> exec <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat ~/t1.txt&quot;</span>
 
-<span class="ex">docker</span> stop <span class="st">&quot;my_container&quot;</span></code></pre></div>
+<span class="kw">docker</span> stop <span class="st">&quot;my_container&quot;</span></code></pre></div>
 <h3 id="allow-a-container-restart-always">Allow a container restart always</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Start a container that will always restart</span>
-<span class="ex">docker</span> run -it -d --rm --restart=always --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful
+<span class="kw">docker</span> run -it -d --rm --restart=always --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful
 
 <span class="co"># To stop the container you can:</span>
-<span class="ex">docker</span> update --restart=no my_container
+<span class="kw">docker</span> update --restart=no my_container
 
 <span class="co"># Allow container restart always unless docker stop is executed:</span>
-<span class="ex">docker</span> run -it -d --rm --restart=unless-stopped --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful</code></pre></div>
-<h3 id="implement-health-check">Implement Health Check</h3>
+<span class="kw">docker</span> run -it -d --rm --restart=unless-stopped --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful</code></pre></div>
+<h3 id="docker-images---implement-health-check">Docker Images - Implement Health Check</h3>
 <p>Health checks can be any single command. They run inside the container and if the command exit code is 0, the container is reported as healthy, and if the output is 1, the container is marked as unhealthy.</p>
 <p>The example below checks if you are getting answer from the port 3000</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">HEALTHCHECK</span> CMD curl --fail http://localhost:3000/ <span class="kw">||</span> <span class="bu">exit</span> 1</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">HEALTHCHECK</span> CMD curl --fail http://localhost:3000/ <span class="kw">||</span> <span class="kw">exit</span> 1</code></pre></div>
 <p>Calling the <code>docker ps</code> command, it will show the following in case the <em>Health Check</em> returns <em>1</em>:</p>
 <figure>
 <img src="http://tinyurl.com/y73vdma5" />
 </figure>
+<h3 id="docker-registry---deploy-a-local-registry-server">Docker Registry - Deploy a local Registry Server</h3>
+<pre class="shell"><code># Run a registry server in the local machine
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
+# Stop the registry server
+docker container stop registry</code></pre>
 </body>
 </html>

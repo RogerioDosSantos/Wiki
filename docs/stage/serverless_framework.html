@@ -6,43 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-  </style>
   <link rel="stylesheet" href="../resources/style.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -50,14 +13,40 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 <body>
 <h1 id="serverless-framework">Serverless Framework</h1>
-<p><a href="https://serverless.com/framework/">Serverless Framework</a> is an open-source CLI for building and deploying serverless applications. With over 6 million deployments handled, the Serverless Framework is the tool developers trust to build cloud applications.</p>
+<p><strong>Important Note</strong></p>
+<p>Unfortunately, the community is not engaged to the &quot;Fn&quot; project to the point the tutorial does not work.</p>
+<p><a href="https://serverless.com/framework/">Serverless Framework</a> is an open-source CLI for building and deploying serverless applications.</p>
+<p>The <em>Serverless Framework</em> allow to control several <em>Serverless providers</em>, E.g.: <em>Fn</em>, <em>OpenWhisk</em>, <em>Azure</em>, <em>Lambda (Amazon)</em>, etc. For this reazon, stead of learning all those provides, you can invest in the <em>Serverless Framework</em> and control them all.</p>
 <h2 id="installation">Installation</h2>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> npm install -g serverless
-<span class="kw">serverless</span> --version</code></pre></div>
+<pre class="shell"><code>sudo npm install -g serverless
+serverless --version</code></pre>
+<h3 id="update">Update</h3>
+<pre class="shell"><code>sudo npm i -g serverless </code></pre>
 <h2 id="providers">Providers</h2>
 <ul>
 <li><a href="https://serverless.com/framework/docs/providers/fn/">Fn</a></li>
 <li><a href="https://serverless.com/framework/docs/providers/openwhisk/">OpenWhisk</a></li>
 </ul>
+<h2 id="commands">Commands</h2>
+<p><code>serverless create --template fn-nodejs --path &lt;function_name&gt;</code>: Create a folder with boiler-plate to the function using Fn and NodeJS</p>
+<h2 id="how-to">How-To</h2>
+<h3 id="start-fn-server">Start Fn Server</h3>
+<pre class="shell"><code># Run a registry server in the local machine
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
+docker run --name fnserver --rm -d -i -v $(pwd)/data:/app/data -v /var/run/docker.sock:/var/run/docker.sock --privileged -p 8080:8080 --entrypoint ./fnserver fnproject/fnserver
+
+# Needed due: https://github.com/serverless/serverless/issues/4979
+export FN_REGISTRY=localhost:5000</code></pre>
+<h3 id="create-a-new-service">Create a new Service</h3>
+<p>The example below create the service based in <em>Node-JS</em> in the <em>src</em> folder.</p>
+<pre class="shell"><code># Create a new Serverless Service/Project
+serverless create --template fn-nodejs --path src
+
+# Change into the newly created directory
+cd src
+
+# Install npm dependencies
+npm install</code></pre>
 </body>
 </html>

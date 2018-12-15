@@ -242,7 +242,7 @@ docker update --restart=no my_container
 docker run -it -d --rm --restart=unless-stopped --name "my_container" ubuntu:artful
 ```
 
-### Implement Health Check
+### Docker Images - Implement Health Check
 
 Health checks can be any single command. They run inside the container and if the command exit code is 0, the container is reported as healthy, and if the output is 1, the container is marked as unhealthy.
 
@@ -254,6 +254,16 @@ HEALTHCHECK CMD curl --fail http://localhost:3000/ || exit 1
 Calling the `docker ps` command, it will show the following in case the *Health Check* returns *1*:
 
 ![](http://tinyurl.com/y73vdma5)
+
+### Docker Registry - Deploy a local Registry Server
+
+```shell
+# Run a registry server in the local machine
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
+# Stop the registry server
+docker container stop registry
+```
 
 
 
