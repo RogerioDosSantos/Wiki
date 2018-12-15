@@ -12,3 +12,8 @@ vc status /login:Corp\roger.santos /workspace:Roger_01` : Location of the TFS
 `tf.exe vc history /noprompt <file_path>`: Display the history of a file
 
 
+## How-to
+
+### Install the TFS build agent on the Linux Manchine
+
+[Deploy an agent on Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=vsts)

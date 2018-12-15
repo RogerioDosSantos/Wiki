@@ -34,7 +34,7 @@
 
 `docker tag <image id> [<dockerhub user>]/<image name>:<tag>`: Tag an image. E.g.: `docker tag 5ffd21ba24cf rogersantos/vim:1.0`
 
-`docker push <full image name>`: Publish the image into the docker hub. Note: You need to be logged before pushing an image. E.g.: `docker push rogersantos/vim`
+`docker push <full image name>`: Publish the image into the docker hub. Note: You need to be logged before pushing an image. E.g.: `docker push rogersantos.azurecr.io/vim`
 
 `docker login` : Log into a repository
 
@@ -213,7 +213,51 @@ RUN echo "*** Install Docker Client - Start" \
     && echo "*** Install Docker Client - END"
 ```
 
-### Get the run command of a docker container
+### Pipe into docker container
+
+```bash
+docker run -it -d --rm --name "my_container" ubuntu:artful
+
+# Display item piped
+echo "test" | docker exec --interactive "my_container" bash -c "cat"
+
+# Save piped item into a file
+echo "content to file" | docker exec --interactive "my_container" bash -c "cat > ~/t1.txt"
+
+docker exec "my_container" bash -c "cat ~/t1.txt"
+
+docker stop "my_container"
+```
+
+### Allow a container restart always
+
+```bash
+# Start a container that will always restart
+docker run -it -d --rm --restart=always --name "my_container" ubuntu:artful
+
+# To stop the container you can:
+docker update --restart=no my_container
+
+# Allow container restart always unless docker stop is executed:
+docker run -it -d --rm --restart=unless-stopped --name "my_container" ubuntu:artful
+```
+
+### Implement Health Check
+
+Health checks can be any single command. They run inside the container and if the command exit code is 0, the container is reported as healthy, and if the output is 1, the container is marked as unhealthy.
+
+The example below checks if you are getting answer from the port 3000
+
+```bash
+HEALTHCHECK CMD curl --fail http://localhost:3000/ || exit 1
+```
+Calling the `docker ps` command, it will show the following in case the *Health Check* returns *1*:
+
+![](http://tinyurl.com/y73vdma5)
+
+
+
+
 
 
 

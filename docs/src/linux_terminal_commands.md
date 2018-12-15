@@ -72,6 +72,8 @@
 
 `wc -l <file_path>`: Get the amount of lines into a file.
 
+`stat --format '%a' <file_or_dirctory>`: Get the `chmod` numerical value of a file or directory.
+
 ```bash
 for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
 ``` 
@@ -624,25 +626,37 @@ while true; do
 done
 ```
 
+### Create user (Script)
 
+```bash
+whoami
 
+# Create the ubuntu user as root and sudo group
+useradd -d /home/ubuntu -ms /bin/bash -g root -G sudo -p ubuntu ubuntu
 
+# useradd options:
+# -d, --home-dir HOME_DIR Home directory of the new account.
+# -m, --create-home Create the user's home directory.
+# -s, --shell SHELL Login shell of the new account.
+# -g, --gid GROUP Name or ID of the primary group.
+# -G, --groups GROUPS List of supplementary groups.
+# -p, --password PASSWORD Encrypted password of the new account (e.g. ubuntu).
 
+su - ubuntu
+whoami
+```
 
+### Populate a file in one command
 
+```bash
+cat > /tmp/config_file <<-EOF
+[Session_01]
+o1=1
+o2=2
+[Session_02]
+o3=3
+o4=4
+EOF
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+cat /tmp/config_file
+```

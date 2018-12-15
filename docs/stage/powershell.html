@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="powershell">PowerShell</h1>
+<h2 id="powershell-core">PowerShell Core</h2>
+<p>Built on .NET Core and provides compatibility with scripts and modules targeting versions of PowerShell running on reduced footprint editions of Windows such as Nano Server and Windows IoT.</p>
+<h3 id="commands">Commands</h3>
+<p><code>Get-Process</code>: List running processes.</p>
+<p><code>Start-Process &lt;locaction&gt;</code>: Start a process.</p>
+<p><code>Stop-Process &lt;name&gt;</code>: Stop a process.</p>
+<p><code>&lt;command&gt; | Select-String -Pattern &lt;filter&gt;</code>: Equivalent to <em>grep</em>. E.g.: <code>Get-Process | Select-String -Pattern ceview</code></p>
+<p><code>Get-WindowsFeature</code>: Inform the windows features installed in the system.</p>
+<p><code>Invoke-WebRequest -OutFile &lt;file_path&gt; &quot;&lt;url&gt;&quot;</code>: Download a file. Equivalent to <em>wget</em></p>
+<p><code>Write-Host &quot;text&quot;</code>: Write a text to the console. Equivalent to <em>echo</em></p>
+<p><code>[environment]::OSVersion.VersionString</code>: Return the version of the OS.</p>
+<p><code>Get-Content -Path &lt;file_path&gt;</code>: Read the content of a file. Similar to Linux <code>cat</code></p>
+<p><code>Get-ChildItem -Path &lt;start_path&gt; -Filter &lt;find_expression&gt; -Recurse -ErrorAction SilentlyContinue -Force</code>: Find a file in sub folders. Equivalent to Linux <code>find</code> command</p>
+<h3 id="how-to">How-to</h3>
+<h4 id="assign-variable">Assign Variable</h4>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">$value = &quot;string value&quot;
+$value              # Displays <span class="kw">string</span> value
+
+$value = <span class="dv">1</span>
+$value              # Displays <span class="dv">1</span>
+
+$value = <span class="dv">1</span> + <span class="dv">1</span>
+$value              # Displays <span class="dv">2</span>
+
+$value = <span class="fl">1.9</span>
+[int32]$value       # Displays <span class="dv">2</span>
+[float]$value       # Displays <span class="fl">1.9</span>
+[<span class="kw">string</span>]$value      # Displays <span class="fl">1.9</span>
+[boolean]$value     # Displays <span class="kw">True</span>
+[datetime]$value    # Displays January <span class="dv">9</span> ...
+
+$value = &#39;$<span class="st">(1 + 2)</span>&#39;
+<span class="kw">Write</span>-Output $value    # Displays $<span class="st">(1 + 2)</span>
+
+$value = &quot;$<span class="st">(1 + 2)</span>&quot;
+<span class="kw">Write</span>-Output $value    # Displays <span class="dv">3</span></code></pre></div>
+<h4 id="get-user-input">Get user input</h4>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">$input = <span class="kw">Read</span>-Host &#39;What is your name? &#39;
+<span class="kw">Write</span>-Output &quot;Hello $input!&quot;</code></pre></div>
+<h4 id="connect-to-a-remote-machine-remote-powershell-session">Connect to a remote machine (Remote PowerShell Session)</h4>
+<p>Run Poweshell elevated on the local machine.</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Start the Remote Management Service
+net start WinRM
+
+# <span class="kw">Add</span> the remote machine in the list of trusted hosts
+$ip = &quot;&lt;ip_of_the_remote_machine&gt;&quot;
+Set-Item wsman:\localhost\client\TrustedHosts &quot;$ip&quot;
+
+# <span class="kw">Or</span> to allow all machines: Set-Item wsman:\localhost\client\TrustedHosts &quot;*&quot;
+# <span class="kw">Or</span> to allow multiple machines: Set-Item wsman:\localhost\client\TrustedHosts &quot;$ip1,$ip2,...&quot;
+
+# Open the remote PowerShell session <span class="st">(Remote Machine)</span>
+$user = &quot;$ip\&lt;user_of_the_remote_machine&gt;&quot;
+Enter-PSSession -ComputerName $ip -Credential $user
+
+# Open the remote PowerShell session <span class="st">(Remote Container)</span>
+$container_id = &quot;$<span class="st">(docker inspect --format=&#39;{{.Id}}&#39; &lt;container_name&gt;)</span>&quot;
+Enter-PSSession -ContainerId $container_id
+
+# Open the remote PowerShell session <span class="st">(Remote Container)</span> as Administrator
+$container_id = &quot;$<span class="st">(docker inspect --format=&#39;{{.Id}}&#39; &lt;container_name&gt;)</span>&quot;
+Enter-PSSession -ContainerId $container_id -RunAsAdministrator</code></pre></div>
+<h4 id="monitor-and-close-a-process">Monitor and Close a process</h4>
+<p>The example below monitor and closed the <em>MyProcess</em> program.</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> the process
+$my_process = <span class="kw">Get</span>-Process MyProcess
+
+# Close the process gracefully
+$my_process.CloseMainWindow<span class="st">()</span>
+
+# Return <span class="kw">true</span> id the process was closed
+$my_process.HasExited
+
+
+# <span class="kw">For</span> <span class="kw">stop</span> the process
+$my_process | <span class="kw">Stop</span>-Process -Force</code></pre></div>
+</body>
+</html>

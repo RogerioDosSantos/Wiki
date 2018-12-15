@@ -49,25 +49,32 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <![endif]-->
 </head>
 <body>
-<h1 id="indusoft-web-studio-tips-and-tricks">InduSoft Web Studio Tips and Tricks</h1>
-<p><code>viewer.exe nosplash /ceemul /noprogressbar /ds1:localhost /dsp:1234 /url:&quot;file://&lt;application_path&gt;&quot;</code> : Command to start the Viewer in CE emulation mode pointing to an application.</p>
-<h2 id="how-to">How-to</h2>
-<h3 id="configure-ceview-to-run-in-device-without-monitor">Configure CEView to run in device without monitor</h3>
-<ul>
-<li>Add the following entry on your <em>CEView.ini</em></li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[OEM]</span>
-<span class="dt">BlindDevice</span><span class="ot">=</span><span class="dv">1</span></code></pre></div>
-<h3 id="configure-iis-to-run-both-issymbol-and-sma">Configure IIS to run both ISSymbol and SMA</h3>
+<h1 id="migrating-to-visual-studio-2017-platform-toolset">Migrating to Visual Studio 2017 platform toolset</h1>
+<h2 id="configuration-changes">Configuration Changes</h2>
 <figure>
-<img src="http://tinyurl.com/ybby4k2a" />
+<img src="http://tinyurl.com/ybdr3lc4" />
 </figure>
-<h3 id="change-ceview-application-manually">Change CEView Application manually</h3>
-<ul>
-<li>Change the <em>CEApp.ini</em> file to point to the desired application.</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[Application]</span>
-<span class="dt">Configuration</span><span class="ot">=</span><span class="st">C:\Users\iws\app\app.app</span>
-<span class="dt">Directory</span><span class="ot">=</span><span class="st">C:\Users\iws\app\</span></code></pre></div>
+<p><strong>Note</strong>: Windows SDK version will not appear until you apply the <em>Platform Toolset</em> to be <em>Visual Studio 2017 (v141)</em></p>
+<h2 id="issues">Issues</h2>
+<h4 id="midl-error">MIDL Error</h4>
+<h5 id="error">Error</h5>
+<figure>
+<img src="http://tinyurl.com/ydcbm94k" />
+</figure>
+<h5 id="solution">Solution</h5>
+<p>Change the <em>Minimum Target Platform</em> to <em>empty</em></p>
+<figure>
+<img src="http://tinyurl.com/yah279ew" />
+</figure>
+<h4 id="several-afxwin-not-declared-macros">Several afxwin not declared macros</h4>
+<h5 id="error-1">Error</h5>
+<figure>
+<img src="http://tinyurl.com/ya5dyhwd" />
+</figure>
+<h5 id="solution-1">Solution</h5>
+<p>In some part of the code, or property sheet the <em>Windows Version</em> is being defined.</p>
+<p>E.g.:</p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="dt">WINVER</span><span class="ot">=</span><span class="dv">0x500</span>
+<span class="dt">_WIN32_WINNT</span><span class="ot">=</span><span class="dv">0x0600</span></code></pre></div>
 </body>
 </html>

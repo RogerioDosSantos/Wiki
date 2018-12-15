@@ -17,7 +17,7 @@
 
 `conan search "<search_word>*" -r=conan-center` : Search for a package based in the search word passed.
 
-`conan install <package_name>/<package_version>@<package_owner>/<package_chanel>` : Install a specific package. E.g.: `Poco/1.9.0@pocoproject/stable`
+`conan install <package_name>/<package_version>@<package_owner>/<package_channel>` : Install a specific package. E.g.: `Poco/1.9.0@pocoproject/stable`
 
 `conan install <source_folder> --install-folder <stage_folder>`: Prepare a folder for compilation. The source folde is the folder where the `conanfile.py` file is located. After the preparation you can call the command `conan build` to build the application. E.g.: `conan install . --install-folder stage`
 

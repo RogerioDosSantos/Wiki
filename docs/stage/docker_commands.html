@@ -67,7 +67,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>docker commit -a &quot;&lt;author&gt;&quot; -m &quot;&lt;message&gt;&quot; &lt;container id&gt; [&lt;dockerhub user&gt;]&lt;image name&gt;:&lt;tag&gt;</code> : Commit a container into an image. E.g.: <code>docker commit -a &quot;Roger Santos&quot; -m &quot;My Comment&quot; ec6cc8c6e490 rogersantos/vim:1.0</code></p>
 <p><code>docker diff &lt;container id&gt;</code> : Shows the difference between the current container and the original image.</p>
 <p><code>docker tag &lt;image id&gt; [&lt;dockerhub user&gt;]/&lt;image name&gt;:&lt;tag&gt;</code>: Tag an image. E.g.: <code>docker tag 5ffd21ba24cf rogersantos/vim:1.0</code></p>
-<p><code>docker push &lt;full image name&gt;</code>: Publish the image into the docker hub. Note: You need to be logged before pushing an image. E.g.: <code>docker push rogersantos/vim</code></p>
+<p><code>docker push &lt;full image name&gt;</code>: Publish the image into the docker hub. Note: You need to be logged before pushing an image. E.g.: <code>docker push rogersantos.azurecr.io/vim</code></p>
 <p><code>docker login</code> : Log into a repository</p>
 <p><code>docker login --username &lt;user_name&gt; --password &lt;password&gt; &lt;server&gt;</code> : Login into a repository into a specific server.</p>
 <p><code>docker-compose up [-d]</code> : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The <code>-d</code> option allow to start the container as service, <em>forking</em> the process.</p>
@@ -170,6 +170,34 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     &amp;&amp; echo <span class="st">&#39;sudo docker_program &quot;$@&quot;&#39;</span> | tee -a /usr/bin/docker \
     &amp;&amp; chmod +x /usr/bin/docker \
     &amp;&amp; echo <span class="st">&quot;*** Install Docker Client - END&quot;</span></code></pre></div>
-<h3 id="get-the-run-command-of-a-docker-container">Get the run command of a docker container</h3>
+<h3 id="pipe-into-docker-container">Pipe into docker container</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run -it -d --rm --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful
+
+<span class="co"># Display item piped</span>
+<span class="bu">echo</span> <span class="st">&quot;test&quot;</span> <span class="kw">|</span> <span class="ex">docker</span> exec --interactive <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat&quot;</span>
+
+<span class="co"># Save piped item into a file</span>
+<span class="bu">echo</span> <span class="st">&quot;content to file&quot;</span> <span class="kw">|</span> <span class="ex">docker</span> exec --interactive <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat &gt; ~/t1.txt&quot;</span>
+
+<span class="ex">docker</span> exec <span class="st">&quot;my_container&quot;</span> bash -c <span class="st">&quot;cat ~/t1.txt&quot;</span>
+
+<span class="ex">docker</span> stop <span class="st">&quot;my_container&quot;</span></code></pre></div>
+<h3 id="allow-a-container-restart-always">Allow a container restart always</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Start a container that will always restart</span>
+<span class="ex">docker</span> run -it -d --rm --restart=always --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful
+
+<span class="co"># To stop the container you can:</span>
+<span class="ex">docker</span> update --restart=no my_container
+
+<span class="co"># Allow container restart always unless docker stop is executed:</span>
+<span class="ex">docker</span> run -it -d --rm --restart=unless-stopped --name <span class="st">&quot;my_container&quot;</span> ubuntu:artful</code></pre></div>
+<h3 id="implement-health-check">Implement Health Check</h3>
+<p>Health checks can be any single command. They run inside the container and if the command exit code is 0, the container is reported as healthy, and if the output is 1, the container is marked as unhealthy.</p>
+<p>The example below checks if you are getting answer from the port 3000</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">HEALTHCHECK</span> CMD curl --fail http://localhost:3000/ <span class="kw">||</span> <span class="bu">exit</span> 1</code></pre></div>
+<p>Calling the <code>docker ps</code> command, it will show the following in case the <em>Health Check</em> returns <em>1</em>:</p>
+<figure>
+<img src="http://tinyurl.com/y73vdma5" />
+</figure>
 </body>
 </html>

@@ -49,25 +49,39 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <![endif]-->
 </head>
 <body>
-<h1 id="indusoft-web-studio-tips-and-tricks">InduSoft Web Studio Tips and Tricks</h1>
-<p><code>viewer.exe nosplash /ceemul /noprogressbar /ds1:localhost /dsp:1234 /url:&quot;file://&lt;application_path&gt;&quot;</code> : Command to start the Viewer in CE emulation mode pointing to an application.</p>
+<h1 id="microsoft-nano-server">Microsoft Nano Server</h1>
+<p><a href="https://docs.microsoft.com/en-us/windows-server/get-started/getting-started-with-nano-server">Windows Nano Server</a> is a remotely administered server operating system optimized to occupy the minimum footprint possible.</p>
+<p>Windows have a <a href="https://hub.docker.com/r/microsoft/nanoserver/">Windows Nano Server Docker Image</a> <em>microsoft/nanoserver</em> available on <em>Docker Hub</em>.</p>
+<p><em>Visual Studio</em> also contains the <a href="https://marketplace.visualstudio.com/items?itemName=VenkatYallaMSFT.NanoServerProjectExtensions">NanoServerProjectExtensions</a> which allows:</p>
+<ul>
+<li>Show Intellisense for APIs that are supported on Nano Server</li>
+<li>Red error squiggles are shown for APIs that are not supported on Nano Server</li>
+</ul>
+<h2 id="commands">Commands</h2>
+<p><code>powershell</code>: Start Poweshell</p>
 <h2 id="how-to">How-to</h2>
-<h3 id="configure-ceview-to-run-in-device-without-monitor">Configure CEView to run in device without monitor</h3>
-<ul>
-<li>Add the following entry on your <em>CEView.ini</em></li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[OEM]</span>
-<span class="dt">BlindDevice</span><span class="ot">=</span><span class="dv">1</span></code></pre></div>
-<h3 id="configure-iis-to-run-both-issymbol-and-sma">Configure IIS to run both ISSymbol and SMA</h3>
+<h3 id="install-the-nano-server-project-extension-in-visual-studio">Install the Nano Server Project Extension in Visual Studio</h3>
 <figure>
-<img src="http://tinyurl.com/ybby4k2a" />
+<img src="http://tinyurl.com/ycnkv2hz" />
 </figure>
-<h3 id="change-ceview-application-manually">Change CEView Application manually</h3>
+<h3 id="debug-missing-dependencies">Debug missing dependencies</h3>
+<p>To debug missing dependencies we will use <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/gflags">GFlags</a> to enable advanced diagnostic and <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/cdb-command-line-options">CDB</a> for debugging.</p>
 <ul>
-<li>Change the <em>CEApp.ini</em> file to point to the desired application.</li>
+<li>Install <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools">Debugging Tools for Windows</a> into an <em>Windows 10</em> machine. You will need the <em>Windows 10 (x64) debuggers</em> which is located in the following folder after installation:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[Application]</span>
-<span class="dt">Configuration</span><span class="ot">=</span><span class="st">C:\Users\iws\app\app.app</span>
-<span class="dt">Directory</span><span class="ot">=</span><span class="st">C:\Users\iws\app\</span></code></pre></div>
+<p><code>C:\Program Files (x86)\Windows Kits\10\Debuggers\x64</code></p>
+<ul>
+<li><p>Copy or share the <em>Windows 10 (x64) debuggers</em> inside the docker container</p></li>
+<li><p>Execute the following commands:</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Mark</span> your application to be monitored by gflags.
+gflags.exe -i &lt;your_application_without_path&gt;.exe +sls
+
+# Start your application with the cdb debugger
+cdb.exe &lt;path_of_your_application&gt;</code></pre></div>
+<p><strong>Note</strong>: Inside <em>cdb</em> you can type <code>?</code> for a full list of commands and <code>Q</code> to exit.</p>
+<figure>
+<img src="http://tinyurl.com/y8tad6z7" />
+</figure>
 </body>
 </html>

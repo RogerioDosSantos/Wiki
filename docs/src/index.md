@@ -10,6 +10,8 @@
 - [MFC]( ./mfc.html )
 - [Windows Event Log]( ./windows_event_log.html )
 - [Explorer]( ./windows_explorer.html )
+- [Nano Server]( ./nano_server.html )
+- [PowerShell]( ./powershell.html )
 
 ## Linux 
 
@@ -34,9 +36,10 @@
     - [FZF](./fzf.html)
     - [Grammarous]( ./grammarous.html )
 
-## Editors
+## Editors and Develpment Tools
 
 [Notepad++]( ./notepadpp.html )
+[Visual Studio]( ./visual_studio.html )
 
 ## Markdown
 

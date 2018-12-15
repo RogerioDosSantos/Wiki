@@ -86,6 +86,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>if [ -d &lt;directory&gt; ]; then; &lt;code&gt;; fi</code>: Check if directory exits</p>
 <p><code>if [ -f &lt;file_path&gt; ]; then; &lt;code&gt;; fi</code>: Check if file exits</p>
 <p><code>wc -l &lt;file_path&gt;</code>: Get the amount of lines into a file.</p>
+<p><code>stat --format '%a' &lt;file_or_dirctory&gt;</code>: Get the <code>chmod</code> numerical value of a file or directory.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="ex">f</span> in *<span class="kw">;</span> <span class="kw">do</span> <span class="fu">mv</span> <span class="st">&quot;</span><span class="va">$f</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$f</span><span class="st">.tmp&quot;</span><span class="kw">;</span> <span class="fu">mv</span> <span class="st">&quot;</span><span class="va">$f</span><span class="st">.tmp&quot;</span> <span class="st">&quot;</span><span class="kw">`</span><span class="bu">echo</span> <span class="va">$f</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="st">&quot;[:upper:]&quot;</span> <span class="st">&quot;[:lower:]&quot;</span><span class="kw">`</span><span class="st">&quot;</span><span class="kw">;</span> <span class="kw">done</span></code></pre></div>
 <p>: Rename all files of a directory to lower case.</p>
 <p><code>for f in *; do mv &quot;$f&quot; &quot;${f%.*}&quot; ; done</code> : Remove the last extension of all files</p>
@@ -413,5 +414,32 @@ if [ <span class="ot">!</span> <span class="ot">-S</span> <span class="st">&quot
       <span class="ex">*</span> ) <span class="bu">echo</span> <span class="st">&quot;Please answer yes or no.&quot;</span><span class="kw">;;</span>
   <span class="kw">esac</span>
 <span class="kw">done</span></code></pre></div>
+<h3 id="create-user-script">Create user (Script)</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">whoami</span>
+
+<span class="co"># Create the ubuntu user as root and sudo group</span>
+<span class="ex">useradd</span> -d /home/ubuntu -ms /bin/bash -g root -G sudo -p ubuntu ubuntu
+
+<span class="co"># useradd options:</span>
+<span class="co"># -d, --home-dir HOME_DIR Home directory of the new account.</span>
+<span class="co"># -m, --create-home Create the user&#39;s home directory.</span>
+<span class="co"># -s, --shell SHELL Login shell of the new account.</span>
+<span class="co"># -g, --gid GROUP Name or ID of the primary group.</span>
+<span class="co"># -G, --groups GROUPS List of supplementary groups.</span>
+<span class="co"># -p, --password PASSWORD Encrypted password of the new account (e.g. ubuntu).</span>
+
+<span class="fu">su</span> - ubuntu
+<span class="fu">whoami</span></code></pre></div>
+<h3 id="populate-a-file-in-one-command">Populate a file in one command</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">cat</span> <span class="op">&gt;</span> /tmp/config_file <span class="op">&lt;&lt;-EOF</span>
+[Session_01]
+o1=1
+o2=2
+[Session_02]
+o3=3
+o4=4
+EOF
+
+cat /tmp/config_file</code></pre></div>
 </body>
 </html>
