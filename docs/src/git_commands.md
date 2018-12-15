@@ -311,9 +311,7 @@ git push origin dev
 git branch --set-upstream-to=origin/dev dev
 ```
 
-## Installation
-
-### Getting the latest git version on Ubuntu
+### Install - Getting the latest git version on Ubuntu
 
 ```bash
 # Add the PPA to the local package index
@@ -322,5 +320,14 @@ apt-get update
 
 # Install Git
 sudo apt-get install git
+```
+
+### Submodule - Fix a submodule being tracked as folder
+
+```bash
+# Open the .gitmodules files and get the submodule information
+
+# Add the missing submodule
+git submodule add <url> <path>
 ```
 
