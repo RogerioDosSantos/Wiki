@@ -442,7 +442,7 @@ EOF
 
 cat /tmp/config_file</code></pre></div>
 <h3 id="configure-sudoer-to-use-proxy-configuration">Configure sudoer to use proxy configuration</h3>
-<p>n some releases sudo is configured in such a way that all environment variables all cleared when running the command. To keep the proxy configuration edit the <code>/etc/sudoers</code> file running the <code>visudo</code> command.</p>
+<p>In some releases sudo is configured in such a way that all environment variables all cleared when running the command. To keep the proxy configuration edit the <code>/etc/sudoers</code> file running the <code>visudo</code> command.</p>
 <p>Them, after the <code>Defaults env_reset</code> add the environment variable that you would like to keep as following:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">Defaults</span>  env_keep = <span class="st">&quot;http_proxy https_proxy ftp_proxy socks_proxy no_proxy&quot;</span></code></pre></div>
 </body>
