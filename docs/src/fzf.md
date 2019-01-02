@@ -78,8 +78,10 @@ FZF executes a live fuzzy finding on text
 
 `<silent><leader>ss ` : Snippets
 
-## Linux shell keys
+## Linux shell 
 
 `ctrl-t` : Launch the fuzzy finder in the command line
+
+`<command> **<tab>`: Launch fuzzy completion to the command. E.g.: `cd ~/**<tab>`
 
 
