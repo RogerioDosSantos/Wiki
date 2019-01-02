@@ -126,5 +126,16 @@ $my_process.HasExited
 
 # <span class="kw">For</span> <span class="kw">stop</span> the process
 $my_process | <span class="kw">Stop</span>-Process -Force</code></pre></div>
+<h4 id="add-windows-feature">Add Windows Feature</h4>
+<p>You can get the enabled features using the command:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># List the enabled features
+<span class="kw">Get</span>-WindowsFeature</code></pre></div>
+<p>This will show a list of enabled features and the <em>feature name</em></p>
+<figure>
+<img src="http://tinyurl.com/ya2umltf" />
+</figure>
+<p>To enable a feature you can use the following command:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Install <span class="dt">/</span> Enable a specific feature
+Install-WindowsFeature &lt;feature_name&gt;</code></pre></div>
 </body>
 </html>

@@ -108,6 +108,25 @@ $my_process.HasExited
 $my_process | Stop-Process -Force
 ```
 
+#### Add Windows Feature
+
+You can get the enabled features using the command:
+
+```ps
+# List the enabled features
+Get-WindowsFeature
+```
+
+This will show a list of enabled features and the *feature name*
+
+![](http://tinyurl.com/ya2umltf)
+
+To enable a feature you can use the following command:
+
+```ps
+# Install / Enable a specific feature
+Install-WindowsFeature <feature_name>
+```
 
 
 
