@@ -51,6 +51,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 <h1 id="iis">IIS</h1>
 <h2 id="how-to">How-to</h2>
+<h3 id="iis---enable-iis-into-windowsservercore">IIS - Enable IIS into WindowsServerCore</h3>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Enable IIS
+<span class="kw">Add</span>-WindowsFeature Web-Server
+
+# Install support <span class="kw">for</span> ASP
+Install-WindowsFeature Web-Asp-Net45</code></pre></div>
 <h3 id="iis---backup-and-restore-configuration">IIS - Backup and Restore Configuration</h3>
 <p>Run the command below with Administrator permissions</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Backup IIS configuration.

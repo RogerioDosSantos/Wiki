@@ -2,6 +2,16 @@
 
 ## How-to
 
+### IIS - Enable IIS into WindowsServerCore
+
+```ps
+# Enable IIS
+Add-WindowsFeature Web-Server
+
+# Install support for ASP
+Install-WindowsFeature Web-Asp-Net45
+```
+
 ### IIS - Backup and Restore Configuration
 
 Run the command below with Administrator permissions
