@@ -24,7 +24,7 @@ Built on .NET Core and provides compatibility with scripts and modules targeting
 
 `Get-Content -Path <file_path>`: Read the content of a file. Similar to Linux `cat`
 
-`Get-ChildItem -Path <start_path> -Filter <find_expression> -Recurse -ErrorAction SilentlyContinue -Force`: Find a file in sub folders. Equivalent to Linux `find` command
+`Get-ChildItem -Path <start_path> -Recurse -ErrorAction SilentlyContinue -Force -Filter <find_expression>`: Find a file in sub folders. Equivalent to Linux `find` command
 
 ### How-to
 

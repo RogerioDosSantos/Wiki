@@ -76,5 +76,48 @@ iisreset.exe <span class="dt">/start</span>
 
 # Restart Execution
 iisreset.exe <span class="dt">/restart</span></code></pre></div>
+<h3 id="iis---cofigure-iis-using-powershell-server-manager">IIS - Cofigure IIS using Powershell (Server Manager)</h3>
+<p>The <a href="https://msdn.microsoft.com/en-us/library/microsoft.web.administration.servermanager(v=vs.90).aspx">ServerManager Class</a> is a <em>.Net object</em> that allows you to configure <em>IIS</em>. The example below shows how you can use the <em>ServerManager Class</em> with <em>PowerShell</em> to configure several items on <em>IIS</em>.</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> Server Manager
+$sm = <span class="kw">Get</span>-IISServerManager
+
+# Remove Default Website
+$sm.Sites.Remove<span class="st">($sm.Sites[&#39;Default Web Site&#39;])</span>
+$sm.CommitChanges<span class="st">()</span>
+
+# Adding New Website <span class="st">(my_website)</span>
+$sm.Sites.<span class="kw">Add</span><span class="st">(&#39;my_website&#39;, &#39;http&#39;, &#39;*:80:&#39;, &#39;C:\inetpub\wwwroot&#39;)</span>
+$sm.CommitChanges<span class="st">()</span>
+
+# Configure Mime Types
+$mime = $sm.GetWebConfiguration<span class="st">(&#39;my_website&#39;)</span>.GetSection<span class="st">(&#39;system.webServer/staticContent&#39;)</span>.GetCollection<span class="st">()</span>.CreateElement<span class="st">(&#39;mimeMap&#39;)</span>
+$mime[&#39;fileExtension&#39;] = &#39;.*&#39;
+$mime[&#39;mimeType&#39;] = &#39;application<span class="dt">/my_application&#39;</span>
+$sm.GetWebConfiguration<span class="st">(&#39;my_website&#39;)</span>.GetSection<span class="st">(&#39;system.webServer/staticContent&#39;)</span>.GetCollection<span class="st">()</span>.<span class="kw">Add</span><span class="st">($mime)</span>
+$sm.CommitChanges<span class="st">()</span>
+
+# Creating Application Pool
+$sm.ApplicationPools.<span class="kw">Add</span><span class="st">(&#39;my_application_pool&#39;)</span>
+$sm.ApplicationPools[&#39;my_application_pool&#39;].ManagedRuntimeVersion = &#39;v4<span class="fl">.0</span>&#39;
+$sm.ApplicationPools[&#39;my_application_pool&#39;].Enable32BitAppOnWin64 = <span class="dv">1</span>
+$sm.ApplicationPools[&#39;my_application_pool&#39;].QueueLength = <span class="dv">4000</span>
+$sm.ApplicationPools[&#39;my_application_pool&#39;].Cpu.ResetInterval = New-TimeSpan -Seconds <span class="dv">0</span>
+$sm.ApplicationPools[&#39;my_application_pool&#39;].ProcessModel.IdentityType = &#39;NetworkService&#39;
+$sm.ApplicationPools[&#39;my_application_pool&#39;].ProcessModel.IdleTimeout = New-TimeSpan -Minutes <span class="dv">10080</span>
+$sm.ApplicationPools[&#39;my_application_pool&#39;].ProcessModel.LoadUserProfile = <span class="dv">1</span>
+$sm.CommitChanges<span class="st">()</span>
+
+# Creating Application
+$sm.Sites[&#39;my_website&#39;].Applications.<span class="kw">Add</span><span class="st">(&#39;/my_application&#39;, &#39;C:\inetpub\wwwroot\my_application&#39;)</span>
+$sm.Sites[&#39;my_website&#39;].Applications[&#39;<span class="dt">/my_application&#39;</span>].ApplicationPoolName = &#39;my_application_pool&#39;
+$sm.CommitChanges<span class="st">()</span>
+
+# Creating Web Virtual Directory 
+$sm.Sites[&#39;my_website&#39;].Applications[&#39;<span class="dt">/&#39;</span>].VirtualDirectories.<span class="kw">Add</span><span class="st">(&#39;/my_virtual_dir&#39;, &#39;C:\workspace\my_dir&#39;)</span>
+$sm.CommitChanges<span class="st">()</span></code></pre></div>
+<p><strong>Tip</strong> : You can get the name of the <em>IIS property</em> you would like to edit from the <em>IIS user interface</em>. E.g.:</p>
+<figure>
+<img src="http://tinyurl.com/y7e4w4y3" />
+</figure>
 </body>
 </html>
