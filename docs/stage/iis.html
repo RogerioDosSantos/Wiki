@@ -51,7 +51,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 <h1 id="iis">IIS</h1>
 <h2 id="how-to">How-to</h2>
-<h3 id="backup-and-restore-iis-configuration">Backup and Restore IIS Configuration</h3>
+<h3 id="iis---backup-and-restore-configuration">IIS - Backup and Restore Configuration</h3>
 <p>Run the command below with Administrator permissions</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Backup IIS configuration.
 <span class="co">%windir%\system32\inetsrv\appcmd.exe add backup &quot;&lt;backup_name&gt;&quot;</span>
@@ -61,5 +61,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 # Remove Backup.
 <span class="co">%windir%\system32\inetsrv\appcmd.exe delete backup &quot;&lt;backup_name&gt;&quot;</span></code></pre></div>
+<h3 id="iis---start-and-stop-execution">IIS - Start and Stop Execution</h3>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Stop</span> Execution
+iisreset.exe <span class="dt">/stop</span>
+
+# Start Execution
+iisreset.exe <span class="dt">/start</span>
+
+# Restart Execution
+iisreset.exe <span class="dt">/restart</span></code></pre></div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 ## How-to
 
-### Backup and Restore IIS Configuration
+### IIS - Backup and Restore Configuration
 
 Run the command below with Administrator permissions
 
@@ -15,4 +15,17 @@ Run the command below with Administrator permissions
 
 # Remove Backup.
 %windir%\system32\inetsrv\appcmd.exe delete backup "<backup_name>"
+```
+
+### IIS - Start and Stop Execution
+
+```ps
+# Stop Execution
+iisreset.exe /stop
+
+# Start Execution
+iisreset.exe /start
+
+# Restart Execution
+iisreset.exe /restart
 ```
