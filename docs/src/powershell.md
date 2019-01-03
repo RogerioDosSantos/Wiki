@@ -155,7 +155,18 @@ Optionally you coud do it using a only command:
 Set-ItemProperty -Path HKLM:\Software\Microsoft\Fusion -Name EnableLog -Value 1
 ```
 
+#### PowerShell - Configure Proxy
+
+To allow *Powershell* to work properly behind a proxy you can configure it as following:
 
 
+```ps
+# Get the current Powershell proxy configuration
+netsh winhttp show proxy
 
+# Import the proxy configuration available on the Internet Explorer
+netsh winhttp import proxy source=ie
 
+# Set the proxy configuration manually
+netsh winhttp set proxy <proxy_url>:<proxy_port>
+```
