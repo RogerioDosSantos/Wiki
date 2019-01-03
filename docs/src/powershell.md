@@ -128,5 +128,34 @@ To enable a feature you can use the following command:
 Install-WindowsFeature <feature_name>
 ```
 
+#### PowerShell - Edit Registry
+
+The example below set the registry value `[HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD)` to 1
+
+```ps
+# Push the current location
+Push-Location
+
+# Go to the registry folder
+Set-Location HKLM:\Software\Microsoft\Fusion
+
+# List the current keys
+Get-ItemProperty .
+
+# Set the EnableLog key to 1
+Set-ItemProperty . EnableLog 1 
+
+# Go bach to the previous location
+Pop-Location
+```
+
+Optionally you coud do it using a only command:
+
+```ps
+Set-ItemProperty -Path HKLM:\Software\Microsoft\Fusion -Name EnableLog -Value 1
+```
+
+
+
 
 

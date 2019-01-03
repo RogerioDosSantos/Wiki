@@ -137,5 +137,23 @@ $my_process | <span class="kw">Stop</span>-Process -Force</code></pre></div>
 <p>To enable a feature you can use the following command:</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Install <span class="dt">/</span> Enable a specific feature
 Install-WindowsFeature &lt;feature_name&gt;</code></pre></div>
+<h4 id="powershell---edit-registry">PowerShell - Edit Registry</h4>
+<p>The example below set the registry value <code>[HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD)</code> to 1</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Push the current location
+Push-Location
+
+# Go to the registry folder
+Set-Location HKLM:\Software\Microsoft\Fusion
+
+# List the current keys
+<span class="kw">Get</span>-ItemProperty .
+
+# Set the EnableLog key to <span class="dv">1</span>
+Set-ItemProperty . EnableLog <span class="dv">1</span> 
+
+# Go bach to the previous location
+<span class="kw">Pop</span>-Location</code></pre></div>
+<p>Optionally you coud do it using a only command:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Set-ItemProperty -Path HKLM:\Software\Microsoft\Fusion -Name EnableLog -Value <span class="dv">1</span></code></pre></div>
 </body>
 </html>
