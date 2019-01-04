@@ -22,6 +22,8 @@
 
 `q`: Exit the debug session.
 
+`p`: Step into
+
 ## How-to
 
 ### CDB - Get CDB Binaries from Docker image
