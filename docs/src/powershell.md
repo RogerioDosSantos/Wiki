@@ -172,3 +172,18 @@ netsh winhttp import proxy source=ie
 # Set the proxy configuration manually
 netsh winhttp set proxy <proxy_url>:<proxy_port>
 ```
+
+#### Powershell - Change Environment Variable
+
+The example below change the environment variable *PATH*
+
+```ps
+# Get the current PATH environment variable
+$path = (Get-ItemProperty 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
+
+# Append the additional directory temp
+$path = "${path};C:\temp\"
+
+# Set the PATH environment variable with the new value
+Set-ItemProperty 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $path
+```
