@@ -12,9 +12,7 @@
   <![endif]-->
 </head>
 <body>
-<p>Added additional split commands# Vim Commands #</p>
-<h2 id="command-line">Command line</h2>
-<p><code>vim -V&lt;log level&gt;&lt;log filename&gt;</code> : Execute Vim with the log enabled. E.g.: Vim -V9vim_log.txt</p>
+<h1 id="vim">Vim</h1>
 <h2 id="leader---normal-mode">Leader - Normal Mode</h2>
 <p><em>Note: My <leader> is <space></em></p>
 <p><code>&lt;leader&gt;&lt;space&gt;</code> : Switch between documents that are open in the same split</p>
@@ -65,16 +63,6 @@
 <p><code>z.</code>: Move the current cursor position to the middle of the screen</p>
 <p><code>z&lt;return&gt;</code>: Move the current cursor to the top of the screen</p>
 <p><code>'J</code>: Join the current line with the next line'</p>
-<p><code>zf&lt;selection&gt;</code> : Create a folding (Collapsed line)</p>
-<p><code>zo</code>: Open folding (Collapsed) were the cursor are</p>
-<p><code>zc</code>: Close folding were the cursor are</p>
-<p><code>za</code> : Toggle folding</p>
-<p><code>zd</code>: Delete a folder</p>
-<p><code>zR</code> : Open all folding (Collapsed) lines</p>
-<p><code>zM</code>: Close all folding</p>
-<p><code>zss</code> : Set the folding method to Syntax</p>
-<p><code>zsm</code> : Set the folding method to Manual</p>
-<p><code>zsi</code> : Set the folding method to Indent</p>
 <h2 id="keys---normal-mode">Keys - Normal Mode</h2>
 <p><code>ctrl-w</code> : got to the next window</p>
 <p><code>ctrl-PgUp ; ctrl-PgDown</code> : Switch Tabs</p>
@@ -188,6 +176,7 @@
 <p><code>:X</code> : Encrypt a file. When the file is opened again it will ask you for a password to open the file.</p>
 <p><code>:set key=&lt;nothing&gt;</code> : Remove the cryptography of an open file. You need to save it after.</p>
 <p><code>:sort</code> : Sort selection. Note: To select a paragraph you can use <code>vip</code></p>
+<p><code>:1$!uniq</code> : Remove duplicated lines from a sorted list. This command says &quot;use the Unix uniq command to remove duplicate lines from line 1 to the end of the file.&quot; The uniq command only works on duplicate lines that are adjacent to each other and do not have any blank lines between them.</p>
 <h2 id="explore-keys-and-commands">Explore Keys and Commands</h2>
 <p><code>d</code> : creates a new directory</p>
 <p><code>%</code> : creates and opens a new file</p>
@@ -198,6 +187,14 @@
 <p><code>&lt;numeric id&gt;mb</code> : Create a bookmark on the current folder with the id informed.</p>
 <p><code>&lt;numeric id&gt;gb</code> : Goto bookmark</p>
 <p><code>qb</code> : List bookmarks</p>
+<h2 id="vimdiff-key-commands">VimDiff Key Commands</h2>
+<p><code>]c</code>: Next difference</p>
+<p><code>[c</code>: Previous difference</p>
+<p><code>do</code>: Diff obtain</p>
+<p><code>dp</code>: Diff put</p>
+<p><code>zo</code>: Open folded text</p>
+<p><code>zc</code>: Close folded text</p>
+<p><code>:diffupdate</code>: Scan the files for differences</p>
 <h2 id="spell-check">Spell Check</h2>
 <p><code>&lt;leader&gt; se</code> : Set spell check to English Language (Custom Map).</p>
 <p><code>&lt;leader&gt; sp</code> : Set spell check to Portuguese Language (Custom Map).</p>
@@ -222,5 +219,17 @@
 <p>}}}</p>
 <p><code>args</code> : Display the list of files</p>
 <p><code>argdo &lt;command&gt;</code> : Play the command on all files of the argument list. E.g.: <code>argdo normal @q</code> play de macro q on all files.</p>
+<h2 id="navigation">Navigation</h2>
+<h3 id="folding">Folding</h3>
+<p><code>zf&lt;selection&gt;</code> : Create a folding (Collapsed line)</p>
+<p><code>zo</code>: Open folding (Collapsed) were the cursor are</p>
+<p><code>zc</code>: Close folding were the cursor are</p>
+<p><code>za</code> : Toggle folding</p>
+<p><code>zd</code>: Delete a folder</p>
+<p><code>zR</code> : Open all folding (Collapsed) lines</p>
+<p><code>zM</code>: Close all folding</p>
+<p><code>zss</code> : Set the folding method to Syntax</p>
+<p><code>zsm</code> : Set the folding method to Manual</p>
+<p><code>zsi</code> : Set the folding method to Indent</p>
 </body>
 </html>

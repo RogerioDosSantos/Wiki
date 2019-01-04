@@ -327,6 +327,8 @@
 
 `:sort` : Sort selection. Note: To select a paragraph you can use `vip`
 
+`:1$!uniq` : Remove duplicated lines from a sorted list. This command says "use the Unix uniq command to remove duplicate lines from line 1 to the end of the file." The uniq command only works on duplicate lines that are adjacent to each other and do not have any blank lines between them.
+
 ## Explore Keys and Commands
 
 `d` : creates a new directory
@@ -346,6 +348,22 @@
 `<numeric id>gb` : Goto bookmark
 
 `qb` : List bookmarks
+
+## VimDiff Key Commands
+
+`]c`: Next difference
+
+`[c`: Previous difference
+
+`do`: Diff obtain
+
+`dp`: Diff put
+
+`zo `: Open folded text
+
+`zc  `: Close folded text
+
+`:diffupdate`: Scan the files for differences
 
 ## Spell Check
 
