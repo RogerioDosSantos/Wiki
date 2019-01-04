@@ -91,7 +91,7 @@ $container_id = "$(docker inspect --format='{{.Id}}' <container_name>)"
 Enter-PSSession -ContainerId $container_id -RunAsAdministrator
 ```
 
-#### Monitor and Close a process
+#### PowerShell - Monitor and Close a process
 
 The example below monitor and closed the *MyProcess* program.
 
@@ -105,8 +105,10 @@ $my_process.CloseMainWindow()
 # Return true id the process was closed
 $my_process.HasExited
 
+# Stop Process
+$my_process | Stop-Process
 
-# For stop the process
+# Force Stop Process
 $my_process | Stop-Process -Force
 ```
 
