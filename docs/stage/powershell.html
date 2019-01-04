@@ -63,6 +63,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>[environment]::OSVersion.VersionString</code>: Return the version of the OS.</p>
 <p><code>Get-Content -Path &lt;file_path&gt;</code>: Read the content of a file. Similar to Linux <code>cat</code></p>
 <p><code>Get-ChildItem -Path &lt;start_path&gt; -Recurse -ErrorAction SilentlyContinue -Force -Filter &lt;find_expression&gt;</code>: Find a file in sub folders. Equivalent to Linux <code>find</code> command</p>
+<p><code>Copy-Item -Recurse -Path &lt;source_folder&gt; -Destination &lt;destination_folder&gt;</code>: Copy folder recursively</p>
 <h3 id="how-to">How-to</h3>
 <h4 id="assign-variable">Assign Variable</h4>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">$value = &quot;string value&quot;
