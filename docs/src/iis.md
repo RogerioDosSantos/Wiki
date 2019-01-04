@@ -40,7 +40,7 @@ iisreset.exe /start
 iisreset.exe /restart
 ```
 
-### IIS - Cofigure IIS using Powershell (Server Manager)
+### IIS - Configure IIS using Powershell (Server Manager)
 
 The [ServerManager Class](https://msdn.microsoft.com/en-us/library/microsoft.web.administration.servermanager(v=vs.90).aspx) is a *.Net object* that allows you to configure *IIS*. The example below shows how you can use the *ServerManager Class* with *PowerShell* to configure several items on *IIS*.
 
@@ -88,3 +88,22 @@ $sm.CommitChanges()
 
 ![](http://tinyurl.com/y7e4w4y3)
 
+### IIS - Debug Application Pool Process (Work Proccess)
+
+```ps
+# Attach GFlags to monitor dependencies
+C:\windows_10_debuggers\x64\gflags.exe -i w3wp +sls
+
+# Get the IIS Work Process (w3wp) Information
+# Note: The w3wp proccess will only appear after IIS executed the application pool at least once.
+Get-Process w3wp
+
+# Attach CDB to the w3wp process
+cdb -p <process_id>
+
+# Stop/Start IIS Execution
+iisreset.exe /stop
+iisreset.exe /start
+```
+
+Look [here]( ./cdb.html ) for more information on how work with *CDB*

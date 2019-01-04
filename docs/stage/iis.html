@@ -76,7 +76,7 @@ iisreset.exe <span class="dt">/start</span>
 
 # Restart Execution
 iisreset.exe <span class="dt">/restart</span></code></pre></div>
-<h3 id="iis---cofigure-iis-using-powershell-server-manager">IIS - Cofigure IIS using Powershell (Server Manager)</h3>
+<h3 id="iis---configure-iis-using-powershell-server-manager">IIS - Configure IIS using Powershell (Server Manager)</h3>
 <p>The <a href="https://msdn.microsoft.com/en-us/library/microsoft.web.administration.servermanager(v=vs.90).aspx">ServerManager Class</a> is a <em>.Net object</em> that allows you to configure <em>IIS</em>. The example below shows how you can use the <em>ServerManager Class</em> with <em>PowerShell</em> to configure several items on <em>IIS</em>.</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> Server Manager
 $sm = <span class="kw">Get</span>-IISServerManager
@@ -119,5 +119,20 @@ $sm.CommitChanges<span class="st">()</span></code></pre></div>
 <figure>
 <img src="http://tinyurl.com/y7e4w4y3" />
 </figure>
+<h3 id="iis---debug-application-pool-process-work-proccess">IIS - Debug Application Pool Process (Work Proccess)</h3>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Attach GFlags to <span class="kw">monitor</span> dependencies
+C:\windows_<span class="dv">10</span>_debuggers\x64\gflags.exe -i w3wp +sls
+
+# <span class="kw">Get</span> the IIS Work Process <span class="st">(w3wp)</span> Information
+# Note: The w3wp proccess will only appear after IIS executed the application pool at least once.
+<span class="kw">Get</span>-Process w3wp
+
+# Attach CDB to the w3wp process
+cdb -p &lt;process_id&gt;
+
+# <span class="kw">Stop</span><span class="dt">/Start</span> IIS Execution
+iisreset.exe <span class="dt">/stop</span>
+iisreset.exe <span class="dt">/start</span></code></pre></div>
+<p>Look <a href="./cdb.html">here</a> for more information on how work with <em>CDB</em></p>
 </body>
 </html>
