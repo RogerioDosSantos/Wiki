@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="iis">IIS</h1>
+<h2 id="how-to">How-to</h2>
+<h3 id="iis---enable-iis-into-windowsservercore">IIS - Enable IIS into WindowsServerCore</h3>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Enable IIS
+<span class="kw">Add</span>-WindowsFeature Web-Server
+
+# Install support <span class="kw">for</span> ASP
+Install-WindowsFeature Web-Asp-Net45</code></pre></div>
+<h3 id="iis---backup-and-restore-configuration">IIS - Backup and Restore Configuration</h3>
+<p>Run the command below with Administrator permissions</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Backup IIS configuration.
+<span class="co">%windir%\system32\inetsrv\appcmd.exe add backup &quot;&lt;backup_name&gt;&quot;</span>
+
+# <span class="kw">Restore</span> IIS configuration.
+<span class="co">%windir%\system32\inetsrv\appcmd.exe restore backup &quot;&lt;backup_name&gt;&quot;</span>
+
+# Remove Backup.
+<span class="co">%windir%\system32\inetsrv\appcmd.exe delete backup &quot;&lt;backup_name&gt;&quot;</span></code></pre></div>
+<h3 id="iis---start-and-stop-execution">IIS - Start and Stop Execution</h3>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Stop</span> Execution
+iisreset.exe <span class="dt">/stop</span>
+
+# Start Execution
+iisreset.exe <span class="dt">/start</span>
+
+# Restart Execution
+iisreset.exe <span class="dt">/restart</span></code></pre></div>
+<h3 id="iis---configure-iis-using-powershell-server-manager">IIS - Configure IIS using Powershell (Server Manager)</h3>
+<p>The <a href="https://msdn.microsoft.com/en-us/library/microsoft.web.administration.servermanager(v=vs.90).aspx">ServerManager Class</a> is a <em>.Net object</em> that allows you to configure <em>IIS</em>. The example below shows how you can use the <em>ServerManager Class</em> with <em>PowerShell</em> to configure several items on <em>IIS</em>.</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> Server Manager
+$sm = <span class="kw">Get</span>-IISServerManager
+
+# Remove Default Website
+$sm.Sites.Remove<span class="st">($sm.Sites[&#39;Default Web Site&#39;])</span>
+$sm.CommitChanges<span class="st">()</span>
+
+# Adding New Website <span class="st">(my_website)</span>
+$sm.Sites.<span class="kw">Add</span><span class="st">(&#39;my_website&#39;, &#39;http&#39;, &#39;*:80:&#39;, &#39;C:\inetpub\wwwroot&#39;)</span>
+$sm.CommitChanges<span class="st">()</span>
+
+# Configure Mime Types
+$mime = $sm.GetWebConfiguration<span class="st">(&#39;my_website&#39;)</span>.GetSection<span class="st">(&#39;system.webServer/staticContent&#39;)</span>.GetCollection<span class="st">()</span>.CreateElement<span class="st">(&#39;mimeMap&#39;)</span>
+$mime[&#39;fileExtension&#39;] = &#39;.*&#39;
+$mime[&#39;mimeType&#39;] = &#39;application<span class="dt">/my_application&#39;</span>
+$sm.GetWebConfiguration<span class="st">(&#39;my_website&#39;)</span>.GetSection<span class="st">(&#39;system.webServer/staticContent&#39;)</span>.GetCollection<span class="st">()</span>.<span class="kw">Add</span><span class="st">($mime)</span>
+$sm.CommitChanges<span class="st">()</span>
+
+# Creating Application Pool
+$sm.ApplicationPools.<span class="kw">Add</span><span class="st">(&#39;my_application_pool&#39;)</span>
+$sm.ApplicationPools[&#39;my_application_pool&#39;].ManagedRuntimeVersion = &#39;v4<span class="fl">.0</span>&#39;
+$sm.ApplicationPools[&#39;my_application_pool&#39;].Enable32BitAppOnWin64 = <span class="dv">1</span>
+$sm.ApplicationPools[&#39;my_application_pool&#39;].QueueLength = <span class="dv">4000</span>
+$sm.ApplicationPools[&#39;my_application_pool&#39;].Cpu.ResetInterval = New-TimeSpan -Seconds <span class="dv">0</span>
+$sm.ApplicationPools[&#39;my_application_pool&#39;].ProcessModel.IdentityType = &#39;NetworkService&#39;
+$sm.ApplicationPools[&#39;my_application_pool&#39;].ProcessModel.IdleTimeout = New-TimeSpan -Minutes <span class="dv">10080</span>
+$sm.ApplicationPools[&#39;my_application_pool&#39;].ProcessModel.LoadUserProfile = <span class="dv">1</span>
+$sm.CommitChanges<span class="st">()</span>
+
+# Creating Application
+$sm.Sites[&#39;my_website&#39;].Applications.<span class="kw">Add</span><span class="st">(&#39;/my_application&#39;, &#39;C:\inetpub\wwwroot\my_application&#39;)</span>
+$sm.Sites[&#39;my_website&#39;].Applications[&#39;<span class="dt">/my_application&#39;</span>].ApplicationPoolName = &#39;my_application_pool&#39;
+$sm.CommitChanges<span class="st">()</span>
+
+# Creating Web Virtual Directory 
+$sm.Sites[&#39;my_website&#39;].Applications[&#39;<span class="dt">/&#39;</span>].VirtualDirectories.<span class="kw">Add</span><span class="st">(&#39;/my_virtual_dir&#39;, &#39;C:\workspace\my_dir&#39;)</span>
+$sm.CommitChanges<span class="st">()</span></code></pre></div>
+<p><strong>Tip</strong> : You can get the name of the <em>IIS property</em> you would like to edit from the <em>IIS user interface</em>. E.g.:</p>
+<figure>
+<img src="http://tinyurl.com/y7e4w4y3" />
+</figure>
+<h3 id="iis---debug-application-pool-process-work-proccess">IIS - Debug Application Pool Process (Work Proccess)</h3>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Attach GFlags to <span class="kw">monitor</span> dependencies
+C:\windows_<span class="dv">10</span>_debuggers\x64\gflags.exe -i w3wp +sls
+
+# <span class="kw">Get</span> the IIS Work Process <span class="st">(w3wp)</span> Information
+# Note: The w3wp proccess will only appear after IIS executed the application pool at least once.
+<span class="kw">Get</span>-Process w3wp
+
+# Attach CDB to the w3wp process
+cdb -p &lt;process_id&gt;
+
+# <span class="kw">Stop</span><span class="dt">/Start</span> IIS Execution
+iisreset.exe <span class="dt">/stop</span>
+iisreset.exe <span class="dt">/start</span></code></pre></div>
+<p>Look <a href="./cdb.html">here</a> for more information on how work with <em>CDB</em></p>
+</body>
+</html>

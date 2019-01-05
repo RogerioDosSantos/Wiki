@@ -12,6 +12,7 @@
 - [Explorer]( ./windows_explorer.html )
 - [Nano Server]( ./nano_server.html )
 - [PowerShell]( ./powershell.html )
+- [IIS]( ./iis.html )
 
 ## Linux 
 
@@ -38,8 +39,8 @@
 
 ## Editors and Develpment Tools
 
-[Notepad++]( ./notepadpp.html )
-[Visual Studio]( ./visual_studio.html )
+- [Notepad++]( ./notepadpp.html )
+- [Visual Studio]( ./visual_studio.html )
 
 ## Markdown
 
@@ -126,6 +127,7 @@
 - [WinDbg]( ./windbg.html )
 - [Perfmon]( ./perfmon.html )
 - [CRT APIs]( ./crt_apis.html )
+- [CDB]( ./cdb.html )
 
 ## Database 
 

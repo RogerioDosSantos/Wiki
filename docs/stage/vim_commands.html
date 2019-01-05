@@ -177,6 +177,7 @@
 <p><code>:X</code> : Encrypt a file. When the file is opened again it will ask you for a password to open the file.</p>
 <p><code>:set key=&lt;nothing&gt;</code> : Remove the cryptography of an open file. You need to save it after.</p>
 <p><code>:sort</code> : Sort selection. Note: To select a paragraph you can use <code>vip</code></p>
+<p><code>:1$!uniq</code> : Remove duplicated lines from a sorted list. This command says &quot;use the Unix uniq command to remove duplicate lines from line 1 to the end of the file.&quot; The uniq command only works on duplicate lines that are adjacent to each other and do not have any blank lines between them.</p>
 <h2 id="explore-keys-and-commands">Explore Keys and Commands</h2>
 <p><code>d</code> : creates a new directory</p>
 <p><code>%</code> : creates and opens a new file</p>
@@ -187,6 +188,14 @@
 <p><code>&lt;numeric id&gt;mb</code> : Create a bookmark on the current folder with the id informed.</p>
 <p><code>&lt;numeric id&gt;gb</code> : Goto bookmark</p>
 <p><code>qb</code> : List bookmarks</p>
+<h2 id="vimdiff-key-commands">VimDiff Key Commands</h2>
+<p><code>]c</code>: Next difference</p>
+<p><code>[c</code>: Previous difference</p>
+<p><code>do</code>: Diff obtain</p>
+<p><code>dp</code>: Diff put</p>
+<p><code>zo</code>: Open folded text</p>
+<p><code>zc</code>: Close folded text</p>
+<p><code>:diffupdate</code>: Scan the files for differences</p>
 <h2 id="spell-check">Spell Check</h2>
 <p><code>&lt;leader&gt; se</code> : Set spell check to English Language (Custom Map).</p>
 <p><code>&lt;leader&gt; sp</code> : Set spell check to Portuguese Language (Custom Map).</p>

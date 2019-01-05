@@ -24,7 +24,9 @@ Built on .NET Core and provides compatibility with scripts and modules targeting
 
 `Get-Content -Path <file_path>`: Read the content of a file. Similar to Linux `cat`
 
-`Get-ChildItem -Path <start_path> -Filter <find_expression> -Recurse -ErrorAction SilentlyContinue -Force`: Find a file in sub folders. Equivalent to Linux `find` command
+`Get-ChildItem -Path <start_path> -Recurse -ErrorAction SilentlyContinue -Force -Filter <find_expression>`: Find a file in sub folders. Equivalent to Linux `find` command
+
+`Copy-Item -Recurse -Path <source_folder> -Destination <destination_folder>`: Copy folder recursively
 
 ### How-to
 
@@ -89,7 +91,7 @@ $container_id = "$(docker inspect --format='{{.Id}}' <container_name>)"
 Enter-PSSession -ContainerId $container_id -RunAsAdministrator
 ```
 
-#### Monitor and Close a process
+#### PowerShell - Monitor and Close a process
 
 The example below monitor and closed the *MyProcess* program.
 
@@ -103,11 +105,87 @@ $my_process.CloseMainWindow()
 # Return true id the process was closed
 $my_process.HasExited
 
+# Stop Process
+$my_process | Stop-Process
 
-# For stop the process
+# Force Stop Process
 $my_process | Stop-Process -Force
 ```
 
+#### Add Windows Feature
+
+You can get the enabled features using the command:
+
+```ps
+# List the enabled features
+Get-WindowsFeature
+```
+
+This will show a list of enabled features and the *feature name*
+
+![](http://tinyurl.com/ya2umltf)
+
+To enable a feature you can use the following command:
+
+```ps
+# Install / Enable a specific feature
+Install-WindowsFeature <feature_name>
+```
+
+#### PowerShell - Edit Registry
+
+The example below set the registry value `[HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD)` to 1
+
+```ps
+# Push the current location
+Push-Location
+
+# Go to the registry folder
+Set-Location HKLM:\Software\Microsoft\Fusion
+
+# List the current keys
+Get-ItemProperty .
+
+# Set the EnableLog key to 1
+Set-ItemProperty . EnableLog 1 
+
+# Go bach to the previous location
+Pop-Location
+```
+
+Optionally you coud do it using a only command:
+
+```ps
+Set-ItemProperty -Path HKLM:\Software\Microsoft\Fusion -Name EnableLog -Value 1
+```
+
+#### PowerShell - Configure Proxy
+
+To allow *Powershell* to work properly behind a proxy you can configure it as following:
 
 
+```ps
+# Get the current Powershell proxy configuration
+netsh winhttp show proxy
 
+# Import the proxy configuration available on the Internet Explorer
+netsh winhttp import proxy source=ie
+
+# Set the proxy configuration manually
+netsh winhttp set proxy <proxy_url>:<proxy_port>
+```
+
+#### Powershell - Change Environment Variable
+
+The example below change the environment variable *PATH*
+
+```ps
+# Get the current PATH environment variable
+$path = (Get-ItemProperty 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
+
+# Append the additional directory temp
+$path = "${path};C:\temp\"
+
+# Set the PATH environment variable with the new value
+Set-ItemProperty 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $path
+```

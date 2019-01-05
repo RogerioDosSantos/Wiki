@@ -62,7 +62,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>Write-Host &quot;text&quot;</code>: Write a text to the console. Equivalent to <em>echo</em></p>
 <p><code>[environment]::OSVersion.VersionString</code>: Return the version of the OS.</p>
 <p><code>Get-Content -Path &lt;file_path&gt;</code>: Read the content of a file. Similar to Linux <code>cat</code></p>
-<p><code>Get-ChildItem -Path &lt;start_path&gt; -Filter &lt;find_expression&gt; -Recurse -ErrorAction SilentlyContinue -Force</code>: Find a file in sub folders. Equivalent to Linux <code>find</code> command</p>
+<p><code>Get-ChildItem -Path &lt;start_path&gt; -Recurse -ErrorAction SilentlyContinue -Force -Filter &lt;find_expression&gt;</code>: Find a file in sub folders. Equivalent to Linux <code>find</code> command</p>
+<p><code>Copy-Item -Recurse -Path &lt;source_folder&gt; -Destination &lt;destination_folder&gt;</code>: Copy folder recursively</p>
 <h3 id="how-to">How-to</h3>
 <h4 id="assign-variable">Assign Variable</h4>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">$value = &quot;string value&quot;
@@ -112,7 +113,7 @@ Enter-PSSession -ContainerId $container_id
 # Open the remote PowerShell session <span class="st">(Remote Container)</span> as Administrator
 $container_id = &quot;$<span class="st">(docker inspect --format=&#39;{{.Id}}&#39; &lt;container_name&gt;)</span>&quot;
 Enter-PSSession -ContainerId $container_id -RunAsAdministrator</code></pre></div>
-<h4 id="monitor-and-close-a-process">Monitor and Close a process</h4>
+<h4 id="powershell---monitor-and-close-a-process">PowerShell - Monitor and Close a process</h4>
 <p>The example below monitor and closed the <em>MyProcess</em> program.</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> the process
 $my_process = <span class="kw">Get</span>-Process MyProcess
@@ -123,8 +124,59 @@ $my_process.CloseMainWindow<span class="st">()</span>
 # Return <span class="kw">true</span> id the process was closed
 $my_process.HasExited
 
+# <span class="kw">Stop</span> Process
+$my_process | <span class="kw">Stop</span>-Process
 
-# <span class="kw">For</span> <span class="kw">stop</span> the process
+# Force <span class="kw">Stop</span> Process
 $my_process | <span class="kw">Stop</span>-Process -Force</code></pre></div>
+<h4 id="add-windows-feature">Add Windows Feature</h4>
+<p>You can get the enabled features using the command:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># List the enabled features
+<span class="kw">Get</span>-WindowsFeature</code></pre></div>
+<p>This will show a list of enabled features and the <em>feature name</em></p>
+<figure>
+<img src="http://tinyurl.com/ya2umltf" />
+</figure>
+<p>To enable a feature you can use the following command:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Install <span class="dt">/</span> Enable a specific feature
+Install-WindowsFeature &lt;feature_name&gt;</code></pre></div>
+<h4 id="powershell---edit-registry">PowerShell - Edit Registry</h4>
+<p>The example below set the registry value <code>[HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD)</code> to 1</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Push the current location
+Push-Location
+
+# Go to the registry folder
+Set-Location HKLM:\Software\Microsoft\Fusion
+
+# List the current keys
+<span class="kw">Get</span>-ItemProperty .
+
+# Set the EnableLog key to <span class="dv">1</span>
+Set-ItemProperty . EnableLog <span class="dv">1</span> 
+
+# Go bach to the previous location
+<span class="kw">Pop</span>-Location</code></pre></div>
+<p>Optionally you coud do it using a only command:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Set-ItemProperty -Path HKLM:\Software\Microsoft\Fusion -Name EnableLog -Value <span class="dv">1</span></code></pre></div>
+<h4 id="powershell---configure-proxy">PowerShell - Configure Proxy</h4>
+<p>To allow <em>Powershell</em> to work properly behind a proxy you can configure it as following:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> the current Powershell proxy configuration
+netsh winhttp <span class="kw">show</span> proxy
+
+# Import the proxy configuration available on the Internet Explorer
+netsh winhttp import proxy source=ie
+
+# Set the proxy configuration manually
+netsh winhttp set proxy &lt;proxy_url&gt;:&lt;proxy_port&gt;</code></pre></div>
+<h4 id="powershell---change-environment-variable">Powershell - Change Environment Variable</h4>
+<p>The example below change the environment variable <em>PATH</em></p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> the current PATH environment variable
+$path = <span class="st">(Get-ItemProperty &#39;Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment&#39; -Name PATH)</span>.path
+
+# Append the additional directory temp
+$path = &quot;${path};C:\temp\&quot;
+
+# Set the PATH environment variable with the new value
+Set-ItemProperty &#39;Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment&#39; -Name PATH -Value $path</code></pre></div>
 </body>
 </html>
