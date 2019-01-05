@@ -4,6 +4,8 @@
 
 `sudo` : Run elevated   
 
+`sudo !!` : Repeat last command as sudo.
+
 `su -` : Become root (Super User)
 
 `su <username>` : ls
@@ -43,6 +45,8 @@
 `chmod a+x <filename>` : Make a file executable
 
 `mkdir [-p] <directory name>` : Create directory. If p option is selected, create the directory only if it does not exist.
+
+`mkdir -p <base_dir>/{<list_or_range>}/{list_or_range}`: Create several folders. E.g.: `mkdir -p folder/{sub1,sub2}/{sub1,sub2,sub3}` or `mkdir -p folder/{1..10}/{1..10}`
 
 `touch <filename>` : create a file
 
@@ -92,6 +96,10 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `$(pwd -P | sed 's/\/mnt\/c\//c:\\\\/g' | sed 's/\//\\\\/g')`: Convert Linux path to Windows path when using Windows Linux Subsystem
 
 ## Programs and OS 
+
+`exit` : Exit the terminal. Note: When you exit the terminal, all programs launched on it will be closed.
+
+`disown -a && exit`: Exit the terminal but leave all programs running.
 
 `info <command name>`
   : List the information of a specific command. If you do not mention the <command name> it will list the command available.
@@ -268,6 +276,10 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `apt-cache search <program>`: Search a package for the program
 
+`<space><command>`: Do not add a command to the command history. e.g.: ` ls -al`
+
+`history`: Display the command history.
+
 ### Strings Manipulations
 
 `printf '%q' "<string>"`: Format string for shell scape
@@ -331,6 +343,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `ssh <user_name>@<computer>`: Connect using *ssh* to a remote computer.
 
 `ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 <user_name>@<computer>`: Connect to a device that contains the old *diffie-hellman-group1-sha1* encryption algorithm. The *OpenSSH* does not allows you to connect with old encryption algorithm by default. When this happens the following message will be displayed: `no matching key exchange method found. Their offer: diffie-hellman-group1-sha1`. If you want a more permanent solution without having to type it all the time, you can add the following on the `~/.ssh/config` file:
+
+`ssh -L <local_port>:<server_ip>:<server_port> <user_name>@<domain> -N` : Tunnel with ssh. E.g.: `ssh -L 3337:127.0.0.1:6379 root@emkc.org -N`
 
 ```bash
 Host <device_ip> KexAlgorithms +diffie-hellman-group1-sha1
@@ -671,6 +685,13 @@ Them, after the `Defaults env_reset` add the environment variable that you would
 Defaults  env_keep = "http_proxy https_proxy ftp_proxy socks_proxy no_proxy"
 ```
 
+### Shell - Create a super fast ram disk
+
+```bash
+# Create a super fast ram disk
+mkdir -p /mnt/ram
+mount -t tmpfs tmpfs /mnt/ram -o size=8192M
+```
 
 
 
