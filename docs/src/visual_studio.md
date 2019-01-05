@@ -20,9 +20,10 @@ FROM rogersantos/windows_core_debugger:windows as debugger
 
 # Install / Configure Debugging Tools
 COPY --from=debugger ["C:/workspace/vs_2017_remote_debugger", "C:/vs_2017_remote_debugger"]
+
+#TODO(Roger) - Change the configuration so we no longer need to run the Remote Debug Tool command.
 RUN powershell -Command $ErrorActionPreference = 'Stop' ; \
 	echo '*** Configuring Debugging' ; \
-TODO(Roger) - Change the configuration so we no longer need to run the Remote Debug Tool command.
 	echo '*** Configuring Debugging - DONE'
 ```
 
@@ -40,7 +41,7 @@ The *Visual Studio Remote Debugging* uses the port *4021* for *x64* processes an
 # Start docker with the proper parameters for debug.
 docker run --name "debug_container" \
   --rm -it \
-	-v <your_local_bin_folder>:<container_bin_folder>
+	-v <your_local_bin_folder>:<container_bin_folder> \
   -p 4021:4021 -p 4022:4022 \
   rogersantos\debug_container:windows
 ```

@@ -65,9 +65,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="co"># Install / Configure Debugging Tools</span>
 <span class="kw">COPY</span> --from=debugger [<span class="st">&quot;C:/workspace/vs_2017_remote_debugger&quot;</span>, <span class="st">&quot;C:/vs_2017_remote_debugger&quot;</span>]
+
+<span class="co">#TODO(Roger) - Change the configuration so we no longer need to run the Remote Debug Tool command.</span>
 <span class="kw">RUN</span> powershell -Command $ErrorActionPreference = <span class="st">&#39;Stop&#39;</span> ; \
     echo <span class="st">&#39;*** Configuring Debugging&#39;</span> ; \
-TODO(Roger) - Change the configuration so we no longer need to run the Remote Debug Tool command.
     echo <span class="st">&#39;*** Configuring Debugging - DONE&#39;</span></code></pre></div>
 <h4 id="preparing-visual-studio">Preparing Visual Studio</h4>
 <p>Change your Visual Studio project remote debug configuration as follow:</p>
@@ -79,7 +80,7 @@ TODO(Roger) - Change the configuration so we no longer need to run the Remote De
 <pre class="shell"><code># Start docker with the proper parameters for debug.
 docker run --name &quot;debug_container&quot; \
   --rm -it \
-    -v &lt;your_local_bin_folder&gt;:&lt;container_bin_folder&gt;
+    -v &lt;your_local_bin_folder&gt;:&lt;container_bin_folder&gt; \
   -p 4021:4021 -p 4022:4022 \
   rogersantos\debug_container:windows</code></pre>
 <h4 id="start-a-debug-session">Start a Debug Session</h4>
