@@ -39,8 +39,8 @@
 
 ## Editors and Develpment Tools
 
-[Notepad++]( ./notepadpp.html )
-[Visual Studio]( ./visual_studio.html )
+- [Notepad++]( ./notepadpp.html )
+- [Visual Studio]( ./visual_studio.html )
 
 ## Markdown
 
