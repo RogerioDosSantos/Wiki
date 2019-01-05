@@ -195,6 +195,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>apt-cache search &lt;program&gt;</code>: Search a package for the program</p>
 <p><code>&lt;space&gt;&lt;command&gt;</code>: Do not add a command to the command history. e.g.: <code>ls -al</code></p>
 <p><code>history</code>: Display the command history.</p>
+<p><code>echo &lt;file_path&gt; | entr &lt;command&gt;</code>: Monitor a file and execute a command every time the file changes.</p>
 <h3 id="strings-manipulations">Strings Manipulations</h3>
 <p><code>printf '%q' &quot;&lt;string&gt;&quot;</code>: Format string for shell scape</p>
 <p><code>echo &lt;string_delimiter&gt; | cut -d'&lt;delimiter&gt;' -f&lt;position&gt;</code>: Get a substring between delimiters. E.g.: <code>echo &quot;S1;S2;S3&quot; | cut -d';' -f2</code></p>

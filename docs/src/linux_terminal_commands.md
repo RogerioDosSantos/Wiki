@@ -280,6 +280,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `history`: Display the command history.
 
+`echo <file_path> | entr <command>`: Monitor a file and execute a command every time the file changes.
+
 ### Strings Manipulations
 
 `printf '%q' "<string>"`: Format string for shell scape
