@@ -138,6 +138,8 @@
 
 `!<command>`: Call a shell command. You need to hit enter to return.
 
+`.!<command>`: Call a shell command passing the current line as input. E.g.: `.!figlet`
+
 `:silent !<command>`: Call a shell command without the need to hit Enter.
 
 `!!`: Repeat the last command.
