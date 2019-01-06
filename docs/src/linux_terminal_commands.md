@@ -620,7 +620,7 @@ Please note that while LD_LIBRARY_PATH works on many Unix-like systems, it doesn
 
 `/lib/ld-linux.so.2 --library-path <library_path> <executable_command>`: Allow to inform an additional path than the **linux system library path** where a library would be located.
 
-## Signals <a name="signals">
+## Signals <a name="signals" \>
 
 `SIGHUP`: 
 
