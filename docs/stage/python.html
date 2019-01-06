@@ -46,5 +46,43 @@ for tr in tbody.findAll(&#39;tr&#39;):
   place = tr.find_all(&#39;td&#39;)[0].text.strip()
   user = tr.find_all(&#39;td&#39;)[1].find_all(&#39;a&#39;)[0].text.strip()
   print(place, user)</code></pre>
+<h3 id="python---multi-threading">Python - Multi-Threading</h3>
+<pre class="python3"><code>from multiprocessing import Thread
+import os
+import math
+
+def calc():
+    for i in range(0, 70000000):
+        math.sqrt(i)
+
+threads = []
+for i in range(os.cpu_count()):
+    print(&#39;registering thread %d&#39; % i)
+    threads.append(Thread(target=calc))
+
+for thread in threads:
+    thread.start()
+
+for thread in threads:
+    thread.join()</code></pre>
+<h3 id="python---multi-processing">Python - Multi-Processing</h3>
+<pre class="python3"><code>from multiprocessing import Process
+import os
+import math
+
+def calc():
+    for i in range(0, 70000000):
+        math.sqrt(i)
+
+processes = []
+for i in range(os.cpu_count()):
+    print(&#39;registering process %d&#39; % i)
+    processes.append(Process(target=calc))
+
+for process in processes:
+    process.start()
+
+for process in processes:
+    process.join()</code></pre>
 </body>
 </html>
