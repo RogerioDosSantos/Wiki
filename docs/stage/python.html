@@ -84,5 +84,29 @@ for process in processes:
 
 for process in processes:
     process.join()</code></pre>
+<h3 id="python---file-manipulations">Python - File Manipulations</h3>
+<pre class="python3"><code># open/open modes
+# r  = open for read (default)
+# w  = open for write, truncate
+# r+ = open for read/write
+# w+ = open for read/write, truncate
+# a+ = open for read/append
+animals = open(&#39;animals.txt&#39;, &#39;a+&#39;)
+
+# read
+text = animals.read()
+print text
+animals.seek(0)
+
+# read lines
+for animal in animals:
+    print animal,
+
+# write/append
+animals.write(&#39;elephant\n&#39;)
+animals.write(&#39;frog\n&#39;)
+
+# close
+animals.close()</code></pre>
 </body>
 </html>
