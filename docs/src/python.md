@@ -6,11 +6,11 @@
 
 `for item in list: print item`: Loop over a list
 
-## Examples
+## How-to
 
-### Function Declaration and usage
+### Python - Function Declaration and usage
 
-```python
+```python3
 # Function Declaration
 def myfunc( parameter ):
 	print '- Paramerer: ' % (parameter)
@@ -19,5 +19,30 @@ def myfunc( parameter ):
 # Function call
 myfunc 'Test 01'
 myfunc 'Test 02'
+```
+
+### Python - Web Scrapping with Beautiful Soup
+
+*Web Scrapping* is the capability to extract information from a *Website*. The example below extract the list of leaders from the site `umggaming.com` using Beautiful Soup.  
+
+Note: You can install *Beautiful Soup* using `apt-get install python3-bs4`
+
+```python3
+import requests
+from bs4 import BeautifulSoup
+
+# Get the page
+page = requests.get('https://umggaming.com/leaderboards/weekly/activity')
+
+# Parse the Page into BeautifulSoup
+soup = BeautifulSoup(page.text, 'html.parser')
+
+# Print the desired data
+table = soup.find('table', {'id': 'leaderboard-table'})
+tbody = table.find('tbody')
+for tr in tbody.findAll('tr'):
+  place = tr.find_all('td')[0].text.strip()
+  user = tr.find_all('td')[1].find_all('a')[0].text.strip()
+  print(place, user)
 ```
 
