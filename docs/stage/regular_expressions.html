@@ -52,10 +52,48 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1 id="regular-expressions">Regular expressions</h1>
 <h2 id="tools">Tools</h2>
 <ul>
+<li><a href="https://www.debuggex.com/">debuggex</a> : Not only allow you to test Regular expressions but also allow you to see it graphical representation.</li>
 <li><a href="https://regexr.com/">regexr</a>: Site that allows to test regular expressions and regular expressions reference.</li>
 </ul>
-<h2 id="examples-and-patterns">Examples and Patterns</h2>
-<h3 id="replace-includes">Replace includes</h3>
+<h2 id="cheatsheet">CheatSheet</h2>
+<figure>
+<img src="http://tinyurl.com/yd3md2wc" />
+</figure>
+<p><code>[abx-z]</code>: One character of: a, b, or the range x-z</p>
+<p><code>[^abx-z]</code>: One character except: a, b, or the range x-z</p>
+<p><code>a|b</code>: a or b</p>
+<p><code>a?</code>: Zero or one a's (greedy)</p>
+<p><code>a??</code>: Zero or one a's (lazy)</p>
+<p><code>a*</code>: Zero or more a's (greedy)</p>
+<p><code>a*?</code>: Zero or more a's (lazy)</p>
+<p><code>a+</code>: One or more a's (greedy)</p>
+<p><code>a+?</code>: One or more a's (lazy)</p>
+<p><code>a{4}</code>: Exactly 4 a's</p>
+<p><code>a{4,8}</code>: Between (inclusive) 4 and 8 a's</p>
+<p><code>a{9,}</code>: 9 or more a's</p>
+<p><code>(?=...)</code>: A positive lookahead</p>
+<p><code>(?!...)</code>: A negative lookahead</p>
+<p><code>(?:...)</code>: A non-capturing group</p>
+<p><code>(...)</code>: A capturing group</p>
+<p><code>^</code>: Beginning of the string</p>
+<p><code>$</code>: End of the string</p>
+<p><code>\d</code>: A digit (same as [0-9])</p>
+<p><code>\D</code>: A non-digit (same as [^0-9])</p>
+<p><code>\w</code>: A word character (same as [_a-zA-Z0-9])</p>
+<p><code>\W</code>: A non-word character (same as [^_a-zA-Z0-9])</p>
+<p><code>\s</code>: A whitespace character</p>
+<p><code>\S</code>: A non-whitespace character</p>
+<p><code>\b</code>: A word boundary</p>
+<p><code>\B</code>: A non-word boundary</p>
+<p><code>\n</code>: A newline</p>
+<p><code>\t</code>: A tab</p>
+<p><code>\cY</code>: The control character with the hex code Y</p>
+<p><code>\xYY</code>: The character with the hex code YY</p>
+<p><code>\uYYYY</code>: The character with the hex code YYYY</p>
+<p><code>.</code>: Any character</p>
+<p><code>\Y</code>: The Y'th captured group</p>
+<h2 id="how-to">How-to</h2>
+<h3 id="regular-expressions---replace-includes">Regular Expressions - Replace includes</h3>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// Search Expression</span>
 <span class="ot">#include &quot;\.\..*\/(my_project\/.*)&quot; </span>
 
