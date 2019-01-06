@@ -23,7 +23,9 @@ myfunc 'Test 02'
 
 ### Python - Web Scrapping with Beautiful Soup
 
-*Web Scrapping* is the capability to extract information from a *Website*. The example below extract the list of leaders from the site `umggaming.com` using Beautiful Soup.  
+*Web Scrapping* is the capability to extract information from a *Website*. 
+
+The example below uses *Python 3* to extract the list of leaders from the site [umggaming.com](https://umggaming.com/leaderboards/weekly/activity) using [Beautiful Soup](https://pypi.org/project/beautifulsoup4/).  
 
 Note: You can install *Beautiful Soup* using `apt-get install python3-bs4`
 
