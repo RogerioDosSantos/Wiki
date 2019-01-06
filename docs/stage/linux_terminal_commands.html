@@ -97,7 +97,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>wget --mirror &lt;htttp or ftp url&gt;</code> : Mirror an URL</p>
 <p><code>&lt;command&gt; | tee -a &quot;&lt;logfile&gt;&quot;</code> : Saves the input to a file showing it on the stdout. -a informs that the file will be appended Saves the input to a file showing it on the stdout. -a informs that the file will be appended.</p>
 <p><code>$(pwd -P | sed 's/\/mnt\/c\//c:\\\\/g' | sed 's/\//\\\\/g')</code>: Convert Linux path to Windows path when using Windows Linux Subsystem</p>
-<h2 id="programs-and-os">Programs and OS</h2>
+<h2 id="shell---programs-and-os">Shell - Programs and OS</h2>
+<p><code>ctrl-c</code>: Stop a program in execution.</p>
+<p><code>ctrl-z</code>: Suspend a program in execution.</p>
+<p><code>&lt;command&gt; &amp;</code>: Execute a program in background (job).</p>
+<p><code>&lt;program&gt; &lt;(&lt;command&gt;)</code>: Execute a command and pass it's answer as file entry to a program. E.g.: <code>cat &lt;(ls)</code>.</p>
+<p><code>jobs</code>: Inform the programs that is in background, its execution status, command and job number.</p>
+<p><code>fg &lt;job_number&gt;</code>: Bring a job that is the background to the foreground. If the job is stopped, it will be executed.</p>
+<p><code>bg &lt;job_number&gt;</code>: Continue the execution of a stopped job (suspended) in the background.</p>
+<p><code>exec &lt;command&gt;</code>: Execute a program without forking it.</p>
+<p><code>ps -aux</code> : List of all running process</p>
+<p><code>ps -f [&lt;process_id&gt;]</code> : List additional information. E.g.: Parent Process (PPID), Command that execute the process (CMD), etc.</p>
+<p><code>kill [-KILL] &lt;process id&gt;</code> : Kill a process. The <code>-KILL</code> parameter forces the process to be killed. You can get the process id using the <code>top</code> command</p>
+<p><code>kill -l</code>: Display the signal available list (signal number). Please see <a href="#signals">signals topic</a> for the signals descriptions.</p>
+<p><code>kill -&lt;signal_number&gt;</code>: Send a signal to a program.</p>
 <p><code>exit</code> : Exit the terminal. Note: When you exit the terminal, all programs launched on it will be closed.</p>
 <p><code>disown -a &amp;&amp; exit</code>: Exit the terminal but leave all programs running.</p>
 <dl>
@@ -124,11 +137,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>top -p $(pgrep -d',' &lt;proccess name&gt;)</code> : Monitor a specific process. Note: You do not need to enter all name. If the string name does not match any process the following error message will be displayed: <em>top: -p requires argument</em></p>
 <p><code>top -H &lt;pid&gt;</code>: Monitor an specific process</p>
 <p><code>pidof &lt;process name&gt;</code> : Returns the PID of a process</p>
-<p><code>kill [-KILL] &lt;process id&gt;</code> : Kill a proccess. The <code>-KILL</code> parameter forces the proccess to be killed. You can get the process id using the <code>top</code> command</p>
 <p><code>&lt;program name&gt; --version</code> : Get the version of a program</p>
 <p><code>whereis &lt;program&gt;</code> : find where is the location of a specific program</p>
 <p><code>lsof</code> : List all open files and its process (You need to run as super user). E.g.:<code>lsof &gt; Result.txt</code></p>
-<p><code>ps -aux</code> : List of all running process</p>
 <p><code>vmstat</code> : Virtual Memory Statistics</p>
 <p><code>compgen -c</code> : List all the commands you could run.</p>
 <p><code>compgen -a</code> : List all the aliases you could run.</p>
@@ -196,6 +207,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>&lt;space&gt;&lt;command&gt;</code>: Do not add a command to the command history. e.g.: <code>ls -al</code></p>
 <p><code>history</code>: Display the command history.</p>
 <p><code>echo &lt;file_path&gt; | entr &lt;command&gt;</code>: Monitor a file and execute a command every time the file changes.</p>
+<p><code>sleep &lt;seconds&gt;</code>: Stop the execution for time informed.</p>
 <h3 id="strings-manipulations">Strings Manipulations</h3>
 <p><code>printf '%q' &quot;&lt;string&gt;&quot;</code>: Format string for shell scape</p>
 <p><code>echo &lt;string_delimiter&gt; | cut -d'&lt;delimiter&gt;' -f&lt;position&gt;</code>: Get a substring between delimiters. E.g.: <code>echo &quot;S1;S2;S3&quot; | cut -d';' -f2</code></p>
@@ -364,6 +376,40 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>ldd --version</code>: Get the version of the <em>GLIBC</em>.</p>
 <p><code>ldd &lt;program name&gt;</code> : Print the shared objects dependencies. Show the list of shared libraries a program depend.</p>
 <p><code>/lib/ld-linux.so.2 --library-path &lt;library_path&gt; &lt;executable_command&gt;</code>: Allow to inform an additional path than the <strong>linux system library path</strong> where a library would be located.</p>
+<h2 id="signals">Signals <a name="signals"></h2>
+<p><code>SIGHUP</code>:</p>
+<p><code>SIGINT</code>:</p>
+<p><code>SIGQUIT</code>:</p>
+<p><code>SIGILL</code>:</p>
+<p><code>SIGTRAP</code>:</p>
+<p><code>SIGABRT</code>:</p>
+<p><code>SIGBUS</code>:</p>
+<p><code>SIGFPE</code>:</p>
+<p><code>SIGKILL</code>: Kill a process. Does not give the process a chance to stop properly.</p>
+<p><code>SIGUSR1</code>:</p>
+<p><code>SIGSEGV</code>:</p>
+<p><code>SIGUSR2</code>:</p>
+<p><code>SIGPIPE</code>:</p>
+<p><code>SIGALRM</code>:</p>
+<p><code>SIGTERM</code>:</p>
+<p><code>SIGSTKFLT</code>:</p>
+<p><code>SIGCHLD</code>:</p>
+<p><code>SIGCONT</code>: Continue a process execution.</p>
+<p><code>SIGSTOP</code>:</p>
+<p><code>SIGTSTP</code>: Stop a process execution. Put the process in suspended mode.</p>
+<p><code>SIGTTIN</code>:</p>
+<p><code>SIGTTOU</code>:</p>
+<p><code>SIGURG</code>:</p>
+<p><code>SIGXCPU</code>:</p>
+<p><code>SIGXFSZ</code>:</p>
+<p><code>SIGVTALRM</code>:</p>
+<p><code>SIGPROF</code>:</p>
+<p><code>SIGWINCH</code>:</p>
+<p><code>SIGIO</code>:</p>
+<p><code>SIGPWR</code>:</p>
+<p><code>SIGSYS</code>:</p>
+<p><code>SIGRTMIN</code>:</p>
+<p><code>SIGRTMAX</code>:</p>
 <h2 id="how-to">How-to</h2>
 <h3 id="run-32bits-application-into-64bits-os">Run 32bits application into 64bits OS</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> dpkg --add-architecture i386

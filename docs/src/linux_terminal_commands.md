@@ -95,7 +95,33 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `$(pwd -P | sed 's/\/mnt\/c\//c:\\\\/g' | sed 's/\//\\\\/g')`: Convert Linux path to Windows path when using Windows Linux Subsystem
 
-## Programs and OS 
+## Shell - Programs and OS 
+
+`ctrl-c`: Stop a program in execution.
+
+`ctrl-z`: Suspend a program in execution.
+
+`<command> &`: Execute a program in background (job).
+
+`<program> <(<command>)`: Execute a command and pass it's answer as file entry to a program. E.g.: `cat <(ls)`.
+
+`jobs`: Inform the programs that is in background, its execution status, command and job number.
+
+`fg <job_number>`: Bring a job that is the background to the foreground. If the job is stopped, it will be executed.
+
+`bg <job_number>`: Continue the execution of a stopped job (suspended) in the background.
+
+`exec <command>`: Execute a program without forking it.
+
+`ps -aux` : List of all running process
+
+`ps -f [<process_id>]` : List additional information. E.g.: Parent Process (PPID), Command that execute the process (CMD), etc.
+
+`kill [-KILL] <process id>` : Kill a process. The `-KILL` parameter forces the process to be killed. You can get the process id using the `top` command
+
+`kill -l`: Display the signal available list (signal number). Please see [signals topic](#signals) for the signals descriptions.
+
+`kill -<signal_number>`: Send a signal to a program.
 
 `exit` : Exit the terminal. Note: When you exit the terminal, all programs launched on it will be closed.
 
@@ -138,15 +164,11 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `pidof <process name>` : Returns the PID of a process
 
-`kill [-KILL] <process id>` : Kill a proccess. The `-KILL` parameter forces the proccess to be killed. You can get the process id using the `top` command
-
 `<program name> --version` : Get the version of a program
 
 `whereis <program>` : find where is the location of a specific program
 
 `lsof` : List all open files and its process (You need to run as super user). E.g.:` lsof > Result.txt`
-
-`ps -aux` : List of all running process
 
 `vmstat` : Virtual Memory Statistics
 
@@ -281,6 +303,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `history`: Display the command history.
 
 `echo <file_path> | entr <command>`: Monitor a file and execute a command every time the file changes.
+
+`sleep <seconds>`: Stop the execution for time informed.
 
 ### Strings Manipulations
 
@@ -595,6 +619,74 @@ Please note that while LD_LIBRARY_PATH works on many Unix-like systems, it doesn
 `ldd <program name>` : Print the shared objects dependencies. Show the list of shared libraries a program depend.
 
 `/lib/ld-linux.so.2 --library-path <library_path> <executable_command>`: Allow to inform an additional path than the **linux system library path** where a library would be located.
+
+## Signals <a name="signals">
+
+`SIGHUP`: 
+
+`SIGINT`: 
+
+`SIGQUIT`: 
+
+`SIGILL`: 
+
+`SIGTRAP`: 
+
+`SIGABRT`: 
+
+`SIGBUS`: 
+
+`SIGFPE`: 
+
+`SIGKILL`: Kill a process. Does not give the process a chance to stop properly.
+
+`SIGUSR1`: 
+
+`SIGSEGV`: 
+
+`SIGUSR2`: 
+
+`SIGPIPE`: 
+
+`SIGALRM`: 
+
+`SIGTERM`: 
+
+`SIGSTKFLT`: 
+
+`SIGCHLD`: 
+
+`SIGCONT`: Continue a process execution.
+
+`SIGSTOP`:
+
+`SIGTSTP`: Stop a process execution. Put the process in suspended mode. 
+
+`SIGTTIN`: 
+
+`SIGTTOU`: 
+
+`SIGURG`: 
+
+`SIGXCPU`: 
+
+`SIGXFSZ`: 
+
+`SIGVTALRM`: 
+
+`SIGPROF`: 
+
+`SIGWINCH`: 
+
+`SIGIO`: 
+
+`SIGPWR`: 
+
+`SIGSYS`: 
+
+`SIGRTMIN`: 
+
+`SIGRTMAX`: 
 
 ## How-to
 
