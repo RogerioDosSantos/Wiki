@@ -232,6 +232,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>echo -n &lt;string&gt; | md5sum</code>: Calculate the MD5 of an string</p>
 <h2 id="system">System</h2>
 <p><code>dmesg</code> : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.</p>
+<h2 id="file-system">File System</h2>
+<p><code>/bin</code> : Common executables available for everyone, ex. cp rm ls</p>
+<p><code>/boot</code> : Kernel and boot configuration</p>
+<p><code>/dev</code> : Files which point to both physical and pseudo devices</p>
+<p><code>/etc</code> : System and program configuration files</p>
+<p><code>/home</code> : Non-root user home directories</p>
+<p><code>/lib</code> : Lib32</p>
+<p><code>/lib64</code> : Library files used by the system, include .so files and others</p>
+<p><code>/lost+found</code> : Saved files due to failure</p>
+<p><code>/media</code> : Auto-mounting place for certain external devices on some distros</p>
+<p><code>/mnt</code> : Place to mount various file systems</p>
+<p><code>/opt</code> : Various software</p>
+<p><code>/proc</code> : Virtual filesystem for resources, processes, and more</p>
+<p><code>/root</code> : Root user home directory</p>
+<p><code>/sbin</code> : Similar to /bin, but for system administrators, ex. fdisk</p>
+<p><code>/tmp</code> : Temporary file storage, wiped out after reboot</p>
+<p><code>/usr</code> : User programs, library files, docs, etc., ex. obs</p>
+<p><code>/var</code> : Variable files for various purposes, ex. logs, tz data</p>
+<p><code>/vmlinuz</code> : Compressed linux kernel</p>
 <h2 id="network">Network</h2>
 <p><code>netstat -lptu</code> : List the tcp ports in use and what programs are using it.</p>
 <p><code>sudo dhclient -v [-r]</code> : Visualize DHCP configuration. If you use the <code>-r</code> option, it will release the current IP address.</p>
@@ -310,7 +329,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">}</span>
 
 <span class="kw">function_name</span> <span class="ot">$arg1</span> <span class="ot">$arg2</span></code></pre></div>
-<h2 id="file-system">File System</h2>
+<h2 id="file-system-1">File System</h2>
 <p><code>/opt</code> : Directory used for the installation of add-on application software packages</p>
 <p><code>/usr/local</code> : Directory used for the installation software locally.</p>
 <p><code>sshfs -o idmap=user &lt;username&gt;@&lt;remote machine IP&gt;:&lt;remote directory&gt; &lt;local directory&gt;</code> : Mount a remote machine directory on the local machine. TODO: This command works however I need to add the fuse configuration part of it, otherwise we will get the user denied access.</p>

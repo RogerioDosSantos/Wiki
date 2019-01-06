@@ -354,6 +354,44 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `dmesg` : Display all information from the system. E.g.: Processor, Platform, devices configured, whitch Toolchain should be used to compile the Linux kernel version, etc.
 
+## File System
+
+`/bin` : Common executables available for everyone, ex. cp rm ls
+
+`/boot` : Kernel and boot configuration
+
+`/dev` : Files which point to both physical and pseudo devices
+
+`/etc` : System and program configuration files
+
+`/home` : Non-root user home directories
+
+`/lib` : Lib32
+
+`/lib64` : Library files used by the system, include .so files and others
+
+`/lost+found` : Saved files due to failure
+
+`/media` : Auto-mounting place for certain external devices on some distros
+
+`/mnt` : Place to mount various file systems
+
+`/opt` : Various software
+
+`/proc` : Virtual filesystem for resources, processes, and more
+
+`/root` : Root user home directory
+
+`/sbin` : Similar to /bin, but for system administrators, ex. fdisk
+
+`/tmp` : Temporary file storage, wiped out after reboot
+
+`/usr` : User programs, library files, docs, etc., ex. obs
+
+`/var` : Variable files for various purposes, ex. logs, tz data
+
+`/vmlinuz` : Compressed linux kernel
+
 ## Network 
 
 `netstat -lptu` : List the tcp ports in use and what programs are using it.
