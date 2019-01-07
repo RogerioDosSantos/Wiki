@@ -74,8 +74,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre class="shell"><code>#Start the Studio Mobile Task with an application located at C:\workspace\app\app.app
 &quot;c:\workspace\Bin\MobileAccessTask.exe&quot; /port:4448 /s:false /project:&quot;C:\workspace\app\app.app&quot; /remoteport:1234</code></pre>
 <h3 id="sma---load-a-specific-screen-directly">SMA - Load a specific screen directly</h3>
-<p>To go directly to an screen in the <em>Studio Mobile Access</em>, you can type the following in the <em>URL</em>:</p>
-<p><code>&lt;application_url&gt;?screen=&lt;screen_name&gt;.&lt;scree_extension&gt;</code></p>
-<p>E.g.: <code>http://localhost:10080/sma/?screen=startup.sg</code></p>
+<pre class="shell"><code># Go to the startup.sg screen directly
+http://localhost:10080/sma/?screen=startup.sg
+
+# Go to the startup.sg screen directly without requesting the user
+http://localhost:10080/sma/?screen=startup.sg&amp;guestuser=1</code></pre>
 </body>
 </html>

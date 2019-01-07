@@ -39,9 +39,11 @@ With the InduSoft runtime running (TCP/IP Task should be running), you can start
 
 ### SMA - Load a specific screen directly
 
-To go directly to an screen in the *Studio Mobile Access*, you can type the following in the *URL*:
+```shell
+# Go to the startup.sg screen directly
+http://localhost:10080/sma/?screen=startup.sg
 
-`<application_url>?screen=<screen_name>.<scree_extension>`
-
-E.g.: `http://localhost:10080/sma/?screen=startup.sg`
+# Go to the startup.sg screen directly without requesting the user
+http://localhost:10080/sma/?screen=startup.sg&guestuser=1
+```
 
