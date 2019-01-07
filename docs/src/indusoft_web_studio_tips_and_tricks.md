@@ -28,7 +28,7 @@ Configuration=C:\Users\iws\app\app.app
 Directory=C:\Users\iws\app\
 ```
 
-### Manually Start Studio Mobile Access
+### SMA - Manually Start Studio Mobile Access
 
 With the InduSoft runtime running (TCP/IP Task should be running), you can start the *Studio Mobile Access Task* manually using the following command:
 
@@ -37,4 +37,11 @@ With the InduSoft runtime running (TCP/IP Task should be running), you can start
 "c:\workspace\Bin\MobileAccessTask.exe" /port:4448 /s:false /project:"C:\workspace\app\app.app" /remoteport:1234
 ```
 
+### SMA - Load a specific screen directly
+
+To go directly to an screen in the *Studio Mobile Access*, you can type the following in the *URL*:
+
+`<application_url>?screen=<screen_name>.<scree_extension>`
+
+E.g.: `http://localhost:10080/sma/?screen=startup.sg`
 
