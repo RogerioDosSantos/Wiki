@@ -33,7 +33,7 @@ Directory=C:\Users\iws\app\
 With the InduSoft runtime running (TCP/IP Task should be running), you can start the *Studio Mobile Access Task* manually using the following command:
 
 ```shell
-Start the Studio Mobile Task with an application located at C:\workspace\app\app.app
+#Start the Studio Mobile Task with an application located at C:\workspace\app\app.app
 "c:\workspace\Bin\MobileAccessTask.exe" /port:4448 /s:false /project:"C:\workspace\app\app.app" /remoteport:1234
 ```
 
