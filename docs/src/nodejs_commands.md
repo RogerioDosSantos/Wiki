@@ -19,7 +19,7 @@
 
 ## Installation
 
-### Upgrade NodeJS to the latest version
+### NodeJS - Upgrade to the latest version
 
 Use n module from npm in order to upgrade node
 
@@ -42,4 +42,57 @@ sudo apt-get install --reinstall nodejs-legacy     # fix /usr/bin/node
 sudo n rm 6.0.0     # replace number with version of Node that was installed
 sudo npm uninstall -g n
 ```
+
+### NodeJS - Create Express Rest API from scratch
+
+```bash
+# Initialize package manager
+npn init
+
+### Enter project information ###
+
+# Install Express 
+npm install --save express
+
+### Create server.js and app.js ###
+
+# Start the Server
+node ./src/server.js
+
+### Browse http://localhost:3000 ###
+```
+
+#### server.js
+
+```js
+// Server
+
+const http = require('http');
+const app = require('./app');
+
+const port = process.env.port || 3000;
+const server = http.createServer(app);
+server.listen(port);
+```
+
+#### app.js
+
+```js
+// Application
+
+const express = require('express');
+
+const app = express();
+app.use((req, resp, next) => {
+  resp.status(200).json({
+    message: 'It works!'
+  });
+});
+
+module.exports = app;
+```
+
+**Note**
+
+You can use [Postman](https://www.getpostman.com/) to send other commands (E.g.: Post) to the *API*
 
