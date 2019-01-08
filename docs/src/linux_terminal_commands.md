@@ -196,7 +196,7 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `free` : Display the amount of free and used system memory (Default: Kilobytes).
 
-`watch <program to execute>` : Execute a program every period of time (Default: 2 seconds)
+`watch [-n <interval_in_seconds>] <program to execute>` : Execute a program every period of time (Default: 2 seconds)
 
 `sudo service <service name> restart` : Restart a Server
 
@@ -823,6 +823,35 @@ Defaults  env_keep = "http_proxy https_proxy ftp_proxy socks_proxy no_proxy"
 # Create a super fast ram disk
 mkdir -p /mnt/ram
 mount -t tmpfs tmpfs /mnt/ram -o size=8192M
+```
+
+### Shell - Compress files
+
+
+```bash
+# Create 1G junk data file
+dd if=/dev/zero of=junk_data bs=1M count=1024
+
+# Compress with gzip
+gzip -c junk_data > compressed.gz
+
+# Compress with tar
+tar -cf compressed.tar junk_data
+
+# Compress with xz
+xz -zk junk_data
+
+# Compress with 7zip
+7za a -t7z compressed.7z junk_data
+
+# Compress with bzip2 (Shown to be the software that compress the most)
+bzip2 -zk junk_data
+
+# Make unlimited size bzip2 archive (100TB in this case)
+dd if=/dev/zero bs=10G count=10000 | bzip2 -c > compressed.bz2
+
+# Extracting the file
+bzip2 -d compressed.bz2
 ```
 
 

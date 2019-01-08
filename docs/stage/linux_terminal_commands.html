@@ -153,7 +153,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>smart install &lt;package name&gt;</code> : Install a package. The <a href="https://labix.org/smart">smart package manager</a> supports several distributions and can replace the following package managers: APT, APT-RPM, YUM, URPMI, etc.</p>
 <p><code>tce</code> : Allow to install applications into a Tiny Core Linux</p>
 <p><code>free</code> : Display the amount of free and used system memory (Default: Kilobytes).</p>
-<p><code>watch &lt;program to execute&gt;</code> : Execute a program every period of time (Default: 2 seconds)</p>
+<p><code>watch [-n &lt;interval_in_seconds&gt;] &lt;program to execute&gt;</code> : Execute a program every period of time (Default: 2 seconds)</p>
 <p><code>sudo service &lt;service name&gt; restart</code> : Restart a Server</p>
 <p><code>cat &gt; &lt;file name&gt;</code> : Create a file and allow you to edit it. Careful! If you do it into an existing file, its content will be deleted.</p>
 <p><code>find &lt;directory to start&gt; -name &quot;&lt;file to find&gt;&quot;</code> : Find file in all sub directories</p>
@@ -493,5 +493,29 @@ cat /tmp/config_file</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Create a super fast ram disk</span>
 <span class="kw">mkdir</span> -p /mnt/ram
 <span class="kw">mount</span> -t tmpfs tmpfs /mnt/ram -o size=8192M</code></pre></div>
+<h3 id="shell---compress-files">Shell - Compress files</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Create 1G junk data file</span>
+<span class="kw">dd</span> if=/dev/zero of=junk_data bs=1M count=1024
+
+<span class="co"># Compress with gzip</span>
+<span class="kw">gzip</span> -c junk_data <span class="kw">&gt;</span> compressed.gz
+
+<span class="co"># Compress with tar</span>
+<span class="kw">tar</span> -cf compressed.tar junk_data
+
+<span class="co"># Compress with xz</span>
+<span class="kw">xz</span> -zk junk_data
+
+<span class="co"># Compress with 7zip</span>
+<span class="kw">7za</span> a -t7z compressed.7z junk_data
+
+<span class="co"># Compress with bzip2 (Shown to be the software that compress the most)</span>
+<span class="kw">bzip2</span> -zk junk_data
+
+<span class="co"># Make unlimited size bzip2 archive (100TB in this case)</span>
+<span class="kw">dd</span> if=/dev/zero bs=10G count=10000 <span class="kw">|</span> <span class="kw">bzip2</span> -c <span class="kw">&gt;</span> compressed.bz2
+
+<span class="co"># Extracting the file</span>
+<span class="kw">bzip2</span> -d compressed.bz2</code></pre></div>
 </body>
 </html>
