@@ -59,7 +59,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2 id="modules">Modules</h2>
 <p><strong>express</strong> : MVC Framework <strong>nodemon</strong> : Allow refresh the server every time we do a change.</p>
 <h2 id="installation">Installation</h2>
-<h3 id="upgrade-nodejs-to-the-latest-version">Upgrade NodeJS to the latest version</h3>
+<h3 id="nodejs---upgrade-to-the-latest-version">NodeJS - Upgrade to the latest version</h3>
 <p>Use n module from npm in order to upgrade node</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> npm cache clean -f
 <span class="kw">sudo</span> npm install -g n
@@ -70,5 +70,44 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install --reinstall nodejs-legacy     <span class="co"># fix /usr/bin/node</span>
 <span class="kw">sudo</span> n rm 6.0.0     <span class="co"># replace number with version of Node that was installed</span>
 <span class="kw">sudo</span> npm uninstall -g n</code></pre></div>
+<h3 id="nodejs---create-express-rest-api-from-scratch">NodeJS - Create Express Rest API from scratch</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Initialize package manager</span>
+<span class="kw">npn</span> init
+
+<span class="co">### Enter project information ###</span>
+
+<span class="co"># Install Express </span>
+<span class="kw">npm</span> install --save express
+
+<span class="co">### Create server.js and app.js ###</span>
+
+<span class="co"># Start the Server</span>
+<span class="kw">node</span> ./src/server.js
+
+<span class="co">### Browse http://localhost:3000 ###</span></code></pre></div>
+<h4 id="server.js">server.js</h4>
+<pre class="js"><code>// Server
+
+const http = require(&#39;http&#39;);
+const app = require(&#39;./app&#39;);
+
+const port = process.env.port || 3000;
+const server = http.createServer(app);
+server.listen(port);</code></pre>
+<h4 id="app.js">app.js</h4>
+<pre class="js"><code>// Application
+
+const express = require(&#39;express&#39;);
+
+const app = express();
+app.use((req, resp, next) =&gt; {
+  resp.status(200).json({
+    message: &#39;It works!&#39;
+  });
+});
+
+module.exports = app;</code></pre>
+<p><strong>Note</strong></p>
+<p>You can use <a href="https://www.getpostman.com/">Postman</a> to send other commands (E.g.: Post) to the <em>API</em></p>
 </body>
 </html>
