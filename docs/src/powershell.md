@@ -26,6 +26,8 @@ Built on .NET Core and provides compatibility with scripts and modules targeting
 
 `Get-ChildItem -Path <start_path> -Recurse -ErrorAction SilentlyContinue -Force -Filter <find_expression>`: Find a file in sub folders. Equivalent to Linux `find` command
 
+`Remove-Item -Path <directory> -Recurse`: Remove directory recursively. Equivalent to Linux `rm -r` command
+
 `Copy-Item -Recurse -Path <source_folder> -Destination <destination_folder>`: Copy folder recursively
 
 ### How-to
