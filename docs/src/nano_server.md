@@ -9,6 +9,22 @@ Windows have a [Windows Nano Server Docker Image](https://hub.docker.com/r/micro
 - Show Intellisense for APIs that are supported on Nano Server
 - Red error squiggles are shown for APIs that are not supported on Nano Server
 
+## Windows Docker repositories
+
+According with [this article](https://stefanscherer.github.io/docker-on-windows-server-2019/), Microsoft is moving its Docker images from the Docker Hub into a own container registry.
+
+Therefore, the following base image will be available for *Windows Server Core*:
+
+`mcr.microsoft.com/windows/servercore`
+
+## Versions and Sizes
+
+You need to be carefull to select a version for the Windows image. If you select a version, the host should at least be on that version or newer.
+
+Also, the image size matter, for example the grafic below show the image size difference between Windows 2016 and 2019:
+
+![](http://tinyurl.com/yb3bkf5w)
+
 ## Commands
 
 `powershell`: Start Poweshell
