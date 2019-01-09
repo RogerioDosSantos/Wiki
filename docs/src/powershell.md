@@ -191,3 +191,14 @@ $path = "${path};C:\temp\"
 # Set the PATH environment variable with the new value
 Set-ItemProperty 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $path
 ```
+
+#### PowerShell - Execute commands from CMD
+
+```cmd
+# Execute Get-Date Command and Stop in case of error 
+powershell -Command $ErrorActionPreference = 'Stop' ; Get-Date
+
+# Pipe the Date Command (When piping use the syntax " & {<command>}"
+powershell -Command $ErrorActionPreference = 'Stop' ; " & {Get-Date | Write-Host}"
+```
+
