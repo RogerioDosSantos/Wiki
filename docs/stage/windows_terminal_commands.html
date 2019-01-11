@@ -25,5 +25,12 @@
 <p><code>Invoke-RestMethod -Uri &lt;url&gt; | &lt;answer manipulation&gt;</code> : Send a rest command and manipulate the answer. E.g.: <code>Invoke-RestMethod -Uri https://blogs.msdn.microsoft.com/powershell/feed/ | Format-Table -Property Title, PubDate</code></p>
 <h2 id="visual-studio-commands">Visual Studio Commands</h2>
 <p><code>lib /list &lt;lib file name&gt;</code> : Verify if a library was compiled statically or if is an import library that depends on an <code>.dll</code>. If the library is a statically linked library it will show the <code>.obj</code> files inside it. Otherwise will show you the <code>.dll</code> it is linking with.</p>
+<h2 id="how-to">How-to</h2>
+<h3 id="bat---read-variables">Bat - Read Variables</h3>
+<pre class="bat"><code># Read first parameter
+echo &quot;%1&quot;
+
+# Read first parameter removing quotes
+echo &quot;%~1&quot;</code></pre>
 </body>
 </html>
