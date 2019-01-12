@@ -4,6 +4,14 @@
 
 Built on .NET Core and provides compatibility with scripts and modules targeting versions of PowerShell running on reduced footprint editions of Windows such as Nano Server and Windows IoT.
 
+## PowerShell and .Net
+
+Powershell allow you to access *.Net* libraries, meaning that you can consume those libraries using *Poweshell* scripts. [Here]( ./iis.html ) for example, I use this capability to configure *IIS* using *PowerShell*.
+
+This can be done is [Add-Type](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/add-type?view=powershell-6) which allows you to define a Microsoft .NET Core class in your PowerShell session.
+
+The site [PInvoke](http://pinvoke.net/) allows you to search for various functions that are available as a C# signature to copy and paste into *PowerShell*
+
 ### Commands
 
 `Get-Process`: List running processes.
@@ -201,4 +209,32 @@ powershell -Command $ErrorActionPreference = 'Stop' ; Get-Date
 # Pipe the Date Command (When piping use the syntax " & {<command>}"
 powershell -Command $ErrorActionPreference = 'Stop' ; " & {Get-Date | Write-Host}"
 ```
+
+#### Poweshell - Manipulating Services
+
+```cmd
+# List all services configuration and status 
+sc.exe query
+
+# List specific service configuration and status 
+sc.exe query <service_name>
+
+```
+
+#### PowerShell - Find and Replace text in file
+
+```cmd
+# Load the File
+$ini = (Get-Content "C:\config.ini")
+
+# Find and replace entry
+$changed_ini = $ini | ForEach-Object { $_ -replace "Entry=(.*)", "Entry=NewValue" }
+
+# Save the result to back to the file
+$changed_ini | Set-Content "C:\config.ini"
+
+# Replace entry in one line
+(Get-Content "C:\config.ini") | ForEach-Object { $_ -replace "Entry=(.*)", "Entry=NewValue" } | Set-Content "C:\config.ini"
+```
+
 
