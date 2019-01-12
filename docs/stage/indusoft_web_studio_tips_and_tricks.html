@@ -79,5 +79,29 @@ http://localhost:10080/sma/?screen=startup.sg
 
 # Go to the startup.sg screen directly without requesting the user
 http://localhost:10080/sma/?screen=startup.sg&amp;guestuser=1</code></pre>
+<h3 id="studio---set-an-application-to-run-as-service-from-command-line">Studio - Set an application to run as service from command line</h3>
+<pre class="shell"><code># Go to the Indusoft Bin folder
+cd &lt;indudoft_installation_directory&gt;\bin
+
+# Create Service Configuration
+StdSvcInst.exe -create /user &quot;&lt;user&gt;&quot; /password &quot;&lt;password&gt;&quot; /descr &quot;&lt;service_description&gt;&quot; /name &quot;&lt;service_name&gt;&quot; /startup &quot;&lt;Auto|Manual|Disabled&gt;&quot; /app &quot;&lt;app_file_path&gt;&quot; /service &quot;&lt;service_name&gt;&quot;
+
+# Start Service
+StdSvcInst.exe -start /name &quot;&lt;service_name&gt;&quot;
+
+# Stop Service
+StdSvcInst.exe -stop /name &quot;&lt;service_name&gt;&quot;
+
+# Get Security
+StdSvcInst.exe -getsecurity
+
+# Get Register OPC Server (DA)
+StdSvcInst.exe -regopcsvr
+
+# Get Unregister OPC Server (DA)
+StdSvcInst.exe -unregopcsvr
+
+# Delete Service Configuration
+StdSvcInst.exe -delete /name &quot;&lt;service_name&gt;&quot;</code></pre>
 </body>
 </html>
