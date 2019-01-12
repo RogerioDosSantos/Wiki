@@ -728,7 +728,7 @@ Please note that while LD_LIBRARY_PATH works on many Unix-like systems, it doesn
 
 ## How-to
 
-### Run 32bits application into 64bits OS
+### Shell - Run 32bits application into 64bits OS
 
 ```bash
 sudo dpkg --add-architecture i386
@@ -737,7 +737,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
 sudo apt-get install multiarch-support
 ```
 
-### Mount Bind Volume
+### Shell - Mount Bind Volume
 
 ```bash
 echo -ne "Mouting volume /r from /mnt/c ... "
@@ -746,7 +746,7 @@ sudo mount --bind /mnt/c /r
 echo "DONE (New volume: /r=/mnt/c)"
 ```
 
-### Read user input with defaut value
+### Bash - Read user input with defaut value
 
 ```bash
 # Read User into the us_user local variable with default value User
@@ -758,7 +758,7 @@ us_user=${us_user:-User}
 echo "Welcome: ${us_user}"
 ```
 
-### Ask user input with limited options
+### Bash - Ask user input with limited options
 
 ```bash
 local ui_yes_no
@@ -772,7 +772,7 @@ while true; do
 done
 ```
 
-### Create user (Script)
+### Shell - Create user (Script)
 
 ```bash
 whoami
@@ -792,7 +792,7 @@ su - ubuntu
 whoami
 ```
 
-### Populate a file in one command
+### Shell - Populate a file in one command
 
 ```bash
 cat > /tmp/config_file <<-EOF
@@ -807,7 +807,7 @@ EOF
 cat /tmp/config_file
 ```
 
-### Configure sudoer to use proxy configuration
+### Shell - Configure sudoer to use proxy configuration
 
 In some releases sudo is configured in such a way that all environment variables all cleared when running the command. To keep the proxy configuration edit the `/etc/sudoers` file running the `visudo` command.
 
@@ -853,7 +853,6 @@ dd if=/dev/zero bs=10G count=10000 | bzip2 -c > compressed.bz2
 # Extracting the file
 bzip2 -d compressed.bz2
 ```
-
 
 
 
