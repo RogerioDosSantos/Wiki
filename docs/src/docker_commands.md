@@ -257,7 +257,7 @@ Calling the `docker ps` command, it will show the following in case the *Health 
 
 ### Docker Registry - Deploy a local Registry Server
 
-Below you can find the basic commands to deploy a local registry server. [This article](https://docs.docker.com/registry/deploying/) can provide you additional explanation and details.
+Below you can find the basic commands to deploy a local registry server for Linux images. [This article](https://docs.docker.com/registry/deploying/) can provide you additional explanation and details.
 
 ```shell
 # Run a registry server in the local machine
