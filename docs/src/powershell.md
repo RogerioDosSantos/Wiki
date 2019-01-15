@@ -212,7 +212,7 @@ powershell -Command $ErrorActionPreference = 'Stop' ; " & {Get-Date | Write-Host
 
 #### Poweshell - Manipulating Services
 
-```cmd
+```ps
 # List all services configuration and status 
 sc.exe query
 
@@ -223,7 +223,7 @@ sc.exe query <service_name>
 
 #### PowerShell - Find and Replace text in file
 
-```cmd
+```ps
 # Load the File
 $ini = (Get-Content "C:\config.ini")
 
@@ -235,6 +235,20 @@ $changed_ini | Set-Content "C:\config.ini"
 
 # Replace entry in one line
 (Get-Content "C:\config.ini") | ForEach-Object { $_ -replace "Entry=(.*)", "Entry=NewValue" } | Set-Content "C:\config.ini"
+```
+
+#### Powershell - Zip and Unzip 
+
+```ps
+# Zip files in directory. When unzip the folder will not be created
+Compress-Archive -Path .\test\* -DestinationPath ./test1.zip
+
+# Zip directory. When unzip the folder will be created
+Compress-Archive -Path .\test\ -DestinationPath ./test2.zip
+
+# Unzip
+Expand-Archive -Path .\test1.zip -DestinationPath ./test1
+Expand-Archive -Path .\test2.zip -DestinationPath ./test2
 ```
 
 

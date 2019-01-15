@@ -190,23 +190,32 @@ powershell -Command $ErrorActionPreference = &#39;Stop&#39; ; Get-Date
 # Pipe the Date Command (When piping use the syntax &quot; &amp; {&lt;command&gt;}&quot;
 powershell -Command $ErrorActionPreference = &#39;Stop&#39; ; &quot; &amp; {Get-Date | Write-Host}&quot;</code></pre>
 <h4 id="poweshell---manipulating-services">Poweshell - Manipulating Services</h4>
-<pre class="cmd"><code># List all services configuration and status 
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># List all services configuration <span class="kw">and</span> <span class="kw">status</span> 
 sc.exe query
 
-# List specific service configuration and status 
-sc.exe query &lt;service_name&gt;
-</code></pre>
+# List specific service configuration <span class="kw">and</span> <span class="kw">status</span> 
+sc.exe query &lt;service_name&gt;</code></pre></div>
 <h4 id="powershell---find-and-replace-text-in-file">PowerShell - Find and Replace text in file</h4>
-<pre class="cmd"><code># Load the File
-$ini = (Get-Content &quot;C:\config.ini&quot;)
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Load</span> the <span class="kw">File</span>
+$ini = <span class="st">(Get-Content &quot;C:\config.ini&quot;)</span>
 
-# Find and replace entry
-$changed_ini = $ini | ForEach-Object { $_ -replace &quot;Entry=(.*)&quot;, &quot;Entry=NewValue&quot; }
+# Find <span class="kw">and</span> replace entry
+$changed_ini = $ini | ForEach-Object { $_ -replace &quot;Entry=<span class="st">(.*)</span>&quot;, &quot;Entry=NewValue&quot; }
 
-# Save the result to back to the file
+# <span class="kw">Save</span> the result to back to the <span class="kw">file</span>
 $changed_ini | Set-Content &quot;C:\config.ini&quot;
 
 # Replace entry in one line
-(Get-Content &quot;C:\config.ini&quot;) | ForEach-Object { $_ -replace &quot;Entry=(.*)&quot;, &quot;Entry=NewValue&quot; } | Set-Content &quot;C:\config.ini&quot;</code></pre>
+<span class="st">(Get-Content &quot;C:\config.ini&quot;)</span> | ForEach-Object { $_ -replace &quot;Entry=<span class="st">(.*)</span>&quot;, &quot;Entry=NewValue&quot; } | Set-Content &quot;C:\config.ini&quot;</code></pre></div>
+<h4 id="powershell---zip-and-unzip">Powershell - Zip and Unzip</h4>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Zip files in directory. When unzip the folder will <span class="kw">not</span> be created
+Compress-Archive -Path .\test\* -DestinationPath .<span class="dt">/test1.zip</span>
+
+# Zip directory. When unzip the folder will be created
+Compress-Archive -Path .\test\ -DestinationPath .<span class="dt">/test2.zip</span>
+
+# Unzip
+Expand-Archive -Path .\test1.zip -DestinationPath .<span class="dt">/test1</span>
+Expand-Archive -Path .\test2.zip -DestinationPath .<span class="dt">/test2</span></code></pre></div>
 </body>
 </html>
