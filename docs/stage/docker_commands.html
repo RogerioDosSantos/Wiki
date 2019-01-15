@@ -214,8 +214,22 @@ docker push localhost:5000/alpine:latest
 # Pull image from the local registry
 docker rmi localhost:5000/alpine:latest
 docker pull localhost:5000/alpine:latest</code></pre>
+<p><strong>Note</strong>: Out of the box, the <em>local registry</em> is not a <em>secure register</em>. To access the <em>local registry</em> as it is, you can change the <em>docker engine configuration</em> (daemon.json) to have the following entry:</p>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+  <span class="dt">&quot;insecure-registries&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;&lt;docker_registry_machine_ip&gt;:5000&quot;</span><span class="ot">]</span>
+<span class="fu">}</span></code></pre></div>
+<figure>
+<img src="http://tinyurl.com/y7d9xhjw" />
+</figure>
 <h3 id="docker-server---experimental-features">Docker Server - Experimental Features</h3>
 <pre class="shell"><code># Check if the experimental features is enabled
 docker version -f &#39;{{.Server.Experimental}}&#39;</code></pre>
+<h3 id="docker-images---save-and-restore-image-to-file">Docker Images - Save and Restore image to file</h3>
+<p>If you do not have network connection to a docker repository, you can use the <a href="https://docs.docker.com/engine/reference/commandline/save/">docker save</a> and <a href="https://docs.docker.com/engine/reference/commandline/load/">docker load</a> to save/load the image from/to a file.</p>
+<pre class="shell"><code># Save the image to file
+docker save microsoft/nanoserver:1803 &gt; ./microsoft_nanoserver_1803.tar
+
+# Load image from file
+docker load -i ./microsoft_nanoserver_1803.tar</code></pre>
 </body>
 </html>

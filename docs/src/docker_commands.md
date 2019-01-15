@@ -275,11 +275,35 @@ docker rmi localhost:5000/alpine:latest
 docker pull localhost:5000/alpine:latest
 ```
 
+**Note**: Out of the box, the *local registry* is not a *secure register*. To access the *local registry* as it is, you can change the *docker engine configuration* (daemon.json) to have the following entry:
+
+```json
+{
+  "insecure-registries": ["<docker_registry_machine_ip>:5000"]
+}
+```
+
+![](http://tinyurl.com/y7d9xhjw)
+
+
+
 ### Docker Server - Experimental Features
 
 ```shell
 # Check if the experimental features is enabled
 docker version -f '{{.Server.Experimental}}'
+```
+
+### Docker Images - Save and Restore image to file
+
+If you do not have network connection to a docker repository, you can use the [docker save](https://docs.docker.com/engine/reference/commandline/save/) and [docker load](https://docs.docker.com/engine/reference/commandline/load/) to save/load the image from/to a file.
+
+```shell
+# Save the image to file
+docker save microsoft/nanoserver:1803 > ./microsoft_nanoserver_1803.tar
+
+# Load image from file
+docker load -i ./microsoft_nanoserver_1803.tar
 ```
 
 
