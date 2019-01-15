@@ -229,7 +229,7 @@ docker exec "my_container" bash -c "cat ~/t1.txt"
 docker stop "my_container"
 ```
 
-### Allow a container restart always
+### Docker Containers - Allow a container restart always
 
 ```bash
 # Start a container that will always restart
@@ -257,14 +257,30 @@ Calling the `docker ps` command, it will show the following in case the *Health 
 
 ### Docker Registry - Deploy a local Registry Server
 
+Below you can find the basic commands to deploy a local registry server. [This article](https://docs.docker.com/registry/deploying/) can provide you additional explanation and details.
+
 ```shell
 # Run a registry server in the local machine
 docker run -d -p 5000:5000 --restart=always --name registry registry:2
 
 # Stop the registry server
 docker container stop registry
+
+# Push image to the local registry
+docker tag alpine:latest localhost:5000/alpine:latest
+docker push localhost:5000/alpine:latest
+
+# Pull image from the local registry
+docker rmi localhost:5000/alpine:latest
+docker pull localhost:5000/alpine:latest
 ```
 
+### Docker Server - Experimental Features
+
+```shell
+# Check if the experimental features is enabled
+docker version -f '{{.Server.Experimental}}'
+```
 
 
 
