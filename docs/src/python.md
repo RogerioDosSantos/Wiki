@@ -94,6 +94,35 @@ for process in processes:
 	process.join()
 ```
 
+### Python - Call external process
+
+Call an external command (as if I'd typed it at the Unix shell or Windows command prompt)
+
+```python3
+import subprocess
+import sys
+
+# Sync call - Receive the return code of the execution
+subprocess.call(["ls", "-l"])
+
+# Sync call - Run command with arguments. Wait for command to complete. If the return code was zero then return, otherwise raise CalledProcessErro
+try:
+	subprocess.check_output(["echo", "Hello World!"])
+except subprocess.CalledProcessError as ex:
+	print('Error!:' + str(ex))
+
+# Async call - You cannot close the current execution
+pid = subprocess.Popen([sys.executable, "longtask.py"])
+
+# Async call - You can close the current execution (However the program stay executing until the chield proccess exit)
+DETACHED_PROCESS = 0x00000008
+pid = subprocess.Popen([sys.executable, "longtask.py"], creationflags=DETACHED_PROCESS).pid
+
+# Async call - You can close the current execution (The chield proccess runs totally independent of the current execution)
+CREATE_NEW_CONSOLE = 0x00000010
+pid = subprocess.Popen([sys.executable, "longtask.py"], creationflags=CREATE_NEW_CONSOLE).pid
+```
+
 ### Python - File Manipulations
 
 ```python3
