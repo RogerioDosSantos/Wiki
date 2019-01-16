@@ -122,3 +122,39 @@ animals.write('frog\n')
 animals.close()
 ```
 
+### Python - Argument list
+
+```python
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("square", type=int, help="display a square of a given number")
+parser.add_argument("-v", "--verbosity", type=int, choices=[0, 1, 2], help="increase output verbosity")
+args = parser.parse_args()
+
+answer = args.square**2
+if args.verbosity == 2:
+    print("the square of {} equals {}".format(args.square, answer))
+elif args.verbosity == 1:
+    print("{}^2 == {}".format(args.square, answer))
+else:
+    print(answer)
+```
+
+```python
+import argparse
+
+parser = argparse.ArgumentParser(description='Description of your program')
+parser.add_argument('-f','--foo', help='Description for foo argument', required=True)
+parser.add_argument('-b','--bar', help='Description for bar argument', required=True)
+args = vars(parser.parse_args())
+
+if (args.foo):
+    print 'foo called!'
+
+if args['foo'] == 'Hello':
+    print 'foo called!'
+
+if args['bar'] == 'World':
+    print 'bar called!'
+```
+
