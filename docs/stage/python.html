@@ -6,6 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="../resources/style.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -84,6 +121,30 @@ for process in processes:
 
 for process in processes:
     process.join()</code></pre>
+<h3 id="python---call-external-process">Python - Call external process</h3>
+<p>Call an external command (as if I'd typed it at the Unix shell or Windows command prompt)</p>
+<pre class="python3"><code>import subprocess
+import sys
+
+# Sync call - Receive the return code of the execution
+subprocess.call([&quot;ls&quot;, &quot;-l&quot;])
+
+# Sync call - Run command with arguments. Wait for command to complete. If the return code was zero then return, otherwise raise CalledProcessErro
+try:
+    subprocess.check_output([&quot;echo&quot;, &quot;Hello World!&quot;])
+except subprocess.CalledProcessError as ex:
+    print(&#39;Error!:&#39; + str(ex))
+
+# Async call - You cannot close the current execution
+pid = subprocess.Popen([sys.executable, &quot;longtask.py&quot;])
+
+# Async call - You can close the current execution (However the program stay executing until the chield proccess exit)
+DETACHED_PROCESS = 0x00000008
+pid = subprocess.Popen([sys.executable, &quot;longtask.py&quot;], creationflags=DETACHED_PROCESS).pid
+
+# Async call - You can close the current execution (The chield proccess runs totally independent of the current execution)
+CREATE_NEW_CONSOLE = 0x00000010
+pid = subprocess.Popen([sys.executable, &quot;longtask.py&quot;], creationflags=CREATE_NEW_CONSOLE).pid</code></pre>
 <h3 id="python---file-manipulations">Python - File Manipulations</h3>
 <pre class="python3"><code># open/open modes
 # r  = open for read (default)
@@ -108,5 +169,182 @@ animals.write(&#39;frog\n&#39;)
 
 # close
 animals.close()</code></pre>
+<h3 id="python---argument-list">Python - Argument list</h3>
+<pre class="python3"><code>import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument(&quot;square&quot;, type=int, help=&quot;display a square of a given number&quot;)
+parser.add_argument(&quot;-v&quot;, &quot;--verbosity&quot;, type=int, choices=[0, 1, 2], help=&quot;increase output verbosity&quot;)
+args = parser.parse_args()
+
+answer = args.square**2
+if args.verbosity == 2:
+    print(&quot;the square of {} equals {}&quot;.format(args.square, answer))
+elif args.verbosity == 1:
+    print(&quot;{}^2 == {}&quot;.format(args.square, answer))
+else:
+    print(answer)</code></pre>
+<pre class="python3"><code>import argparse
+
+parser = argparse.ArgumentParser(description=&#39;Description of your program&#39;)
+parser.add_argument(&#39;-f&#39;,&#39;--foo&#39;, help=&#39;Description for foo argument&#39;, required=True)
+parser.add_argument(&#39;-b&#39;,&#39;--bar&#39;, help=&#39;Description for bar argument&#39;, required=True)
+args = vars(parser.parse_args())
+
+if (args.foo):
+    print &#39;foo called!&#39;
+
+if args[&#39;foo&#39;] == &#39;Hello&#39;:
+    print &#39;foo called!&#39;
+
+if args[&#39;bar&#39;] == &#39;World&#39;:
+    print &#39;bar called!&#39;</code></pre>
+<h3 id="python---port-forward">Python - Port forward</h3>
+<pre class="python3"><code>import socket
+import sys
+import thread
+import time
+
+def main(setup, error):
+    # open file for error messages
+    sys.stderr = file(error, &#39;a&#39;)
+    # read settings for port forwarding
+    for settings in parse(setup):
+        thread.start_new_thread(server, settings)
+    # wait for &lt;ctrl-c&gt;
+    while True:
+       time.sleep(60)
+
+def parse(setup):
+    settings = list()
+    for line in file(setup):
+        # skip comment line
+        if line.startswith(&#39;#&#39;):
+            continue
+
+        parts = line.split()
+        settings.append((int(parts[0]), parts[1], int(parts[2])))
+    return settings
+
+def server(*settings):
+    try:
+        dock_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        dock_socket.bind((&#39;&#39;, settings[0]))
+        dock_socket.listen(5)
+        while True:
+            client_socket = dock_socket.accept()[0]
+            server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            server_socket.connect((settings[1], settings[2]))
+            thread.start_new_thread(forward, (client_socket, server_socket))
+            thread.start_new_thread(forward, (server_socket, client_socket))
+    finally:
+        thread.start_new_thread(server, settings)
+
+def forward(source, destination):
+    string = &#39; &#39;
+    while string:
+        string = source.recv(1024)
+        if string:
+            destination.sendall(string)
+        else:
+            source.shutdown(socket.SHUT_RD)
+            destination.shutdown(socket.SHUT_WR)
+
+if __name__ == &#39;__main__&#39;:
+    main(&#39;port-forward.config&#39;, &#39;error.log&#39;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="dt">80 localhost 8080</span>
+<span class="co"># 10020 x.x.x.x 10040</span></code></pre></div>
+<h3 id="python---classes">Python - Classes</h3>
+<h4 id="definition">Definition</h4>
+<pre class="python3"><code>class Dog:
+
+    def __init__(self, name):
+        self.name = name
+        self.tricks = []    # creates a new empty list for each dog
+
+    def add_trick(self, trick):
+        self.tricks.append(trick)</code></pre>
+<h4 id="usage">Usage</h4>
+<pre class="python3"><code>d = Dog(&#39;Fido&#39;)
+e = Dog(&#39;Buddy&#39;)
+d.add_trick(&#39;roll over&#39;)
+e.add_trick(&#39;play dead&#39;)
+d.tricks
+e.tricks</code></pre>
+<h3 id="python---logging">Python - Logging</h3>
+<h4 id="global-logging">Global Logging</h4>
+<pre class="python3"><code>import logging
+
+# Log Messages
+logging.debug(&#39;This is a debug message&#39;)
+logging.info(&#39;This is an info message&#39;)
+logging.warning(&#39;This is a warning message&#39;)
+logging.error(&#39;This is an error message&#39;)
+logging.critical(&#39;This is a critical message&#39;)
+
+name = &#39;Roger&#39;
+logging.error(&#39;%s raised an error&#39;, name)
+logging.error(f&#39;{name} raised an error&#39;)
+
+# Log Config
+
+## Allow Log all levels
+### E.g.: DEBUG:root:This will get logged
+logging.basicConfig(level=logging.DEBUG)
+
+## Allow log to file changing the log print format
+### E.g.: root - ERROR - This will get logged to a file
+logging.basicConfig(filename=&#39;app.log&#39;, filemode=&#39;w&#39;, format=&#39;%(name)s - %(levelname)s - %(message)s&#39;)
+
+## Output Formats
+
+### E.g.: 18472-WARNING-This is a Warning
+logging.basicConfig(format=&#39;%(process)d-%(levelname)s-%(message)s&#39;)
+
+### E.g.: 2018-07-11 20:12:06,288 - Admin logged in
+logging.basicConfig(format=&#39;%(asctime)s - %(message)s&#39;, level=logging.INFO)
+
+### E.g.: 12-Jul-18 20:53:19 - Admin logged out
+logging.basicConfig(format=&#39;%(asctime)s - %(message)s&#39;, datefmt=&#39;%d-%b-%y %H:%M:%S&#39;)
+
+# Stack Trace
+a = 5
+b = 0
+
+try:
+  c = a / b
+except Exception as e:
+  logging.error(&quot;Exception occurred&quot;, exc_info=True)
+
+try:
+  c = a / b
+except Exception as e:
+  logging.exception(&quot;Exception occurred&quot;)
+</code></pre>
+<h4 id="logger-object">Logger Object</h4>
+<pre class="python3"><code># logging_example.py
+
+import logging
+
+# Create a custom logger
+logger = logging.getLogger(__name__)
+
+# Create handlers
+c_handler = logging.StreamHandler()
+f_handler = logging.FileHandler(&#39;file.log&#39;)
+c_handler.setLevel(logging.WARNING)
+f_handler.setLevel(logging.ERROR)
+
+# Create formatters and add it to handlers
+c_format = logging.Formatter(&#39;%(name)s - %(levelname)s - %(message)s&#39;)
+f_format = logging.Formatter(&#39;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#39;)
+c_handler.setFormatter(c_format)
+f_handler.setFormatter(f_format)
+
+# Add handlers to the logger
+logger.addHandler(c_handler)
+logger.addHandler(f_handler)
+
+logger.warning(&#39;This is a warning&#39;)
+logger.error(&#39;This is an error&#39;)</code></pre>
 </body>
 </html>
