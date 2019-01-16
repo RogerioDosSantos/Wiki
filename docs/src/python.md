@@ -249,3 +249,29 @@ if __name__ == '__main__':
 # 10020 x.x.x.x 10040
 ```
 
+### Python - Classes
+
+#### Definition 
+
+```python3
+class Dog:
+
+    def __init__(self, name):
+        self.name = name
+        self.tricks = []    # creates a new empty list for each dog
+
+    def add_trick(self, trick):
+        self.tricks.append(trick)
+```
+
+#### Usage
+
+```
+d = Dog('Fido')
+e = Dog('Buddy')
+d.add_trick('roll over')
+e.add_trick('play dead')
+d.tricks
+e.tricks
+```
+
