@@ -173,6 +173,12 @@ netsh winhttp import proxy source=ie
 
 # Set the proxy configuration manually
 netsh winhttp set proxy &lt;proxy_url&gt;:&lt;proxy_port&gt;</code></pre></div>
+<h4 id="powershell---setget-environment-variable">PowerShell - Set/Get Environment Variable</h4>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Set Environment Variable
+$env:my_environment_variable=&quot;test&quot;
+
+# <span class="kw">Get</span> Environment Variable
+<span class="kw">Get</span>-ChildItem Env:my_environment_variable</code></pre></div>
 <h4 id="powershell---change-environment-variable">Powershell - Change Environment Variable</h4>
 <p>The example below change the environment variable <em>PATH</em></p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> the current PATH environment variable
