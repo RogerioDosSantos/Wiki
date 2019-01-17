@@ -1,5 +1,11 @@
 # Python
 
+## Additional Information
+
+- [realpython.com](https://realpython.com)
+
+## Commands
+
 `for (name,value) in <class_name>.__dict__.items(): print name,"=",value`: List all properties in a class
 
 `list=["val1", "val2", ...]` : Create a list of items
