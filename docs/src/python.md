@@ -378,3 +378,168 @@ except KeyboardInterrupt:
     pass
 ```
 
+### Python - Download file from URL
+
+Download file and save in disk (Temp folder)
+
+```python3
+import urllib
+urllib.urlretrieve ("http://www.example.com/songs/mp3.mp3", "/tmp/mp3.mp3")
+```
+
+Download file and display a progress bar
+
+```python3
+import urllib2
+
+url = "http://download.thinkbroadband.com/10MB.zip"
+
+file_name = url.split('/')[-1]
+u = urllib2.urlopen(url)
+f = open(file_name, 'wb')
+meta = u.info()
+file_size = int(meta.getheaders("Content-Length")[0])
+print "Downloading: %s Bytes: %s" % (file_name, file_size)
+
+file_size_dl = 0
+block_sz = 8192
+while True:
+    buffer = u.read(block_sz)
+    if not buffer:
+        break
+
+    file_size_dl += len(buffer)
+    f.write(buffer)
+    status = r"%10d  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size)
+    status = status + chr(8)*(len(status)+1)
+    print status,
+
+f.close()
+```
+
+### Python - Creating temporary files and directories
+
+```python3
+import tempfile
+
+# create a temporary file and write some data to it
+fp = tempfile.TemporaryFile()
+fp.write(b'Hello world!')
+# read data from file
+fp.seek(0)
+fp.read()
+b'Hello world!'
+# close the file, it will be removed
+fp.close()
+
+# create a temporary file using a context manager
+with tempfile.TemporaryFile() as fp:
+  fp.write(b'Hello world!')
+  fp.seek(0)
+  fp.read()
+b'Hello world!'
+
+# file is now closed and removed
+
+# create a temporary directory using the context manager
+with tempfile.TemporaryDirectory() as tmpdirname:
+  print('created temporary directory', tmpdirname)
+
+# directory and contents have been removed
+```
+
+### Python - Directories and Files
+
+#### Remove folder if exists
+
+```python3
+import shutil
+
+dir = 'path_to_my_folder'
+if os.path.exists(dir):
+    shutil.rmtree(dir)
+os.makedirs(dir)
+```
+
+#### Copy folder recursively
+
+```python3
+from shutil import copytree, ignore_patterns
+
+# Every File
+copytree(source, destination, ignore=ignore_patterns('*.pyc', 'tmp*'))
+
+# Ignoring some files
+copytree(source, destination, ignore=ignore_patterns('*.pyc', 'tmp*'))
+```
+
+#### Compressing / Uncompressing Folder
+
+```python3
+# Compress folder - When uncompressed it will not keep the example
+shutil.make_archive('/home/test/example', 'zip', '/home/test/example')
+
+# Compress folder - When uncompressed it will keep the example
+shutil.make_archive('/home/test/example', 'zip', '/home/test/', 'example')
+
+# Uncompress folder
+shutil.unpack_archive("example.zip", extract_dir="/tmp")
+```
+
+### Python - TinyDB
+
+#### Installation
+
+```python3
+pip install tinydb
+```
+
+#### Usage
+
+```python3
+from tinydb import TinyDB, Query
+
+# Open database
+db = TinyDB('db.json')
+
+# Open database in memory
+from tinydb.storages import MemoryStorage
+db = TinyDB(storage=MemoryStorage)
+
+# Insert Data
+db.insert({'type': 'OSFY', 'count': 700})
+db.insert({'type': 'EFY', 'count': 800})
+
+# Get all data
+db.all()
+
+# Search Data
+Magazine = Query()
+db.search(Magazine.type == 'OSFY')
+db.search(Magazine.count > 750)
+
+# Update Data
+db.update({'count': 1000}, Magazine.type == 'OSFY')
+
+# Remove Data
+db.remove(Magazine.count < 900)
+
+# Remove all 
+db.purge()
+```
+
+### Python - WebProxy
+
+```python3
+from mitmproxy import http
+
+def request(flow: http.HTTPFlow):
+    # redirect to different host
+    if flow.request.pretty_host == "example.com":
+        flow.request.host = "mitmproxy.org"
+    # answer from proxy
+    elif flow.request.path.endswith("/brew"):
+    	flow.response = http.HTTPResponse.make(
+            418, b"I'm a teapot",
+        )
+```

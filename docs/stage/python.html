@@ -359,5 +359,132 @@ logger.error(&#39;This is an error&#39;)</code></pre>
        time.sleep(<span class="fl">0.5</span>)
 <span class="cf">except</span> <span class="pp">KeyboardInterrupt</span>:
     <span class="cf">pass</span></code></pre></div>
+<h3 id="python---download-file-from-url">Python - Download file from URL</h3>
+<p>Download file and save in disk (Temp folder)</p>
+<pre class="python3"><code>import urllib
+urllib.urlretrieve (&quot;http://www.example.com/songs/mp3.mp3&quot;, &quot;/tmp/mp3.mp3&quot;)</code></pre>
+<p>Download file and display a progress bar</p>
+<pre class="python3"><code>import urllib2
+
+url = &quot;http://download.thinkbroadband.com/10MB.zip&quot;
+
+file_name = url.split(&#39;/&#39;)[-1]
+u = urllib2.urlopen(url)
+f = open(file_name, &#39;wb&#39;)
+meta = u.info()
+file_size = int(meta.getheaders(&quot;Content-Length&quot;)[0])
+print &quot;Downloading: %s Bytes: %s&quot; % (file_name, file_size)
+
+file_size_dl = 0
+block_sz = 8192
+while True:
+    buffer = u.read(block_sz)
+    if not buffer:
+        break
+
+    file_size_dl += len(buffer)
+    f.write(buffer)
+    status = r&quot;%10d  [%3.2f%%]&quot; % (file_size_dl, file_size_dl * 100. / file_size)
+    status = status + chr(8)*(len(status)+1)
+    print status,
+
+f.close()</code></pre>
+<h3 id="python---creating-temporary-files-and-directories">Python - Creating temporary files and directories</h3>
+<pre class="python3"><code>import tempfile
+
+# create a temporary file and write some data to it
+fp = tempfile.TemporaryFile()
+fp.write(b&#39;Hello world!&#39;)
+# read data from file
+fp.seek(0)
+fp.read()
+b&#39;Hello world!&#39;
+# close the file, it will be removed
+fp.close()
+
+# create a temporary file using a context manager
+with tempfile.TemporaryFile() as fp:
+  fp.write(b&#39;Hello world!&#39;)
+  fp.seek(0)
+  fp.read()
+b&#39;Hello world!&#39;
+
+# file is now closed and removed
+
+# create a temporary directory using the context manager
+with tempfile.TemporaryDirectory() as tmpdirname:
+  print(&#39;created temporary directory&#39;, tmpdirname)
+
+# directory and contents have been removed</code></pre>
+<h3 id="python---directories-and-files">Python - Directories and Files</h3>
+<h4 id="remove-folder-if-exists">Remove folder if exists</h4>
+<pre class="python3"><code>import shutil
+
+dir = &#39;path_to_my_folder&#39;
+if os.path.exists(dir):
+    shutil.rmtree(dir)
+os.makedirs(dir)</code></pre>
+<h4 id="copy-folder-recursively">Copy folder recursively</h4>
+<pre class="python3"><code>from shutil import copytree, ignore_patterns
+
+# Every File
+copytree(source, destination, ignore=ignore_patterns(&#39;*.pyc&#39;, &#39;tmp*&#39;))
+
+# Ignoring some files
+copytree(source, destination, ignore=ignore_patterns(&#39;*.pyc&#39;, &#39;tmp*&#39;))</code></pre>
+<h4 id="compressing-uncompressing-folder">Compressing / Uncompressing Folder</h4>
+<pre class="python3"><code># Compress folder - When uncompressed it will not keep the example
+shutil.make_archive(&#39;/home/test/example&#39;, &#39;zip&#39;, &#39;/home/test/example&#39;)
+
+# Compress folder - When uncompressed it will keep the example
+shutil.make_archive(&#39;/home/test/example&#39;, &#39;zip&#39;, &#39;/home/test/&#39;, &#39;example&#39;)
+
+# Uncompress folder
+shutil.unpack_archive(&quot;example.zip&quot;, extract_dir=&quot;/tmp&quot;)</code></pre>
+<h3 id="python---tinydb">Python - TinyDB</h3>
+<h4 id="installation">Installation</h4>
+<pre class="python3"><code>pip install tinydb</code></pre>
+<h4 id="usage-1">Usage</h4>
+<pre class="python3"><code>from tinydb import TinyDB, Query
+
+# Open database
+db = TinyDB(&#39;db.json&#39;)
+
+# Open database in memory
+from tinydb.storages import MemoryStorage
+db = TinyDB(storage=MemoryStorage)
+
+# Insert Data
+db.insert({&#39;type&#39;: &#39;OSFY&#39;, &#39;count&#39;: 700})
+db.insert({&#39;type&#39;: &#39;EFY&#39;, &#39;count&#39;: 800})
+
+# Get all data
+db.all()
+
+# Search Data
+Magazine = Query()
+db.search(Magazine.type == &#39;OSFY&#39;)
+db.search(Magazine.count &gt; 750)
+
+# Update Data
+db.update({&#39;count&#39;: 1000}, Magazine.type == &#39;OSFY&#39;)
+
+# Remove Data
+db.remove(Magazine.count &lt; 900)
+
+# Remove all 
+db.purge()</code></pre>
+<h3 id="python---webproxy">Python - WebProxy</h3>
+<pre class="python3"><code>from mitmproxy import http
+
+def request(flow: http.HTTPFlow):
+    # redirect to different host
+    if flow.request.pretty_host == &quot;example.com&quot;:
+        flow.request.host = &quot;mitmproxy.org&quot;
+    # answer from proxy
+    elif flow.request.path.endswith(&quot;/brew&quot;):
+        flow.response = http.HTTPResponse.make(
+            418, b&quot;I&#39;m a teapot&quot;,
+        )</code></pre>
 </body>
 </html>
