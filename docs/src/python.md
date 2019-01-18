@@ -474,5 +474,45 @@ shutil.make_archive('/home/test/example', 'zip', '/home/test/', 'example')
 shutil.unpack_archive("example.zip", extract_dir="/tmp")
 ```
 
+### Python - TinyDB
 
+#### Installation
+
+```python3
+pip install tinydb
+```
+
+#### Usage
+
+```python3
+from tinydb import TinyDB, Query
+
+# Open database
+db = TinyDB('db.json')
+
+# Open database in memory
+from tinydb.storages import MemoryStorage
+db = TinyDB(storage=MemoryStorage)
+
+# Insert Data
+db.insert({'type': 'OSFY', 'count': 700})
+db.insert({'type': 'EFY', 'count': 800})
+
+# Get all data
+db.all()
+
+# Search Data
+Magazine = Query()
+db.search(Magazine.type == 'OSFY')
+db.search(Magazine.count > 750)
+
+# Update Data
+db.update({'count': 1000}, Magazine.type == 'OSFY')
+
+# Remove Data
+db.remove(Magazine.count < 900)
+
+# Remove all 
+db.purge()
+```
 
