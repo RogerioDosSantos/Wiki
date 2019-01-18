@@ -466,5 +466,17 @@ db.remove(Magazine.count &lt; 900)
 
 # Remove all 
 db.purge()</code></pre>
+<h3 id="python---webproxy">Python - WebProxy</h3>
+<pre class="python3"><code>from mitmproxy import http
+
+def request(flow: http.HTTPFlow):
+    # redirect to different host
+    if flow.request.pretty_host == &quot;example.com&quot;:
+        flow.request.host = &quot;mitmproxy.org&quot;
+    # answer from proxy
+    elif flow.request.path.endswith(&quot;/brew&quot;):
+        flow.response = http.HTTPResponse.make(
+            418, b&quot;I&#39;m a teapot&quot;,
+        )</code></pre>
 </body>
 </html>
