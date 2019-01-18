@@ -381,11 +381,6 @@ while True:
     print status,
 
 f.close()</code></pre>
-<h3 id="python---compressing-uncompressing-zip">Python - Compressing / Uncompressing (zip)</h3>
-<pre class="python3"><code>import zipfile
-zip_ref = zipfile.ZipFile(path_to_zip_file, &#39;r&#39;)
-zip_ref.extractall(directory_to_extract_to)
-zip_ref.close()</code></pre>
 <h3 id="python---creating-temporary-files-and-directories">Python - Creating temporary files and directories</h3>
 <pre class="python3"><code>import tempfile
 
@@ -413,5 +408,30 @@ with tempfile.TemporaryDirectory() as tmpdirname:
   print(&#39;created temporary directory&#39;, tmpdirname)
 
 # directory and contents have been removed</code></pre>
+<h3 id="python---directories-and-files">Python - Directories and Files</h3>
+<h4 id="remove-folder-if-exists">Remove folder if exists</h4>
+<pre class="python3"><code>import shutil
+
+dir = &#39;path_to_my_folder&#39;
+if os.path.exists(dir):
+    shutil.rmtree(dir)
+os.makedirs(dir)</code></pre>
+<h4 id="copy-folder-recursively">Copy folder recursively</h4>
+<pre class="python3"><code>from shutil import copytree, ignore_patterns
+
+# Every File
+copytree(source, destination, ignore=ignore_patterns(&#39;*.pyc&#39;, &#39;tmp*&#39;))
+
+# Ignoring some files
+copytree(source, destination, ignore=ignore_patterns(&#39;*.pyc&#39;, &#39;tmp*&#39;))</code></pre>
+<h4 id="compressing-uncompressing-folder">Compressing / Uncompressing Folder</h4>
+<pre class="python3"><code># Compress folder - When uncompressed it will not keep the example
+shutil.make_archive(&#39;/home/test/example&#39;, &#39;zip&#39;, &#39;/home/test/example&#39;)
+
+# Compress folder - When uncompressed it will keep the example
+shutil.make_archive(&#39;/home/test/example&#39;, &#39;zip&#39;, &#39;/home/test/&#39;, &#39;example&#39;)
+
+# Uncompress folder
+shutil.unpack_archive(&quot;example.zip&quot;, extract_dir=&quot;/tmp&quot;)</code></pre>
 </body>
 </html>

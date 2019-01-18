@@ -405,15 +405,6 @@ while True:
 f.close()
 ```
 
-### Python - Compressing / Uncompressing (zip)
-
-```python3
-import zipfile
-zip_ref = zipfile.ZipFile(path_to_zip_file, 'r')
-zip_ref.extractall(directory_to_extract_to)
-zip_ref.close()
-```
-
 ### Python - Creating temporary files and directories
 
 ```python3
@@ -444,5 +435,44 @@ with tempfile.TemporaryDirectory() as tmpdirname:
 
 # directory and contents have been removed
 ```
+
+### Python - Directories and Files
+
+#### Remove folder if exists
+
+```python3
+import shutil
+
+dir = 'path_to_my_folder'
+if os.path.exists(dir):
+    shutil.rmtree(dir)
+os.makedirs(dir)
+```
+
+#### Copy folder recursively
+
+```python3
+from shutil import copytree, ignore_patterns
+
+# Every File
+copytree(source, destination, ignore=ignore_patterns('*.pyc', 'tmp*'))
+
+# Ignoring some files
+copytree(source, destination, ignore=ignore_patterns('*.pyc', 'tmp*'))
+```
+
+#### Compressing / Uncompressing Folder
+
+```python3
+# Compress folder - When uncompressed it will not keep the example
+shutil.make_archive('/home/test/example', 'zip', '/home/test/example')
+
+# Compress folder - When uncompressed it will keep the example
+shutil.make_archive('/home/test/example', 'zip', '/home/test/', 'example')
+
+# Uncompress folder
+shutil.unpack_archive("example.zip", extract_dir="/tmp")
+```
+
 
 
