@@ -381,5 +381,37 @@ while True:
     print status,
 
 f.close()</code></pre>
+<h3 id="python---compressing-uncompressing-zip">Python - Compressing / Uncompressing (zip)</h3>
+<pre class="python3"><code>import zipfile
+zip_ref = zipfile.ZipFile(path_to_zip_file, &#39;r&#39;)
+zip_ref.extractall(directory_to_extract_to)
+zip_ref.close()</code></pre>
+<h3 id="python---creating-temporary-files-and-directories">Python - Creating temporary files and directories</h3>
+<pre class="python3"><code>import tempfile
+
+# create a temporary file and write some data to it
+fp = tempfile.TemporaryFile()
+fp.write(b&#39;Hello world!&#39;)
+# read data from file
+fp.seek(0)
+fp.read()
+b&#39;Hello world!&#39;
+# close the file, it will be removed
+fp.close()
+
+# create a temporary file using a context manager
+with tempfile.TemporaryFile() as fp:
+  fp.write(b&#39;Hello world!&#39;)
+  fp.seek(0)
+  fp.read()
+b&#39;Hello world!&#39;
+
+# file is now closed and removed
+
+# create a temporary directory using the context manager
+with tempfile.TemporaryDirectory() as tmpdirname:
+  print(&#39;created temporary directory&#39;, tmpdirname)
+
+# directory and contents have been removed</code></pre>
 </body>
 </html>
