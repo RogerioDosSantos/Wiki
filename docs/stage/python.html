@@ -351,5 +351,13 @@ logger.addHandler(f_handler)
 
 logger.warning(&#39;This is a warning&#39;)
 logger.error(&#39;This is an error&#39;)</code></pre>
+<h3 id="python---looping">Python - Looping</h3>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Loop until Ctrl-C is pressed</span>
+<span class="cf">try</span>:
+    <span class="cf">while</span> <span class="va">True</span>:
+       <span class="bu">print</span>(<span class="st">&#39;Press Ctrl-C to stop&#39;</span>)
+       time.sleep(<span class="fl">0.5</span>)
+<span class="cf">except</span> <span class="pp">KeyboardInterrupt</span>:
+    <span class="cf">pass</span></code></pre></div>
 </body>
 </html>

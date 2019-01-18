@@ -365,3 +365,16 @@ logger.addHandler(f_handler)
 logger.warning('This is a warning')
 logger.error('This is an error')
 ```
+
+### Python - Looping
+
+```Python
+# Loop until Ctrl-C is pressed
+try:
+    while True:
+       print('Press Ctrl-C to stop')
+       time.sleep(0.5)
+except KeyboardInterrupt:
+    pass
+```
+
