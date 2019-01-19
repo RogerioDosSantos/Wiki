@@ -271,12 +271,6 @@
 
 `GN` : Search the current selection backwards
 
-`:%s/<search string>/<replace string>[/<options>]` : search whole file and replace. The options are:
-
-  `/c` : confirm each replace
-
-  `/I` : Case sensitive
-
 `:noh` : Clear search highlight. Added custom map `<leader>,`
 
 `:q!` : Exit without saving
@@ -442,5 +436,30 @@ args `<command>` : Load the argument list with a command. E.g.: args `ls`
 `zsm` : Set the folding method to Manual
 
 `zsi` : Set the folding method to Indent
+
+
+## How-to
+
+### Find and Replace
+
+In normal mode:
+
+```vim
+# Find String
+/<search_string>
+
+# Replace all strings from the current find
+:%s//<replace string>/g
+
+# Search whole file and replace.
+:%s/<search string>/<replace string>[/<options>]
+```
+
+Options:
+
+  `/c` : confirm each replace
+
+  `/I` : Case sensitive
+
 
 
