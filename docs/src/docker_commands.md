@@ -40,12 +40,6 @@
 
 `docker login --username <user_name> --password <password> <server>` : Login into a repository into a specific server.
 
-`docker-compose up [-d]` : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The `-d` option allow to start the container as service, _forking_ the process.
-
-`docker-compose stop` : Stop all running Docker containers for an application group, issue the following command in the same directory as the _docker-compose.yml_ file used to start the Docker group.
-
-`docker-compose kill` : Same as `docker-compose stop` but force the running container to stop. 
-
 `docker volume create <volume_name>`: `Create a volume`
 
 `docker volume ls -qf dangling=true | xargs -r docker volume rm` : Remove all volumes that are not being used.
@@ -305,6 +299,16 @@ docker save microsoft/nanoserver:1803 > ./microsoft_nanoserver_1803.tar
 # Load image from file
 docker load -i ./microsoft_nanoserver_1803.tar
 ```
+### Docker Compose - How to user docker compose
+
+`docker-compose up [-d]` : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The `-d` option allow to start the container as service, _forking_ the process.
+
+`docker-compose stop` : Stop all running Docker containers for an application group, issue the following command in the same directory as the _docker-compose.yml_ file used to start the Docker group.
+
+`docker-compose kill` : Same as `docker-compose stop` but force the running container to stop. 
+
+`docker-compose down` : Same as `docker-compose stop` but remove the container after stopping
+
 
 
 
