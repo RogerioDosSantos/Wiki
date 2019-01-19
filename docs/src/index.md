@@ -213,3 +213,7 @@
 ## Videos / Streaming
 
 - [OBS]( ./obs.html )
+
+## License
+
+- [License Types]( ./license_types.html )
