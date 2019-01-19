@@ -264,4 +264,11 @@ Expand-Archive -Path .\test1.zip -DestinationPath ./test1
 Expand-Archive -Path .\test2.zip -DestinationPath ./test2
 ```
 
+#### Powershell - Create Folder if does not exist
+
+```ps
+New-Item -ItemType Directory -Force -Path <path>
+```
+
+
 
