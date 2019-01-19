@@ -432,7 +432,7 @@ copytree(source, destination, ignore=ignore_patterns(&#39;*.pyc&#39;, &#39;tmp*&
 
 # Ignoring some files
 copytree(source, destination, ignore=ignore_patterns(&#39;*.pyc&#39;, &#39;tmp*&#39;))</code></pre>
-<h4 id="compressing-uncompressing-folder">Compressing / Uncompressing Folder</h4>
+<h4 id="compressing-uncompressing-folder-zip">Compressing / Uncompressing Folder (Zip)</h4>
 <pre class="python3"><code># Compress folder - When uncompressed it will not keep the example
 shutil.make_archive(&#39;/home/test/example&#39;, &#39;zip&#39;, &#39;/home/test/example&#39;)
 
@@ -486,5 +486,12 @@ def request(flow: http.HTTPFlow):
         flow.response = http.HTTPResponse.make(
             418, b&quot;I&#39;m a teapot&quot;,
         )</code></pre>
+<h3 id="python---exceptions">Python - Exceptions</h3>
+<pre class="python3"><code>try:
+  raise ValueError(&#39;A very specific bad thing happened.&#39;)
+except Exception as e:
+  print(&#39;Exception desc: {e}&#39;.format(e=str(e)))
+finally:
+  print(&#39;Enter here no matter what&#39;)</code></pre>
 </body>
 </html>

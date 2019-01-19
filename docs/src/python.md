@@ -473,7 +473,7 @@ copytree(source, destination, ignore=ignore_patterns('*.pyc', 'tmp*'))
 copytree(source, destination, ignore=ignore_patterns('*.pyc', 'tmp*'))
 ```
 
-#### Compressing / Uncompressing Folder
+#### Compressing / Uncompressing Folder (Zip)
 
 ```python3
 # Compress folder - When uncompressed it will not keep the example
@@ -543,3 +543,16 @@ def request(flow: http.HTTPFlow):
             418, b"I'm a teapot",
         )
 ```
+
+### Python - Exceptions
+
+```python3
+try:
+  raise ValueError('A very specific bad thing happened.')
+except Exception as e:
+  print('Exception desc: {e}'.format(e=str(e)))
+finally:
+  print('Enter here no matter what')
+```
+
+
