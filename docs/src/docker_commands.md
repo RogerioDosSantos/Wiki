@@ -82,7 +82,7 @@
 
 ## Keys
 
-`crtl+p ctrl+q`: Detach from a session.
+`crtl+p ctrl+q`: Detach from a session. Note: You might have to press ctrl+c after in case you are using tmux
 
 ## Volumes Credentials
 
