@@ -461,5 +461,11 @@ Options:
 
   `/I` : Case sensitive
 
+### Redraw all Vim screen
+
+```vim
+:redraw!
+```
+
 
 
