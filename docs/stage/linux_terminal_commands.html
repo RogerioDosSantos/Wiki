@@ -546,5 +546,28 @@ cat /tmp/config_file</code></pre></div>
 
 <span class="co"># Extracting the file</span>
 <span class="fu">bzip2</span> -d compressed.bz2</code></pre></div>
+<h3 id="permissions-and-groups">Permissions and Groups</h3>
+<p>The permission are listed as following:</p>
+<figure>
+<img src="http://tinyurl.com/y85m7sp2" />
+</figure>
+<pre class="shell"><code># Change permission to the to the owner
+chmod +rw &lt;file_or_dirctory&gt;
+
+# Change the permission to the group
+chmod g+rw &lt;file_or_dirctory&gt;
+
+# Change the permission to others
+chmod o+rw &lt;file_or_dirctory&gt;
+
+# Change group
+chgrp &lt;group&gt; &lt;file_or_dirctory&gt;
+
+# Change owner
+chown &lt;group&gt; &lt;file_or_dirctory&gt;
+
+# Change Permission by numbers
+chmod &lt;number&gt;</code></pre>
+<p>Permission Numbers: - 0 = --- - 1 = --x - 2 = -w- - 3 = -wx - 4 = r- - 5 = r-x - 6 = rw- - 7 = rwx</p>
 </body>
 </html>
