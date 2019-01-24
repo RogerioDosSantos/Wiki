@@ -555,4 +555,56 @@ finally:
   print('Enter here no matter what')
 ```
 
+### Python - Decorated Static Vars
+
+```python3
+def static_vars(**kwargs):
+    def decorate(func):
+        for k in kwargs:
+            setattr(func, k, kwargs[k])
+        return func
+    return decorate
+```
+
+### Python - Thread Lock
+
+```python3
+import time
+import threading
+import atexit
+from apscheduler.schedulers.background import BackgroundScheduler
+
+lock = threading.Lock()
+scheduler = BackgroundScheduler()
+
+def protected_function():
+  print('Several threads call this')
+  if lock.locked():
+    return True
+  with lock:
+    print('Only 1 thread call this per time')
+    time.sleep(10)
+
+def run():
+  job_defaults = {
+    'coalesce': False,
+    'max_instances': 3
+  }
+  scheduler.add_job(func=execution_loop, trigger="interval", job_defaults=job_defaults, seconds=1)
+  scheduler.start()
+  print('Press Ctrl-C to stop the execution')
+  atexit.register(lambda: shutdown())
+  try:
+    while True:
+      time.sleep(1)
+  except KeyboardInterrupt:
+    pass
+
+def shutdown():
+  scheduler.shutdown()
+
+if __name__ == '__main__':
+    run()
+```
+
 

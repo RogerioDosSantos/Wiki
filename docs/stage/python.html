@@ -493,5 +493,49 @@ except Exception as e:
   print(&#39;Exception desc: {e}&#39;.format(e=str(e)))
 finally:
   print(&#39;Enter here no matter what&#39;)</code></pre>
+<h3 id="python---decorated-static-vars">Python - Decorated Static Vars</h3>
+<pre class="python3"><code>def static_vars(**kwargs):
+    def decorate(func):
+        for k in kwargs:
+            setattr(func, k, kwargs[k])
+        return func
+    return decorate</code></pre>
+<h3 id="python---thread-lock">Python - Thread Lock</h3>
+<pre class="python3"><code>import time
+import threading
+import atexit
+from apscheduler.schedulers.background import BackgroundScheduler
+
+lock = threading.Lock()
+scheduler = BackgroundScheduler()
+
+def protected_function():
+  print(&#39;Several threads call this&#39;)
+  if lock.locked():
+    return True
+  with lock:
+    print(&#39;Only 1 thread call this per time&#39;)
+    time.sleep(10)
+
+def run():
+  job_defaults = {
+    &#39;coalesce&#39;: False,
+    &#39;max_instances&#39;: 3
+  }
+  scheduler.add_job(func=execution_loop, trigger=&quot;interval&quot;, job_defaults=job_defaults, seconds=1)
+  scheduler.start()
+  print(&#39;Press Ctrl-C to stop the execution&#39;)
+  atexit.register(lambda: shutdown())
+  try:
+    while True:
+      time.sleep(1)
+  except KeyboardInterrupt:
+    pass
+
+def shutdown():
+  scheduler.shutdown()
+
+if __name__ == &#39;__main__&#39;:
+    run()</code></pre>
 </body>
 </html>
