@@ -54,10 +54,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li><a href="https://realpython.com">realpython.com</a></li>
 </ul>
+<h2 id="python---packages">Python - Packages</h2>
+<p>The sequence where the <em>Python interpreter</em> search for packages are:</p>
+<ul>
+<li>The directory from which the input script was run or the current directory if the interpreter is being run interactively</li>
+<li>The list of directories contained in the PYTHONPATH environment variable, if it is set. (The format for PYTHONPATH is OS-dependent but should mimic the PATH environment variable.)</li>
+<li>An installation-dependent list of directories configured at the time Python is installed</li>
+</ul>
 <h2 id="commands">Commands</h2>
 <p><code>for (name,value) in &lt;class_name&gt;.__dict__.items(): print name,&quot;=&quot;,value</code>: List all properties in a class</p>
 <p><code>list=[&quot;val1&quot;, &quot;val2&quot;, ...]</code> : Create a list of items</p>
 <p><code>for item in list: print item</code>: Loop over a list</p>
+<p><code>dir()</code>: List defined objects</p>
+<p><code>dir(&lt;module&gt;)</code>: Define the objects defined in a module</p>
 <h2 id="how-to">How-to</h2>
 <h3 id="python---function-declaration-and-usage">Python - Function Declaration and usage</h3>
 <pre class="python3"><code># Function Declaration
@@ -486,5 +495,15 @@ def request(flow: http.HTTPFlow):
         flow.response = http.HTTPResponse.make(
             418, b&quot;I&#39;m a teapot&quot;,
         )</code></pre>
+<h3 id="python-packages---create-requirements-file">Python Packages - Create Requirements File</h3>
+<p><a href="https://pip.pypa.io/en/stable/user_guide/#requirements-files">Requirements files</a> are files containing a list of items to be installed using <a href="https://pip.pypa.io/en/stable/reference/pip_install/#pip-install">pip install</a></p>
+<pre class="shell"><code># Create Requirements Files
+pip freeze &gt; requirements.txt
+
+# Install using requirements-files
+pip install -r requirements.txt</code></pre>
+<h3 id="how-to-know-from-were-a-package-were-installed-from">How to know from were a package were installed from</h3>
+<pre class="python3"><code>import package
+package.__file__</code></pre>
 </body>
 </html>

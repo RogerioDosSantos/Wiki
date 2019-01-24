@@ -4,6 +4,15 @@
 
 - [realpython.com](https://realpython.com)
 
+## Python - Packages
+
+The sequence where the *Python interpreter* search for packages are:
+
+- The directory from which the input script was run or the current directory if the interpreter is being run interactively
+- The list of directories contained in the PYTHONPATH environment variable, if it is set. (The format for PYTHONPATH is OS-dependent but should mimic the PATH environment variable.)
+- An installation-dependent list of directories configured at the time Python is installed
+
+
 ## Commands
 
 `for (name,value) in <class_name>.__dict__.items(): print name,"=",value`: List all properties in a class
@@ -11,6 +20,10 @@
 `list=["val1", "val2", ...]` : Create a list of items
 
 `for item in list: print item`: Loop over a list
+
+`dir()`: List defined objects
+
+`dir(<module>)`: Define the objects defined in a module
 
 ## How-to
 
@@ -543,3 +556,25 @@ def request(flow: http.HTTPFlow):
             418, b"I'm a teapot",
         )
 ```
+
+### Python Packages - Create Requirements File
+
+[Requirements files](https://pip.pypa.io/en/stable/user_guide/#requirements-files) are files containing a list of items to be installed using [pip install](https://pip.pypa.io/en/stable/reference/pip_install/#pip-install) 
+
+```shell
+# Create Requirements Files
+pip freeze > requirements.txt
+
+# Install using requirements-files
+pip install -r requirements.txt
+```
+
+### How to know from were a package were installed from
+
+```python3
+import package
+package.__file__
+```
+
+
+
