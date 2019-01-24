@@ -174,10 +174,11 @@
 
 - [Cpp]( ./cpp.html )
 
-## Azure
+## Cloud Services
 
-- [IoT-Edge]( ./iot_edge.html )
-- [Storage]( ./azure_storage.html )
+- [Amazon Web Services (AWS)]( ./aws.html )
+- [Azure IoT-Edge]( ./iot_edge.html )
+- [Azure Storage]( ./azure_storage.html )
 
 ## Stock Market
 

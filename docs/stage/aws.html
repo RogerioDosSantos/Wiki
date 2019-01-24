@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="amazon-web-services-aws">Amazon Web Services (AWS)</h1>
+<h2 id="services-summary">Services Summary</h2>
+<ul>
+<li><p><strong>AWS Elastic Compute Cloud (EC2)</strong>: EC2 makes it easy to boot a virtualized server, called EC2 Instance, with just a few clicks.</p></li>
+<li><p>EC2 Container Services (ECS): <a href="https://aws.amazon.com/ecs/">ECS</a>. Allow you deploy containers in a cluster.</p></li>
+<li><p>Identity Access Management (IAM): <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html?icmpid=docs_iam_console">IAM</a> is a web service that helps you securely control access to AWS resources. You use IAM to control who is authenticated (signed in) and authorized (has permissions) to use resources.</p></li>
+</ul>
+<h2 id="security-group">Security Group</h2>
+<p>A <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security Group</a>. is a set of firewall rules that control network traffic for your instance. By default, all incoming ports are blocked.</p>
+<h2 id="how-to">How-to</h2>
+<h3 id="run-docker-containers-into-aws-using-ec2">Run Docker containers into AWS (Using EC2)</h3>
+<p>Those steps allow you setup a single <em>EC2 instance</em> with docker on it. It is not recomended to use this setup in production, but this can be a development environment in the <em>cloud</em></p>
+<ul>
+<li>Create an <a href="">EC2 instance</a> using the <a href="https://console.aws.amazon.com/console/home">AWS Console</a></li>
+<li>Pick <em>Amazon Linux AMI</em></li>
+<li>Pick the <em>t2.micro</em> instance type</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/yctmnsfw" />
+</figure>
+<ul>
+<li>Keep the default option for Instance Details, Storage, and Tags, so keep clicking the gray <em>Next</em> button until you get to the <em>Configure Security Group</em></li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y8vftt6b" />
+</figure>
+<ul>
+<li>Configure the <em>Security Group (Firewall)</em> to allow incoming requests to any host for the following:
+<ul>
+<li>SSH (port 22)</li>
+<li>HTTP (port 80)</li>
+</ul></li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/ybgpds9r" />
+</figure>
+<ul>
+<li>Click to <em>Review and Launch</em></li>
+<li>Click in Launch. Then will popup the <em>Key Pair</em> window:</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/yccsslcg" />
+</figure>
+<ul>
+<li>Select create a new key pair, give a name, download the private key and store it into a safe place.</li>
+<li>Click in the <em>Launch Instances</em></li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/ybz779wd" />
+</figure>
+<ul>
+<li>Install Docker in the <em>EC2 Instance</em></li>
+</ul>
+<pre class="shell"><code># Change the permission of the private key to read only by sudo
+chmod 400 &lt;path_to_the_key_pair&gt;
+
+# Connect to the EC2 instance
+ssh -i &lt;path_to_the_key_pair&gt; ec2-user@&lt;ec2_instance_public_ip&gt;
+
+# Install Docker
+sudo yum update -y
+sudo yum install -y docker
+sudo service docker start
+
+# Add the ec2-user to the docker group so you can execute Docker
+sudo usermod -a -G docker ec2-user
+
+# Reload the ssh connection so the group configuration can take effect
+exit
+ssh -i &lt;path_to_the_key_pair&gt; ec2-user@&lt;ec2_instance_public_ip&gt;
+
+# Check if you have access
+docker info
+docker ps</code></pre>
+<h3 id="setup-kubernetes-cluster-in-aws">Setup Kubernetes Cluster in AWS</h3>
+<ul>
+<li>Setup an IAM</li>
+<li>Go to AWS Console &gt; IAM and create a new user</li>
+<li>Attach to <em>Administrator Access Policy</em> (Too much access but quick).</li>
+</ul>
+</body>
+</html>
