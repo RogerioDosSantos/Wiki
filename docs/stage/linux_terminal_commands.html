@@ -208,6 +208,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>history</code>: Display the command history.</p>
 <p><code>echo &lt;file_path&gt; | entr &lt;command&gt;</code>: Monitor a file and execute a command every time the file changes.</p>
 <p><code>sleep &lt;seconds&gt;</code>: Stop the execution for time informed.</p>
+<p><code>set -xe</code>: -e makes the shell exit immediately whenever something returns an error (this is often used in shell scripts as a failsafe mechanism), and -x enables verbose execution of scripts so that you can see what's happening.</p>
 <h3 id="strings-manipulations">Strings Manipulations</h3>
 <p><code>printf '%q' &quot;&lt;string&gt;&quot;</code>: Format string for shell scape</p>
 <p><code>echo &lt;string_delimiter&gt; | cut -d'&lt;delimiter&gt;' -f&lt;position&gt;</code>: Get a substring between delimiters. E.g.: <code>echo &quot;S1;S2;S3&quot; | cut -d';' -f2</code></p>
@@ -546,5 +547,28 @@ cat /tmp/config_file</code></pre></div>
 
 <span class="co"># Extracting the file</span>
 <span class="fu">bzip2</span> -d compressed.bz2</code></pre></div>
+<h3 id="permissions-and-groups">Permissions and Groups</h3>
+<p>The permission are listed as following:</p>
+<figure>
+<img src="http://tinyurl.com/y85m7sp2" />
+</figure>
+<pre class="shell"><code># Change permission to the to the owner
+chmod +rw &lt;file_or_dirctory&gt;
+
+# Change the permission to the group
+chmod g+rw &lt;file_or_dirctory&gt;
+
+# Change the permission to others
+chmod o+rw &lt;file_or_dirctory&gt;
+
+# Change group
+chgrp &lt;group&gt; &lt;file_or_dirctory&gt;
+
+# Change owner
+chown &lt;group&gt; &lt;file_or_dirctory&gt;
+
+# Change Permission by numbers
+chmod &lt;number&gt;</code></pre>
+<p>Permission Numbers: - 0 = --- - 1 = --x - 2 = -w- - 3 = -wx - 4 = r- - 5 = r-x - 6 = rw- - 7 = rwx</p>
 </body>
 </html>

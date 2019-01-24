@@ -306,6 +306,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `sleep <seconds>`: Stop the execution for time informed.
 
+`set -xe`: -e makes the shell exit immediately whenever something returns an error (this is often used in shell scripts as a failsafe mechanism), and -x enables verbose execution of scripts so that you can see what's happening.
+
 ### Strings Manipulations
 
 `printf '%q' "<string>"`: Format string for shell scape
@@ -853,6 +855,44 @@ dd if=/dev/zero bs=10G count=10000 | bzip2 -c > compressed.bz2
 # Extracting the file
 bzip2 -d compressed.bz2
 ```
+
+### Permissions and Groups
+
+The permission are listed as following:
+
+![](http://tinyurl.com/y85m7sp2)
+
+```shell
+# Change permission to the to the owner
+chmod +rw <file_or_dirctory>
+
+# Change the permission to the group
+chmod g+rw <file_or_dirctory>
+
+# Change the permission to others
+chmod o+rw <file_or_dirctory>
+
+# Change group
+chgrp <group> <file_or_dirctory>
+
+# Change owner
+chown <group> <file_or_dirctory>
+
+# Change Permission by numbers
+chmod <number>
+```
+Permission Numbers:
+- 0 = ---
+- 1 = --x
+- 2 = -w-
+- 3 = -wx
+- 4 = r-
+- 5 = r-x
+- 6 = rw-
+- 7 = rwx
+
+
+
 
 
 

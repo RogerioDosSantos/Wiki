@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="heroku">Heroku</h1>
+<p><a href="https://heroku.com">Heroku</a> is a cloud platform as a service supporting several programming languages.</p>
+<p>They ofer you to host your service for free if they use <em>1 kudo</em>, which is a unit of processing.</p>
+<p>They also allow you to run <em>Docker Containers</em> making it an ideal platform to hoest your free projects.</p>
+<h2 id="how-to">How-to</h2>
+<h3 id="run-container-on-heroku">Run Container on Heroku</h3>
+<ul>
+<li>Download and install the <a href="https://devcenter.heroku.com/articles/heroku-cli">Heroku cli</a></li>
+<li>Change your application to listen to the port number informed by the environment variable <code>$PORT</code>. When <em>Heroku launches your container, it will inform in the <code>$PORT</code> what </em>tcp-port* is expected for your application to respond to.</li>
+<li>Execute the deployment using the <em>Heroku cli</em>:</li>
+</ul>
+<pre class="shell"><code># Login the Heroku cli to Heroku
+heroku login
+
+# Login Heroku cli to the docker repository
+heroku container:login
+
+# Push your application (Note: This can be slow)
+heroku container:push --app &lt;heroku_app&gt; --context-path . web
+
+# Release image pushed
+heroku container:release --app &lt;heroku_app&gt; web</code></pre>
+</body>
+</html>

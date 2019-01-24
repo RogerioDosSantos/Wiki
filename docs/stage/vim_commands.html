@@ -148,9 +148,6 @@
 <p><code>/&lt;string&gt;</code> : Search a string down</p>
 <p><code>?&lt;string&gt;</code> : Search a string up</p>
 <p><code>GN</code> : Search the current selection backwards</p>
-<p><code>:%s/&lt;search string&gt;/&lt;replace string&gt;[/&lt;options&gt;]</code> : search whole file and replace. The options are:</p>
-<p><code>/c</code> : confirm each replace</p>
-<p><code>/I</code> : Case sensitive</p>
 <p><code>:noh</code> : Clear search highlight. Added custom map <code>&lt;leader&gt;,</code></p>
 <p><code>:q!</code> : Exit without saving</p>
 <p><code>:w</code> : Save</p>
@@ -232,5 +229,21 @@
 <p><code>zss</code> : Set the folding method to Syntax</p>
 <p><code>zsm</code> : Set the folding method to Manual</p>
 <p><code>zsi</code> : Set the folding method to Indent</p>
+<h2 id="how-to">How-to</h2>
+<h3 id="find-and-replace">Find and Replace</h3>
+<p>In normal mode:</p>
+<pre class="vim"><code># Find String
+/&lt;search_string&gt;
+
+# Replace all strings from the current find
+:%s//&lt;replace string&gt;/g
+
+# Search whole file and replace.
+:%s/&lt;search string&gt;/&lt;replace string&gt;[/&lt;options&gt;]</code></pre>
+<p>Options:</p>
+<p><code>/c</code> : confirm each replace</p>
+<p><code>/I</code> : Case sensitive</p>
+<h3 id="redraw-all-vim-screen">Redraw all Vim screen</h3>
+<pre class="vim"><code>:redraw!</code></pre>
 </body>
 </html>
