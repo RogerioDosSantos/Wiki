@@ -208,6 +208,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>history</code>: Display the command history.</p>
 <p><code>echo &lt;file_path&gt; | entr &lt;command&gt;</code>: Monitor a file and execute a command every time the file changes.</p>
 <p><code>sleep &lt;seconds&gt;</code>: Stop the execution for time informed.</p>
+<p><code>set -xe</code>: -e makes the shell exit immediately whenever something returns an error (this is often used in shell scripts as a failsafe mechanism), and -x enables verbose execution of scripts so that you can see what's happening.</p>
 <h3 id="strings-manipulations">Strings Manipulations</h3>
 <p><code>printf '%q' &quot;&lt;string&gt;&quot;</code>: Format string for shell scape</p>
 <p><code>echo &lt;string_delimiter&gt; | cut -d'&lt;delimiter&gt;' -f&lt;position&gt;</code>: Get a substring between delimiters. E.g.: <code>echo &quot;S1;S2;S3&quot; | cut -d';' -f2</code></p>

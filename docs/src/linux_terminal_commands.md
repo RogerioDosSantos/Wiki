@@ -306,6 +306,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `sleep <seconds>`: Stop the execution for time informed.
 
+`set -xe`: -e makes the shell exit immediately whenever something returns an error (this is often used in shell scripts as a failsafe mechanism), and -x enables verbose execution of scripts so that you can see what's happening.
+
 ### Strings Manipulations
 
 `printf '%q' "<string>"`: Format string for shell scape
