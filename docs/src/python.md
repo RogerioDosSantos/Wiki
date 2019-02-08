@@ -12,7 +12,6 @@ The sequence where the *Python interpreter* search for packages are:
 - The list of directories contained in the PYTHONPATH environment variable, if it is set. (The format for PYTHONPATH is OS-dependent but should mimic the PATH environment variable.)
 - An installation-dependent list of directories configured at the time Python is installed
 
-
 ## Commands
 
 `for (name,value) in <class_name>.__dict__.items(): print name,"=",value`: List all properties in a class
@@ -24,6 +23,22 @@ The sequence where the *Python interpreter* search for packages are:
 `dir()`: List defined objects
 
 `dir(<module>)`: Define the objects defined in a module
+
+## WSGI
+
+![](http://tinyurl.com/y8q8aj9h)
+
+WSGI is a specification form application interface contract between applications. 
+  - WSGI is not a protocol
+  - WSGI is not a implementation, but a specification only.
+   
+Below is an example of a *Hello World* application the implement the *WSGI* interface.
+
+![](http://tinyurl.com/yctztv82)
+
+Do not write *WSGI* application by hand, use a Frameworks e.g.: Flask.
+
+Although the *Web Frameworks* like *Flask or Django* provides a development server, they are not enough. 
 
 ## How-to
 
