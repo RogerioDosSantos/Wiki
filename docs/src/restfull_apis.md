@@ -21,13 +21,25 @@ Create a new address:
 `POST /addresses`
 
 ### PUT
+
 Store an entity at a URI. PUT can create a new entity or update an existing one. A PUT request is idempotent. Idempotency is the main difference between the expectations of PUT versus a POST request.
 
 Modify the address with an ID of 1:
 
 `PUT /addresses/1`
 
-**Note**: PUT replaces an existing entity. If only a subset of data elements are provided, the rest will be replaced with empty or null.
+**Note**: 
+
+PUT replaces an existing entity.
+
+If only a subset of data elements are provided, the rest will be replaced with empty or null.
+
+Some considerations:
+
+- Do you name your URL objects you create explicitly, or let the server decide? If you name them then use PUT. If you let the server decide then use POST.
+- PUT is idempotent, so if you PUT an object twice, it has no effect. This is a nice property, so I would use PUT when possible.
+- You can update or create a resource with PUT with the same object URL
+- With POST you can have 2 requests coming in at the same time making modifications to a URL, and they may update different parts of the object.
 
 ### PATCH
 
