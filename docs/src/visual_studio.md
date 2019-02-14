@@ -14,17 +14,23 @@ You need to have the *Visual Studio Remote Debugging Tools* available inside you
 
 ```DockerFile
 # Get pre-prepared image that contains the Visual Studio Remote Debugging Tools
-FROM rogersantos/windows_core_debugger:windows as debugger
+FROM rogersantos/windows_core_debugger:windows AS debugger
 
-#### Your Image Configuration ####
+FROM <your_image_configuration>
 
 # Install / Configure Debugging Tools
 COPY --from=debugger ["C:/workspace/vs_2017_remote_debugger", "C:/vs_2017_remote_debugger"]
-
-#TODO(Roger) - Change the configuration so we no longer need to run the Remote Debug Tool command.
+COPY --from=debugger ["C:/workspace/windows_10_debuggers", "C:/windows_10_debuggers"]
 RUN powershell -Command $ErrorActionPreference = 'Stop' ; \
-	echo '*** Configuring Debugging' ; \
-	echo '*** Configuring Debugging - DONE'
+  echo '*** Configuring Debugging' ; \
+  echo '- Enable Assembly Binding so IIS can inform missing dependencies' ; \
+  Set-ItemProperty -Path HKLM:\Software\Microsoft\Fusion -Name EnableLog -Value 1 ; \
+  echo '- Enable GFlags in so we can monitor IIS Executable (w3wp) dependencies' ; \
+  C:\windows_10_debuggers\x64\gflags.exe -i w3wp +sls ; \
+  C:\windows_10_debuggers\x64\gflags.exe -i '<additional_executable_name_you_want_to_monitor>' +sls ; \
+echo '*** Configuring Debugging - DONE'
+## Launch the remote execute as soon docker runs
+ENTRYPOINT C:\vs_2017_remote_debugger\x86\msvsmon.exe /noauth /anyuser /silent /nostatus /noclrwarn /nosecuritywarn /nofirewallwarn /nowowwarn /timeout:36000
 ```
 
 #### Preparing Visual Studio

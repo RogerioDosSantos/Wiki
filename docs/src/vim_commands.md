@@ -389,6 +389,12 @@
 
 `!echo "%:p:h"` : Show file directory
 
+`let @n=expand('%:t')` : Assign file name into the variable n.
+
+`let @d=expand('%:p:h')` : Assign the current directory of the file into the variable d.
+
+`let @e=expand('%:e')` : Assign the current extension name (E.g.: .txt = txt) of the file into the variable e.
+
 ## Macros
 
 ### Saving a Macro

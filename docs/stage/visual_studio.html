@@ -59,17 +59,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h4 id="preparing-the-debug-container">Preparing the Debug Container</h4>
 <p>You need to have the <em>Visual Studio Remote Debugging Tools</em> available inside your container. To propare your container to have the needed tools you can compile your docker image with the following:</p>
 <div class="sourceCode"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span class="co"># Get pre-prepared image that contains the Visual Studio Remote Debugging Tools</span>
-<span class="kw">FROM</span> rogersantos/windows_core_debugger:windows as debugger
+<span class="kw">FROM</span> rogersantos/windows_core_debugger:windows AS debugger
 
-<span class="co">#### Your Image Configuration ####</span>
+<span class="kw">FROM</span> &lt;your_image_configuration&gt;
 
 <span class="co"># Install / Configure Debugging Tools</span>
 <span class="kw">COPY</span> --from=debugger [<span class="st">&quot;C:/workspace/vs_2017_remote_debugger&quot;</span>, <span class="st">&quot;C:/vs_2017_remote_debugger&quot;</span>]
-
-<span class="co">#TODO(Roger) - Change the configuration so we no longer need to run the Remote Debug Tool command.</span>
+<span class="kw">COPY</span> --from=debugger [<span class="st">&quot;C:/workspace/windows_10_debuggers&quot;</span>, <span class="st">&quot;C:/windows_10_debuggers&quot;</span>]
 <span class="kw">RUN</span> powershell -Command $ErrorActionPreference = <span class="st">&#39;Stop&#39;</span> ; \
-    echo <span class="st">&#39;*** Configuring Debugging&#39;</span> ; \
-    echo <span class="st">&#39;*** Configuring Debugging - DONE&#39;</span></code></pre></div>
+  echo <span class="st">&#39;*** Configuring Debugging&#39;</span> ; \
+  echo <span class="st">&#39;- Enable Assembly Binding so IIS can inform missing dependencies&#39;</span> ; \
+  Set-ItemProperty -Path HKLM:\Software\Microsoft\Fusion -Name EnableLog -Value 1 ; \
+  echo <span class="st">&#39;- Enable GFlags in so we can monitor IIS Executable (w3wp) dependencies&#39;</span> ; \
+  C:\windows_10_debuggers\x64\gflags.exe -i w3wp +sls ; \
+  C:\windows_10_debuggers\x64\gflags.exe -i <span class="st">&#39;&lt;additional_executable_name_you_want_to_monitor&gt;&#39;</span> +sls ; \
+echo <span class="st">&#39;*** Configuring Debugging - DONE&#39;</span>
+<span class="co">## Launch the remote execute as soon docker runs</span>
+<span class="kw">ENTRYPOINT</span> C:\vs_2017_remote_debugger\x86\msvsmon.exe /noauth /anyuser /silent /nostatus /noclrwarn /nosecuritywarn /nofirewallwarn /nowowwarn /timeout:36000</code></pre></div>
 <h4 id="preparing-visual-studio">Preparing Visual Studio</h4>
 <p>Change your Visual Studio project remote debug configuration as follow:</p>
 <figure>
