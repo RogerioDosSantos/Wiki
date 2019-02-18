@@ -467,6 +467,16 @@ Options:
 
   `/I` : Case sensitive
 
+### Replace string in selection
+
+Select the range desired (Visual mode):
+
+```vim
+# Replace all searched text
+:s/\%V<search_text>/<replace_text>/g
+```
+
+
 ### Redraw all Vim screen
 
 ```vim

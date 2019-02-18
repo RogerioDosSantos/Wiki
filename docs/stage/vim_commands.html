@@ -246,6 +246,10 @@
 <p>Options:</p>
 <p><code>/c</code> : confirm each replace</p>
 <p><code>/I</code> : Case sensitive</p>
+<h3 id="replace-string-in-selection">Replace string in selection</h3>
+<p>Select the range desired (Visual mode):</p>
+<pre class="vim"><code># Replace all searched text
+:s/\%V&lt;search_text&gt;/&lt;replace_text&gt;/g</code></pre>
 <h3 id="redraw-all-vim-screen">Redraw all Vim screen</h3>
 <pre class="vim"><code>:redraw!</code></pre>
 </body>

@@ -173,6 +173,7 @@
 ## Patterns 
 
 - [Cpp]( ./cpp.html )
+- [Restfull APIs]( ./restfull_apis.html )
 
 ## Cloud Services
 
