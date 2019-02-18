@@ -309,6 +309,18 @@ docker load -i ./microsoft_nanoserver_1803.tar
 
 `docker-compose down` : Same as `docker-compose stop` but remove the container after stopping
 
+### Docker Compose - Install Docker Compose using PowerShell
+
+You can find the latest version of *Docker-Compose* in the [Docker Compose Github Release Page](https://github.com/docker/compose/releases)
+
+```ps
+# Github requires TLS1.2
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+# Download Docker Compose from the release page and put it where the docker binaries are
+Invoke-WebRequest "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Windows-x86_64.exe" -UseBasicParsing -OutFile $Env:ProgramFiles\Docker\Docker\resources\bin\docker-compose.exe
+```
+
 
 
 

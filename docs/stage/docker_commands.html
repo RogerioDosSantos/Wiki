@@ -233,5 +233,12 @@ docker load -i ./microsoft_nanoserver_1803.tar</code></pre>
 <p><code>docker-compose stop</code> : Stop all running Docker containers for an application group, issue the following command in the same directory as the <em>docker-compose.yml</em> file used to start the Docker group.</p>
 <p><code>docker-compose kill</code> : Same as <code>docker-compose stop</code> but force the running container to stop.</p>
 <p><code>docker-compose down</code> : Same as <code>docker-compose stop</code> but remove the container after stopping</p>
+<h3 id="docker-compose---install-docker-compose-using-powershell">Docker Compose - Install Docker Compose using PowerShell</h3>
+<p>You can find the latest version of <em>Docker-Compose</em> in the <a href="https://github.com/docker/compose/releases">Docker Compose Github Release Page</a></p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Github requires TLS1<span class="fl">.2</span>
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+# Download Docker Compose from the release page <span class="kw">and</span> <span class="kw">put</span> it <span class="kw">where</span> the docker binaries are
+Invoke-WebRequest &quot;https:<span class="dt">//github.com/docker/compose/releases/download/1.23.2/docker-compose-Windows-x86_64.exe&quot;</span> -UseBasicParsing -OutFile $Env:ProgramFiles\Docker\Docker\resources\bin\docker-compose.exe</code></pre></div>
 </body>
 </html>
