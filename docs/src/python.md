@@ -647,10 +647,19 @@ pip freeze > requirements.txt
 pip install -r requirements.txt
 ```
 
-### How to know from were a package were installed from
+### Python - Get debug information
 
 ```python3
-import package
-package.__file__
+# Print all variables from a functions
+print(locals())
 ```
 
+### Python - Execute python to find locations from command line
+
+```shell
+# Find python location
+python -c "import sys; print(sys.executable)"
+
+# Find specific package location
+python -c "import package_name; print(package_name.__file__)"
+```
