@@ -228,5 +228,7 @@ Expand-Archive -Path .\test1.zip -DestinationPath .<span class="dt">/test1</span
 Expand-Archive -Path .\test2.zip -DestinationPath .<span class="dt">/test2</span></code></pre></div>
 <h4 id="powershell---create-folder-if-does-not-exist">Powershell - Create Folder if does not exist</h4>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">New-Item -ItemType Directory -Force -Path &lt;path&gt;</code></pre></div>
+<h4 id="poweshell---get-md5-of-file">Poweshell - Get MD5 of file</h4>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"><span class="kw">Get</span>-FileHash &lt;file_path&gt; -Algorithm MD5</code></pre></div>
 </body>
 </html>

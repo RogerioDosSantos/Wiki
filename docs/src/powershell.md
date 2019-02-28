@@ -270,5 +270,8 @@ Expand-Archive -Path .\test2.zip -DestinationPath ./test2
 New-Item -ItemType Directory -Force -Path <path>
 ```
 
+#### Poweshell - Get MD5 of file
 
-
+```ps
+Get-FileHash <file_path> -Algorithm MD5
+```
