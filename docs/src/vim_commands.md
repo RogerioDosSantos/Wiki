@@ -42,30 +42,6 @@
 
 `S` : Remove the line and start insertion
 
-`ctrl+]` : Jump to definition using tags
-
-`ctrl+T` : Jump back from the definition using tags.
-
-`{` : Jump to the first empty line upward direction
-
-`}` : Jump to the first empty line downward direction
-
-`[{` : Jump to beginning of a code block
-
-`]}`: Jump to the end of a code block
-
-`[(` : Jump to beginning of a parentheses
-
-`])`: Jump to the end of a parentheses
-
-`[[`: Sections backward or to the previous '{' in the first column.
-
-`]]`: Sections forward or to the next '{' in the first column.
-
-`[]`: Sections backward or to the previous '}' in the first column.
-
-`%`:  Jump to the next tag
-
 `c<selection>` : Delete the selection where the cursor is and go to insert mode
 
 `<selection> ~` : Toggle the case
@@ -484,6 +460,35 @@ Select the range desired (Visual mode):
 ```vim
 :redraw!
 ```
+
+### Jump keys
+
+`ctrl+]` : Jump to definition using tags
+
+`ctrl+T` : Jump back from the definition using tags.
+
+`{` : Jump to the first empty line upward direction
+
+`}` : Jump to the first empty line downward direction
+
+`[{` : Jump to beginning of a code block
+
+`]}`: Jump to the end of a code block
+
+`[(` : Jump to beginning of a parentheses
+
+`])`: Jump to the end of a parentheses
+
+`[[`: Sections backward or to the previous '{' in the first column.
+
+`]]`: Sections forward or to the next '{' in the first column.
+
+`[]`: Sections backward or to the previous '}' in the first column.
+
+`%`:  Jump to the next tag
+
+`[m`: Jump to the start of the current method
+
 
 
 
