@@ -62,6 +62,8 @@
 
 `cp -r -u <source> <destination>` : Copy recursively updating only newer files
 
+`cp -n <source> <destination>` : Copy without overwriting existing file
+
 `ln -s <path to be linked> <path where the link file will be created>` : Create a symbolic link (Shortcut)
 
 `pwd -P` : Show the physical directory you are
