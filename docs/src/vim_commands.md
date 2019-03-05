@@ -389,6 +389,8 @@
 
 `!echo "%:p:h"` : Show file directory
 
+`let @p=expand('%:p')` : Assign file path into the variable p.
+
 `let @n=expand('%:t')` : Assign file name into the variable n.
 
 `let @d=expand('%:p:h')` : Assign the current directory of the file into the variable d.
