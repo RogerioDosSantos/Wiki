@@ -22,8 +22,6 @@
 
 `docker rm <container name>` : Remove a container
 
-`docker rmi <image name>` : Remove an image
-
 `docker cp <source file> <destination container>:<destination location>` : Copy a file from the host computer to the container. E.g.: `docker cp ./host/temp/Programs/CppLint/file.txt vim:/root/temp`
 
 `docker cp <destination container>:<destination location> <source file>` : Copy a file from the container to host computer. E.g.: `docker cp vim:/root/temp/file.txt ./host/temp/Programs/CppLint/`
@@ -52,6 +50,8 @@
 
 `docker rm $(docker ps -a -f status=exited -q)`: Remove all exited containers.
 
+`docker rmi <image name>` : Remove an image
+
 `docker rmi $(docker images -a -q)`: Remove all images.
 
 `docker rmi $(docker images -f dangling=true -q)`: Remove dangling images
@@ -63,8 +63,6 @@
 `docker inspect -f '{{ range .Mounts  }}{{ if eq .Destination "/home/conan/workspace"  }}{{ .Source  }}{{ end  }}{{ end  }}' builder_linux_x86`: Get the path of the host machine of a volume of a container path that was mounted.
 
 `docker rm $(docker ps -a -q)` : Remove all docker containers
-
-`docker rmi $(docker images -a -q)`: Remove all docker images
 
 `docker login -u <registry_user> -p <password> <registry_url>`:  Allow docker to login on the Azure registry
 
