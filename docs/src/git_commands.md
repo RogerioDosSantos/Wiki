@@ -331,3 +331,11 @@ sudo apt-get install git
 git submodule add <url> <path>
 ```
 
+### Git - Get a list of modified files 
+
+```bash
+# Get a list of modified / added files
+git ls-files -mo
+```
+
+
