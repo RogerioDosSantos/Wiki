@@ -93,6 +93,7 @@
 
 ## Package Manager
 
+- [Chocolatey]( ./chocolatey.html )
 - [Conan]( ./conan.html )
 
 ## CTags 
