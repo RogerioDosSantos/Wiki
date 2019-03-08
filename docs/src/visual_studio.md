@@ -65,5 +65,27 @@ On the *Visual Studio* start your application using the *Remote Windows Debugger
 
 ![](http://tinyurl.com/y8ucfjmn)
 
+### Build C/C++ code on the command line
+
+To build your application using command line and *Visual Studio Build Tools*, you need to select the *architecture (toolchain)* you want to build. This can be done using [vcvarsall.bat](https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=vs-2017#developer-command-files-and-locations), located into `C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build`. 
+
+```ps
+cd "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build"
+
+# Prepare shell to compile for x86
+./vcvarsall.bat "x86"
+
+# Prepare shell to compile for x64
+./vcvarsall.bat "x64"
+
+# Prepare shell to compile for ARM
+./vcvarsall.bat "x86_arm"
+
+# Prepare shell to compile for ARM64
+./vcvarsall.bat "x86_arm64"
+
+# Prepare shell to compile for x86 using the Visual Studio 2015 toolset (v14.0)
+./vcvarsall.bat -vcvars_ver=14.0
+```
 
 
