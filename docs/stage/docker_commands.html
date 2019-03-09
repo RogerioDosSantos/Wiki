@@ -61,7 +61,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>docker attach &lt;container name&gt;</code> : Attach to a running container. E.g.: <code>docker attach vim_install</code></p>
 <p><code>docker exec -it &lt;container name&gt; &lt;program to execute&gt;</code> : Execute a program in a running container. E.g.: To execute the command line in a Linux based running container you can use <code>docker exec -it &lt;container name&gt; &lt;program to execute&gt;</code>.</p>
 <p><code>docker rm &lt;container name&gt;</code> : Remove a container</p>
-<p><code>docker rmi &lt;image name&gt;</code> : Remove an image</p>
 <p><code>docker cp &lt;source file&gt; &lt;destination container&gt;:&lt;destination location&gt;</code> : Copy a file from the host computer to the container. E.g.: <code>docker cp ./host/temp/Programs/CppLint/file.txt vim:/root/temp</code></p>
 <p><code>docker cp &lt;destination container&gt;:&lt;destination location&gt; &lt;source file&gt;</code> : Copy a file from the container to host computer. E.g.: <code>docker cp vim:/root/temp/file.txt ./host/temp/Programs/CppLint/</code></p>
 <p><code>docker commit -a &quot;&lt;author&gt;&quot; -m &quot;&lt;message&gt;&quot; &lt;container id&gt; [&lt;dockerhub user&gt;]&lt;image name&gt;:&lt;tag&gt;</code> : Commit a container into an image. E.g.: <code>docker commit -a &quot;Roger Santos&quot; -m &quot;My Comment&quot; ec6cc8c6e490 rogersantos/vim:1.0</code></p>
@@ -76,13 +75,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>docker stop $(docker ps -a -q)</code>: Stop all containers.</p>
 <p><code>docker rm $(docker ps -a -q)</code>: Remove all containers.</p>
 <p><code>docker rm $(docker ps -a -f status=exited -q)</code>: Remove all exited containers.</p>
+<p><code>docker rmi &lt;image name&gt;</code> : Remove an image</p>
 <p><code>docker rmi $(docker images -a -q)</code>: Remove all images.</p>
 <p><code>docker rmi $(docker images -f dangling=true -q)</code>: Remove dangling images</p>
 <p><code>docker build -f &lt;docker_file_name&gt; [--build-arg http_proxy=&lt;proxy url&gt;] -t &lt;image_tag&gt;</code> : E.g: docker build -f ./DockerFile -t rogersantos/image_01:latest</p>
 <p><code>docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' &lt;container_name_or_id&gt;</code></p>
 <p><code>docker inspect -f '{{ range .Mounts  }}{{ if eq .Destination &quot;/home/conan/workspace&quot;  }}{{ .Source  }}{{ end  }}{{ end  }}' builder_linux_x86</code>: Get the path of the host machine of a volume of a container path that was mounted.</p>
 <p><code>docker rm $(docker ps -a -q)</code> : Remove all docker containers</p>
-<p><code>docker rmi $(docker images -a -q)</code>: Remove all docker images</p>
 <p><code>docker login -u &lt;registry_user&gt; -p &lt;password&gt; &lt;registry_url&gt;</code>: Allow docker to login on the Azure registry</p>
 <p><code>docker image prune</code> : Clean old docker images</p>
 <p><code>docker volume prune</code>: Clean old volumes</p>
@@ -233,5 +232,12 @@ docker load -i ./microsoft_nanoserver_1803.tar</code></pre>
 <p><code>docker-compose stop</code> : Stop all running Docker containers for an application group, issue the following command in the same directory as the <em>docker-compose.yml</em> file used to start the Docker group.</p>
 <p><code>docker-compose kill</code> : Same as <code>docker-compose stop</code> but force the running container to stop.</p>
 <p><code>docker-compose down</code> : Same as <code>docker-compose stop</code> but remove the container after stopping</p>
+<h3 id="docker-compose---install-docker-compose-using-powershell">Docker Compose - Install Docker Compose using PowerShell</h3>
+<p>You can find the latest version of <em>Docker-Compose</em> in the <a href="https://github.com/docker/compose/releases">Docker Compose Github Release Page</a></p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Github requires TLS1<span class="fl">.2</span>
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+# Download Docker Compose from the release page <span class="kw">and</span> <span class="kw">put</span> it <span class="kw">where</span> the docker binaries are
+Invoke-WebRequest &quot;https:<span class="dt">//github.com/docker/compose/releases/download/1.23.2/docker-compose-Windows-x86_64.exe&quot;</span> -UseBasicParsing -OutFile $Env:ProgramFiles\Docker\Docker\resources\bin\docker-compose.exe</code></pre></div>
 </body>
 </html>

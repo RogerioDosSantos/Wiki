@@ -34,18 +34,6 @@
 <p><code>g;</code> : Go to the last edition you did (backwards).</p>
 <p><code>g,</code> : Go to the last edition you did (forwards).</p>
 <p><code>S</code> : Remove the line and start insertion</p>
-<p><code>ctrl+]</code> : Jump to definition using tags</p>
-<p><code>ctrl+T</code> : Jump back from the definition using tags.</p>
-<p><code>{</code> : Jump to the first empty line upward direction</p>
-<p><code>}</code> : Jump to the first empty line downward direction</p>
-<p><code>[{</code> : Jump to beginning of a code block</p>
-<p><code>]}</code>: Jump to the end of a code block</p>
-<p><code>[(</code> : Jump to beginning of a parentheses</p>
-<p><code>])</code>: Jump to the end of a parentheses</p>
-<p><code>[[</code>: Sections backward or to the previous '{' in the first column.</p>
-<p><code>]]</code>: Sections forward or to the next '{' in the first column.</p>
-<p><code>[]</code>: Sections backward or to the previous '}' in the first column.</p>
-<p><code>%</code>: Jump to the next tag</p>
 <p><code>c&lt;selection&gt;</code> : Delete the selection where the cursor is and go to insert mode</p>
 <p><code>&lt;selection&gt; ~</code> : Toggle the case</p>
 <p><code>&lt;selection&gt; u</code> : Lower case</p>
@@ -207,6 +195,7 @@
 <h2 id="expension">Expension</h2>
 <p><code>!echo &quot;%:p&quot;</code> : Show file path</p>
 <p><code>!echo &quot;%:p:h&quot;</code> : Show file directory</p>
+<p><code>let @p=expand('%:p')</code> : Assign file path into the variable p.</p>
 <p><code>let @n=expand('%:t')</code> : Assign file name into the variable n.</p>
 <p><code>let @d=expand('%:p:h')</code> : Assign the current directory of the file into the variable d.</p>
 <p><code>let @e=expand('%:e')</code> : Assign the current extension name (E.g.: .txt = txt) of the file into the variable e.</p>
@@ -252,5 +241,19 @@
 :s/\%V&lt;search_text&gt;/&lt;replace_text&gt;/g</code></pre>
 <h3 id="redraw-all-vim-screen">Redraw all Vim screen</h3>
 <pre class="vim"><code>:redraw!</code></pre>
+<h3 id="jump-keys">Jump keys</h3>
+<p><code>ctrl+]</code> : Jump to definition using tags</p>
+<p><code>ctrl+T</code> : Jump back from the definition using tags.</p>
+<p><code>{</code> : Jump to the first empty line upward direction</p>
+<p><code>}</code> : Jump to the first empty line downward direction</p>
+<p><code>[{</code> : Jump to beginning of a code block</p>
+<p><code>]}</code>: Jump to the end of a code block</p>
+<p><code>[(</code> : Jump to beginning of a parentheses</p>
+<p><code>])</code>: Jump to the end of a parentheses</p>
+<p><code>[[</code>: Sections backward or to the previous '{' in the first column.</p>
+<p><code>]]</code>: Sections forward or to the next '{' in the first column.</p>
+<p><code>[]</code>: Sections backward or to the previous '}' in the first column.</p>
+<p><code>%</code>: Jump to the next tag</p>
+<p><code>[m</code>: Jump to the start of the current method</p>
 </body>
 </html>

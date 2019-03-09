@@ -97,5 +97,23 @@ C:\vs_<span class="dv">2017</span>_remote_debugger\x86\msvsmon.exe <span class="
 <figure>
 <img src="http://tinyurl.com/y8ucfjmn" />
 </figure>
+<h3 id="build-cc-code-on-the-command-line">Build C/C++ code on the command line</h3>
+<p>To build your application using command line and <em>Visual Studio Build Tools</em>, you need to select the <em>architecture (toolchain)</em> you want to build. This can be done using <a href="https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=vs-2017#developer-command-files-and-locations">vcvarsall.bat</a>, located into <code>C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build</code>.</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">cd &quot;C:\Program Files <span class="st">(x86)</span>\Microsoft Visual Studio\<span class="dv">2017</span>\BuildTools\VC\Auxiliary\Build&quot;
+
+# Prepare shell to compile <span class="kw">for</span> x86
+.<span class="dt">/vcvarsall.bat</span> &quot;x86&quot;
+
+# Prepare shell to compile <span class="kw">for</span> x64
+.<span class="dt">/vcvarsall.bat</span> &quot;x64&quot;
+
+# Prepare shell to compile <span class="kw">for</span> ARM
+.<span class="dt">/vcvarsall.bat</span> &quot;x86_arm&quot;
+
+# Prepare shell to compile <span class="kw">for</span> ARM64
+.<span class="dt">/vcvarsall.bat</span> &quot;x86_arm64&quot;
+
+# Prepare shell to compile <span class="kw">for</span> x86 using the Visual Studio <span class="dv">2015</span> toolset <span class="st">(v14.0)</span>
+.<span class="dt">/vcvarsall.bat</span> -vcvars_ver=<span class="fl">14.0</span></code></pre></div>
 </body>
 </html>

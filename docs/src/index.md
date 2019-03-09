@@ -93,6 +93,7 @@
 
 ## Package Manager
 
+- [Chocolatey]( ./chocolatey.html )
 - [Conan]( ./conan.html )
 
 ## CTags 
@@ -220,3 +221,4 @@
 ## License
 
 - [License Types]( ./license_types.html )
+- [CodeMeter](./codemeter.html)

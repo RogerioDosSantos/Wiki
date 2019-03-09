@@ -75,4 +75,20 @@ StdSvcInst.exe -unregopcsvr
 StdSvcInst.exe -delete /name "<service_name>"
 ```
 
+### License Server - Connect to the License Server WebAdmin
+
+IndSoft supports you to connect to a license server (CodeMeter WebAdmin). 
+
+You can connect to it using the following url:
+
+`<license_server_ip>:22350` 
+
+### Remote Debug - Studio Manager Runtime
+
+- Remote Command: `C:\workspace\bin\Studio Manager.exe`
+- Remote Command Arguments: `C:\workspace\bin\UniSoft32.dll C:\workspace\app\PCDemo.app /STARTUP`
+- Working Directory: `C:\workspace\bin`
+- Remote Server Name: `<server_ip>:4022`
+- Connection: `Remote with no authentication`
+
 
