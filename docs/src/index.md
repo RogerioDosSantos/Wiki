@@ -13,6 +13,7 @@
 - [Nano Server]( ./nano_server.html )
 - [PowerShell]( ./powershell.html )
 - [IIS]( ./iis.html )
+- [Setup and Config](windows_setup_and_config.html)
 
 ## Linux 
 
