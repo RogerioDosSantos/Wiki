@@ -2,7 +2,7 @@
 
 ## How to
 
-### Use other computer as an additional monitor
+### Windows 10 - Use other computer as an additional monitor
 
 In the computer that will serve as the additional monitor (Monitor Computer):
 
@@ -20,8 +20,16 @@ In the computer that will use the additional monitor (Host Computer):
 
 You will need the following port to be available in the *Host Computer*:
 - Firewall Inbound Connection
-  - 5353 – UDP
-  - 7236 – UDP and TCP
-  - 7250 – TCP
+    - 5353 – UDP
+    - 7236 – UDP and TCP
+    - 7250 – TCP
+
+### Windows 10 - Configure Firewall Rules (Inbound Connection)
+
+- Go to `Windows Defender Firewall >> Advanced Settings >> Inbound Rules >> New Rule`
+
+![](http://tinyurl.com/yxa6u95l)
+
+- Select `Port >> Next >> The Ports you would like to open`
 
 
