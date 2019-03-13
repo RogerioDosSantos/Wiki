@@ -6,43 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-  </style>
   <link rel="stylesheet" href="../resources/style.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -71,127 +34,138 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>Copy-Item -Recurse -Path &lt;source_folder&gt; -Destination &lt;destination_folder&gt;</code>: Copy folder recursively</p>
 <h3 id="how-to">How-to</h3>
 <h4 id="assign-variable">Assign Variable</h4>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">$value = &quot;string value&quot;
-$value              # Displays <span class="kw">string</span> value
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+$value = &quot;string value&quot;
+$value              # Displays string value
 
-$value = <span class="dv">1</span>
-$value              # Displays <span class="dv">1</span>
+$value = 1
+$value              # Displays 1
 
-$value = <span class="dv">1</span> + <span class="dv">1</span>
-$value              # Displays <span class="dv">2</span>
+$value = 1 + 1
+$value              # Displays 2
 
-$value = <span class="fl">1.9</span>
-[int32]$value       # Displays <span class="dv">2</span>
-[float]$value       # Displays <span class="fl">1.9</span>
-[<span class="kw">string</span>]$value      # Displays <span class="fl">1.9</span>
-[boolean]$value     # Displays <span class="kw">True</span>
-[datetime]$value    # Displays January <span class="dv">9</span> ...
+$value = 1.9
+[int32]$value       # Displays 2
+[float]$value       # Displays 1.9
+[string]$value      # Displays 1.9
+[boolean]$value     # Displays True
+[datetime]$value    # Displays January 9 ...
 
-$value = &#39;$<span class="st">(1 + 2)</span>&#39;
-<span class="kw">Write</span>-Output $value    # Displays $<span class="st">(1 + 2)</span>
+$value = &#39;$(1 + 2)&#39;
+Write-Output $value    # Displays $(1 + 2)
 
-$value = &quot;$<span class="st">(1 + 2)</span>&quot;
-<span class="kw">Write</span>-Output $value    # Displays <span class="dv">3</span></code></pre></div>
+$value = &quot;$(1 + 2)&quot;
+Write-Output $value    # Displays 3</code></pre>
 <h4 id="get-user-input">Get user input</h4>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">$input = <span class="kw">Read</span>-Host &#39;What is your name? &#39;
-<span class="kw">Write</span>-Output &quot;Hello $input!&quot;</code></pre></div>
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+$input = Read-Host &#39;What is your name? &#39;
+Write-Output &quot;Hello $input!&quot;</code></pre>
 <h4 id="connect-to-a-remote-machine-remote-powershell-session">Connect to a remote machine (Remote PowerShell Session)</h4>
 <p>Run Poweshell elevated on the local machine.</p>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Start the Remote Management Service
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+# Start the Remote Management Service
 net start WinRM
 
-# <span class="kw">Add</span> the remote machine in the list of trusted hosts
+# Add the remote machine in the list of trusted hosts
 $ip = &quot;&lt;ip_of_the_remote_machine&gt;&quot;
 Set-Item wsman:\localhost\client\TrustedHosts &quot;$ip&quot;
 
-# <span class="kw">Or</span> to allow all machines: Set-Item wsman:\localhost\client\TrustedHosts &quot;*&quot;
-# <span class="kw">Or</span> to allow multiple machines: Set-Item wsman:\localhost\client\TrustedHosts &quot;$ip1,$ip2,...&quot;
+# Or to allow all machines: Set-Item wsman:\localhost\client\TrustedHosts &quot;*&quot;
+# Or to allow multiple machines: Set-Item wsman:\localhost\client\TrustedHosts &quot;$ip1,$ip2,...&quot;
 
-# Open the remote PowerShell session <span class="st">(Remote Machine)</span>
+# Open the remote PowerShell session (Remote Machine)
 $user = &quot;$ip\&lt;user_of_the_remote_machine&gt;&quot;
 Enter-PSSession -ComputerName $ip -Credential $user
 
-# Open the remote PowerShell session <span class="st">(Remote Container)</span>
-$container_id = &quot;$<span class="st">(docker inspect --format=&#39;{{.Id}}&#39; &lt;container_name&gt;)</span>&quot;
+# Open the remote PowerShell session (Remote Container)
+$container_id = &quot;$(docker inspect --format=&#39;{{.Id}}&#39; &lt;container_name&gt;)&quot;
 Enter-PSSession -ContainerId $container_id
 
-# Open the remote PowerShell session <span class="st">(Remote Container)</span> as Administrator
-$container_id = &quot;$<span class="st">(docker inspect --format=&#39;{{.Id}}&#39; &lt;container_name&gt;)</span>&quot;
-Enter-PSSession -ContainerId $container_id -RunAsAdministrator</code></pre></div>
+# Open the remote PowerShell session (Remote Container) as Administrator
+$container_id = &quot;$(docker inspect --format=&#39;{{.Id}}&#39; &lt;container_name&gt;)&quot;
+Enter-PSSession -ContainerId $container_id -RunAsAdministrator</code></pre>
 <h4 id="powershell---monitor-and-close-a-process">PowerShell - Monitor and Close a process</h4>
 <p>The example below monitor and closed the <em>MyProcess</em> program.</p>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> the process
-$my_process = <span class="kw">Get</span>-Process MyProcess
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+# Get the process
+$my_process = Get-Process MyProcess
 
 # Close the process gracefully
-$my_process.CloseMainWindow<span class="st">()</span>
+$my_process.CloseMainWindow()
 
-# Return <span class="kw">true</span> id the process was closed
+# Return true id the process was closed
 $my_process.HasExited
 
-# <span class="kw">Stop</span> Process
-$my_process | <span class="kw">Stop</span>-Process
+# Stop Process
+$my_process | Stop-Process
 
-# Force <span class="kw">Stop</span> Process
-$my_process | <span class="kw">Stop</span>-Process -Force</code></pre></div>
+# Force Stop Process
+$my_process | Stop-Process -Force</code></pre>
 <h4 id="add-windows-feature">Add Windows Feature</h4>
 <p>You can get the enabled features using the command:</p>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># List the enabled features
-<span class="kw">Get</span>-WindowsFeature</code></pre></div>
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+# List the enabled features
+Get-WindowsFeature</code></pre>
 <p>This will show a list of enabled features and the <em>feature name</em></p>
 <figure>
 <img src="http://tinyurl.com/ya2umltf" />
 </figure>
 <p>To enable a feature you can use the following command:</p>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Install <span class="dt">/</span> Enable a specific feature
-Install-WindowsFeature &lt;feature_name&gt;</code></pre></div>
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+# Install / Enable a specific feature
+Install-WindowsFeature &lt;feature_name&gt;</code></pre>
 <h4 id="powershell---edit-registry">PowerShell - Edit Registry</h4>
 <p>The example below set the registry value <code>[HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD)</code> to 1</p>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Push the current location
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+# Push the current location
 Push-Location
 
 # Go to the registry folder
 Set-Location HKLM:\Software\Microsoft\Fusion
 
 # List the current keys
-<span class="kw">Get</span>-ItemProperty .
+Get-ItemProperty .
 
-# Set the EnableLog key to <span class="dv">1</span>
-Set-ItemProperty . EnableLog <span class="dv">1</span> 
+# Set the EnableLog key to 1
+Set-ItemProperty . EnableLog 1 
 
 # Go bach to the previous location
-<span class="kw">Pop</span>-Location</code></pre></div>
+Pop-Location</code></pre>
 <p>Optionally you coud do it using a only command:</p>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Set-ItemProperty -Path HKLM:\Software\Microsoft\Fusion -Name EnableLog -Value <span class="dv">1</span></code></pre></div>
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+Set-ItemProperty -Path HKLM:\Software\Microsoft\Fusion -Name EnableLog -Value 1</code></pre>
 <h4 id="powershell---configure-proxy">PowerShell - Configure Proxy</h4>
 <p>To allow <em>Powershell</em> to work properly behind a proxy you can configure it as following:</p>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> the current Powershell proxy configuration
-netsh winhttp <span class="kw">show</span> proxy
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+# Get the current Powershell proxy configuration
+netsh winhttp show proxy
 
 # Import the proxy configuration available on the Internet Explorer
 netsh winhttp import proxy source=ie
 
 # Set the proxy configuration manually
-netsh winhttp set proxy &lt;proxy_url&gt;:&lt;proxy_port&gt;</code></pre></div>
+netsh winhttp set proxy &lt;proxy_url&gt;:&lt;proxy_port&gt;</code></pre>
 <h4 id="powershell---setget-environment-variable">PowerShell - Set/Get Environment Variable</h4>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Check <span class="kw">if</span> Environment Variable exist
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+# Check if Environment Variable exist
 Test-Path env:my_environment_variable
 
 # Set Environment Variable
 $env:my_environment_variable=&quot;test&quot;
 
-# <span class="kw">Get</span> Environment Variable
-<span class="kw">Get</span>-ChildItem Env:my_environment_variable</code></pre></div>
+# Get Environment Variable
+Get-ChildItem Env:my_environment_variable</code></pre>
 <h4 id="powershell---change-environment-variable">Powershell - Change Environment Variable</h4>
 <p>The example below change the environment variable <em>PATH</em></p>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> the current PATH environment variable
-$path = <span class="st">(Get-ItemProperty &#39;Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment&#39; -Name PATH)</span>.path
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+# Get the current PATH environment variable
+$path = (Get-ItemProperty &#39;Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment&#39; -Name PATH).path
 
 # Append the additional directory temp
 $path = &quot;${path};C:\temp\&quot;
 
 # Set the PATH environment variable with the new value
-Set-ItemProperty &#39;Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment&#39; -Name PATH -Value $path</code></pre></div>
+Set-ItemProperty &#39;Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment&#39; -Name PATH -Value $path</code></pre>
 <h4 id="powershell---execute-commands-from-cmd">PowerShell - Execute commands from CMD</h4>
 <pre class="cmd"><code># Execute Get-Date Command and Stop in case of error 
 powershell -Command $ErrorActionPreference = &#39;Stop&#39; ; Get-Date
@@ -199,36 +173,42 @@ powershell -Command $ErrorActionPreference = &#39;Stop&#39; ; Get-Date
 # Pipe the Date Command (When piping use the syntax &quot; &amp; {&lt;command&gt;}&quot;
 powershell -Command $ErrorActionPreference = &#39;Stop&#39; ; &quot; &amp; {Get-Date | Write-Host}&quot;</code></pre>
 <h4 id="poweshell---manipulating-services">Poweshell - Manipulating Services</h4>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># List all services configuration <span class="kw">and</span> <span class="kw">status</span> 
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+# List all services configuration and status 
 sc.exe query
 
-# List specific service configuration <span class="kw">and</span> <span class="kw">status</span> 
-sc.exe query &lt;service_name&gt;</code></pre></div>
+# List specific service configuration and status 
+sc.exe query &lt;service_name&gt;
+</code></pre>
 <h4 id="powershell---find-and-replace-text-in-file">PowerShell - Find and Replace text in file</h4>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Load</span> the <span class="kw">File</span>
-$ini = <span class="st">(Get-Content &quot;C:\config.ini&quot;)</span>
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+# Load the File
+$ini = (Get-Content &quot;C:\config.ini&quot;)
 
-# Find <span class="kw">and</span> replace entry
-$changed_ini = $ini | ForEach-Object { $_ -replace &quot;Entry=<span class="st">(.*)</span>&quot;, &quot;Entry=NewValue&quot; }
+# Find and replace entry
+$changed_ini = $ini | ForEach-Object { $_ -replace &quot;Entry=(.*)&quot;, &quot;Entry=NewValue&quot; }
 
-# <span class="kw">Save</span> the result to back to the <span class="kw">file</span>
+# Save the result to back to the file
 $changed_ini | Set-Content &quot;C:\config.ini&quot;
 
 # Replace entry in one line
-<span class="st">(Get-Content &quot;C:\config.ini&quot;)</span> | ForEach-Object { $_ -replace &quot;Entry=<span class="st">(.*)</span>&quot;, &quot;Entry=NewValue&quot; } | Set-Content &quot;C:\config.ini&quot;</code></pre></div>
+(Get-Content &quot;C:\config.ini&quot;) | ForEach-Object { $_ -replace &quot;Entry=(.*)&quot;, &quot;Entry=NewValue&quot; } | Set-Content &quot;C:\config.ini&quot;</code></pre>
 <h4 id="powershell---zip-and-unzip">Powershell - Zip and Unzip</h4>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Zip files in directory. When unzip the folder will <span class="kw">not</span> be created
-Compress-Archive -Path .\test\* -DestinationPath .<span class="dt">/test1.zip</span>
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+# Zip files in directory. When unzip the folder will not be created
+Compress-Archive -Path .\test\* -DestinationPath ./test1.zip
 
 # Zip directory. When unzip the folder will be created
-Compress-Archive -Path .\test\ -DestinationPath .<span class="dt">/test2.zip</span>
+Compress-Archive -Path .\test\ -DestinationPath ./test2.zip
 
 # Unzip
-Expand-Archive -Path .\test1.zip -DestinationPath .<span class="dt">/test1</span>
-Expand-Archive -Path .\test2.zip -DestinationPath .<span class="dt">/test2</span></code></pre></div>
+Expand-Archive -Path .\test1.zip -DestinationPath ./test1
+Expand-Archive -Path .\test2.zip -DestinationPath ./test2</code></pre>
 <h4 id="powershell---create-folder-if-does-not-exist">Powershell - Create Folder if does not exist</h4>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">New-Item -ItemType Directory -Force -Path &lt;path&gt;</code></pre></div>
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+New-Item -ItemType Directory -Force -Path &lt;path&gt;</code></pre>
 <h4 id="poweshell---get-md5-of-file">Poweshell - Get MD5 of file</h4>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"><span class="kw">Get</span>-FileHash &lt;file_path&gt; -Algorithm MD5</code></pre></div>
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+Get-FileHash &lt;file_path&gt; -Algorithm MD5</code></pre>
 </body>
 </html>
