@@ -16,7 +16,7 @@
 <h2 id="powershell-core">PowerShell Core</h2>
 <p>Built on .NET Core and provides compatibility with scripts and modules targeting versions of PowerShell running on reduced footprint editions of Windows such as Nano Server and Windows IoT.</p>
 <h2 id="powershell-and-.net">PowerShell and .Net</h2>
-<p>Powershell allow you to access <em>.Net</em> libraries, meaning that you can consume those libraries using <em>Poweshell</em> scripts. <a href="./iis.html">Here</a> for example, I use this capability to configure <em>IIS</em> using <em>PowerShell</em>.</p>
+<p>Powershell allow you to access <em>.Net</em> libraries, meaning that you can consume those libraries using <em>Powershell</em> scripts. <a href="./iis.html">Here</a> for example, I use this capability to configure <em>IIS</em> using <em>PowerShell</em>.</p>
 <p>This can be done is <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/add-type?view=powershell-6">Add-Type</a> which allows you to define a Microsoft .NET Core class in your PowerShell session.</p>
 <p>The site <a href="http://pinvoke.net/">PInvoke</a> allows you to search for various functions that are available as a C# signature to copy and paste into <em>PowerShell</em></p>
 <h3 id="commands">Commands</h3>
@@ -61,7 +61,7 @@ Write-Output $value    # Displays 3</code></pre>
 $input = Read-Host &#39;What is your name? &#39;
 Write-Output &quot;Hello $input!&quot;</code></pre>
 <h4 id="connect-to-a-remote-machine-remote-powershell-session">Connect to a remote machine (Remote PowerShell Session)</h4>
-<p>Run Poweshell elevated on the local machine.</p>
+<p>Run Powershell elevated on the local machine.</p>
 <pre class="ps1"><code>#!/usr/bin/env pwsh
 # Start the Remote Management Service
 net start WinRM
@@ -172,7 +172,7 @@ powershell -Command $ErrorActionPreference = &#39;Stop&#39; ; Get-Date
 
 # Pipe the Date Command (When piping use the syntax &quot; &amp; {&lt;command&gt;}&quot;
 powershell -Command $ErrorActionPreference = &#39;Stop&#39; ; &quot; &amp; {Get-Date | Write-Host}&quot;</code></pre>
-<h4 id="poweshell---manipulating-services">Poweshell - Manipulating Services</h4>
+<h4 id="powershell---manipulating-services">Powershell - Manipulating Services</h4>
 <pre class="ps1"><code>#!/usr/bin/env pwsh
 # List all services configuration and status 
 sc.exe query
@@ -207,8 +207,19 @@ Expand-Archive -Path .\test2.zip -DestinationPath ./test2</code></pre>
 <h4 id="powershell---create-folder-if-does-not-exist">Powershell - Create Folder if does not exist</h4>
 <pre class="ps1"><code>#!/usr/bin/env pwsh
 New-Item -ItemType Directory -Force -Path &lt;path&gt;</code></pre>
-<h4 id="poweshell---get-md5-of-file">Poweshell - Get MD5 of file</h4>
+<h4 id="powershell---get-md5-of-file">Powershell - Get MD5 of file</h4>
 <pre class="ps1"><code>#!/usr/bin/env pwsh
 Get-FileHash &lt;file_path&gt; -Algorithm MD5</code></pre>
+<h4 id="powershell---list-open-ports">PowerShell - List Open Ports</h4>
+<pre class="ps1"><code>#!/usr/bin/env pwsh
+
+# List all Port
+netstat -an
+
+# List all Port informing the process that is using it (Needs Elevation)
+netstat -ab
+
+# List all Port informing the process that is using it (Needs Elevation)
+netstat -aon</code></pre>
 </body>
 </html>

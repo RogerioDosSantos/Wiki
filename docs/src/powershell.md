@@ -6,7 +6,7 @@ Built on .NET Core and provides compatibility with scripts and modules targeting
 
 ## PowerShell and .Net
 
-Powershell allow you to access *.Net* libraries, meaning that you can consume those libraries using *Poweshell* scripts. [Here]( ./iis.html ) for example, I use this capability to configure *IIS* using *PowerShell*.
+Powershell allow you to access *.Net* libraries, meaning that you can consume those libraries using *Powershell* scripts. [Here]( ./iis.html ) for example, I use this capability to configure *IIS* using *PowerShell*.
 
 This can be done is [Add-Type](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/add-type?view=powershell-6) which allows you to define a Microsoft .NET Core class in your PowerShell session.
 
@@ -77,7 +77,7 @@ Write-Output "Hello $input!"
 
 #### Connect to a remote machine (Remote PowerShell Session)
 
-Run Poweshell elevated on the local machine.
+Run Powershell elevated on the local machine.
 
 ```ps1
 #!/usr/bin/env pwsh
@@ -234,7 +234,7 @@ powershell -Command $ErrorActionPreference = 'Stop' ; Get-Date
 powershell -Command $ErrorActionPreference = 'Stop' ; " & {Get-Date | Write-Host}"
 ```
 
-#### Poweshell - Manipulating Services
+#### Powershell - Manipulating Services
 
 ```ps1
 #!/usr/bin/env pwsh
@@ -285,11 +285,24 @@ Expand-Archive -Path .\test2.zip -DestinationPath ./test2
 New-Item -ItemType Directory -Force -Path <path>
 ```
 
-#### Poweshell - Get MD5 of file
+#### Powershell - Get MD5 of file
 
 ```ps1
 #!/usr/bin/env pwsh
 Get-FileHash <file_path> -Algorithm MD5
 ```
 
+#### PowerShell - List Open Ports
 
+```ps1
+#!/usr/bin/env pwsh
+
+# List all Port
+netstat -an
+
+# List all Port informing the process that is using it (Needs Elevation)
+netstat -ab
+
+# List all Port informing the process that is using it (Needs Elevation)
+netstat -aon
+```
