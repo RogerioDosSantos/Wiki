@@ -6,7 +6,7 @@ Built on .NET Core and provides compatibility with scripts and modules targeting
 
 ## PowerShell and .Net
 
-Powershell allow you to access *.Net* libraries, meaning that you can consume those libraries using *Poweshell* scripts. [Here]( ./iis.html ) for example, I use this capability to configure *IIS* using *PowerShell*.
+Powershell allow you to access *.Net* libraries, meaning that you can consume those libraries using *Powershell* scripts. [Here]( ./iis.html ) for example, I use this capability to configure *IIS* using *PowerShell*.
 
 This can be done is [Add-Type](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/add-type?view=powershell-6) which allows you to define a Microsoft .NET Core class in your PowerShell session.
 
@@ -42,7 +42,8 @@ The site [PInvoke](http://pinvoke.net/) allows you to search for various functio
 
 #### Assign Variable
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 $value = "string value"
 $value              # Displays string value
 
@@ -68,16 +69,18 @@ Write-Output $value    # Displays 3
 
 #### Get user input
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 $input = Read-Host 'What is your name? '
 Write-Output "Hello $input!"
 ```
 
 #### Connect to a remote machine (Remote PowerShell Session)
 
-Run Poweshell elevated on the local machine.
+Run Powershell elevated on the local machine.
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 # Start the Remote Management Service
 net start WinRM
 
@@ -105,7 +108,8 @@ Enter-PSSession -ContainerId $container_id -RunAsAdministrator
 
 The example below monitor and closed the *MyProcess* program.
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 # Get the process
 $my_process = Get-Process MyProcess
 
@@ -126,7 +130,8 @@ $my_process | Stop-Process -Force
 
 You can get the enabled features using the command:
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 # List the enabled features
 Get-WindowsFeature
 ```
@@ -137,7 +142,8 @@ This will show a list of enabled features and the *feature name*
 
 To enable a feature you can use the following command:
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 # Install / Enable a specific feature
 Install-WindowsFeature <feature_name>
 ```
@@ -146,7 +152,8 @@ Install-WindowsFeature <feature_name>
 
 The example below set the registry value `[HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD)` to 1
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 # Push the current location
 Push-Location
 
@@ -165,7 +172,8 @@ Pop-Location
 
 Optionally you coud do it using a only command:
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 Set-ItemProperty -Path HKLM:\Software\Microsoft\Fusion -Name EnableLog -Value 1
 ```
 
@@ -174,7 +182,8 @@ Set-ItemProperty -Path HKLM:\Software\Microsoft\Fusion -Name EnableLog -Value 1
 To allow *Powershell* to work properly behind a proxy you can configure it as following:
 
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 # Get the current Powershell proxy configuration
 netsh winhttp show proxy
 
@@ -187,7 +196,8 @@ netsh winhttp set proxy <proxy_url>:<proxy_port>
 
 #### PowerShell - Set/Get Environment Variable
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 # Check if Environment Variable exist
 Test-Path env:my_environment_variable
 
@@ -202,7 +212,8 @@ Get-ChildItem Env:my_environment_variable
 
 The example below change the environment variable *PATH*
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 # Get the current PATH environment variable
 $path = (Get-ItemProperty 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
 
@@ -223,9 +234,10 @@ powershell -Command $ErrorActionPreference = 'Stop' ; Get-Date
 powershell -Command $ErrorActionPreference = 'Stop' ; " & {Get-Date | Write-Host}"
 ```
 
-#### Poweshell - Manipulating Services
+#### Powershell - Manipulating Services
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 # List all services configuration and status 
 sc.exe query
 
@@ -236,7 +248,8 @@ sc.exe query <service_name>
 
 #### PowerShell - Find and Replace text in file
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 # Load the File
 $ini = (Get-Content "C:\config.ini")
 
@@ -252,7 +265,8 @@ $changed_ini | Set-Content "C:\config.ini"
 
 #### Powershell - Zip and Unzip 
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 # Zip files in directory. When unzip the folder will not be created
 Compress-Archive -Path .\test\* -DestinationPath ./test1.zip
 
@@ -266,12 +280,29 @@ Expand-Archive -Path .\test2.zip -DestinationPath ./test2
 
 #### Powershell - Create Folder if does not exist
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 New-Item -ItemType Directory -Force -Path <path>
 ```
 
-#### Poweshell - Get MD5 of file
+#### Powershell - Get MD5 of file
 
-```ps
+```ps1
+#!/usr/bin/env pwsh
 Get-FileHash <file_path> -Algorithm MD5
+```
+
+#### PowerShell - List Open Ports
+
+```ps1
+#!/usr/bin/env pwsh
+
+# List all Port
+netstat -an
+
+# List all Port informing the process that is using it (Needs Elevation)
+netstat -ab
+
+# List all Port informing the process that is using it (Needs Elevation)
+netstat -aon
 ```

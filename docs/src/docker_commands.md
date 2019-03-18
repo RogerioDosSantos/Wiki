@@ -299,7 +299,9 @@ docker load -i ./microsoft_nanoserver_1803.tar
 ```
 ### Docker Compose - How to user docker compose
 
-`docker-compose up [-d]` : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. The `-d` option allow to start the container as service, _forking_ the process.
+`docker-compose up [-f] [-d]` : Start a docker images using a docker compose file (docker-compose.yml). It will look for the file in the same directory you are. 
+- `-d` option allow to start the container as service, _forking_ the process.
+- `-f` option allow to inform a docker-compose file
 
 `docker-compose stop` : Stop all running Docker containers for an application group, issue the following command in the same directory as the _docker-compose.yml_ file used to start the Docker group.
 
