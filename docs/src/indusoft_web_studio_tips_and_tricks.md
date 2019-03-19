@@ -91,4 +91,12 @@ You can connect to it using the following url:
 - Remote Server Name: `<server_ip>:4022`
 - Connection: `Remote with no authentication`
 
+### Remote Agent - Configure port 
+
+By default the *Remote Agent (CEServer)* will connect using the port *4322*
+
+### IoTView - Execute Runtime from command line 
+
+TODO
+
 
