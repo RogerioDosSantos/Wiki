@@ -104,11 +104,95 @@ Now you can deploy the module from the Azure Portal
 `ACTIVE_DOCKER_ARCH` : Define what platform will be compiled
 
 
+## Azure Digital Twins
+
+A *digital twin* is a representation of physical environment and associated devices in the *digital space*. It does not only represent a device but also represent the environmental information that can affect the device. It organize domain-specific consepts into *models*. 
+
+The *models* are then situaded into within a *spacial intelligence graph*
+
+Such concepts faithfully model the relationships and interactions between people, spaces, and devices.
+
+Together, these predefined Digital Twins object models make up an ontology. A smart building's ontology describes regions, venues, floors, offices, zones, conference rooms, and focus rooms. An energy grid ontology describes various power stations, substations, energy resources, and customers. With Digital Twins object models and ontologies, diverse scenarios and needs can be customized.
+
+With Digital Twins object models and an ontology in place, you can populate a spatial graph. Spatial graphs are virtual representations of the many relationships between spaces, devices, and people that are relevant to an IoT solution. This diagram shows an example of a spatial graph that uses a smart building's ontology.
+
+![](http://tinyurl.com/y4alr2vz) 
+
+*Microsoft* aim to have a collection of *Digital Twins* that can be reused among several projects and domains and create mechanisms where the *Digital Twins properties* can be easily update in the *Digital space* with real data collected.
+
+![](http://tinyurl.com/y6aco4st)
+
+Since the *Digital Twins* will represent the full environment, it will have an hierarchy. Each level of the hierarchy can be customized in terms of security, region, customer, type, etc. You can also customize the *Digital Twin* to define how will it callback your business logic depending on the configuration.
+
+![](http://tinyurl.com/yycqn9hp)
+
+In terms of migration, since those *Twin hierarchy* is being used by several customers, *Microsoft* is trying to get a common whay to migrate existing customers digital representation to the *Microsoft Twins model*, however at this point they does not have a solution for it.
+
+
+### Digital Twins object Models 
+
+The model is represented into an *YAML* file.
+
+Digital Twins object models support these main categories of objects:
+
+- **Spaces**: Spaces are virtual or physical locations, for example, Tenant, Customer, Region, and Venue.
+
+- **Devices**: Devices are virtual or physical pieces of equipment, for example, AwesomeCompany Device and Raspberry Pi 3.
+
+- **Sensors**: Sensors are objects that detect events, for example, AwesomeCompany Temperature Sensor and AwesomeCompany Presence Sensor.
+
+- **Users**: Users identify occupants and their characteristics.
+
+Other categories of objects are:
+
+- **Resources**: Resources are attached to a space and typically represent Azure resources to be used by objects in the spatial graph, for example, IoTHub.
+
+- **Blobs**: Blobs are attached to objects (such as spaces, devices, sensors, and users). They're used as files with mime type and metadata, for example, maps, pictures, and manuals.
+
+- **Extended types**: Extended types are extensible enumerations that augment entities with specific characteristics, for example SpaceType and SpaceSubtype.
+
+- **Ontologies**: Ontologies represent a set of extended types, for example, Default, Building, BACnet, and EnergyGrid.
+
+- **Property keys and values**: Property keys and values are custom characteristics of spaces, devices, sensors, and users. They can be used along with built-in characteristics, for example, DeltaProcessingRefreshTime as key and 10 as value.
+
+- **Roles**: Roles are sets of permissions assigned to users and devices in the spatial graph, for example, Space Administrator, User Administrator, and Device Administrator.
+
+- **Role assignments**: Role assignments are the association between a role and an object in the spatial graph. For example, a user or a service principal can be granted permission to manage a space in the spatial graph.
+
+- **Security key stores**: Security key stores provide the security keys for all devices in the hierarchy under a given space object to allow the device to securely communicate with Digital Twins.
+
+- **User-defined functions**: User functions (UDFs) allow customizable sensor telemetry processing within the spatial graph. For example, a UDF can:
+    - Set a sensor value.
+    - Perform custom logic based on sensor readings, and set the output to a space.
+    - Attach metadata to a space.
+    - Send notifications when predefined conditions are met. Currently, UDFs can be written in JavaScript.
+
+- **Matchers**: Matchers are objects that determine which UDFs are executed for a given telemetry message.
+
+- **Endpoints**: Endpoints are the locations where telemetry messages and Digital Twins events can be routed, for example, Event Hub, Service Bus, and Event Grid.
+
+### Overview of the APIs
+
+All *Digital Twins APIs* are *REST* based *APIs* and therefore can be called from any language. 
+
+You can only create at the moment one *IoTHub* instance for each *Digital Twin* instance. This limitation will be in the release preview, however when we go into the GA (general availability), it will be possible to have several *IoTHub* instances.
+
+In the *Digital Twin* you have the following definitions:
+
+- name: Name of the representation (Representation ID) 
+- type: Type of the representation (Representation Group)
+- resources: List of Resources that will be used by the Representation (E.g.: IoTHub) ??
+- spaces: Hierarchical definitions of 
+
 ## References
 
 [Microsoft Documentation]( https://docs.microsoft.com/en-us/azure/iot-edge/ )
 
 [How to Simulate an edge device on Linux]( https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux )
+
+[Azure Digital Twins video](https://www.youtube.com/watch?v=TvN_NxpgyzQ)
+
+[Azure Digital Twins Documentation](https://docs.microsoft.com/en-us/azure/digital-twins/)
 
 ### Important
 
