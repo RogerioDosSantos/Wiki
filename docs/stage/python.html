@@ -564,8 +564,14 @@ pip freeze &gt; requirements.txt
 
 # Install using requirements-files
 pip install -r requirements.txt</code></pre>
-<h3 id="how-to-know-from-were-a-package-were-installed-from">How to know from were a package were installed from</h3>
-<pre class="python3"><code>import package
-package.__file__</code></pre>
+<h3 id="python---get-debug-information">Python - Get debug information</h3>
+<pre class="python3"><code># Print all variables from a functions
+print(locals())</code></pre>
+<h3 id="python---execute-python-to-find-locations-from-command-line">Python - Execute python to find locations from command line</h3>
+<pre class="shell"><code># Find python location
+python -c &quot;import sys; print(sys.executable)&quot;
+
+# Find specific package location
+python -c &quot;import package_name; print(package_name.__file__)&quot;</code></pre>
 </body>
 </html>

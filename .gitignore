@@ -17,5 +17,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Tags
+tags
 docs/src/tags
 tags
