@@ -12,6 +12,9 @@ cat ./file.dot | dot -Tpng > ./file.png
 
 # dot >> svg
 cat ./file.dot | dot -Tsvg > ./file.svg
+
+# dot >> pdf
+cat ./file.dot | dot -Tpdf > ./file.pdf
 ```
 
 ### Shapes

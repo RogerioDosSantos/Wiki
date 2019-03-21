@@ -57,7 +57,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 cat ./file.dot | dot -Tpng &gt; ./file.png
 
 # dot &gt;&gt; svg
-cat ./file.dot | dot -Tsvg &gt; ./file.svg</code></pre>
+cat ./file.dot | dot -Tsvg &gt; ./file.svg
+
+# dot &gt;&gt; pdf
+cat ./file.dot | dot -Tpdf &gt; ./file.pdf</code></pre>
 <h3 id="shapes">Shapes</h3>
 <figure>
 <img src="https://g.gravizo.com/svg?%20digraph%20D%20%7B%20A%20%5Bshape=diamond%5D%20B%20%5Bshape=box%5D%20C%20%5Bshape=circle%5D%20A%20-%3E%20B%20%5Bstyle=dashed,%20color=grey%5D%20A%20-%3E%20C%20%5Bcolor=%22black:invis:black%22%5D%20A%20-%3E%20D%20%5Bpenwidth=5,%20arrowhead=none%5D%20%7D" />
