@@ -156,7 +156,13 @@
 
 `:sb` : Split the current buffer
 
-`:sort` : Sort lines alphabetically. If used on Visual mode will sort the selection.
+`:sort` : Alphabetically sort lines . If used on Visual mode will sort the selection.
+
+`:sort!` : Reverse alphabetically sort.
+
+`:sort u` : Sort alphabetically removing duplicates.
+
+`:sort n` : Sort alphabetically removing duplicates.
 
 `let @<buffer>=<command or buffer>.<command or buffer>` : Concatenate buffer and commands. (E.g.: `let @r=10.@q.5.@w`)
 
