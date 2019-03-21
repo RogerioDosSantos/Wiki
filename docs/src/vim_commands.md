@@ -495,6 +495,13 @@ Select the range desired (Visual mode):
 
 `[m`: Jump to the start of the current method
 
+### Vim - Fix Identation
+
+`=G`: Reindent from the current cursor
+
+`gg=G`: Reindent all file
+
+`==`: Reindent the current line
 
 
 
