@@ -49,6 +49,7 @@
 - [Markdown Syntax (Pandoc)]( ./pandoc_markdown.html )
 - [Pandoc]( ./pandoc.html )
 - [Gravizo]( ./gravizo.html )
+- [Graphviz]( ./graphviz.html )
 
 ## Source Control 
 
