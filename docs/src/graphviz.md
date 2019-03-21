@@ -2,7 +2,17 @@
 
 [Graphviz](https://graphviz.gitlab.io) stands for graph visualization software. Graphs are created by describing them in a specifically created language: [dot](https://graphviz.gitlab.io/_pages/doc/info/lang.html).
 
-## Examples
+## How-to
+
+### Graphviz - Compile
+
+```shell
+# dot >> png
+cat ./file.dot | dot -Tpng > ./file.png
+
+# dot >> svg
+cat ./file.dot | dot -Tsvg > ./file.svg
+```
 
 ### Shapes
 
