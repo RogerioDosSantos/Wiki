@@ -567,9 +567,12 @@ pip install -r requirements.txt</code></pre>
 <h3 id="python---get-debug-information">Python - Get debug information</h3>
 <pre class="python3"><code># Print all variables from a functions
 print(locals())</code></pre>
-<h3 id="python---execute-python-to-find-locations-from-command-line">Python - Execute python to find locations from command line</h3>
+<h3 id="python---execute-python-to-get-info-of-a-package">Python - Execute python to get info of a package</h3>
 <pre class="shell"><code># Find python location
 python -c &quot;import sys; print(sys.executable)&quot;
+
+# Find specific package version
+python -c &quot;import package_name; print(package_name.__version__)&quot;
 
 # Find specific package location
 python -c &quot;import package_name; print(package_name.__file__)&quot;</code></pre>
