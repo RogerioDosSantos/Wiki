@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="traefik">Traefik</h1>
+<p><a href="https://traefik.io/">Traefik</a> is a reverse proxy / load balancer that's easy, dynamic, automatic, fast, full-featured, open source, production proven, provides metrics, and integrates with every major cluster technology.</p>
+<h2 id="architecture">Architecture</h2>
+<figure>
+<img src="http://tinyurl.com/y6s4obqe" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/y3es3kve" />
+</figure>
+<h2 id="how-to">How-to</h2>
+<h3 id="traefik---docker-compose-basic-configuration">Traefik - Docker Compose basic configuration</h3>
+<pre class="docker-compose"><code>version: &quot;3&quot;
+services:
+  blog:
+    image: wordpress:4.7.5-apache
+    environment:
+      WORDPRESS_DB_PASSWORD:123
+    labels:
+      - traefik.backend=blog
+      - traefik.frontend.rule=Host:blog.example.com
+      - traefik.docker.network=proxy
+      - traefik.port=80
+    networks:
+      - internal
+      - proxy
+    depends_on:
+      - mysql
+    mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD:123
+    networks:
+      - internal
+    labels:
+      - traefik.enable=false</code></pre>
+</body>
+</html>
