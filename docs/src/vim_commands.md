@@ -393,11 +393,7 @@ To save a macro you can do:
 
 ### Argument list
 
-{{{
-
 args `<command>` : Load the argument list with a command. E.g.: args `ls`
-
-}}}
 
 `args` : Display the list of files
 
@@ -449,7 +445,11 @@ Options:
 
   `/c` : confirm each replace
 
-  `/I` : Case sensitive
+  `/i` : Case sensitive
+
+  `/g` : Replace all characters
+
+**Note**: In case you have *gdefault* enabled, the */g* will substitute only the first character of a line. You can disable it using `set nogdefault`
 
 ### Replace string in selection
 

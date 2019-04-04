@@ -207,9 +207,7 @@
 <p>To save a macro you can do:</p>
 <p>From normal mode: <code>qq</code> enter whatever commands From normal mode: <code>q</code> open .vimrc <code>&quot;qp</code> to insert the macro into your <code>let @q = '...'</code></p>
 <h3 id="argument-list">Argument list</h3>
-<p>{{{</p>
 <p>args <code>&lt;command&gt;</code> : Load the argument list with a command. E.g.: args <code>ls</code></p>
-<p>}}}</p>
 <p><code>args</code> : Display the list of files</p>
 <p><code>argdo &lt;command&gt;</code> : Play the command on all files of the argument list. E.g.: <code>argdo normal @q</code> play de macro q on all files.</p>
 <h2 id="navigation">Navigation</h2>
@@ -237,7 +235,9 @@
 :%s/&lt;search string&gt;/&lt;replace string&gt;[/&lt;options&gt;]</code></pre>
 <p>Options:</p>
 <p><code>/c</code> : confirm each replace</p>
-<p><code>/I</code> : Case sensitive</p>
+<p><code>/i</code> : Case sensitive</p>
+<p><code>/g</code> : Replace all characters</p>
+<p><strong>Note</strong>: In case you have <em>gdefault</em> enabled, the <em>/g</em> will substitute only the first character of a line. You can disable it using <code>set nogdefault</code></p>
 <h3 id="replace-string-in-selection">Replace string in selection</h3>
 <p>Select the range desired (Visual mode):</p>
 <pre class="vim"><code># Replace all searched text

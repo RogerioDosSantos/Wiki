@@ -654,11 +654,14 @@ pip install -r requirements.txt
 print(locals())
 ```
 
-### Python - Execute python to find locations from command line
+### Python - Execute python to get info of a package
 
 ```shell
 # Find python location
 python -c "import sys; print(sys.executable)"
+
+# Find specific package version
+python -c "import package_name; print(package_name.__version__)"
 
 # Find specific package location
 python -c "import package_name; print(package_name.__file__)"
