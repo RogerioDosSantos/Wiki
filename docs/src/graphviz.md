@@ -15,6 +15,12 @@ cat ./file.dot | dot -Tsvg > ./file.svg
 
 # dot >> pdf
 cat ./file.dot | dot -Tpdf > ./file.pdf
+
+# dot >> svg (Not showing unconnected nodes (nodes without edges))
+gvpr -c "N[$.degree==0]{delete(root, $)}" ./file.dot | dot -Tsvg > ./file.svg
+
+# dot >> svg (including files using M4 macros)
+m4 ./file.dot | dot -Tsvg > ./file.svg
 ```
 
 ### Shapes
