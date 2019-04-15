@@ -13,3 +13,4 @@
 
 - You are good to go with IClassFactory::CreateInstance and instantiate the coclass
 
+Note: This is not recommended. If possible use the procedure to [Register COM](https://docs.microsoft.com/en-us/previous-versions/dotnet/articles/ms973913(v=msdn.10))
