@@ -19,6 +19,14 @@
 
 ## Installation
 
+### NPM - Install NPM (Powershell)
+
+From an elevated *Powershell* session run
+
+```ps
+choco install nodejs
+```
+
 ### NodeJS - Upgrade to the latest version
 
 Use n module from npm in order to upgrade node
@@ -95,4 +103,12 @@ module.exports = app;
 **Note**
 
 You can use [Postman](https://www.getpostman.com/) to send other commands (E.g.: Post) to the *API*
+
+## How-To 
+
+### NPM - List the Global Configuration
+
+```sh
+npm config ls -l | grep userconfig
+```
 

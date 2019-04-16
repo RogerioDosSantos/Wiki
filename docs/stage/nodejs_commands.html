@@ -59,55 +59,61 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2 id="modules">Modules</h2>
 <p><strong>express</strong> : MVC Framework <strong>nodemon</strong> : Allow refresh the server every time we do a change.</p>
 <h2 id="installation">Installation</h2>
+<h3 id="npm---install-npm-powershell">NPM - Install NPM (Powershell)</h3>
+<p>From an elevated <em>Powershell</em> session run</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">choco install nodejs</code></pre></div>
 <h3 id="nodejs---upgrade-to-the-latest-version">NodeJS - Upgrade to the latest version</h3>
 <p>Use n module from npm in order to upgrade node</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> npm cache clean -f
-<span class="kw">sudo</span> npm install -g n
-<span class="kw">sudo</span> n stable</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> npm cache clean -f
+<span class="fu">sudo</span> npm install -g n
+<span class="fu">sudo</span> n stable</code></pre></div>
 <p>To upgrade to latest version (and not current stable) version, you can use</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> n latest</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> n latest</code></pre></div>
 <p>To undo:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install --reinstall nodejs-legacy     <span class="co"># fix /usr/bin/node</span>
-<span class="kw">sudo</span> n rm 6.0.0     <span class="co"># replace number with version of Node that was installed</span>
-<span class="kw">sudo</span> npm uninstall -g n</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt-get install --reinstall nodejs-legacy     # fix /usr/bin/node
+<span class="fu">sudo</span> n rm 6.0.0     # replace number with version of Node that was installed
+<span class="fu">sudo</span> npm uninstall -g n</code></pre></div>
 <h3 id="nodejs---create-express-rest-api-from-scratch">NodeJS - Create Express Rest API from scratch</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Initialize package manager</span>
-<span class="kw">npn</span> init
+<span class="ex">npn</span> init
 
-<span class="co">### Enter project information ###</span>
+<span class="co">### Enter project information </span><span class="al">###</span>
 
 <span class="co"># Install Express </span>
-<span class="kw">npm</span> install --save express
+<span class="ex">npm</span> install --save express
 
-<span class="co">### Create server.js and app.js ###</span>
+<span class="co">### Create server.js and app.js </span><span class="al">###</span>
 
 <span class="co"># Start the Server</span>
-<span class="kw">node</span> ./src/server.js
+<span class="ex">node</span> ./src/server.js
 
-<span class="co">### Browse http://localhost:3000 ###</span></code></pre></div>
+<span class="co">### Browse http://localhost:3000 </span><span class="al">###</span></code></pre></div>
 <h4 id="server.js">server.js</h4>
-<pre class="js"><code>// Server
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">// Server</span>
 
-const http = require(&#39;http&#39;);
-const app = require(&#39;./app&#39;);
+<span class="kw">const</span> http <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;http&#39;</span>)<span class="op">;</span>
+<span class="kw">const</span> app <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;./app&#39;</span>)<span class="op">;</span>
 
-const port = process.env.port || 3000;
-const server = http.createServer(app);
-server.listen(port);</code></pre>
+<span class="kw">const</span> port <span class="op">=</span> <span class="va">process</span>.<span class="va">env</span>.<span class="at">port</span> <span class="op">||</span> <span class="dv">3000</span><span class="op">;</span>
+<span class="kw">const</span> server <span class="op">=</span> <span class="va">http</span>.<span class="at">createServer</span>(app)<span class="op">;</span>
+<span class="va">server</span>.<span class="at">listen</span>(port)<span class="op">;</span></code></pre></div>
 <h4 id="app.js">app.js</h4>
-<pre class="js"><code>// Application
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">// Application</span>
 
-const express = require(&#39;express&#39;);
+<span class="kw">const</span> express <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;express&#39;</span>)<span class="op">;</span>
 
-const app = express();
-app.use((req, resp, next) =&gt; {
-  resp.status(200).json({
-    message: &#39;It works!&#39;
-  });
-});
+<span class="kw">const</span> app <span class="op">=</span> <span class="at">express</span>()<span class="op">;</span>
+<span class="va">app</span>.<span class="at">use</span>((req<span class="op">,</span> resp<span class="op">,</span> next) <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="va">resp</span>.<span class="at">status</span>(<span class="dv">200</span>).<span class="at">json</span>(<span class="op">{</span>
+    <span class="dt">message</span><span class="op">:</span> <span class="st">&#39;It works!&#39;</span>
+  <span class="op">}</span>)<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span>
 
-module.exports = app;</code></pre>
+<span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> app<span class="op">;</span></code></pre></div>
 <p><strong>Note</strong></p>
 <p>You can use <a href="https://www.getpostman.com/">Postman</a> to send other commands (E.g.: Post) to the <em>API</em></p>
+<h2 id="how-to">How-To</h2>
+<h3 id="npm---list-the-global-configuration">NPM - List the Global Configuration</h3>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">npm</span> config ls -l <span class="kw">|</span> <span class="fu">grep</span> userconfig</code></pre></div>
 </body>
 </html>
