@@ -6,6 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="../resources/style.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -18,5 +55,79 @@
 <p><a href="https://www.nuget.org/packages/Swashbuckle.AspNetCore.Swagger/">Swashbuckle.AspNetCore.Swagger</a>: a Swagger object model and middleware to expose SwaggerDocument objects as JSON endpoints.</p>
 <p><a href="https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerGen/">Swashbuckle.AspNetCore.SwaggerGen</a>: a Swagger generator that builds SwaggerDocument objects directly from your routes, controllers, and models. It's typically combined with the Swagger endpoint middleware to automatically expose Swagger JSON.</p>
 <p><a href="https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerUI/">Swashbuckle.AspNetCore.SwaggerUI</a>: an embedded version of the Swagger UI tool. It interprets Swagger JSON to build a rich, customizable experience for describing the web API functionality. It includes built-in test harnesses for the public methods.</p>
+<h2 id="how-to">How-To</h2>
+<h3 id="install-and-configure-swashbuckle-into-a-new-project">Install and Configure Swashbuckle into a new project</h3>
+<pre class="shell"><code># Create a new ASP.NET Core Web API application
+dotnet new webapi
+
+# Add Swashbuckle into your project
+dotnet add &lt;your_project&gt;.csproj package Swashbuckle.AspNetCore</code></pre>
+<p>Change the <em>Startup.cs</em> to:</p>
+<div class="sourceCode"><pre class="sourceCode c#"><code class="sourceCode cs">
+... 
+<span class="co">//Import the following namespace to use the Info class</span>
+<span class="kw">using</span> Swashbuckle.<span class="fu">AspNetCore</span>.<span class="fu">Swagger</span>;
+...
+
+<span class="co">// Add the Swagger generator to the services collection in the *Startup.ConfigureServices*</span>
+<span class="kw">public</span> <span class="dt">void</span> <span class="fu">ConfigureServices</span>(IServiceCollection services)
+{
+...
+<span class="co">// Register the Swagger generator, defining 1 or more Swagger documents</span>
+    services.<span class="fu">AddSwaggerGen</span>(c =&gt;
+    {
+        c.<span class="fu">SwaggerDoc</span>(<span class="st">&quot;v1&quot;</span>, <span class="kw">new</span> Info { Title = <span class="st">&quot;My API&quot;</span>, Version = <span class="st">&quot;v1&quot;</span> });
+    });
+... 
+}
+
+<span class="co">// Enable the middleware for serving the generated JSON document and the Swagger UI</span>
+<span class="kw">public</span> <span class="dt">void</span> <span class="fu">Configure</span>(IApplicationBuilder app)
+{
+    <span class="co">// Enable middleware to serve generated Swagger as a JSON endpoint.</span>
+    app.<span class="fu">UseSwagger</span>();
+    <span class="co">// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), </span>
+    <span class="co">// specifying the Swagger JSON endpoint.</span>
+    app.<span class="fu">UseSwaggerUI</span>(c =&gt;
+    {
+        c.<span class="fu">SwaggerEndpoint</span>(<span class="st">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="st">&quot;My API V1&quot;</span>);
+    });
+    app.<span class="fu">UseMvc</span>();
+}</code></pre></div>
+<h3 id="enable-xml-comments">Enable XML Comments</h3>
+<p>Change <code>&lt;your_project&gt;.csproj</code> to have the following:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;PropertyGroup&gt;</span>
+  <span class="kw">&lt;GenerateDocumentationFile&gt;</span>true<span class="kw">&lt;/GenerateDocumentationFile&gt;</span>
+  <span class="kw">&lt;NoWarn&gt;</span>$(NoWarn);1591<span class="kw">&lt;/NoWarn&gt;</span>
+<span class="kw">&lt;/PropertyGroup&gt;</span></code></pre></div>
+<p>This creates the documentation file and suppresses the <code>CS1591: Missing XML comment for publicly visible type or member</code> warning</p>
+<p>Change the <code>Startup.cs</code> file into the function <code>ConfigureServices</code> as following:</p>
+<div class="sourceCode"><pre class="sourceCode c#"><code class="sourceCode cs">... 
+<span class="kw">using</span> System.<span class="fu">IO</span>;
+<span class="kw">using</span> System.<span class="fu">Reflection</span>;
+... 
+
+<span class="kw">public</span> <span class="dt">void</span> <span class="fu">ConfigureServices</span>(IServiceCollection services){
+  ...
+  services.<span class="fu">AddSwaggerGen</span>(c =&gt;
+  {
+    ...
+    <span class="co">// Set the comments path for the Swagger JSON and UI.</span>
+    var xmlFile = $<span class="st">&quot;{Assembly.GetExecutingAssembly().GetName().Name}.xml&quot;</span>;
+    <span class="dt">var</span> xmlPath = Path.<span class="fu">Combine</span>(AppContext.<span class="fu">BaseDirectory</span>, xmlFile);
+    c.<span class="fu">IncludeXmlComments</span>(xmlPath);
+  });
+  ...
+}</code></pre></div>
+<h3 id="serve-the-swagger-ui-at-the-apps-root">Serve the Swagger UI at the app's root</h3>
+<div class="sourceCode"><pre class="sourceCode c#"><code class="sourceCode cs">app.<span class="fu">UseSwaggerUI</span>(c =&gt;
+{
+    c.<span class="fu">SwaggerEndpoint</span>(<span class="st">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="st">&quot;My API V1&quot;</span>);
+    c.<span class="fu">RoutePrefix</span> = <span class="dt">string</span>.<span class="fu">Empty</span>;
+});</code></pre></div>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-2.2&amp;tabs=netcore-cli">Getting Started with Swashbuckle</a></li>
+</ul>
 </body>
 </html>
