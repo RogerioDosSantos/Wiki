@@ -16,6 +16,8 @@
 
 `dotnet build --runtime <platform></platform>` : Build the assembly for a specific platform. `E.g.: dotnet build --runtime ubuntu.16.04-x64`
 
+`dotnet add package <package name>`: Add package to the project. E.g.: `dotnet add package System.IdentityModel.Tokens.Jwt`
+
 ## Installations
 
 ### .Net Core

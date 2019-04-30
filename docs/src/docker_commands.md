@@ -38,6 +38,8 @@
 
 `docker login --username <user_name> --password <password> <server>` : Login into a repository into a specific server.
 
+`echo '<password>' | docker login --username <user> --password-stdin <server>`: Login into a repository into specific server safelly
+
 `docker volume create <volume_name>`: `Create a volume`
 
 `docker volume ls -qf dangling=true | xargs -r docker volume rm` : Remove all volumes that are not being used.

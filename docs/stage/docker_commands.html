@@ -69,6 +69,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>docker push &lt;full image name&gt;</code>: Publish the image into the docker hub. Note: You need to be logged before pushing an image. E.g.: <code>docker push rogersantos.azurecr.io/vim</code></p>
 <p><code>docker login</code> : Log into a repository</p>
 <p><code>docker login --username &lt;user_name&gt; --password &lt;password&gt; &lt;server&gt;</code> : Login into a repository into a specific server.</p>
+<p><code>echo '&lt;password&gt;' | docker login --username &lt;user&gt; --password-stdin &lt;server&gt;</code>: Login into a repository into specific server safelly</p>
 <p><code>docker volume create &lt;volume_name&gt;</code>: <code>Create a volume</code></p>
 <p><code>docker volume ls -qf dangling=true | xargs -r docker volume rm</code> : Remove all volumes that are not being used.</p>
 <p><code>docker volume rm $(docker volume ls -f dangling=true -q)</code> : Remove dangling volumes (Volumes not being used at the moment). Note: if you need sudo use: <code>sudo docker volume rm $(sudo docker volume ls -f dangling=true -q)</code></p>

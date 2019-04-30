@@ -58,6 +58,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>dotnet build</code> : Compile the project</p>
 <p><code>dotnet &lt;dotnet_assembly_dll&gt;</code> : Run an .Net assembly dll.</p>
 <p><code>dotnet build --runtime &lt;platform&gt;&lt;/platform&gt;</code> : Build the assembly for a specific platform. <code>E.g.: dotnet build --runtime ubuntu.16.04-x64</code></p>
+<p><code>dotnet add package &lt;package name&gt;</code>: Add package to the project. E.g.: <code>dotnet add package System.IdentityModel.Tokens.Jwt</code></p>
 <h2 id="installations">Installations</h2>
 <h3 id="net-core-1">.Net Core</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">curl</span> https://packages.microsoft.com/keys/microsoft.asc <span class="kw">|</span> <span class="ex">gpg</span> --dearmor <span class="op">&gt;</span> microsoft.gpg
