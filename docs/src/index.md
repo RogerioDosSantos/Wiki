@@ -187,6 +187,7 @@
 - [Amazon Web Services (AWS)]( ./aws.html )
 - [Azure IoT-Edge]( ./iot_edge.html )
 - [Azure Storage]( ./azure_storage.html )
+- [Azure Key Vault]( ./azure_key_vault.html )
 
 ## Stock Market
 
