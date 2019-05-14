@@ -188,6 +188,9 @@
 - [Azure IoT-Edge]( ./iot_edge.html )
 - [Azure Storage]( ./azure_storage.html )
 - [Azure Key Vault]( ./azure_key_vault.html )
+- [Azure Container Instances]( ./azure_container_instances.html )
+- [Azure Active Directory]( ./azure_active_directory.html )
+- [Azure Pipeline]( ./azure_pipeline.html )
 
 ## Stock Market
 
