@@ -14,5 +14,41 @@
 <body>
 <h1 id="identityserver">IdentityServer</h1>
 <p><a href="https://identityserver.github.io/Documentation/">IdentityServer</a> is a framework and a hostable component that allows implementing single sign-on and access control for modern web applications and APIs using protocols like OpenID Connect and OAuth2. It supports a wide range of clients like mobile, web, SPAs and desktop applications and is extensible to allow integration in new and existing architectures.</p>
+<h2 id="openid-connect">OpenID Connect</h2>
+<p><strong>Authentication</strong> is different of <strong>Authorization</strong>.</p>
+<ul>
+<li><em>Authentication</em>: Validates a claimed identity</li>
+<li><em>Authorization</em>: Controls access of an identity to resources.</li>
+</ul>
+<p>OpenID Connect provides both authentication and authorization in one protocol by layering authentication on top of the <a href="https://oauth.net/2/">OAuth2</a> authorization protocols. Both protocols uses HTTP and JSON.</p>
+<figure>
+<img src="http://tinyurl.com/y4qwqbx6" />
+</figure>
+<h3 id="tokens-types">Tokens Types</h3>
+<ul>
+<li><p>Identity Token: Impersonate a successfull user. <em>Identity token</em> is issue to the <em>client</em> by an <em>Authorization Server</em> and must be validated by the <em>client</em>. Any request that send a <em>valid token</em> will be accepted, therefore the channed to where the <em>token</em> is transmitted should be secure (using TLS/SSL) so a <em>main in the middle attack</em> cannot intercept the <em>token</em> being sent.</p></li>
+<li><p>Access Token: Credential used to access protected resources. It contains specific scope and durations of access. Access tokens may be either a JWT (JSON Web Token) or a reference token, which is an identifier for the actual token held in the authorization server.</p></li>
+<li><p>Reflesh Token: Credential used to obtain <em>Access Tokens</em>. When the current <em>Access Token</em> expire, the <em>Client</em> can use the <em>Reflesh Token</em> to get a new <em>Access Token</em>. <em>Reflesh Tokens</em> also contains a lifetime (Default is usually 30 days). Once it is expired, there is not way to the <em>Client</em> to get another <em>Token</em> but authenticate again. If the <em>Reflesh token</em> is provided with a <strong>sliding reflesh expire date (Default 15 days)</strong>, each time the <em>token</em> is used, its <em>sliding</em> information is replaced with another one. In this way if the tokens is always used within the <em>sliding period</em>, it will never expire.</p></li>
+</ul>
+<h3 id="scopes">Scopes</h3>
+<p>Scopes are identifiers for resources that a client wants to access. When a client request a <em>token</em> to the <em>identity Server</em>, it should include in the request the list of <em>scopes</em> that it want to have access to.</p>
+<p>There are 02 types of <em>scopes</em>:</p>
+<ul>
+<li>Resource Scopes: Define access to <em>resources</em> (E.g.: read database, write file, etc.)</li>
+<li>Identity Scopes: Define access to the <em>Identity Information (E.g.: adminitrator user, anonymous user, etc.). With this </em>scope* granted, a <em>client</em> can access the information of the <em>Identity</em> (E.g.: e-mail, name, phone, etc.)</li>
+</ul>
+<h3 id="workflow">Workflow</h3>
+<figure>
+<img src="./identity_server_workflow.svg" />
+</figure>
+<ul>
+<li>Each <em>client</em> registered has an unique <em>client id</em></li>
+<li><em>Clients</em> can authenticate themselves using <em>secrets</em> or <em>certificates</em> (In this case, the <a href="https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate"><em>certificate thumbprint</em></a> is used as secret)</li>
+<li>The <em>User</em> consent form can be configure to be displayed or not.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/IdentityServer/IdentityServer3.Samples.git">IdentityServer3 Example</a></li>
+</ul>
 </body>
 </html>
