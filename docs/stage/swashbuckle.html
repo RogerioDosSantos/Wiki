@@ -73,11 +73,26 @@ dotnet add &lt;your_project&gt;.csproj package Swashbuckle.AspNetCore</code></pr
 <span class="kw">public</span> <span class="dt">void</span> <span class="fu">ConfigureServices</span>(IServiceCollection services)
 {
 ...
-<span class="co">// Register the Swagger generator, defining 1 or more Swagger documents</span>
-    services.<span class="fu">AddSwaggerGen</span>(c =&gt;
-    {
-        c.<span class="fu">SwaggerDoc</span>(<span class="st">&quot;v1&quot;</span>, <span class="kw">new</span> Info { Title = <span class="st">&quot;My API&quot;</span>, Version = <span class="st">&quot;v1&quot;</span> });
-    });
+  <span class="co">// Register the Swagger generator, defining 1 or more Swagger documents</span>
+  c.<span class="fu">SwaggerDoc</span>(<span class="st">&quot;v1&quot;</span>, <span class="kw">new</span> Info
+  {
+      Version = <span class="st">&quot;v0.0.0&quot;</span>,
+      Title = <span class="st">&quot;Your Application Title&quot;</span>,
+      <span class="co">// All Configuration below are optional</span>
+      Description = <span class="st">&quot;Your Application Description&quot;</span>,
+      TermsOfService = <span class="st">&quot;None&quot;</span>,
+      Contact = <span class="kw">new</span> Contact
+      {
+          Name = <span class="st">&quot;Contact Name&quot;</span>,
+          Email = <span class="dt">string</span>.<span class="fu">Empty</span>,
+          Url = <span class="st">&quot;https://www.google.com/&quot;</span>
+      },
+      License = <span class="kw">new</span> License
+      {
+          Name = <span class="st">&quot;MIT&quot;</span>,
+          Url = <span class="st">&quot;https://opensource.org/licenses/MIT&quot;</span>
+      }
+  });
 ... 
 }
 

@@ -35,11 +35,26 @@ using Swashbuckle.AspNetCore.Swagger;
 public void ConfigureServices(IServiceCollection services)
 {
 ...
-// Register the Swagger generator, defining 1 or more Swagger documents
-    services.AddSwaggerGen(c =>
-    {
-        c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-    });
+  // Register the Swagger generator, defining 1 or more Swagger documents
+  c.SwaggerDoc("v1", new Info
+  {
+      Version = "v0.0.0",
+      Title = "Your Application Title",
+      // All Configuration below are optional
+      Description = "Your Application Description",
+      TermsOfService = "None",
+      Contact = new Contact
+      {
+          Name = "Contact Name",
+          Email = string.Empty,
+          Url = "https://www.google.com/"
+      },
+      License = new License
+      {
+          Name = "MIT",
+          Url = "https://opensource.org/licenses/MIT"
+      }
+  });
 ... 
 }
 
