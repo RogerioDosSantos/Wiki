@@ -32,12 +32,50 @@ There are 02 types of *scopes*:
 
 ### Workflow
 
-![]( ./identity_server_workflow.svg )
+![](./identity_server_workflow.svg)
 
 - Each *client* registered has an unique *client id*
 - *Clients* can authenticate themselves using *secrets* or *certificates* (In this case, the [*certificate thumbprint*](https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate) is used as secret)
 - The *User* consent form can be configure to be displayed or not.
 - After *authentication*, the *token* returned can be either JWT (JSON Web Token) or a reference token. If a *reference token* is returned, the *client* has to validate it with the *Authorization Server*. If JWT is returned, it is not required an additional call to the *Authorization Server*.
+
+#### Authorization Code Flow
+
+Most suitable for *server-side clients* where the *client* can *securely maintain a secret*
+
+![](./identity_server_workflow_authorization_code.svg)
+
+#### Implicit Flow
+
+Most suitable for *browser based clients* which cannot sensibly maintain a client secret and cannot therefore authenticate themselves with the *authorization server*
+
+![](./identity_server_workflow_implicity_flow.svg)
+
+Because an *authenticated session* exists between the *browser* and the *authorization server* it is possible to resubmit the *authentication request* and receive a new set of *tokens* when the current *access token* expires.
+
+#### Hybrid Flow
+
+Most suitable for native and mobile apps. It is best used combined with [PKCE, (Proof Key for Code Exchange)](https://oauth.net/2/pkce/), which ensures that another client cannot use the Code to request tokens. 
+
+#### Resource Owner (Credentials) Flow
+
+Used in highly trusted applications if the password is stored
+
+![](./identity_server_workflow_resource_owner_flow.svg)
+
+A *reflesh token* cannot be requested, the client must re-authenticate itself and request another access token when necessary
+
+#### Client Credentials Flow
+
+Used for highly trusted clients when no other flow can be used.
+
+![](./identity_server_workflow_client_credential_flow.svg)
+
+A *reflesh token* cannot be requested, the client must re-authenticate itself and request another access token when necessary
+
+### Single Sign On 
+
+On *Single Sign On*, the user authenticated with an *authorization server* is not requested to enter the credentials when running another application that connects to the same *authorization server*. 
 
 ## References
 

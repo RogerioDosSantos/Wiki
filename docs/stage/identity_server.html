@@ -45,7 +45,35 @@
 <li>Each <em>client</em> registered has an unique <em>client id</em></li>
 <li><em>Clients</em> can authenticate themselves using <em>secrets</em> or <em>certificates</em> (In this case, the <a href="https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate"><em>certificate thumbprint</em></a> is used as secret)</li>
 <li>The <em>User</em> consent form can be configure to be displayed or not.</li>
+<li>After <em>authentication</em>, the <em>token</em> returned can be either JWT (JSON Web Token) or a reference token. If a <em>reference token</em> is returned, the <em>client</em> has to validate it with the <em>Authorization Server</em>. If JWT is returned, it is not required an additional call to the <em>Authorization Server</em>.</li>
 </ul>
+<h4 id="authorization-code-flow">Authorization Code Flow</h4>
+<p>Most suitable for <em>server-side clients</em> where the <em>client</em> can <em>securely maintain a secret</em></p>
+<figure>
+<img src="./identity_server_workflow_authorization_code.svg" />
+</figure>
+<h4 id="implicit-flow">Implicit Flow</h4>
+<p>Most suitable for <em>browser based clients</em> which cannot sensibly maintain a client secret and cannot therefore authenticate themselves with the <em>authorization server</em></p>
+<figure>
+<img src="./identity_server_workflow_implicity_flow.svg" />
+</figure>
+<p>Because an <em>authenticated session</em> exists between the <em>browser</em> and the <em>authorization server</em> it is possible to resubmit the <em>authentication request</em> and receive a new set of <em>tokens</em> when the current <em>access token</em> expires.</p>
+<h4 id="hybrid-flow">Hybrid Flow</h4>
+<p>Most suitable for native and mobile apps. It is best used combined with <a href="https://oauth.net/2/pkce/">PKCE, (Proof Key for Code Exchange)</a>, which ensures that another client cannot use the Code to request tokens.</p>
+<h4 id="resource-owner-credentials-flow">Resource Owner (Credentials) Flow</h4>
+<p>Used in highly trusted applications if the password is stored</p>
+<figure>
+<img src="./identity_server_workflow_resource_owner_flow.svg" />
+</figure>
+<p>A <em>reflesh token</em> cannot be requested, the client must re-authenticate itself and request another access token when necessary</p>
+<h4 id="client-credentials-flow">Client Credentials Flow</h4>
+<p>Used for highly trusted clients when no other flow can be used.</p>
+<figure>
+<img src="./identity_server_workflow_client_credential_flow.svg" />
+</figure>
+<p>A <em>reflesh token</em> cannot be requested, the client must re-authenticate itself and request another access token when necessary</p>
+<h3 id="single-sign-on">Single Sign On</h3>
+<p>On <em>Single Sign On</em>, the user authenticated with an <em>authorization server</em> is not requested to enter the credentials when running another application that connects to the same <em>authorization server</em>.</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://github.com/IdentityServer/IdentityServer3.Samples.git">IdentityServer3 Example</a></li>
