@@ -77,6 +77,38 @@ A *reflesh token* cannot be requested, the client must re-authenticate itself an
 
 On *Single Sign On*, the user authenticated with an *authorization server* is not requested to enter the credentials when running another application that connects to the same *authorization server*. 
 
+## Identity Server .Net Core
+
+It will have 02 parts to use the *Identity Server Framework*:
+
+1- Server: *ASP.NET* application that implements the interface of the supported protocols (OAuth2) using a *middleware*.
+
+2- Client: *ASP.NET* application that will talk to the *Server* requesting authorization and validation
+
+![](http://tinyurl.com/y6jnztuc)
+
+In order to provide the proper user access to the *Client*, you have to inform (configure) the *Server* about the *User* and the *Application*.
+
+![](http://tinyurl.com/y29n5wao)
+
+
+## How-to 
+
+### Create Self-Signed Certificate using Powershell 
+
+```ps1
+$cert = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname <auto_signed_certificate_dns>
+```
+The certificate can be found using `certlm` in:
+
+![](https://i.vgy.me/9hobFz.png)
+
+## Examples
+
+- [Identity Server Client](https://github.com/RogerioDosSantos/example_dotnet_identity_server_client)
+
 ## References
 
 - [IdentityServer3 Example](https://github.com/IdentityServer/IdentityServer3.Samples.git)
+- [Introduction to IdentityServer for ASP.NET core](https://www.youtube.com/watch?v=J5p72gTdx_M)
+

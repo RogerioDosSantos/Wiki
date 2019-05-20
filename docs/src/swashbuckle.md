@@ -57,7 +57,7 @@ public void ConfigureServices(IServiceCollection services)
             Url = "https://opensource.org/licenses/MIT"
         }
     });
-  }
+  });
 ... 
 }
 

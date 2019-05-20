@@ -74,9 +74,32 @@
 <p>A <em>reflesh token</em> cannot be requested, the client must re-authenticate itself and request another access token when necessary</p>
 <h3 id="single-sign-on">Single Sign On</h3>
 <p>On <em>Single Sign On</em>, the user authenticated with an <em>authorization server</em> is not requested to enter the credentials when running another application that connects to the same <em>authorization server</em>.</p>
+<h2 id="identity-server-.net-core">Identity Server .Net Core</h2>
+<p>It will have 02 parts to use the <em>Identity Server Framework</em>:</p>
+<p>1- Server: <em>ASP.NET</em> application that implements the interface of the supported protocols (OAuth2) using a <em>middleware</em>.</p>
+<p>2- Client: <em>ASP.NET</em> application that will talk to the <em>Server</em> requesting authorization and validation</p>
+<figure>
+<img src="http://tinyurl.com/y6jnztuc" />
+</figure>
+<p>In order to provide the proper user access to the <em>Client</em>, you have to inform (configure) the <em>Server</em> about the <em>User</em> and the <em>Application</em>.</p>
+<figure>
+<img src="http://tinyurl.com/y29n5wao" />
+</figure>
+<h2 id="how-to">How-to</h2>
+<h3 id="create-self-signed-certificate-using-powershell">Create Self-Signed Certificate using Powershell</h3>
+<pre class="ps1"><code>$cert = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname &lt;auto_signed_certificate_dns&gt;</code></pre>
+<p>The certificate can be found using <code>certlm</code> in:</p>
+<figure>
+<img src="https://i.vgy.me/9hobFz.png" />
+</figure>
+<h2 id="examples">Examples</h2>
+<ul>
+<li><a href="https://github.com/RogerioDosSantos/example_dotnet_identity_server_client">Identity Server Client</a></li>
+</ul>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://github.com/IdentityServer/IdentityServer3.Samples.git">IdentityServer3 Example</a></li>
+<li><a href="https://www.youtube.com/watch?v=J5p72gTdx_M">Introduction to IdentityServer for ASP.NET core</a></li>
 </ul>
 </body>
 </html>
