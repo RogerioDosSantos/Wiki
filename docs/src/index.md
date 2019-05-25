@@ -172,6 +172,10 @@
 - [MOSS]( ./moss.html )
 - [Checkmarks]( ./checkmarks.html )
 
+## Authentication / Authorization
+
+- [Identity Server]( ./identity_server.html )
+
 ## Network 
 
 - [LDAP]( ./ldap.html )
