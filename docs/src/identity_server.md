@@ -111,4 +111,5 @@ The certificate can be found using `certlm` in:
 
 - [IdentityServer3 Example](https://github.com/IdentityServer/IdentityServer3.Samples.git)
 - [Introduction to IdentityServer for ASP.NET core](https://www.youtube.com/watch?v=J5p72gTdx_M)
+- [Azure Identity](https://docs.microsoft.com/en-us/azure/security/azure-security-identity-management-best-practices)
 
