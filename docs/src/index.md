@@ -151,11 +151,12 @@
 
 ## .Net 
 
+- [.Net Versions]( ./.net_versions.html )
 - [.Net Core]( ./dotnet_core.html )
 - [GAC]( ./gac.html )
-- [.Net Versions]( ./.net_versions.html )
 - [Serilog]( ./serilog.html )
 - [Swashbuckle]( ./swashbuckle.html )
+- [Blazor]( ./blazor.html )
 
 ## Virtualization 
 
@@ -171,6 +172,10 @@
 - [GPG]( ./gpg.html )
 - [MOSS]( ./moss.html )
 - [Checkmarks]( ./checkmarks.html )
+
+## Authentication / Authorization
+
+- [Identity Server]( ./identity_server.html )
 
 ## Network 
 
