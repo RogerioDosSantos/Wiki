@@ -51,6 +51,7 @@
 - [Pandoc]( ./pandoc.html )
 - [Gravizo]( ./gravizo.html )
 - [Graphviz]( ./graphviz.html )
+- [Mermaid]( ./mermaid.html )
 
 ## Source Control 
 
