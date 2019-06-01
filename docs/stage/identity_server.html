@@ -21,9 +21,6 @@
 <li><em>Authorization</em>: Controls access of an identity to resources.</li>
 </ul>
 <p>OpenID Connect provides both authentication and authorization in one protocol by layering authentication on top of the <a href="https://oauth.net/2/">OAuth2</a> authorization protocols. Both protocols uses HTTP and JSON.</p>
-<figure>
-<img src="http://tinyurl.com/y4qwqbx6" />
-</figure>
 <h3 id="tokens-types">Tokens Types</h3>
 <ul>
 <li><p>Identity Token: Impersonate a successfull user. <em>Identity token</em> is issue to the <em>client</em> by an <em>Authorization Server</em> and must be validated by the <em>client</em>. Any request that send a <em>valid token</em> will be accepted, therefore the channed to where the <em>token</em> is transmitted should be secure (using TLS/SSL) so a <em>main in the middle attack</em> cannot intercept the <em>token</em> being sent.</p></li>
@@ -47,26 +44,32 @@
 <li>The <em>User</em> consent form can be configure to be displayed or not.</li>
 <li>After <em>authentication</em>, the <em>token</em> returned can be either JWT (JSON Web Token) or a reference token. If a <em>reference token</em> is returned, the <em>client</em> has to validate it with the <em>Authorization Server</em>. If JWT is returned, it is not required an additional call to the <em>Authorization Server</em>.</li>
 </ul>
-<h4 id="authorization-code-flow">Authorization Code Flow</h4>
+<h4 id="authorization-code-flow-uses-front-channel-back-channel">Authorization Code Flow (Uses Front channel + Back channel)</h4>
 <p>Most suitable for <em>server-side clients</em> where the <em>client</em> can <em>securely maintain a secret</em></p>
 <figure>
 <img src="./identity_server_workflow_authorization_code.svg" />
 </figure>
-<h4 id="implicit-flow">Implicit Flow</h4>
+<figure>
+<img src="http://tinyurl.com/y4qwqbx6" />
+</figure>
+<h4 id="implicit-flow-uses-front-channel-only">Implicit Flow (Uses Front channel only)</h4>
 <p>Most suitable for <em>browser based clients</em> which cannot sensibly maintain a client secret and cannot therefore authenticate themselves with the <em>authorization server</em></p>
 <figure>
 <img src="./identity_server_workflow_implicity_flow.svg" />
 </figure>
 <p>Because an <em>authenticated session</em> exists between the <em>browser</em> and the <em>authorization server</em> it is possible to resubmit the <em>authentication request</em> and receive a new set of <em>tokens</em> when the current <em>access token</em> expires.</p>
+<figure>
+<img src="http://tinyurl.com/yy2np9cy" />
+</figure>
 <h4 id="hybrid-flow">Hybrid Flow</h4>
 <p>Most suitable for native and mobile apps. It is best used combined with <a href="https://oauth.net/2/pkce/">PKCE, (Proof Key for Code Exchange)</a>, which ensures that another client cannot use the Code to request tokens.</p>
-<h4 id="resource-owner-credentials-flow">Resource Owner (Credentials) Flow</h4>
+<h4 id="resource-owner-credentials-flow-uses-back-channel-only">Resource Owner (Credentials) Flow (Uses Back channel only)</h4>
 <p>Used in highly trusted applications if the password is stored</p>
 <figure>
 <img src="./identity_server_workflow_resource_owner_flow.svg" />
 </figure>
 <p>A <em>reflesh token</em> cannot be requested, the client must re-authenticate itself and request another access token when necessary</p>
-<h4 id="client-credentials-flow">Client Credentials Flow</h4>
+<h4 id="client-credentials-flow-uses-back-channel-only">Client Credentials Flow (Uses Back channel only)</h4>
 <p>Used for highly trusted clients when no other flow can be used.</p>
 <figure>
 <img src="./identity_server_workflow_client_credential_flow.svg" />
@@ -85,6 +88,53 @@
 <figure>
 <img src="http://tinyurl.com/y29n5wao" />
 </figure>
+<h2 id="jargons">Jargons</h2>
+<ul>
+<li><p>Resource Owner: User that is using the service. The user owns the data.</p></li>
+<li><p>Client: Application the uses the resources.</p></li>
+<li><p>Authorization Server: Is the software that authorize the access to the resource (E.g.: google.com/accounts)</p></li>
+<li><p>Resource Server: Is the software system that holds the resources (E.g.: Blob service, docker registry, etc)</p></li>
+<li><p>Authorization grant: Is the &quot;token&quot; that inform that the users pressed &quot;Yes&quot; when requested for authorization.</p></li>
+<li><p>Redirect URI: Is the callback URL that will be called after the OAuth2 flow.</p></li>
+<li><p>Access token: Token that allow the client to have access to the resource.</p></li>
+<li><p>Scope: Define the level of permission that is used to access the resources.</p></li>
+<li><p>Back channel: Highly secure channel (E.g.: service communication same machine)</p></li>
+<li><p>Front channel: Less secure channel (E.g.: browser)</p></li>
+</ul>
+<h3 id="oauth2-authorization-code-flow">OAuth2 authorization code flow</h3>
+<h4 id="authorization-code-flow">Authorization code flow</h4>
+<figure>
+<img src="http://tinyurl.com/y4kyhjrh" />
+</figure>
+<h3 id="openid-connect-oidc">OpenId Connect (OIDC)</h3>
+<p>It is basically OAuth2 with extensibility to also request an ID token (JWT)</p>
+<figure>
+<img src="http://tinyurl.com/y3w6fyrl" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/y2kaekat" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/y6an673z" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/yxfr3xl7" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/y3qtavfn" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/y3ma4gyh" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/y5c2q4ss" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/yxwp3ub4" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/y5uhzaz7" />
+</figure>
 <h2 id="how-to">How-to</h2>
 <h3 id="create-self-signed-certificate-using-powershell">Create Self-Signed Certificate using Powershell</h3>
 <pre class="ps1"><code>$cert = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname &lt;auto_signed_certificate_dns&gt;</code></pre>
@@ -98,9 +148,13 @@
 </ul>
 <h2 id="references">References</h2>
 <ul>
+<li><p><a href="https://www.youtube.com/watch?v=996OiexHze0">OAuth 2.0 and OpenID Connect (in plain English) Video</a></p></li>
 <li><a href="https://github.com/IdentityServer/IdentityServer3.Samples.git">IdentityServer3 Example</a></li>
 <li><a href="https://www.youtube.com/watch?v=J5p72gTdx_M">Introduction to IdentityServer for ASP.NET core</a></li>
-<li><a href="https://docs.microsoft.com/en-us/azure/security/azure-security-identity-management-best-practices">Azure Identity</a></li>
+<li><p><a href="https://docs.microsoft.com/en-us/azure/security/azure-security-identity-management-best-practices">Azure Identity</a></p></li>
+<li><p><a href="https://github.com/manfredsteyer/angular-oauth2-oidc">angular-oauth2-oidc - Support for OAuth 2 and OpenId Connect (OIDC) in Angular</a></p></li>
+<li><p><a href="https://oauthdebugger.com/">OAuth2 Debbugger</a></p></li>
+<li><p><a href="https://oidcdebugger.com/">OpenID Connect Debbuger</a></p></li>
 </ul>
 </body>
 </html>
