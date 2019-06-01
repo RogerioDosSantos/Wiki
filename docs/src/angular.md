@@ -88,6 +88,19 @@ class cls{
 const testCls = new cls(1,2)
 ```
 
+### Lifecycle Hooks 
+
+Lifecycle Hooks are callbacks function available in the angular framework:
+
+- OnChanges: Called everytime a change in a component happens
+- OnInit: Called everytime a component is initialized. It is called only once
+- DoCheck: Called before a change happens, in this way you can implement validation logic
+- AfterContentInit: Called when content is initialized
+- AfterContentChecked: Called before a change in a content happens
+- AfterViewInit: Called after the View is initial.
+- AfterViewChecked: Called after a View is check
+- OnDestroy: Called when a component is destroyed.
+
 ## References
 
 [Angular CLI](https://angular.io/cli)
