@@ -68,9 +68,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Create new project </span>
 <span class="ex">ng</span> new <span class="op">&lt;</span>project_name<span class="op">&gt;</span>
 
-<span class="co"># Execute Development server</span>
+<span class="co"># Execute Development server (--host 0.0.0.0 allow access from docker)</span>
 <span class="bu">cd</span> <span class="op">&lt;</span>project_name<span class="op">&gt;</span>
-<span class="ex">ng</span> serve</code></pre></div>
+<span class="ex">ng</span> serve --host 0.0.0.0</code></pre></div>
 <h2 id="file-structure">File Structure</h2>
 <ul>
 <li>./src/index.html : Initial HTML page of the project</li>
