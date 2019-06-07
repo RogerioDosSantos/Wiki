@@ -178,6 +178,7 @@
 
 - [Identity Server]( ./identity_server.html )
     - [Keycloak]( ./keycloak.html )
+    - [Auth0]( ./auth0.html )
 
 ## Network 
 
