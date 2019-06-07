@@ -28,6 +28,15 @@ cd <project_name>
 ng serve --host 0.0.0.0
 ```
 
+## Create a new component
+
+From the project folder:
+
+```sh
+# Create new component with inline template and inline style
+ng g c server-detail -it -is
+```
+
 ## File Structure
 
 - ./src/index.html : Initial HTML page of the project
