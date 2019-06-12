@@ -338,4 +338,13 @@ git submodule add <url> <path>
 git ls-files -mo
 ```
 
+### Git - Branch - Push a new branch to remote and track it
+
+```bash
+# Create a new branch 
+git checkout -b <new_branch_name>
+
+# Push your branch to the remote repository:
+git push -u origin <new_branch_name>
+```
 
