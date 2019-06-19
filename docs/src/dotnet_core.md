@@ -30,5 +30,37 @@ sudo apt-get update
 sudo apt-get install dotnet-sdk-2.0.2
 ```
 
+## How-to 
+
+### Create a new project
+
+```sh 
+# Create a new console application project
+dotnet new console 
+
+# Create a new ASP.NET Core Web API project
+dotnet new webapi 
+```
+
+### Create and Publish NuGet package
+
+- Open your project file (.csproj) and add the following minimal properties inside the existing <PropertyGroup> tag
+
+```xml 
+<PackageId>package_name</PackageId>
+<Version>1.0.0</Version>
+<Authors>your_name</Authors>
+<Company>your_company</Company>
+```
+
+You can add any [optional properties](https://docs.microsoft.com/en-us/dotnet/core/tools/csproj#nuget-metadata-properties) if desired 
+
+- To build a NuGet package (a .nupkg file) from the project folder, run: 
+
+```sh 
+dotnet pack -c Release -o /workspace/stage/release
+```
+
+
 
 
