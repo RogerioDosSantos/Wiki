@@ -101,6 +101,7 @@
 
 - [Chocolatey]( ./chocolatey.html )
 - [Conan]( ./conan.html )
+- [Nuget]( ./nuget.html )
 
 ## CTags 
 
