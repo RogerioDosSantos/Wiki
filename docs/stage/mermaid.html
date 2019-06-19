@@ -56,6 +56,27 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="ex">npm</span> install -g mermaid.cli
 
 <span class="co"># Convert to SVG</span>
-<span class="ex">mmdc</span> -i input.mmd -o output.svg</code></pre></div>
+<span class="ex">mmdc</span> -i input.mmd -o output.svg
+
+<span class="co"># Convert to PNG</span>
+<span class="ex">mmdc</span> -i input.mmd -o output.png</code></pre></div>
+<h2 id="diagram-example">Diagram Example</h2>
+<h3 id="sequence-diagram">Sequence Diagram</h3>
+<div class="sourceCode"><pre class="sourceCode mmd"><code class="sourceCode markdown">sequenceDiagram
+
+<span class="bn">    participant p1 as Participant 01</span>
+<span class="bn">    participant p2 as Participant 02</span>
+
+<span class="bn">    Note left of p1: Note 01&lt;br/&gt;Content 01</span>
+<span class="bn">    activate p1</span>
+<span class="bn">    p1-&gt;&gt;p2: Connect P1 to P2</span>
+<span class="bn">    activate p2</span>
+<span class="bn">    p2-&gt;p2: Action on P2 only</span>
+<span class="bn">    p2--&gt;&gt;p1: Callback into P1</span>
+<span class="bn">    deactivate p2</span>
+<span class="bn">    deactivate p1</span></code></pre></div>
+<figure>
+<img src="../resources/mermaid_sequence_diagram.svg" />
+</figure>
 </body>
 </html>
