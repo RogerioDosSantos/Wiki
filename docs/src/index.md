@@ -3,6 +3,7 @@
 ## Windows 
 
 - [Windows Terminal Commands]( ./windows_terminal_commands.html )
+- [Windows Shortcuts]( ./windows_shortcuts.html )
 - [Babun]( ./babun.html )
 - [Windows Store]( ./windows_store.html )
 - [WSL]( ./wsl.html )
