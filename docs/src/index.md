@@ -159,7 +159,7 @@
 - [.Net Core]( ./dotnet_core.html )
 - [GAC]( ./gac.html )
 - [Serilog]( ./serilog.html )
-- [Swashbuckle]( ./swashbuckle.html )
+- [Swashbuckle (Swagger)]( ./swashbuckle.html )
 - [Blazor]( ./blazor.html )
 
 ## Virtualization 
