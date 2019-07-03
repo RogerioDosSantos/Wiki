@@ -68,10 +68,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="fu">sudo</span> apt-get install dotnet-sdk-2.0.2</code></pre></div>
 <h2 id="how-to">How-to</h2>
 <h3 id="create-a-new-project">Create a new project</h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Create a new console application project</span>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Create a new console application project</span>
 <span class="ex">dotnet</span> new console 
 
 <span class="co"># Create a new ASP.NET Core Web API project</span>
-<span class="ex">dotnet</span> new webapi </code></pre></div>
+<span class="ex">dotnet</span> new webapi 
+
+<span class="co"># Create a new XUnit Unity Test project</span>
+<span class="ex">dotnet</span> new xunit</code></pre></div>
+<h3 id="create-and-publish-nuget-package">Create and Publish NuGet package</h3>
+<ul>
+<li>Open your project file (.csproj) and add the following minimal properties inside the existing <PropertyGroup> tag</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;PackageId&gt;</span>package_name<span class="kw">&lt;/PackageId&gt;</span>
+<span class="kw">&lt;Version&gt;</span>1.0.0<span class="kw">&lt;/Version&gt;</span>
+<span class="kw">&lt;Authors&gt;</span>your_name<span class="kw">&lt;/Authors&gt;</span>
+<span class="kw">&lt;Company&gt;</span>your_company<span class="kw">&lt;/Company&gt;</span></code></pre></div>
+<p>You can add any <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/csproj#nuget-metadata-properties">optional properties</a> if desired</p>
+<ul>
+<li>To build a NuGet package (a .nupkg file) from the project folder, run:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">dotnet</span> pack -c Release -o /workspace/stage/release</code></pre></div>
 </body>
 </html>

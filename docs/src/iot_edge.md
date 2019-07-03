@@ -6,6 +6,29 @@ It basically allow you to deploy your application from the Cloud to a IoT-Edge m
 
 An IoT-Edge machine is a machine that has a IoT-Edge runtime module on it.
 
+## Edge Device - Installation / Configuration
+
+### Run Linux Container in Windows Machine 
+
+- Ensure that you are using *Windows 10 Anniversary update (build 14393)* or newer.
+- Ensure that you are running *Powershell* as *Administrator*
+- Ensure that you have *Powershell (AMD64)* session. To veriry it you can run the following command:
+
+```ps 
+# Return the Powershell session (x86 or AMD64) 
+(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+```
+- Execute the *Deploy-IoTEdge* from *Microsoft Website Script*
+The Deploy-IoTEdge does the following:
+    - Checks that your Windows machine is on a supported version
+    - Turns on the containers feature
+    - Downloads the moby runtime (which is not used for Linux containers) 
+    - Downloads IoT Edge runtime
+
+```ps 
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -ContainerOs Linux
+```
+
 ## Commands
 
 `pip install -U azure-iot-edge-runtime-ctl` : Install the IoT-Edge runtime module

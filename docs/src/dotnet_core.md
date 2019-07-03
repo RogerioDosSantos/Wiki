@@ -40,6 +40,9 @@ dotnet new console
 
 # Create a new ASP.NET Core Web API project
 dotnet new webapi 
+
+# Create a new XUnit Unity Test project
+dotnet new xunit
 ```
 
 ### Create and Publish NuGet package
