@@ -95,6 +95,113 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="co"># Stop Simulator</span>
 <span class="ex">iotedgehubdev</span> stop</code></pre></div>
+<h2 id="create-.net-core-edge-module-from-sketch">Create .Net Core Edge Module from sketch</h2>
+<ul>
+<li>Create a project and add packages</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Create .Net Core console application</span>
+<span class="ex">dotnet</span> new console 
+
+<span class="co"># Add Packages Required for Edge Module Implementation</span>
+<span class="co">## MqttTransportSettings </span>
+<span class="ex">dotnet</span> add package Microsoft.Azure.Devices.Client
+<span class="ex">dotnet</span> add package Microsoft.Extensions.Configuration
+<span class="ex">dotnet</span> add package Microsoft.Extensions.Configuration.Abstractions
+<span class="ex">dotnet</span> add package Microsoft.Extensions.Configuration.Binder 
+<span class="ex">dotnet</span> add package Microsoft.Extensions.Configuration.EnvironmentVariables 
+<span class="ex">dotnet</span> add package Microsoft.Extensions.Configuration.FileExtensions
+<span class="ex">dotnet</span> add package Microsoft.Extensions.Configuration.Json
+<span class="co">## For AssemblyLoadContext</span>
+<span class="ex">dotnet</span> add package System.Runtime.Loader</code></pre></div>
+<ul>
+<li>Change the <em>Program.cs</em> (Entrypoint) to have the following code representing a simple module:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode cs"><code class="sourceCode cs"><span class="kw">using</span> Microsoft.<span class="fu">Azure</span>.<span class="fu">Devices</span>.<span class="fu">Client</span>;
+<span class="kw">using</span> Microsoft.<span class="fu">Azure</span>.<span class="fu">Devices</span>.<span class="fu">Client</span>.<span class="fu">Transport</span>.<span class="fu">Mqtt</span>;
+<span class="kw">using</span> System;
+<span class="kw">using</span> System.<span class="fu">Runtime</span>.<span class="fu">Loader</span>;
+<span class="kw">using</span> System.<span class="fu">Text</span>;
+<span class="kw">using</span> System.<span class="fu">Threading</span>;
+<span class="kw">using</span> System.<span class="fu">Threading</span>.<span class="fu">Tasks</span>;
+
+<span class="kw">namespace</span> edge_module
+{
+    <span class="kw">class</span> Program
+    {
+        <span class="kw">static</span> <span class="dt">int</span> counter;
+
+        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)
+        {
+            <span class="fu">Init</span>().<span class="fu">Wait</span>();
+
+            <span class="co">// Wait until the app unloads or is cancelled</span>
+            <span class="dt">var</span> cts = <span class="kw">new</span> <span class="fu">CancellationTokenSource</span>();
+            AssemblyLoadContext.<span class="fu">Default</span>.<span class="fu">Unloading</span> += (ctx) =&gt; cts.<span class="fu">Cancel</span>();
+            Console.<span class="fu">CancelKeyPress</span> += (sender, cpe) =&gt; cts.<span class="fu">Cancel</span>();
+            <span class="fu">WhenCancelled</span>(cts.<span class="fu">Token</span>).<span class="fu">Wait</span>();
+        }
+
+        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span>
+        <span class="co">/// Initializes the ModuleClient and sets up the callback to receive</span>
+        <span class="co">/// messages containing temperature information</span>
+        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span>
+        <span class="kw">static</span> async Task <span class="fu">Init</span>()
+        {
+            MqttTransportSettings mqttSetting = <span class="kw">new</span> <span class="fu">MqttTransportSettings</span>(TransportType.<span class="fu">Mqtt_Tcp_Only</span>);
+            ITransportSettings[] settings = { mqttSetting };
+
+            <span class="co">// Open a connection to the Edge runtime</span>
+            ModuleClient ioTHubModuleClient = await ModuleClient.<span class="fu">CreateFromEnvironmentAsync</span>(settings);
+            await ioTHubModuleClient.<span class="fu">OpenAsync</span>();
+            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;IoT Hub module client initialized.&quot;</span>);
+
+            <span class="co">// Register callback to be called when a message is received by the module</span>
+            await ioTHubModuleClient.<span class="fu">SetInputMessageHandlerAsync</span>(<span class="st">&quot;input1&quot;</span>, PipeMessage, ioTHubModuleClient);
+        }
+
+        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span>
+        <span class="co">/// Handles cleanup operations when app is cancelled or unloads</span>
+        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span>
+        <span class="kw">public</span> <span class="kw">static</span> Task <span class="fu">WhenCancelled</span>(CancellationToken cancellationToken)
+        {
+            <span class="dt">var</span> tcs = <span class="kw">new</span> TaskCompletionSource&lt;<span class="dt">bool</span>&gt;();
+            cancellationToken.<span class="fu">Register</span>(s =&gt; ((TaskCompletionSource&lt;<span class="dt">bool</span>&gt;)s).<span class="fu">SetResult</span>(<span class="kw">true</span>), tcs);
+            <span class="kw">return</span> tcs.<span class="fu">Task</span>;
+        }
+
+        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span>
+        <span class="co">/// This method is called whenever the module is sent a message from the EdgeHub. </span>
+        <span class="co">/// It just pipe the messages without any change.</span>
+        <span class="co">/// It prints all the incoming messages.</span>
+        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span>
+        <span class="kw">static</span> async Task&lt;MessageResponse&gt; <span class="fu">PipeMessage</span>(Message message, <span class="dt">object</span> userContext)
+        {
+            <span class="dt">int</span> counterValue = Interlocked.<span class="fu">Increment</span>(<span class="kw">ref</span> counter);
+
+            <span class="dt">var</span> moduleClient = userContext <span class="kw">as</span> ModuleClient;
+            <span class="kw">if</span> (moduleClient == <span class="kw">null</span>)
+            {
+                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">InvalidOperationException</span>(<span class="st">&quot;UserContext doesn&#39;t contain &quot;</span> + <span class="st">&quot;expected values&quot;</span>);
+            }
+
+            <span class="dt">byte</span>[] messageBytes = message.<span class="fu">GetBytes</span>();
+            <span class="dt">string</span> messageString = Encoding.<span class="fu">UTF8</span>.<span class="fu">GetString</span>(messageBytes);
+            Console.<span class="fu">WriteLine</span>($<span class="st">&quot;Received message: {counterValue}, Body: [{messageString}]&quot;</span>);
+
+            <span class="kw">if</span> (!<span class="dt">string</span>.<span class="fu">IsNullOrEmpty</span>(messageString))
+            {
+                <span class="dt">var</span> pipeMessage = <span class="kw">new</span> <span class="fu">Message</span>(messageBytes);
+                <span class="kw">foreach</span> (var prop <span class="kw">in</span> message.<span class="fu">Properties</span>)
+                {
+                    pipeMessage.<span class="fu">Properties</span>.<span class="fu">Add</span>(prop.<span class="fu">Key</span>, prop.<span class="fu">Value</span>);
+                }
+                await moduleClient.<span class="fu">SendEventAsync</span>(<span class="st">&quot;output1&quot;</span>, pipeMessage);
+                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Received message sent&quot;</span>);
+            }
+            <span class="kw">return</span> MessageResponse.<span class="fu">Completed</span>;
+        }
+    }
+}</code></pre></div>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://github.com/Azure/iotedgehubdev">Azure IoT EdgeHub Dev Tool (Git Repository)</a></li>
