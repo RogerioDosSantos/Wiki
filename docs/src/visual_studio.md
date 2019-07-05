@@ -87,5 +87,14 @@ cd "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\
 # Prepare shell to compile for x86 using the Visual Studio 2015 toolset (v14.0)
 ./vcvarsall.bat -vcvars_ver=14.0
 ```
+## Get environment variable while debuggin C# code 
+
+- On the *Imadiate Window* type:
+
+```cs
+Environment.GetEnvironmentVariables()
+```
+
+![](http://tinyurl.com/y3pr8cex)
 
 
