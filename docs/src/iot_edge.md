@@ -6,6 +6,7 @@ It basically allow you to deploy your application from the Cloud to a IoT-Edge m
 
 An IoT-Edge machine is a machine that has a IoT-Edge runtime module on it.
 
+
 ## Edge Device - Installation / Configuration
 
 ### Run Linux Container in Windows Machine 
@@ -28,6 +29,54 @@ The Deploy-IoTEdge does the following:
 ```ps 
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -ContainerOs Linux
 ```
+
+- Configure the IoT Edge runtime on the machine
+
+```ps 
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge -ContainerOs Linux`
+```
+
+You will be requested to enter the *DeviceConnectionString* which can be retrieved in the [IoTHub Portal](https://portal.azure.com):
+
+![](http://tinyurl.com/yxtsy5bf)
+
+![](http://tinyurl.com/y6yy7o8a)
+
+**Note**: The device connection string takes the following format, and should not include quotation marks: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+
+- Verify if the installation was successful
+
+```ps 
+# Get the status of the IoT Edge service
+Get-Service iotedge
+
+# List the running modules 
+iotedge list
+```
+
+![](http://tinyurl.com/yxmsycxq)
+
+## Uninstalling Azure IoT Edge 
+
+From an elevated command prompt:
+
+```ps 
+# Uninstall Azure IoT Edge 
+Uninstall-IoTEdge
+```
+
+![](http://tinyurl.com/y2fwkol7)
+
+
+## Troubleshooting Azure IoT Edge
+
+```ps 
+# Execute standard check on the current Azure IoT Edge installation and connectivity
+iotedge check
+```
+
+![](http://tinyurl.com/y3ruk522)
+
 
 ## Commands
 

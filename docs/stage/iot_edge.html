@@ -72,6 +72,42 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">. {Invoke-WebRequest -useb aka.ms<span class="dt">/iotedge-win</span>} | Invoke-Expression; Deploy-IoTEdge -ContainerOs Linux</code></pre></div>
+<ul>
+<li>Configure the IoT Edge runtime on the machine</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">. {Invoke-WebRequest -useb aka.ms<span class="dt">/iotedge-win</span>} | Invoke-Expression; Initialize-IoTEdge -ContainerOs Linux`</code></pre></div>
+<p>You will be requested to enter the <em>DeviceConnectionString</em> which can be retrieved in the <a href="https://portal.azure.com">IoTHub Portal</a>:</p>
+<figure>
+<img src="http://tinyurl.com/yxtsy5bf" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/y6yy7o8a" />
+</figure>
+<p><strong>Note</strong>: The device connection string takes the following format, and should not include quotation marks: <code>HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}</code></p>
+<ul>
+<li>Verify if the installation was successful</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> the <span class="kw">status</span> of the IoT Edge service
+<span class="kw">Get</span>-Service iotedge
+
+# List the running modules 
+iotedge list</code></pre></div>
+<figure>
+<img src="http://tinyurl.com/yxmsycxq" />
+</figure>
+<h2 id="uninstalling-azure-iot-edge">Uninstalling Azure IoT Edge</h2>
+<p>From an elevated command prompt:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Uninstall Azure IoT Edge 
+Uninstall-IoTEdge</code></pre></div>
+<figure>
+<img src="http://tinyurl.com/y2fwkol7" />
+</figure>
+<h2 id="troubleshooting-azure-iot-edge">Troubleshooting Azure IoT Edge</h2>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Execute standard check on the current Azure IoT Edge installation <span class="kw">and</span> connectivity
+iotedge check</code></pre></div>
+<figure>
+<img src="http://tinyurl.com/y3ruk522" />
+</figure>
 <h2 id="commands">Commands</h2>
 <p><code>pip install -U azure-iot-edge-runtime-ctl</code> : Install the IoT-Edge runtime module</p>
 <p><code>pip install azure-iot-edge-runtime-ctl==1.0.0rc19</code>: Install a specific version of the iotedgectl</p>
