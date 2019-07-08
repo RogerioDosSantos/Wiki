@@ -14,6 +14,7 @@ dotnet new console
 
 # Add Serilog
 dotnet add package Serilog
+dotnet add package Serilog.Sinks.Console
 ```
 - Change the Main function as following:
 
