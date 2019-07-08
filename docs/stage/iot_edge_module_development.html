@@ -270,8 +270,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <img src="http://tinyurl.com/y24unl27" />
 </figure>
 <p>This will make the <em>Visual Studio</em> to start the <em>iotedgehubdev</em> with the following command:</p>
-<p><code>iotedgehubdev start -i &quot;&lt;input&gt;&quot;</code></p>
-<p><strong>Note</strong>: If you do not start your <em>Edge Module Project</em> as <em>Console application</em> (E.g.: Start it as <em>IISExpress</em> configuration), <em>Visual Studio</em> will not start the <em>iotedgehubdev</em> and an <em>exception</em> will be thrown when you try to register the <code>&quot;&lt;input&gt;&quot;</code> using the <em>ioTHubModuleClient</em>.</p>
+<p><code>iotedgehubdev start -i &quot;input1&quot;</code></p>
+<p><strong>Note</strong>: If you do not start your <em>Edge Module Project</em> as <em>Console application</em> (E.g.: Start it as <em>IISExpress</em> configuration), <em>Visual Studio</em> will not start the <em>iotedgehubdev</em> and an <em>exception</em> will be thrown when you try to register the <code>&quot;input1&quot;</code> using the <em>ioTHubModuleClient</em>.</p>
+<p><strong>Note</strong>: If you registered to other messages input, after the <em>iotedgehubdev</em> is started by <em>Visual Studio</em>, you can add the input desired with the following command:</p>
+<p><code>iotedgehubdev start -i &lt;input_name&gt;</code></p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://github.com/Azure/iotedgehubdev">Azure IoT EdgeHub Dev Tool (Git Repository)</a></li>

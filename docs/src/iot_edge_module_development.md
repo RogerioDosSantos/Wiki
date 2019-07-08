@@ -228,10 +228,13 @@ This will make the *Visual Studio* to configure the *iotedgehubdev* with the fol
 
 This will make the *Visual Studio* to start the *iotedgehubdev* with the following command: 
 
-`iotedgehubdev start -i "<input>"`
+`iotedgehubdev start -i "input1"`
 
-**Note**: If you do not start your *Edge Module Project* as *Console application* (E.g.: Start it as *IISExpress* configuration), *Visual Studio* will not start the *iotedgehubdev* and an *exception* will be thrown when you try to register the `"<input>"` using the *ioTHubModuleClient*. 
+**Note**: If you do not start your *Edge Module Project* as *Console application* (E.g.: Start it as *IISExpress* configuration), *Visual Studio* will not start the *iotedgehubdev* and an *exception* will be thrown when you try to register the `"input1"` using the *ioTHubModuleClient*. 
 
+**Note**: If you registered to other messages input, after the *iotedgehubdev* is started by *Visual Studio*, you can add the input desired with the following command:
+
+`iotedgehubdev start -i <input_name>`
 
 ## References 
 
