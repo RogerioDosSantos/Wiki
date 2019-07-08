@@ -77,7 +77,7 @@ dotnet add package Microsoft.Extensions.Configuration.Json
 dotnet add package System.Runtime.Loader
 ```
 
-- Change the project file (*.csproj) to add the *AzureIoTEdgeModule* capability:
+- Change the project file (.csproj) to add the *AzureIoTEdgeModule* capability:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -194,7 +194,7 @@ namespace edge_module
 
 ![](http://tinyurl.com/y4psnt48)
 
-- Ensure that your *Edge Module Project (*.vcproj)* has the *AzureIoTEdgeModule* capability
+- Ensure that your *Edge Module Project (.vcproj)* has the *AzureIoTEdgeModule* capability
 
 ![](http://tinyurl.com/y3yro4m8)
 
@@ -202,8 +202,25 @@ namespace edge_module
 
 ![](http://tinyurl.com/yy5an5jq)
 
+- Get a connection string for a device configured in the *IoT-Hub* that you would like to use for your debugging session:
 
+![](http://tinyurl.com/y5khvrf6)
+ 
+- Set the *Edge Device Connection String* into the *Edge Config Project*:
 
+![](http://tinyurl.com/y6obrl5r)
+
+This will make the *Visual Studio* to configure the *iotedgehubdev* with the following configuration:
+
+`iotedgehubdev setup -c <device_connection_string>`
+
+- Build the *Edge Config Project*:
+
+![](http://tinyurl.com/y4lg8ek6)
+
+This will make the *Visual Studio* to configure the *iotedgehubdev* with the following configuration: 
+
+`iotedgehubdev start -d "<edge_config_project_dir>\config\deployment_for_local_debug.json"`
 
 ## References 
 

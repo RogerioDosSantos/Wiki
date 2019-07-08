@@ -114,7 +114,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">## For AssemblyLoadContext</span>
 <span class="ex">dotnet</span> add package System.Runtime.Loader</code></pre></div>
 <ul>
-<li>Change the project file (<em>.csproj) to add the </em>AzureIoTEdgeModule* capability:</li>
+<li>Change the project file (.csproj) to add the <em>AzureIoTEdgeModule</em> capability:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;Project</span><span class="ot"> Sdk=</span><span class="st">&quot;Microsoft.NET.Sdk&quot;</span><span class="kw">&gt;</span>
 ... 
@@ -230,7 +230,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <img src="http://tinyurl.com/y4psnt48" />
 </figure>
 <ul>
-<li>Ensure that your <em>Edge Module Project (</em>.vcproj)* has the <em>AzureIoTEdgeModule</em> capability</li>
+<li>Ensure that your <em>Edge Module Project (.vcproj)</em> has the <em>AzureIoTEdgeModule</em> capability</li>
 </ul>
 <figure>
 <img src="http://tinyurl.com/y3yro4m8" />
@@ -241,6 +241,28 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <figure>
 <img src="http://tinyurl.com/yy5an5jq" />
 </figure>
+<ul>
+<li>Get a connection string for a device configured in the <em>IoT-Hub</em> that you would like to use for your debugging session:</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y5khvrf6" />
+</figure>
+<ul>
+<li>Set the <em>Edge Device Connection String</em> into the <em>Edge Config Project</em>:</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y6obrl5r" />
+</figure>
+<p>This will make the <em>Visual Studio</em> to configure the <em>iotedgehubdev</em> with the following configuration:</p>
+<p><code>iotedgehubdev setup -c &lt;device_connection_string&gt;</code></p>
+<ul>
+<li>Build the <em>Edge Config Project</em>:</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y4lg8ek6" />
+</figure>
+<p>This will make the <em>Visual Studio</em> to configure the <em>iotedgehubdev</em> with the following configuration:</p>
+<p><code>iotedgehubdev start -d &quot;&lt;edge_config_project_dir&gt;\config\deployment_for_local_debug.json&quot;</code></p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://github.com/Azure/iotedgehubdev">Azure IoT EdgeHub Dev Tool (Git Repository)</a></li>
