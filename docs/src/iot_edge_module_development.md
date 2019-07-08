@@ -77,6 +77,24 @@ dotnet add package Microsoft.Extensions.Configuration.Json
 dotnet add package System.Runtime.Loader
 ```
 
+- Change the project file (*.csproj) to add the *AzureIoTEdgeModule* capability:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+... 
+
+  <ItemGroup>
+    <ProjectCapability Include="AzureIoTEdgeModule"/>
+  </ItemGroup>
+
+...
+
+</Project>
+```
+
+This will allow your project to be recognized as an *IoT Edge Module*.
+
 - Change the *Program.cs* (Entrypoint) to have the following code representing a simple module:
 
 ```cs

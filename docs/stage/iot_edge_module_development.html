@@ -114,6 +114,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">## For AssemblyLoadContext</span>
 <span class="ex">dotnet</span> add package System.Runtime.Loader</code></pre></div>
 <ul>
+<li>Change the project file (<em>.csproj) to add the </em>AzureIoTEdgeModule* capability:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;Project</span><span class="ot"> Sdk=</span><span class="st">&quot;Microsoft.NET.Sdk&quot;</span><span class="kw">&gt;</span>
+
+... 
+
+  <span class="kw">&lt;ItemGroup&gt;</span>
+    <span class="kw">&lt;ProjectCapability</span><span class="ot"> Include=</span><span class="st">&quot;AzureIoTEdgeModule&quot;</span><span class="kw">/&gt;</span>
+  <span class="kw">&lt;/ItemGroup&gt;</span>
+
+...
+
+<span class="kw">&lt;/Project&gt;</span></code></pre></div>
+<p>This will allow your project to be recognized as an <em>IoT Edge Module</em>.</p>
+<ul>
 <li>Change the <em>Program.cs</em> (Entrypoint) to have the following code representing a simple module:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode cs"><code class="sourceCode cs"><span class="kw">using</span> Microsoft.<span class="fu">Azure</span>.<span class="fu">Devices</span>.<span class="fu">Client</span>;
