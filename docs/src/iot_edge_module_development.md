@@ -81,15 +81,11 @@ dotnet add package System.Runtime.Loader
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
-
 ... 
-
   <ItemGroup>
     <ProjectCapability Include="AzureIoTEdgeModule"/>
   </ItemGroup>
-
 ...
-
 </Project>
 ```
 
@@ -185,6 +181,26 @@ namespace edge_module
     }
 }
 ```
+
+## Using Visual Studio 2019 to debug an Edge Module
+
+- Create a new *IoTEdge Config Project* 
+
+![](http://tinyurl.com/y336ustm) 
+
+![](http://tinyurl.com/yxouyrv8)
+
+- Skip the creation of a new module since we will associate one that already exist 
+
+![](http://tinyurl.com/y4psnt48)
+
+- Ensure that your *Edge Module Project (*.vcproj)* has the *AzureIoTEdgeModule* capability
+
+![](http://tinyurl.com/y3yro4m8)
+
+- Add your *Edge Module* as a *module* of your *Edge Config Project*
+
+![](http://tinyurl.com/yy5an5jq)
 
 
 

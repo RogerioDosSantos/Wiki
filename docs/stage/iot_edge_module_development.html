@@ -117,15 +117,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Change the project file (<em>.csproj) to add the </em>AzureIoTEdgeModule* capability:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;Project</span><span class="ot"> Sdk=</span><span class="st">&quot;Microsoft.NET.Sdk&quot;</span><span class="kw">&gt;</span>
-
 ... 
-
   <span class="kw">&lt;ItemGroup&gt;</span>
     <span class="kw">&lt;ProjectCapability</span><span class="ot"> Include=</span><span class="st">&quot;AzureIoTEdgeModule&quot;</span><span class="kw">/&gt;</span>
   <span class="kw">&lt;/ItemGroup&gt;</span>
-
 ...
-
 <span class="kw">&lt;/Project&gt;</span></code></pre></div>
 <p>This will allow your project to be recognized as an <em>IoT Edge Module</em>.</p>
 <ul>
@@ -217,6 +213,34 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         }
     }
 }</code></pre></div>
+<h2 id="using-visual-studio-2019-to-debug-an-edge-module">Using Visual Studio 2019 to debug an Edge Module</h2>
+<ul>
+<li>Create a new <em>IoTEdge Config Project</em></li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y336ustm" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/yxouyrv8" />
+</figure>
+<ul>
+<li>Skip the creation of a new module since we will associate one that already exist</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y4psnt48" />
+</figure>
+<ul>
+<li>Ensure that your <em>Edge Module Project (</em>.vcproj)* has the <em>AzureIoTEdgeModule</em> capability</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y3yro4m8" />
+</figure>
+<ul>
+<li>Add your <em>Edge Module</em> as a <em>module</em> of your <em>Edge Config Project</em></li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/yy5an5jq" />
+</figure>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://github.com/Azure/iotedgehubdev">Azure IoT EdgeHub Dev Tool (Git Repository)</a></li>
