@@ -263,6 +263,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </figure>
 <p>This will make the <em>Visual Studio</em> to configure the <em>iotedgehubdev</em> with the following configuration:</p>
 <p><code>iotedgehubdev start -d &quot;&lt;edge_config_project_dir&gt;\config\deployment_for_local_debug.json&quot;</code></p>
+<ul>
+<li>Launch your <em>Edge Module Project</em> as <em>Console application</em>:</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y24unl27" />
+</figure>
+<p>This will make the <em>Visual Studio</em> to start the <em>iotedgehubdev</em> with the following command:</p>
+<p><code>iotedgehubdev start -i &quot;&lt;input&gt;&quot;</code></p>
+<p><strong>Note</strong>: If you do not start your <em>Edge Module Project</em> as <em>Console application</em> (E.g.: Start it as <em>IISExpress</em> configuration), <em>Visual Studio</em> will not start the <em>iotedgehubdev</em> and an <em>exception</em> will be thrown when you try to register the <code>&quot;&lt;input&gt;&quot;</code> using the <em>ioTHubModuleClient</em>.</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://github.com/Azure/iotedgehubdev">Azure IoT EdgeHub Dev Tool (Git Repository)</a></li>

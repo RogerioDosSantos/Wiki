@@ -222,6 +222,17 @@ This will make the *Visual Studio* to configure the *iotedgehubdev* with the fol
 
 `iotedgehubdev start -d "<edge_config_project_dir>\config\deployment_for_local_debug.json"`
 
+- Launch your *Edge Module Project* as *Console application*:
+
+![](http://tinyurl.com/y24unl27)
+
+This will make the *Visual Studio* to start the *iotedgehubdev* with the following command: 
+
+`iotedgehubdev start -i "<input>"`
+
+**Note**: If you do not start your *Edge Module Project* as *Console application* (E.g.: Start it as *IISExpress* configuration), *Visual Studio* will not start the *iotedgehubdev* and an *exception* will be thrown when you try to register the `"<input>"` using the *ioTHubModuleClient*. 
+
+
 ## References 
 
 - [Azure IoT EdgeHub Dev Tool (Git Repository)](https://github.com/Azure/iotedgehubdev)
