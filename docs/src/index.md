@@ -161,6 +161,7 @@
 - [Serilog]( ./serilog.html )
 - [Swashbuckle (Swagger)]( ./swashbuckle.html )
 - [Blazor]( ./blazor.html )
+- [XUnit]( ./xunit.html )
 
 ## Virtualization 
 
