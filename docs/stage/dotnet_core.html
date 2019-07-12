@@ -89,5 +89,29 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>To build a NuGet package (a .nupkg file) from the project folder, run:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">dotnet</span> pack -c Release -o /workspace/stage/release</code></pre></div>
+<h3 id="set-an-output-directory-without-the-.net-platform-being-appended">Set an output directory without the .Net platform being appended</h3>
+<p>By default the <em>.Net Core Platform</em> (E.g.: <em>netcoreapp2.0</em>) is appended in the <em>output directory</em> independent of the configuration:</p>
+<figure>
+<img src="http://tinyurl.com/y3m5jo4c" />
+</figure>
+<p>To disable it change the (csproj) file to add the following:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;PropertyGroup&gt;</span>
+  ...
+  <span class="kw">&lt;AppendTargetFrameworkToOutputPath&gt;</span>false<span class="kw">&lt;/AppendTargetFrameworkToOutputPath&gt;</span>
+  ...
+<span class="kw">&lt;/PropertyGroup&gt;</span></code></pre></div>
+<h3 id="create-and-consuming-a-jwt">Create and Consuming a JWT</h3>
+<ul>
+<li>Add the dependencies to the project</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Provide support for creating, serializing and validating JSON Web Tokens</span>
+<span class="ex">dotnet</span> add package System.IdentityModel.Tokens.Jwt</code></pre></div>
+<h3 id="copy-folder-to-the-output-directory-during-the-build">Copy folder to the output directory during the build</h3>
+<p>The example below copy the folder <em>resources</em> located in the same directory than the <em>(csproj)</em> file to the <em>build output</em> directory.</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;ItemGroup&gt;</span>
+  ...
+  <span class="kw">&lt;None</span><span class="ot"> Include=</span><span class="st">&quot;resources\**&quot;</span><span class="ot"> CopyToOutputDirectory=</span><span class="st">&quot;PreserveNewest&quot;</span><span class="kw">/&gt;</span>
+  ...
+<span class="kw">&lt;/ItemGroup&gt;</span></code></pre></div>
 </body>
 </html>

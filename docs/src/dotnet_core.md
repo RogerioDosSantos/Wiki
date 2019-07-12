@@ -64,6 +64,43 @@ You can add any [optional properties](https://docs.microsoft.com/en-us/dotnet/co
 dotnet pack -c Release -o /workspace/stage/release
 ```
 
+### Set an output directory without the .Net platform being appended 
+
+By default the *.Net Core Platform* (E.g.: *netcoreapp2.0*) is appended in the *output directory* independent of the configuration:
+
+![](http://tinyurl.com/y3m5jo4c)
+
+To disable it change the (csproj) file to add the following:
+
+```xml
+<PropertyGroup>
+  ...
+  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  ...
+</PropertyGroup>
+```
+
+### Create and Consuming a JWT
+
+- Add the dependencies to the project
+
+```sh
+# Provide support for creating, serializing and validating JSON Web Tokens
+dotnet add package System.IdentityModel.Tokens.Jwt
+```
+
+### Copy folder to the output directory during the build
+
+The example below copy the folder *resources* located in the same directory than the *(csproj)* file to the *build output* directory.
+
+```xml
+<ItemGroup>
+  ...
+  <None Include="resources\**" CopyToOutputDirectory="PreserveNewest"/>
+  ...
+</ItemGroup>
+```
+
 
 
 
