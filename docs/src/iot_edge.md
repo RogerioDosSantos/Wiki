@@ -77,6 +77,12 @@ iotedge check
 
 ![](http://tinyurl.com/y3ruk522)
 
+## How to use docker cli into a moby runtime
+
+```shell
+# List the available images in the moby engine
+docker -H npipe:////./pipe/iotedge_moby_engine images
+```
 
 ## Commands
 
