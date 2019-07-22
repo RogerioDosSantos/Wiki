@@ -4,6 +4,8 @@
 
 `sudo` : Run elevated   
 
+`sudo -E` : Run elevated keeping all environment variables  
+
 `sudo !!` : Repeat last command as sudo.
 
 `su -` : Become root (Super User)
