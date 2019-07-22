@@ -61,7 +61,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="co"># Add Serilog</span>
 <span class="ex">dotnet</span> add package Serilog
-<span class="ex">dotnet</span> add package Serilog.Sinks.Console</code></pre></div>
+<span class="co">## Allow to write into the console</span>
+<span class="ex">dotnet</span> add package Serilog.Sinks.Console
+<span class="co">## Allow to write into the Visual Studio Debug Window</span>
+<span class="ex">dotnet</span> add package Serilog.Sinks.Debug</code></pre></div>
 <ul>
 <li>Change the Main function as following:</li>
 </ul>

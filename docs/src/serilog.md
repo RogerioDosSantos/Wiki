@@ -14,7 +14,10 @@ dotnet new console
 
 # Add Serilog
 dotnet add package Serilog
+## Allow to write into the console
 dotnet add package Serilog.Sinks.Console
+## Allow to write into the Visual Studio Debug Window
+dotnet add package Serilog.Sinks.Debug
 ```
 - Change the Main function as following:
 
