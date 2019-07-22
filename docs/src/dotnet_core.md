@@ -35,6 +35,9 @@ sudo apt-get install dotnet-sdk-2.0.2
 ### Create a new project
 
 ```sh 
+# Create a class library project
+dotnet new classlib 
+
 # Create a new console application project
 dotnet new console 
 
@@ -62,6 +65,37 @@ You can add any [optional properties](https://docs.microsoft.com/en-us/dotnet/co
 
 ```sh 
 dotnet pack -c Release -o /workspace/stage/release
+```
+
+### NuGet Package - Add Local Folder as Packages Sources 
+
+You can add additional folders to allow *NuGet* packages to be searched. This is usefull when you want to put local dependencies in your projects by using *Local NuGet packages*. 
+
+To do it change your *<project_csproj>* file as following:
+
+```xml
+...
+<PropertyGroup>
+  ...
+  <RestoreSources>$(RestoreSources);<desired_relative_folder>;https://api.nuget.org/v3/index.json</RestoreSources>
+  ...
+</PropertyGroup>
+...
+```
+
+This technique will allow the following commands to be executed and get the packages locally:
+
+```sh 
+dotnet add package <package_name>
+dotnet restore 
+dotnet run
+```
+
+**Note:** During development, if you change the *NuGet* package but do not increment it's version, in both the project that produces the nupkg and in the project that consumes it, you'll need to clear your local packages cache before restoring again:
+
+```sh
+dotnet nuget locals all --clear
+dotnet restore
 ```
 
 ### Set an output directory without the .Net platform being appended 

@@ -68,7 +68,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="fu">sudo</span> apt-get install dotnet-sdk-2.0.2</code></pre></div>
 <h2 id="how-to">How-to</h2>
 <h3 id="create-a-new-project">Create a new project</h3>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Create a new console application project</span>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Create a class library project</span>
+<span class="ex">dotnet</span> new classlib 
+
+<span class="co"># Create a new console application project</span>
 <span class="ex">dotnet</span> new console 
 
 <span class="co"># Create a new ASP.NET Core Web API project</span>
@@ -89,6 +92,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>To build a NuGet package (a .nupkg file) from the project folder, run:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">dotnet</span> pack -c Release -o /workspace/stage/release</code></pre></div>
+<h3 id="nuget-package---add-local-folder-as-packages-sources">NuGet Package - Add Local Folder as Packages Sources</h3>
+<p>You can add additional folders to allow <em>NuGet</em> packages to be searched. This is usefull when you want to put local dependencies in your projects by using <em>Local NuGet packages</em>.</p>
+<p>To do it change your <em><project_csproj></em> file as following:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml">...
+<span class="kw">&lt;PropertyGroup&gt;</span>
+  ...
+  <span class="kw">&lt;RestoreSources&gt;</span>$(RestoreSources);<span class="kw">&lt;desired_relative_folder&gt;</span>;https://api.nuget.org/v3/index.json<span class="kw">&lt;/RestoreSources&gt;</span>
+  ...
+<span class="kw">&lt;/PropertyGroup&gt;</span>
+...</code></pre></div>
+<p>This technique will allow the following commands to be executed and get the packages locally:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">dotnet</span> add package <span class="op">&lt;</span>package_name<span class="op">&gt;</span>
+<span class="ex">dotnet</span> restore 
+<span class="ex">dotnet</span> run</code></pre></div>
+<p><strong>Note:</strong> During development, if you change the <em>NuGet</em> package but do not increment it's version, in both the project that produces the nupkg and in the project that consumes it, you'll need to clear your local packages cache before restoring again:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">dotnet</span> nuget locals all --clear
+<span class="ex">dotnet</span> restore</code></pre></div>
 <h3 id="set-an-output-directory-without-the-.net-platform-being-appended">Set an output directory without the .Net platform being appended</h3>
 <p>By default the <em>.Net Core Platform</em> (E.g.: <em>netcoreapp2.0</em>) is appended in the <em>output directory</em> independent of the configuration:</p>
 <figure>
