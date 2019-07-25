@@ -60,6 +60,7 @@
 - [Git TFS]( ./git_tfs.html )
 - [TFS Online]( ./tfs_online.html )
 - [TFS Client](./tfs_client.html )
+- [GitVersion]( ./git_version.html )
 
 ## Dev/Ops
 
