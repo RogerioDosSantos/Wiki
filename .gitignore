@@ -20,3 +20,7 @@ yarn-error.log*
 tags
 docs/src/tags
 tags
+
+# README commands
+docs/src/style.css
+docs/src/*.html
