@@ -21,3 +21,6 @@ unzip GitVersion-bin-net40-v4.0.0.zip -d GitVersion
 mono GitVersion/GitVersion.exe
 ```
 
+## References 
+
+- [Video explainning how the GitVersion can be used](https://www.youtube.com/watch?v=SlM02V1tkSc)
