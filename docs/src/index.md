@@ -61,6 +61,7 @@
 - [TFS Online]( ./tfs_online.html )
 - [TFS Client](./tfs_client.html )
 - [GitVersion]( ./git_version.html )
+- [GitReleaseManager]( ./git_release_manager.html )
 
 ## Dev/Ops
 
@@ -178,6 +179,7 @@
 - [GPG]( ./gpg.html )
 - [MOSS]( ./moss.html )
 - [Checkmarks]( ./checkmarks.html )
+- [jwt]( ./jwt.html )
 
 ## Authentication / Authorization
 
