@@ -2,6 +2,8 @@
 
 ## Selecting the proper cryptographic algorithm
 
+For an example on how to create and consume *JWT* please refer to the [following link](https://github.com/RogerioDosSantos/example_dotnet_jwt)
+
 ### Security concerns
 
 ![](http://tinyurl.com/y6a7gn4n)
@@ -19,3 +21,4 @@
 ## References
 
 - [Article that allow to proper select the diferent types of cryptographic algorithm](https://connect2id.com/products/nimbus-jose-jwt/algorithm-selection-guide)
+- [Type of claims that can be used in the payload](https://tools.ietf.org/html/rfc7519#section-4)
