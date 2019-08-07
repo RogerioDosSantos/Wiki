@@ -48,7 +48,9 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git log --pretty=oneline -<quantity>`: Shows the lasts <quantity> commits. Only the commit line.
 
-`git show-branch` : Show the available branches
+`git show-branch` : Show the commits on all available branches
+
+`git branch` : List the available branch and inform in what branch you are
 
 `git checkout -b <branch>` : Create local branch
 
