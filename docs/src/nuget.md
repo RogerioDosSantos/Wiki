@@ -15,4 +15,14 @@
 ![](http://tinyurl.com/y24a8hxw)
 
 
+### Provide Content with your NuGet package 
+
+Content are files that will appear in the project of the consumer of your package. This is very utile to deliver configuration files with your packages or certificates that your package uses. 
+
+To add a file as a *content* in the package, change the *Build Action* property of the file to be *Content*:
+
+![](http://tinyurl.com/y3ulnzga)
+
 ## References
+
+- [File Build Actions](https://docs.microsoft.com/en-us/visualstudio/ide/build-actions?view=vs-2019)
