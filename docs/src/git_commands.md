@@ -350,3 +350,10 @@ git checkout -b <new_branch_name>
 git push -u origin <new_branch_name>
 ```
 
+### Git - Branch - Track Remote Branch 
+
+```bash
+# Make the local branch track the remote branch 
+git branch -u origin/<remote_branch_name>
+```
+
