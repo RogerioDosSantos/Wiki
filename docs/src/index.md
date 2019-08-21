@@ -194,6 +194,7 @@
 - [0MQ](./0mq.html)
 - [OpenSSL]( ./openssl.html )
 - [Wireshark]( ./wireshark.html )
+- [RabbitMQ]( ./rabbit_mq.html )
 
 ## Patterns 
 
