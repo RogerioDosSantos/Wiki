@@ -82,6 +82,9 @@ iotedge check
 ```shell
 # List the available images in the moby engine
 docker -H npipe:////./pipe/iotedge_moby_engine images
+
+# Docker uses the following socket by default:
+# unix:///var/run/docker.sock
 ```
 
 ## Commands

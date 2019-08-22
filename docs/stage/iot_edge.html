@@ -110,7 +110,10 @@ iotedge check</code></pre></div>
 </figure>
 <h2 id="how-to-use-docker-cli-into-a-moby-runtime">How to use docker cli into a moby runtime</h2>
 <pre class="shell"><code># List the available images in the moby engine
-docker -H npipe:////./pipe/iotedge_moby_engine images</code></pre>
+docker -H npipe:////./pipe/iotedge_moby_engine images
+
+# Docker uses the following socket by default:
+# unix:///var/run/docker.sock</code></pre>
 <h2 id="commands">Commands</h2>
 <p><code>pip install -U azure-iot-edge-runtime-ctl</code> : Install the IoT-Edge runtime module</p>
 <p><code>pip install azure-iot-edge-runtime-ctl==1.0.0rc19</code>: Install a specific version of the iotedgectl</p>
