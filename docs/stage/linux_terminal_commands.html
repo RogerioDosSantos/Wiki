@@ -549,6 +549,12 @@ cat /tmp/config_file</code></pre></div>
 
 <span class="co"># Extracting the file</span>
 <span class="fu">bzip2</span> -d compressed.bz2</code></pre></div>
+<h3 id="shell---execute-bash-script-from-url-without-downloading-a-file">Shell - Execute bash script from URL without downloading a file</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Execute bash without arguments</span>
+<span class="fu">wget</span> -O - <span class="op">&lt;</span>bash_url<span class="op">&gt;</span> <span class="kw">|</span> <span class="fu">bash</span>
+
+<span class="co"># Execute bash that require arguments</span>
+<span class="fu">wget</span> -O - <span class="op">&lt;</span>bash_url<span class="op">&gt;</span> <span class="kw">|</span> <span class="fu">bash</span> -s <span class="st">&#39;&lt;argument_01&gt;&#39;</span> <span class="st">&#39;&lt;argument_02&gt;&#39;</span></code></pre></div>
 <h3 id="permissions-and-groups">Permissions and Groups</h3>
 <p>The permission are listed as following:</p>
 <figure>

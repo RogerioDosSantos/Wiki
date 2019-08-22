@@ -860,6 +860,16 @@ dd if=/dev/zero bs=10G count=10000 | bzip2 -c > compressed.bz2
 bzip2 -d compressed.bz2
 ```
 
+### Shell - Execute bash script from URL without downloading a file 
+
+```bash
+# Execute bash without arguments
+wget -O - <bash_url> | bash
+
+# Execute bash that require arguments
+wget -O - <bash_url> | bash -s '<argument_01>' '<argument_02>'
+```
+
 ### Permissions and Groups
 
 The permission are listed as following:
