@@ -306,3 +306,14 @@ netstat -ab
 # List all Port informing the process that is using it (Needs Elevation)
 netstat -aon
 ```
+
+### PowerShell - Execute shell script from URL without downloading a file 
+
+```bash
+# Execute bash without arguments
+iwr -useb <ps1_url> | iex
+
+# Execute bash that require arguments
+iwr -useb <ps1_url> | iex -<parameter>:<value>
+```
+
