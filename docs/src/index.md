@@ -17,6 +17,7 @@
 - [Setup and Config]( ./windows_setup_and_config.html )
 - [HTTP.sys]( ./http_sys.html )
 - [COM/DCOM]( ./com_dcom.html )
+- [DLLs]( ./dlls.html )
 
 ## Linux 
 

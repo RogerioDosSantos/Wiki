@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="dlls">DLLs</h1>
+<h2 id="loading-dynamically-a-function-from-a-dll">Loading dynamically a function from a DLL</h2>
+<p>When loading a <em>DLL</em> on <em>Windows</em> using <em>function pointers</em>, you need to ensure that your <em>function pointer</em> declaration is using the proper <em>Calling Convension</em>.</p>
+<p>The <em>calling convension</em> possible are:</p>
+<ul>
+<li><code>__cdecl</code>: Libraries compiled with the <code>/Gd</code> flag.</li>
+<li><code>__stdcall</code>: Libraries compiled with the <code>/Gz</code> flag.</li>
+<li><code>__fastcall</code>: Libraries compiled with the <code>/Gr</code> flag.</li>
+</ul>
+<p><em>Function Pointer</em> declaration example:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// Function pointer declaration using __stdcall convension</span>
+<span class="kw">typedef</span> <span class="dt">bool</span> (__stdcall *SimpleFunctionPointer)(<span class="at">const</span> <span class="dt">char</span>* paramerer_1);</code></pre></div>
+<p>If the wrong conversion is defined, when calling a the function passing a parameter, you will receive an exception with the following information:</p>
+<p><code>Run-Time Check Failure #0 - The value of ESP was not properly saved across a function call.</code></p>
+<p>If you do not have access to the source code, you can deduct the <em>Calling Convension</em> being used by evaluate the the <em>Symbol name decorator</em> as following:</p>
+<ul>
+<li><code>__cdecl</code>: begins with a *_* but has no *<span class="citation" data-cites="*">@*</span></li>
+<li><code>__stdcall</code>: begins with *_* and has a *<span class="citation" data-cites="*">@*</span></li>
+<li><code>__fastcall</code>: begins with <em><span class="citation" data-cites="*">@*</span> and has another </em><span class="citation" data-cites="*">@*</span></li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="http://unixwiz.net/techtips/win32-callconv.html">Calling Convensions Article</a></li>
+</ul>
+</body>
+</html>
