@@ -156,6 +156,7 @@
 - [Python]( ./python.html )
 - [Regular Expressions]( ./regular_expressions.html )
 - [Erlang]( ./erlang.html )
+- [C++]( ./cplusplus.html )
 
 ## .Net 
 
