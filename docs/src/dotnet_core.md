@@ -135,6 +135,9 @@ The example below copy the folder *resources* located in the same directory than
 </ItemGroup>
 ```
 
+## References 
+
+- [Host .Net Core into a Native Application](https://github.com/dotnet/samples/tree/master/core/hosting)
 
 
 
