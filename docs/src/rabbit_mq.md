@@ -16,6 +16,10 @@
 
 - `Nameless (Default on *RabbitMQ*)`: This exchange compares the *messaging routing key* with the *queue name* and not the *queue bind key*
 
+## Best Practices 
+
+### Connection 
+
 ## References 
 
 - [RabbitMQ Website](https://www.rabbitmq.com/)
