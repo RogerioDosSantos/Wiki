@@ -323,6 +323,17 @@ You can find the latest version of *Docker-Compose* in the [Docker Compose Githu
 Invoke-WebRequest "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Windows-x86_64.exe" -UseBasicParsing -OutFile $Env:ProgramFiles\Docker\Docker\resources\bin\docker-compose.exe
 ```
 
+### Docker - Bug - How to stop a container that the engine does not stop in any way
+
+There is a bug in the *docker engine* for *Windows* that will not allow you to stop the container either using `docker stop` or `docker kill` commands.
+
+To solve the issue: 
+
+- Quit the *docker engine* (*Docker desktop*)
+- Remove the content of the following folder:
+`C:\ProgramData\Docker\containers`
+- Restart the *docker engine* (*Docker desktop*)
+
 
 
 
