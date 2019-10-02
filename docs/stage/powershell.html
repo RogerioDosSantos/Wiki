@@ -59,7 +59,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3 id="commands">Commands</h3>
 <p><code>Get-Process</code>: List running processes.</p>
 <p><code>Start-Process &lt;locaction&gt;</code>: Start a process.</p>
-<p><code>Stop-Process &lt;name&gt;</code>: Stop a process.</p>
+<p><code>Stop-Process &lt;process_name&gt;</code>: Stop a process. Note: You can get the process and store it in a variable using the command <code>Get-Process &lt;name&gt;</code>. (E.g.: <code>$ceview_process = Get-Process CEView</code>)</p>
 <p><code>&lt;command&gt; | Select-String -Pattern &lt;filter&gt;</code>: Equivalent to <em>grep</em>. E.g.: <code>Get-Process | Select-String -Pattern ceview</code></p>
 <p><code>Get-WindowsFeature</code>: Inform the windows features installed in the system.</p>
 <p><code>Invoke-WebRequest -OutFile &lt;file_path&gt; &quot;&lt;url&gt;&quot;</code>: Download a file. Equivalent to <em>wget</em></p>

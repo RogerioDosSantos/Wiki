@@ -18,7 +18,7 @@ The site [PInvoke](http://pinvoke.net/) allows you to search for various functio
 
 `Start-Process <locaction>`: Start a process.
 
-`Stop-Process <name>`: Stop a process. 
+`Stop-Process <process_name>`: Stop a process. Note: You can get the process and store it in a variable using the command `Get-Process <name>`. (E.g.: `$ceview_process = Get-Process CEView`)
 
 `<command> | Select-String -Pattern <filter>`: Equivalent to *grep*. E.g.: `Get-Process | Select-String -Pattern ceview`
 
