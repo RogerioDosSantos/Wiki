@@ -99,4 +99,14 @@ By default the *Remote Agent (CEServer)* will connect using the port *4322*
 
 TODO
 
+### StADOSvr - Studio ADO Gateway - Configure port 
+
+By default the *Studio ADO Gateway (StADOSvr)* uses the port 3997.
+
+To configure another port you can use the following command: 
+
+```sh 
+TODO
+```
+
 
