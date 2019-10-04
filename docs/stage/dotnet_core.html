@@ -133,6 +133,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <span class="kw">&lt;None</span><span class="ot"> Include=</span><span class="st">&quot;resources\**&quot;</span><span class="ot"> CopyToOutputDirectory=</span><span class="st">&quot;PreserveNewest&quot;</span><span class="kw">/&gt;</span>
   ...
 <span class="kw">&lt;/ItemGroup&gt;</span></code></pre></div>
+<h3 id="net---proxy---set-global-default-proxy-for-an-application">.Net - Proxy - Set Global Default Proxy for an Application</h3>
+<p>By default, a <em>.Net</em> application, running on <em>Windows</em>, uses the <em>default proxy</em> which is the same configured in the <em>Internet Explorer</em>. However, there are some <em>OSs</em> as for example the <em>Windows servercore</em> where the <em>Internet Explorer</em> is not used.</p>
+<p>For this reason, it is a good practice to check is the <em>Proxy Environment Variable (http_proxy, https_proxy)</em> is set and if so, add a <em>default proxy</em> for your <em>.Net Application</em>. This can be done using the code below:</p>
+<div class="sourceCode"><pre class="sourceCode c#"><code class="sourceCode cs"><span class="dt">string</span> proxyUrl = Environment.<span class="fu">GetEnvironmentVariable</span>(<span class="st">&quot;http_proxy&quot;</span>);
+proxyUrl = String.<span class="fu">IsNullOrEmpty</span>(proxyUrl) ? Environment.<span class="fu">GetEnvironmentVariable</span>(<span class="st">&quot;https_proxy&quot;</span>) : proxyUrl;
+<span class="kw">if</span> (!String.<span class="fu">IsNullOrEmpty</span>(proxyUrl))
+    System.<span class="fu">Net</span>.<span class="fu">WebRequest</span>.<span class="fu">DefaultWebProxy</span> = <span class="kw">new</span> <span class="fu">WebProxy</span>(proxyUrl);</code></pre></div>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://github.com/dotnet/samples/tree/master/core/hosting">Host .Net Core into a Native Application</a></li>

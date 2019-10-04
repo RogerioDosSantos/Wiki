@@ -135,6 +135,19 @@ The example below copy the folder *resources* located in the same directory than
 </ItemGroup>
 ```
 
+### .Net - Proxy - Set Global Default Proxy for an Application
+
+By default, a *.Net* application, running on *Windows*, uses the *default proxy* which is the same configured in the *Internet Explorer*. However, there are some *OSs* as for example the *Windows servercore* where the *Internet Explorer* is not used. 
+
+For this reason, it is a good practice to check is the *Proxy Environment Variable (http_proxy, https_proxy)* is set and if so, add a *default proxy* for your *.Net Application*. This can be done using the code below: 
+
+```c#
+string proxyUrl = Environment.GetEnvironmentVariable("http_proxy");
+proxyUrl = String.IsNullOrEmpty(proxyUrl) ? Environment.GetEnvironmentVariable("https_proxy") : proxyUrl;
+if (!String.IsNullOrEmpty(proxyUrl))
+    System.Net.WebRequest.DefaultWebProxy = new WebProxy(proxyUrl);
+```
+
 ## References 
 
 - [Host .Net Core into a Native Application](https://github.com/dotnet/samples/tree/master/core/hosting)
