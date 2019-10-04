@@ -356,6 +356,8 @@ $process = Start-Process -FilePath ping -ArgumentList localhost -NoNewWindow -Pa
 
 ### Powershell - Certificate - Import Certificates Examples 
 
+Importing Certificate with User Interface
+
 ```ps1
 # Imports the certificate from the file into the root store of the current user.
 Import-Certificate -FilePath "<cert_path>" -CertStoreLocation cert:\CurrentUser\Root
@@ -363,6 +365,18 @@ Import-Certificate -FilePath "<cert_path>" -CertStoreLocation cert:\CurrentUser\
 #Imports the certificate from the file into the root store of the Local Machine
 Import-Certificate -FilePath "<cert_path>" -CertStoreLocation Cert:\LocalMachine\Root
 ```
+
+Importing Certificate without User Interface 
+
+```ps1
+# Import certificate to the *Root Store* without asking anything to the user
+$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2("<certificate_path (.cer)>")
+$rootStore = Get-Item cert:\LocalMachine\Root
+$rootStore.Open("ReadWrite")
+$rootStore.Add($cert)
+$rootStore.Close()
+```
+
 
 ### PowerShell - Proxy - Set Global Proxy Parameters 
 

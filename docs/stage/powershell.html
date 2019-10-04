@@ -285,11 +285,19 @@ $process.StandardError
 # Execute Ping and redirect the STDIO and StdError to a file 
 $process = Start-Process -FilePath ping -ArgumentList localhost -NoNewWindow -PassThru -Wait -RedirectStandardOutput stdout.txt -RedirectStandardError stderr.txt</code></pre>
 <h3 id="powershell---certificate---import-certificates-examples">Powershell - Certificate - Import Certificates Examples</h3>
+<p>Importing Certificate with User Interface</p>
 <pre class="ps1"><code># Imports the certificate from the file into the root store of the current user.
 Import-Certificate -FilePath &quot;&lt;cert_path&gt;&quot; -CertStoreLocation cert:\CurrentUser\Root
 
 #Imports the certificate from the file into the root store of the Local Machine
 Import-Certificate -FilePath &quot;&lt;cert_path&gt;&quot; -CertStoreLocation Cert:\LocalMachine\Root</code></pre>
+<p>Importing Certificate without User Interface</p>
+<pre class="ps1"><code># Import certificate to the *Root Store* without asking anything to the user
+$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2(&quot;&lt;certificate_path (.cer)&gt;&quot;)
+$rootStore = Get-Item cert:\LocalMachine\Root
+$rootStore.Open(&quot;ReadWrite&quot;)
+$rootStore.Add($cert)
+$rootStore.Close()</code></pre>
 <h3 id="powershell---proxy---set-global-proxy-parameters">PowerShell - Proxy - Set Global Proxy Parameters</h3>
 <p>By default, the functions that uses <em>Web Requests</em> will use the <em>default proxy configuration</em> which is set in the <em>Internet Explorer Services</em>. However, on system that does not have the <em>Internet Explorer</em>, as for example the <em>windows servercore</em>, the <em>Proxy</em> will not be set even if the <em>proxy environment variable (E.g.: http_proxy, https_proxy)</em> is set.</p>
 <p>You can workaround this by setting the <em>default parameters values</em> for the functions that request <em>web connectivity</em> as shown below:</p>
