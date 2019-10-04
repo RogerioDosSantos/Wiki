@@ -62,7 +62,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>Stop-Process &lt;process_name&gt;</code>: Stop a process. Note: You can get the process and store it in a variable using the command <code>Get-Process &lt;name&gt;</code>. (E.g.: <code>$ceview_process = Get-Process CEView</code>)</p>
 <p><code>&lt;command&gt; | Select-String -Pattern &lt;filter&gt;</code>: Equivalent to <em>grep</em>. E.g.: <code>Get-Process | Select-String -Pattern ceview</code></p>
 <p><code>Get-WindowsFeature</code>: Inform the windows features installed in the system.</p>
-<p><code>Invoke-WebRequest -OutFile &lt;file_path&gt; &quot;&lt;url&gt;&quot;</code>: Download a file. Equivalent to <em>wget</em></p>
+<p><code>Invoke-WebRequest [-OutFile &lt;file_path&gt;] &quot;&lt;url&gt;&quot; [-UseBasicParsing]</code>: Download a file. Equivalent to <em>wget</em>. By default, the <code>Invoke-WebRequest</code> command will use the <em>Internet Explorer</em> to parse the received return. The <code>UseBasicParsing</code> parameter can be used when the <em>Internet Explorer</em> is not available in the machine.</p>
 <p><code>Write-Host &quot;text&quot;</code>: Write a text to the console. Equivalent to <em>echo</em></p>
 <p><code>[environment]::OSVersion.VersionString</code>: Return the version of the OS.</p>
 <p><code>Get-Content -Path &lt;file_path&gt;</code>: Read the content of a file. Similar to Linux <code>cat</code></p>

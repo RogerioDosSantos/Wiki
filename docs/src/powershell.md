@@ -24,7 +24,7 @@ The site [PInvoke](http://pinvoke.net/) allows you to search for various functio
 
 `Get-WindowsFeature`: Inform the windows features installed in the system.
 
-`Invoke-WebRequest -OutFile <file_path> "<url>"`: Download a file. Equivalent to *wget*
+`Invoke-WebRequest [-OutFile <file_path>] "<url>" [-UseBasicParsing]`: Download a file. Equivalent to *wget*. By default, the `Invoke-WebRequest` command will use the *Internet Explorer* to parse the received return. The `UseBasicParsing` parameter can be used when the *Internet Explorer* is not available in the machine.
 
 `Write-Host "text"`: Write a text to the console. Equivalent to *echo*
 
