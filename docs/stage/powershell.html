@@ -264,5 +264,42 @@ netstat -aon</code></pre>
 
 <span class="co"># Execute bash that require arguments</span>
 <span class="ex">iwr</span> -useb <span class="op">&lt;</span>ps1_url<span class="op">&gt;</span> <span class="kw">|</span> <span class="ex">iex</span> -<span class="op">&lt;</span>parameter<span class="op">&gt;</span>:<span class="op">&lt;</span>value<span class="op">&gt;</span></code></pre></div>
+<h3 id="powershell---handle-command-line-arguments">PowerShell - Handle Command Line Arguments</h3>
+<p>In <em>PowerShell</em> you can pass parameters by using the <code>-</code> character. As for example:</p>
+<pre class="ps1"><code>command -parameter1 value1 -parameter2 value2
+command -p1 value1 -parameter2 value2</code></pre>
+<p>You can handle the parameter passed by using the <em>param</em> session in your <em>PowerShell</em> script:</p>
+<pre class="ps1"><code>param (
+    [Alias(&#39;p1&#39;)] [string]$parameter1 = &quot;default_value1&quot;,
+    [Parameter(Mandatory=$true)][string]$parameter2 = &quot;default_value2&quot;,
+ )</code></pre>
+<h3 id="powershell---read-file-content-into-a-variable">PowerShell - Read file content into a variable</h3>
+<pre class="ps1"><code># Read all content of test.txt file into a variable
+$content = [IO.File]::ReadAllText(&quot;.\test.txt&quot;)</code></pre>
+<h3 id="powershell---start-process-examples">PowerShell - Start-Process examples</h3>
+<pre class="ps1"><code># Execute Ping and Show the Stdio + StdError
+$process = Start-Process -FilePath ping -ArgumentList localhost -NoNewWindow -PassThru -Wait
+$process.StandardOutput
+$process.StandardError
+
+# Execute Ping and redirect the STDIO and StdError to a file 
+$process = Start-Process -FilePath ping -ArgumentList localhost -NoNewWindow -PassThru -Wait -RedirectStandardOutput stdout.txt -RedirectStandardError stderr.txt</code></pre>
+<h3 id="powershell---certificate---import-certificates-examples">Powershell - Certificate - Import Certificates Examples</h3>
+<pre class="ps1"><code># Imports the certificate from the file into the root store of the current user.
+Import-Certificate -FilePath &quot;&lt;cert_path&gt;&quot; -CertStoreLocation cert:\CurrentUser\Root
+
+#Imports the certificate from the file into the root store of the Local Machine
+Import-Certificate -FilePath &quot;&lt;cert_path&gt;&quot; -CertStoreLocation Cert:\LocalMachine\Root</code></pre>
+<h3 id="powershell---proxy---set-global-proxy-parameters">PowerShell - Proxy - Set Global Proxy Parameters</h3>
+<p>By default, the functions that uses <em>Web Requests</em> will use the <em>default proxy configuration</em> which is set in the <em>Internet Explorer Services</em>. However, on system that does not have the <em>Internet Explorer</em>, as for example the <em>windows servercore</em>, the <em>Proxy</em> will not be set even if the <em>proxy environment variable (E.g.: http_proxy, https_proxy)</em> is set.</p>
+<p>You can workaround this by setting the <em>default parameters values</em> for the functions that request <em>web connectivity</em> as shown below:</p>
+<pre class="ps1"><code>if(Test-Connection &lt;proxy_address&gt; -Count 1 -Quiet)
+{
+    $global:PSDefaultParameterValues = @{
+        &#39;Invoke-RestMethod:Proxy&#39;=&#39;http://&lt;proxy_address&gt;:&lt;proxy_port&gt;&#39;
+        &#39;Invoke-WebRequest:Proxy&#39;=&#39;http://&lt;proxy_address&gt;:&lt;proxy_port&gt;&#39;
+        &#39;*:ProxyUseDefaultCredentials&#39;=$true
+    }
+}</code></pre>
 </body>
 </html>

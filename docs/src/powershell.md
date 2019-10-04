@@ -317,3 +317,68 @@ iwr -useb <ps1_url> | iex
 iwr -useb <ps1_url> | iex -<parameter>:<value>
 ```
 
+### PowerShell - Handle Command Line Arguments 
+
+In *PowerShell* you can pass parameters by using the `-` character. As for example:
+
+```ps1
+command -parameter1 value1 -parameter2 value2
+command -p1 value1 -parameter2 value2
+```
+
+You can handle the parameter passed by using the *param* session in your *PowerShell* script: 
+
+```ps1
+param (
+    [Alias('p1')] [string]$parameter1 = "default_value1",
+    [Parameter(Mandatory=$true)][string]$parameter2 = "default_value2",
+ )
+```
+
+### PowerShell - Read file content into a variable 
+
+```ps1
+# Read all content of test.txt file into a variable
+$content = [IO.File]::ReadAllText(".\test.txt")
+```
+
+### PowerShell - Start-Process examples
+
+```ps1
+# Execute Ping and Show the Stdio + StdError
+$process = Start-Process -FilePath ping -ArgumentList localhost -NoNewWindow -PassThru -Wait
+$process.StandardOutput
+$process.StandardError
+
+# Execute Ping and redirect the STDIO and StdError to a file 
+$process = Start-Process -FilePath ping -ArgumentList localhost -NoNewWindow -PassThru -Wait -RedirectStandardOutput stdout.txt -RedirectStandardError stderr.txt
+```
+
+### Powershell - Certificate - Import Certificates Examples 
+
+```ps1
+# Imports the certificate from the file into the root store of the current user.
+Import-Certificate -FilePath "<cert_path>" -CertStoreLocation cert:\CurrentUser\Root
+
+#Imports the certificate from the file into the root store of the Local Machine
+Import-Certificate -FilePath "<cert_path>" -CertStoreLocation Cert:\LocalMachine\Root
+```
+
+### PowerShell - Proxy - Set Global Proxy Parameters 
+
+By default, the functions that uses *Web Requests* will use the *default proxy configuration* which is set in the *Internet Explorer Services*. However, on system that does not have the *Internet Explorer*, as for example the *windows servercore*, the *Proxy* will not be set even if the *proxy environment variable (E.g.: http_proxy, https_proxy)* is set. 
+
+You can workaround this by setting the *default parameters values* for the functions that request *web connectivity* as shown below:
+
+```ps1
+if(Test-Connection <proxy_address> -Count 1 -Quiet)
+{
+    $global:PSDefaultParameterValues = @{
+        'Invoke-RestMethod:Proxy'='http://<proxy_address>:<proxy_port>'
+        'Invoke-WebRequest:Proxy'='http://<proxy_address>:<proxy_port>'
+        '*:ProxyUseDefaultCredentials'=$true
+    }
+}
+```
+
+
