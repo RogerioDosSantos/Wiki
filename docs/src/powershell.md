@@ -305,6 +305,9 @@ netstat -ab
 
 # List all Port informing the process that is using it (Needs Elevation)
 netstat -aon
+
+# Find Process that is using a TCP/Port 
+Get-Process -Id (Get-NetTCPConnection -LocalPort <port_number>).OwningProcess
 ```
 
 ### PowerShell - Execute shell script from URL without downloading a file 

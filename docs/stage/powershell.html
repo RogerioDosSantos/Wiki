@@ -257,7 +257,10 @@ netstat -an
 netstat -ab
 
 # List all Port informing the process that is using it (Needs Elevation)
-netstat -aon</code></pre>
+netstat -aon
+
+# Find Process that is using a TCP/Port 
+Get-Process -Id (Get-NetTCPConnection -LocalPort &lt;port_number&gt;).OwningProcess</code></pre>
 <h3 id="powershell---execute-shell-script-from-url-without-downloading-a-file">PowerShell - Execute shell script from URL without downloading a file</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Execute bash without arguments</span>
 <span class="ex">iwr</span> -useb <span class="op">&lt;</span>ps1_url<span class="op">&gt;</span> <span class="kw">|</span> <span class="ex">iex</span>
