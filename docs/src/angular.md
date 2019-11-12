@@ -101,6 +101,10 @@ Lifecycle Hooks are callbacks function available in the angular framework:
 - AfterViewChecked: Called after a View is check
 - OnDestroy: Called when a component is destroyed.
 
+## Components
+
+TODO(Roger) - https://www.youtube.com/watch?v=2OHbjep_WjQ
+
 ## References
 
 [Angular CLI](https://angular.io/cli)
