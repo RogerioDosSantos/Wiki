@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="iot-edge-module-development">IoT-Edge Module Development</h1>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/iot-edge/how-to-vs-code-develop-module">Prepare the a developer machine using Visual Studio Code to develop and debug modules for Azure IoT Edge</a></li>
+</ul>
+<h2 id="azure-iot-edgehub-dev-tool">Azure IoT EdgeHub Dev Tool</h2>
+<p>The <a href="https://github.com/Azure/iotedgehubdev">Azure IoT EdgeHub Dev Tool</a> provide a local development experience with a simulator for creating, developing, testing, running, and debugging Azure IoT Edge modules and solutions.</p>
+<p>The following table compares the steps needed to run the solution on the IoT Edge Runtime and iotedgehubdev tool:</p>
+<figure>
+<img src="http://tinyurl.com/y4rqvxkd" />
+</figure>
+<h3 id="installation">Installation</h3>
+<ul>
+<li>Install <a href="https://www.docker.com/products/container-runtime">Docker CE (18.02.0+)</a> and <a href="https://docs.docker.com/compose/install/#install-compose">Docker compose (1.20.0+)</a></li>
+<li>Install <a href="https://www.python.org/">Python (2.7/3.5+) and Pip</a></li>
+<li>Install iotedgehubdev:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Install iotedgehubdev</span>
+<span class="ex">pip</span> install --upgrade iotedgehubdev</code></pre></div>
+<p><strong>Important Note</strong></p>
+<p>Please make sure there is no <em>Azure IoT Edge runtime</em> running on the same machine with <em>iotedgehubdev</em> since they require the same ports.</p>
+<h3 id="setup">Setup</h3>
+<p>To setup the <em>iotedgehubdev</em> you need to create a device in the <a href="https://portal.azure.com">IoT-Hub</a> and get the connection string for it:</p>
+<figure>
+<img src="http://tinyurl.com/y5s9ezsj" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/yxbl34tl" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/y5orr5r6" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/y677bepj" />
+</figure>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Setup an device in the *IoT-Hub* using the *connection string*</span>
+<span class="ex">iotedgehubdev</span> setup -c <span class="st">&quot;&lt;edge_device_connection_string&gt;&quot;</span></code></pre></div>
+<figure>
+<img src="http://tinyurl.com/y3wca3ja" />
+</figure>
+<h3 id="start-stop-an-iot-edge-solution-in-simulator">Start / Stop an IoT-Edge solution in simulator</h3>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Start Simulator</span>
+<span class="ex">iotedgehubdev</span> start -d <span class="op">&lt;</span>path_to_deployment_manifest<span class="op">&gt;</span>
+
+<span class="co"># Stop Simulator</span>
+<span class="ex">iotedgehubdev</span> stop</code></pre></div>
+<h2 id="create-.net-core-edge-module-from-sketch">Create .Net Core Edge Module from sketch</h2>
+<ul>
+<li>Create a project and add packages</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Create .Net Core console application</span>
+<span class="ex">dotnet</span> new console 
+
+<span class="co"># Add Packages Required for Edge Module Implementation</span>
+<span class="co">## MqttTransportSettings </span>
+<span class="ex">dotnet</span> add package Microsoft.Azure.Devices.Client
+<span class="ex">dotnet</span> add package Microsoft.Extensions.Configuration
+<span class="ex">dotnet</span> add package Microsoft.Extensions.Configuration.Abstractions
+<span class="ex">dotnet</span> add package Microsoft.Extensions.Configuration.Binder 
+<span class="ex">dotnet</span> add package Microsoft.Extensions.Configuration.EnvironmentVariables 
+<span class="ex">dotnet</span> add package Microsoft.Extensions.Configuration.FileExtensions
+<span class="ex">dotnet</span> add package Microsoft.Extensions.Configuration.Json
+<span class="co">## For AssemblyLoadContext</span>
+<span class="ex">dotnet</span> add package System.Runtime.Loader</code></pre></div>
+<ul>
+<li>Change the project file (.csproj) to add the <em>AzureIoTEdgeModule</em> capability:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;Project</span><span class="ot"> Sdk=</span><span class="st">&quot;Microsoft.NET.Sdk&quot;</span><span class="kw">&gt;</span>
+... 
+  <span class="kw">&lt;ItemGroup&gt;</span>
+    <span class="kw">&lt;ProjectCapability</span><span class="ot"> Include=</span><span class="st">&quot;AzureIoTEdgeModule&quot;</span><span class="kw">/&gt;</span>
+  <span class="kw">&lt;/ItemGroup&gt;</span>
+...
+<span class="kw">&lt;/Project&gt;</span></code></pre></div>
+<p>This will allow your project to be recognized as an <em>IoT Edge Module</em>.</p>
+<ul>
+<li>Change the <em>Program.cs</em> (Entrypoint) to have the following code representing a simple module:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode cs"><code class="sourceCode cs"><span class="kw">using</span> Microsoft.<span class="fu">Azure</span>.<span class="fu">Devices</span>.<span class="fu">Client</span>;
+<span class="kw">using</span> Microsoft.<span class="fu">Azure</span>.<span class="fu">Devices</span>.<span class="fu">Client</span>.<span class="fu">Transport</span>.<span class="fu">Mqtt</span>;
+<span class="kw">using</span> System;
+<span class="kw">using</span> System.<span class="fu">Runtime</span>.<span class="fu">Loader</span>;
+<span class="kw">using</span> System.<span class="fu">Text</span>;
+<span class="kw">using</span> System.<span class="fu">Threading</span>;
+<span class="kw">using</span> System.<span class="fu">Threading</span>.<span class="fu">Tasks</span>;
+
+<span class="kw">namespace</span> edge_module
+{
+    <span class="kw">class</span> Program
+    {
+        <span class="kw">static</span> <span class="dt">int</span> counter;
+
+        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)
+        {
+            <span class="fu">Init</span>().<span class="fu">Wait</span>();
+
+            <span class="co">// Wait until the app unloads or is cancelled</span>
+            <span class="dt">var</span> cts = <span class="kw">new</span> <span class="fu">CancellationTokenSource</span>();
+            AssemblyLoadContext.<span class="fu">Default</span>.<span class="fu">Unloading</span> += (ctx) =&gt; cts.<span class="fu">Cancel</span>();
+            Console.<span class="fu">CancelKeyPress</span> += (sender, cpe) =&gt; cts.<span class="fu">Cancel</span>();
+            <span class="fu">WhenCancelled</span>(cts.<span class="fu">Token</span>).<span class="fu">Wait</span>();
+        }
+
+        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span>
+        <span class="co">/// Initializes the ModuleClient and sets up the callback to receive</span>
+        <span class="co">/// messages containing temperature information</span>
+        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span>
+        <span class="kw">static</span> async Task <span class="fu">Init</span>()
+        {
+            MqttTransportSettings mqttSetting = <span class="kw">new</span> <span class="fu">MqttTransportSettings</span>(TransportType.<span class="fu">Mqtt_Tcp_Only</span>);
+            ITransportSettings[] settings = { mqttSetting };
+
+            <span class="co">// Open a connection to the Edge runtime</span>
+            ModuleClient ioTHubModuleClient = await ModuleClient.<span class="fu">CreateFromEnvironmentAsync</span>(settings);
+            await ioTHubModuleClient.<span class="fu">OpenAsync</span>();
+            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;IoT Hub module client initialized.&quot;</span>);
+
+            <span class="co">// Register callback to be called when a message is received by the module</span>
+            await ioTHubModuleClient.<span class="fu">SetInputMessageHandlerAsync</span>(<span class="st">&quot;input1&quot;</span>, PipeMessage, ioTHubModuleClient);
+        }
+
+        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span>
+        <span class="co">/// Handles cleanup operations when app is cancelled or unloads</span>
+        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span>
+        <span class="kw">public</span> <span class="kw">static</span> Task <span class="fu">WhenCancelled</span>(CancellationToken cancellationToken)
+        {
+            <span class="dt">var</span> tcs = <span class="kw">new</span> TaskCompletionSource&lt;<span class="dt">bool</span>&gt;();
+            cancellationToken.<span class="fu">Register</span>(s =&gt; ((TaskCompletionSource&lt;<span class="dt">bool</span>&gt;)s).<span class="fu">SetResult</span>(<span class="kw">true</span>), tcs);
+            <span class="kw">return</span> tcs.<span class="fu">Task</span>;
+        }
+
+        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span>
+        <span class="co">/// This method is called whenever the module is sent a message from the EdgeHub. </span>
+        <span class="co">/// It just pipe the messages without any change.</span>
+        <span class="co">/// It prints all the incoming messages.</span>
+        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span>
+        <span class="kw">static</span> async Task&lt;MessageResponse&gt; <span class="fu">PipeMessage</span>(Message message, <span class="dt">object</span> userContext)
+        {
+            <span class="dt">int</span> counterValue = Interlocked.<span class="fu">Increment</span>(<span class="kw">ref</span> counter);
+
+            <span class="dt">var</span> moduleClient = userContext <span class="kw">as</span> ModuleClient;
+            <span class="kw">if</span> (moduleClient == <span class="kw">null</span>)
+            {
+                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">InvalidOperationException</span>(<span class="st">&quot;UserContext doesn&#39;t contain &quot;</span> + <span class="st">&quot;expected values&quot;</span>);
+            }
+
+            <span class="dt">byte</span>[] messageBytes = message.<span class="fu">GetBytes</span>();
+            <span class="dt">string</span> messageString = Encoding.<span class="fu">UTF8</span>.<span class="fu">GetString</span>(messageBytes);
+            Console.<span class="fu">WriteLine</span>($<span class="st">&quot;Received message: {counterValue}, Body: [{messageString}]&quot;</span>);
+
+            <span class="kw">if</span> (!<span class="dt">string</span>.<span class="fu">IsNullOrEmpty</span>(messageString))
+            {
+                <span class="dt">var</span> pipeMessage = <span class="kw">new</span> <span class="fu">Message</span>(messageBytes);
+                <span class="kw">foreach</span> (var prop <span class="kw">in</span> message.<span class="fu">Properties</span>)
+                {
+                    pipeMessage.<span class="fu">Properties</span>.<span class="fu">Add</span>(prop.<span class="fu">Key</span>, prop.<span class="fu">Value</span>);
+                }
+                await moduleClient.<span class="fu">SendEventAsync</span>(<span class="st">&quot;output1&quot;</span>, pipeMessage);
+                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Received message sent&quot;</span>);
+            }
+            <span class="kw">return</span> MessageResponse.<span class="fu">Completed</span>;
+        }
+    }
+}</code></pre></div>
+<h2 id="using-visual-studio-2019-to-debug-an-edge-module">Using Visual Studio 2019 to debug an Edge Module</h2>
+<ul>
+<li>Create a new <em>IoTEdge Config Project</em></li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y336ustm" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/yxouyrv8" />
+</figure>
+<ul>
+<li>Skip the creation of a new module since we will associate one that already exist</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y4psnt48" />
+</figure>
+<ul>
+<li>Ensure that your <em>Edge Module Project (.vcproj)</em> has the <em>AzureIoTEdgeModule</em> capability</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y3yro4m8" />
+</figure>
+<ul>
+<li>Add your <em>Edge Module</em> as a <em>module</em> of your <em>Edge Config Project</em></li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/yy5an5jq" />
+</figure>
+<ul>
+<li>Get a connection string for a device configured in the <em>IoT-Hub</em> that you would like to use for your debugging session:</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y5khvrf6" />
+</figure>
+<ul>
+<li>Set the <em>Edge Device Connection String</em> into the <em>Edge Config Project</em>:</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y6obrl5r" />
+</figure>
+<p>This will make the <em>Visual Studio</em> to configure the <em>iotedgehubdev</em> with the following configuration:</p>
+<p><code>iotedgehubdev setup -c &lt;device_connection_string&gt;</code></p>
+<ul>
+<li>Build the <em>Edge Config Project</em>:</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y4lg8ek6" />
+</figure>
+<p>This will make the <em>Visual Studio</em> to configure the <em>iotedgehubdev</em> with the following configuration:</p>
+<p><code>iotedgehubdev start -d &quot;&lt;edge_config_project_dir&gt;\config\deployment_for_local_debug.json&quot;</code></p>
+<ul>
+<li>Launch your <em>Edge Module Project</em> as <em>Console application</em>:</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/y24unl27" />
+</figure>
+<p>This will make the <em>Visual Studio</em> to start the <em>iotedgehubdev</em> with the following command:</p>
+<p><code>iotedgehubdev start -i &quot;input1&quot;</code></p>
+<p><strong>Note</strong>: If you do not start your <em>Edge Module Project</em> as <em>Console application</em> (E.g.: Start it as <em>IISExpress</em> configuration), <em>Visual Studio</em> will not start the <em>iotedgehubdev</em> and an <em>exception</em> will be thrown when you try to register the <code>&quot;input1&quot;</code> using the <em>ioTHubModuleClient</em>.</p>
+<p><strong>Note</strong>: If you registered to other messages input, after the <em>iotedgehubdev</em> is started by <em>Visual Studio</em>, you can add the input desired with the following command:</p>
+<p><code>iotedgehubdev start -i &lt;input_name&gt;</code></p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/Azure/iotedgehubdev">Azure IoT EdgeHub Dev Tool (Git Repository)</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/iot-edge/how-to-vs-code-develop-module">Use Visual Studio Code to develop and debug modules for Azure IoT Edge</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/iot-edge/how-to-visual-studio-develop-module">Use Visual Studio 2019 to develop and debug modules for Azure IoT Edge</a></li>
+</ul>
+</body>
+</html>

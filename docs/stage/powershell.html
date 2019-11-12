@@ -6,6 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="../resources/style.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -22,10 +59,10 @@
 <h3 id="commands">Commands</h3>
 <p><code>Get-Process</code>: List running processes.</p>
 <p><code>Start-Process &lt;locaction&gt;</code>: Start a process.</p>
-<p><code>Stop-Process &lt;name&gt;</code>: Stop a process.</p>
+<p><code>Stop-Process &lt;process_name&gt;</code>: Stop a process. Note: You can get the process and store it in a variable using the command <code>Get-Process &lt;name&gt;</code>. (E.g.: <code>$ceview_process = Get-Process CEView</code>)</p>
 <p><code>&lt;command&gt; | Select-String -Pattern &lt;filter&gt;</code>: Equivalent to <em>grep</em>. E.g.: <code>Get-Process | Select-String -Pattern ceview</code></p>
 <p><code>Get-WindowsFeature</code>: Inform the windows features installed in the system.</p>
-<p><code>Invoke-WebRequest -OutFile &lt;file_path&gt; &quot;&lt;url&gt;&quot;</code>: Download a file. Equivalent to <em>wget</em></p>
+<p><code>Invoke-WebRequest [-OutFile &lt;file_path&gt;] &quot;&lt;url&gt;&quot; [-UseBasicParsing]</code>: Download a file. Equivalent to <em>wget</em>. By default, the <code>Invoke-WebRequest</code> command will use the <em>Internet Explorer</em> to parse the received return. The <code>UseBasicParsing</code> parameter can be used when the <em>Internet Explorer</em> is not available in the machine.</p>
 <p><code>Write-Host &quot;text&quot;</code>: Write a text to the console. Equivalent to <em>echo</em></p>
 <p><code>[environment]::OSVersion.VersionString</code>: Return the version of the OS.</p>
 <p><code>Get-Content -Path &lt;file_path&gt;</code>: Read the content of a file. Similar to Linux <code>cat</code></p>
@@ -220,6 +257,60 @@ netstat -an
 netstat -ab
 
 # List all Port informing the process that is using it (Needs Elevation)
-netstat -aon</code></pre>
+netstat -aon
+
+# Find Process that is using a TCP/Port 
+Get-Process -Id (Get-NetTCPConnection -LocalPort &lt;port_number&gt;).OwningProcess</code></pre>
+<h3 id="powershell---execute-shell-script-from-url-without-downloading-a-file">PowerShell - Execute shell script from URL without downloading a file</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Execute bash without arguments</span>
+<span class="ex">iwr</span> -useb <span class="op">&lt;</span>ps1_url<span class="op">&gt;</span> <span class="kw">|</span> <span class="ex">iex</span>
+
+<span class="co"># Execute bash that require arguments</span>
+<span class="ex">iwr</span> -useb <span class="op">&lt;</span>ps1_url<span class="op">&gt;</span> <span class="kw">|</span> <span class="ex">iex</span> -<span class="op">&lt;</span>parameter<span class="op">&gt;</span>:<span class="op">&lt;</span>value<span class="op">&gt;</span></code></pre></div>
+<h3 id="powershell---handle-command-line-arguments">PowerShell - Handle Command Line Arguments</h3>
+<p>In <em>PowerShell</em> you can pass parameters by using the <code>-</code> character. As for example:</p>
+<pre class="ps1"><code>command -parameter1 value1 -parameter2 value2
+command -p1 value1 -parameter2 value2</code></pre>
+<p>You can handle the parameter passed by using the <em>param</em> session in your <em>PowerShell</em> script:</p>
+<pre class="ps1"><code>param (
+    [Alias(&#39;p1&#39;)] [string]$parameter1 = &quot;default_value1&quot;,
+    [Parameter(Mandatory=$true)][string]$parameter2 = &quot;default_value2&quot;,
+ )</code></pre>
+<h3 id="powershell---read-file-content-into-a-variable">PowerShell - Read file content into a variable</h3>
+<pre class="ps1"><code># Read all content of test.txt file into a variable
+$content = [IO.File]::ReadAllText(&quot;.\test.txt&quot;)</code></pre>
+<h3 id="powershell---start-process-examples">PowerShell - Start-Process examples</h3>
+<pre class="ps1"><code># Execute Ping and Show the Stdio + StdError
+$process = Start-Process -FilePath ping -ArgumentList localhost -NoNewWindow -PassThru -Wait
+$process.StandardOutput
+$process.StandardError
+
+# Execute Ping and redirect the STDIO and StdError to a file 
+$process = Start-Process -FilePath ping -ArgumentList localhost -NoNewWindow -PassThru -Wait -RedirectStandardOutput stdout.txt -RedirectStandardError stderr.txt</code></pre>
+<h3 id="powershell---certificate---import-certificates-examples">Powershell - Certificate - Import Certificates Examples</h3>
+<p>Importing Certificate with User Interface</p>
+<pre class="ps1"><code># Imports the certificate from the file into the root store of the current user.
+Import-Certificate -FilePath &quot;&lt;cert_path&gt;&quot; -CertStoreLocation cert:\CurrentUser\Root
+
+#Imports the certificate from the file into the root store of the Local Machine
+Import-Certificate -FilePath &quot;&lt;cert_path&gt;&quot; -CertStoreLocation Cert:\LocalMachine\Root</code></pre>
+<p>Importing Certificate without User Interface</p>
+<pre class="ps1"><code># Import certificate to the *Root Store* without asking anything to the user
+$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2(&quot;&lt;certificate_path (.cer)&gt;&quot;)
+$rootStore = Get-Item cert:\LocalMachine\Root
+$rootStore.Open(&quot;ReadWrite&quot;)
+$rootStore.Add($cert)
+$rootStore.Close()</code></pre>
+<h3 id="powershell---proxy---set-global-proxy-parameters">PowerShell - Proxy - Set Global Proxy Parameters</h3>
+<p>By default, the functions that uses <em>Web Requests</em> will use the <em>default proxy configuration</em> which is set in the <em>Internet Explorer Services</em>. However, on system that does not have the <em>Internet Explorer</em>, as for example the <em>windows servercore</em>, the <em>Proxy</em> will not be set even if the <em>proxy environment variable (E.g.: http_proxy, https_proxy)</em> is set.</p>
+<p>You can workaround this by setting the <em>default parameters values</em> for the functions that request <em>web connectivity</em> as shown below:</p>
+<pre class="ps1"><code>if(Test-Connection &lt;proxy_address&gt; -Count 1 -Quiet)
+{
+    $global:PSDefaultParameterValues = @{
+        &#39;Invoke-RestMethod:Proxy&#39;=&#39;http://&lt;proxy_address&gt;:&lt;proxy_port&gt;&#39;
+        &#39;Invoke-WebRequest:Proxy&#39;=&#39;http://&lt;proxy_address&gt;:&lt;proxy_port&gt;&#39;
+        &#39;*:ProxyUseDefaultCredentials&#39;=$true
+    }
+}</code></pre>
 </body>
 </html>

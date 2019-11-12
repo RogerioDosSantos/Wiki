@@ -49,34 +49,29 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <![endif]-->
 </head>
 <body>
-<h1 id="mermaid">Mermaid</h1>
-<p><a href="https://mermaidjs.github.io/">Mermaid</a> allow generation of diagrams and flowcharts from text in a similar manner as markdown.</p>
-<h2 id="conversion-tool-mermaid.cli">Conversion Tool (mermaid.cli)</h2>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Install</span>
-<span class="ex">npm</span> install -g mermaid.cli
-
-<span class="co"># Convert to SVG</span>
-<span class="ex">mmdc</span> -i input.mmd -o output.svg
-
-<span class="co"># Convert to PNG</span>
-<span class="ex">mmdc</span> -i input.mmd -o output.png</code></pre></div>
-<h2 id="diagram-example">Diagram Example</h2>
-<h3 id="sequence-diagram">Sequence Diagram</h3>
-<div class="sourceCode"><pre class="sourceCode mmd"><code class="sourceCode markdown">sequenceDiagram
-
-<span class="bn">    participant p1 as Participant 01</span>
-<span class="bn">    participant p2 as Participant 02</span>
-
-<span class="bn">    Note left of p1: Note 01&lt;br/&gt;Content 01</span>
-<span class="bn">    activate p1</span>
-<span class="bn">    p1-&gt;&gt;p2: Connect P1 to P2</span>
-<span class="bn">    activate p2</span>
-<span class="bn">    p2-&gt;p2: Action on P2 only</span>
-<span class="bn">    p2--&gt;&gt;p1: Callback into P1</span>
-<span class="bn">    deactivate p2</span>
-<span class="bn">    deactivate p1</span></code></pre></div>
-<figure>
-<img src="../resources/mermaid_sequence_diagram.svg" />
-</figure>
+<h1 id="dlls">DLLs</h1>
+<h2 id="loading-dynamically-a-function-from-a-dll">Loading dynamically a function from a DLL</h2>
+<p>When loading a <em>DLL</em> on <em>Windows</em> using <em>function pointers</em>, you need to ensure that your <em>function pointer</em> declaration is using the proper <em>Calling Convension</em>.</p>
+<p>The <em>calling convension</em> possible are:</p>
+<ul>
+<li><code>__cdecl</code>: Libraries compiled with the <code>/Gd</code> flag.</li>
+<li><code>__stdcall</code>: Libraries compiled with the <code>/Gz</code> flag.</li>
+<li><code>__fastcall</code>: Libraries compiled with the <code>/Gr</code> flag.</li>
+</ul>
+<p><em>Function Pointer</em> declaration example:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// Function pointer declaration using __stdcall convension</span>
+<span class="kw">typedef</span> <span class="dt">bool</span> (__stdcall *SimpleFunctionPointer)(<span class="at">const</span> <span class="dt">char</span>* paramerer_1);</code></pre></div>
+<p>If the wrong conversion is defined, when calling a the function passing a parameter, you will receive an exception with the following information:</p>
+<p><code>Run-Time Check Failure #0 - The value of ESP was not properly saved across a function call.</code></p>
+<p>If you do not have access to the source code, you can deduct the <em>Calling Convension</em> being used by evaluate the the <em>Symbol name decorator</em> as following:</p>
+<ul>
+<li><code>__cdecl</code>: begins with a *_* but has no *<span class="citation" data-cites="*">@*</span></li>
+<li><code>__stdcall</code>: begins with *_* and has a *<span class="citation" data-cites="*">@*</span></li>
+<li><code>__fastcall</code>: begins with <em><span class="citation" data-cites="*">@*</span> and has another </em><span class="citation" data-cites="*">@*</span></li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="http://unixwiz.net/techtips/win32-callconv.html">Calling Convensions Article</a></li>
+</ul>
 </body>
 </html>

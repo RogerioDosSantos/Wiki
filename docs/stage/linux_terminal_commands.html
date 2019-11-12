@@ -52,6 +52,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1 id="linux-terminal-commands">Linux Terminal Commands</h1>
 <h2 id="user">User</h2>
 <p><code>sudo</code> : Run elevated</p>
+<p><code>sudo -E</code> : Run elevated keeping all environment variables</p>
 <p><code>sudo !!</code> : Repeat last command as sudo.</p>
 <p><code>su -</code> : Become root (Super User)</p>
 <p><code>su &lt;username&gt;</code> : ls</p>
@@ -548,6 +549,12 @@ cat /tmp/config_file</code></pre></div>
 
 <span class="co"># Extracting the file</span>
 <span class="fu">bzip2</span> -d compressed.bz2</code></pre></div>
+<h3 id="shell---execute-bash-script-from-url-without-downloading-a-file">Shell - Execute bash script from URL without downloading a file</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Execute bash without arguments</span>
+<span class="fu">wget</span> -O - <span class="op">&lt;</span>bash_url<span class="op">&gt;</span> <span class="kw">|</span> <span class="fu">bash</span>
+
+<span class="co"># Execute bash that require arguments</span>
+<span class="fu">wget</span> -O - <span class="op">&lt;</span>bash_url<span class="op">&gt;</span> <span class="kw">|</span> <span class="fu">bash</span> -s <span class="st">&#39;&lt;argument_01&gt;&#39;</span> <span class="st">&#39;&lt;argument_02&gt;&#39;</span></code></pre></div>
 <h3 id="permissions-and-groups">Permissions and Groups</h3>
 <p>The permission are listed as following:</p>
 <figure>
@@ -571,5 +578,12 @@ chown &lt;group&gt; &lt;file_or_dirctory&gt;
 # Change Permission by numbers
 chmod &lt;number&gt;</code></pre>
 <p>Permission Numbers: - 0 = --- - 1 = --x - 2 = -w- - 3 = -wx - 4 = r- - 5 = r-x - 6 = rw- - 7 = rwx</p>
+<h3 id="bash---create-a-progress-bar">Bash - Create a progress bar</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">echo</span> -ne <span class="st">&#39;#####                     (33%)\r&#39;</span>
+<span class="fu">sleep</span> 1
+<span class="bu">echo</span> -ne <span class="st">&#39;#############             (66%)\r&#39;</span>
+<span class="fu">sleep</span> 1
+<span class="bu">echo</span> -ne <span class="st">&#39;#######################   (100%)\r&#39;</span>
+<span class="bu">echo</span> -ne <span class="st">&#39;\n&#39;</span></code></pre></div>
 </body>
 </html>

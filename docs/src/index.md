@@ -3,6 +3,7 @@
 ## Windows 
 
 - [Windows Terminal Commands]( ./windows_terminal_commands.html )
+- [Windows Shortcuts]( ./windows_shortcuts.html )
 - [Babun]( ./babun.html )
 - [Windows Store]( ./windows_store.html )
 - [WSL]( ./wsl.html )
@@ -16,6 +17,7 @@
 - [Setup and Config]( ./windows_setup_and_config.html )
 - [HTTP.sys]( ./http_sys.html )
 - [COM/DCOM]( ./com_dcom.html )
+- [DLLs]( ./dlls.html )
 
 ## Linux 
 
@@ -59,6 +61,8 @@
 - [Git TFS]( ./git_tfs.html )
 - [TFS Online]( ./tfs_online.html )
 - [TFS Client](./tfs_client.html )
+- [GitVersion]( ./git_version.html )
+- [GitReleaseManager]( ./git_release_manager.html )
 
 ## Dev/Ops
 
@@ -76,6 +80,7 @@
 - [Kubernetes]( ./kubernetes.html )
 - [Moby]( ./moby.html )
 - [Heroku]( ./heroku.html )
+- [X11 Bridge (Viewer)](./docker_viewer_x11_bridge.html)
 
 ## Proxies and Reverse Proxies
 
@@ -101,6 +106,7 @@
 
 - [Chocolatey]( ./chocolatey.html )
 - [Conan]( ./conan.html )
+- [Nuget]( ./nuget.html )
 
 ## CTags 
 
@@ -143,12 +149,15 @@
 ## Database 
 
 - [OLE DB]( ./ole_db.html )
+- [Entity Framework]( ./entity_framework.md )
 
 ## Programming Languages
 
 - [VBScript]( ./vbscript.html )
 - [Python]( ./python.html )
 - [Regular Expressions]( ./regular_expressions.html )
+- [Erlang]( ./erlang.html )
+- [C++]( ./cplusplus.html )
 
 ## .Net 
 
@@ -156,8 +165,9 @@
 - [.Net Core]( ./dotnet_core.html )
 - [GAC]( ./gac.html )
 - [Serilog]( ./serilog.html )
-- [Swashbuckle]( ./swashbuckle.html )
+- [Swashbuckle (Swagger)]( ./swashbuckle.html )
 - [Blazor]( ./blazor.html )
+- [XUnit]( ./xunit.html )
 
 ## Virtualization 
 
@@ -173,16 +183,21 @@
 - [GPG]( ./gpg.html )
 - [MOSS]( ./moss.html )
 - [Checkmarks]( ./checkmarks.html )
+- [jwt]( ./jwt.html )
 
 ## Authentication / Authorization
 
 - [Identity Server]( ./identity_server.html )
+    - [Keycloak]( ./keycloak.html )
+    - [Auth0]( ./auth0.html )
 
 ## Network 
 
 - [LDAP]( ./ldap.html )
 - [0MQ](./0mq.html)
 - [OpenSSL]( ./openssl.html )
+- [Wireshark]( ./wireshark.html )
+- [RabbitMQ]( ./rabbit_mq.html )
 
 ## Patterns 
 
@@ -193,6 +208,7 @@
 
 - [Amazon Web Services (AWS)]( ./aws.html )
 - [Azure IoT-Edge]( ./iot_edge.html )
+    - [Developing IoT-Edge Module]( ./iot_edge_module_development.html )
 - [Azure Storage]( ./azure_storage.html )
 - [Azure Key Vault]( ./azure_key_vault.html )
 - [Azure Container Instances]( ./azure_container_instances.html )

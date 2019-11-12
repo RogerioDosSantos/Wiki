@@ -55,11 +55,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2 id="how-to">How-To</h2>
 <h3 id="install-an-untrusted-certificate">Install an untrusted certificate</h3>
 <p>On this example we will add the certificate file <em>~/zscale.crt</em> from the company <em>ZScale</em></p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> cp ~/zscale.crt /usr/local/share/ca-certificates
-<span class="kw">sudo</span> update-ca-certificates
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">sudo</span> cp ~/zscale.crt /usr/local/share/ca-certificates
+<span class="fu">sudo</span> update-ca-certificates
 
 <span class="co"># The certificate is installed in the following folders:</span>
-<span class="kw">/etc/ssl/certs/</span>
-<span class="kw">/etc/ssl/certs/ca-certificates.crt</span></code></pre></div>
+<span class="ex">/etc/ssl/certs/</span>
+<span class="ex">/etc/ssl/certs/ca-certificates.crt</span></code></pre></div>
+<h3 id="create-self-signed-certificate-public-and-private">Create Self-signed certificate (Public and Private)</h3>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Create x509 certificate and key (PEM)</span>
+<span class="ex">openssl</span> req -x509 -newkey rsa:2048 -days <span class="op">&lt;</span>period<span class="op">&gt;</span> -keyout <span class="op">&lt;</span>key_name<span class="op">&gt;</span>.pem -out <span class="op">&lt;</span>certificate_name<span class="op">&gt;</span>.pem
+
+<span class="co"># Put the certificate and key into a single file (PFX) - This file contains both private and public keys</span>
+<span class="ex">openssl</span> pkcs12 -export -in <span class="op">&lt;</span>certificate_name<span class="op">&gt;</span>.pem -inkey <span class="op">&lt;</span>key_name<span class="op">&gt;</span>.pem -out <span class="op">&lt;</span>certificate_with_keys<span class="op">&gt;</span>.pfx
+
+<span class="co"># Export the public key</span>
+<span class="ex">openssl</span> pkcs12 -in <span class="op">&lt;</span>certificate_with_keys<span class="op">&gt;</span>.pfx -clcerts -nokeys -out <span class="op">&lt;</span>public_certificate_name<span class="op">&gt;</span>.pem</code></pre></div>
 </body>
 </html>

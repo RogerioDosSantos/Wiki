@@ -53,6 +53,67 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Azure IoT Edge is an Internet of Things (IoT) service that builds on top of IoT Hub.</p>
 <p>It basically allow you to deploy your application from the Cloud to a IoT-Edge machine.</p>
 <p>An IoT-Edge machine is a machine that has a IoT-Edge runtime module on it.</p>
+<h2 id="edge-device---installation-configuration">Edge Device - Installation / Configuration</h2>
+<h3 id="run-linux-container-in-windows-machine">Run Linux Container in Windows Machine</h3>
+<ul>
+<li>Ensure that you are using <em>Windows 10 Anniversary update (build 14393)</em> or newer.</li>
+<li>Ensure that you are running <em>Powershell</em> as <em>Administrator</em></li>
+<li>Ensure that you have <em>Powershell (AMD64)</em> session. To veriry it you can run the following command:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Return the Powershell session <span class="st">(x86 or AMD64)</span> 
+<span class="st">(Get-Process -Id $PID)</span>.StartInfo.EnvironmentVariables[&quot;PROCESSOR_ARCHITECTURE&quot;]</code></pre></div>
+<ul>
+<li>Execute the <em>Deploy-IoTEdge</em> from <em>Microsoft Website Script</em> The Deploy-IoTEdge does the following:
+<ul>
+<li>Checks that your Windows machine is on a supported version</li>
+<li>Turns on the containers feature</li>
+<li>Downloads the moby runtime (which is not used for Linux containers)</li>
+<li>Downloads IoT Edge runtime</li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">. {Invoke-WebRequest -useb aka.ms<span class="dt">/iotedge-win</span>} | Invoke-Expression; Deploy-IoTEdge -ContainerOs Linux</code></pre></div>
+<ul>
+<li>Configure the IoT Edge runtime on the machine</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">. {Invoke-WebRequest -useb aka.ms<span class="dt">/iotedge-win</span>} | Invoke-Expression; Initialize-IoTEdge -ContainerOs Linux`</code></pre></div>
+<p>You will be requested to enter the <em>DeviceConnectionString</em> which can be retrieved in the <a href="https://portal.azure.com">IoTHub Portal</a>:</p>
+<figure>
+<img src="http://tinyurl.com/yxtsy5bf" />
+</figure>
+<figure>
+<img src="http://tinyurl.com/y6yy7o8a" />
+</figure>
+<p><strong>Note</strong>: The device connection string takes the following format, and should not include quotation marks: <code>HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}</code></p>
+<ul>
+<li>Verify if the installation was successful</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># <span class="kw">Get</span> the <span class="kw">status</span> of the IoT Edge service
+<span class="kw">Get</span>-Service iotedge
+
+# List the running modules 
+iotedge list</code></pre></div>
+<figure>
+<img src="http://tinyurl.com/yxmsycxq" />
+</figure>
+<h2 id="uninstalling-azure-iot-edge">Uninstalling Azure IoT Edge</h2>
+<p>From an elevated command prompt:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Uninstall Azure IoT Edge 
+Uninstall-IoTEdge</code></pre></div>
+<figure>
+<img src="http://tinyurl.com/y2fwkol7" />
+</figure>
+<h2 id="troubleshooting-azure-iot-edge">Troubleshooting Azure IoT Edge</h2>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"># Execute standard check on the current Azure IoT Edge installation <span class="kw">and</span> connectivity
+iotedge check</code></pre></div>
+<figure>
+<img src="http://tinyurl.com/y3ruk522" />
+</figure>
+<h2 id="how-to-use-docker-cli-into-a-moby-runtime">How to use docker cli into a moby runtime</h2>
+<pre class="shell"><code># List the available images in the moby engine
+docker -H npipe:////./pipe/iotedge_moby_engine images
+
+# Docker uses the following socket by default:
+# unix:///var/run/docker.sock</code></pre>
 <h2 id="commands">Commands</h2>
 <p><code>pip install -U azure-iot-edge-runtime-ctl</code> : Install the IoT-Edge runtime module</p>
 <p><code>pip install azure-iot-edge-runtime-ctl==1.0.0rc19</code>: Install a specific version of the iotedgectl</p>

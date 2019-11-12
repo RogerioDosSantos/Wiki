@@ -97,6 +97,30 @@ By default the *Remote Agent (CEServer)* will connect using the port *4322*
 
 ### IoTView - Execute Runtime from command line 
 
-TODO
+```sh 
+iotview <application_path> <log_verbosity>
+```
+
+### StADOSvr - Studio ADO Gateway - Configure port 
+
+By default the *Studio ADO Gateway (StADOSvr)* uses the port 3997.
+
+The example below launches the *Studio ADO Gateway* in the port 1002:
+
+```sh 
+# Start the Studio ADO Gateway to listen in the port 1002
+StADOSvr.exe 1002
+```
+
+### LogWin - Remote LogWin (LogWinExt) - Configure Port
+
+Inside the *InduSoft* product intallation *bin* folder, you will find the *LogWinExt* which is a *Remote Logwin* executable that allows you to communicate with any *InduSoft* runtime that is executing the *TCP/IP Server task*. 
+
+The example below shows how you can launch to connect with the local host using the port *1234*
+
+```sh
+# Launch Remote Logwin to talk with the localhost
+LogWinExt.exe /dsip:127.0.0.1 /dsport:1234
+```
 
 

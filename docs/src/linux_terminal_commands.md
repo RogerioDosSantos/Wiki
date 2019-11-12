@@ -4,6 +4,8 @@
 
 `sudo` : Run elevated   
 
+`sudo -E` : Run elevated keeping all environment variables  
+
 `sudo !!` : Repeat last command as sudo.
 
 `su -` : Become root (Super User)
@@ -858,6 +860,16 @@ dd if=/dev/zero bs=10G count=10000 | bzip2 -c > compressed.bz2
 bzip2 -d compressed.bz2
 ```
 
+### Shell - Execute bash script from URL without downloading a file 
+
+```bash
+# Execute bash without arguments
+wget -O - <bash_url> | bash
+
+# Execute bash that require arguments
+wget -O - <bash_url> | bash -s '<argument_01>' '<argument_02>'
+```
+
 ### Permissions and Groups
 
 The permission are listed as following:
@@ -892,6 +904,17 @@ Permission Numbers:
 - 5 = r-x
 - 6 = rw-
 - 7 = rwx
+
+### Bash - Create a progress bar
+
+```bash
+echo -ne '#####                     (33%)\r'
+sleep 1
+echo -ne '#############             (66%)\r'
+sleep 1
+echo -ne '#######################   (100%)\r'
+echo -ne '\n'
+```
 
 
 

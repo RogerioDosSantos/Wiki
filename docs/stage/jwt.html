@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="json-web-token-jwt">Json Web Token (JWT)</h1>
+<h2 id="selecting-the-proper-cryptographic-algorithm">Selecting the proper cryptographic algorithm</h2>
+<p>For an example on how to create and consume <em>JWT</em> please refer to the <a href="https://github.com/RogerioDosSantos/example_dotnet_jwt">following link</a></p>
+<h3 id="security-concerns">Security concerns</h3>
+<figure>
+<img src="http://tinyurl.com/y6a7gn4n" />
+</figure>
+<h3 id="algorithm-based-on-the-concerns">Algorithm based on the concerns</h3>
+<figure>
+<img src="http://tinyurl.com/y225l36z" />
+</figure>
+<ul>
+<li><p><strong>HMAC algorithms</strong>: A special super efficient <em>hash (HMAC)</em> for ensuring the integrity and authenticity of data. In order to compute an <em>HMAC</em> you need a <em>secret key</em>.</p></li>
+<li><p><strong>Digital signatures</strong>: Offer the properties of <em>HMAC</em>, plus <em>cryptographic non-repudiation</em> (enabling others than the signer to check the signature's validity). <em>Digital signatures</em> are based on <em>public / private key</em> cryptography. Require a <em>public / private key pair</em> (of type <em>RSA</em>, <em>elliptic curve (EC)</em>, or <em>Edwards-curve Octet Key Pair (OKP)</em>).</p></li>
+<li><p><strong>Authenticated encryption</strong>: Encrypt data, while also ensuring its integrity and authenticity (like <em>HMAC</em>).</p></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://connect2id.com/products/nimbus-jose-jwt/algorithm-selection-guide">Article that allow to proper select the diferent types of cryptographic algorithm</a></li>
+<li><a href="https://tools.ietf.org/html/rfc7519#section-4">Type of claims that can be used in the payload</a></li>
+</ul>
+</body>
+</html>

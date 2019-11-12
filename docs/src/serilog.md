@@ -4,4 +4,32 @@
 
 Serilog is built with powerful structured event data in mind.
 
+## Using Serilog into a .Net Core Application from sketch
+
+- Create an application and add *Serilog* package on it:
+
+```sh 
+# Create .Net Core console application
+dotnet new console 
+
+# Add Serilog
+dotnet add package Serilog
+## Allow to write into the console
+dotnet add package Serilog.Sinks.Console
+## Allow to write into the Visual Studio Debug Window
+dotnet add package Serilog.Sinks.Debug
+```
+- Change the Main function as following:
+
+```cs
+using Serilog; 
+public static void Main(string[] args)
+{
+  var log = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateLogger();
+
+  log.Information("Hello, Serilog!");
+}
+```
 

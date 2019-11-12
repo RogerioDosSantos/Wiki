@@ -23,9 +23,18 @@ ng v
 # Create new project 
 ng new <project_name>
 
-# Execute Development server
+# Execute Development server (--host 0.0.0.0 allow access from docker)
 cd <project_name>
-ng serve
+ng serve --host 0.0.0.0
+```
+
+## Create a new component
+
+From the project folder:
+
+```sh
+# Create new component with inline template and inline style
+ng g c server-detail -it -is
 ```
 
 ## File Structure

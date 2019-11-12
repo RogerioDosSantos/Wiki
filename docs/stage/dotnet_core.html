@@ -66,5 +66,83 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="fu">sudo</span> sh -c <span class="st">&#39;echo &quot;deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main&quot; &gt; /etc/apt/sources.list.d/dotnetdev.list&#39;</span>
 <span class="fu">sudo</span> apt-get update
 <span class="fu">sudo</span> apt-get install dotnet-sdk-2.0.2</code></pre></div>
+<h2 id="how-to">How-to</h2>
+<h3 id="create-a-new-project">Create a new project</h3>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Create a class library project</span>
+<span class="ex">dotnet</span> new classlib 
+
+<span class="co"># Create a new console application project</span>
+<span class="ex">dotnet</span> new console 
+
+<span class="co"># Create a new ASP.NET Core Web API project</span>
+<span class="ex">dotnet</span> new webapi 
+
+<span class="co"># Create a new XUnit Unity Test project</span>
+<span class="ex">dotnet</span> new xunit</code></pre></div>
+<h3 id="create-and-publish-nuget-package">Create and Publish NuGet package</h3>
+<ul>
+<li>Open your project file (.csproj) and add the following minimal properties inside the existing <PropertyGroup> tag</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;PackageId&gt;</span>package_name<span class="kw">&lt;/PackageId&gt;</span>
+<span class="kw">&lt;Version&gt;</span>1.0.0<span class="kw">&lt;/Version&gt;</span>
+<span class="kw">&lt;Authors&gt;</span>your_name<span class="kw">&lt;/Authors&gt;</span>
+<span class="kw">&lt;Company&gt;</span>your_company<span class="kw">&lt;/Company&gt;</span></code></pre></div>
+<p>You can add any <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/csproj#nuget-metadata-properties">optional properties</a> if desired</p>
+<ul>
+<li>To build a NuGet package (a .nupkg file) from the project folder, run:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">dotnet</span> pack -c Release -o /workspace/stage/release</code></pre></div>
+<h3 id="nuget-package---add-local-folder-as-packages-sources">NuGet Package - Add Local Folder as Packages Sources</h3>
+<p>You can add additional folders to allow <em>NuGet</em> packages to be searched. This is usefull when you want to put local dependencies in your projects by using <em>Local NuGet packages</em>.</p>
+<p>To do it change your <em><project_csproj></em> file as following:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml">...
+<span class="kw">&lt;PropertyGroup&gt;</span>
+  ...
+  <span class="kw">&lt;RestoreSources&gt;</span>$(RestoreSources);<span class="kw">&lt;desired_relative_folder&gt;</span>;https://api.nuget.org/v3/index.json<span class="kw">&lt;/RestoreSources&gt;</span>
+  ...
+<span class="kw">&lt;/PropertyGroup&gt;</span>
+...</code></pre></div>
+<p>This technique will allow the following commands to be executed and get the packages locally:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">dotnet</span> add package <span class="op">&lt;</span>package_name<span class="op">&gt;</span>
+<span class="ex">dotnet</span> restore 
+<span class="ex">dotnet</span> run</code></pre></div>
+<p><strong>Note:</strong> During development, if you change the <em>NuGet</em> package but do not increment it's version, in both the project that produces the nupkg and in the project that consumes it, you'll need to clear your local packages cache before restoring again:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">dotnet</span> nuget locals all --clear
+<span class="ex">dotnet</span> restore</code></pre></div>
+<h3 id="set-an-output-directory-without-the-.net-platform-being-appended">Set an output directory without the .Net platform being appended</h3>
+<p>By default the <em>.Net Core Platform</em> (E.g.: <em>netcoreapp2.0</em>) is appended in the <em>output directory</em> independent of the configuration:</p>
+<figure>
+<img src="http://tinyurl.com/y3m5jo4c" />
+</figure>
+<p>To disable it change the (csproj) file to add the following:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;PropertyGroup&gt;</span>
+  ...
+  <span class="kw">&lt;AppendTargetFrameworkToOutputPath&gt;</span>false<span class="kw">&lt;/AppendTargetFrameworkToOutputPath&gt;</span>
+  ...
+<span class="kw">&lt;/PropertyGroup&gt;</span></code></pre></div>
+<h3 id="create-and-consuming-a-jwt">Create and Consuming a JWT</h3>
+<ul>
+<li>Add the dependencies to the project</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Provide support for creating, serializing and validating JSON Web Tokens</span>
+<span class="ex">dotnet</span> add package System.IdentityModel.Tokens.Jwt</code></pre></div>
+<h3 id="copy-folder-to-the-output-directory-during-the-build">Copy folder to the output directory during the build</h3>
+<p>The example below copy the folder <em>resources</em> located in the same directory than the <em>(csproj)</em> file to the <em>build output</em> directory.</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;ItemGroup&gt;</span>
+  ...
+  <span class="kw">&lt;None</span><span class="ot"> Include=</span><span class="st">&quot;resources\**&quot;</span><span class="ot"> CopyToOutputDirectory=</span><span class="st">&quot;PreserveNewest&quot;</span><span class="kw">/&gt;</span>
+  ...
+<span class="kw">&lt;/ItemGroup&gt;</span></code></pre></div>
+<h3 id="net---proxy---set-global-default-proxy-for-an-application">.Net - Proxy - Set Global Default Proxy for an Application</h3>
+<p>By default, a <em>.Net</em> application, running on <em>Windows</em>, uses the <em>default proxy</em> which is the same configured in the <em>Internet Explorer</em>. However, there are some <em>OSs</em> as for example the <em>Windows servercore</em> where the <em>Internet Explorer</em> is not used.</p>
+<p>For this reason, it is a good practice to check is the <em>Proxy Environment Variable (http_proxy, https_proxy)</em> is set and if so, add a <em>default proxy</em> for your <em>.Net Application</em>. This can be done using the code below:</p>
+<div class="sourceCode"><pre class="sourceCode c#"><code class="sourceCode cs"><span class="dt">string</span> proxyUrl = Environment.<span class="fu">GetEnvironmentVariable</span>(<span class="st">&quot;http_proxy&quot;</span>);
+proxyUrl = String.<span class="fu">IsNullOrEmpty</span>(proxyUrl) ? Environment.<span class="fu">GetEnvironmentVariable</span>(<span class="st">&quot;https_proxy&quot;</span>) : proxyUrl;
+<span class="kw">if</span> (!String.<span class="fu">IsNullOrEmpty</span>(proxyUrl))
+    System.<span class="fu">Net</span>.<span class="fu">WebRequest</span>.<span class="fu">DefaultWebProxy</span> = <span class="kw">new</span> <span class="fu">WebProxy</span>(proxyUrl);</code></pre></div>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/dotnet/samples/tree/master/core/hosting">Host .Net Core into a Native Application</a></li>
+</ul>
 </body>
 </html>

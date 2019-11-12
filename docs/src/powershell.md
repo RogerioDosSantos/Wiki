@@ -18,13 +18,13 @@ The site [PInvoke](http://pinvoke.net/) allows you to search for various functio
 
 `Start-Process <locaction>`: Start a process.
 
-`Stop-Process <name>`: Stop a process. 
+`Stop-Process <process_name>`: Stop a process. Note: You can get the process and store it in a variable using the command `Get-Process <name>`. (E.g.: `$ceview_process = Get-Process CEView`)
 
 `<command> | Select-String -Pattern <filter>`: Equivalent to *grep*. E.g.: `Get-Process | Select-String -Pattern ceview`
 
 `Get-WindowsFeature`: Inform the windows features installed in the system.
 
-`Invoke-WebRequest -OutFile <file_path> "<url>"`: Download a file. Equivalent to *wget*
+`Invoke-WebRequest [-OutFile <file_path>] "<url>" [-UseBasicParsing]`: Download a file. Equivalent to *wget*. By default, the `Invoke-WebRequest` command will use the *Internet Explorer* to parse the received return. The `UseBasicParsing` parameter can be used when the *Internet Explorer* is not available in the machine.
 
 `Write-Host "text"`: Write a text to the console. Equivalent to *echo*
 
@@ -305,4 +305,97 @@ netstat -ab
 
 # List all Port informing the process that is using it (Needs Elevation)
 netstat -aon
+
+# Find Process that is using a TCP/Port 
+Get-Process -Id (Get-NetTCPConnection -LocalPort <port_number>).OwningProcess
 ```
+
+### PowerShell - Execute shell script from URL without downloading a file 
+
+```bash
+# Execute bash without arguments
+iwr -useb <ps1_url> | iex
+
+# Execute bash that require arguments
+iwr -useb <ps1_url> | iex -<parameter>:<value>
+```
+
+### PowerShell - Handle Command Line Arguments 
+
+In *PowerShell* you can pass parameters by using the `-` character. As for example:
+
+```ps1
+command -parameter1 value1 -parameter2 value2
+command -p1 value1 -parameter2 value2
+```
+
+You can handle the parameter passed by using the *param* session in your *PowerShell* script: 
+
+```ps1
+param (
+    [Alias('p1')] [string]$parameter1 = "default_value1",
+    [Parameter(Mandatory=$true)][string]$parameter2 = "default_value2",
+ )
+```
+
+### PowerShell - Read file content into a variable 
+
+```ps1
+# Read all content of test.txt file into a variable
+$content = [IO.File]::ReadAllText(".\test.txt")
+```
+
+### PowerShell - Start-Process examples
+
+```ps1
+# Execute Ping and Show the Stdio + StdError
+$process = Start-Process -FilePath ping -ArgumentList localhost -NoNewWindow -PassThru -Wait
+$process.StandardOutput
+$process.StandardError
+
+# Execute Ping and redirect the STDIO and StdError to a file 
+$process = Start-Process -FilePath ping -ArgumentList localhost -NoNewWindow -PassThru -Wait -RedirectStandardOutput stdout.txt -RedirectStandardError stderr.txt
+```
+
+### Powershell - Certificate - Import Certificates Examples 
+
+Importing Certificate with User Interface
+
+```ps1
+# Imports the certificate from the file into the root store of the current user.
+Import-Certificate -FilePath "<cert_path>" -CertStoreLocation cert:\CurrentUser\Root
+
+#Imports the certificate from the file into the root store of the Local Machine
+Import-Certificate -FilePath "<cert_path>" -CertStoreLocation Cert:\LocalMachine\Root
+```
+
+Importing Certificate without User Interface 
+
+```ps1
+# Import certificate to the *Root Store* without asking anything to the user
+$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2("<certificate_path (.cer)>")
+$rootStore = Get-Item cert:\LocalMachine\Root
+$rootStore.Open("ReadWrite")
+$rootStore.Add($cert)
+$rootStore.Close()
+```
+
+
+### PowerShell - Proxy - Set Global Proxy Parameters 
+
+By default, the functions that uses *Web Requests* will use the *default proxy configuration* which is set in the *Internet Explorer Services*. However, on system that does not have the *Internet Explorer*, as for example the *windows servercore*, the *Proxy* will not be set even if the *proxy environment variable (E.g.: http_proxy, https_proxy)* is set. 
+
+You can workaround this by setting the *default parameters values* for the functions that request *web connectivity* as shown below:
+
+```ps1
+if(Test-Connection <proxy_address> -Count 1 -Quiet)
+{
+    $global:PSDefaultParameterValues = @{
+        'Invoke-RestMethod:Proxy'='http://<proxy_address>:<proxy_port>'
+        'Invoke-WebRequest:Proxy'='http://<proxy_address>:<proxy_port>'
+        '*:ProxyUseDefaultCredentials'=$true
+    }
+}
+```
+
+

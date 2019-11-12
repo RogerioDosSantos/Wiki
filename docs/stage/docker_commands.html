@@ -240,5 +240,13 @@ docker load -i ./microsoft_nanoserver_1803.tar</code></pre>
 
 # Download Docker Compose from the release page <span class="kw">and</span> <span class="kw">put</span> it <span class="kw">where</span> the docker binaries are
 Invoke-WebRequest &quot;https:<span class="dt">//github.com/docker/compose/releases/download/1.23.2/docker-compose-Windows-x86_64.exe&quot;</span> -UseBasicParsing -OutFile $Env:ProgramFiles\Docker\Docker\resources\bin\docker-compose.exe</code></pre></div>
+<h3 id="docker---bug---how-to-stop-a-container-that-the-engine-does-not-stop-in-any-way">Docker - Bug - How to stop a container that the engine does not stop in any way</h3>
+<p>There is a bug in the <em>docker engine</em> for <em>Windows</em> that will not allow you to stop the container either using <code>docker stop</code> or <code>docker kill</code> commands.</p>
+<p>To solve the issue:</p>
+<ul>
+<li>Quit the <em>docker engine</em> (<em>Docker desktop</em>)</li>
+<li>Remove the content of the following folder: <code>C:\ProgramData\Docker\containers</code></li>
+<li>Restart the <em>docker engine</em> (<em>Docker desktop</em>)</li>
+</ul>
 </body>
 </html>

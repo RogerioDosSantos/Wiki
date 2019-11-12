@@ -6,6 +6,87 @@ It basically allow you to deploy your application from the Cloud to a IoT-Edge m
 
 An IoT-Edge machine is a machine that has a IoT-Edge runtime module on it.
 
+
+## Edge Device - Installation / Configuration
+
+### Run Linux Container in Windows Machine 
+
+- Ensure that you are using *Windows 10 Anniversary update (build 14393)* or newer.
+- Ensure that you are running *Powershell* as *Administrator*
+- Ensure that you have *Powershell (AMD64)* session. To veriry it you can run the following command:
+
+```ps 
+# Return the Powershell session (x86 or AMD64) 
+(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+```
+- Execute the *Deploy-IoTEdge* from *Microsoft Website Script*
+The Deploy-IoTEdge does the following:
+    - Checks that your Windows machine is on a supported version
+    - Turns on the containers feature
+    - Downloads the moby runtime (which is not used for Linux containers) 
+    - Downloads IoT Edge runtime
+
+```ps 
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -ContainerOs Linux
+```
+
+- Configure the IoT Edge runtime on the machine
+
+```ps 
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge -ContainerOs Linux`
+```
+
+You will be requested to enter the *DeviceConnectionString* which can be retrieved in the [IoTHub Portal](https://portal.azure.com):
+
+![](http://tinyurl.com/yxtsy5bf)
+
+![](http://tinyurl.com/y6yy7o8a)
+
+**Note**: The device connection string takes the following format, and should not include quotation marks: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+
+- Verify if the installation was successful
+
+```ps 
+# Get the status of the IoT Edge service
+Get-Service iotedge
+
+# List the running modules 
+iotedge list
+```
+
+![](http://tinyurl.com/yxmsycxq)
+
+## Uninstalling Azure IoT Edge 
+
+From an elevated command prompt:
+
+```ps 
+# Uninstall Azure IoT Edge 
+Uninstall-IoTEdge
+```
+
+![](http://tinyurl.com/y2fwkol7)
+
+
+## Troubleshooting Azure IoT Edge
+
+```ps 
+# Execute standard check on the current Azure IoT Edge installation and connectivity
+iotedge check
+```
+
+![](http://tinyurl.com/y3ruk522)
+
+## How to use docker cli into a moby runtime
+
+```shell
+# List the available images in the moby engine
+docker -H npipe:////./pipe/iotedge_moby_engine images
+
+# Docker uses the following socket by default:
+# unix:///var/run/docker.sock
+```
+
 ## Commands
 
 `pip install -U azure-iot-edge-runtime-ctl` : Install the IoT-Edge runtime module

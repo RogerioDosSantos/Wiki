@@ -74,7 +74,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>git show</code>: Display the last git commit.</p>
 <p><code>git log -&lt;quantity&gt;</code>: Shows the lasts <quantity> commits.</p>
 <p><code>git log --pretty=oneline -&lt;quantity&gt;</code>: Shows the lasts <quantity> commits. Only the commit line.</p>
-<p><code>git show-branch</code> : Show the available branches</p>
+<p><code>git show-branch</code> : Show the commits on all available branches</p>
+<p><code>git branch</code> : List the available branch and inform in what branch you are</p>
 <p><code>git checkout -b &lt;branch&gt;</code> : Create local branch</p>
 <p><code>git branch -d &lt;branch&gt;</code> : Remove local branch</p>
 <p><code>git checkout &lt;branch&gt;</code> : Go to the branch</p>
@@ -250,5 +251,14 @@ git branch --set-upstream-to=origin/dev dev</code></pre>
 <h3 id="git---get-a-list-of-modified-files">Git - Get a list of modified files</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Get a list of modified / added files</span>
 <span class="fu">git</span> ls-files -mo</code></pre></div>
+<h3 id="git---branch---push-a-new-branch-to-remote-and-track-it">Git - Branch - Push a new branch to remote and track it</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Create a new branch </span>
+<span class="fu">git</span> checkout -b <span class="op">&lt;</span>new_branch_name<span class="op">&gt;</span>
+
+<span class="co"># Push your branch to the remote repository:</span>
+<span class="fu">git</span> push -u origin <span class="op">&lt;</span>new_branch_name<span class="op">&gt;</span></code></pre></div>
+<h3 id="git---branch---track-remote-branch">Git - Branch - Track Remote Branch</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Make the local branch track the remote branch </span>
+<span class="fu">git</span> branch -u origin/<span class="op">&lt;</span>remote_branch_name<span class="op">&gt;</span></code></pre></div>
 </body>
 </html>

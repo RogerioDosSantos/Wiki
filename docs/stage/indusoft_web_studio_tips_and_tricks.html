@@ -118,6 +118,16 @@ StdSvcInst.exe -delete /name &quot;&lt;service_name&gt;&quot;</code></pre>
 <h3 id="remote-agent---configure-port">Remote Agent - Configure port</h3>
 <p>By default the <em>Remote Agent (CEServer)</em> will connect using the port <em>4322</em></p>
 <h3 id="iotview---execute-runtime-from-command-line">IoTView - Execute Runtime from command line</h3>
-<p>TODO</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">iotview</span> <span class="op">&lt;</span>application_path<span class="op">&gt;</span> <span class="op">&lt;</span>log_verbosity<span class="op">&gt;</span></code></pre></div>
+<h3 id="stadosvr---studio-ado-gateway---configure-port">StADOSvr - Studio ADO Gateway - Configure port</h3>
+<p>By default the <em>Studio ADO Gateway (StADOSvr)</em> uses the port 3997.</p>
+<p>The example below launches the <em>Studio ADO Gateway</em> in the port 1002:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Start the Studio ADO Gateway to listen in the port 1002</span>
+<span class="ex">StADOSvr.exe</span> 1002</code></pre></div>
+<h3 id="logwin---remote-logwin-logwinext---configure-port">LogWin - Remote LogWin (LogWinExt) - Configure Port</h3>
+<p>Inside the <em>InduSoft</em> product intallation <em>bin</em> folder, you will find the <em>LogWinExt</em> which is a <em>Remote Logwin</em> executable that allows you to communicate with any <em>InduSoft</em> runtime that is executing the <em>TCP/IP Server task</em>.</p>
+<p>The example below shows how you can launch to connect with the local host using the port <em>1234</em></p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co"># Launch Remote Logwin to talk with the localhost</span>
+<span class="ex">LogWinExt.exe</span> /dsip:127.0.0.1 /dsport:1234</code></pre></div>
 </body>
 </html>
