@@ -41,6 +41,8 @@ You will need:
 
 Once the *Quit Claim Deed Form* is filled you need to sign it in front of a notary. *Bank of America* offers to its customers a [Notary Service](https://www.bankofamerica.com/customer-service/contact-us/notary-services/). All you need to do is to take the document to an agency with a photo document that proves your identity.
 
+Finally record the document on the [State Clerk](https://countyclerk.traviscountytx.gov/recording/file-a-document-recording.html). 
+
 ## References and Links 
 
 - [IncFile](https://www.incfile.com/)
@@ -50,3 +52,4 @@ Once the *Quit Claim Deed Form* is filled you need to sign it in front of a nota
 - [Fill Forms Online (E-Forms)](https://eforms.com/)
 - [Fill Forms Online (FormSwift)](https://formswift.com)
 - [Transfer Property to LLC](https://www.wikihow.com/Transfer-Property-to-a-LLC)
+- [Travis County Clerk (Recording)](https://countyclerk.traviscountytx.gov/recording/file-a-document-recording.html)
