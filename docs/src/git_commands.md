@@ -357,3 +357,9 @@ git push -u origin <new_branch_name>
 git branch -u origin/<remote_branch_name>
 ```
 
+### Git - Undo last commit not pushed
+```bash
+# Undo commit and keep all files staged
+git reset --soft HEAD~
+```
+
