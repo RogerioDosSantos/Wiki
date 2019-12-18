@@ -664,6 +664,40 @@ Please note that while LD_LIBRARY_PATH works on many Unix-like systems, it doesn
 
 `/lib/ld-linux.so.2 --library-path <library_path> <executable_command>`: Allow to inform an additional path than the **linux system library path** where a library would be located.
 
+## Services (Daemon)
+
+`systemctl cat <service_name>`: List the current service configuration. 
+
+`systemctl edit <service_name>`: Overwrite the default service configuration. Creates an override file (`/etc/systemd/system/<service_name>.d/override.conf`), open the editor and restart the service once the configuration is saved.
+
+`systemctl show <service_name> [-p <property_name>]`: Check service properties in a format `<key>:<value>`. If you want to display a single property, you can use the `-p` option.
+
+`systemctl status <service_name>`: Shows the current status of a service
+
+`journalctl -u <service_name>`: Show the current logs of a service
+
+`systemctl daemon-reload`: Reload systemd manager configuration. This will rerun all generators (see systemd.generator(7)), reload all unit files, and recreate the entire dependency tree. While the daemon is being reloaded, all sockets systemd listens on behalf of user configuration will stay accessible.
+
+`systemctl list-dependencies`: List all dependencies of a service
+
+`systemctl list-units [--all]`: List all services and its current status. When the option `--all` is invoked, services that is not running will also being shown. The default behavior is to show only running services
+
+`systemctl is-active <service_name>`: Verify if a service is active.
+
+`systemctl is-failed <service_name>`: Indicates if a service is in failed state
+
+`systemctl enable <service_name>`: Start a service in the boot
+
+`systemctl disable <service_name>`: Stop the service to start during boot
+
+`systemctl mask <service_name>`: Put the service in *masked state* which means, the service will not be able to be started while is masked.
+
+`systemctl unmask <service_name>`: Remove the service from *masked state*
+
+`systemctl is-enabled`: Verify if a service is istarting during boot
+
+`systemctl revert <service_name>`: Revert service configuration to the vendor configuration 
+
 ## Signals <a name="signals"></a>
 
 `SIGHUP`: 

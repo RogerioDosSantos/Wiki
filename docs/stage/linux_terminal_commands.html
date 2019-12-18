@@ -427,6 +427,23 @@ if [ <span class="ot">!</span> <span class="ot">-S</span> <span class="st">&quot
 <p><code>ldd --version</code>: Get the version of the <em>GLIBC</em>.</p>
 <p><code>ldd &lt;program name&gt;</code> : Print the shared objects dependencies. Show the list of shared libraries a program depend.</p>
 <p><code>/lib/ld-linux.so.2 --library-path &lt;library_path&gt; &lt;executable_command&gt;</code>: Allow to inform an additional path than the <strong>linux system library path</strong> where a library would be located.</p>
+<h2 id="services-daemon">Services (Daemon)</h2>
+<p><code>systemctl cat &lt;service_name&gt;</code>: List the current service configuration.</p>
+<p><code>systemctl edit &lt;service_name&gt;</code>: Overwrite the default service configuration. Creates an override file (<code>/etc/systemd/system/&lt;service_name&gt;.d/override.conf</code>), open the editor and restart the service once the configuration is saved.</p>
+<p><code>systemctl show &lt;service_name&gt; [-p &lt;property_name&gt;]</code>: Check service properties in a format <code>&lt;key&gt;:&lt;value&gt;</code>. If you want to display a single property, you can use the <code>-p</code> option.</p>
+<p><code>systemctl status &lt;service_name&gt;</code>: Shows the current status of a service</p>
+<p><code>journalctl -u &lt;service_name&gt;</code>: Show the current logs of a service</p>
+<p><code>systemctl daemon-reload</code>: Reload systemd manager configuration. This will rerun all generators (see systemd.generator(7)), reload all unit files, and recreate the entire dependency tree. While the daemon is being reloaded, all sockets systemd listens on behalf of user configuration will stay accessible.</p>
+<p><code>systemctl list-dependencies</code>: List all dependencies of a service</p>
+<p><code>systemctl list-units [--all]</code>: List all services and its current status. When the option <code>--all</code> is invoked, services that is not running will also being shown. The default behavior is to show only running services</p>
+<p><code>systemctl is-active &lt;service_name&gt;</code>: Verify if a service is active.</p>
+<p><code>systemctl is-failed &lt;service_name&gt;</code>: Indicates if a service is in failed state</p>
+<p><code>systemctl enable &lt;service_name&gt;</code>: Start a service in the boot</p>
+<p><code>systemctl disable &lt;service_name&gt;</code>: Stop the service to start during boot</p>
+<p><code>systemctl mask &lt;service_name&gt;</code>: Put the service in <em>masked state</em> which means, the service will not be able to be started while is masked.</p>
+<p><code>systemctl unmask &lt;service_name&gt;</code>: Remove the service from <em>masked state</em></p>
+<p><code>systemctl is-enabled</code>: Verify if a service is istarting during boot</p>
+<p><code>systemctl revert &lt;service_name&gt;</code>: Revert service configuration to the vendor configuration</p>
 <h2 id="signals">Signals <a name="signals"></a></h2>
 <p><code>SIGHUP</code>:</p>
 <p><code>SIGINT</code>:</p>
