@@ -219,7 +219,7 @@
 ## Stock Market
 
 - [Stock Indicators]( ./stock_indicators.html )
-- [ETFs] ( ./etfs.html )
+- [ETFs]( ./etfs.html )
 
 ## Artificial Intelligence
 
