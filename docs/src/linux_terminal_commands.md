@@ -121,6 +121,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `ps -f [<process_id>]` : List additional information. E.g.: Parent Process (PPID), Command that execute the process (CMD), etc.
 
+`ps -o pid,user,%mem,command ax | sort -b -k3 -r`: Display the amount of memory used on each process
+
 `kill [-KILL] <process id>` : Kill a process. The `-KILL` parameter forces the process to be killed. You can get the process id using the `top` command
 
 `kill -l`: Display the signal available list (signal number). Please see [signals topic](#signals) for the signals descriptions.
