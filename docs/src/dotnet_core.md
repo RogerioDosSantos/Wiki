@@ -135,7 +135,7 @@ The example below copy the folder *resources* located in the same directory than
 </ItemGroup>
 ```
 
-### .Net - Proxy - Set Global Default Proxy for an Application
+### Proxy - Set Global Default Proxy for an Application
 
 By default, a *.Net* application, running on *Windows*, uses the *default proxy* which is the same configured in the *Internet Explorer*. However, there are some *OSs* as for example the *Windows servercore* where the *Internet Explorer* is not used. 
 
@@ -146,6 +146,16 @@ string proxyUrl = Environment.GetEnvironmentVariable("http_proxy");
 proxyUrl = String.IsNullOrEmpty(proxyUrl) ? Environment.GetEnvironmentVariable("https_proxy") : proxyUrl;
 if (!String.IsNullOrEmpty(proxyUrl))
     System.Net.WebRequest.DefaultWebProxy = new WebProxy(proxyUrl);
+```
+
+### HTTP Client - Make asynchronous HTTP requests without using dependency injection 
+
+There are several available *HTTP Clients* on the *.Net Framework*, however [the one that is recomended for asynchronous call and therefore the most used is the *HTTPClient*](https://visualstudiomagazine.com/articles/2017/06/01/calling-web-services.aspx). However, you can have [several socket problems](https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/) if you do not properly intanciate the *HTTPClient* the right way.
+
+It is recomended to use the [IHttpClientFactory](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests) since it controls the *sockets lifetime*, *DNS* renew, etc. for you. However, using the [IHttpClientFactory requires you to use dependency injection](https://github.com/dotnet/extensions/issues/1345). [An alternative to IHttpClientFactory without using dependency injection](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-3.1#alternatives-to-ihttpclientfactory) is shown in the code below: 
+
+```c#
+//TODO(Roger)
 ```
 
 ## References 

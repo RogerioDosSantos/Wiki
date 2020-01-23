@@ -133,13 +133,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <span class="kw">&lt;None</span><span class="ot"> Include=</span><span class="st">&quot;resources\**&quot;</span><span class="ot"> CopyToOutputDirectory=</span><span class="st">&quot;PreserveNewest&quot;</span><span class="kw">/&gt;</span>
   ...
 <span class="kw">&lt;/ItemGroup&gt;</span></code></pre></div>
-<h3 id="net---proxy---set-global-default-proxy-for-an-application">.Net - Proxy - Set Global Default Proxy for an Application</h3>
+<h3 id="proxy---set-global-default-proxy-for-an-application">Proxy - Set Global Default Proxy for an Application</h3>
 <p>By default, a <em>.Net</em> application, running on <em>Windows</em>, uses the <em>default proxy</em> which is the same configured in the <em>Internet Explorer</em>. However, there are some <em>OSs</em> as for example the <em>Windows servercore</em> where the <em>Internet Explorer</em> is not used.</p>
 <p>For this reason, it is a good practice to check is the <em>Proxy Environment Variable (http_proxy, https_proxy)</em> is set and if so, add a <em>default proxy</em> for your <em>.Net Application</em>. This can be done using the code below:</p>
 <div class="sourceCode"><pre class="sourceCode c#"><code class="sourceCode cs"><span class="dt">string</span> proxyUrl = Environment.<span class="fu">GetEnvironmentVariable</span>(<span class="st">&quot;http_proxy&quot;</span>);
 proxyUrl = String.<span class="fu">IsNullOrEmpty</span>(proxyUrl) ? Environment.<span class="fu">GetEnvironmentVariable</span>(<span class="st">&quot;https_proxy&quot;</span>) : proxyUrl;
 <span class="kw">if</span> (!String.<span class="fu">IsNullOrEmpty</span>(proxyUrl))
     System.<span class="fu">Net</span>.<span class="fu">WebRequest</span>.<span class="fu">DefaultWebProxy</span> = <span class="kw">new</span> <span class="fu">WebProxy</span>(proxyUrl);</code></pre></div>
+<h3 id="http-client---make-asynchronous-http-requests-without-using-dependency-injection">HTTP Client - Make asynchronous HTTP requests without using dependency injection</h3>
+<p>There are several available <em>HTTP Clients</em> on the <em>.Net Framework</em>, however <a href="https://visualstudiomagazine.com/articles/2017/06/01/calling-web-services.aspx">the one that is recomended for asynchronous call and therefore the most used is the <em>HTTPClient</em></a>. However, you can have <a href="https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/">several socket problems</a> if you do not properly intanciate the <em>HTTPClient</em> the right way.</p>
+<p>It is recomended to use the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests">IHttpClientFactory</a> since it controls the <em>sockets lifetime</em>, <em>DNS</em> renew, etc. for you. However, using the <a href="https://github.com/dotnet/extensions/issues/1345">IHttpClientFactory requires you to use dependency injection</a>. <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-3.1#alternatives-to-ihttpclientfactory">An alternative to IHttpClientFactory without using dependency injection</a> is shown in the code below:</p>
+<div class="sourceCode"><pre class="sourceCode c#"><code class="sourceCode cs"><span class="co">//TODO(Roger)</span></code></pre></div>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://github.com/dotnet/samples/tree/master/core/hosting">Host .Net Core into a Native Application</a></li>
