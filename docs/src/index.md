@@ -150,7 +150,7 @@
 ## Database 
 
 - [OLE DB]( ./ole_db.html )
-- [Entity Framework]( ./entity_framework.md )
+- [Entity Framework]( ./entity_framework.html )
 
 ## Programming Languages
 
