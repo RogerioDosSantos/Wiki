@@ -114,6 +114,11 @@ Lifecycle Hooks are callbacks function available in the angular framework:
 
 TODO(Roger) - https://www.youtube.com/watch?v=2OHbjep_WjQ
 
+
+## Examples
+
+- [Use environment variables when deploying a docker image](https://github.com/RogerioDosSantos/example_angular_environment_variables#environment-variable-in-angularjs-and-docker)
+
 ## References
 
 [Angular CLI](https://angular.io/cli)
