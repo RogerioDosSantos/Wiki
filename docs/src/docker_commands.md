@@ -80,6 +80,8 @@
 
 `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock rogersantos/docker_runlike <image_name>`: Get the run command of a docker image.
 
+`docker stats [<container_name>]`: Provide the statistics of resources consumed by the containers
+
 ## Keys
 
 `crtl+p ctrl+q`: Detach from a session. Note: You might have to press ctrl+c after in case you are using tmux
