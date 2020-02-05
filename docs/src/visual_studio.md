@@ -98,3 +98,7 @@ Environment.GetEnvironmentVariables()
 ![](http://tinyurl.com/y3pr8cex)
 
 
+## References 
+
+- [Connect to your target Linux system in Visual Studio](https://docs.microsoft.com/en-us/cpp/linux/connect-to-your-remote-linux-computer?view=vs-2019)
+
