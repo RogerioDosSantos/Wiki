@@ -215,6 +215,7 @@
 - [Azure Container Instances]( ./azure_container_instances.html )
 - [Azure Active Directory]( ./azure_active_directory.html )
 - [Azure Pipeline]( ./azure_pipeline.html )
+- [Azure App Services]( ./azure_app_services.html )
 
 ## Stock Market
 
