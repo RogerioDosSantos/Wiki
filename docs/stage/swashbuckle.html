@@ -108,7 +108,9 @@ dotnet add &lt;your_project&gt;.csproj package Swashbuckle.AspNetCore</code></pr
     <span class="co">// specifying the Swagger JSON endpoint.</span>
     app.<span class="fu">UseSwaggerUI</span>(c =&gt;
     {
-        c.<span class="fu">SwaggerEndpoint</span>(<span class="st">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="st">&quot;My API V1&quot;</span>);
+        <span class="co">//Note: Use relative path to the swagger endpoint in this way the swagger page will always be reached independent if you are into a reverse proxy</span>
+        c.<span class="fu">SwaggerEndpoint</span>(<span class="st">&quot;../swagger/v1/swagger.json&quot;</span>, <span class="st">&quot;My API V1&quot;</span>);
+        c.<span class="fu">RoutePrefix</span> = <span class="st">&quot;api-doc&quot;</span>;
     });
     app.<span class="fu">UseMvc</span>();
 }</code></pre></div>

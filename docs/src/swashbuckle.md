@@ -70,7 +70,9 @@ public void Configure(IApplicationBuilder app)
     // specifying the Swagger JSON endpoint.
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        //Note: Use relative path to the swagger endpoint in this way the swagger page will always be reached independent if you are into a reverse proxy
+        c.SwaggerEndpoint("../swagger/v1/swagger.json", "My API V1");
+        c.RoutePrefix = "api-doc";
     });
     app.UseMvc();
 }
