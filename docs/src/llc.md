@@ -58,6 +58,14 @@ You will need:
 
 Both numbers you receive by mail when you register the company on the *Texas Secretary of State*
 
+After filling the *Questionnaires for Franchise Tax Accountability* you will receive a confirmation if you need to pay the *Franchise Tax* or not.
+
+## Federal Taxes 
+
+**Important**: If you paid a contractor more than $600.00 you have to send 1099-MISC. The deadline to mail these forms is January 31.
+
+Tip: The [tax1099.com](https://www.tax1099.com/) site fullfill forms including 1099-MISC for a reasonable price
+
 ## References and Links 
 
 - [IncFile](https://www.incfile.com/)
