@@ -700,6 +700,15 @@ Please note that while LD_LIBRARY_PATH works on many Unix-like systems, it doesn
 
 `systemctl revert <service_name>`: Revert service configuration to the vendor configuration 
 
+`systemctl restart <service_name>`: Restart a service
+
+`systemctl stop <service_name>`: Stop a service
+
+`systemctl start <service_name>`: Start a service
+
+`systemctl status <service_name>`: Verify if a service is running
+
+
 ## Signals <a name="signals"></a>
 
 `SIGHUP`: 

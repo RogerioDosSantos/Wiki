@@ -110,6 +110,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>exec &lt;command&gt;</code>: Execute a program without forking it.</p>
 <p><code>ps -aux</code> : List of all running process</p>
 <p><code>ps -f [&lt;process_id&gt;]</code> : List additional information. E.g.: Parent Process (PPID), Command that execute the process (CMD), etc.</p>
+<p><code>ps -o pid,user,%mem,command ax | sort -b -k3 -r</code>: Display the amount of memory used on each process</p>
 <p><code>kill [-KILL] &lt;process id&gt;</code> : Kill a process. The <code>-KILL</code> parameter forces the process to be killed. You can get the process id using the <code>top</code> command</p>
 <p><code>kill -l</code>: Display the signal available list (signal number). Please see <a href="#signals">signals topic</a> for the signals descriptions.</p>
 <p><code>kill -&lt;signal_number&gt;</code>: Send a signal to a program.</p>
@@ -444,6 +445,10 @@ if [ <span class="ot">!</span> <span class="ot">-S</span> <span class="st">&quot
 <p><code>systemctl unmask &lt;service_name&gt;</code>: Remove the service from <em>masked state</em></p>
 <p><code>systemctl is-enabled</code>: Verify if a service is istarting during boot</p>
 <p><code>systemctl revert &lt;service_name&gt;</code>: Revert service configuration to the vendor configuration</p>
+<p><code>systemctl restart &lt;service_name&gt;</code>: Restart a service</p>
+<p><code>systemctl stop &lt;service_name&gt;</code>: Stop a service</p>
+<p><code>systemctl start &lt;service_name&gt;</code>: Start a service</p>
+<p><code>systemctl status &lt;service_name&gt;</code>: Verify if a service is running</p>
 <h2 id="signals">Signals <a name="signals"></a></h2>
 <p><code>SIGHUP</code>:</p>
 <p><code>SIGINT</code>:</p>
