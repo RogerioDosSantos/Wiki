@@ -43,6 +43,29 @@ Once the *Quit Claim Deed Form* is filled you need to sign it in front of a nota
 
 Finally record the document on the [State Clerk](https://countyclerk.traviscountytx.gov/recording/file-a-document-recording.html). 
 
+## Texas Taxes
+
+All Texas corporations, LLCs, LPs, LLPs, and nonprofits (unless granted exemption) must file an Annual Texas Franchise Tax Report. There are no annual report requirements. The Texas franchise tax must be filed with the Texas Comptroller of Public Accounts each year.
+
+If your company’s total revenue is $1,180,000 or less, you will not be required to pay any taxes; however, you are still required to submit a tax return.
+
+To submit a tax return online, go to [Questionnaires for Franchise Tax Accountability](https://comptroller.texas.gov/taxes/franchise/questionnaire.php) and follow the instructions.
+
+You will need:
+
+- **Texas Taxes Payer Number** 
+- **Web File Number**
+
+Both numbers you receive by mail when you register the company on the *Texas Secretary of State*
+
+After filling the *Questionnaires for Franchise Tax Accountability* you will receive a confirmation if you need to pay the *Franchise Tax* or not.
+
+## Federal Taxes 
+
+**Important**: If you paid a contractor more than $600.00 you have to send 1099-MISC. The deadline to mail these forms is January 31.
+
+Tip: The [tax1099.com](https://www.tax1099.com/) site fullfill forms including 1099-MISC for a reasonable price
+
 ## References and Links 
 
 - [IncFile](https://www.incfile.com/)
@@ -53,3 +76,4 @@ Finally record the document on the [State Clerk](https://countyclerk.traviscount
 - [Fill Forms Online (FormSwift)](https://formswift.com)
 - [Transfer Property to LLC](https://www.wikihow.com/Transfer-Property-to-a-LLC)
 - [Travis County Clerk (Recording)](https://countyclerk.traviscountytx.gov/recording/file-a-document-recording.html)
+- [Questionnaires for Franchise Tax Accountability](https://comptroller.texas.gov/taxes/franchise/questionnaire.php)
