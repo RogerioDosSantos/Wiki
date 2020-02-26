@@ -43,10 +43,11 @@
     - [FZF](./fzf.html)
     - [Grammarous]( ./grammarous.html )
 
-## Editors and Develpment Tools
+## Editors, Brownser and Develpment Tools
 
 - [Notepad++]( ./notepadpp.html )
 - [Visual Studio]( ./visual_studio.html )
+- [Google Chrome]( ./google_chrome.html )
 
 ## Markdown
 
