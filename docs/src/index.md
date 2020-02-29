@@ -60,6 +60,7 @@
 ## Source Control 
 
 - [Git Commands]( ./git_commands.html )
+- [Git LFS] ( ./git_lfs.html )
 - [Git TFS]( ./git_tfs.html )
 - [TFS Online]( ./tfs_online.html )
 - [TFS Client](./tfs_client.html )
