@@ -607,5 +607,33 @@ chmod &lt;number&gt;</code></pre>
 <span class="fu">sleep</span> 1
 <span class="bu">echo</span> -ne <span class="st">&#39;#######################   (100%)\r&#39;</span>
 <span class="bu">echo</span> -ne <span class="st">&#39;\n&#39;</span></code></pre></div>
+<h3 id="bash---loops">Bash - Loops</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="ex">VARIABLE</span> in A LIST
+<span class="kw">do</span>
+  <span class="ex">command1</span>
+  <span class="ex">command2</span>
+  <span class="ex">commandN</span>
+<span class="kw">done</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
+
+<span class="bu">echo</span> <span class="st">&quot;You can list numbers and text like this:&quot;</span>
+
+<span class="kw">for</span> <span class="ex">n</span> in 1 2 3 four
+<span class="kw">do</span>
+  <span class="bu">echo</span> <span class="st">&quot;Number </span><span class="va">$n</span><span class="st">&quot;</span>
+<span class="kw">done</span>
+
+<span class="bu">echo</span> <span class="st">&quot;Or specify a range of numbers:&quot;</span>
+
+<span class="kw">for</span> <span class="ex">n</span> in <span class="dt">{1..5}</span>
+<span class="kw">do</span>
+  <span class="bu">echo</span> <span class="st">&quot;Number </span><span class="va">$n</span><span class="st">&quot;</span>
+<span class="kw">done</span>
+
+<span class="bu">echo</span> <span class="st">&quot;Or use the output of another command:&quot;</span>
+<span class="kw">for</span> <span class="ex">f</span> in <span class="va">$(</span><span class="fu">ls</span><span class="va">)</span>
+<span class="kw">do</span>
+  <span class="bu">echo</span> <span class="va">$f</span>
+<span class="kw">done</span></code></pre></div>
 </body>
 </html>
