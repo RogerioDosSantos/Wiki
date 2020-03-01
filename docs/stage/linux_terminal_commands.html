@@ -167,6 +167,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>find &lt;start_directory&gt; -type d -name &quot;&lt;expression&gt;&quot;</code> : Find directories</p>
 <p><code>find &lt;start_directory&gt; -ctime +&lt;days&gt;</code> : Find directories older than the amount of days informed.</p>
 <p><code>find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n'</code>: Return only the directory names</p>
+<p><code>find . -exec echo &quot;Test: {}&quot; \;</code>: Execute a command for each line of the find (E.g.: <code>find . -cmin -20 -exec echo &quot;Test: {}&quot; \;</code></p>
 <p><code>grep --include=\*.{cpp,h} -rnw &lt;source directory&gt; -e &quot;&lt;text to find&gt;&quot;</code> : Find a text into files (Case Sensitive)</p>
 <p><code>grep --include=\*.{cpp,h} -rnwi &lt;source directory&gt; -e &quot;&lt;text to find&gt;&quot;</code> : Find a text into files (Case Insensitive)</p>
 <p><code>grep -rl &lt;text_to_find_inside_file&gt; &lt;start_dirrectory&gt; | xargs sed -i 's/&lt;text_to_be_replaced&gt;/&lt;new_text&gt;/g'</code> : Find files with a specific text and replace its content</p>
@@ -296,12 +297,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2 id="bash-files">Bash Files</h2>
 <p><code>#!/bin/bash</code> : Inform what interpreter should run the bash</p>
 <p><code>#!/usr/bin/env bash</code> : Inform what interpreter should run the bash. This <a href="https://bash.cyberciti.biz/guide/Shebang">shebang</a> is preferable over the <code>#!/bin/bash</code> since it will make the script portable.</p>
+<ul>
+<li><code>set -u</code>: Make the script verify for empty variables. If is suggested to put it in all bash scripts</li>
+</ul>
 <p><code>cd &quot;$(dirname &quot;$0&quot;)</code> : Set bash to the current directory</p>
 <p><code>read -p &quot;Press [Enter] key to continue&quot;</code> : Pause command</p>
 <p><code>&lt;variable&gt;=&quot;$(readlink -f &quot;&lt;relative path&quot;)&quot;</code> : Convert relative path to full path.</p>
 <h3 id="conditional-statements">Conditional Statements</h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">
-<span class="kw">if</span><span class="bu"> [</span> <span class="ot">-d</span> <span class="st">&quot;</span><span class="va">${directory}</span><span class="st">&quot;</span>  ]; then
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">if</span><span class="bu"> [</span> <span class="ot">-d</span> <span class="st">&quot;</span><span class="va">${directory}</span><span class="st">&quot;</span>  ]; then
   <span class="co"># Control will enter here if $DIRECTORY exists.</span>
 fi
   
@@ -316,6 +319,15 @@ if [ <span class="ot">!</span> <span class="ot">-S</span> <span class="st">&quot
 <span class="kw">if</span><span class="bu"> [</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="st">&quot;</span><span class="va">${file_path}</span><span class="st">&quot;</span><span class="bu"> ]</span>; <span class="kw">then</span>
   <span class="co"># Control will enter if a file does not exists</span>
 <span class="kw">fi</span></code></pre></div>
+<p>You can also use the <code>test</code> command to execute comparisons (type <code>man test</code> for more instructions):</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
+<span class="kw">for</span> <span class="ex">i</span> in <span class="dt">{1..10}</span>
+<span class="kw">do</span>
+  <span class="kw">if</span> <span class="bu">test</span> <span class="va">$i</span> -eq 3 
+  <span class="kw">then</span>
+    <span class="bu">echo</span> <span class="st">&quot;I found the 3!&quot;</span>
+  <span class="kw">fi</span>
+<span class="kw">done</span></code></pre></div>
 <h3 id="looping">Looping</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">
 <span class="kw">for</span> <span class="op">&lt;</span><span class="ex">item</span><span class="op">&gt;</span> in <span class="st">&quot;${&lt;array&gt;[@]}&quot;</span><span class="kw">;</span> <span class="kw">do</span>
@@ -635,5 +647,14 @@ chmod &lt;number&gt;</code></pre>
 <span class="kw">do</span>
   <span class="bu">echo</span> <span class="va">$f</span>
 <span class="kw">done</span></code></pre></div>
+<h3 id="bash---parsing-json">Bash - Parsing JSON</h3>
+<p><code>jq</code> is the command line to parse JSON</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Parse JSON</span>
+<span class="bu">echo</span> <span class="st">&#39;{ &quot;Price&quot;: 10.0, &quot;Name&quot;: &quot;Cable&quot; }&#39;</span> <span class="kw">|</span> <span class="ex">jq</span>
+
+<span class="co"># Get Value of the Price </span>
+<span class="bu">echo</span> <span class="st">&#39;{ &quot;Price&quot;: 10.0, &quot;Name&quot;: &quot;Cable&quot; }&#39;</span> <span class="kw">|</span> <span class="ex">jq</span> <span class="st">&quot;.Price&quot;</span></code></pre></div>
+<h3 id="bash---run-commands-in-parallel">Bash - Run commands in parallel</h3>
+<p><code>xargs -P &lt;task_number&gt;</code> allow you to run commands in parallel (multi-processors)</p>
 </body>
 </html>
