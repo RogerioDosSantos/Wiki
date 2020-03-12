@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="git-lfs-large-file-storage">Git LFS (Large File Storage)</h1>
+<p><a href="https://git-lfs.github.com/">Git Large File Storage (LFS)</a> replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise.</p>
+<h2 id="installation">Installation</h2>
+<h3 id="ubuntu">Ubuntu</h3>
+<pre class="shell"><code>sudo apt-get update -y
+sudo apt-get install -y git-lfs</code></pre>
+<h2 id="how-to">How-to</h2>
+<h3 id="list-all-files-controlled-by-git-lfs">List all files controlled by Git LFS</h3>
+<pre class="shell"><code>git-lfs ls-files &lt;branch_name&gt;</code></pre>
+</body>
+</html>

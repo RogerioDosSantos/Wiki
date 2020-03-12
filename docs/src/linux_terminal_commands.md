@@ -224,6 +224,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n'`: Return only the directory names
 
+`find . -exec echo "Test: {}" \;`: Execute a command for each line of the find (E.g.: `find . -cmin -20 -exec echo "Test: {}" \;`
+
 `grep --include=\*.{cpp,h} -rnw <source directory> -e "<text to find>"` : Find a text into files (Case Sensitive)
 
 `grep --include=\*.{cpp,h} -rnwi <source directory> -e "<text to find>"` : Find a text into files (Case Insensitive)
@@ -468,6 +470,8 @@ sudo dpkg-reconfigure ca-certificates
 
 `#!/usr/bin/env bash` : Inform what interpreter should run the bash. This [shebang](https://bash.cyberciti.biz/guide/Shebang) is preferable over the `#!/bin/bash` since it will make the script portable.
 
+- `set -u`: Make the script verify for empty variables. If is suggested to put it in all bash scripts
+
 `cd "$(dirname "$0")` : Set bash to the current directory
 
 `read -p "Press [Enter] key to continue"` : Pause command
@@ -477,7 +481,6 @@ sudo dpkg-reconfigure ca-certificates
 ### Conditional Statements 
 
 ```bash
-
 if [ -d "${directory}"  ]; then
   # Control will enter here if $DIRECTORY exists.
 fi
@@ -493,6 +496,19 @@ fi
 if [ ! -f "${file_path}" ]; then
   # Control will enter if a file does not exists
 fi
+```
+
+You can also use the `test` command to execute comparisons (type `man test` for more instructions): 
+
+```bash
+#!/bin/bash
+for i in {1..10}
+do
+  if test $i -eq 3 
+  then
+    echo "I found the 3!"
+  fi
+done
 ```
 
 ### Looping 
@@ -961,8 +977,54 @@ echo -ne '#######################   (100%)\r'
 echo -ne '\n'
 ```
 
+### Bash - Loops 
 
+```bash
+for VARIABLE in A LIST
+do
+  command1
+  command2
+  commandN
+done
+```
 
+```bash
+#!/bin/bash
 
+echo "You can list numbers and text like this:"
 
+for n in 1 2 3 four
+do
+  echo "Number $n"
+done
+
+echo "Or specify a range of numbers:"
+
+for n in {1..5}
+do
+  echo "Number $n"
+done
+
+echo "Or use the output of another command:"
+for f in $(ls)
+do
+  echo $f
+done
+```
+
+### Bash - Parsing JSON 
+
+`jq` is the command line to parse JSON 
+
+```bash 
+# Parse JSON
+echo '{ "Price": 10.0, "Name": "Cable" }' | jq
+
+# Get Value of the Price 
+echo '{ "Price": 10.0, "Name": "Cable" }' | jq ".Price"
+```
+
+### Bash - Run commands in parallel
+
+`xargs -P <task_number>` allow you to run commands in parallel (multi-processors)
 
