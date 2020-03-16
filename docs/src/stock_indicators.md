@@ -8,4 +8,18 @@ Moving average convergence divergence (MACD) is a trend-following momentum indic
 
 2. Divergence - When the security price diverges from the MACD, it signals the end of the current trend. For example, a stock price that is rising and a MACD indicator that is falling could mean that the rally is about to end. Conversely, if a stock price is falling and the MACD is rising, it could mean that a bullish reversal could occur in the near-term. Traders often use divergence in conjunction with other technical indicators to find opportunities.
 
+### MACD Actions summary
+
+| Info                                         | Meaning                          | Action         |
+|----------------------------------------------|----------------------------------|----------------|
+| Timeframe for analysis                       | 1 month                          |                |
+| 26 days (Orange) crossed up 12 days (Blue)   | Bullish Trend                    | Signal to Buy  |
+| 26 days (Orange) crossed down 12 days (Blue) | Bearhish Trend                   | Signal to Sell |
+| MACD is falling and Stock Price is raizing   | Bullish Trend is finishing       | Stop Buying    |
+| MACD is raizing and Stock Price is falling   | Bearhish Trend is finishing      | Stop Selling   |
+| Difference is negative big                   | Price is going up (Oversold)     |                |
+| Difference is positive big                   | Price is going down (Overbought) |                |
+| Derivate is 0 and diference was going down   | Price is going up                |                |
+| Derivate is 0 and diference was going up     | Price is going down              |                |
+
 
