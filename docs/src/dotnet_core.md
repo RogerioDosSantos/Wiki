@@ -98,6 +98,12 @@ dotnet nuget locals all --clear
 dotnet restore
 ```
 
+You can also list the location of the nuget folders using the following command:
+
+```sh
+dotnet nuget locals all --list
+```
+
 ### Set an output directory without the .Net platform being appended 
 
 By default the *.Net Core Platform* (E.g.: *netcoreapp2.0*) is appended in the *output directory* independent of the configuration:

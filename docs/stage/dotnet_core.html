@@ -109,6 +109,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>Note:</strong> During development, if you change the <em>NuGet</em> package but do not increment it's version, in both the project that produces the nupkg and in the project that consumes it, you'll need to clear your local packages cache before restoring again:</p>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">dotnet</span> nuget locals all --clear
 <span class="ex">dotnet</span> restore</code></pre></div>
+<p>You can also list the location of the nuget folders using the following command:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">dotnet</span> nuget locals all --list</code></pre></div>
 <h3 id="set-an-output-directory-without-the-.net-platform-being-appended">Set an output directory without the .Net platform being appended</h3>
 <p>By default the <em>.Net Core Platform</em> (E.g.: <em>netcoreapp2.0</em>) is appended in the <em>output directory</em> independent of the configuration:</p>
 <figure>
