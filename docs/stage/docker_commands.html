@@ -249,5 +249,19 @@ Invoke-WebRequest &quot;https:<span class="dt">//github.com/docker/compose/relea
 <li>Remove the content of the following folder: <code>C:\ProgramData\Docker\containers</code></li>
 <li>Restart the <em>docker engine</em> (<em>Docker desktop</em>)</li>
 </ul>
+<h3 id="docker---bug---docker-crash-when-starting">Docker - Bug - Docker crash when starting</h3>
+<p>I had the same issue. By some reason Windows reserves port 2375:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">netsh interface ipv4 <span class="kw">show</span> excludedportrange protocol=tcp</code></pre></div>
+<p>If you see that one of port ranges include port 2375 then you have the same issue.</p>
+<p>Disable Hyper-V and reboot:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">dism.exe <span class="dt">/Online</span> <span class="dt">/Disable-Feature:Microsoft-Hyper-V</span></code></pre></div>
+<p>Then reserve port 2375:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">netsh int ipv4 <span class="kw">add</span> excludedportrange protocol=tcp startport=<span class="dv">2375</span> numberofports=<span class="dv">1</span></code></pre></div>
+<p>Enable Hyper-V and reboot again:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">dism.exe <span class="dt">/Online</span> <span class="dt">/Enable-Feature:Microsoft-Hyper-V</span> <span class="dt">/All</span></code></pre></div>
+<p>Now it should be fine.</p>
+<ul>
+<li>Reference <a href="https://github.com/docker/for-win/issues/3546#issuecomment-483311479" class="uri">https://github.com/docker/for-win/issues/3546#issuecomment-483311479</a></li>
+</ul>
 </body>
 </html>

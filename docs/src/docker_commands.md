@@ -336,6 +336,37 @@ To solve the issue:
 `C:\ProgramData\Docker\containers`
 - Restart the *docker engine* (*Docker desktop*)
 
+### Docker - Bug - Docker crash when starting
+
+I had the same issue. By some reason Windows reserves port 2375:
+
+```ps
+netsh interface ipv4 show excludedportrange protocol=tcp
+```
+
+If you see that one of port ranges include port 2375 then you have the same issue.
+
+Disable Hyper-V and reboot:
+
+```ps
+dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
+```
+
+Then reserve port 2375:
+
+```ps
+netsh int ipv4 add excludedportrange protocol=tcp startport=2375 numberofports=1
+```
+Enable Hyper-V and reboot again:
+
+```ps
+dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
+```
+
+Now it should be fine.
+
+- Reference [https://github.com/docker/for-win/issues/3546#issuecomment-483311479](https://github.com/docker/for-win/issues/3546#issuecomment-483311479)
+
 
 
 
