@@ -164,9 +164,21 @@ It is recomended to use the [IHttpClientFactory](https://docs.microsoft.com/en-u
 //TODO(Roger)
 ```
 
+## Code Examples
+
+### Fire and forget
+
+![](http://tinyurl.com/txc8oe7)
+
+### Task that is executed with timeout and can handle exceptions
+
+![](http://tinyurl.com/sbx9mea)
+
 ## References 
 
 - [Host .Net Core into a Native Application](https://github.com/dotnet/samples/tree/master/core/hosting)
+- [Correcting Common Async/Await Mistakes in .NET - Brandon Minnick](https://www.youtube.com/watch?v=J0mcYVxJEl0)
+- [Writing high performance code in .NET - Bart De Smet](https://www.youtube.com/watch?v=fI1XGVIQjkA&list=PLqP1vtrAMlCF_yJiZLGN79skxhHfPavPR&index=74&t=0s)
 
 
 

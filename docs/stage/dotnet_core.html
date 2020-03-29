@@ -146,9 +146,20 @@ proxyUrl = String.<span class="fu">IsNullOrEmpty</span>(proxyUrl) ? Environment.
 <p>There are several available <em>HTTP Clients</em> on the <em>.Net Framework</em>, however <a href="https://visualstudiomagazine.com/articles/2017/06/01/calling-web-services.aspx">the one that is recomended for asynchronous call and therefore the most used is the <em>HTTPClient</em></a>. However, you can have <a href="https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/">several socket problems</a> if you do not properly intanciate the <em>HTTPClient</em> the right way.</p>
 <p>It is recomended to use the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests">IHttpClientFactory</a> since it controls the <em>sockets lifetime</em>, <em>DNS</em> renew, etc. for you. However, using the <a href="https://github.com/dotnet/extensions/issues/1345">IHttpClientFactory requires you to use dependency injection</a>. <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-3.1#alternatives-to-ihttpclientfactory">An alternative to IHttpClientFactory without using dependency injection</a> is shown in the code below:</p>
 <div class="sourceCode"><pre class="sourceCode c#"><code class="sourceCode cs"><span class="co">//TODO(Roger)</span></code></pre></div>
+<h2 id="code-examples">Code Examples</h2>
+<h3 id="fire-and-forget">Fire and forget</h3>
+<figure>
+<img src="http://tinyurl.com/txc8oe7" />
+</figure>
+<h3 id="task-that-is-executed-with-timeout-and-can-handle-exceptions">Task that is executed with timeout and can handle exceptions</h3>
+<figure>
+<img src="http://tinyurl.com/sbx9mea" />
+</figure>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://github.com/dotnet/samples/tree/master/core/hosting">Host .Net Core into a Native Application</a></li>
+<li><a href="https://www.youtube.com/watch?v=J0mcYVxJEl0">Correcting Common Async/Await Mistakes in .NET - Brandon Minnick</a></li>
+<li><a href="https://www.youtube.com/watch?v=fI1XGVIQjkA&amp;list=PLqP1vtrAMlCF_yJiZLGN79skxhHfPavPR&amp;index=74&amp;t=0s">Writing high performance code in .NET - Bart De Smet</a></li>
 </ul>
 </body>
 </html>

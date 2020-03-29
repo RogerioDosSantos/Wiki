@@ -148,6 +148,11 @@
 - [Perfmon]( ./perfmon.html )
 - [CRT APIs]( ./crt_apis.html )
 - [CDB]( ./cdb.html )
+- [Visual Studio Debugging Tools](./visual_studio_debugging_tools.html)
+- [SOS](./sos.html)
+- [SOSex](./sosex.html)
+- [PerfView](./perfview.html)
+- [Microsoft.Diagnostics.Runtime (CLRMD)](./clrmd.html)
 
 ## Database 
 
@@ -265,4 +270,9 @@
 ## Business 
 
 - [LLC](llc.html)
+
+## Books 
+
+- [DevOps - Handbook](./book_devops_handbook.html)
+
 
