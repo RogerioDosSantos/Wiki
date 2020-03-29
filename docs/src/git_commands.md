@@ -363,3 +363,10 @@ git branch -u origin/<remote_branch_name>
 git reset --soft HEAD~
 ```
 
+### Git - Get list of files changed in the current commit 
+
+```bash
+# List changed file in the current commit
+git diff --name-only HEAD^ HEAD
+```
+
