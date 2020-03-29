@@ -171,6 +171,7 @@
 - [Swashbuckle (Swagger)]( ./swashbuckle.html )
 - [Blazor]( ./blazor.html )
 - [XUnit]( ./xunit.html )
+- [Simple Injector]( ./simple_injector.html )
 
 ## Virtualization 
 
@@ -264,5 +265,6 @@
 
 ## Business 
 
-- [LLC](llc.html)
+- [LLC](./llc.html)
+- [Property Rental](./property_rental.html)
 
