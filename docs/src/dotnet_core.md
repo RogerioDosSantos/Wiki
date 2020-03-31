@@ -154,6 +154,26 @@ if (!String.IsNullOrEmpty(proxyUrl))
     System.Net.WebRequest.DefaultWebProxy = new WebProxy(proxyUrl);
 ```
 
+### QA - Run test dll from Nuget Package
+
+```shell
+#/usr/bin/env bash
+
+nuget::RunTestDllFromPackage()
+{
+  # Create test project
+  mkdir -p ./test
+  cd ./test
+  dotnet new console
+  dotnet add package dummy_qa
+  dotnet publish ./test.csproj -o ./win64 --self-contained true -c Release -r win7-x64
+  cd ./win64
+  dotnet vstest ./dummy_qa.dll 
+}
+
+nuget::RunTestDllFromPackage
+```
+
 ### HTTP Client - Make asynchronous HTTP requests without using dependency injection 
 
 There are several available *HTTP Clients* on the *.Net Framework*, however [the one that is recomended for asynchronous call and therefore the most used is the *HTTPClient*](https://visualstudiomagazine.com/articles/2017/06/01/calling-web-services.aspx). However, you can have [several socket problems](https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/) if you do not properly intanciate the *HTTPClient* the right way.
