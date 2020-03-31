@@ -199,6 +199,7 @@ It is recomended to use the [IHttpClientFactory](https://docs.microsoft.com/en-u
 - [Host .Net Core into a Native Application](https://github.com/dotnet/samples/tree/master/core/hosting)
 - [Correcting Common Async/Await Mistakes in .NET - Brandon Minnick](https://www.youtube.com/watch?v=J0mcYVxJEl0)
 - [Writing high performance code in .NET - Bart De Smet](https://www.youtube.com/watch?v=fI1XGVIQjkA&list=PLqP1vtrAMlCF_yJiZLGN79skxhHfPavPR&index=74&t=0s)
+- [How to create pluggins](https://docs.microsoft.com/en-us/dotnet/core/tutorials/creating-app-with-plugin-support)
 
 
 
