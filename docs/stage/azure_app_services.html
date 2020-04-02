@@ -13,7 +13,43 @@
 </head>
 <body>
 <h1 id="azure-app-services">Azure App Services</h1>
-<h2 id="app-servies-for-container---troubleshooting-with-advanced-tools">App Servies for Container - Troubleshooting with Advanced Tools</h2>
+<h2 id="app-services-for-container---troubleshooting-with-advanced-tools">App Services for Container - Troubleshooting with Advanced Tools</h2>
 <p><img src="http://tinyurl.com/wjzfgdt" /> <img src="http://tinyurl.com/st854zz" /></p>
+<h2 id="app-services-slots---how-to-use-deployment-slots">App Services Slots - How to use deployment Slots</h2>
+<figure>
+<img src="http://tinyurl.com/r7527zs" />
+</figure>
+<ul>
+<li>The URL does not change. The slot URL and the Production URL will always be the same</li>
+<li>On the Slot you can have diferences in code as well diferences in configuration</li>
+<li>The Slots allows you to define the amount of traffic that is on production to go to the slot</li>
+</ul>
+<p>E.g.: 50% of the traffic is goint to the slot:</p>
+<figure>
+<img src="http://tinyurl.com/rk6wv28" />
+</figure>
+<ul>
+<li>You can access the slots using the production URL by using the following links: <code>&lt;url&gt;/?x-ms-routing-name=&lt;slot_name&gt;</code></li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/vm9mqrl" />
+</figure>
+<ul>
+<li>When you Swap, the slot will be your deployment but the DNS will point to the proper deployment. Active connections will stay on the previous deployment</li>
+</ul>
+<figure>
+<img src="http://tinyurl.com/w4ub584" />
+</figure>
+<h2 id="app-services-deployment-center">App Services deployment center</h2>
+<p>It is a centralized way to put your code into an App Service</p>
+<p>In the future will be deployment center.</p>
+<p>Basically you can link the deployment center with your source control (E.g.: Git) and once you do a check-in, the deployment center will run your pipeline and deploy it for you.</p>
+<p>Since you have the deployment on every check-in, the deployment center can redeploy any previous deployment.</p>
+<p>This is an alternative to Slots but does not give 0 downtime deployment since everytime it is redeployed the system will go down</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=0cgy4GplC4I">Video explaining Slots</a></li>
+<li><a href="https://www.youtube.com/watch?v=QdI_BJHMadU">Video explaining Deployment Center</a></li>
+</ul>
 </body>
 </html>
