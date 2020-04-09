@@ -64,6 +64,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git merge <another branch` : Merge another branch into your active branch. The merged files will be on the untracked stage
 
+`git cherry-pick <commit_id>`: Merge a single commit to the current branch.
+
 `git rm <file name>` : Remove git file or directory
 
 `git reset --hard` : Undo a change that was added but not commit yet
