@@ -7,4 +7,5 @@
 
 ## References
 
-- [Building Helm Charts From the Ground Up: An Introduction to Kubernetes [I] - Amy Chen, Heptio](https://www.youtube.com/watch?v=vQX5nokoqrQ)
+- [Building Helm Charts From the Ground Up](https://www.youtube.com/watch?v=vQX5nokoqrQ)
+- [Implementing Blue/Green strategy](https://medium.com/@saraswatpuneet/blue-green-deployments-using-helm-charts-93ec479c0282)
