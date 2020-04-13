@@ -1028,3 +1028,17 @@ echo '{ "Price": 10.0, "Name": "Cable" }' | jq ".Price"
 
 `xargs -P <task_number>` allow you to run commands in parallel (multi-processors)
 
+
+### SSH - Create SSH keys on Ubuntu 
+
+```shell 
+#Before generating a new SSH key pair first, check for existing SSH keys on your Ubuntu client machine
+ls -l ~/.ssh/id_*.pub
+# Generate a new 4096 bits SSH key pair with your email address:
+ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
+# Verify if new SSH key pair was generated
+ls ~/.ssh/id_*
+#Copy the Public Key to Ubuntu Server
+ssh-copy-id remote_username@server_ip_address
+```
+
