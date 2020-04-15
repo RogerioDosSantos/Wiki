@@ -14,7 +14,25 @@
 <body>
 <h1 id="helm">Helm</h1>
 <p><a href="https://helm.sh/">Helm</a> helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.</p>
-<p><img src="http://tinyurl.com/uwy3yxr" /> <img src="http://tinyurl.com/ssesae4" /></p>
+<h2 id="introduction">Introduction</h2>
+<p><img src="https://photos.google.com/share/AF1QipPhkobnteIpx5Dk_AJ0gAmGZAiXuGTLP9-mo1wJxDuyCiox9qiAtJ5HiLaJPmou5g/photo/AF1QipOSSn0hufdy_FNNdLz3pzMsSdKgBOJOID1-pcL8?key=djBQWE5Na0R3NlBvQlhuU2Z6LTJjWV80M3U2Skxn" /> <img src="https://photos.google.com/share/AF1QipM4cCpAsgsp_HTwWllhWyO1r6mGdVKQ88R4ADyxC9LKU-5Yp7ozAYW5BahO6m85Bw/photo/AF1QipNXSq1v0soDin_1tgZmwIcD0FMBcYSWplnPtm7r?key=Qno5QUhnRWdtcFhtVG5aYmt2U1dhcENGUTN3UnB3" /></p>
+<h2 id="concepts">Concepts</h2>
+<h3 id="helm-charts">Helm Charts</h3>
+<p><em>Helm Charts</em> are configurations that describe a <em>deployment</em>. All configuration files are located into a folder.</p>
+<h3 id="releases">Releases</h3>
+<p>Releases is the deployment of a <em>Helm Chart</em></p>
+<h3 id="helm-repository">Helm Repository</h3>
+<p><em>Helm Repository</em> is a global location that you can find <em>Helm Charts</em>. For example on the <em>stable</em> repository you can find a <em>Jenkins Helm Chart</em> that install <em>Jenkins</em> (stable/jenkins).</p>
+<h2 id="commands">Commands</h2>
+<p><code>helm repo add stable https://kubernetes-charts.storage.googleapis.com/</code>: Add the stable default helm repository</p>
+<p><code>helm search repo stable [&lt;filter_keyword&gt;]</code>: Search the stable helm repository. If <code>&lt;filter_keyword&gt;</code> is informed, the search will be filtered by it.</p>
+<p><code>helm repo update</code>: Update the local information of all repositories.</p>
+<p><code>az aks get-credentials --resource-group &lt;resource_group_name&gt; --name &lt;kubernetes_cluster_name&gt;</code> : Helm uses <em>az</em> behind the scenes, therefore requires it to be properly connected with the <em>Kubernetes Cluster</em>. This command allows the <em>az</em> tool to be connected with it.</p>
+<p><code>kubectl cluster-info</code> : Allow you to check if the <em>az</em> tool is connected with a <em>Kubernetes Cluster</em></p>
+<p><code>helm install [&lt;release_name&gt;] &lt;chart_name&gt; [--generate-name]</code>: Install a <em>Helm Chart</em> into the <em>Kubernetes Cluster</em>. Use <code>&lt;release_name&gt;</code> to informe the name of the deployment. In case you want the name to be created automatically you can use the <code>--generate-name</code> option. E.g.: <code>helm install jenkins-test stable/jenkins</code></p>
+<p><code>helm ls</code>: List all releases</p>
+<p><code>helm uninstall &lt;release_name&gt; [--keep-history]</code>: Uninstall a <em>release</em>. If the <code>--keep-history</code> is informed, the <em>release history</em> will be saved and it can be recovered using <code>helm rollback</code> command.</p>
+<p><code>helm rollback &lt;release_name&gt;</code>: Recover / restore a release.</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=vQX5nokoqrQ">Building Helm Charts From the Ground Up</a></li>
