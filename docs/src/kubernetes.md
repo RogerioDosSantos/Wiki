@@ -2,7 +2,9 @@
 
 [Kubernetes]( https://kubernetes.io/ ) is an open-source system for automating deployment, scaling, and management of containerized applications.
 
-## Consepts
+## Concepts
+
+`Cluster`: Cluster is all the Kubernetes network (with several machines)
 
 `Deployment`: Is one or more containers running an application.
 
@@ -10,10 +12,31 @@
 
 `Replication Set`:
 
-`Pod`:
+`Pod`: A logical unit that run your application
 
 `Resources`: 
- 
+
+`Namespace`: Logical Hierarchy
+
+`Nodes`: Is the physical machine in the *Kubernetes Cluster*
+
+## Recomendations
+
+### On Azure 
+
+- Separate one cluster per project. There is no additional cost to create cluster.
+
+- Always use *Namespaces* (**Never user default Namespaces**)
+
+- Apply resources quotas 
+
+- To create clusters use small VMs always possible. It is better to have several small machines than few big machines (Due failure). But be sure to do not forget the disk (Max uncached disk IOPS). Bigger the *IOPS* the better.
+
+- Do not put *Load Balancer* in front of other *Load Balancer*
+
+- Put an *Azure Firewall* outside the *Kubernetes Cluster* to avoid hacker to have access to outbound connections
+
+- Microsoft does not reboot the machine. There is a procedure to do it. [Node aout updates and upgrades](http://tinyurl.com/wphp8jw). You should install [kured]() to reboot the nodes for you.
 
 ## Commands
 

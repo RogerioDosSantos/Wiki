@@ -14,12 +14,26 @@
 <body>
 <h1 id="kubernetes">Kubernetes</h1>
 <p><a href="https://kubernetes.io/">Kubernetes</a> is an open-source system for automating deployment, scaling, and management of containerized applications.</p>
-<h2 id="consepts">Consepts</h2>
+<h2 id="concepts">Concepts</h2>
+<p><code>Cluster</code>: Cluster is all the Kubernetes network (with several machines)</p>
 <p><code>Deployment</code>: Is one or more containers running an application.</p>
 <p><code>Services</code>: Is a container port exposed on the host machine.</p>
 <p><code>Replication Set</code>:</p>
-<p><code>Pod</code>:</p>
+<p><code>Pod</code>: A logical unit that run your application</p>
 <p><code>Resources</code>:</p>
+<p><code>Namespace</code>: Logical Hierarchy</p>
+<p><code>Nodes</code>: Is the physical machine in the <em>Kubernetes Cluster</em></p>
+<h2 id="recomendations">Recomendations</h2>
+<h3 id="on-azure">On Azure</h3>
+<ul>
+<li><p>Separate one cluster per project. There is no additional cost to create cluster.</p></li>
+<li><p>Always use <em>Namespaces</em> (<strong>Never user default Namespaces</strong>)</p></li>
+<li><p>Apply resources quotas</p></li>
+<li><p>To create clusters use small VMs always possible. It is better to have several small machines than few big machines (Due failure). But be sure to do not forget the disk (Max uncached disk IOPS). Bigger the <em>IOPS</em> the better.</p></li>
+<li><p>Do not put <em>Load Balancer</em> in front of other <em>Load Balancer</em></p></li>
+<li><p>Put an <em>Azure Firewall</em> outside the <em>Kubernetes Cluster</em> to avoid hacker to have access to outbound connections</p></li>
+<li><p>Microsoft does not reboot the machine. There is a procedure to do it. <a href="http://tinyurl.com/wphp8jw">Node aout updates and upgrades</a>. You should install <a href="">kured</a> to reboot the nodes for you.</p></li>
+</ul>
 <h2 id="commands">Commands</h2>
 <p><code>kubectl version</code>: Check the version of the <em>Kubernetes Control Client</em></p>
 <p><code>kubectl cluster-info</code> : Check the information of the <em>Kubernetes engine</em></p>
