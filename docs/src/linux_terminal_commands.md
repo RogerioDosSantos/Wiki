@@ -1042,3 +1042,22 @@ ls ~/.ssh/id_*
 ssh-copy-id remote_username@server_ip_address
 ```
 
+### Shell - Apply tag and alias to Linux commands
+
+```shell 
+# Put the one line command to find files bigger than 10MB as a ListFilesBiggerThan10Mb tag
+find . -size +10M -type f -print0 | xargs -0 ls -Ssh | sort -z #ListFilesBiggerThan10Mb
+
+# Run the tagged command again using tag
+!? #ListFilesBiggerThan10Mb
+
+# Apply alias to the same command 
+alias ListFilesBiggerThan10Mb='find . -size +10M -type f -print0 | xargs -0 ls -Ssh | sort -z'
+
+# Run the tagged command again using alias
+ListFilesBiggerThan10Mb
+```
+
+
+
+

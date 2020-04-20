@@ -665,5 +665,17 @@ ssh-keygen -t rsa -b 4096 -C &quot;your_email@domain.com&quot;
 ls ~/.ssh/id_*
 #Copy the Public Key to Ubuntu Server
 ssh-copy-id remote_username@server_ip_address</code></pre>
+<h3 id="shell---apply-tag-and-alias-to-linux-commands">Shell - Apply tag and alias to Linux commands</h3>
+<pre class="shell"><code># Put the one line command to find files bigger than 10MB as a ListFilesBiggerThan10Mb tag
+find . -size +10M -type f -print0 | xargs -0 ls -Ssh | sort -z #ListFilesBiggerThan10Mb
+
+# Run the tagged command again using tag
+!? #ListFilesBiggerThan10Mb
+
+# Apply alias to the same command 
+alias ListFilesBiggerThan10Mb=&#39;find . -size +10M -type f -print0 | xargs -0 ls -Ssh | sort -z&#39;
+
+# Run the tagged command again using alias
+ListFilesBiggerThan10Mb</code></pre>
 </body>
 </html>
