@@ -121,6 +121,10 @@ kubectl expose deployment web-server --port=80 --type=NodePort
 kubectl get services | grep web-server
 ```
 
+## References 
+
+- [Video on virtual nodes on Azure](https://mail.google.com/mail/u/0/#inbox/KtbxLxGvZbRdrBpGqffDtFpzzSDrkpLvVB?projector=1)
+
 
 
 
