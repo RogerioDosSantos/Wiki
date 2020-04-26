@@ -39,3 +39,8 @@ services:
     labels:
       - traefik.enable=false
 ```
+
+## Articles 
+
+- [Ultimate Docker Home Server with Traefik 2, LetsEncrypt, and OAuth (2020)](https://www.smarthomebeginner.com/traefik-2-docker-tutorial/)
+
