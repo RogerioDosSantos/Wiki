@@ -380,7 +380,6 @@ $rootStore.Add($cert)
 $rootStore.Close()
 ```
 
-
 ### PowerShell - Proxy - Set Global Proxy Parameters 
 
 By default, the functions that uses *Web Requests* will use the *default proxy configuration* which is set in the *Internet Explorer Services*. However, on system that does not have the *Internet Explorer*, as for example the *windows servercore*, the *Proxy* will not be set even if the *proxy environment variable (E.g.: http_proxy, https_proxy)* is set. 
@@ -398,4 +397,11 @@ if(Test-Connection <proxy_address> -Count 1 -Quiet)
 }
 ```
 
+### PowerShell - Network - Test Network Connection to an URL
 
+The function below allows you to test the network connection to an URL. If fails it will return the reason. 
+E.g.: DNS Error: `Test-Connection: Testing connection to computer 'google.com' failed: Cannot resolve the target name.`
+
+```ps1
+Test-Connection <url> -Count 1
+```

@@ -312,5 +312,8 @@ $rootStore.Close()</code></pre>
         &#39;*:ProxyUseDefaultCredentials&#39;=$true
     }
 }</code></pre>
+<h3 id="powershell---network---test-network-connection-to-an-url">PowerShell - Network - Test Network Connection to an URL</h3>
+<p>The function below allows you to test the network connection to an URL. If fails it will return the reason. E.g.: DNS Error: <code>Test-Connection: Testing connection to computer 'google.com' failed: Cannot resolve the target name.</code></p>
+<pre class="ps1"><code>Test-Connection &lt;url&gt; -Count 1</code></pre>
 </body>
 </html>
