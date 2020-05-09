@@ -388,6 +388,8 @@ PS C:\workspace> Test-Connection google.com -Count 1
 Test-Connection: Testing connection to computer 'google.com' failed: Cannot resolve the target name.
 ```
 
+For more information see [Cannot resolve host name in Docker Desktop Windows](https://github.com/docker/for-win/issues/3810)
+
 #### Workaround 
 
 Set the DNS in the *Docker Engine daemon file: 
