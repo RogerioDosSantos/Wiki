@@ -394,7 +394,7 @@ For more information see [Cannot resolve host name in Docker Desktop Windows](ht
 
 Set the DNS in the *Docker Engine daemon file: 
 
-![](http://tinyurl.com/ybwz2bk2)
+![](https://photos.google.com/share/AF1QipOoG7KcmOCWe-JyJ_r4db0VLMLbrPXgdzRoSgox8KB3GML3me0b13MJE3IlvCC6QA/photo/AF1QipME0P-obDi24eNbU9uXT_KTi8DCh5FD2M7WZtMC?key=REFqVE5GQy1zd2NjdDd5R1dIdXFMOTliZDkyQWl3)
 
 
 
