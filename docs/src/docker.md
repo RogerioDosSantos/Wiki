@@ -371,6 +371,29 @@ Now it should be fine.
 
 ## Known issues and Workaround
 
+### Docker Issue - DNS does not work inside the container
+
+#### Version
+
+Docker Engine v19.03.8
+
+#### Description 
+
+A running docker container cannot resolve URLs addressed.
+
+E.g.:
+
+```ps
+PS C:\workspace> Test-Connection google.com -Count 1
+Test-Connection: Testing connection to computer 'google.com' failed: Cannot resolve the target name.
+```
+
+#### Workaround 
+
+Set the DNS in the *Docker Engine daemon file: 
+
+![](http://tinyurl.com/ybwz2bk2)
+
 
 
 

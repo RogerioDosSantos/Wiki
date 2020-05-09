@@ -265,5 +265,18 @@ Invoke-WebRequest &quot;https:<span class="dt">//github.com/docker/compose/relea
 <li>Reference <a href="https://github.com/docker/for-win/issues/3546#issuecomment-483311479" class="uri">https://github.com/docker/for-win/issues/3546#issuecomment-483311479</a></li>
 </ul>
 <h2 id="known-issues-and-workaround">Known issues and Workaround</h2>
+<h3 id="docker-issue---dns-does-not-work-inside-the-container">Docker Issue - DNS does not work inside the container</h3>
+<h4 id="version">Version</h4>
+<p>Docker Engine v19.03.8</p>
+<h4 id="description">Description</h4>
+<p>A running docker container cannot resolve URLs addressed.</p>
+<p>E.g.:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">PS C:\workspace&gt; Test-Connection google.com -<span class="kw">Count</span> <span class="dv">1</span>
+Test-Connection: Testing connection to computer &#39;google.com&#39; failed: Cannot resolve the target name.</code></pre></div>
+<h4 id="workaround">Workaround</h4>
+<p>Set the DNS in the *Docker Engine daemon file:</p>
+<figure>
+<img src="http://tinyurl.com/ybwz2bk2" />
+</figure>
 </body>
 </html>
