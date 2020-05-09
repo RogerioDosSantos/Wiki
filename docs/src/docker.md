@@ -1,4 +1,6 @@
-# Docker Commands 
+# Docker 
+
+## Commands 
 
 `docker search [-s <number_of_stars>] <text>` : Search for a docker image into online repositories
 
@@ -366,6 +368,9 @@ dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
 Now it should be fine.
 
 - Reference [https://github.com/docker/for-win/issues/3546#issuecomment-483311479](https://github.com/docker/for-win/issues/3546#issuecomment-483311479)
+
+## Known issues and Workaround
+
 
 
 

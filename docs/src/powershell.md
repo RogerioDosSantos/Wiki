@@ -405,3 +405,10 @@ E.g.: DNS Error: `Test-Connection: Testing connection to computer 'google.com' f
 ```ps1
 Test-Connection <url> -Count 1
 ```
+
+### PowerShell - Network - Verfy DNS configured
+
+```ps1
+Resolve-DnsName -Name $env:COMPUTERNAME -Type A
+```
+
