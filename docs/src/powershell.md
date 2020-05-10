@@ -312,8 +312,11 @@ Get-Process -Id (Get-NetTCPConnection -LocalPort <port_number>).OwningProcess
 
 ### PowerShell - Execute shell script from URL without downloading a file 
 
+- `iwr = Invoke-WebRequest`
+- `iex = Invoke-Expression`
+
 ```bash
-# Execute bash without arguments
+# Execute bash without arguments 
 iwr -useb <ps1_url> | iex
 
 # Execute bash that require arguments

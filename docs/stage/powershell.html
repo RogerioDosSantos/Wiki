@@ -262,7 +262,11 @@ netstat -aon
 # Find Process that is using a TCP/Port 
 Get-Process -Id (Get-NetTCPConnection -LocalPort &lt;port_number&gt;).OwningProcess</code></pre>
 <h3 id="powershell---execute-shell-script-from-url-without-downloading-a-file">PowerShell - Execute shell script from URL without downloading a file</h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Execute bash without arguments</span>
+<ul>
+<li><code>iwr = Invoke-WebRequest</code></li>
+<li><code>iex = Invoke-Expression</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Execute bash without arguments </span>
 <span class="ex">iwr</span> -useb <span class="op">&lt;</span>ps1_url<span class="op">&gt;</span> <span class="kw">|</span> <span class="ex">iex</span>
 
 <span class="co"># Execute bash that require arguments</span>
@@ -315,5 +319,7 @@ $rootStore.Close()</code></pre>
 <h3 id="powershell---network---test-network-connection-to-an-url">PowerShell - Network - Test Network Connection to an URL</h3>
 <p>The function below allows you to test the network connection to an URL. If fails it will return the reason. E.g.: DNS Error: <code>Test-Connection: Testing connection to computer 'google.com' failed: Cannot resolve the target name.</code></p>
 <pre class="ps1"><code>Test-Connection &lt;url&gt; -Count 1</code></pre>
+<h3 id="powershell---network---verfy-dns-configured">PowerShell - Network - Verfy DNS configured</h3>
+<pre class="ps1"><code>Resolve-DnsName -Name $env:COMPUTERNAME -Type A</code></pre>
 </body>
 </html>
