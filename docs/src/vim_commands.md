@@ -458,6 +458,9 @@ Select the range desired (Visual mode):
 ```vim
 # Replace all searched text
 :s/\%V<search_text>/<replace_text>/g
+
+# Replace all '\' with '\\'
+:s/\%V\\/\\\\/
 ```
 
 
