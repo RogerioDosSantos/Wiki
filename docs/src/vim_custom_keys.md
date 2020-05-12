@@ -1,8 +1,8 @@
-# Vim Custom Keys #
+# Vim Custom Keys
 
-## Navigation ##
+## Navigation 
 
-### Windows ###
+### Windows 
 
 `nnoremap <leader>x :x<cr>` : Close current window
 
@@ -10,13 +10,13 @@
 
 `nnoremap <leader><leader> <c-^>` : Previous Window
 
-### Splits ###
+### Splits 
 
 `nnoremap <silent><leader>vv :vsplit<cr>` : Vertical Split
 
 `nnoremap <silent><leader>hh :split<cr>` : Horizontal Split
 
-### Tabs ###
+### Tabs 
 
 `nnoremap <leader>tf :tabe` : Open file in a new tab
 
@@ -24,7 +24,7 @@
 
 `nnoremap <silent><leader>tp :tabp<cr>` : Open previous tab
 
-### List and Preview ###
+### List and Preview 
 
 `nnoremap <leader>pt :ptag <C-R><C-W> <CR>` : Preview tag
 
@@ -34,7 +34,7 @@
 
 `nnoremap <leader>pc :pc <CR>` : Close Preview
 
-## Buffer ##
+## Buffer 
 
 `nnoremap <leader>bbb :buffers` : List Buffers
 
@@ -44,7 +44,7 @@
 
 `nnoremap <silent><leader>bbd :bdelete<cr>` : Delete current Buffer
 
-## Folding ##
+## Folding 
 
 `nnoremap <silent>zss :set foldmethod=syntax<cr>` : Set the folding method to Syntax
 
@@ -52,7 +52,7 @@
 
 `nnoremap <silent>zsi :set foldmethod=indent<cr>` : Set the folding method to Indent
 
-## CTags ##
+## CTags 
 
 `nnoremap <leader>tc :! ctags -R ~/` : Create Custom Tags
 
@@ -60,7 +60,7 @@
 
 `nnoremap <silent><leader>tr :! rm ~/tags<cr>` : Remove Custom Tags
 
-## Grep ##
+## Grep 
 
 `nnoremap <leader>g0 :grep! ''` : Call grep function to be added a string
 
@@ -68,7 +68,7 @@
 
 `vnoremap <leader>g<level 1-5> y:grep! '<C-R>"'<CR>:cw<CR>'"'` : Grep the string on the selection on the folder level informed. `E.g.: <space>g1`
 
-## Find / Search## 
+## Find / Search
 
 `vnoremap // y/<C-R>"<cr>"` : Search Visually selected text
 
@@ -82,7 +82,7 @@
 
 `nnoremap <leader>fcs :w<cr>:e ../source/%:r.cpp<cr>` : Find .cpp (source)
 
-## Files ##
+## Files 
 
 `nnoremap <silent><leader>e :Lexplore<cr>, :noh<cr>` : Stop highlight after searching
 
@@ -90,12 +90,11 @@
 
 `map <leader>s <C-S>` : Save file
 
-## Shell ##
+## Shell 
 
 `nnoremap <leader>c :GetShell` : Shell commands
 
-## Spell Check ##
-
+## Spell Check 
 
 `nnoremap <leader>se :setlocal spell spelllang=en_us<cr>:set spellfile=$HOME/.vim/spell-en.utf-8.add<cr>` : Set spell check to English.
 
@@ -105,6 +104,6 @@
 
 `nnoremap <leader>sa :spellrepall<cr>` : Correct all strings with the previous correction
 
-## Text Objects ##
+## Text Objects 
 
 `f` : Allow to select inside files (E.g.: vif, yif, vaf, yaf etc.)
