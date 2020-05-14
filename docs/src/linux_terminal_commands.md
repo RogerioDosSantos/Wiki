@@ -176,6 +176,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `echo $?`: Check if the last executed command returned an error
 
+`echo $(!!)`: Get the output of the last command
+
 `lsof` : List all open files and its process (You need to run as super user). E.g.:` lsof > Result.txt`
 
 `vmstat` : Virtual Memory Statistics
