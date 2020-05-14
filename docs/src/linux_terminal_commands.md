@@ -174,6 +174,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `whereis <program>` : find where is the location of a specific program
 
+`echo $?`: Check if the last executed command returned an error
+
 `lsof` : List all open files and its process (You need to run as super user). E.g.:` lsof > Result.txt`
 
 `vmstat` : Virtual Memory Statistics
