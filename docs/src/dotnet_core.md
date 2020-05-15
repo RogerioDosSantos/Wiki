@@ -194,6 +194,17 @@ It is recomended to use the [IHttpClientFactory](https://docs.microsoft.com/en-u
 
 ![](http://tinyurl.com/sbx9mea)
 
+### Publish and Packing Solutions - How to filter which projects can be published and packed
+
+You can define if a Project in a Solution will be published or packaged adding the following items on the Project file:
+
+```xml
+<PropertyGroup>
+  <IsPackable>false</IsPackable>
+  <IsPublishable>false</IsPublishable >
+</PropertyGroup>
+```
+
 ## References 
 
 - [Host .Net Core into a Native Application](https://github.com/dotnet/samples/tree/master/core/hosting)
