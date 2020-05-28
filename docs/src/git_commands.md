@@ -120,6 +120,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git push --tags <name of remote>` : Push the tags. E.g.: `git push --tags new-origin`
 
+`git push -f origin <branch>`: Push the current content of a branch into another branch (It will push the exact commit and commits after the one you are pussing will be lost.)
+
 `git remote rm <name of the origin remote>` : Remove the remote name from the local repository. Note that `origin` is the default name. E.g.: `git remote rm origin` Note: To list the remotes available you can use the command `git remote show`
 
 `git remote rename <name of the remote> <name of the origin remote>` : Rename the remote. E.g.: `git remote rename new-origin origin` Note: To list the remotes available you can use the command `git remote show`
