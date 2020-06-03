@@ -1062,6 +1062,14 @@ alias ListFilesBiggerThan10Mb='find . -size +10M -type f -print0 | xargs -0 ls -
 ListFilesBiggerThan10Mb
 ```
 
+### Shell - Check disk performance 
+
+The command below will display the performance of creating a file of 1Mb 1000 times.
+
+```shell 
+dd if=/dev/zero of=<destination_folder> bs=1M count=1000 
+```
+
 
 
 
