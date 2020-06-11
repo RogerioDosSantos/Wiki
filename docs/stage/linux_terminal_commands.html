@@ -618,6 +618,22 @@ chmod &lt;number&gt;
 # Change permission to execute with the same priviledges of the owner of the file (setuid)
 chmod +s &lt;file&gt;</code></pre>
 <p>Permission Numbers: - 0 = --- - 1 = --x - 2 = -w- - 3 = -wx - 4 = r- - 5 = r-x - 6 = rw- - 7 = rwx</p>
+<h3 id="capabilities">Capabilities</h3>
+<p>Is a better way to control permission of an executable or thread.</p>
+<h4 id="capability-list">Capability List</h4>
+<p><code>CAP_NET_RAW</code>: Grant permission to open raw network sockets</p>
+<h4 id="commands">Commands</h4>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Show all available capabilities</span>
+<span class="fu">man</span> capabilities
+
+<span class="co"># List the Capabilities of a proccess</span>
+<span class="ex">getpcaps</span> <span class="op">&lt;</span>process_id<span class="op">&gt;</span>
+
+<span class="co"># List Capabilities associated to a file </span>
+<span class="ex">getcap</span> <span class="op">&lt;</span>file<span class="op">&gt;</span>
+
+<span class="co"># Set a capability</span>
+<span class="ex">setcap</span> <span class="op">&lt;</span>capability<span class="op">&gt;</span> <span class="op">&lt;</span>file<span class="op">&gt;</span></code></pre></div>
 <h3 id="bash---create-a-progress-bar">Bash - Create a progress bar</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">echo</span> -ne <span class="st">&#39;#####                     (33%)\r&#39;</span>
 <span class="fu">sleep</span> 1

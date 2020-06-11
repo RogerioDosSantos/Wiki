@@ -975,6 +975,29 @@ Permission Numbers:
 - 6 = rw-
 - 7 = rwx
 
+### Capabilities
+
+Is a better way to control permission of an executable or thread. 
+
+#### Capability List 
+
+`CAP_NET_RAW`: Grant permission to open raw network sockets
+
+#### Commands
+```bash
+# Show all available capabilities
+man capabilities
+
+# List the Capabilities of a proccess
+getpcaps <process_id>
+
+# List Capabilities associated to a file 
+getcap <file>
+
+# Set a capability
+setcap <capability> <file>
+```
+
 ### Bash - Create a progress bar
 
 ```bash
