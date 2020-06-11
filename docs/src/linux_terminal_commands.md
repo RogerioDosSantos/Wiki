@@ -80,7 +80,7 @@
 
 `wc -l <file_path>`: Get the amount of lines into a file.
 
-`stat --format '%a' <file_or_dirctory>`: Get the `chmod` numerical value of a file or directory.
+`stat --format '%a' <file_or_directory>`: Get the `chmod` numerical value of a file or directory.
 
 ```bash
 for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
@@ -118,6 +118,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `exec <command>`: Execute a program without forking it.
 
 `ps -aux` : List of all running process
+
+`ps ajf` : List user running process with a tree of whom called it
 
 `ps -f [<process_id>]` : List additional information. E.g.: Parent Process (PPID), Command that execute the process (CMD), etc.
 
@@ -943,22 +945,25 @@ The permission are listed as following:
 
 ```shell
 # Change permission to the to the owner
-chmod +rw <file_or_dirctory>
+chmod +rw <file_or_directory>
 
 # Change the permission to the group
-chmod g+rw <file_or_dirctory>
+chmod g+rw <file_or_directory>
 
 # Change the permission to others
-chmod o+rw <file_or_dirctory>
+chmod o+rw <file_or_directory>
 
 # Change group
-chgrp <group> <file_or_dirctory>
+chgrp <group> <file_or_directory>
 
 # Change owner
-chown <group> <file_or_dirctory>
+chown <group> <file_or_directory>
 
 # Change Permission by numbers
 chmod <number>
+
+# Change permission to execute with the same priviledges of the owner of the file (setuid)
+chmod +s <file>
 ```
 Permission Numbers:
 - 0 = ---
