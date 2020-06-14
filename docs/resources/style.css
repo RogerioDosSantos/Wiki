@@ -40,7 +40,10 @@ p {
 }
 
 img {
+    float:none;
     max-width:100%;
+    width:  800px;
+    object-fit: cover;
 }
 
 div {
