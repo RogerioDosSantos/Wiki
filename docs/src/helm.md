@@ -3,8 +3,8 @@
 [Helm](https://helm.sh/) helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application. 
 
 ## Introduction
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/helm/helm_chart_and_commands.png)
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/helm/helm_chart_ingress.png)
+![](../resources/helm/helm_chart_and_commands.png)
+![](../resources/helm/helm_chart_ingress.png)
 
 ## Concepts
 
