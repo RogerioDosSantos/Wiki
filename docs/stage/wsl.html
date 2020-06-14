@@ -15,6 +15,18 @@
 <h1 id="wsl-windows-subsystem-for-linux">WSL (Windows Subsystem for Linux)</h1>
 <p><code>sudo mount -t drvfs &lt;windows_driver_letter&gt;: /mnt/&lt;wsl_driver_folder&gt;</code> : Mount a Windows Driver into the WSL (E.g.: sudo mount -t drvfs U: /mnt/u). Note: You can mount network driver too.</p>
 <p><code>cmd.exe /c '&lt;command&gt;' &lt;command_parameters&gt;</code> : Run command from windows</p>
+<h2 id="how-to">How-to</h2>
+<h3 id="access-linux-file-from-windows">Access Linux File from Windows</h3>
+<p>WSL files can be accessed from the following network path:</p>
+<pre class="shell"><code># WSL network path
+\\wsl$
+
+# Home page of ubuntu machine
+\\wsl$\Ubuntu-18.04\home</code></pre>
+<h3 id="access-windows-file-from-linux">Access Windows File from Linux</h3>
+<p>Windows files can be accessed from Linux machine from the following Mount path:</p>
+<pre class="shell"><code># C drive path
+/mnt/c/</code></pre>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux Installation Guide for Windows 10</a></li>
