@@ -44,6 +44,10 @@ img {
     max-width:100%;
     width:  800px;
     object-fit: cover;
+    display: block;
+    margin-right: auto;
+    margin-bottom:10px;
+    margin-top:10px;
 }
 
 div {
