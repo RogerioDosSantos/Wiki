@@ -39,6 +39,10 @@ p {
     -webkit-margin-end: 0px;
 }
 
+p img {
+    max-width:80%;
+}
+
 div {
     display: block;
 }
