@@ -5,6 +5,7 @@
 - [VOO](https://investor.vanguard.com/etf/profile/VOO) : Vanguard S&P 500 ETF (Expense: 0.03%). 
 - [IEMG](https://www.etf.com/IEMG) : iShares Core MSCI Emerging Markets ETF. IEMG tracks a market-cap-weighted index of emerging-market firms, covering 99% of market capitalization.
 - [EMB](https://www.etf.com/EMB) : iShares JP Morgan USD Emerging Markets Bond ETF. EMB tracks an index of US-dollar-denominated sovereign debt issued by emerging-market countries with more than $1B outstanding and at least two years remaining in maturity.
+- [VTSAX](https://investor.vanguard.com/mutual-funds/profile/VTSAX) : Vanguard Total Stock Market Index Fund Admiral Shares (Expense: 0.04%)
 
 ## Bonds 
 
