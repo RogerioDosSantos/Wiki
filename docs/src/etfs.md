@@ -6,6 +6,8 @@
 - [IEMG](https://www.etf.com/IEMG) : iShares Core MSCI Emerging Markets ETF. IEMG tracks a market-cap-weighted index of emerging-market firms, covering 99% of market capitalization.
 - [EMB](https://www.etf.com/EMB) : iShares JP Morgan USD Emerging Markets Bond ETF. EMB tracks an index of US-dollar-denominated sovereign debt issued by emerging-market countries with more than $1B outstanding and at least two years remaining in maturity.
 - [VTSAX](https://investor.vanguard.com/mutual-funds/profile/VTSAX) : Vanguard Total Stock Market Index Fund Admiral Shares (Expense: 0.04%)
+- [VT](https://investor.vanguard.com/etf/profile/distributions/vt) : Vanguard Total World Stock ETF (Expense: 0.08%). Invests in both foreign and U.S. stocks. Has high potential for growth, but also high risk; share value may swing up and down more than U.S. or international stock funds. Only appropriate for long-term goals.
+- [VTI](https://investor.vanguard.com/etf/profile/overview/vti): Vanguard Total Stock Market ETF (Expense: 0.03%). Seeks to track the performance of the CRSP US Total Market Index. Large-, mid-, and small-cap equity diversified across growth and value styles. Low expenses minimize net tracking error.
 
 ## Bonds 
 
