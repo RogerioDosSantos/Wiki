@@ -22,4 +22,7 @@ Moving average convergence divergence (MACD) is a trend-following momentum indic
 | Derivate is 0 and diference was going down   | Price is going up                |                |
 | Derivate is 0 and diference was going up     | Price is going down              |                |
 
+## Structure of a Buble
+
+![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/stock_indicators/phase_of_a_stock_bubble.png)
 

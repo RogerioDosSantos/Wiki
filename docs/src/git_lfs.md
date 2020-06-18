@@ -18,3 +18,14 @@ sudo apt-get install -y git-lfs
 ```shell
 git-lfs ls-files <branch_name>
 ```
+
+### Migrate existing commits to Git LFS 
+
+```bash
+for file in $(git ls-files | xargs git check-attr filter | grep "filter: lfs" | sed -r "s/(.*): filter: lfs/\1/"); do
+  echo "Processing ${file}";
+  git rm -f --cached ${file};   
+  echo "Adding $file lfs style";   
+  git add ${file}; 
+done
+```

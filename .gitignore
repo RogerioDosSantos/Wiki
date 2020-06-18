@@ -20,6 +20,8 @@ yarn-error.log*
 tags
 docs/src/tags
 tags
+tags.lock
+tags.temp
 
 # README commands
 docs/src/style.css

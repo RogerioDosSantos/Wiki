@@ -80,7 +80,7 @@
 
 `wc -l <file_path>`: Get the amount of lines into a file.
 
-`stat --format '%a' <file_or_dirctory>`: Get the `chmod` numerical value of a file or directory.
+`stat --format '%a' <file_or_directory>`: Get the `chmod` numerical value of a file or directory.
 
 ```bash
 for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
@@ -118,6 +118,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 `exec <command>`: Execute a program without forking it.
 
 `ps -aux` : List of all running process
+
+`ps ajf` : List user running process with a tree of whom called it
 
 `ps -f [<process_id>]` : List additional information. E.g.: Parent Process (PPID), Command that execute the process (CMD), etc.
 
@@ -943,22 +945,25 @@ The permission are listed as following:
 
 ```shell
 # Change permission to the to the owner
-chmod +rw <file_or_dirctory>
+chmod +rw <file_or_directory>
 
 # Change the permission to the group
-chmod g+rw <file_or_dirctory>
+chmod g+rw <file_or_directory>
 
 # Change the permission to others
-chmod o+rw <file_or_dirctory>
+chmod o+rw <file_or_directory>
 
 # Change group
-chgrp <group> <file_or_dirctory>
+chgrp <group> <file_or_directory>
 
 # Change owner
-chown <group> <file_or_dirctory>
+chown <group> <file_or_directory>
 
 # Change Permission by numbers
 chmod <number>
+
+# Change permission to execute with the same priviledges of the owner of the file (setuid)
+chmod +s <file>
 ```
 Permission Numbers:
 - 0 = ---
@@ -969,6 +974,29 @@ Permission Numbers:
 - 5 = r-x
 - 6 = rw-
 - 7 = rwx
+
+### Capabilities
+
+Is a better way to control permission of an executable or thread. 
+
+#### Capability List 
+
+`CAP_NET_RAW`: Grant permission to open raw network sockets
+
+#### Commands
+```bash
+# Show all available capabilities
+man capabilities
+
+# List the Capabilities of a proccess
+getpcaps <process_id>
+
+# List Capabilities associated to a file 
+getcap <file>
+
+# Set a capability
+setcap <capability> <file>
+```
 
 ### Bash - Create a progress bar
 
@@ -1060,6 +1088,14 @@ alias ListFilesBiggerThan10Mb='find . -size +10M -type f -print0 | xargs -0 ls -
 
 # Run the tagged command again using alias
 ListFilesBiggerThan10Mb
+```
+
+### Shell - Check disk performance 
+
+The command below will display the performance of creating a file of 1Mb 1000 times.
+
+```shell 
+dd if=/dev/zero of=<destination_folder> bs=1M count=1000 
 ```
 
 

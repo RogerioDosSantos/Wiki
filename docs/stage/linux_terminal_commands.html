@@ -90,7 +90,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>if [ -d &lt;directory&gt; ]; then; &lt;code&gt;; fi</code>: Check if directory exits</p>
 <p><code>if [ -f &lt;file_path&gt; ]; then; &lt;code&gt;; fi</code>: Check if file exits</p>
 <p><code>wc -l &lt;file_path&gt;</code>: Get the amount of lines into a file.</p>
-<p><code>stat --format '%a' &lt;file_or_dirctory&gt;</code>: Get the <code>chmod</code> numerical value of a file or directory.</p>
+<p><code>stat --format '%a' &lt;file_or_directory&gt;</code>: Get the <code>chmod</code> numerical value of a file or directory.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="ex">f</span> in *<span class="kw">;</span> <span class="kw">do</span> <span class="fu">mv</span> <span class="st">&quot;</span><span class="va">$f</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$f</span><span class="st">.tmp&quot;</span><span class="kw">;</span> <span class="fu">mv</span> <span class="st">&quot;</span><span class="va">$f</span><span class="st">.tmp&quot;</span> <span class="st">&quot;</span><span class="kw">`</span><span class="bu">echo</span> <span class="va">$f</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="st">&quot;[:upper:]&quot;</span> <span class="st">&quot;[:lower:]&quot;</span><span class="kw">`</span><span class="st">&quot;</span><span class="kw">;</span> <span class="kw">done</span></code></pre></div>
 <p>: Rename all files of a directory to lower case.</p>
 <p><code>for f in *; do mv &quot;$f&quot; &quot;${f%.*}&quot; ; done</code> : Remove the last extension of all files</p>
@@ -109,6 +109,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>bg &lt;job_number&gt;</code>: Continue the execution of a stopped job (suspended) in the background.</p>
 <p><code>exec &lt;command&gt;</code>: Execute a program without forking it.</p>
 <p><code>ps -aux</code> : List of all running process</p>
+<p><code>ps ajf</code> : List user running process with a tree of whom called it</p>
 <p><code>ps -f [&lt;process_id&gt;]</code> : List additional information. E.g.: Parent Process (PPID), Command that execute the process (CMD), etc.</p>
 <p><code>ps -o pid,user,%mem,command ax | sort -b -k3 -r</code>: Display the amount of memory used on each process</p>
 <p><code>kill [-KILL] &lt;process id&gt;</code> : Kill a process. The <code>-KILL</code> parameter forces the process to be killed. You can get the process id using the <code>top</code> command</p>
@@ -597,23 +598,42 @@ cat /tmp/config_file</code></pre></div>
 <img src="http://tinyurl.com/y85m7sp2" />
 </figure>
 <pre class="shell"><code># Change permission to the to the owner
-chmod +rw &lt;file_or_dirctory&gt;
+chmod +rw &lt;file_or_directory&gt;
 
 # Change the permission to the group
-chmod g+rw &lt;file_or_dirctory&gt;
+chmod g+rw &lt;file_or_directory&gt;
 
 # Change the permission to others
-chmod o+rw &lt;file_or_dirctory&gt;
+chmod o+rw &lt;file_or_directory&gt;
 
 # Change group
-chgrp &lt;group&gt; &lt;file_or_dirctory&gt;
+chgrp &lt;group&gt; &lt;file_or_directory&gt;
 
 # Change owner
-chown &lt;group&gt; &lt;file_or_dirctory&gt;
+chown &lt;group&gt; &lt;file_or_directory&gt;
 
 # Change Permission by numbers
-chmod &lt;number&gt;</code></pre>
+chmod &lt;number&gt;
+
+# Change permission to execute with the same priviledges of the owner of the file (setuid)
+chmod +s &lt;file&gt;</code></pre>
 <p>Permission Numbers: - 0 = --- - 1 = --x - 2 = -w- - 3 = -wx - 4 = r- - 5 = r-x - 6 = rw- - 7 = rwx</p>
+<h3 id="capabilities">Capabilities</h3>
+<p>Is a better way to control permission of an executable or thread.</p>
+<h4 id="capability-list">Capability List</h4>
+<p><code>CAP_NET_RAW</code>: Grant permission to open raw network sockets</p>
+<h4 id="commands">Commands</h4>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Show all available capabilities</span>
+<span class="fu">man</span> capabilities
+
+<span class="co"># List the Capabilities of a proccess</span>
+<span class="ex">getpcaps</span> <span class="op">&lt;</span>process_id<span class="op">&gt;</span>
+
+<span class="co"># List Capabilities associated to a file </span>
+<span class="ex">getcap</span> <span class="op">&lt;</span>file<span class="op">&gt;</span>
+
+<span class="co"># Set a capability</span>
+<span class="ex">setcap</span> <span class="op">&lt;</span>capability<span class="op">&gt;</span> <span class="op">&lt;</span>file<span class="op">&gt;</span></code></pre></div>
 <h3 id="bash---create-a-progress-bar">Bash - Create a progress bar</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">echo</span> -ne <span class="st">&#39;#####                     (33%)\r&#39;</span>
 <span class="fu">sleep</span> 1
@@ -679,5 +699,8 @@ alias ListFilesBiggerThan10Mb=&#39;find . -size +10M -type f -print0 | xargs -0 
 
 # Run the tagged command again using alias
 ListFilesBiggerThan10Mb</code></pre>
+<h3 id="shell---check-disk-performance">Shell - Check disk performance</h3>
+<p>The command below will display the performance of creating a file of 1Mb 1000 times.</p>
+<pre class="shell"><code>dd if=/dev/zero of=&lt;destination_folder&gt; bs=1M count=1000 </code></pre>
 </body>
 </html>
