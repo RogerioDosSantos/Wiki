@@ -48,7 +48,9 @@
 - [Notepad++]( ./notepadpp.html )
 - [Visual Studio]( ./visual_studio.html )
 - [Google Chrome]( ./google_chrome.html )
-- [Postman](./postman.html)
+- [Postman](./postman.html) - HTTP Client and QA Automation
+- [Fiddler](./fiddler.html) - Control and monitor HTTP/HTTPs traffic
+- [Miro](./miro.html) - Cloud White Board tool
 
 ## Markdown
 
@@ -86,6 +88,7 @@
 - [Helm]( ./helm.html )
 - [Heroku]( ./heroku.html )
 - [X11 Bridge (Viewer)](./docker_viewer_x11_bridge.html)
+- [Security](./container_security.html)
 
 ## Proxies and Reverse Proxies
 
