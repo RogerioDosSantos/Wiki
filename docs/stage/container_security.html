@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="container-security">Container Security</h1>
+<h2 id="kernel-namespaces">Kernel namespaces</h2>
+<ul>
+<li>Namespaces provide the first and most straightforward form of isolation: processes running within a container cannot see, and even less affect, processes running in another container, or in the host system</li>
+<li>Each container also gets its own network stack, meaning that a container doesn’t get privileged access to the sockets or interfaces of another container.</li>
+<li>From a network architecture point of view, all containers on a given Docker host are sitting on bridge interfaces</li>
+</ul>
+<h2 id="control-groups">Control groups</h2>
+<ul>
+<li>They implement resource accounting and limiting</li>
+<li>Ensure that each container gets its fair share of memory, CPU, disk I/O; and, more importantly, that a single container cannot bring the system down by exhausting one of those resources</li>
+<li>They are essential to fend off some denial-of-service attacks</li>
+</ul>
+<h2 id="docker-daemon-attack-surface">Docker daemon attack surface</h2>
+<ul>
+<li>Docker daemon requires root privileges. There is a mode called <a href="https://docs.docker.com/engine/security/rootless/">Rootless mode</a> (experimental).</li>
+<li>Since the daemon has <em>root privileges</em>, it can for example access Ports with numbers 0–1023 which are called system or well-known ports.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://docs.docker.com/engine/security/security/">Docker Security</a></li>
+</ul>
+</body>
+</html>
