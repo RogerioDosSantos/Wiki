@@ -17,6 +17,14 @@
 - Docker daemon requires root privileges. There is a mode called [Rootless mode](https://docs.docker.com/engine/security/rootless/) (experimental).
 - Since the daemon has *root privileges*, it can for example access Ports with numbers 0–1023 which are called system or well-known ports.
 
+## Container Signature (Image Signing)
+
+### Content Trust
+
+
+
 ## References
 
 - [Docker Security](https://docs.docker.com/engine/security/security/)
+- [Signing Images with Docker Content Trust](https://docs.docker.com/engine/security/trust/content_trust/)
+- [Content trust in Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-content-trust)
