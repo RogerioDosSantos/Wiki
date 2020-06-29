@@ -422,6 +422,8 @@ for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower
 
 `ssh <user_name>@<computer>`: Connect using *ssh* to a remote computer.
 
+`ssh <user_name>@<computer> -i <certificate_file>`: Connect using *ssh* to a remote computer using certificate file.
+
 `ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 <user_name>@<computer>`: Connect to a device that contains the old *diffie-hellman-group1-sha1* encryption algorithm. The *OpenSSH* does not allows you to connect with old encryption algorithm by default. When this happens the following message will be displayed: `no matching key exchange method found. Their offer: diffie-hellman-group1-sha1`. If you want a more permanent solution without having to type it all the time, you can add the following on the `~/.ssh/config` file:
 
 `ssh -L <local_port>:<server_ip>:<server_port> <user_name>@<domain> -N` : Tunnel with ssh. E.g.: `ssh -L 3337:127.0.0.1:6379 root@emkc.org -N`
