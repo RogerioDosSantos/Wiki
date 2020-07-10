@@ -231,6 +231,7 @@
 - [Azure Pipeline]( ./azure_pipeline.html )
 - [Azure App Services]( ./azure_app_services.html )
 - [Azure Monitor (App Insights)]( ./azure_app_insights.html )
+- [Azure DevOps]( ./azure_devops.html )
 
 ## Stock Market
 
