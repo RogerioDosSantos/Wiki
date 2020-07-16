@@ -12,45 +12,45 @@ This is a *Visual Studio* plugin extension that among other allows you to emulat
 
 - Search for EF Core Power Tools and press download 
 
-![]( ../src/entity_framework/ef_core_power_tools.png )
+![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_power_tools.png )
 
 - Close the all *Visual Studio instances*. Make sure that everything is closed including any debug console.
 
 - The VSIX windown press modify
 
-![]( ../src/entity_framework/ef_core_power_tools_installation.png )
+![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_power_tools_installation.png )
 
 - The following will appear once the installation is completed 
 
-![]( ../src/entity_framework/ef_core_power_tools_installation_completed.png )
+![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_power_tools_installation_completed.png )
 
 ### Vizualizing the Database Context Diagram 
 
 With the *EF Core Power Tools* installed, you can create a Database Context Diagram file that will allow you to graphically visualize all *Tables, Fields* and the relationship among them.
 
-![]( ../src/entity_framework/ef_core_db_context_model_diagram.png )
+![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_db_context_model_diagram.png )
 
 Note: This diagram is build based on the *Entity Framework interfaces configuration* (*IEntities interfaces*)
 
 To add the *Database Context Diagram* into your project, *Right Click* in your *Project* >> *EF Core Power Tools* >> Add DbContextModel Diagram
 
-![]( ../src/entity_framework/ef_core_db_context_model_diagram_add.png )
+![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_db_context_model_diagram_add.png )
 
 #### Error when creating the diagram 
 
 If you face an error when creating the diagram:
 
-![]( ../src/entity_framework/ef_core_db_context_model_diagram_error.png )
+![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_db_context_model_diagram_error.png )
 
 You can manually fix the *XML* code. For example the error above happened because *Visual Studio* was expecting the property *TenantId* to be without *quotes*
 
-![]( ../src/entity_framework/ef_core_db_context_model_diagram_error_fix.png )
+![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_db_context_model_diagram_error_fix.png )
 
 #### Enabling the legend on the Diagram 
 
 Go to the *Filters* and select *Legend*
 
-![]( ../src/entity_framework/ef_core_db_context_model_diagram_legend.png )
+![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_db_context_model_diagram_legend.png )
 
 ## Database Migration File
 
@@ -58,11 +58,11 @@ To update the database configuration the *Entity Framework* uses a migration fil
 
 - On *Visual Studio* go to *Tools* >> *NuGet Package Manager* >> *Package Manager Console* 
 
-![]( ../src/entity_framework/package_console_manager.png )
+![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/package_console_manager.png )
 
 - Select the project that the migration file will be created 
 
-![]( ../src/entity_framework/package_console_manager_project.png )
+![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/package_console_manager_project.png )
 
 - Execute the command 
 
@@ -70,7 +70,7 @@ To update the database configuration the *Entity Framework* uses a migration fil
 add-migration <name_of_your_migration>
 ```
 
-![]( ../src/entity_framework/add_migration_command.png )
+![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/add_migration_command.png )
 
 
 

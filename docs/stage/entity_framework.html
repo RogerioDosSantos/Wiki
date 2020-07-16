@@ -22,44 +22,44 @@
 <li><p>Search for EF Core Power Tools and press download</p></li>
 </ul>
 <figure>
-<img src="../src/entity_framework/ef_core_power_tools.png" />
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_power_tools.png" />
 </figure>
 <ul>
 <li><p>Close the all <em>Visual Studio instances</em>. Make sure that everything is closed including any debug console.</p></li>
 <li><p>The VSIX windown press modify</p></li>
 </ul>
 <figure>
-<img src="../src/entity_framework/ef_core_power_tools_installation.png" />
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_power_tools_installation.png" />
 </figure>
 <ul>
 <li>The following will appear once the installation is completed</li>
 </ul>
 <figure>
-<img src="../src/entity_framework/ef_core_power_tools_installation_completed.png" />
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_power_tools_installation_completed.png" />
 </figure>
 <h3 id="vizualizing-the-database-context-diagram">Vizualizing the Database Context Diagram</h3>
 <p>With the <em>EF Core Power Tools</em> installed, you can create a Database Context Diagram file that will allow you to graphically visualize all <em>Tables, Fields</em> and the relationship among them.</p>
 <figure>
-<img src="../src/entity_framework/ef_core_db_context_model_diagram.png" />
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_db_context_model_diagram.png" />
 </figure>
 <p>Note: This diagram is build based on the <em>Entity Framework interfaces configuration</em> (<em>IEntities interfaces</em>)</p>
 <p>To add the <em>Database Context Diagram</em> into your project, <em>Right Click</em> in your <em>Project</em> &gt;&gt; <em>EF Core Power Tools</em> &gt;&gt; Add DbContextModel Diagram</p>
 <figure>
-<img src="../src/entity_framework/ef_core_db_context_model_diagram_add.png" />
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_db_context_model_diagram_add.png" />
 </figure>
 <h4 id="error-when-creating-the-diagram">Error when creating the diagram</h4>
 <p>If you face an error when creating the diagram:</p>
 <figure>
-<img src="../src/entity_framework/ef_core_db_context_model_diagram_error.png" />
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_db_context_model_diagram_error.png" />
 </figure>
 <p>You can manually fix the <em>XML</em> code. For example the error above happened because <em>Visual Studio</em> was expecting the property <em>TenantId</em> to be without <em>quotes</em></p>
 <figure>
-<img src="../src/entity_framework/ef_core_db_context_model_diagram_error_fix.png" />
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_db_context_model_diagram_error_fix.png" />
 </figure>
 <h4 id="enabling-the-legend-on-the-diagram">Enabling the legend on the Diagram</h4>
 <p>Go to the <em>Filters</em> and select <em>Legend</em></p>
 <figure>
-<img src="../src/entity_framework/ef_core_db_context_model_diagram_legend.png" />
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/ef_core_db_context_model_diagram_legend.png" />
 </figure>
 <h2 id="database-migration-file">Database Migration File</h2>
 <p>To update the database configuration the <em>Entity Framework</em> uses a migration file that is executed during the initialization of your project. To create a migration file with your changes execute the following:</p>
@@ -67,20 +67,20 @@
 <li>On <em>Visual Studio</em> go to <em>Tools</em> &gt;&gt; <em>NuGet Package Manager</em> &gt;&gt; <em>Package Manager Console</em></li>
 </ul>
 <figure>
-<img src="../src/entity_framework/package_console_manager.png" />
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/package_console_manager.png" />
 </figure>
 <ul>
 <li>Select the project that the migration file will be created</li>
 </ul>
 <figure>
-<img src="../src/entity_framework/package_console_manager_project.png" />
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/package_console_manager_project.png" />
 </figure>
 <ul>
 <li>Execute the command</li>
 </ul>
 <pre class="shell"><code>add-migration &lt;name_of_your_migration&gt;</code></pre>
 <figure>
-<img src="../src/entity_framework/add_migration_command.png" />
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/add_migration_command.png" />
 </figure>
 <h2 id="references">References</h2>
 <ul>
