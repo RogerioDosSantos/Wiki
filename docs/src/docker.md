@@ -405,10 +405,21 @@ Set the DNS in the *Docker Engine daemon file:
 
 ![](https://photos.google.com/share/AF1QipOoG7KcmOCWe-JyJ_r4db0VLMLbrPXgdzRoSgox8KB3GML3me0b13MJE3IlvCC6QA/photo/AF1QipME0P-obDi24eNbU9uXT_KTi8DCh5FD2M7WZtMC?key=REFqVE5GQy1zd2NjdDd5R1dIdXFMOTliZDkyQWl3)
 
+### Docker Issue - Network Error when stating a container (failed during hnsCallRawResponse)
 
+When starting the container, docker server points that cannot start due a network file or port that is already in use. 
 
+I just saw this problem happening when running *Windows* container
 
+#### Workaround 
 
+Run the following commands in *Powershell* with *Administrative* mode 
 
-
+```ps
+Stop-Service docker
+Stop-service hns
+Start-service hns
+Start-Service docker
+docker network prune
+```
 
