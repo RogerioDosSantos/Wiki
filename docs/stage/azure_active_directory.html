@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="azure-active-directory">Azure Active Directory</h1>
+<h2 id="commands">Commands</h2>
+<p><code>az storage account keys list -g &lt;resource_group&gt; -n &lt;storage_account&gt;</code>: List Storage Account keys</p>
+<h2 id="how-to">How-to</h2>
+<h3 id="create-service-principal">Create Service Principal</h3>
+<ul>
+<li>Go to <em>Azure Portal</em> and get your <em>Subscription ID (azure_subscription_id)</em>:</li>
+</ul>
+<figure>
+<img src="../src/azure_active_directory/azure_portal_subscription.png" />
+</figure>
+<pre class="shell"><code>echo &quot;-- Login on Azure (Using User and Password)&quot; 
+az login -u ${azure_user} -p ${azure_password} 
+echo &quot;-- Create Service Principal&quot; 
+az account set --subscription=&quot;${azure_subscription_id}&quot; 
+az ad sp create-for-rbac --role=&quot;Contributor&quot; --scopes=&quot;/subscriptions/${azure_subscription_id}&quot;
+echo &quot;-- Login on Azure using Service Principal&quot; 
+az login --service-principal -u &quot;${azure_client_id}&quot; -p &quot;${azure_client_secret}&quot; --tenant &quot;${azure_tenant_id}&quot; </code></pre>
+<h4 id="references">References</h4>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=h5bxhZRF4mI">Active Directory B2C Introduction Video</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview">Active Directory B2C Documentation</a></li>
+</ul>
+</body>
+</html>
