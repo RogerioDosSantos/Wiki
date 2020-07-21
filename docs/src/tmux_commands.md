@@ -30,6 +30,8 @@
 
 `tmux send-keys -t <target_pane> <commands>`: Send keys to a pane. E.g.: `tmux send-keys -t 1 "clear" C-m "ls" C-m "pwd" C-m`
 
+`tmux run-shell -t <target_pane> <command>`: Run command in another pane. E.g.: `tmux run-shell -t 2 ls`
+
 ## Command Mode - Sessions ##
 
 `:new<CR> ` : new session

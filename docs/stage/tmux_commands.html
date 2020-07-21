@@ -28,6 +28,7 @@
 <p><code>tmux display-pane</code>: Display the number of each pane</p>
 <p><code>tmux kill-pane -t &lt;target_pane&gt;</code>: Close a pane</p>
 <p><code>tmux send-keys -t &lt;target_pane&gt; &lt;commands&gt;</code>: Send keys to a pane. E.g.: <code>tmux send-keys -t 1 &quot;clear&quot; C-m &quot;ls&quot; C-m &quot;pwd&quot; C-m</code></p>
+<p><code>tmux run-shell -t &lt;target_pane&gt; &lt;command&gt;</code>: Run command in another pane. E.g.: <code>tmux run-shell -t 2 ls</code></p>
 <h2 id="command-mode---sessions">Command Mode - Sessions</h2>
 <p><code>:new&lt;CR&gt;</code> : new session</p>
 <p><code>s</code> : list sessions</p>
