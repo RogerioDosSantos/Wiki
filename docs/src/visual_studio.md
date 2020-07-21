@@ -87,6 +87,28 @@ cd "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\
 # Prepare shell to compile for x86 using the Visual Studio 2015 toolset (v14.0)
 ./vcvarsall.bat -vcvars_ver=14.0
 ```
+
+### Connect to Database Using Visual Studio
+
+To connect to a *Database* from *Visual Studio*, follow the steps below:
+
+- On the *Server Explorer* add a new connection:
+
+![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/connect_database_add_connection.png)
+
+- Chose the *Data Source* you want to connect. Example to connect with an Azure SQL Server: 
+
+![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/connect_database_datasource.png)
+
+- Configure the connection: 
+
+![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/connect_database_datasource_configuration.png)
+
+- Once connected you are ready to execut SQL commands: 
+
+![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/connect_database_sql_query.png)
+
+
 ## Get environment variable while debuggin C# code 
 
 - On the *Imadiate Window* type:
