@@ -109,3 +109,9 @@
 
 `Ctrl+b ]` : Paste the previous copied text
 
+## Resize Panes evenly
+
+`Ctrl+b, Alt+1`: Resize Pane evenly horizontally
+
+`Ctrl+b, Alt+2`: Resize Pane evenly vertically
+
