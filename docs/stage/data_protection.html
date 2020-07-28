@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="data-protection">Data Protection</h1>
+<p>The <em>DataProtectionProvider</em> and <em>DataProtector</em> are the default way to execute data protection using <em>ASP.NET Core</em>.</p>
+<p>Although this solution works very well protecting the data betwen cloud components, it is not good for aplying data protection between the cloud and devices. Please see caveats below</p>
+<h2 id="caveats">Caveats</h2>
+<ul>
+<li><p>Although there is an option for you to inform a certificate in the <em>DataProtectionProvider</em>, the certificate is only used for the creation of the key that will be encrypted. You cannot protect or unprotect using only the public certificate (Async Encryption).</p></li>
+<li><p>When you call the protect, a key is created. This key can be storaded in the file syste, in azure blob and other ways. Even if you use the same certificate, a new key will be created for a new instance of the <em>DataProtectionProvider</em>. Therefore the only way you can unprotect from another provider is to copying the generated key to the location the second provider is looking for it.</p></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><p><a href="https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction?view=aspnetcore-3.1">ASP.NET Core Data Protection</a></p></li>
+<li><p><a href="https://github.com/RogerioDosSantos/example_dotnetcore_apis/blob/master/qa/TestDataProtectionTools.cs">Examples and tests done with the Data Protection</a></p></li>
+</ul>
+</body>
+</html>
