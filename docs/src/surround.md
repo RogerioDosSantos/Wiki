@@ -1,8 +1,8 @@
-# Surround #
+# Surround
 
 Allow surround tags of a selected text
 
-## Commands ##
+## Commands
 
 
 `<visual selection>S<surround tag>` : Surround selection with surround tag.
