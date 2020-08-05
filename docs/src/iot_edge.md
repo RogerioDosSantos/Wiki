@@ -275,6 +275,8 @@ In the *Digital Twin* you have the following definitions:
 
 [Azure Digital Twins Documentation](https://docs.microsoft.com/en-us/azure/digital-twins/)
 
+[IoTHub direct methods](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-direct-methods)
+
 ### Important
 
 [Azure IoT CLI]( https://github.com/Azure/azure-cli ) - CLI to work with Azure 
