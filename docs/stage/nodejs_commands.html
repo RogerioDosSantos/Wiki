@@ -73,7 +73,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt-get install --reinstall nodejs-legacy     # fix /usr/bin/node
 <span class="fu">sudo</span> n rm 6.0.0     # replace number with version of Node that was installed
 <span class="fu">sudo</span> npm uninstall -g n</code></pre></div>
-<h3 id="nodejs---create-express-rest-api-from-scratch">NodeJS - Create Express Rest API from scratch</h3>
+<h2 id="nodejs---create-express-rest-api-from-scratch">NodeJS - Create Express Rest API from scratch</h2>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Initialize package manager</span>
 <span class="ex">npn</span> init
 
@@ -112,8 +112,41 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> app<span class="op">;</span></code></pre></div>
 <p><strong>Note</strong></p>
 <p>You can use <a href="https://www.getpostman.com/">Postman</a> to send other commands (E.g.: Post) to the <em>API</em></p>
+<h2 id="nodejs---create-webapi-with-swagger">NodeJS - Create WebAPI with swagger</h2>
+<h3 id="install-the-swagger-module">Install the swagger module</h3>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">npm</span> install -g swagger</code></pre></div>
+<h3 id="create-a-new-swagger-project">Create a new swagger project</h3>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">swagger</span> project create <span class="op">&lt;</span>project_name<span class="op">&gt;</span></code></pre></div>
+<p>Select the Framework (E.g.: express)</p>
+<h3 id="design-your-api-in-the-swagger-editor">Design your API in the Swagger Editor</h3>
+<p>You can call an interactive built-in, browser-based <a href="https://editor.swagger.io/">Swagger Editor</a> running the command:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">swagger</span> project edit</code></pre></div>
+<figure>
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/nodejs/swagger_builtin_editor.png" />
+</figure>
+<h3 id="write-controller-code-in-node.js">Write controller code in Node.js</h3>
+<p>The controller will be located into the <code>./api/controllers</code> folder.</p>
+<h3 id="run-the-project-server">Run the project server</h3>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">swagger</span> project start</code></pre></div>
+<p>Now you can call the API commands</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">curl</span> http://127.0.0.1:10010/hello?name=Scott</code></pre></div>
+<h3 id="change-the-code-to-expose-a-swagger-documentation-entrypoint">Change the code to expose a swagger documentation entrypoint</h3>
+<p>On the <code>app.js</code>, add the following code after the middleware creation:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//Expose the documentation</span>
+<span class="va">app</span>.<span class="at">use</span>(<span class="va">swaggerExpress</span>.<span class="va">runner</span>.<span class="va">swaggerTools</span>.<span class="at">swaggerUi</span>())<span class="op">;</span></code></pre></div>
+<p>This will enable a <code>docs</code> entrypoint:</p>
+<figure>
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/nodejs/swagger_docs_entrypoint_code.png" />
+</figure>
+<figure>
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/nodejs/swagger_docs_entrypoint.png" />
+</figure>
 <h2 id="how-to">How-To</h2>
 <h3 id="npm---list-the-global-configuration">NPM - List the Global Configuration</h3>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">npm</span> config ls -l <span class="kw">|</span> <span class="fu">grep</span> userconfig</code></pre></div>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/swagger-api/swagger-node">Swagger API for NodeJS (swagger-node)</a></li>
+</ul>
 </body>
 </html>

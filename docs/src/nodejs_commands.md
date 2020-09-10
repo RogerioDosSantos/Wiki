@@ -51,7 +51,7 @@ sudo n rm 6.0.0     # replace number with version of Node that was installed
 sudo npm uninstall -g n
 ```
 
-### NodeJS - Create Express Rest API from scratch
+## NodeJS - Create Express Rest API from scratch
 
 ```bash
 # Initialize package manager
@@ -104,6 +104,64 @@ module.exports = app;
 
 You can use [Postman](https://www.getpostman.com/) to send other commands (E.g.: Post) to the *API*
 
+## NodeJS - Create WebAPI with swagger 
+
+### Install the swagger module 
+
+```sh
+npm install -g swagger
+```
+
+### Create a new swagger project 
+
+```sh
+swagger project create <project_name>
+```
+
+Select the Framework (E.g.: express)
+
+### Design your API in the Swagger Editor 
+
+You can call an interactive built-in, browser-based [Swagger Editor](https://editor.swagger.io/) running the command:
+
+```sh
+swagger project edit
+```
+
+![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/nodejs/swagger_builtin_editor.png)
+
+
+### Write controller code in Node.js
+
+The controller will be located into the `./api/controllers` folder. 
+
+### Run the project server 
+
+```sh
+swagger project start
+```
+
+Now you can call the API commands
+
+```sh
+curl http://127.0.0.1:10010/hello?name=Scott
+```
+
+### Change the code to expose a swagger documentation entrypoint 
+
+On the `app.js`, add the following code after the middleware creation:
+
+```js
+//Expose the documentation
+app.use(swaggerExpress.runner.swaggerTools.swaggerUi());
+```
+
+This will enable a `docs` entrypoint: 
+
+![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/nodejs/swagger_docs_entrypoint_code.png)
+
+![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/nodejs/swagger_docs_entrypoint.png)
+
 ## How-To 
 
 ### NPM - List the Global Configuration
@@ -111,4 +169,8 @@ You can use [Postman](https://www.getpostman.com/) to send other commands (E.g.:
 ```sh
 npm config ls -l | grep userconfig
 ```
+
+## References 
+
+- [Swagger API for NodeJS (swagger-node)](https://github.com/swagger-api/swagger-node)
 
