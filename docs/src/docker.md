@@ -336,47 +336,44 @@ Invoke-WebRequest "https://github.com/docker/compose/releases/download/1.23.2/do
 & $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon
 ```
 
-### Docker - Bug - How to stop a container that the engine does not stop in any way
+### Docker Proxy - Make Proxy to work into Windows Server Core
 
-There is a bug in the *docker engine* for *Windows* that will not allow you to stop the container either using `docker stop` or `docker kill` commands.
+On the *Windows Server Core* image, the docker implementation requires that the *Proxy configuration* is available in the registry `[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Connections]`.
 
-To solve the issue: 
-
-- Quit the *docker engine* (*Docker desktop*)
-- Remove the content of the following folder:
-`C:\ProgramData\Docker\containers`
-- Restart the *docker engine* (*Docker desktop*)
-
-### Docker - Bug - Docker crash when starting
-
-I had the same issue. By some reason Windows reserves port 2375:
+The *Powershell function* below can be used to create the needed configuration:
 
 ```ps
-netsh interface ipv4 show excludedportrange protocol=tcp
+function Add-ProxySettings {
+    Param(
+        [Parameter(Mandatory=$False)]
+        [String]$Proxy
+        ,
+        [Parameter(Mandatory=$False)]
+        [String]$BypassProxy
+    )  
+    
+    Write-Host "Setting Proxy To: " $Proxy;
+    Write-Host "Setting bypass list to: " $BypassProxy;
+    
+    [String] $start =  [System.Text.Encoding]::ASCII.GetString([byte[]](70, 0, 0, 0, 25, 0, 0, 0, 3, 0, 0, 0, 29, 0, 0, 0 ), 0, 16);
+    [String] $endproxy = [System.Text.Encoding]::ASCII.GetString([byte[]]( 233, 0, 0, 0 ), 0, 4);
+    [String] $end = [System.Text.Encoding]::ASCII.GetString([byte[]]( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), 0, 36);
+    
+    [String] $text = "$($start)$($Proxy)$($endproxy)$($BypassProxy)$($end)";
+
+    [byte[]] $data = [System.Text.Encoding]::ASCII.GetBytes($text);
+    $regKeyConnections = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
+    Set-ItemProperty -Path $regKeyConnections -Name "DefaultConnectionSettings" -Value $data
+ 
+    Get-ItemProperty -Path $regKeyConnections
+}
 ```
 
-If you see that one of port ranges include port 2375 then you have the same issue.
-
-Disable Hyper-V and reboot:
+In addition, some *Proxies* add a proprietary *main-in-the-middle* certificate that needs to be installed on the device. You can install the certificate, by adding it on the certificate store, using the following command: 
 
 ```ps
-dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
+Import-Certificate -FilePath <proxy_certificate>.der -CertStoreLocation Cert:\LocalMachine\Root
 ```
-
-Then reserve port 2375:
-
-```ps
-netsh int ipv4 add excludedportrange protocol=tcp startport=2375 numberofports=1
-```
-Enable Hyper-V and reboot again:
-
-```ps
-dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
-```
-
-Now it should be fine.
-
-- Reference [https://github.com/docker/for-win/issues/3546#issuecomment-483311479](https://github.com/docker/for-win/issues/3546#issuecomment-483311479)
 
 ## Known issues and Workaround
 
@@ -422,4 +419,46 @@ Start-service hns
 Start-Service docker
 docker network prune
 ```
+
+### Docker Issue - How to stop a container that the engine does not stop in any way
+
+There is a bug in the *docker engine* for *Windows* that will not allow you to stop the container either using `docker stop` or `docker kill` commands.
+
+To solve the issue: 
+
+- Quit the *docker engine* (*Docker desktop*)
+- Remove the content of the following folder:
+`C:\ProgramData\Docker\containers`
+- Restart the *docker engine* (*Docker desktop*)
+
+### Docker Issue - Docker crash when starting
+
+I had the same issue. By some reason Windows reserves port 2375:
+
+```ps
+netsh interface ipv4 show excludedportrange protocol=tcp
+```
+
+If you see that one of port ranges include port 2375 then you have the same issue.
+
+Disable Hyper-V and reboot:
+
+```ps
+dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
+```
+
+Then reserve port 2375:
+
+```ps
+netsh int ipv4 add excludedportrange protocol=tcp startport=2375 numberofports=1
+```
+Enable Hyper-V and reboot again:
+
+```ps
+dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
+```
+
+Now it should be fine.
+
+- Reference [https://github.com/docker/for-win/issues/3546#issuecomment-483311479](https://github.com/docker/for-win/issues/3546#issuecomment-483311479)
 

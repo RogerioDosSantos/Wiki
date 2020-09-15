@@ -246,28 +246,35 @@ Invoke-WebRequest &quot;https:<span class="dt">//github.com/docker/compose/relea
 <h3 id="docker---switch-daemon-execution-windows-linux-from-command-line">Docker - Switch Daemon execution (Windows / Linux) from command line</h3>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">#Switch Docker Daemon <span class="st">(Windows/Linux)</span>
 &amp; $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon</code></pre></div>
-<h3 id="docker---bug---how-to-stop-a-container-that-the-engine-does-not-stop-in-any-way">Docker - Bug - How to stop a container that the engine does not stop in any way</h3>
-<p>There is a bug in the <em>docker engine</em> for <em>Windows</em> that will not allow you to stop the container either using <code>docker stop</code> or <code>docker kill</code> commands.</p>
-<p>To solve the issue:</p>
-<ul>
-<li>Quit the <em>docker engine</em> (<em>Docker desktop</em>)</li>
-<li>Remove the content of the following folder: <code>C:\ProgramData\Docker\containers</code></li>
-<li>Restart the <em>docker engine</em> (<em>Docker desktop</em>)</li>
-</ul>
-<h3 id="docker---bug---docker-crash-when-starting">Docker - Bug - Docker crash when starting</h3>
-<p>I had the same issue. By some reason Windows reserves port 2375:</p>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">netsh interface ipv4 <span class="kw">show</span> excludedportrange protocol=tcp</code></pre></div>
-<p>If you see that one of port ranges include port 2375 then you have the same issue.</p>
-<p>Disable Hyper-V and reboot:</p>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">dism.exe <span class="dt">/Online</span> <span class="dt">/Disable-Feature:Microsoft-Hyper-V</span></code></pre></div>
-<p>Then reserve port 2375:</p>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">netsh int ipv4 <span class="kw">add</span> excludedportrange protocol=tcp startport=<span class="dv">2375</span> numberofports=<span class="dv">1</span></code></pre></div>
-<p>Enable Hyper-V and reboot again:</p>
-<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">dism.exe <span class="dt">/Online</span> <span class="dt">/Enable-Feature:Microsoft-Hyper-V</span> <span class="dt">/All</span></code></pre></div>
-<p>Now it should be fine.</p>
-<ul>
-<li>Reference <a href="https://github.com/docker/for-win/issues/3546#issuecomment-483311479" class="uri">https://github.com/docker/for-win/issues/3546#issuecomment-483311479</a></li>
-</ul>
+<h3 id="docker-proxy---make-proxy-to-work-into-windows-server-core">Docker Proxy - Make Proxy to work into Windows Server Core</h3>
+<p>On the <em>Windows Server Core</em> image, the docker implementation requires that the <em>Proxy configuration</em> is available in the registry <code>[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Connections]</code>.</p>
+<p>The <em>Powershell function</em> below can be used to create the needed configuration:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">function <span class="kw">Add</span>-ProxySettings {
+    Param<span class="st">(</span>
+<span class="st">        [Parameter(Mandatory=$False)</span>]
+        [<span class="kw">String</span>]$Proxy
+        ,
+        [Parameter<span class="st">(Mandatory=$False)</span>]
+        [<span class="kw">String</span>]$BypassProxy
+    )  
+    
+    <span class="kw">Write</span>-Host &quot;Setting Proxy To: &quot; $Proxy;
+    <span class="kw">Write</span>-Host &quot;Setting bypass list to: &quot; $BypassProxy;
+    
+    [<span class="kw">String</span>] $start =  [System.Text.Encoding]::ASCII.GetString<span class="st">([byte[]](70, 0, 0, 0, 25, 0, 0, 0, 3, 0, 0, 0, 29, 0, 0, 0 )</span>, <span class="dv">0</span>, <span class="dv">16</span>);
+    [<span class="kw">String</span>] $endproxy = [System.Text.Encoding]::ASCII.GetString<span class="st">([byte[]]( 233, 0, 0, 0 )</span>, <span class="dv">0</span>, <span class="dv">4</span>);
+    [<span class="kw">String</span>] $end = [System.Text.Encoding]::ASCII.GetString<span class="st">([byte[]]( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)</span>, <span class="dv">0</span>, <span class="dv">36</span>);
+    
+    [<span class="kw">String</span>] $text = &quot;$<span class="st">($start)</span>$<span class="st">($Proxy)</span>$<span class="st">($endproxy)</span>$<span class="st">($BypassProxy)</span>$<span class="st">($end)</span>&quot;;
+
+    [byte[]] $data = [System.Text.Encoding]::ASCII.GetBytes<span class="st">($text)</span>;
+    $regKeyConnections = &quot;HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections&quot;
+    Set-ItemProperty -Path $regKeyConnections -Name &quot;DefaultConnectionSettings&quot; -Value $data
+ 
+    <span class="kw">Get</span>-ItemProperty -Path $regKeyConnections
+}</code></pre></div>
+<p>In addition, some <em>Proxies</em> add a proprietary <em>main-in-the-middle</em> certificate that needs to be installed on the device. You can install the certificate, by adding it on the certificate store, using the following command:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Import-Certificate -FilePath &lt;proxy_certificate&gt;.der -CertStoreLocation Cert:\LocalMachine\Root</code></pre></div>
 <h2 id="known-issues-and-workaround">Known issues and Workaround</h2>
 <h3 id="docker-issue---dns-does-not-work-inside-the-container">Docker Issue - DNS does not work inside the container</h3>
 <h4 id="version">Version</h4>
@@ -293,5 +300,27 @@ Test-Connection: Testing connection to computer &#39;google.com&#39; failed: Can
 Start-service hns
 Start-Service docker
 docker network prune</code></pre></div>
+<h3 id="docker-issue---how-to-stop-a-container-that-the-engine-does-not-stop-in-any-way">Docker Issue - How to stop a container that the engine does not stop in any way</h3>
+<p>There is a bug in the <em>docker engine</em> for <em>Windows</em> that will not allow you to stop the container either using <code>docker stop</code> or <code>docker kill</code> commands.</p>
+<p>To solve the issue:</p>
+<ul>
+<li>Quit the <em>docker engine</em> (<em>Docker desktop</em>)</li>
+<li>Remove the content of the following folder: <code>C:\ProgramData\Docker\containers</code></li>
+<li>Restart the <em>docker engine</em> (<em>Docker desktop</em>)</li>
+</ul>
+<h3 id="docker-issue---docker-crash-when-starting">Docker Issue - Docker crash when starting</h3>
+<p>I had the same issue. By some reason Windows reserves port 2375:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">netsh interface ipv4 <span class="kw">show</span> excludedportrange protocol=tcp</code></pre></div>
+<p>If you see that one of port ranges include port 2375 then you have the same issue.</p>
+<p>Disable Hyper-V and reboot:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">dism.exe <span class="dt">/Online</span> <span class="dt">/Disable-Feature:Microsoft-Hyper-V</span></code></pre></div>
+<p>Then reserve port 2375:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">netsh int ipv4 <span class="kw">add</span> excludedportrange protocol=tcp startport=<span class="dv">2375</span> numberofports=<span class="dv">1</span></code></pre></div>
+<p>Enable Hyper-V and reboot again:</p>
+<div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">dism.exe <span class="dt">/Online</span> <span class="dt">/Enable-Feature:Microsoft-Hyper-V</span> <span class="dt">/All</span></code></pre></div>
+<p>Now it should be fine.</p>
+<ul>
+<li>Reference <a href="https://github.com/docker/for-win/issues/3546#issuecomment-483311479" class="uri">https://github.com/docker/for-win/issues/3546#issuecomment-483311479</a></li>
+</ul>
 </body>
 </html>
