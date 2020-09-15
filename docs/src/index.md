@@ -51,6 +51,7 @@
 - [Postman](./postman.html) - HTTP Client and QA Automation
 - [Fiddler](./fiddler.html) - Control and monitor HTTP/HTTPs traffic
 - [Miro](./miro.html) - Cloud White Board tool
+- [Autorest (Swagger Client)]( ./autrest.html )
 
 ## Markdown
 
