@@ -235,6 +235,7 @@
 - [Azure App Services]( ./azure_app_services.html )
 - [Azure Monitor (App Insights)]( ./azure_app_insights.html )
 - [Azure DevOps]( ./azure_devops.html )
+- [Azure Bastion]( ./azure_bastion.html )
 
 ## Stock Market
 
