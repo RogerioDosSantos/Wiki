@@ -284,7 +284,8 @@ Invoke-WebRequest &quot;https:<span class="dt">//github.com/docker/compose/relea
 <span class="kw">COPY</span> --from=tool /Windows/System32/certoc.exe .
 <span class="kw">USER</span> ContainerAdministrator
 <span class="kw">COPY</span> &lt;path_of_the_certificate&gt; ./my_root_certificate.cer
-<span class="kw">RUN</span> certoc.exe -addstore root my_root_certificate.cer</code></pre></div>
+<span class="kw">RUN</span> certoc.exe -addstore root my_root_certificate.cer
+<span class="kw">USER</span> ContainerUser</code></pre></div>
 <h2 id="known-issues-and-workaround">Known issues and Workaround</h2>
 <h3 id="docker-issue---dns-does-not-work-inside-the-container">Docker Issue - DNS does not work inside the container</h3>
 <h4 id="version">Version</h4>

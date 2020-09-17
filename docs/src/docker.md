@@ -387,6 +387,7 @@ COPY --from=tool /Windows/System32/certoc.exe .
 USER ContainerAdministrator
 COPY <path_of_the_certificate> ./my_root_certificate.cer
 RUN certoc.exe -addstore root my_root_certificate.cer
+USER ContainerUser
 ```
 
 ## Known issues and Workaround
