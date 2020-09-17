@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="single-sign-on-sso">Single Sign-On (SSO)</h1>
+<p><em>Single Sign-On (SSO)</em> is an alternative access method which allows users to have access to several <em>service providers (SP)</em> (for example <em>WebSites or Services</em>) without having to manually login when accessing the site via an agreed route.</p>
+<h2 id="sso-with-federated-idps">SSO with Federated IdPs</h2>
+<p><em>Federated Access Management</em> builds a trust relationship between <em>identity providers (IdP)</em> and <em>service providers (SP)</em>. It devolves the responsibility for <em>authentication</em> to a <em>user's home organisation</em>, and establishes <em>authorisation</em> through the secure exchange of information (known as <em>attributes</em>) between the two parties.</p>
+<figure>
+<img src="../src/sso/federation_example.png" />
+</figure>
+<h3 id="access-federation">Access Federation</h3>
+<p>Federation members needing access to resources install <em>identity provider (IdP)</em> software, and members providing resources install <em>service provider (SP)</em> software. Members sign up to an agreed set of policies for exchanging information about <em>users</em> and <em>resources</em>. The <em>federation operator</em> acts as a <em>registrar</em> for this information, which describes the configuration of the members' identity and <em>service providers</em>. The information is known as <em>metadata</em>.</p>
+<p>How <em>authentication</em> is carried out by the <em>identity provider</em> and how <em>rights management</em> is carried out by the <em>service provider</em> is left up to the respective parties. Thus, <em>federated access management</em> depends on a <em>certain level of trust</em>. These <em>trust agreements</em> are managed by <em>federations</em>. <em>Federations</em> are typically being established at a national level.</p>
+<p>Examples of other federations include:</p>
+<ul>
+<li><a href="https://enterprise.ft.com/en-gb/sso-support-portal/guide-sso-federated-idps/">InCommon</a>. Located in the US</li>
+<li><a href="http://www.switch.ch/aai/docs/AAI_Org_Processes.pdf">SWITCHaai</a>. Located in Switzerland</li>
+<li><a href="http://www.csc.fi/english/institutions/haka">HAKA</a>. Located in Finland</li>
+<li><a href="https://docs.openathens.net/display/public/OAHF/Joining+the+federation">OpenAthens</a> - not tied to a location</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://enterprise.ft.com/en-gb/sso-support-portal/guide-sso-federated-idps/">FT.com Guide to SSO with Federated IdPs</a></li>
+</ul>
+</body>
+</html>
