@@ -275,6 +275,16 @@ Invoke-WebRequest &quot;https:<span class="dt">//github.com/docker/compose/relea
 }</code></pre></div>
 <p>In addition, some <em>Proxies</em> add a proprietary <em>main-in-the-middle</em> certificate that needs to be installed on the device. You can install the certificate, by adding it on the certificate store, using the following command:</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Import-Certificate -FilePath &lt;proxy_certificate&gt;.der -CertStoreLocation Cert:\LocalMachine\Root</code></pre></div>
+<h3 id="docker---install-tls-certificate-into-windows-server-core-and-windows-nano-server">Docker - Install TLS Certificate into Windows Server Core and Windows Nano Server</h3>
+<div class="sourceCode"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span class="co"># Image that contains the certoc.exe tool</span>
+<span class="kw">FROM</span> microsoft/nanoserver:sac2016 as tool
+
+<span class="co"># Image where the certificate needs to be installed</span>
+<span class="kw">FROM</span> microsoft/nanoserver:1709 
+<span class="kw">COPY</span> --from=tool /Windows/System32/certoc.exe .
+<span class="kw">USER</span> ContainerAdministrator
+<span class="kw">COPY</span> &lt;path_of_the_certificate&gt; ./my_root_certificate.cer
+<span class="kw">RUN</span> certoc.exe -addstore root my_root_certificate.cer</code></pre></div>
 <h2 id="known-issues-and-workaround">Known issues and Workaround</h2>
 <h3 id="docker-issue---dns-does-not-work-inside-the-container">Docker Issue - DNS does not work inside the container</h3>
 <h4 id="version">Version</h4>

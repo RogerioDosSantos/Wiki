@@ -375,6 +375,20 @@ In addition, some *Proxies* add a proprietary *main-in-the-middle* certificate t
 Import-Certificate -FilePath <proxy_certificate>.der -CertStoreLocation Cert:\LocalMachine\Root
 ```
 
+### Docker - Install TLS Certificate into Windows Server Core and Windows Nano Server 
+
+```Dockerfile
+# Image that contains the certoc.exe tool
+FROM microsoft/nanoserver:sac2016 as tool
+
+# Image where the certificate needs to be installed
+FROM microsoft/nanoserver:1709 
+COPY --from=tool /Windows/System32/certoc.exe .
+USER ContainerAdministrator
+COPY <path_of_the_certificate> ./my_root_certificate.cer
+RUN certoc.exe -addstore root my_root_certificate.cer
+```
+
 ## Known issues and Workaround
 
 ### Docker Issue - DNS does not work inside the container
