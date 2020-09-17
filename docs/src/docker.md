@@ -474,5 +474,11 @@ dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
 
 Now it should be fine.
 
-- Reference [https://github.com/docker/for-win/issues/3546#issuecomment-483311479](https://github.com/docker/for-win/issues/3546#issuecomment-483311479)
+- Source [https://github.com/docker/for-win/issues/3546#issuecomment-483311479](https://github.com/docker/for-win/issues/3546#issuecomment-483311479)
+
+## References
+
+- [Import Certificate on Windows Container](https://joshuachini.com/2018/02/08/how-to-import-an-enterprise-certificate-into-a-windows-container/)
+- [Install Self-Signed Certificate On Windows Nano Server 2016](https://www.ntweekly.com/2017/01/30/install-self-signed-certificate-on-windows-nano-server-2016/)
+- [Connect to the internet from a Windows container behind a http proxy](https://forums.docker.com/t/connect-to-the-internet-from-a-windows-container-behind-a-http-proxy/41307/8)
 
