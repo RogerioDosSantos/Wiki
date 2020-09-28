@@ -185,6 +185,7 @@
 - [XUnit]( ./xunit.html )
 - [Simple Injector]( ./simple_injector.html )
 - [Data Protection]( ./data_protection.html )
+- [SignalR]( ./signalr.html )
 
 ## Virtualization 
 
