@@ -15,6 +15,24 @@
 <h1 id="signalr">SignalR</h1>
 <p><a href="https://docs.microsoft.com/en-us/aspnet/signalr/overview/getting-started/introduction-to-signalr">ASP.NET SignalR</a> is a library for <em>ASP.NET</em> developers that simplifies the process of adding <em>real-time web functionality</em> to applications. <em>Real-time web functionality</em> is the ability to have <em>server code</em> push content to connected <em>clients</em> instantly as it becomes available, rather than having the <em>server</em> wait for a <em>client</em> to request new data.</p>
 <p><em>SignalR</em> can be used to add any sort of &quot;real-time&quot; web functionality to your <em>ASP.NET application</em>.</p>
+<p><em>SignalR</em> is an abstraction of the <em>Web Sockets</em> and others <em>Web Real Time</em> technologies.</p>
+<h2 id="signalr-hub">SignalR Hub</h2>
+<p>The <em>SignalR Hub</em> lives on the <em>Server</em> side and it is responsible to distribute the information received by one <em>Client</em> to the other <em>Clients</em>.</p>
+<p>You can define if the <em>SignalR Hub</em> will send the processing result to all <em>Clients</em> connected to it (<code>Clients.All.doWork()</code>) or if will return the processing result only to the <em>caller Client</em> (<code>Clients.Caller.doWork()</code>)</p>
+<h2 id="transport-layer">Transport Layer</h2>
+<p>Today <em>SignalR</em> has 03 <em>communication transports types</em>:</p>
+<ul>
+<li><em>Web Sockets</em></li>
+<li><em>Server-Sent Events</em></li>
+<li><em>Long Pooling</em></li>
+</ul>
+<p>If order shown above was in priority of use. In case the <em>Web Sockets</em> cannot be used, the <em>SignalR framework</em> will try to use <em>Server-Sent Events</em> and so forth.</p>
+<h3 id="protocol">Protocol</h3>
+<p>The <em>SignalR protocol</em> is a protocol for <em>two way RPC</em> over any <em>Message-based transport</em> there are 02 protocols that can be used:</p>
+<ul>
+<li>JSON (Text based - Better for troubleshoot)</li>
+<li>MessagePack (Binary - Better for performance. The message size becomes around 60% of the JSON message size)</li>
+</ul>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/aspnet/signalr/overview/getting-started/introduction-to-signalr">Introduction to SignalR</a></li>
