@@ -12,6 +12,10 @@
 
 A [Security Group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html). is a set of firewall rules that control network traffic for your instance. By default, all incoming ports are blocked.
 
+## AWS CLI Commands
+
+`aws configure`: Configure AWS cli to communicate with an Amazon account. You will need (Access Key, Secret Access Key, AWS Region, Output format)
+
 ## How-to
 
 ### Run Docker containers into AWS (Using EC2)
@@ -77,6 +81,11 @@ docker ps
   - Attach to *Administrator Access Policy* (Too much access but quick).
 
 
+## References 
+
+- [Installing AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
+- [Create Access Keys](https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/)
+- [Configuring AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 
 
 
