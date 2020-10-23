@@ -274,6 +274,7 @@
 ## Videos / Streaming
 
 - [OBS]( ./obs.html )
+- [Videos Library]( ./videos_library.html )
 
 ## License
 
