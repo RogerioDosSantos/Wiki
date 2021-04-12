@@ -239,6 +239,11 @@
 - [Azure DevOps]( ./azure_devops.html )
 - [Azure Bastion]( ./azure_bastion.html )
 
+## Provisioning and deployment
+
+- [Terraform]( ./terraform.html )
+- [Serveless (AWS)]( ./aws_serveless.html )
+
 ## Stock Market
 
 - [Stock Indicators]( ./stock_indicators.html )
