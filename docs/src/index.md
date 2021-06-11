@@ -207,9 +207,10 @@
 ## Authentication / Authorization
 
 - [Identity Server]( ./identity_server.html )
-    - [Keycloak]( ./keycloak.html )
-    - [Auth0]( ./auth0.html )
-    - [Single Sign-On (SSO)]( ./sso.html )
+- [Keycloak]( ./keycloak.html )
+- [Auth0]( ./auth0.html )
+- [Single Sign-On (SSO)]( ./sso.html )
+- [SCIM]( ./scim.html )
 
 ## Network 
 
