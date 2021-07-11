@@ -9,6 +9,7 @@
 - [VT](https://investor.vanguard.com/etf/profile/distributions/vt) : Vanguard Total World Stock ETF (Expense: 0.08%). Invests in both foreign and U.S. stocks. Has high potential for growth, but also high risk; share value may swing up and down more than U.S. or international stock funds. Only appropriate for long-term goals.
 - [VTI](https://investor.vanguard.com/etf/profile/overview/vti): Vanguard Total Stock Market ETF (Expense: 0.03%). Seeks to track the performance of the CRSP US Total Market Index. Large-, mid-, and small-cap equity diversified across growth and value styles. Low expenses minimize net tracking error.
 - [VEA](https://investor.vanguard.com/etf/profile/overview/vea): Vanguard FTSE Developed Markets (Expense: 0.05%). Provides a convenient way to match the performance of a diversified group of stocks of large-, mid-, and small-cap companies located in Canada and the major markets of Europe and the Pacific region. 
+- [VXUS](zzz): Vanguard Total International Stock (Expense: 0.08%). Seeks to track the performance of the FTSE Global All Cap ex US Index, which measures the investment return of stocks issued by companies located outside the United States.
 
 ## Bonds 
 
