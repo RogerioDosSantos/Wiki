@@ -8,6 +8,7 @@
 - [VTSAX](https://investor.vanguard.com/mutual-funds/profile/VTSAX) : Vanguard Total Stock Market Index Fund Admiral Shares (Expense: 0.04%)
 - [VT](https://investor.vanguard.com/etf/profile/distributions/vt) : Vanguard Total World Stock ETF (Expense: 0.08%). Invests in both foreign and U.S. stocks. Has high potential for growth, but also high risk; share value may swing up and down more than U.S. or international stock funds. Only appropriate for long-term goals.
 - [VTI](https://investor.vanguard.com/etf/profile/overview/vti): Vanguard Total Stock Market ETF (Expense: 0.03%). Seeks to track the performance of the CRSP US Total Market Index. Large-, mid-, and small-cap equity diversified across growth and value styles. Low expenses minimize net tracking error.
+- [VEA](https://investor.vanguard.com/etf/profile/overview/vea): Vanguard FTSE Developed Markets (Expense: 0.05%). Provides a convenient way to match the performance of a diversified group of stocks of large-, mid-, and small-cap companies located in Canada and the major markets of Europe and the Pacific region. 
 
 ## Bonds 
 
