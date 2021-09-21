@@ -374,3 +374,11 @@ git reset --soft HEAD~
 git diff --name-only HEAD^ HEAD
 ```
 
+### Git - Discard all unstaged files
+
+```bash
+# Discard unstaged files
+git checkout -- .
+```
+
+
