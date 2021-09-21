@@ -293,6 +293,10 @@
 - [LLC](./llc.html)
 - [Property Rental](./property_rental.html)
 
+## Regulation and Lesgislations
+
+- [GDPR](./gdpr.html)
+
 ## Books 
 
 - [DevOps - Handbook](./book_devops_handbook.html)
