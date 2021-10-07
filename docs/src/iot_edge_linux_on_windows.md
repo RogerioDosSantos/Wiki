@@ -14,7 +14,7 @@ Hyper-V commands requires powershell x64. All commands on this instruction shoul
 
 *Hyper-V* is a pre-requirement needed. You need *Hyper-V* installed and *Hyper-V virtual switch* configured
 
-- Check if Hyper-V is installed. If not install it
+#### Check if Hyper-V is installed. If not install it
 
 To check if is installed:
 
@@ -28,7 +28,7 @@ Install Command:
 Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
 ```
  
-- Check if a Virtual Switch required by the Microsoft Installer is available. If not install and configure it
+#### Check if a Virtual Switch required by the Microsoft Installer is available. If not install and configure it
 
 To check if is installed: 
 
@@ -83,7 +83,7 @@ New-NetNat -Name "Default Switch" -InternalIPInterfaceAddressPrefix ($defaultSwi
  
 ### Create DHCP Server
  
-- Check if the DHCP Server feature is installed in the device. If not installed install and configure it
+#### Check if the DHCP Server feature is installed in the device. If not installed install and configure it
 
 To check if the *DHCP* is installed you can run the following command:
 
@@ -120,7 +120,7 @@ Restart-service dhcpserver
  
 ### Installation and deployment of a virtual device
  
-- Download and install Microsoft IoT-Edge for Linux on Windows
+#### Download and install Microsoft IoT-Edge for Linux on Windows
 
 Download IoT Edge for Linux on Windows.
 
@@ -156,7 +156,7 @@ Create the IoT-Edge VM for Linux on Windows deployment
 Deploy-Eflow
 ```
  
-- Manual provisioning using the IoTHub Virtual Device connection string
+#### Manual provisioning using the IoTHub Virtual Device connection string
  
 ```ps
 Provision-EflowVm -provisioningType ManualConnectionString -devConnString "<iothub_virtual_device_connection_string>"
@@ -164,7 +164,7 @@ Provision-EflowVm -provisioningType ManualConnectionString -devConnString "<ioth
  
 ### Test the solution
  
-- Connect to the Linux VM that is running *Microsoft IoT-Edge* 
+#### Connect to the Linux VM that is running *Microsoft IoT-Edge* 
 
 Note: This command only works on the regular powershell as administrator
  
@@ -186,7 +186,6 @@ sudo docker ps
 ```
 
 ## Hyper-V virtual switch options
-
 
 - **External switch**: Linked to a physical card of the Hyper-V host and allows access to the network.
 - **Internal switch**: Isolates the virtual machines but allows network switching between the Hyper-V host and the virtual machines.
