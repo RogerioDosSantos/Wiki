@@ -61,7 +61,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"><span class="kw">Get</span>-WindowsFeature -Name &#39;Hyper-V&#39;</code></pre></div>
 <p>Install Command:</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart</code></pre></div>
-<p>  #### Check if a Virtual Switch required by the Microsoft Installer is available. If not install and configure it</p>
+<h4 id="check-if-a-virtual-switch-required-by-the-microsoft-installer-is-available.-if-not-install-and-configure-it">Check if a Virtual Switch required by the Microsoft Installer is available. If not install and configure it</h4>
 <p>To check if is installed: </p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"><span class="kw">Get</span>-VMSwitch</code></pre></div>
 <p>Microsoft installer uses a Virtual Switch with the name <em>Default Switch</em> and of the type <em>Internal</em>.</p>
@@ -82,7 +82,9 @@ $dhcpEndIP = &quot;<span class="dv">169</span>.<span class="dv">254</span>.<span
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">New-NetIPAddress -IPAddress $defaultSwitchGatewayIP -PrefixLength <span class="dv">24</span> -InterfaceIndex $defaultSwitchIndex</code></pre></div>
 <p>  Create a Network Address Translation (NAT) object that translates an internal network address to an external network.</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">New-NetNat -Name &quot;Default Switch&quot; -InternalIPInterfaceAddressPrefix <span class="st">($defaultSwitchNatIP + &quot;/24&quot;)</span></code></pre></div>
-<p>  ### Create DHCP Server   #### Check if the DHCP Server feature is installed in the device. If not installed install and configure it</p>
+<p> </p>
+<h3 id="create-dhcp-server">Create DHCP Server</h3>
+<p>  #### Check if the DHCP Server feature is installed in the device. If not installed install and configure it</p>
 <p>To check if the <em>DHCP</em> is installed you can run the following command:</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"><span class="kw">Get</span>-WindowsFeature -Name &#39;DHCP&#39;</code></pre></div>
 <p>  Install DHCP</p>
@@ -95,7 +97,9 @@ Restart-Service dhcpserver</code></pre></div>
 <p>  Assign the NAT object and gatewayIp to the DHCP server</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Set-DhcpServerV4OptionValue -ScopeID $defaultSwitchNatIP -Router $defaultSwitchGatewayIP
 Restart-service dhcpserver</code></pre></div>
-<p>  ### Installation and deployment of a virtual device   #### Download and install Microsoft IoT-Edge for Linux on Windows</p>
+<p> </p>
+<h3 id="installation-and-deployment-of-a-virtual-device">Installation and deployment of a virtual device</h3>
+<p>  #### Download and install Microsoft IoT-Edge for Linux on Windows</p>
 <p>Download IoT Edge for Linux on Windows.</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">$msiPath = $<span class="st">([io.Path]::Combine($env:TEMP, &#39;AzureIoTEdge.msi&#39;)</span>)
 $ProgressPreference = &#39;SilentlyContinue&#39;
@@ -109,9 +113,13 @@ Invoke-WebRequest &quot;https:<span class="dt">//aka.ms/AzEflowMSI&quot;</span> 
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Set-ExecutionPolicy -ExecutionPolicy AllSigned -Force</code></pre></div>
 <p>  Create the IoT-Edge VM for Linux on Windows deployment</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Deploy-Eflow</code></pre></div>
-<p>  #### Manual provisioning using the IoTHub Virtual Device connection string  </p>
+<p> </p>
+<h4 id="manual-provisioning-using-the-iothub-virtual-device-connection-string">Manual provisioning using the IoTHub Virtual Device connection string</h4>
+<p> </p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Provision-EflowVm -provisioningType ManualConnectionString -devConnString &quot;&lt;iothub_virtual_device_connection_string&gt;&quot;</code></pre></div>
-<p>  ### Test the solution   #### Connect to the Linux VM that is running <em>Microsoft IoT-Edge</em></p>
+<p> </p>
+<h3 id="test-the-solution">Test the solution</h3>
+<p>  #### Connect to the Linux VM that is running <em>Microsoft IoT-Edge</em></p>
 <p>Note: This command only works on the regular powershell as administrator  </p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Connect-EflowVm</code></pre></div>
 <p>From the VM you can use both <em>Microsoft IoT-Edge commands</em> and <em>Docker client commands</em> as the examples below:</p>

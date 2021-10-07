@@ -27,7 +27,8 @@ Install Command:
 ```ps
 Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
 ```
- 
+
+
 #### Check if a Virtual Switch required by the Microsoft Installer is available. If not install and configure it
 
 To check if is installed: 
@@ -81,6 +82,7 @@ Create a Network Address Translation (NAT) object that translates an internal ne
 New-NetNat -Name "Default Switch" -InternalIPInterfaceAddressPrefix ($defaultSwitchNatIP + "/24")
 ```
  
+
 ### Create DHCP Server
  
 #### Check if the DHCP Server feature is installed in the device. If not installed install and configure it
@@ -118,6 +120,7 @@ Set-DhcpServerV4OptionValue -ScopeID $defaultSwitchNatIP -Router $defaultSwitchG
 Restart-service dhcpserver
 ```
  
+
 ### Installation and deployment of a virtual device
  
 #### Download and install Microsoft IoT-Edge for Linux on Windows
@@ -156,12 +159,14 @@ Create the IoT-Edge VM for Linux on Windows deployment
 Deploy-Eflow
 ```
  
+
 #### Manual provisioning using the IoTHub Virtual Device connection string
  
 ```ps
 Provision-EflowVm -provisioningType ManualConnectionString -devConnString "<iothub_virtual_device_connection_string>"
 ```
  
+
 ### Test the solution
  
 #### Connect to the Linux VM that is running *Microsoft IoT-Edge* 
@@ -200,3 +205,5 @@ sudo docker ps
 - [Azure IoT Edge for Linux on Windows virtual switch creation](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-create-virtual-switch?view=iotedge-2018-06)
 - [Deploy DHCP Using Windows PowerShell](https://docs.microsoft.com/en-us/windows-server/networking/technologies/dhcp/dhcp-deploy-wps)
 - [Install IoT-Edge Linux on Windows](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-on-windows?view=iotedge-2018-06&tabs=powershell#manual-provisioning-using-the-connection-string)
+
+
