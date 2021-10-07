@@ -10,6 +10,7 @@ This procedure was successfully executed in an *Azure VM with Windows Server 20
 
 Hyper-V commands requires powershell x64. All commands on this instruction should run on powershell x64
  
+
 ### Install Hyper-V  
 
 *Hyper-V* is a pre-requirement needed. You need *Hyper-V* installed and *Hyper-V virtual switch* configured
@@ -85,6 +86,7 @@ New-NetNat -Name "Default Switch" -InternalIPInterfaceAddressPrefix ($defaultSwi
 
 ### Create DHCP Server
  
+
 #### Check if the DHCP Server feature is installed in the device. If not installed install and configure it
 
 To check if the *DHCP* is installed you can run the following command:
@@ -123,6 +125,7 @@ Restart-service dhcpserver
 
 ### Installation and deployment of a virtual device
  
+
 #### Download and install Microsoft IoT-Edge for Linux on Windows
 
 Download IoT Edge for Linux on Windows.
@@ -168,7 +171,8 @@ Provision-EflowVm -provisioningType ManualConnectionString -devConnString "<ioth
  
 
 ### Test the solution
- 
+
+
 #### Connect to the Linux VM that is running *Microsoft IoT-Edge* 
 
 Note: This command only works on the regular powershell as administrator

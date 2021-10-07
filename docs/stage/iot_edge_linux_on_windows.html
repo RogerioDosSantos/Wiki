@@ -54,7 +54,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The procedure below describes the commands to execute an Microsoft IoT-Edge Linux on Windows installation.</p>
 <p>This procedure was successfully executed in an <em>Azure VM with Windows Server 2019 Version 1809 (OS Build: 17763.2183)</em>, with remote access accessed using bastion.</p>
 <h3 id="launch-powershell-x64-in-adminstrator-mode">Launch Powershell x64 in Adminstrator mode</h3>
-<p>Hyper-V commands requires powershell x64. All commands on this instruction should run on powershell x64   ### Install Hyper-V  </p>
+<p>Hyper-V commands requires powershell x64. All commands on this instruction should run on powershell x64  </p>
+<h3 id="install-hyper-v">Install Hyper-V  </h3>
 <p><em>Hyper-V</em> is a pre-requirement needed. You need <em>Hyper-V</em> installed and <em>Hyper-V virtual switch</em> configured</p>
 <h4 id="check-if-hyper-v-is-installed.-if-not-install-it">Check if Hyper-V is installed. If not install it</h4>
 <p>To check if is installed:</p>
@@ -84,7 +85,8 @@ $dhcpEndIP = &quot;<span class="dv">169</span>.<span class="dv">254</span>.<span
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">New-NetNat -Name &quot;Default Switch&quot; -InternalIPInterfaceAddressPrefix <span class="st">($defaultSwitchNatIP + &quot;/24&quot;)</span></code></pre></div>
 <p> </p>
 <h3 id="create-dhcp-server">Create DHCP Server</h3>
-<p>  #### Check if the DHCP Server feature is installed in the device. If not installed install and configure it</p>
+<p> </p>
+<h4 id="check-if-the-dhcp-server-feature-is-installed-in-the-device.-if-not-installed-install-and-configure-it">Check if the DHCP Server feature is installed in the device. If not installed install and configure it</h4>
 <p>To check if the <em>DHCP</em> is installed you can run the following command:</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript"><span class="kw">Get</span>-WindowsFeature -Name &#39;DHCP&#39;</code></pre></div>
 <p>  Install DHCP</p>
@@ -99,7 +101,8 @@ Restart-Service dhcpserver</code></pre></div>
 Restart-service dhcpserver</code></pre></div>
 <p> </p>
 <h3 id="installation-and-deployment-of-a-virtual-device">Installation and deployment of a virtual device</h3>
-<p>  #### Download and install Microsoft IoT-Edge for Linux on Windows</p>
+<p> </p>
+<h4 id="download-and-install-microsoft-iot-edge-for-linux-on-windows">Download and install Microsoft IoT-Edge for Linux on Windows</h4>
 <p>Download IoT Edge for Linux on Windows.</p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">$msiPath = $<span class="st">([io.Path]::Combine($env:TEMP, &#39;AzureIoTEdge.msi&#39;)</span>)
 $ProgressPreference = &#39;SilentlyContinue&#39;
@@ -119,7 +122,7 @@ Invoke-WebRequest &quot;https:<span class="dt">//aka.ms/AzEflowMSI&quot;</span> 
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Provision-EflowVm -provisioningType ManualConnectionString -devConnString &quot;&lt;iothub_virtual_device_connection_string&gt;&quot;</code></pre></div>
 <p> </p>
 <h3 id="test-the-solution">Test the solution</h3>
-<p>  #### Connect to the Linux VM that is running <em>Microsoft IoT-Edge</em></p>
+<h4 id="connect-to-the-linux-vm-that-is-running-microsoft-iot-edge">Connect to the Linux VM that is running <em>Microsoft IoT-Edge</em></h4>
 <p>Note: This command only works on the regular powershell as administrator  </p>
 <div class="sourceCode"><pre class="sourceCode ps"><code class="sourceCode postscript">Connect-EflowVm</code></pre></div>
 <p>From the VM you can use both <em>Microsoft IoT-Edge commands</em> and <em>Docker client commands</em> as the examples below:</p>
