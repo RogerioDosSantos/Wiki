@@ -230,6 +230,7 @@
 - [Amazon Web Services (AWS)]( ./aws.html )
 - [Azure IoT-Edge]( ./iot_edge.html )
     - [Developing IoT-Edge Module]( ./iot_edge_module_development.html )
+    - [Azure IoT-Edge Linux on Windows]( ./iot_edge_linux_on_windows.html )
 - [Azure Storage]( ./azure_storage.html )
 - [Azure Key Vault]( ./azure_key_vault.html )
 - [Azure Container Instances]( ./azure_container_instances.html )
