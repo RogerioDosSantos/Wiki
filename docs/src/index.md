@@ -43,7 +43,7 @@
     - [FZF](./fzf.html)
     - [Grammarous]( ./grammarous.html )
 
-## Editors, Brownser and Develpment Tools
+## Editors, Brownser, Productivity and Develpment Tools
 
 - [Notepad++]( ./notepadpp.html )
 - [Visual Studio]( ./visual_studio.html )
@@ -51,7 +51,8 @@
 - [Postman](./postman.html) - HTTP Client and QA Automation
 - [Fiddler](./fiddler.html) - Control and monitor HTTP/HTTPs traffic
 - [Miro](./miro.html) - Cloud White Board tool
-- [Autorest (Swagger Client)]( ./autrest.html )
+- [Autorest]( ./autrest.html ) - Swagger Client
+- [ShareX]( ./sharex.html ) - Printscreen, sharing tool. Allow publish your screen or video to the cloud services
 
 ## Markdown
 
