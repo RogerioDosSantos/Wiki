@@ -18,7 +18,7 @@
 <ul>
 <li><strong>Docker</strong>: Install <em>Kubernetes</em> using an installed <em>Docker engine</em>. Pre-requirement: <em>Docker</em> needs to be installed.</li>
 <li><strong>Hyper-V</strong>: Install <em>Kubernetes</em> on <em>Hyper-V</em>. Pre-requirement: <em>Hyper-V</em> needs to be installed.</li>
-<li>SSH: Allow to Install Kubernetes by connecting with any compatible docker runtime remotelly.</li>
+<li><strong>SSH</strong>: Allow to Install Kubernetes by connecting with any compatible docker runtime remotelly.</li>
 </ul>
 <h2 id="minikube-as-docker-desktop-replacement-linux-containers">Minikube as Docker Desktop replacement (Linux Containers)</h2>
 <p>Because <em>Docker Desktop</em> is no longer a free solution for big corporations and due the acquisition of <em>Docker Desktop</em> by a Russian company, which provide some usage contraints for some companies that works with the US governement, having a <em>Docker Desktop</em> alternative became crucial. This session will describe how you can replace for development purposed the <em>Docker Desktop</em> using <em>Minikube</em>.</p>
@@ -38,7 +38,17 @@
 <ul>
 <li><p>Download and Install <a href="https://minikube.sigs.k8s.io/docs/start/">Minikube for Windows</a></p></li>
 <li><p>Get the <a href="https://download.docker.com/win/static/stable/x86_64/">Docker CLI (Community Edition)</a></p></li>
-<li><p>Enable <em>Hyper-V</em> on <em>Windows</em> if not enabled yet.</p></li>
+</ul>
+<p>Once you download and <em>Unzip</em> it you should see the following files:</p>
+<pre><code>Directory: \docker-17.09.0-ce\docker
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+------         9/26/2017   5:53 PM       19868160 docker.exe
+------         9/26/2017   5:53 PM       36972666 dockerd.exe</code></pre>
+<p>The <em>docker.exe</em> file is your docker client.</p>
+<ul>
+<li>Enable <em>Hyper-V</em> on <em>Windows</em> if not enabled yet.</li>
 </ul>
 <pre class="porwershell"><code>Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All</code></pre>
 <p><em>Note:</em> If <em>Hyper-V</em> was not previously active, you will need to reboot.</p>

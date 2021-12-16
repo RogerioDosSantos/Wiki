@@ -6,7 +6,7 @@
 
 - **Docker**: Install *Kubernetes* using an installed *Docker engine*. Pre-requirement: *Docker* needs to be installed.
 - **Hyper-V**: Install *Kubernetes* on *Hyper-V*. Pre-requirement: *Hyper-V* needs to be installed.
-- SSH: Allow to Install Kubernetes by connecting with any compatible docker runtime remotelly.
+- **SSH**: Allow to Install Kubernetes by connecting with any compatible docker runtime remotelly.
 
 ## Minikube as Docker Desktop replacement (Linux Containers)
 
@@ -29,6 +29,19 @@ The goal is to replace each components of the *Docker Desktop* using open source
 - Download and Install [Minikube for Windows](https://minikube.sigs.k8s.io/docs/start/)
 
 - Get the [Docker CLI (Community Edition) ](https://download.docker.com/win/static/stable/x86_64/)
+
+Once you download and *Unzip* it you should see the following files:
+
+```
+Directory: \docker-17.09.0-ce\docker
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+------         9/26/2017   5:53 PM       19868160 docker.exe
+------         9/26/2017   5:53 PM       36972666 dockerd.exe
+```
+
+The *docker.exe* file is your docker client.
 
 - Enable *Hyper-V* on *Windows* if not enabled yet. 
 
