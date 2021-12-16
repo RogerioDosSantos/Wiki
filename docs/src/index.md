@@ -87,6 +87,7 @@
 - [Docker]( ./docker.html )
 - [Moby]( ./moby.html )
 - [Kubernetes]( ./kubernetes.html )
+- [Minikube]( ./minikube.html )
 - [Helm]( ./helm.html )
 - [Heroku]( ./heroku.html )
 - [X11 Bridge (Viewer)](./docker_viewer_x11_bridge.html)
