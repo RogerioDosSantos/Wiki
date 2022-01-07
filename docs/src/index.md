@@ -71,6 +71,7 @@
 - [TFS Client](./tfs_client.html )
 - [GitVersion]( ./git_version.html )
 - [GitReleaseManager]( ./git_release_manager.html )
+- [Ungit](./ungit.html)
 
 ## Dev/Ops
 
