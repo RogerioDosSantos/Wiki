@@ -129,6 +129,11 @@ t
 
 `git push --recurse-submodules=on-demand`: Look into the histories of submodules bound to the superproject and push them out.
 
+
+## Git - Sparse Checkout 
+
+[sparse-checkout](https://www.git-scm.com/docs/git-sparse-checkout) allow you to define a list of patterns that can be used to filter the folder, files, etc. that a branch will monitor in your local computer. This is very util when you are working on large repositories.
+
 ## How-To
 
 ### Initializing a local repository that is not on GitHub yet
@@ -380,5 +385,4 @@ git diff --name-only HEAD^ HEAD
 # Discard unstaged files
 git checkout -- .
 ```
-
 

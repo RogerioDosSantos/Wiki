@@ -114,6 +114,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>git remote rm &lt;name of the origin remote&gt;</code> : Remove the remote name from the local repository. Note that <code>origin</code> is the default name. E.g.: <code>git remote rm origin</code> Note: To list the remotes available you can use the command <code>git remote show</code></p>
 <p><code>git remote rename &lt;name of the remote&gt; &lt;name of the origin remote&gt;</code> : Rename the remote. E.g.: <code>git remote rename new-origin origin</code> Note: To list the remotes available you can use the command <code>git remote show</code> t</p>
 <p><code>git push --recurse-submodules=on-demand</code>: Look into the histories of submodules bound to the superproject and push them out.</p>
+<h2 id="git---sparse-checkout">Git - Sparse Checkout</h2>
+<p><a href="https://www.git-scm.com/docs/git-sparse-checkout">sparse-checkout</a> allow you to define a list of patterns that can be used to filter the folder, files, etc. that a branch will monitor in your local computer. This is very util when you are working on large repositories.</p>
 <h2 id="how-to">How-To</h2>
 <h3 id="initializing-a-local-repository-that-is-not-on-github-yet">Initializing a local repository that is not on GitHub yet</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">Create</span> repository on Github
