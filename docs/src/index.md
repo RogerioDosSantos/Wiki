@@ -222,6 +222,7 @@
 - [OpenSSL]( ./openssl.html )
 - [Wireshark]( ./wireshark.html )
 - [RabbitMQ]( ./rabbit_mq.html )
+- [WiFi6]( ./wifi6.html )
 
 ## Patterns 
 
