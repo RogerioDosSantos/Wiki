@@ -461,6 +461,9 @@ Select the range desired (Visual mode):
 
 # Replace all '\' with '\\'
 :s/\%V\\/\\\\/
+
+# Change fast notes ("--") to markdown notes "<spaces>-"
+s/--/  -/g
 ```
 
 
