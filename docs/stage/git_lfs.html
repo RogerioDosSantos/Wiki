@@ -56,6 +56,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre class="shell"><code>sudo apt-get update -y
 sudo apt-get install -y git-lfs</code></pre>
 <h2 id="how-to">How-to</h2>
+<h3 id="track-file-types-on-git-lfs">Track file types on Git LFS</h3>
+<p>Allow <em>Git LFS</em> to store the files in another location. You should list the list of files you want tracked using the following command:</p>
+<pre class="shell"><code>git lfs track &quot;*.&lt;file_extension&gt;&quot;</code></pre>
 <h3 id="list-all-files-controlled-by-git-lfs">List all files controlled by Git LFS</h3>
 <pre class="shell"><code>git-lfs ls-files &lt;branch_name&gt;</code></pre>
 <h3 id="migrate-existing-commits-to-git-lfs">Migrate existing commits to Git LFS</h3>

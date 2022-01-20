@@ -13,6 +13,14 @@ sudo apt-get install -y git-lfs
 
 ## How-to
 
+### Track file types on Git LFS 
+
+Allow *Git LFS* to store the files in another location. You should list the list of files you want tracked using the following command:
+
+```shell 
+git lfs track "*.<file_extension>"
+```
+
 ### List all files controlled by Git LFS
 
 ```shell
