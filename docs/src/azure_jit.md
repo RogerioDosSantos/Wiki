@@ -6,7 +6,7 @@ Basically the *JIT* blocks all ports in the [Azure Network Security Group (NSG)]
 
 ## How Defender for Cloud identifies which VMs should have JIT applied
 
-![](./2022_01_20_14_50_24_Understanding_just-in-time_virtual_machine_access_.png)
+![](./azure_jit/2022_01_20_14_50_24_Understanding_just-in-time_virtual_machine_access_.png)
 
 ## References 
 

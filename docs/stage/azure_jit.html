@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="microsoft-defender-for-clouds-just-in-time-jit">Microsoft Defender for Cloud's just-in-time (JIT)</h1>
+<p><a href="https://docs.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-usage">Microsoft Defender for Cloud's just-in-time (JIT) VM access</a> allow you to lock down the inbound traffic to your VMs, reducing exposure to attacks while providing easy access to connect to VMs when needed.</p>
+<p>Basically the <em>JIT</em> blocks all ports in the <a href="https://docs.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview#security-rules">Azure Network Security Group (NSG)</a> and when an user request access a VM port to be used, <em>JIT</em> will look in the <a href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=current">Azure role-based access control (Azure RBAC)</a> permission to determine if the user has or not access to that particular VM. If the user has access, a rule will be created on the <a href="https://docs.microsoft.com/en-us/azure/firewall/rule-processing">Azure Firewall</a> to allow that particular port to be accessible by the <em>User IP</em> for a specific period of time specified. Once the time expires, <em>JIT</em> will close the openned port.</p>
+<h2 id="how-defender-for-cloud-identifies-which-vms-should-have-jit-applied">How Defender for Cloud identifies which VMs should have JIT applied</h2>
+<figure>
+<img src="./azure_jit/2022_01_20_14_50_24_Understanding_just-in-time_virtual_machine_access_.png" />
+</figure>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-usage">Azure JIT VM access configuration</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-overview">Azure JIT consepts</a></li>
+</ul>
+</body>
+</html>
