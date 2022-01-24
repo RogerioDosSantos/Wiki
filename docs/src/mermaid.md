@@ -15,6 +15,16 @@ mmdc -i input.mmd -o output.svg
 mmdc -i input.mmd -o output.png
 ```
 
+## Mermaid on Azure Devops Wikis 
+
+You can add Mermaid diagrams to a wiki page, use the following syntax:
+
+```markdown
+::: mermaid
+<mermaid diagram syntax>
+:::
+```
+
 ## Diagram Example 
 
 ### Sequence Diagram 
@@ -37,3 +47,8 @@ sequenceDiagram
 
 ![]( ../resources/mermaid_sequence_diagram.svg )
 
+## References
+
+- [Mermaid Online Tool](https://mermaid.live)
+- [Mermaid Documentation](https://mermaid-js.github.io/mermaid/#/n00b-gettingStarted)
+- [Azure Devops Wiki Markdown Guidance](https://docs.microsoft.com/en-us/azure/devops/project/wiki/wiki-markdown-guidance)
