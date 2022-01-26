@@ -177,6 +177,7 @@
 - [Regular Expressions]( ./regular_expressions.html )
 - [Erlang]( ./erlang.html )
 - [C++]( ./cplusplus.html )
+- [Jsonnet]( ./jsonnet.html )
 
 ## .Net 
 
