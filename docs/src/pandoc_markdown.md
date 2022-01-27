@@ -220,4 +220,13 @@ isn't indented.
 --------------------------
 ```
 
+## Comments 
+
+Comments only the author can see 
+
+```
+[your_comment_here]: <>
+[your_comment_here]: <> (More Comments here)
+```
+
 
