@@ -509,5 +509,11 @@ s/--/  -/g
 
 `==`: Reindent the current line
 
+### Vim - Delete all lines that contain string
 
+`:g/<pattern>/d`
+
+### Search Patterns 
+
+`\<p_` : Search the word starting with "p_"
 
