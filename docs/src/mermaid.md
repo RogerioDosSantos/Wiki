@@ -45,6 +45,40 @@ sequenceDiagram
     deactivate p1
 ```
 
+### Gantt Chart 
+
+```mmd
+gantt
+dateFormat  YY-MM-DD
+axisFormat  %b %d, %Y (%a)
+excludes    weekends
+
+title Buildout Special Clouds
+
+Project Definition and Planning (Start): milestone, m_definition_start, 22-01-03, 0d
+
+Projects and Product Evaluations (Start): milestone, m_evaluation_start, after m_definition_start, 0d
+
+section S1 Projects
+OneClick:  t_evaluation_p1, after m_evaluation_start, 1d
+ELP:       t_evaluation_p2, after t_evaluation_p1, 1d
+
+section S2 Projects
+OneClick:  t_evaluation_p3, after t_evaluation_p2, 1d
+ELP:       t_evaluation_p4, after t_evaluation_p3, 1d
+
+section S3 Projects
+OneClick:  t_evaluation_p5, after t_evaluation_p2, 1d
+ELP:       t_evaluation_p6, after t_evaluation_p1, 1d
+
+
+Projects and Product Evaluations (End): milestone, m_evaluation_end, after t_evaluation_p6, 0d
+
+Project Definition and Planning (End): milestone, m_definition_end, after m_evaluation_end, 0d
+
+click t_evaluation_p1 href "https://mermaidjs.github.io/"
+```
+
 ![]( ../resources/mermaid_sequence_diagram.svg )
 
 ## References
