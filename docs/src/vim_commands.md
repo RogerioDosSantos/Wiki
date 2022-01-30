@@ -516,4 +516,16 @@ s/--/  -/g
 ### Search Patterns 
 
 `\<p_` : Search the word starting with "p_"
+       
+### Edit Macros that are in a buffer
+
+Let say the macro is on the key %a%:
+       
+- Go to a blank line or open a new buffer (`:new`).
+- Type `"ap` to paste the contents of the register.
+- Enter insert mode and edit the text as required.
+- Press `Esc` to return to normal mode.
+- Type `"ayy` to yank the modified macro into the a register.
+- Type `dd` to delete the pasted register from the file you are editing.
+
 
