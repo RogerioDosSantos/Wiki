@@ -106,7 +106,7 @@
 
 `g]` : Show the list of tags
 
-`ctrl+v` : Go to Visual Block mode
+`ctrl+v` : Go to Visual Block mode (Select only a block of items. E.g.: Only first column)
 
 ## Commands - Normal Mode
 
