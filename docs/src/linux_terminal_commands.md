@@ -658,7 +658,17 @@ Map an USB port based on the Maker ID and Product ID
 
 `/etc/mtab`: Lists currently mounted file systems and is used by the mount and unmount commands when you want to list your mounts or unmount all.
 
+
+## Fstab (Permanent Mount)
+
 `/etc/fstab`: Configuration file that contains information of all the partitions and storage devices in your computer. `Important Note: Be careful with this file because if it is configured wrongly you system will not boot anymore`
+
+File format and examples
+
+```
+# Mount folder with spaces (Replace Spaces with '\040')
+/mnt/c/Users/rogersantos/OneDrive\040-\040Project /mnt/onedrive none bind 0 0
+```
 
 ## Cron 
 
