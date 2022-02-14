@@ -50,16 +50,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 <body>
 <h1 id="azure-storage">Azure Storage</h1>
+<h2 id="storage-types">Storage Types</h2>
+<h3 id="standard-general-purpose-v2">Standard general-purpose v2</h3>
+<p>Support the following storage services:</p>
+<p>Blob (including Data Lake Storage1), Queue, and Table storage, Azure Files</p>
+<p>Standard storage account type for blobs, file shares, queues, and tables. Recommended for most scenarios using Azure Storage. Note that if you want support for NFS file shares in Azure Files, use the premium file shares account type.</p>
+<p>General-purpose v2 accounts deliver the lowest per-gigabyte capacity prices for Azure Storage, as well as industry-competitive transaction prices. General-purpose v2 accounts support default account access tiers of hot or cool and blob level tiering between hot, cool, or archive.</p>
 <h2 id="commands">Commands</h2>
 <p><code>azcopy --source &lt;source&gt; --destination &lt;destination&gt; [Options]</code> : Download/Upload applications</p>
 <p><code>azcopy --source &lt;source&gt; --destination &lt;destination&gt; --dest-key &lt;key&gt; --resume &lt;log_file_path&gt; --quiet</code> : Download/Upload applications silently and put the result into a log file</p>
 <h2 id="installations">Installations</h2>
 <h3 id="azcopy">AzCopy</h3>
 <p>AzCopy requires .Net Core</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mkdir</span> ~/temp
-<span class="kw">cd</span> ~/temp
-<span class="kw">wget</span> -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
-<span class="kw">tar</span> -xf azcopy.tar.gz
-<span class="kw">sudo</span> ./install.sh</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">mkdir</span> ~/temp
+<span class="bu">cd</span> ~/temp
+<span class="fu">wget</span> -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
+<span class="fu">tar</span> -xf azcopy.tar.gz
+<span class="fu">sudo</span> ./install.sh</code></pre></div>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview">Azure Storage Documentation</a></li>
+</ul>
 </body>
 </html>
