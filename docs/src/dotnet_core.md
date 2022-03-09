@@ -214,6 +214,7 @@ You can define if a Project in a Solution will be published or packaged adding t
 - [Create Dump using dotnet dump](https://docs.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-dump)
 - [Routing Concepts and Debugging](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/routing)
 - [Routing Video](https://www.youtube.com/watch?v=fSSPEM3e7yY)
+- [Dynamically compile and run code using .NET Core 3.0](https://laurentkempe.com/2019/02/18/dynamically-compile-and-run-code-using-dotNET-Core-3.0/)
 
 
 
