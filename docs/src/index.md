@@ -215,6 +215,7 @@
 - [Auth0]( ./auth0.html )
 - [Single Sign-On (SSO)]( ./sso.html )
 - [SCIM]( ./scim.html )
+- [MSAL (Microsoft Authentication Library)]( ./msal.html )
 
 ## Network 
 
