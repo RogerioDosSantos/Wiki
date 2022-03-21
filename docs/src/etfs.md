@@ -25,6 +25,10 @@
 
 - [VIG](https://investor.vanguard.com/etf/profile/VIG) : Vanguard Dividend Appreciation ETF (Expense 0.06%). Seeks to track the performance of the NASDAQ US Dividend Achievers Select Index (formerly known as the Dividend Achievers Select Index).
 - [LVHD](https://www.leggmason.com/en-us/products/exchange-traded-funds/lm-low-vol-high-div-etf.html) : Legg Mason Low Volatility High Dividend ETF
+- [QYLD](https://www.globalxetfs.com/funds/qyld/) : Nasdaq 100 Covered Call ETF (Expense: 0.60%) seeks to generate income through covered call writing, which historically produces higher yields in periods of volatility.
+- [JEPI](https://am.jpmorgan.com/us/en/asset-management/adv/products/jpmorgan-equity-premium-income-etf-etf-shares-46641q332) : JPMorgan Equity Premium Income ETF (Expense 0.35%) seeks to deliver monthly distributable income and equity market exposure with less volatility.
+- [NUSI](https://hvm.com/nusi-comparison/?utm_campaign=nf&utm_source=google&utm_medium=cpc&utm_content=etf:multi-device:google:na:um:1x1:nusi-keywords-brand&utm_term=%22nusi%22&gclid=Cj0KCQjwuMuRBhCJARIsAHXdnqPl7eAmhyLCAxqAhoNeVe7mmW0BZSlKrRuiTbo3KIXirjBVyvN27o8aAkbvEALw_wcB) : The Nationwide Risk-Managed Income ETF (Expense: 0.68%) is an options-based solution that targets high current income and seeks to provide investors with a measure of downside protection in falling markets and the potential for upside participation in rising markets.
+- [VPGDX](https://advisors.vanguard.com/investments/products/vpgdx/vanguard-managed-allocation-fund#overview) : Managed Allocation Fund (Expense: 0.28%) seeks to deliver a targeted inflation-adjusted return through long-term capital appreciation and moderate income.
 
 ## Utilities
 
@@ -47,3 +51,6 @@
 
 - [SOXX](https://www.etf.com/SOXX) : iShares PHLX Semiconductor ETF. SOXX tracks a modified market-cap-weighted index of US-listed semiconductor companies.
 
+## Tools
+
+- [BackTest Portfolio Asset Allocation](https://www.portfoliovisualizer.com/backtest-portfolio#analysisResults) : Allow you to evaluate a portfolio return over time.
