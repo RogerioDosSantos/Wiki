@@ -192,6 +192,7 @@
 - [Data Protection]( ./data_protection.html )
 - [SignalR]( ./signalr.html )
 - [AutoMapper]( ./automapper.html )
+- [Dapper]( ./dapper.html )
 
 ## Virtualization 
 
