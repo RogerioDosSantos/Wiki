@@ -20,6 +20,20 @@
 <li>Organize, simplify, unify</li>
 <li>Manage sprawling config</li>
 </ul>
+<h2 id="templates">Templates</h2>
+<h3 id="function-with-debug">Function with debug</h3>
+<pre class="jsonnet"><code>
+  FunctionName(parameter01, parameter02)::
+    local ret = {
+      &quot;name01&quot;: &quot;value01&quot;,
+      &quot;name02&quot;: &quot;value02&quot;
+    };
+    ret,
+    /* local msg = { */
+    /*     ret: ret */
+    /* }; */
+    /* std.trace(&#39;FunctionName: &#39; + std.toString(msg), ret), */
+</code></pre>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://jsonnet.org/">Jsonnet Website</a></li>
