@@ -415,3 +415,8 @@ Test-Connection <url> -Count 1
 Resolve-DnsName -Name $env:COMPUTERNAME -Type A
 ```
 
+### PowerShell - Modules - Import a PowerShell Module / Function that is in a file 
+
+```ps1 
+Import-Module <file_path> [-Force]
+```
