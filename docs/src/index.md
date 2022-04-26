@@ -314,6 +314,9 @@
 
 - [DevOps - Handbook](./book_devops_handbook.html)
 
+## Presentations
+- [Quotes](./quotes.html)
+
 ## Interesting Sites 
 
 - [GeeksforGeeks](https://www.geeksforgeeks.org/): Great site for training and questions for interviews
