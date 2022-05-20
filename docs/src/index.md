@@ -170,6 +170,7 @@
 
 - [OLE DB]( ./ole_db.html )
 - [Entity Framework]( ./entity_framework.html )
+- [Kusto]( ./kusto.html )
 
 ## Programming Languages
 
