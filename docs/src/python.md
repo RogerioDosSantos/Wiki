@@ -666,3 +666,221 @@ python -c "import package_name; print(package_name.__version__)"
 # Find specific package location
 python -c "import package_name; print(package_name.__file__)"
 ```
+
+### Python - Photo Editing 
+
+```python3
+# Photo Editing 
+# pip install pillow
+from PIL import Image, ImageFilter
+# Resize an image
+img = Image.open('img.jpg')
+resize = img.resize((200, 300))
+resize.save('output.jpg')
+# Blur Image
+img = Image.open('img.jpg')
+blur = img.filter(ImageFilter.BLUR)
+blur.save('output.jpg')
+# Sharp Image
+img = Image.open('img.jpg')
+sharp = img.filter(ImageFilter.SHARPEN)
+sharp.save('output.jpg')
+# Crop Image
+img = Image.open('img.jpg')
+crop = img.crop((0, 0, 50, 50))
+crop.save('output.jpg')
+# Rotate Image
+img = Image.open('img.jpg')
+rotate = img.rotate(90)
+rotate.save('output.jpg')
+# Flip Image
+img = Image.open('img.jpg')
+flip = img.transpose(Image.FLIP_LEFT_RIGHT)
+flip.save('output.jpg')
+# Transpose Image
+img = Image.open('img.jpg')
+transpose = img.transpose(Image.TRANSPOSE)
+transpose.save('output.jpg')
+# Convert Image to GreyScale
+img = Image.open('img.jpg')
+convert = img.convert('L')
+convert.save('output.jpg')
+```
+
+### Python - Read Excel
+
+```python3
+# Read Excel
+# pip install pandas
+import pandas as pd
+df = pd.read_excel('test.xlsx', sheet_name='Sheet1')
+# Read Columns
+name = df['Name'].to_list()
+Id  = df['Id'].to_list()
+print(name) # ["haider", "Dustin, "Tadashi"]
+print(Id) # [245, 552, 892]
+```
+
+### Python - Automate Win, Mac and Linux 
+
+```python3
+# Automate Win, Mac and Linux
+# pip install PyAutoGUI
+import pyautogui as py
+# Mouse Movements
+py.moveTo(100, 100)
+py.moveTo(200, 200, duration=1)
+py.click(100, 100)
+py.doubleClick(200, 200)
+# Keyboard Inputs
+py.write('Hello World!', interval=0.25)
+py.press('enter')
+py.hotkey('ctrl', 'c')
+py.keyDown('shift')
+py.keyUp('shift')
+# Screen Automation
+img = py.screenshot('screenshot.jpg')
+img.save('screenshot.jpg')
+loc = py.locationsOnScreen('icon.jpg')
+print(loc)
+```
+
+### Python - Grammar Checker
+
+```python3
+# Grammar Checker in Python
+# pip install gingerit
+from gingerit.gingerit import GingerIt
+text = "Welcm Progammer to Python"
+Grammer = GingerIt()
+Correction = Grammer.parse(text)
+print(Correction["result"]) # Welcome, Programmer to Python
+print(Correction['corrections'])
+```
+### Python - Spell Checker 
+
+```python3
+# Spell Checker in Python 
+# pip install pyspellchecker
+from spellchecker import SpellChecker as spell
+Words = spell.unknown(['Python'  , 'is' , 'a' , 'good' , 'lantyguage'])
+for w in Words:
+    print(spell.correction(w)) #language
+    print(spell.candidates(w)) #{ language }
+```
+### Python - GUI (Window)
+
+```python3
+# Python GUI
+# pip install PyQt6
+import sys
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox, QLabel, QLineEdit
+def Application():
+app = QApplication(sys.argv)
+    win = QWidget()
+    win.resize(300, 300)
+    win.move(200, 200)
+    win.setWindowTitle('Medium Article')
+# Create Buttons
+    btn = QPushButton('Quit', win)
+    
+    # Message Box
+    QMessageBox.question(win, 'Message',"Are you sure to quit?")
+# Label Text
+    lbl = QLabel('Hello World', win)
+# Button Clicked
+    btn.clicked.connect(lambda: QMessageBox.question(win, 'Message',"Are you sure to quit?"))
+# Entry Box
+    entry = QLineEdit(win)
+win.show()
+    sys.exit(app.exec())
+if __name__ == '__main__':
+    Application()
+```
+### Python - HTTP Client 
+
+```python3
+# Request Api 
+# pip install requests
+import requests
+# Get Data
+headers = {
+    "Connection": "keep-alive",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+}
+r = requests.get('https://api.example.com', headers=headers)
+print(r.status_code) # 200
+print(r.headers['content-type'])
+print(r.content) # HTML Data
+# Login Site
+payload = {'username': 'USERNAME', 'userpass': 'PASSWORD'}
+r = requests.post('https://example.com/login', data=payload)
+print(r.status_code) # 200
+```
+### Python - AI Convert Speech to Text
+
+```python3
+# Convert Speech to Text
+#pip install SpeechRecognition
+import speech_recognition as sr
+def SpeechToText():
+Ai = sr.Recognizer()
+    with sr.Microphone() as source:
+        listening = Ai.listen(source, phrase_time_limit = 6)  
+    try:
+        command = Ai.recognize_google(listening).lower()
+        print("You said: " + command)
+        
+    except sr.UnknownValueError:
+        print("Sorry Can't understand, Try again")
+        SpeechToText()
+```
+### Python - Video Editing
+
+```python3
+# Video Editing
+# pip install moviepy
+from moviepy.editor import *
+# Triming the video
+clip_1 = VideoFileClip("sample_video.mp4").subclip(40, 50)
+clip_2 = VideoFileClip("sample_video.mp4").subclip(68, 91)
+final_clip = concatenate_videoclips([clip_1, clip_2])
+final_clip.write_videofile("output.mp4")
+# Adding VFX
+clip_1 = (VideoFileClip("sample_video.mp4").subclip(40, 50).fx(vfx.colorx, 1.2).fx(vfx.lum_contrast, 0, 30, 100))
+clip_2 = (VideoFileClip("sample_video.mp4").subclip(68, 91).fx(vfx.invert_colors))
+final_clip = concatenate_videoclips([clip_1, clip_2])
+final_clip.write_videofile("output.mp4")
+# Add Audio to Video
+clip = VideoFileClip("sample_video.mp4")
+# Add audio to only first 5 sec
+clip = clip.subclip(0, 5)
+audioclip = AudioFileClip("audio.mp3").subclip(0, 5)
+videoclip = clip.set_audio(audioclip)
+final_clip.write_videofile("output.mp4")
+
+```
+### Python - Watermark PDF files
+
+```python3
+# Watermark PDF files
+# pip install PyPDF4
+import PyPDF4
+def Watermark():
+    pdf_file= "test.pdf"
+    output_pdf= "output.pdf"
+    watermark= "watermark.pdf"
+watermark_read = PyPDF4.PdfFileReader(watermark)
+    watermark_page = watermark_read.getPage(0)
+    pdf_reader = PyPDF4.PdfFileReader(pdf_file)
+    pdf_writer = PyPDF4.PdfFileWriter()
+    for page in range(pdf_reader.getNumPages()):
+page = pdf_reader.getPage(page)
+        page.mergePage(watermark_page)
+        pdf_writer.addPage(page)
+    
+    # writing output pdf file
+    with open(output_pdf, 'wb') as pdf:
+        pdf_writer.write(pdf)
+Watermark()
+```
