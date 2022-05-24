@@ -27,6 +27,21 @@
 <p>Windows files can be accessed from Linux machine from the following Mount path:</p>
 <pre class="shell"><code># C drive path
 /mnt/c/</code></pre>
+<h3 id="persistently-mount-onedrive">Persistently Mount OneDrive</h3>
+<p>OneDrive folder contain space with can be problematic depending on the Linux commands you would like to use. In addition <em>WSL</em> executes the <em>/etc/fstab</em> file before the mount of the <em>/mnt/c</em> is done. The way to workaround it is to mount the <em>/mnt/c</em> into the <em>/etc/fstab</em> file.</p>
+<p>Below you can find a <em>/etc/fstab</em> file that mounts the <em>/mnt/c/Users/rogersantos/OneDrive - Microsoft</em> folder:</p>
+<pre><code>LABEL=cloudimg-rootfs   /    ext4   defaults    0 0
+# Mount the disk
+drvfs /mnt/c 9p rw,dirsync,noatime,aname=drvfs;path=C:\;uid=1000;gid=1000;symlinkroot=/mnt/,mmap,access=client,msize=262144,trans=virtio 0 0
+# Bind the folder
+/mnt/c/Users/rogersantos/OneDrive\040-\040Microsoft /mnt/onedrive none bind 0 0</code></pre>
+<h3 id="terminate-kill-a-wsl-session">Terminate / Kill a WSL session</h3>
+<p>Using porweshell run the following commands:</p>
+<pre class="powershell"><code># Get the Linux Distribution Name that is running (distribution_name)
+wsl --list --running
+
+# Terminate the Session 
+wsl -t &lt;distribution_name&gt;</code></pre>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux Installation Guide for Windows 10</a></li>

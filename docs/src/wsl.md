@@ -41,6 +41,18 @@ drvfs /mnt/c 9p rw,dirsync,noatime,aname=drvfs;path=C:\;uid=1000;gid=1000;symlin
 /mnt/c/Users/rogersantos/OneDrive\040-\040Microsoft /mnt/onedrive none bind 0 0
 ```
 
+### Terminate / Kill a WSL session 
+
+Using porweshell run the following commands:
+
+```powershell 
+# Get the Linux Distribution Name that is running (distribution_name)
+wsl --list --running
+
+# Terminate the Session 
+wsl -t <distribution_name>
+```
+
 ## References
 
 - [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
