@@ -431,3 +431,8 @@ Resolve-DnsName -Name $env:COMPUTERNAME -Type A
 ```ps1 
 Import-Module <file_path> [-Force]
 ```
+
+## References 
+
+- [PowerShell Constrained Language Mode](https://devblogs.microsoft.com/powershell/powershell-constrained-language-mode/)
+
