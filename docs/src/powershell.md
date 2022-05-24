@@ -12,7 +12,18 @@ This can be done is [Add-Type](https://docs.microsoft.com/en-us/powershell/modul
 
 The site [PInvoke](http://pinvoke.net/) allows you to search for various functions that are available as a C# signature to copy and paste into *PowerShell*
 
-### Commands
+## PowerShell Constrained Language
+
+PowerShell Constrained Language is a language mode of PowerShell designed to support day-to-day administrative tasks, yet restrict access to sensitive language elements that can be used to invoke arbitrary Windows APIs.
+Basically to see if you can run in a powershell with contrained language (More limitation that cannot run commands that involves APIs), you can set the following before running the script: 
+
+```PowerShell
+$ExecutionContext.SessionState.LanguageMode = "ConstrainedLanguage"
+```
+
+If the script fails in "ConstrainedLanguage" and not on "FullLanguage" than the script uses functions that requires "FullLanguage".
+
+## Commands
 
 `Get-Process`: List running processes.
 
