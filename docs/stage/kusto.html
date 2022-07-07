@@ -20,6 +20,11 @@
 <h3 id="top-10">Top 10</h3>
 <pre class="kusto"><code>MyTable
 | top 10 by MyColumn asc </code></pre>
+<h3 id="parse-json-content">Parse Json Content</h3>
+<pre class="kusto"><code>// This query creats a new column with the content of MyColumn parsed in Json as well create an object to be used on the query itself
+MyTable
+| extend json_object = parse_json(replace(@&quot;&#39;&quot;, @&#39;&quot;&#39;, MyColumn))
+| where json_object.key == 5))</code></pre>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://aka.ms/kusto">Kusto Website</a></li>

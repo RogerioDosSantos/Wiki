@@ -15,6 +15,15 @@ MyTable
 | top 10 by MyColumn asc 
 ```
 
+### Parse Json Content 
+
+```kusto
+// This query creats a new column with the content of MyColumn parsed in Json as well create an object to be used on the query itself
+MyTable
+| extend json_object = parse_json(replace(@"'", @'"', MyColumn))
+| where json_object.key == 5))
+```
+
 ## References 
 
 - [Kusto Website](https://aka.ms/kusto)
