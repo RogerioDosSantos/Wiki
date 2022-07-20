@@ -77,3 +77,5 @@ add-migration <name_of_your_migration>
 ## References 
 
 - [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
+- [Entity Framework Best Practices - Video](https://www.youtube.com/watch?v=qkJ9keBmQWo)
+

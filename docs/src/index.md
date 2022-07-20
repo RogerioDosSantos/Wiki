@@ -62,6 +62,7 @@
 - [Gravizo]( ./gravizo.html )
 - [Graphviz]( ./graphviz.html )
 - [Mermaid]( ./mermaid.html )
+- [DocFX]( ./docfx.html )
 
 ## Source Control 
 
@@ -171,6 +172,7 @@
 - [OLE DB]( ./ole_db.html )
 - [Entity Framework]( ./entity_framework.html )
 - [Kusto]( ./kusto.html )
+- [SQLite]( ./sqlite.html )
 
 ## Programming Languages
 
