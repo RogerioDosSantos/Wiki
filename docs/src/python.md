@@ -283,6 +283,166 @@ if __name__ == '__main__':
 # 10020 x.x.x.x 10040
 ```
 
+### Python - Email Fetcher
+
+```python3
+# Fetch Emails
+# pip install imap-tools
+from imap_tools import MailBox
+def Fetch_Email(user, pwd):
+    mbox = MailBox('imap.mail.com').login(user, pwd, "INBOX")
+    for email in mbox.fetch():
+        print(email.date, email.subject, len(email.text or email.html))
+        
+Fetch_Email("user", "pass")
+```
+
+### Python - Analyze Stock Market
+
+```python3
+# Analyse Stock market
+# pip install yfinance
+import yfinance as yf
+market = yf.Ticker("MSFT")
+# Get stockmarket info
+info = market.info
+print(info)
+# Fetch historical data
+historical = market.history(period="1y")
+print(historical)
+# get actions
+actions = market.actions
+print(actions)
+# get dividends
+dividends = market.dividends
+print(dividends)
+# get splits
+splits = market.splits
+print(splits)
+# get balance sheet
+balance_sheet = market.balance_sheet
+print(balance_sheet)
+# get market news
+market_news = market.news
+print(market_news)
+# show earnings
+earnings = market.earnings
+print(earnings)
+# get recommendation
+rec = market.recommendation
+print(rec)
+# Get another Ticker
+market1 = yf.Ticker("AAPL")
+market2 = yf.Ticker("TSLA")
+market3 = yf.Ticker("GOOG")
+# Fetch Market data from multiple tickers
+market_data = yf.download("AAPL", "GOOG", start="2019-01-01", end="2019-12-31")
+print(market_data)
+```
+
+### Python - Image Size Compressor
+
+```python3
+# Compress Photo Size
+# pip install pyguetzli
+import pyguetzli
+def Compress(image):
+    img = open(image, "rb").read()
+    optimized= pyguetzli.process_jpeg_bytes(img, quality=80)
+    output = open("optimized", "wb")
+    output.write(optimized)
+Compress("test.jpg")
+```
+
+### Python - PySimpleGui
+
+```python3
+# pip install PySimpleGUI
+import PySimpleGUI as gui
+layout = []
+# Label Text
+text = gui.Text('This is PysimpleGui', size=(30, 1))
+layout.append([text])
+# Button
+button = gui.Button('Click Me', target='_blank')
+layout.append([button])
+# Input Box
+input_box = gui.Input(key='-IN-')
+layout.append([input_box])
+# Browse Folders
+browse_folder = gui.FolderBrowse()
+layout.append([browse_folder])
+# Set Image
+image = gui.Image('img.png')
+layout.append([image])
+# Radio Buttons
+radio = gui.Radio('Radio', ['A', 'B', 'C'])
+layout.append([radio])
+# Check Boxes
+check = gui.Checkbox('Check', default=True)
+layout.append([check])
+ 
+# Set window
+win = gui.Window('Window Title', layout, auto_size_text=True)
+                                                
+event, values = win.read()
+win.close()
+```
+
+### Python - Merge CSV Files
+
+```python3
+# Merge CSV Files
+# pip install pandas
+from pandas import read_csv
+import pandas
+import os
+def Merge_Csv(files):
+    df = pandas.concat(map(read_csv, files), ignore_index=True)
+    df.to_csv("merged.csv", index=False)
+    print("CSV has Been Merged...")
+Merge_Csv(["movies.csv", "movies2.csv", "movies3.csv"])
+```
+
+### Python - Automate Databases
+
+```python3
+# Database with Python 
+# pip install mysql-connector-python
+import mysql.connector
+# Connect to yout SQL database
+sql = mysql.connector.connect(
+    host="Your host",
+    user="username",
+    passwd="",
+    database="mydatabase_1"
+)
+# create table
+cursor = sql.cursor()
+cursor.execute("CREATE TABLE movies (title VARCHAR(255), rating VARCHAR(255))")
+# insert data
+query = "INSERT INTO movies (title, rating) VALUES (%s, %s)"
+value = ("The Matrix", "7.5")
+cursor.execute(query, value)
+# Select Data
+cursor.execute("SELECT * FROM movies")
+myresult = cursor.fetchall()
+for x in myresult:
+    print(x)
+    
+# Delete Data
+cursor.execute("DELETE FROM movies WHERE title = 'The Matrix'")
+# Get Specific Data
+cursor.execute("SELECT * FROM movies WHERE title = 'The Matrix'")
+myresult = cursor.fetchall()
+# Update Data
+cursor.execute("UPDATE movies SET rating = '8' WHERE title = 'The Matrix'")
+# Delete Table
+cursor.execute("DROP TABLE movies")
+# Close Connection
+sql.close()
+```
+
 ### Python - Classes
 
 #### Definition 
