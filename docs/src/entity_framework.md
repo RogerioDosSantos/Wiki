@@ -70,9 +70,13 @@ To update the database configuration the *Entity Framework* uses a migration fil
 add-migration <name_of_your_migration>
 ```
 
+or if you are using dotnet
+
+```shell
+dotnet ef migrations add <description_of_the_migration> --project <project_file_path>
+```
+
 ![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/add_migration_command.png )
-
-
 
 ## References 
 
