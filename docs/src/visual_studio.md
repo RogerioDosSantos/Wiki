@@ -109,7 +109,7 @@ To connect to a *Database* from *Visual Studio*, follow the steps below:
 ![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/connect_database_sql_query.png)
 
 
-## Get environment variable while debuggin C# code 
+### Get environment variable while debuggin C# code 
 
 - On the *Imadiate Window* type:
 
@@ -119,6 +119,34 @@ Environment.GetEnvironmentVariables()
 
 ![](http://tinyurl.com/y3pr8cex)
 
+### Add *Secrets* configured in the *appsettings.json* in the *secrets.json*
+
+If you have a configuration that is a *Secret* that you will be using during your development (*User Secrets*). It is a best practice to do not keep it in any of your *appsettings.json*. *Visual Studio* allows you to store *User Secrets*. 
+
+Imagine that you have the following configuration in your *appsettings.json*: 
+
+```json
+{
+ "KeyVault": {
+    "AzureClientId": "MyClientID",
+    "AzureClientSecret": "<use_secrets_json_to_configure_this_settings>",
+  }
+}
+```
+
+You can right click in your project and select *Manage User Secrets*. 
+
+![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/user_secrets_menu.png)
+
+There you can add your secret 
+
+```json
+{
+ "KeyVault": {
+    "AzureClientSecret": "MyClientSecret",
+  }
+}
+```
 
 ## References 
 

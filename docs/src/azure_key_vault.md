@@ -92,6 +92,8 @@ Your key will be `MyAppName-KeyVault--AzureClientSecret`
 }
 ```
 
+*Note*: See [Visual Studio (Add Secrets configured in the appsettings.json in the secrets.json session)](../stage/visual_studio.html) for how to add the *AzureClientSecret* into the *secrets.json* file.
+
 - Create a *PrefixKeyVaultSecretManager.cs* class file with the following code 
 
 ```C#

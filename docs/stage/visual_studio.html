@@ -141,7 +141,7 @@ C:\vs_<span class="dv">2017</span>_remote_debugger\x86\msvsmon.exe <span class="
 <figure>
 <img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/connect_database_sql_query.png" />
 </figure>
-<h2 id="get-environment-variable-while-debuggin-c-code">Get environment variable while debuggin C# code</h2>
+<h3 id="get-environment-variable-while-debuggin-c-code">Get environment variable while debuggin C# code</h3>
 <ul>
 <li>On the <em>Imadiate Window</em> type:</li>
 </ul>
@@ -149,6 +149,25 @@ C:\vs_<span class="dv">2017</span>_remote_debugger\x86\msvsmon.exe <span class="
 <figure>
 <img src="http://tinyurl.com/y3pr8cex" />
 </figure>
+<h3 id="add-secrets-configured-in-the-appsettings.json-in-the-secrets.json">Add <em>Secrets</em> configured in the <em>appsettings.json</em> in the <em>secrets.json</em></h3>
+<p>If you have a configuration that is a <em>Secret</em> that you will be using during your development (<em>User Secrets</em>). It is a best practice to do not keep it in any of your <em>appsettings.json</em>. <em>Visual Studio</em> allows you to store <em>User Secrets</em>.</p>
+<p>Imagine that you have the following configuration in your <em>appsettings.json</em>:</p>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+ <span class="dt">&quot;KeyVault&quot;</span><span class="fu">:</span> <span class="fu">{</span>
+    <span class="dt">&quot;AzureClientId&quot;</span><span class="fu">:</span> <span class="st">&quot;MyClientID&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;AzureClientSecret&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;use_secrets_json_to_configure_this_settings&gt;&quot;</span><span class="fu">,</span>
+  <span class="fu">}</span>
+<span class="fu">}</span></code></pre></div>
+<p>You can right click in your project and select <em>Manage User Secrets</em>.</p>
+<figure>
+<img src="https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/user_secrets_menu.png" />
+</figure>
+<p>There you can add your secret</p>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+ <span class="dt">&quot;KeyVault&quot;</span><span class="fu">:</span> <span class="fu">{</span>
+    <span class="dt">&quot;AzureClientSecret&quot;</span><span class="fu">:</span> <span class="st">&quot;MyClientSecret&quot;</span><span class="fu">,</span>
+  <span class="fu">}</span>
+<span class="fu">}</span></code></pre></div>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/cpp/linux/connect-to-your-remote-linux-computer?view=vs-2019">Connect to your target Linux system in Visual Studio</a></li>
