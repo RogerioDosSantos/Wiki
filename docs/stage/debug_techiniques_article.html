@@ -278,7 +278,7 @@ return;</code></pre>
 <p>&quot;MINIDUMP_EXCEPTION_INFORMATION&quot; structure is being filled with <code>CurrentThreadID</code> and Exception pointers which we received from the parent function. Then call the function <code>MiniDumpWriteDump</code>. The interesting parameter here is <code>MINIDUMP_TYPE</code>. If we see msdn help on this API there is quite a big list, but based on my analysis I have added three flags, out of these the third is the most important is <code>MiniDumpWithFullMemory</code>. This gives all the referenced locations of the particular process in the main memory, which really helps in debugging.</p>
 <p>With a full memory dump the size of the dump is quite big, but this really helps in analyzing the dump. With similar flows you can explore more on types of dumps and change it according to your requirements. Let's take an example and see how this works.</p>
 <p>Hide   Shrink <img src="https://www.codeproject.com/images/arrow-up-16.png" />   Copy Code</p>
-<h1 id="include-include-include-include-include-include">include <Windows.h> #include <Dbghelp.h> #include <iostream> #include <tchar.h> #include <strsafe.h> #include <shlobj.h></h1>
+<h1 id="include-windows.h-include-dbghelp.h-include-include-tchar.h-include-strsafe.h-include-shlobj.h">include &lt;Windows.h&gt; #include &lt;Dbghelp.h&gt; #include <iostream> #include &lt;tchar.h&gt; #include &lt;strsafe.h&gt; #include &lt;shlobj.h&gt;</h1>
 <h1 id="pragma-commentlib-dbghelp-define-max_buff_size-1024">pragma comment(lib, &quot;DbgHelp&quot;) #define MAX_BUFF_SIZE 1024</h1>
 <p>using namespace std; DWORD WINAPI func();</p>
 <p>void make_minidump(EXCEPTION_POINTERS* e) { TCHAR tszFileName[MAX_BUFF_SIZE] = {0}; TCHAR tszPath[MAX_BUFF_SIZE] = {0}; SYSTEMTIME stTime = {0}; GetSystemTime(&amp;stTime); SHGetSpecialFolderPath(NULL,tszPath, CSIDL_APPDATA, FALSE); StringCbPrintf(tszFileName, _countof(tszFileName), _T(&quot;%s\%s__%4d%02d%02d_%02d%02d%02d.dmp&quot;), tszPath, _T(&quot;CrashDump&quot;), stTime.wYear, stTime.wMonth, stTime.wDay, stTime.wHour, stTime.wMinute, stTime.wSecond);</p>
@@ -359,11 +359,11 @@ return;</code></pre>
 </ol>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> main()
 {
-    <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; i++)
+    <span class="cf">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; i++)
     {
         <span class="dt">char</span>* p = <span class="kw">new</span> <span class="dt">char</span>[<span class="dv">100</span>];
     }
-    <span class="kw">return</span> <span class="dv">0</span>;
+    <span class="cf">return</span> <span class="dv">0</span>;
 }</code></pre></div>
 <ol start="2" type="1">
 <li><p>Handle Leaks : This would happen with different handles that are created but not freed, Example File Handle, Thread Handle, Process Handle etc.</p>
@@ -371,21 +371,21 @@ return;</code></pre>
 {
 HANDLE hEvent = NULL;
 hEvent = CreateEvent(NULL, TRUE, FALSE, TEXT(<span class="st">&quot;WriteEvent&quot;</span>));
-<span class="kw">return</span> <span class="dv">0</span>;
+<span class="cf">return</span> <span class="dv">0</span>;
 }</code></pre></div></li>
 <li><p>Thread Count: This would happen if the threads are continuously getting created but are not actually exiting after their task completion. As explained earlier this would actually occupy 1MB of user mode space by default, so if threads keep on increasing and they do not get released. This would eventually lead to increase in Virtual Memory. Debugging Techniques Debugging Memory Leaks is one of the most complex problems. There are tools available like Rational Purifier, Insure++ etc. But finding the precise issue requires a great deal of walking through code and an overall understanding of the scenario. Apart from this, most of the tools for memory leak analysis are paid ones, and not all organisations really promote that. So it should be possible to fix such issues with freely available tools with Windows OS.</p></li>
 </ol>
 <p>The first and the most handy tool to simply identify whether there is a leak or not is &quot;Performance Monitor&quot;. Performance monitor is an inbuilt tool with windows OS which is used to measure various parameters such as: memory, CPU, Disk etc. of an application or on system wide level.</p>
 <p>Consider the code below as an Example for memory leak:</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;iostream&gt;</span>
-<span class="ot">#include &lt;Windows.h&gt;</span>
-<span class="ot">#include &lt;tchar.h&gt;</span>
-<span class="ot">#include &lt;string&gt;</span>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;Windows.h&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;tchar.h&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;string&gt;</span>
 
 <span class="kw">using</span> <span class="kw">namespace</span> std;
 
 <span class="dt">bool</span> GetComputerName(wstring&amp; wstrCompName);
-<span class="dt">bool</span> fileread(<span class="dt">const</span> wstring&amp; filepath);
+<span class="dt">bool</span> fileread(<span class="at">const</span> wstring&amp; filepath);
 <span class="dt">bool</span> GetUserName(wstring&amp; wstrUserName);
 
 <span class="dt">int</span> main()
@@ -393,32 +393,32 @@ hEvent = CreateEvent(NULL, TRUE, FALSE, TEXT(<span class="st">&quot;WriteEvent&q
     <span class="dt">int</span> nChoice = <span class="dv">0</span>;
     wstring wstrCompName;
     wstring wstrUserName;
-    <span class="dt">char</span> ccontinue = <span class="st">&#39;</span><span class="ch">\0</span><span class="st">&#39;</span>; 
+    <span class="dt">char</span> ccontinue = <span class="st">&#39;</span><span class="sc">\0</span><span class="st">&#39;</span>; 
 
-    <span class="kw">do</span>
+    <span class="cf">do</span>
     {
         wcout&lt;&lt;<span class="st">L&quot;Enter your choice&quot;</span>&lt;&lt;endl;
         wcout&lt;&lt;<span class="st">L&quot;1.Read Computer name&quot;</span>&lt;&lt;endl;
         wcout&lt;&lt;<span class="st">L&quot;2.Read User Name&quot;</span>&lt;&lt;endl;
         cin&gt;&gt;nChoice;
 
-        <span class="kw">switch</span>(nChoice)
+        <span class="cf">switch</span>(nChoice)
         {
-        <span class="kw">case</span> <span class="dv">1</span>:
+        <span class="cf">case</span> <span class="dv">1</span>:
             GetComputerName(wstrCompName);
             wcout&lt;&lt;<span class="st">L&quot;Computer name read is&quot;</span>&lt;&lt;wstrCompName.c_str()&lt;&lt;endl;
-            <span class="kw">break</span>;
-        <span class="kw">case</span> <span class="dv">2</span>:
+            <span class="cf">break</span>;
+        <span class="cf">case</span> <span class="dv">2</span>:
             GetUserName(wstrUserName);
             wcout&lt;&lt;<span class="st">L&quot;user name read is&quot;</span>&lt;&lt;wstrUserName.c_str()&lt;&lt;endl;
-            <span class="kw">break</span>;
-        <span class="kw">default</span>:
+            <span class="cf">break</span>;
+        <span class="cf">default</span>:
             wcout&lt;&lt;<span class="st">L&quot;Invalid option&quot;</span>;
         }
         wcout&lt;&lt;<span class="st">&quot;Do you want to continue Y or N&quot;</span>;
         cin&gt;&gt;ccontinue;
-    }<span class="kw">while</span>(ccontinue == <span class="st">&#39;y&#39;</span> || ccontinue == <span class="st">&#39;Y&#39;</span>);
-    <span class="kw">return</span> <span class="dv">0</span>;
+    }<span class="cf">while</span>(ccontinue == <span class="st">&#39;y&#39;</span> || ccontinue == <span class="st">&#39;Y&#39;</span>);
+    <span class="cf">return</span> <span class="dv">0</span>;
 }
 
 <span class="dt">bool</span> GetComputerName(wstring&amp; wstrCompName)
@@ -427,29 +427,29 @@ hEvent = CreateEvent(NULL, TRUE, FALSE, TEXT(<span class="st">&quot;WriteEvent&q
     DWORD dwSize = <span class="dv">0</span>;
     <span class="dt">bool</span> bRet = <span class="kw">false</span>;
 
-    <span class="kw">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
+    <span class="cf">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
     {
-        <span class="kw">if</span>(GetLastError() != ERROR_MORE_DATA)
+        <span class="cf">if</span>(GetLastError() != ERROR_MORE_DATA)
         {
             wcout&lt;&lt;<span class="st">L&quot;GetComputerNameEx Failed with Error Code&quot;</span>&lt;&lt;GetLastError();
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
-        pwszCompName = <span class="kw">new</span>(std::nothrow) <span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>];
-        <span class="kw">if</span>(pwszCompName == NULL)
+        pwszCompName = <span class="kw">new</span>(<span class="bu">std::</span>nothrow) <span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>];
+        <span class="cf">if</span>(pwszCompName == NULL)
         {
             wcout&lt;&lt;<span class="st">L&quot;unable to allocate memory&quot;</span>&lt;&lt;endl;
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
-        memset(pwszCompName, <span class="st">L&#39;</span><span class="ch">\0</span><span class="st">&#39;</span>, dwSize + <span class="dv">1</span>);
-        <span class="kw">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
+        memset(pwszCompName, <span class="st">L&#39;</span><span class="sc">\0</span><span class="st">&#39;</span>, dwSize + <span class="dv">1</span>);
+        <span class="cf">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
         {   
             wcou&lt;&lt;<span class="st">L&quot;GetComputerNameEx Failed with Error Code&quot;</span>&lt;&lt;GetLastError();
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
     }
     <span class="dt">char</span>* test = <span class="kw">new</span> <span class="dt">char</span>[<span class="dv">1024</span>*<span class="dv">1024</span>];
     wstrCompName.assign(pwszCompName);
-    <span class="kw">return</span> <span class="kw">true</span>;            
+    <span class="cf">return</span> <span class="kw">true</span>;            
 }
 
 <span class="dt">bool</span> GetUserName(wstring&amp; wstrUserName)
@@ -457,36 +457,36 @@ hEvent = CreateEvent(NULL, TRUE, FALSE, TEXT(<span class="st">&quot;WriteEvent&q
     <span class="dt">wchar_t</span>* pwszUserName = NULL;
     DWORD dwSize = <span class="dv">0</span>;
 
-    <span class="kw">if</span>(!GetUserName(pwszUserName, &amp;dwSize))
+    <span class="cf">if</span>(!GetUserName(pwszUserName, &amp;dwSize))
     {
-        <span class="kw">if</span>(GetLastError() != ERROR_INSUFFICIENT_BUFFER)     
+        <span class="cf">if</span>(GetLastError() != ERROR_INSUFFICIENT_BUFFER)     
         {
             wcout&lt;&lt;<span class="st">&quot;GetUserName returned with Error&quot;</span>&lt;&lt;GetLastError();
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
-        pwszUserName = <span class="kw">new</span>(std::nothrow)<span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>]();
-        <span class="kw">if</span>(pwszUserName == NULL)
+        pwszUserName = <span class="kw">new</span>(<span class="bu">std::</span>nothrow)<span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>]();
+        <span class="cf">if</span>(pwszUserName == NULL)
         {
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
-        <span class="kw">if</span>(!GetUserName(pwszUserName, &amp;dwSize))
+        <span class="cf">if</span>(!GetUserName(pwszUserName, &amp;dwSize))
         {
-            <span class="kw">if</span>(pwszUserName)
+            <span class="cf">if</span>(pwszUserName)
             {
                 <span class="kw">delete</span> [] pwszUserName;
                 pwszUserName = NULL;
             }
             wcout&lt;&lt;<span class="st">&quot;GetUserName returned with Error&quot;</span>&lt;&lt;GetLastError();
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
     }
     wstrUserName.assign(pwszUserName);
-    <span class="kw">if</span>(pwszUserName)
+    <span class="cf">if</span>(pwszUserName)
     {
         <span class="kw">delete</span> [] pwszUserName;
         pwszUserName = NULL;
     }
-    <span class="kw">return</span> <span class="kw">true</span>;
+    <span class="cf">return</span> <span class="kw">true</span>;
 }</code></pre></div>
 <p>Having a look at the code we can make out that there is a leak in the function GetComputerName, which should be fixed. There are two leaks: One is that the variable pwszCompName not been freed and the variable test is being allocated and not freed. But this won't always be the case, and we will be have much more complex code to deal with.</p>
 <p>Let's go Step-by-Step, identifying and fixing the problem</p>
@@ -503,45 +503,45 @@ hEvent = CreateEvent(NULL, TRUE, FALSE, TEXT(<span class="st">&quot;WriteEvent&q
     DWORD dwSize = <span class="dv">0</span>;
     <span class="dt">bool</span> bRet = <span class="kw">false</span>;
 
-    <span class="kw">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
+    <span class="cf">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
     {
-        <span class="kw">if</span>(GetLastError() != ERROR_MORE_DATA)
+        <span class="cf">if</span>(GetLastError() != ERROR_MORE_DATA)
         {
             wcout&lt;&lt;<span class="st">L&quot;GetComputerNameEx Failed with Error Code&quot;</span>&lt;&lt;GetLastError();
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
-        pwszCompName = <span class="kw">new</span>(std::nothrow) <span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>];
-        <span class="kw">if</span>(pwszCompName == NULL)
+        pwszCompName = <span class="kw">new</span>(<span class="bu">std::</span>nothrow) <span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>];
+        <span class="cf">if</span>(pwszCompName == NULL)
         {
             wcout&lt;&lt;<span class="st">L&quot;unable to allocate memory&quot;</span>&lt;&lt;endl;
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
-        memset(pwszCompName, <span class="st">L&#39;</span><span class="ch">\0</span><span class="st">&#39;</span>, dwSize + <span class="dv">1</span>);
-        <span class="kw">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
+        memset(pwszCompName, <span class="st">L&#39;</span><span class="sc">\0</span><span class="st">&#39;</span>, dwSize + <span class="dv">1</span>);
+        <span class="cf">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
         {  
-            <span class="kw">if</span>(pwszCompName)
+            <span class="cf">if</span>(pwszCompName)
             {
                 <span class="kw">delete</span> [] pwszCompName;
                 pwszCompName = NULL;
             }               
             wcout&lt;&lt;<span class="st">L&quot;GetComputerNameEx Failed with Error Code&quot;</span>&lt;&lt;GetLastError();
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
     }
     <span class="dt">char</span>* test = <span class="kw">new</span> <span class="dt">char</span>[<span class="dv">1024</span>*<span class="dv">1024</span>];   
     wstrCompName.assign(pwszCompName);
         
-    <span class="kw">if</span>(test)
+    <span class="cf">if</span>(test)
     {
         <span class="kw">delete</span>[] test;
         test = NULL;
     }
-    <span class="kw">if</span>(pwszCompName)
+    <span class="cf">if</span>(pwszCompName)
     {
         <span class="kw">delete</span> [] pwszCompName;
         pwszCompName = NULL;
     }
-    <span class="kw">return</span> <span class="kw">true</span>;            
+    <span class="cf">return</span> <span class="kw">true</span>;            
 }</code></pre></div>
 <h1 id="part-5-windows-debugging-techniques---debugging-memory-leaks-crt-apis">Part 5: Windows Debugging Techniques - Debugging Memory Leaks (CRT APIs)</h1>
 <p>Background As observed in Part 4, it can be difficult to trace the issue with just the help of perfmon tool. It would be so easy if someone could actually point where the precise location of the leak is and we all we have to do is fix it. There are CRT APIs available which does this for us and makes life easier.</p>
@@ -550,43 +550,43 @@ hEvent = CreateEvent(NULL, TRUE, FALSE, TEXT(<span class="st">&quot;WriteEvent&q
 <p>Apart from this, instead of malloc, debug version i.e &quot;_malloc_dbg&quot; will be called. For more information on this please refer to: http://msdn.microsoft.com/en-us/library/974tc9t1.aspx</p>
 <p>Debugging Techniques Let's go Step-by-Step in using the CRT APIs</p>
 <p>Step 1: Add the Includes for CRT Debug API Add the below code as part of the application after all other includes are completed.</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#define _CRTDBG_MAP_ALLOC</span>
-<span class="ot">#include &lt;stdlib.h&gt;</span>
-<span class="ot">#include &lt;crtdbg.h&gt;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="pp">#define _CRTDBG_MAP_ALLOC</span>
+<span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;crtdbg.h&gt;</span></code></pre></div>
 <p>Macro <code>_CRTDBG_MAP_ALLOC</code> informs the compiler to map the heap functions to their debug version i.e. malloc should get mapped to <code>_malloc_dbg</code></p>
 <p>Step 2: Map new operator to its debug version By default, new does not get mapped to its debug version, we need to forcefully do it. To do this add the below code to the application. By default, malloc/calloc/realloc gets mapped to their debug version. New needs to be done explicitly.</p>
 <p>This step can be avoided if you do not have the usage of the new operator in your code.</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#ifdef _DEBUG   </span>
-<span class="ot">#ifndef DBG_NEW      </span>
-<span class="ot">#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )     </span>
-<span class="ot">#define new DBG_NEW   </span>
-<span class="ot">#endif</span>
-<span class="ot">#endif</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="pp">#ifdef _DEBUG   </span>
+<span class="pp">#ifndef DBG_NEW      </span>
+<span class="pp">#define DBG_NEW new ( _NORMAL_BLOCK , </span><span class="ot">__FILE__</span><span class="pp"> , </span><span class="ot">__LINE__</span><span class="pp"> )     </span>
+<span class="pp">#define new DBG_NEW   </span>
+<span class="pp">#endif</span>
+<span class="pp">#endif</span></code></pre></div>
 <p>Step 3: Set the Debug Flag and Set the report mode Debug flags needs to be set, which defines what we want to debug. Report Mode needs to be set to define if the output needs to be redirected to the debug window like DebugView or needs to be sent to a file.</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">_CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);</code></pre></div>
 <p>Let's understand the above code.</p>
 <p><code>_CRTDBG_ALLOC_MEM_DF</code> turns on debug allocations <code>_CRTDBG_LEAK_CHECK_DF</code> will cause memory leak checking to be performed on application exit. <code>_CRTDBG_MODE_DEBUG</code> will cause the output to be redirected to a debug window like DebugView or Output Window in Visual Studio. There are a lot more options available for debugging. Please refer to: http://msdn.microsoft.com/en-us/library/974tc9t1.aspx</p>
 <p>After the above steps the code mentioned in part 4 would become like this.</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;iostream&gt;</span>
-<span class="ot">#include &lt;Windows.h&gt;</span>
-<span class="ot">#include &lt;tchar.h&gt;</span>
-<span class="ot">#include &lt;string&gt;</span>
-<span class="ot">#define _CRTDBG_MAP_ALLOC</span>
-<span class="ot">#include &lt;stdlib.h&gt;</span>
-<span class="ot">#include &lt;crtdbg.h&gt;</span>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;Windows.h&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;tchar.h&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;string&gt;</span>
+<span class="pp">#define _CRTDBG_MAP_ALLOC</span>
+<span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;crtdbg.h&gt;</span>
 
-<span class="ot">#ifdef _DEBUG   </span>
-<span class="ot">#ifndef DBG_NEW      </span>
-<span class="ot">#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )     </span>
-<span class="ot">#define new DBG_NEW   </span>
-<span class="ot">#endif</span>
-<span class="ot">#endif  </span><span class="co">// _DEBUG</span>
+<span class="pp">#ifdef _DEBUG   </span>
+<span class="pp">#ifndef DBG_NEW      </span>
+<span class="pp">#define DBG_NEW new ( _NORMAL_BLOCK , </span><span class="ot">__FILE__</span><span class="pp"> , </span><span class="ot">__LINE__</span><span class="pp"> )     </span>
+<span class="pp">#define new DBG_NEW   </span>
+<span class="pp">#endif</span>
+<span class="pp">#endif  </span><span class="co">// _DEBUG</span>
 
 <span class="kw">using</span> <span class="kw">namespace</span> std;
 
 <span class="dt">bool</span> GetComputerName(wstring&amp; wstrCompName);
-<span class="dt">bool</span> fileread(<span class="dt">const</span> wstring&amp; filepath);
+<span class="dt">bool</span> fileread(<span class="at">const</span> wstring&amp; filepath);
 <span class="dt">bool</span> GetUserName(wstring&amp; wstrUserName);
 
 <span class="dt">int</span> main()
@@ -597,32 +597,32 @@ _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);</code></pre></div>
     <span class="dt">int</span> nChoice = <span class="dv">0</span>;
     wstring wstrCompName;
     wstring wstrUserName;
-    <span class="dt">char</span> ccontinue = <span class="st">&#39;</span><span class="ch">\0</span><span class="st">&#39;</span>; 
+    <span class="dt">char</span> ccontinue = <span class="st">&#39;</span><span class="sc">\0</span><span class="st">&#39;</span>; 
 
-    <span class="kw">do</span>
+    <span class="cf">do</span>
     {
         wcout&lt;&lt;<span class="st">L&quot;Enter your choice&quot;</span>&lt;&lt;endl;
         wcout&lt;&lt;<span class="st">L&quot;1.Read Computer name&quot;</span>&lt;&lt;endl;
         wcout&lt;&lt;<span class="st">L&quot;2.Read User Name&quot;</span>&lt;&lt;endl;
         cin&gt;&gt;nChoice;
 
-        <span class="kw">switch</span>(nChoice)
+        <span class="cf">switch</span>(nChoice)
         {
-        <span class="kw">case</span> <span class="dv">1</span>:
+        <span class="cf">case</span> <span class="dv">1</span>:
             GetComputerName(wstrCompName);  
             wcout&lt;&lt;<span class="st">L&quot;Computer name read is&quot;</span>&lt;&lt;wstrCompName.c_str()&lt;&lt;endl;
-            <span class="kw">break</span>;
-        <span class="kw">case</span> <span class="dv">2</span>:
+            <span class="cf">break</span>;
+        <span class="cf">case</span> <span class="dv">2</span>:
             GetUserName(wstrUserName);
             wcout&lt;&lt;<span class="st">L&quot;user name read is&quot;</span>&lt;&lt;wstrUserName.c_str()&lt;&lt;endl;
-            <span class="kw">break</span>;
-        <span class="kw">default</span>:
+            <span class="cf">break</span>;
+        <span class="cf">default</span>:
             wcout&lt;&lt;<span class="st">L&quot;Invalid option&quot;</span>;
         }
         wcout&lt;&lt;<span class="st">&quot;Do you want to continue Y or N&quot;</span>;
         cin&gt;&gt;ccontinue;
-    }<span class="kw">while</span>(ccontinue == <span class="st">&#39;y&#39;</span> || ccontinue == <span class="st">&#39;Y&#39;</span>);
-    <span class="kw">return</span> <span class="dv">0</span>;
+    }<span class="cf">while</span>(ccontinue == <span class="st">&#39;y&#39;</span> || ccontinue == <span class="st">&#39;Y&#39;</span>);
+    <span class="cf">return</span> <span class="dv">0</span>;
 }
 
 <span class="dt">bool</span> GetComputerName(wstring&amp; wstrCompName)
@@ -631,29 +631,29 @@ _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);</code></pre></div>
     DWORD dwSize = <span class="dv">0</span>;
     <span class="dt">bool</span> bRet = <span class="kw">false</span>;
 
-    <span class="kw">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
+    <span class="cf">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
     {
-        <span class="kw">if</span>(GetLastError() != ERROR_MORE_DATA)
+        <span class="cf">if</span>(GetLastError() != ERROR_MORE_DATA)
         {
             wcout&lt;&lt;<span class="st">L&quot;GetComputerNameEx Failed with Error Code&quot;</span>&lt;&lt;GetLastError();
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
         pwszCompName = <span class="kw">new</span> <span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>];
-        <span class="kw">if</span>(pwszCompName == NULL)
+        <span class="cf">if</span>(pwszCompName == NULL)
         {
             wcout&lt;&lt;<span class="st">L&quot;unable to allocate memory&quot;</span>&lt;&lt;endl;
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
-        memset(pwszCompName, <span class="st">L&#39;</span><span class="ch">\0</span><span class="st">&#39;</span>, dwSize + <span class="dv">1</span>);
-        <span class="kw">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
+        memset(pwszCompName, <span class="st">L&#39;</span><span class="sc">\0</span><span class="st">&#39;</span>, dwSize + <span class="dv">1</span>);
+        <span class="cf">if</span> (!GetComputerNameEx(ComputerNameDnsHostname, pwszCompName, &amp;dwSize))
         {   
             wcout&lt;&lt;<span class="st">L&quot;GetComputerNameEx Failed with Error Code&quot;</span>&lt;&lt;GetLastError();
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
     }
     <span class="dt">char</span>* test = <span class="kw">new</span> <span class="dt">char</span>[<span class="dv">1024</span>*<span class="dv">1024</span>];
     wstrCompName.assign(pwszCompName);
-    <span class="kw">return</span> <span class="kw">true</span>;            
+    <span class="cf">return</span> <span class="kw">true</span>;            
 }
 
 <span class="dt">bool</span> GetUserName(wstring&amp; wstrUserName)
@@ -661,36 +661,36 @@ _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);</code></pre></div>
     <span class="dt">wchar_t</span>* pwszUserName = NULL;
     DWORD dwSize = <span class="dv">0</span>;
 
-    <span class="kw">if</span>(!GetUserName(pwszUserName, &amp;dwSize))
+    <span class="cf">if</span>(!GetUserName(pwszUserName, &amp;dwSize))
     {
-        <span class="kw">if</span>(GetLastError() != ERROR_INSUFFICIENT_BUFFER)     
+        <span class="cf">if</span>(GetLastError() != ERROR_INSUFFICIENT_BUFFER)     
         {
             wcout&lt;&lt;<span class="st">&quot;GetUserName returned with Error&quot;</span>&lt;&lt;GetLastError();
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
         pwszUserName = <span class="kw">new</span> <span class="dt">wchar_t</span>[dwSize + <span class="dv">1</span>]();
-        <span class="kw">if</span>(pwszUserName == NULL)
+        <span class="cf">if</span>(pwszUserName == NULL)
         {
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
-        <span class="kw">if</span>(!GetUserName(pwszUserName, &amp;dwSize))
+        <span class="cf">if</span>(!GetUserName(pwszUserName, &amp;dwSize))
         {
-            <span class="kw">if</span>(pwszUserName)
+            <span class="cf">if</span>(pwszUserName)
             {
                 <span class="kw">delete</span> [] pwszUserName;
                 pwszUserName = NULL;
             }
             wcout&lt;&lt;<span class="st">&quot;GetUserName returned with Error&quot;</span>&lt;&lt;GetLastError();
-            <span class="kw">return</span> <span class="kw">false</span>;
+            <span class="cf">return</span> <span class="kw">false</span>;
         }
     }
     wstrUserName.assign(pwszUserName);
-    <span class="kw">if</span>(pwszUserName)
+    <span class="cf">if</span>(pwszUserName)
     {
         <span class="kw">delete</span> [] pwszUserName;
         pwszUserName = NULL;
     }
-    <span class="kw">return</span> <span class="kw">true</span>;
+    <span class="cf">return</span> <span class="kw">true</span>;
 }</code></pre></div>
 <p>Step 4: Rebuild the Project in the Debug Mode One drawback of this approach is it requires code to be rebuilt in debug mode without which it cannot report memory leaks. So rebuild the source in the Debug Mode.</p>
 <p>Step 5: Launch the DebugView, Run the use case and see the output Launch the DebugView. If not available, download it from: http://technet.microsoft.com/en-in/sysinternals/bb896647.aspx</p>

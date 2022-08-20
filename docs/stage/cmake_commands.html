@@ -76,8 +76,8 @@ Note:You can pass the variable type when calling the CMake executale using:
 <h3 id="display-all-available-variables">Display all available variables</h3>
 <div class="sourceCode"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span class="kw">get_cmake_property</span>(_variableNames <span class="ot">VARIABLES</span>)
 <span class="kw">list</span> (<span class="ot">SORT</span> _variableNames)
-<span class="kw">foreach</span> (_variableName <span class="dv">${_variableNames}</span>)
-    <span class="kw">message</span>(<span class="ot">STATUS</span> <span class="st">&quot;</span><span class="dv">${_variableName}</span><span class="st">=</span><span class="dv">${${_variableName}}</span><span class="st">&quot;</span>)
+<span class="kw">foreach</span> (_variableName <span class="va">${_variableNames}</span>)
+    <span class="kw">message</span>(<span class="ot">STATUS</span> <span class="st">&quot;</span><span class="va">${_variableName}</span><span class="st">=</span><span class="va">${${_variableName}}</span><span class="st">&quot;</span>)
 <span class="kw">endforeach</span>()</code></pre></div>
 <h2 id="tips">Tips</h2>
 <p><code>make -C &lt;directory&gt;</code> : Execute the make file from a specific directory.</p>

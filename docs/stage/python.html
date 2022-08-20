@@ -278,6 +278,142 @@ if __name__ == &#39;__main__&#39;:
     main(&#39;port-forward.config&#39;, &#39;error.log&#39;)</code></pre>
 <div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="dt">80 localhost 8080</span>
 <span class="co"># 10020 x.x.x.x 10040</span></code></pre></div>
+<h3 id="python---email-fetcher">Python - Email Fetcher</h3>
+<pre class="python3"><code># Fetch Emails
+# pip install imap-tools
+from imap_tools import MailBox
+def Fetch_Email(user, pwd):
+    mbox = MailBox(&#39;imap.mail.com&#39;).login(user, pwd, &quot;INBOX&quot;)
+    for email in mbox.fetch():
+        print(email.date, email.subject, len(email.text or email.html))
+        
+Fetch_Email(&quot;user&quot;, &quot;pass&quot;)</code></pre>
+<h3 id="python---analyze-stock-market">Python - Analyze Stock Market</h3>
+<pre class="python3"><code># Analyse Stock market
+# pip install yfinance
+import yfinance as yf
+market = yf.Ticker(&quot;MSFT&quot;)
+# Get stockmarket info
+info = market.info
+print(info)
+# Fetch historical data
+historical = market.history(period=&quot;1y&quot;)
+print(historical)
+# get actions
+actions = market.actions
+print(actions)
+# get dividends
+dividends = market.dividends
+print(dividends)
+# get splits
+splits = market.splits
+print(splits)
+# get balance sheet
+balance_sheet = market.balance_sheet
+print(balance_sheet)
+# get market news
+market_news = market.news
+print(market_news)
+# show earnings
+earnings = market.earnings
+print(earnings)
+# get recommendation
+rec = market.recommendation
+print(rec)
+# Get another Ticker
+market1 = yf.Ticker(&quot;AAPL&quot;)
+market2 = yf.Ticker(&quot;TSLA&quot;)
+market3 = yf.Ticker(&quot;GOOG&quot;)
+# Fetch Market data from multiple tickers
+market_data = yf.download(&quot;AAPL&quot;, &quot;GOOG&quot;, start=&quot;2019-01-01&quot;, end=&quot;2019-12-31&quot;)
+print(market_data)</code></pre>
+<h3 id="python---image-size-compressor">Python - Image Size Compressor</h3>
+<pre class="python3"><code># Compress Photo Size
+# pip install pyguetzli
+import pyguetzli
+def Compress(image):
+    img = open(image, &quot;rb&quot;).read()
+    optimized= pyguetzli.process_jpeg_bytes(img, quality=80)
+    output = open(&quot;optimized&quot;, &quot;wb&quot;)
+    output.write(optimized)
+Compress(&quot;test.jpg&quot;)</code></pre>
+<h3 id="python---pysimplegui">Python - PySimpleGui</h3>
+<pre class="python3"><code># pip install PySimpleGUI
+import PySimpleGUI as gui
+layout = []
+# Label Text
+text = gui.Text(&#39;This is PysimpleGui&#39;, size=(30, 1))
+layout.append([text])
+# Button
+button = gui.Button(&#39;Click Me&#39;, target=&#39;_blank&#39;)
+layout.append([button])
+# Input Box
+input_box = gui.Input(key=&#39;-IN-&#39;)
+layout.append([input_box])
+# Browse Folders
+browse_folder = gui.FolderBrowse()
+layout.append([browse_folder])
+# Set Image
+image = gui.Image(&#39;img.png&#39;)
+layout.append([image])
+# Radio Buttons
+radio = gui.Radio(&#39;Radio&#39;, [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;])
+layout.append([radio])
+# Check Boxes
+check = gui.Checkbox(&#39;Check&#39;, default=True)
+layout.append([check])
+ 
+# Set window
+win = gui.Window(&#39;Window Title&#39;, layout, auto_size_text=True)
+                                                
+event, values = win.read()
+win.close()</code></pre>
+<h3 id="python---merge-csv-files">Python - Merge CSV Files</h3>
+<pre class="python3"><code># Merge CSV Files
+# pip install pandas
+from pandas import read_csv
+import pandas
+import os
+def Merge_Csv(files):
+    df = pandas.concat(map(read_csv, files), ignore_index=True)
+    df.to_csv(&quot;merged.csv&quot;, index=False)
+    print(&quot;CSV has Been Merged...&quot;)
+Merge_Csv([&quot;movies.csv&quot;, &quot;movies2.csv&quot;, &quot;movies3.csv&quot;])</code></pre>
+<h3 id="python---automate-databases">Python - Automate Databases</h3>
+<pre class="python3"><code># Database with Python 
+# pip install mysql-connector-python
+import mysql.connector
+# Connect to yout SQL database
+sql = mysql.connector.connect(
+    host=&quot;Your host&quot;,
+    user=&quot;username&quot;,
+    passwd=&quot;&quot;,
+    database=&quot;mydatabase_1&quot;
+)
+# create table
+cursor = sql.cursor()
+cursor.execute(&quot;CREATE TABLE movies (title VARCHAR(255), rating VARCHAR(255))&quot;)
+# insert data
+query = &quot;INSERT INTO movies (title, rating) VALUES (%s, %s)&quot;
+value = (&quot;The Matrix&quot;, &quot;7.5&quot;)
+cursor.execute(query, value)
+# Select Data
+cursor.execute(&quot;SELECT * FROM movies&quot;)
+myresult = cursor.fetchall()
+for x in myresult:
+    print(x)
+    
+# Delete Data
+cursor.execute(&quot;DELETE FROM movies WHERE title = &#39;The Matrix&#39;&quot;)
+# Get Specific Data
+cursor.execute(&quot;SELECT * FROM movies WHERE title = &#39;The Matrix&#39;&quot;)
+myresult = cursor.fetchall()
+# Update Data
+cursor.execute(&quot;UPDATE movies SET rating = &#39;8&#39; WHERE title = &#39;The Matrix&#39;&quot;)
+# Delete Table
+cursor.execute(&quot;DROP TABLE movies&quot;)
+# Close Connection
+sql.close()</code></pre>
 <h3 id="python---classes">Python - Classes</h3>
 <h4 id="definition">Definition</h4>
 <pre class="python3"><code>class Dog:
@@ -576,5 +712,189 @@ python -c &quot;import package_name; print(package_name.__version__)&quot;
 
 # Find specific package location
 python -c &quot;import package_name; print(package_name.__file__)&quot;</code></pre>
+<h3 id="python---photo-editing">Python - Photo Editing</h3>
+<pre class="python3"><code># Photo Editing 
+# pip install pillow
+from PIL import Image, ImageFilter
+# Resize an image
+img = Image.open(&#39;img.jpg&#39;)
+resize = img.resize((200, 300))
+resize.save(&#39;output.jpg&#39;)
+# Blur Image
+img = Image.open(&#39;img.jpg&#39;)
+blur = img.filter(ImageFilter.BLUR)
+blur.save(&#39;output.jpg&#39;)
+# Sharp Image
+img = Image.open(&#39;img.jpg&#39;)
+sharp = img.filter(ImageFilter.SHARPEN)
+sharp.save(&#39;output.jpg&#39;)
+# Crop Image
+img = Image.open(&#39;img.jpg&#39;)
+crop = img.crop((0, 0, 50, 50))
+crop.save(&#39;output.jpg&#39;)
+# Rotate Image
+img = Image.open(&#39;img.jpg&#39;)
+rotate = img.rotate(90)
+rotate.save(&#39;output.jpg&#39;)
+# Flip Image
+img = Image.open(&#39;img.jpg&#39;)
+flip = img.transpose(Image.FLIP_LEFT_RIGHT)
+flip.save(&#39;output.jpg&#39;)
+# Transpose Image
+img = Image.open(&#39;img.jpg&#39;)
+transpose = img.transpose(Image.TRANSPOSE)
+transpose.save(&#39;output.jpg&#39;)
+# Convert Image to GreyScale
+img = Image.open(&#39;img.jpg&#39;)
+convert = img.convert(&#39;L&#39;)
+convert.save(&#39;output.jpg&#39;)</code></pre>
+<h3 id="python---read-excel">Python - Read Excel</h3>
+<pre class="python3"><code># Read Excel
+# pip install pandas
+import pandas as pd
+df = pd.read_excel(&#39;test.xlsx&#39;, sheet_name=&#39;Sheet1&#39;)
+# Read Columns
+name = df[&#39;Name&#39;].to_list()
+Id  = df[&#39;Id&#39;].to_list()
+print(name) # [&quot;haider&quot;, &quot;Dustin, &quot;Tadashi&quot;]
+print(Id) # [245, 552, 892]</code></pre>
+<h3 id="python---automate-win-mac-and-linux">Python - Automate Win, Mac and Linux</h3>
+<pre class="python3"><code># Automate Win, Mac and Linux
+# pip install PyAutoGUI
+import pyautogui as py
+# Mouse Movements
+py.moveTo(100, 100)
+py.moveTo(200, 200, duration=1)
+py.click(100, 100)
+py.doubleClick(200, 200)
+# Keyboard Inputs
+py.write(&#39;Hello World!&#39;, interval=0.25)
+py.press(&#39;enter&#39;)
+py.hotkey(&#39;ctrl&#39;, &#39;c&#39;)
+py.keyDown(&#39;shift&#39;)
+py.keyUp(&#39;shift&#39;)
+# Screen Automation
+img = py.screenshot(&#39;screenshot.jpg&#39;)
+img.save(&#39;screenshot.jpg&#39;)
+loc = py.locationsOnScreen(&#39;icon.jpg&#39;)
+print(loc)</code></pre>
+<h3 id="python---grammar-checker">Python - Grammar Checker</h3>
+<pre class="python3"><code># Grammar Checker in Python
+# pip install gingerit
+from gingerit.gingerit import GingerIt
+text = &quot;Welcm Progammer to Python&quot;
+Grammer = GingerIt()
+Correction = Grammer.parse(text)
+print(Correction[&quot;result&quot;]) # Welcome, Programmer to Python
+print(Correction[&#39;corrections&#39;])</code></pre>
+<h3 id="python---spell-checker">Python - Spell Checker</h3>
+<pre class="python3"><code># Spell Checker in Python 
+# pip install pyspellchecker
+from spellchecker import SpellChecker as spell
+Words = spell.unknown([&#39;Python&#39;  , &#39;is&#39; , &#39;a&#39; , &#39;good&#39; , &#39;lantyguage&#39;])
+for w in Words:
+    print(spell.correction(w)) #language
+    print(spell.candidates(w)) #{ language }</code></pre>
+<h3 id="python---gui-window">Python - GUI (Window)</h3>
+<pre class="python3"><code># Python GUI
+# pip install PyQt6
+import sys
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox, QLabel, QLineEdit
+def Application():
+app = QApplication(sys.argv)
+    win = QWidget()
+    win.resize(300, 300)
+    win.move(200, 200)
+    win.setWindowTitle(&#39;Medium Article&#39;)
+# Create Buttons
+    btn = QPushButton(&#39;Quit&#39;, win)
+    
+    # Message Box
+    QMessageBox.question(win, &#39;Message&#39;,&quot;Are you sure to quit?&quot;)
+# Label Text
+    lbl = QLabel(&#39;Hello World&#39;, win)
+# Button Clicked
+    btn.clicked.connect(lambda: QMessageBox.question(win, &#39;Message&#39;,&quot;Are you sure to quit?&quot;))
+# Entry Box
+    entry = QLineEdit(win)
+win.show()
+    sys.exit(app.exec())
+if __name__ == &#39;__main__&#39;:
+    Application()</code></pre>
+<h3 id="python---http-client">Python - HTTP Client</h3>
+<pre class="python3"><code># Request Api 
+# pip install requests
+import requests
+# Get Data
+headers = {
+    &quot;Connection&quot;: &quot;keep-alive&quot;,
+    &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36&quot;
+}
+r = requests.get(&#39;https://api.example.com&#39;, headers=headers)
+print(r.status_code) # 200
+print(r.headers[&#39;content-type&#39;])
+print(r.content) # HTML Data
+# Login Site
+payload = {&#39;username&#39;: &#39;USERNAME&#39;, &#39;userpass&#39;: &#39;PASSWORD&#39;}
+r = requests.post(&#39;https://example.com/login&#39;, data=payload)
+print(r.status_code) # 200</code></pre>
+<h3 id="python---ai-convert-speech-to-text">Python - AI Convert Speech to Text</h3>
+<pre class="python3"><code># Convert Speech to Text
+#pip install SpeechRecognition
+import speech_recognition as sr
+def SpeechToText():
+Ai = sr.Recognizer()
+    with sr.Microphone() as source:
+        listening = Ai.listen(source, phrase_time_limit = 6)  
+    try:
+        command = Ai.recognize_google(listening).lower()
+        print(&quot;You said: &quot; + command)
+        
+    except sr.UnknownValueError:
+        print(&quot;Sorry Can&#39;t understand, Try again&quot;)
+        SpeechToText()</code></pre>
+<h3 id="python---video-editing">Python - Video Editing</h3>
+<pre class="python3"><code># Video Editing
+# pip install moviepy
+from moviepy.editor import *
+# Triming the video
+clip_1 = VideoFileClip(&quot;sample_video.mp4&quot;).subclip(40, 50)
+clip_2 = VideoFileClip(&quot;sample_video.mp4&quot;).subclip(68, 91)
+final_clip = concatenate_videoclips([clip_1, clip_2])
+final_clip.write_videofile(&quot;output.mp4&quot;)
+# Adding VFX
+clip_1 = (VideoFileClip(&quot;sample_video.mp4&quot;).subclip(40, 50).fx(vfx.colorx, 1.2).fx(vfx.lum_contrast, 0, 30, 100))
+clip_2 = (VideoFileClip(&quot;sample_video.mp4&quot;).subclip(68, 91).fx(vfx.invert_colors))
+final_clip = concatenate_videoclips([clip_1, clip_2])
+final_clip.write_videofile(&quot;output.mp4&quot;)
+# Add Audio to Video
+clip = VideoFileClip(&quot;sample_video.mp4&quot;)
+# Add audio to only first 5 sec
+clip = clip.subclip(0, 5)
+audioclip = AudioFileClip(&quot;audio.mp3&quot;).subclip(0, 5)
+videoclip = clip.set_audio(audioclip)
+final_clip.write_videofile(&quot;output.mp4&quot;)
+</code></pre>
+<h3 id="python---watermark-pdf-files">Python - Watermark PDF files</h3>
+<pre class="python3"><code># Watermark PDF files
+# pip install PyPDF4
+import PyPDF4
+def Watermark():
+    pdf_file= &quot;test.pdf&quot;
+    output_pdf= &quot;output.pdf&quot;
+    watermark= &quot;watermark.pdf&quot;
+watermark_read = PyPDF4.PdfFileReader(watermark)
+    watermark_page = watermark_read.getPage(0)
+    pdf_reader = PyPDF4.PdfFileReader(pdf_file)
+    pdf_writer = PyPDF4.PdfFileWriter()
+    for page in range(pdf_reader.getNumPages()):
+page = pdf_reader.getPage(page)
+        page.mergePage(watermark_page)
+        pdf_writer.addPage(page)
+    
+    # writing output pdf file
+    with open(output_pdf, &#39;wb&#39;) as pdf:
+        pdf_writer.write(pdf)
+Watermark()</code></pre>
 </body>
 </html>

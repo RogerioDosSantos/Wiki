@@ -66,7 +66,7 @@
 <p><code>&quot;qp</code> : Paste the macro script</p>
 <p><code>shift+J</code> : Concatenate (Join) 02 lines</p>
 <p><code>g]</code> : Show the list of tags</p>
-<p><code>ctrl+v</code> : Go to Visual Block mode</p>
+<p><code>ctrl+v</code> : Go to Visual Block mode (Select only a block of items. E.g.: Only first column)</p>
 <h2 id="commands---normal-mode">Commands - Normal Mode</h2>
 <p><code>:0r &lt;file path&gt;</code> : Read the file and add in your current file</p>
 <p><code>!&lt;command&gt;</code>: Call a shell command. You need to hit enter to return.</p>
@@ -244,7 +244,10 @@
 :s/\%V&lt;search_text&gt;/&lt;replace_text&gt;/g
 
 # Replace all &#39;\&#39; with &#39;\\&#39;
-:s/\%V\\/\\\\/</code></pre>
+:s/\%V\\/\\\\/
+
+# Change fast notes (&quot;--&quot;) to markdown notes &quot;&lt;spaces&gt;-&quot;
+s/--/  -/g</code></pre>
 <h3 id="redraw-all-vim-screen">Redraw all Vim screen</h3>
 <pre class="vim"><code>:redraw!</code></pre>
 <h3 id="jump-keys">Jump keys</h3>
@@ -265,5 +268,19 @@
 <p><code>=G</code>: Reindent from the current cursor</p>
 <p><code>gg=G</code>: Reindent all file</p>
 <p><code>==</code>: Reindent the current line</p>
+<h3 id="vim---delete-all-lines-that-contain-string">Vim - Delete all lines that contain string</h3>
+<p><code>:g/&lt;pattern&gt;/d</code></p>
+<h3 id="search-patterns">Search Patterns</h3>
+<p><code>\&lt;p_</code> : Search the word starting with &quot;p_&quot;</p>
+<h3 id="edit-macros-that-are-in-a-buffer">Edit Macros that are in a buffer</h3>
+<p>Let say the macro is on the key %a%:</p>
+<ul>
+<li>Go to a blank line or open a new buffer (<code>:new</code>).</li>
+<li>Type <code>&quot;ap</code> to paste the contents of the register.</li>
+<li>Enter insert mode and edit the text as required.</li>
+<li>Press <code>Esc</code> to return to normal mode.</li>
+<li>Type <code>&quot;ayy</code> to yank the modified macro into the a register.</li>
+<li>Type <code>dd</code> to delete the pasted register from the file you are editing.</li>
+</ul>
 </body>
 </html>

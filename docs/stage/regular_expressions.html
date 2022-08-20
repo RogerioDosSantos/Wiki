@@ -95,22 +95,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2 id="how-to">How-to</h2>
 <h3 id="regular-expressions---replace-includes">Regular Expressions - Replace includes</h3>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// Search Expression</span>
-<span class="ot">#include &quot;\.\..*\/(my_project\/.*)&quot; </span>
+<span class="pp">#include </span><span class="im">&quot;\.\..*\/(my_project\/.*)&quot;</span><span class="pp"> </span>
 
 <span class="co">// Replace Expression</span>
-<span class="ot">#include &lt;$1&gt; </span>
+<span class="pp">#include </span><span class="im">&lt;$1&gt;</span><span class="pp"> </span>
 
 <span class="co">// Will find</span>
-<span class="ot">#include &quot;../../my_project.h&quot;</span>
-<span class="ot">#include &quot;../my_project.h&quot;</span>
-<span class="ot">#include &quot;../my_project/sub_project.h&quot;</span>
-<span class="ot">#include &quot;../my_project/sub_project.hpp&quot;</span>
+<span class="pp">#include </span><span class="im">&quot;../../my_project.h&quot;</span>
+<span class="pp">#include </span><span class="im">&quot;../my_project.h&quot;</span>
+<span class="pp">#include </span><span class="im">&quot;../my_project/sub_project.h&quot;</span>
+<span class="pp">#include </span><span class="im">&quot;../my_project/sub_project.hpp&quot;</span>
 
 <span class="co">// And replace to</span>
-<span class="ot">#include &lt;my_project.h&gt;</span>
-<span class="ot">#include &lt;my_project.h&gt;</span>
-<span class="ot">#include &lt;my_project/sub_project.h&gt;</span>
-<span class="ot">#include &lt;my_project/sub_project.hpp&gt;</span></code></pre></div>
+<span class="pp">#include </span><span class="im">&lt;my_project.h&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;my_project.h&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;my_project/sub_project.h&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;my_project/sub_project.hpp&gt;</span></code></pre></div>
 <p><strong>Note</strong>: Parenthesis <code>(  )</code> indicate group. Everything inside it will be available in the variable <code>$1</code></p>
 </body>
 </html>

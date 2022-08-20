@@ -57,91 +57,91 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3 id="docx-to-.md">.docx to .md</h3>
 <ul>
 <li><p>Pandoc:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -f docx -t markdown_mmd ./t1.docx --output=t1.md --atx-headers --wrap=none --toc --extract-media=<span class="st">&quot;resource&quot;</span></code></pre></div></li>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -f docx -t markdown_mmd ./t1.docx --output=t1.md --atx-headers --wrap=none --toc --extract-media=<span class="st">&quot;resource&quot;</span></code></pre></div></li>
 </ul>
 <h3 id="md-to-.html">.md to .html</h3>
 <p>HTML5:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t html5 -c ../resources/style.css -o doc.html</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t html5 -c ../resources/style.css -o doc.html</code></pre></div>
 <p>HTML5 with index:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t html5 --toc -c ../resources/style.css -o doc.html</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t html5 --toc -c ../resources/style.css -o doc.html</code></pre></div>
 <p>Slide Show (Slidy):</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t slidy -s --webtex --base-header-level=1 -i -o doc.html</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t slidy -s --webtex --base-header-level=1 -i -o doc.html</code></pre></div>
 <p>Slide Show (DZSlides):</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t dzslides -o doc.html</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t dzslides -o doc.html</code></pre></div>
 <p>Slide Show (RevealJS):</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t revealjs -o doc.html</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t revealjs -o doc.html</code></pre></div>
 <p>Slide Show (Slideous):</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t slideous -o doc.html</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t slideous -o doc.html</code></pre></div>
 <p>Slide Show (S5):</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t s5 -o doc.html</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t s5 -o doc.html</code></pre></div>
 <p>Slide Show (Haddock):</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t haddock -o doc.html</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t haddock -o doc.html</code></pre></div>
 <h3 id="md-to-.docx">.md to .docx</h3>
 <p>Word with index:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">echo</span> pandoc -s doc.md -t docx --toc -o doc.docx</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">echo</span> pandoc -s doc.md -t docx --toc -o doc.docx</code></pre></div>
 <p>Word without index:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t rtf -o doc.rtf</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t rtf -o doc.rtf</code></pre></div>
 <h3 id="md-to-.pdf">.md to .pdf</h3>
 <p>PDF without index:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t --latex-engine=xelatex -o doc.pdf</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t --latex-engine=xelatex -o doc.pdf</code></pre></div>
 <p>PDF with index:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t --latex-engine=xelatex --toc -o doc.pdf</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t --latex-engine=xelatex --toc -o doc.pdf</code></pre></div>
 <h3 id="md-to-.txt">.md to .txt</h3>
 <ul>
 <li>det - Plain Text: <code>pandoc -s doc.md -t plain -o doc.txt</code></li>
 <li><p>detm - Linux Manual: <code>pandoc -s doc.md -t man -o doc.txt</code> <a href="http://asciidoc.org/">AsciiDoc</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t asciidoc -o doc.txt</code></pre></div></li>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t asciidoc -o doc.txt</code></pre></div></li>
 </ul>
 <p><a href="https://www.latex-project.org/">LaTex</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t latex -o doc.txt</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t latex -o doc.txt</code></pre></div>
 <p><a href="http://wiki.contextgarden.net/What_is_ConTeXt">ConTeXt</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t context -o doc.txt</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t context -o doc.txt</code></pre></div>
 <p><a href="https://orgmode.org/">Org</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t org -o doc.org</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t org -o doc.org</code></pre></div>
 <p><a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t rst -o doc.text</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t rst -o doc.text</code></pre></div>
 <p><a href="https://www.gnu.org/software/texinfo/">Texinfo - The GNU Documentation System</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t texinfo -o doc.texi</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t texinfo -o doc.texi</code></pre></div>
 <p><a href="https://www.ntcolorado.com/">Native</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t native -o doc.txt</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t native -o doc.txt</code></pre></div>
 <p><a href="https://txstyle.org/">TxStyle</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t textile -o doc.textile</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t textile -o doc.textile</code></pre></div>
 <p><a href="https://www.mediawiki.org">MediaWiki</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t mediawiki -o doc.wiki</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t mediawiki -o doc.wiki</code></pre></div>
 <p><a href="https://www.dokuwiki.org">DokuWiki</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t dokuwiki -o doc.wiki</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t dokuwiki -o doc.wiki</code></pre></div>
 <h3 id="md-to-.xml">.md to .xml</h3>
 <p><a href="https://en.wikipedia.org/wiki/OpenDocument">OpenDocument</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t opendocument -o doc.xml</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t opendocument -o doc.xml</code></pre></div>
 <p><a href="https://en.wikipedia.org/wiki/OPML">OPML</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t opml -o doc.xml</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t opml -o doc.xml</code></pre></div>
 <p><a href="http://docbook.org/">DocBook</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t docbook -o doc.xml</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t docbook -o doc.xml</code></pre></div>
 <p><a href="https://en.wikipedia.org/wiki/Adobe_InCopy">Adobe InCopy</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t icml -o doc.icml</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t icml -o doc.icml</code></pre></div>
 <h3 id="md-to-.md">.md to .md</h3>
 <p>Regular Markdown:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t markdown -o doc.md</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t markdown -o doc.md</code></pre></div>
 <p>Github:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t markdown_github -o doc.html</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t markdown_github -o doc.html</code></pre></div>
 <p><a href="http://fletcherpenney.net/multimarkdown/">MultiMarkdown</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t markdown_mmd -o doc.md</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t markdown_mmd -o doc.md</code></pre></div>
 <p><a href="https://michelf.ca/projects/php-markdown/extra/">php Markdown Extra</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t markdown_phpextra  -o doc.md</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t markdown_phpextra  -o doc.md</code></pre></div>
 <p><a href="http://commonmark.org/">CommonMark</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t commonmark -o doc.md</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t commonmark -o doc.md</code></pre></div>
 <p><a href="http://spec.commonmark.org/0.28/">CommonMark</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t markdown_strict -o doc.md</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t markdown_strict -o doc.md</code></pre></div>
 <p>Github README:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s source.md -t markdown_github -o ../../README.md</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s source.md -t markdown_github -o ../../README.md</code></pre></div>
 <h3 id="md-to-.epub-ebook">.md to .epub (Ebook)</h3>
 <p><a href="http://idpf.org/epub/30">EPUB 3.0</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t epub3 -o doc.epub</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t epub3 -o doc.epub</code></pre></div>
 <p><a href="http://idpf.org/epub">EPUB</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pandoc</span> -s doc.md -t epub -o doc.epub</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> -s doc.md -t epub -o doc.epub</code></pre></div>
 <h2 id="batch-conversions">Batch conversions</h2>
 <h3 id="export-all-files-from-a-folder-to-html">Export all files from a folder to html</h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">find</span> . -name <span class="st">&#39;*.md&#39;</span> -exec basename <span class="dt">{}</span> .md <span class="dt">\;</span> <span class="kw">|</span> <span class="kw">xargs</span> -n1 -I XXX pandoc -s XXX.md -t html5 -c ../resources/style.css -o ../stage/XXX.html</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">find</span> . -name <span class="st">&#39;*.md&#39;</span> -exec basename <span class="dt">{}</span> .md <span class="dt">\;</span> <span class="kw">|</span> <span class="fu">xargs</span> -n1 -I XXX pandoc -s XXX.md -t html5 -c ../resources/style.css -o ../stage/XXX.html</code></pre></div>
 <h2 id="vim-custom-mapped-key">Vim Custom Mapped Key</h2>
 <p><code>&lt;space&gt; + deh</code>: Convert from markdown to HTML5</p>
 <p><code>&lt;space&gt; + deht</code>: Convert from markdown to HTML5 with index</p>

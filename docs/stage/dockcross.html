@@ -6,6 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="../resources/style.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -22,12 +59,12 @@
 <p>Where <code>CROSS_COMPILER_IMAGE_NAME</code> is the name of the cross-compiler toolchain Docker instance, e.g. <code>dockcross/linux-armv7</code>.</p>
 <p>Only 64-bit images are provided; a 64-bit host system is required.</p>
 <h2 id="usage">Usage</h2>
-<pre class="sh"><code>cd ~/src/dockcross
-docker run --rm dockcross/linux-armv7 &gt; ./dockcross-linux-armv7
-chmod +x ./dockcross-linux-armv7
-./dockcross-linux-armv7 bash -c &#39;$CC test/C/hello.c -o hello_arm&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="bu">cd</span> ~/src/dockcross
+<span class="ex">docker</span> run --rm dockcross/linux-armv7 <span class="op">&gt;</span> ./dockcross-linux-armv7
+<span class="fu">chmod</span> +x ./dockcross-linux-armv7
+<span class="ex">./dockcross-linux-armv7</span> bash -c <span class="st">&#39;$CC test/C/hello.c -o hello_arm&#39;</span></code></pre></div>
 <p>Note how invoking any toolchain command (make, gcc, etc.) is just a matter of prepending the <strong>dockcross</strong> script on the commandline::</p>
-<pre class="sh"><code>  ./dockcross-linux-armv7 [command] [args...]</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">  <span class="ex">./dockcross-linux-armv7</span> [command] [args...]</code></pre></div>
 <p>The dockcross script will execute the given command-line inside the container, along with all arguments passed after the command. Commands that evaluate environmental variables in the image, like <code>$CC</code> above, should be executed in <code>bash -c</code>. The present working directory is mounted within the image, which can be used to make source code available in the Docker container.</p>
 </body>
 </html>

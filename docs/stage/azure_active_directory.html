@@ -30,6 +30,27 @@ az account set --subscription=&quot;${azure_subscription_id}&quot;
 az ad sp create-for-rbac --role=&quot;Contributor&quot; --scopes=&quot;/subscriptions/${azure_subscription_id}&quot;
 echo &quot;-- Login on Azure using Service Principal&quot; 
 az login --service-principal -u &quot;${azure_client_id}&quot; -p &quot;${azure_client_secret}&quot; --tenant &quot;${azure_tenant_id}&quot; </code></pre>
+<h3 id="create-application-registration-from-the-portal">Create Application Registration (From the Portal)</h3>
+<ul>
+<li>Go to <em>Azure Portal</em> and go to <em>Azure Active Directory</em></li>
+<li>On the left menu click in <em>App Registrations</em></li>
+<li>Click on <em>New Registration</em> on the top menu</li>
+<li>Fill the required fields and click in the <em>Register</em> button</li>
+</ul>
+<h3 id="create-application-secret-from-the-portal">Create Application Secret (From the Portal)</h3>
+<ul>
+<li>Go to <em>Azure Portal</em> and go to <em>Azure Active Directory</em></li>
+<li>On the left menu click in <em>App Registrations</em></li>
+<li>Create an <em>Application Registration</em> if you do not have one (Create Application Registration (From the Portal))</li>
+<li>Select your <em>Application Registration</em></li>
+<li>On the left menu click in <em>Certificates &amp; secrets</em></li>
+<li>Select the <em>Client secrets</em> tab</li>
+<li>Click in the <em>New client secret</em></li>
+<li>Add a <em>Description</em> and select when the <em>secret</em> will expire</li>
+<li>Press <em>Add</em> button</li>
+<li>Copy the <em>Secret value</em> and save it in a secure place.</li>
+<li><em>Note</em>: You will not be able to retrieve this value again</li>
+</ul>
 <h4 id="references">References</h4>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=h5bxhZRF4mI">Active Directory B2C Introduction Video</a></li>
