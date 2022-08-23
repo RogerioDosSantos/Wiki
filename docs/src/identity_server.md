@@ -175,4 +175,5 @@ The certificate can be found using `certlm` in:
 - [Microsoft identity platform - Web API documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/index-web-api?view=aspnetcore-6.0)
 - [Microsoft identity platform - Scenario: Desktop app that calls web APIs](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-desktop-overview)
 - [Microsoft identity platform - Scenario: Protected web API](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-desktop-overview)
+- [Microsoft Identity Platform Guide - Video](https://www.youtube.com/watch?v=LRoc-na27l0)
 
