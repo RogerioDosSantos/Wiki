@@ -1044,3 +1044,45 @@ page = pdf_reader.getPage(page)
         pdf_writer.write(pdf)
 Watermark()
 ```
+
+### Remove background from image 
+
+```python3
+# Get Your API: https://www.remove.bg/tools-api
+# pip install remove-bg-api
+from remove_bg_api import RemoveBg
+# Remove from File
+bg = RemoveBg("Your API")  
+img = bg.remove_bg_file(input_path="img.jpg", out_path="out.jpg")
+# Remove from URL
+img_url = "https://www.example.com/img"
+img = bg.remove_background_from_img_url(input_url=img_url, out_path="out.jpg")
+```
+### URL Shortener
+
+```python3
+# Get your API: https://dev.bitly.com/
+# pip install bitly_api
+import bitly_api
+api_key = ""
+req = bitly_api.Connection(api_key)
+url = "https://medium.com/"
+# Get the short url
+short_url = req.shorten(url)
+print(short_url)
+```
+
+### Calls and SMS
+
+```python3
+# Get your API
+# pip install twilio
+import twilio.rest
+acc = "API Key"
+token = "API Token"
+cli = twilio.rest.Client(acc, token)
+# Send SMS
+msg = cli.messages.create(to="+xxxxxxxxxx", from_="+xxxxxxxxxx", body="Medium")
+# Do Programatic Calls
+cli.calls.create(to="+xxxxxxxxxx", from_="+xxxxxxxxxx", twiml='<Response><Say> Medium </Say></Response>',)
+```
