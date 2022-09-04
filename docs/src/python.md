@@ -1086,3 +1086,62 @@ msg = cli.messages.create(to="+xxxxxxxxxx", from_="+xxxxxxxxxx", body="Medium")
 # Do Programatic Calls
 cli.calls.create(to="+xxxxxxxxxx", from_="+xxxxxxxxxx", twiml='<Response><Say> Medium </Say></Response>',)
 ```
+
+### Fix Grammeraticall Errors
+
+```python3
+# pip install gingerit
+import gingerit.gingerit as grammer
+txt = "I'm a Pogrammer, and I live to code"
+fix = grammer.GingerIt()
+correction = fix.parse(txt)
+print("Original: " + data)
+print("Corrected: " + correction["result"])
+print("corrections: " + str(correction["corrections"]))
+```
+
+### Compress Files
+
+```python3
+import zipfile as ziplib                                    
+# Compress large file
+def Compress_large_file(filename):
+    # zip with compression level 9
+    with ziplib.ZipFile(filename, 'w', ziplib.ZIP_DEFLATED) as zf:
+        zf.write(filename)
+    
+# Decompress large file
+def Decompress_large_file(filename):
+    with ziplib.ZipFile(filename, 'r') as z:
+        z.extractall()
+```
+
+### Create Bacodes
+
+```python3
+# pip install python-barcode
+import barcode as code
+from barcode.writer import ImageWriter
+# Get all formats
+print(code.PROVIDED_BARCODES)
+number = "0123401234567"
+bar_format = code.get_barcode_class("EAN13")
+barcode = bar_format(number, writer=ImageWriter())
+barcode.save("barcode.png")
+```
+
+### Random Password Generator
+
+```python3
+import random
+import string
+def random_password(length):
+    password = ''
+    char =  string.ascii_letters
+    for i in range(length):
+        password += random.choice(char + string.digits)
+    return password
+print(random_password(10))
+print(random_password(7))
+```
+
