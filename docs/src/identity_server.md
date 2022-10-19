@@ -177,4 +177,5 @@ The certificate can be found using `certlm` in:
 - [Microsoft identity platform - Scenario: Protected web API](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-desktop-overview)
 - [Microsoft Identity Platform Guide - Video](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [Secure a .NET Core API with Bearer Authentication](https://www.youtube.com/watch?v=3PyUjOmuFic)
+- [C# with CSharpFritz - S2 E7 - Introducing Authentication and Authorization with ASP.NET Core](https://www.youtube.com/watch?v=u898_hiWJY0)
 
