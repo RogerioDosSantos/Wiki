@@ -179,4 +179,5 @@ The certificate can be found using `certlm` in:
 - [Secure a .NET Core API with Bearer Authentication](https://www.youtube.com/watch?v=3PyUjOmuFic)
 - [Video - C# with CSharpFritz - S2 E7 - Introducing Authentication and Authorization with ASP.NET Core](https://www.youtube.com/watch?v=u898_hiWJY0)
 - [Video - Application roles and security groups on the Microsoft Azure identity platform (Azure Active Directory (AAD))](https://www.youtube.com/watch?v=-BK2iBDrmNo)
+- [Video - JWT (JSON Web Token) ASP.NET Core 3.1 Web API Authentication with private public Certificate](https://www.youtube.com/watch?v=08Qq4BDBVkg)
 
