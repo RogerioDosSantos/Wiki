@@ -222,6 +222,7 @@
 - [Single Sign-On (SSO)]( ./sso.html )
 - [SCIM]( ./scim.html )
 - [MSAL (Microsoft Authentication Library)]( ./msal.html )
+- [Certificates]( ./certificates.html )
 
 ## Network 
 

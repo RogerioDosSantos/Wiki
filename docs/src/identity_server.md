@@ -145,15 +145,6 @@ It is basically OAuth2 with extensibility to also request an ID token (JWT)
 
 ## How-to 
 
-### Create Self-Signed Certificate using Powershell 
-
-```ps1
-$cert = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname <auto_signed_certificate_dns>
-```
-The certificate can be found using `certlm` in:
-
-![](https://i.vgy.me/9hobFz.png)
-
 ## Examples
 
 - [Identity Server Client](https://github.com/RogerioDosSantos/example_dotnet_identity_server_client)
@@ -161,15 +152,13 @@ The certificate can be found using `certlm` in:
 ## References
 
 - [OAuth 2.0 and OpenID Connect (in plain English) Video](https://www.youtube.com/watch?v=996OiexHze0)
-
 - [IdentityServer3 Example](https://github.com/IdentityServer/IdentityServer3.Samples.git)
 - [Introduction to IdentityServer for ASP.NET core](https://www.youtube.com/watch?v=J5p72gTdx_M)
 - [Azure Identity](https://docs.microsoft.com/en-us/azure/security/azure-security-identity-management-best-practices)
-
 - [angular-oauth2-oidc - Support for OAuth 2 and OpenId Connect (OIDC) in Angular](https://github.com/manfredsteyer/angular-oauth2-oidc)
-
 - [OAuth2 Debbugger](https://oauthdebugger.com/)
-
 - [OpenID Connect Debbuger](https://oidcdebugger.com/)
-
+- [Azure Managed Service Identity And Local Development](https://www.rahulpnath.com/blog/azure-managed-service-identity-and-local-development/)
+- [Authenticating with Azure Key Vault Using Managed Service Identity](https://www.rahulpnath.com/blog/authenticating-with-azure-key-vault-using-managed-service-identity/)
+- [DefaultAzureCredential Class](https://learn.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet)
 
