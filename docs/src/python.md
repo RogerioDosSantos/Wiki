@@ -1044,3 +1044,104 @@ page = pdf_reader.getPage(page)
         pdf_writer.write(pdf)
 Watermark()
 ```
+
+### Remove background from image 
+
+```python3
+# Get Your API: https://www.remove.bg/tools-api
+# pip install remove-bg-api
+from remove_bg_api import RemoveBg
+# Remove from File
+bg = RemoveBg("Your API")  
+img = bg.remove_bg_file(input_path="img.jpg", out_path="out.jpg")
+# Remove from URL
+img_url = "https://www.example.com/img"
+img = bg.remove_background_from_img_url(input_url=img_url, out_path="out.jpg")
+```
+### URL Shortener
+
+```python3
+# Get your API: https://dev.bitly.com/
+# pip install bitly_api
+import bitly_api
+api_key = ""
+req = bitly_api.Connection(api_key)
+url = "https://medium.com/"
+# Get the short url
+short_url = req.shorten(url)
+print(short_url)
+```
+
+### Calls and SMS
+
+```python3
+# Get your API
+# pip install twilio
+import twilio.rest
+acc = "API Key"
+token = "API Token"
+cli = twilio.rest.Client(acc, token)
+# Send SMS
+msg = cli.messages.create(to="+xxxxxxxxxx", from_="+xxxxxxxxxx", body="Medium")
+# Do Programatic Calls
+cli.calls.create(to="+xxxxxxxxxx", from_="+xxxxxxxxxx", twiml='<Response><Say> Medium </Say></Response>',)
+```
+
+### Fix Grammeraticall Errors
+
+```python3
+# pip install gingerit
+import gingerit.gingerit as grammer
+txt = "I'm a Pogrammer, and I live to code"
+fix = grammer.GingerIt()
+correction = fix.parse(txt)
+print("Original: " + data)
+print("Corrected: " + correction["result"])
+print("corrections: " + str(correction["corrections"]))
+```
+
+### Compress Files
+
+```python3
+import zipfile as ziplib                                    
+# Compress large file
+def Compress_large_file(filename):
+    # zip with compression level 9
+    with ziplib.ZipFile(filename, 'w', ziplib.ZIP_DEFLATED) as zf:
+        zf.write(filename)
+    
+# Decompress large file
+def Decompress_large_file(filename):
+    with ziplib.ZipFile(filename, 'r') as z:
+        z.extractall()
+```
+
+### Create Bacodes
+
+```python3
+# pip install python-barcode
+import barcode as code
+from barcode.writer import ImageWriter
+# Get all formats
+print(code.PROVIDED_BARCODES)
+number = "0123401234567"
+bar_format = code.get_barcode_class("EAN13")
+barcode = bar_format(number, writer=ImageWriter())
+barcode.save("barcode.png")
+```
+
+### Random Password Generator
+
+```python3
+import random
+import string
+def random_password(length):
+    password = ''
+    char =  string.ascii_letters
+    for i in range(length):
+        password += random.choice(char + string.digits)
+    return password
+print(random_password(10))
+print(random_password(7))
+```
+

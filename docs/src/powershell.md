@@ -86,6 +86,13 @@ $input = Read-Host 'What is your name? '
 Write-Output "Hello $input!"
 ```
 
+#### Reboot a machine remotelly 
+
+```ps1
+net use \\<machine_name> /u:<domain>\<user>
+shutdown /r /f /m \\<machine_name> -t 0
+```
+
 #### Connect to a remote machine (Remote PowerShell Session)
 
 Run Powershell elevated on the local machine.
