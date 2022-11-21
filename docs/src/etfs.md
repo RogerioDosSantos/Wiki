@@ -13,6 +13,7 @@
 
 ## Bonds 
 
+- [VBTLX](https://investor.vanguard.com/investment-products/mutual-funds/profile/vbtlx) : Vanguard Total Bond Market Index Fund Admiral Shares (Expense 0.05%). This fund is designed to provide broad exposure to U.S. investment-grade bonds. Reflecting this goal, the fund invests in U.S. Treasuries and mortgage-backed securities of all maturities (short-, intermediate-, and long-term issues).
 - [BND](https://investor.vanguard.com/etf/profile/BND) : Vanguard Total Bond Market ETF (Expense 0.04%). The Fund seeks to track the performance of a broad, market-weighted bond index. 
 - [VCSH](https://www.etf.com/VCSH) : Vanguard Short-Term Corporate Bond ETF (Expense 0.05%). VCSH tracks a market-weighted index of investment-grade, fixed-rate corporate bonds with maturities between 1 and 5 years.
 - [VTIP](https://investor.vanguard.com/etf/profile/VTIP) : Vanguard Short-Term Inflation-Protected Securities ETF (Expense 0.05%). Seeks to track an index that measures the performance of inflation-protected public obligations of the U.S. Treasury that have a remaining maturity of less than five years. 
