@@ -72,7 +72,7 @@
   - 10%
   - Stock:            VYM ; SCHD 
   - Options:          VUG ; JEPI 
-  - Real State:       VNQ ; SCHH
+  - Real State:       VNQ ; SCHH ; USRT
 - Services:
   - 10%
   - Utilities:        VPU ; FUTY
