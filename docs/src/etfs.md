@@ -54,28 +54,24 @@
 - [SOXX](https://www.etf.com/SOXX) : iShares PHLX Semiconductor ETF. SOXX tracks a modified market-cap-weighted index of US-listed semiconductor companies.
 
 ## Portfolio
-
-- Stocks:
-  - 60%
+- ETF Companies:          Vanguard ; Fidelity ; IShares
+- Stocks (60%):
   - S&P 500:              VOO ; FXAIX
   - Total:                VTI ; FZROX
   - Total International:  VXUS ; FZILX
-- Bonds:
-  - 10%
+- Bonds (10%):
   - US Treasury:          VTIP ; FIPDX
   - Corporate:            VCSH ; ?????
-- Comodities:
-  - 10%
+  - International:        BNDX ; ????? ; IAGG
+- Comodities (10%):
   - Gold:                 IAU ; GLD
   - Energy:               VDE ; FENY
   - Food:                 VDC ; FSTA
-- Dividends: 
-  - 10%
+- Dividends (10%): 
   - Stock:                VYM ; SCHD 
   - Options:              VUG ; JEPI 
   - Real State:           VNQ ; SCHH ; USRT
-- Services:
-  - 10%
+- Services (10%):
   - Utilities:            VPU ; FUTY
   - Health:               VHT ; IEHS 
   - Financial:            ??? ; KBWB
