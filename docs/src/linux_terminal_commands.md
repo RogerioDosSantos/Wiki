@@ -1110,6 +1110,17 @@ The command below will display the performance of creating a file of 1Mb 1000 ti
 dd if=/dev/zero of=<destination_folder> bs=1M count=1000 
 ```
 
+### Bash - Fix execution due invalid character
+
+If you are getting the following message when running a bash script: 
+
+`/bin/sh^M: bad interpreter: No such file or directory`
+
+You can fix it by removing the invalid characters: 
+
+```shell 
+sed -i -e 's/\r$//' <file_path>
+```
 
 
 

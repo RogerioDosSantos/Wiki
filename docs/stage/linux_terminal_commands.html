@@ -707,5 +707,10 @@ ListFilesBiggerThan10Mb</code></pre>
 <h3 id="shell---check-disk-performance">Shell - Check disk performance</h3>
 <p>The command below will display the performance of creating a file of 1Mb 1000 times.</p>
 <pre class="shell"><code>dd if=/dev/zero of=&lt;destination_folder&gt; bs=1M count=1000 </code></pre>
+<h3 id="bash---fix-execution-due-invalid-character">Bash - Fix execution due invalid character</h3>
+<p>If you are getting the following message when running a bash script:</p>
+<p><code>/bin/sh^M: bad interpreter: No such file or directory</code></p>
+<p>You can fix it by removing the invalid characters:</p>
+<pre class="shell"><code>sed -i -e &#39;s/\r$//&#39; &lt;file_path&gt;</code></pre>
 </body>
 </html>
