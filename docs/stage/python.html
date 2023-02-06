@@ -896,5 +896,78 @@ page = pdf_reader.getPage(page)
     with open(output_pdf, &#39;wb&#39;) as pdf:
         pdf_writer.write(pdf)
 Watermark()</code></pre>
+<h3 id="remove-background-from-image">Remove background from image</h3>
+<pre class="python3"><code># Get Your API: https://www.remove.bg/tools-api
+# pip install remove-bg-api
+from remove_bg_api import RemoveBg
+# Remove from File
+bg = RemoveBg(&quot;Your API&quot;)  
+img = bg.remove_bg_file(input_path=&quot;img.jpg&quot;, out_path=&quot;out.jpg&quot;)
+# Remove from URL
+img_url = &quot;https://www.example.com/img&quot;
+img = bg.remove_background_from_img_url(input_url=img_url, out_path=&quot;out.jpg&quot;)</code></pre>
+<h3 id="url-shortener">URL Shortener</h3>
+<pre class="python3"><code># Get your API: https://dev.bitly.com/
+# pip install bitly_api
+import bitly_api
+api_key = &quot;&quot;
+req = bitly_api.Connection(api_key)
+url = &quot;https://medium.com/&quot;
+# Get the short url
+short_url = req.shorten(url)
+print(short_url)</code></pre>
+<h3 id="calls-and-sms">Calls and SMS</h3>
+<pre class="python3"><code># Get your API
+# pip install twilio
+import twilio.rest
+acc = &quot;API Key&quot;
+token = &quot;API Token&quot;
+cli = twilio.rest.Client(acc, token)
+# Send SMS
+msg = cli.messages.create(to=&quot;+xxxxxxxxxx&quot;, from_=&quot;+xxxxxxxxxx&quot;, body=&quot;Medium&quot;)
+# Do Programatic Calls
+cli.calls.create(to=&quot;+xxxxxxxxxx&quot;, from_=&quot;+xxxxxxxxxx&quot;, twiml=&#39;&lt;Response&gt;&lt;Say&gt; Medium &lt;/Say&gt;&lt;/Response&gt;&#39;,)</code></pre>
+<h3 id="fix-grammeraticall-errors">Fix Grammeraticall Errors</h3>
+<pre class="python3"><code># pip install gingerit
+import gingerit.gingerit as grammer
+txt = &quot;I&#39;m a Pogrammer, and I live to code&quot;
+fix = grammer.GingerIt()
+correction = fix.parse(txt)
+print(&quot;Original: &quot; + data)
+print(&quot;Corrected: &quot; + correction[&quot;result&quot;])
+print(&quot;corrections: &quot; + str(correction[&quot;corrections&quot;]))</code></pre>
+<h3 id="compress-files">Compress Files</h3>
+<pre class="python3"><code>import zipfile as ziplib                                    
+# Compress large file
+def Compress_large_file(filename):
+    # zip with compression level 9
+    with ziplib.ZipFile(filename, &#39;w&#39;, ziplib.ZIP_DEFLATED) as zf:
+        zf.write(filename)
+    
+# Decompress large file
+def Decompress_large_file(filename):
+    with ziplib.ZipFile(filename, &#39;r&#39;) as z:
+        z.extractall()</code></pre>
+<h3 id="create-bacodes">Create Bacodes</h3>
+<pre class="python3"><code># pip install python-barcode
+import barcode as code
+from barcode.writer import ImageWriter
+# Get all formats
+print(code.PROVIDED_BARCODES)
+number = &quot;0123401234567&quot;
+bar_format = code.get_barcode_class(&quot;EAN13&quot;)
+barcode = bar_format(number, writer=ImageWriter())
+barcode.save(&quot;barcode.png&quot;)</code></pre>
+<h3 id="random-password-generator">Random Password Generator</h3>
+<pre class="python3"><code>import random
+import string
+def random_password(length):
+    password = &#39;&#39;
+    char =  string.ascii_letters
+    for i in range(length):
+        password += random.choice(char + string.digits)
+    return password
+print(random_password(10))
+print(random_password(7))</code></pre>
 </body>
 </html>

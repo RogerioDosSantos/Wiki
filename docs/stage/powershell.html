@@ -101,6 +101,9 @@ Write-Output $value    # Displays 3</code></pre>
 <pre class="ps1"><code>#!/usr/bin/env pwsh
 $input = Read-Host &#39;What is your name? &#39;
 Write-Output &quot;Hello $input!&quot;</code></pre>
+<h4 id="reboot-a-machine-remotelly">Reboot a machine remotelly</h4>
+<pre class="ps1"><code>net use \\&lt;machine_name&gt; /u:&lt;domain&gt;\&lt;user&gt;
+shutdown /r /f /m \\&lt;machine_name&gt; -t 0</code></pre>
 <h4 id="connect-to-a-remote-machine-remote-powershell-session">Connect to a remote machine (Remote PowerShell Session)</h4>
 <p>Run Powershell elevated on the local machine.</p>
 <pre class="ps1"><code>#!/usr/bin/env pwsh
