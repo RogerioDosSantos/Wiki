@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../resources/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="az-cli">AZ CLI</h1>
+<h2 id="commands">Commands</h2>
+<h3 id="login-using-service-principal">Login using service principal</h3>
+<pre class="shell"><code>az login --service-principal -u &lt;user&gt; --password=&lt;password&gt; --tenant &lt;tenant_id&gt; --allow-no-subscriptions</code></pre>
+<h3 id="update-container-into-container-app">Update Container into container App</h3>
+<pre class="shell"><code>az containerapp update --name &quot;&lt;service_name&gt;&quot; --revision-suffix &quot;&lt;revision&gt;&quot; --resource-group &quot;&lt;resource_group&gt;&quot; --image &quot;&lt;container_image_name&gt;:&lt;container_image_version&gt;&quot;</code></pre>
+</body>
+</html>
