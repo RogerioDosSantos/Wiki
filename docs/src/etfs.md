@@ -48,6 +48,7 @@
 ## Real State
 
 - [FREL](https://www.etf.com/FREL) : Fidelity MSCI Real Estate Index ETF. FREL tracks a cap-weighted index of US REIT and real estate companies across the entire market-cap spectrum.
+- [FRT](https://finance.yahoo.com/quote/FRT): Federal Realty Investment Trust. That is one company that is giving consistent dividend for 20 years. The amount of current dividend is 4.4%
 
 ## Technology
 
