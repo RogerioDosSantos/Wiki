@@ -188,13 +188,17 @@ It is recomended to use the [IHttpClientFactory](https://docs.microsoft.com/en-u
 
 Use [ASP.NET API Versioning]([xxx](https://github.com/dotnet/aspnet-api-versioning)) nuget package.
 
-[API Versioning Introduction Video](https://www.youtube.com/watch?v=8Asq7ymF1R8)
+- [API Versioning Introduction Video](https://www.youtube.com/watch?v=8Asq7ymF1R8)
 
 ### ASP.NET CORE - Filter, Search, Order Responses from the server
 
 Use [OData](https://learn.microsoft.com/en-us/odata/webapi-8/overview).
 
-[OData Introduction Video](https://www.youtube.com/watch?v=ZCDWUBOJ5FU)
+- [OData Introduction Video](https://www.youtube.com/watch?v=ZCDWUBOJ5FU)
+
+### ASP.NET CORE - Log Mechanism
+
+- [Log Mechanism Introduction Video](https://www.youtube.com/watch?v=oXNslgIXIbQ)
 
 ## Code Examples
 
