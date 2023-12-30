@@ -188,6 +188,14 @@ It is recomended to use the [IHttpClientFactory](https://docs.microsoft.com/en-u
 
 Use [ASP.NET API Versioning]([xxx](https://github.com/dotnet/aspnet-api-versioning)) nuget package.
 
+[API Versioning Introduction Video](https://www.youtube.com/watch?v=8Asq7ymF1R8)
+
+### ASP.NET CORE - Filter, Search, Order Responses from the server
+
+Use [OData](https://learn.microsoft.com/en-us/odata/webapi-8/overview).
+
+[OData Introduction Video](https://www.youtube.com/watch?v=ZCDWUBOJ5FU)
+
 ## Code Examples
 
 ### Fire and forget
@@ -220,7 +228,6 @@ You can define if a Project in a Solution will be published or packaged adding t
 - [Routing Video](https://www.youtube.com/watch?v=fSSPEM3e7yY)
 - [Dynamically compile and run code using .NET Core 3.0](https://laurentkempe.com/2019/02/18/dynamically-compile-and-run-code-using-dotNET-Core-3.0/)
 - [ASP.NET Core 3.1: Using Factories in the Dependency Injection System](https://gavilan.blog/2020/01/20/asp-net-core-3-1-using-factories-in-the-dependency-injection-system/)
-- [API Versioning Introduction Video](https://www.youtube.com/watch?v=8Asq7ymF1R8)
 
 
 
