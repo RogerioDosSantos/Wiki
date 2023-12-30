@@ -78,6 +78,12 @@ dotnet ef migrations add <description_of_the_migration> --project <project_file_
 
 ![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/entity_framework/add_migration_command.png )
 
+## Temporal Tables
+
+*Entity Framework* allows you to save the history change of a table content so it can be conslted and/or restored later. This is done trough [Temporal Tables](https://learn.microsoft.com/en-us/ef/core/providers/sql-server/temporal-tables).
+
+- [Temporal Tables Introduction Video](https://www.youtube.com/watch?v=i5kjiZ4tBnI)
+
 ## References 
 
 - [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
