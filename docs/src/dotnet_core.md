@@ -200,6 +200,10 @@ Use [OData](https://learn.microsoft.com/en-us/odata/webapi-8/overview).
 
 - [Log Mechanism Introduction Video](https://www.youtube.com/watch?v=oXNslgIXIbQ)
 
+### ASP.NET CORE - User and Policy Based Access Control (PBAC)
+
+- [PBAC Using AAD Introduction Video](https://www.youtube.com/watch?v=ZMDSiIQEZy0&list=PLwP0_p1bqAOWhKGcfDLMw8nIHfkTf0p9E&index=56&t=17s)
+
 ## Code Examples
 
 ### Fire and forget
