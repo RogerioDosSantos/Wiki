@@ -210,15 +210,9 @@ Creating a minimum API allow us to create an executable with a minimum ASP.NET C
 
 - [How to create a minimum Web API](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-8.0&tabs=visual-studio)
 
-## Code Examples
+### Upgrade to the new version of .NET
 
-### Fire and forget
-
-![](http://tinyurl.com/txc8oe7)
-
-### Task that is executed with timeout and can handle exceptions
-
-![](http://tinyurl.com/sbx9mea)
+- [Upgrade .Net tool in Visual Studion - Introduction Video](https://www.youtube.com/watch?v=3mPb4KAbz4Y)
 
 ### Publish and Packing Solutions - How to filter which projects can be published and packed
 
