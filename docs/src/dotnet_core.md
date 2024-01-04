@@ -204,6 +204,12 @@ Use [OData](https://learn.microsoft.com/en-us/odata/webapi-8/overview).
 
 - [PBAC Using AAD Introduction Video](https://www.youtube.com/watch?v=ZMDSiIQEZy0&list=PLwP0_p1bqAOWhKGcfDLMw8nIHfkTf0p9E&index=56&t=17s)
 
+### ASP.NET CORE - Create Minimum WEB API
+
+Creating a minimum API allow us to create an executable with a minimum ASP.NET Core dependencies. This is ideal for the creation of microservices.
+
+- [How to create a minimum Web API](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-8.0&tabs=visual-studio)
+
 ## Code Examples
 
 ### Fire and forget
