@@ -92,6 +92,7 @@
 - [Kubernetes]( ./kubernetes.html )
 - [Minikube]( ./minikube.html )
 - [Helm]( ./helm.html )
+- [Headlamp]( ./headlamp.md )
 - [Heroku]( ./heroku.html )
 - [X11 Bridge (Viewer)](./docker_viewer_x11_bridge.html)
 - [Security](./container_security.html)
