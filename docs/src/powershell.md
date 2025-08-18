@@ -1,104 +1,138 @@
 # PowerShell
 
+PowerShell is a powerful command-line shell and scripting language built on .NET, designed for system administration, automation, and configuration management across platforms.
+
+---
+
+## Table of Contents
+- [PowerShell Core](#powershell-core)
+- [PowerShell and .NET](#powershell-and-net)
+- [PowerShell Constrained Language](#powershell-constrained-language)
+- [Common Commands](#common-commands)
+- <details>
+    <summary>How-to Guides</summary>
+    
+    - [Assign Variable](#assign-variable)
+    - [Get User Input](#get-user-input)
+    - [Reboot a Machine Remotely](#reboot-a-machine-remotely)
+    - [Connect to a Remote Machine (Remote PowerShell Session)](#connect-to-a-remote-machine-remote-powershell-session)
+    - [Monitor and Close a Process](#monitor-and-close-a-process)
+    - [Add Windows Feature](#add-windows-feature)
+    - [Edit Registry](#edit-registry)
+    - [Configure Proxy](#configure-proxy)
+    - [Set/Get Environment Variable](#setget-environment-variable)
+    - [Change Environment Variable](#change-environment-variable)
+    - [Execute Commands from CMD](#execute-commands-from-cmd)
+    - [Manipulating Services](#manipulating-services)
+    - [Find and Replace Text in File](#find-and-replace-text-in-file)
+    - [Zip and Unzip](#zip-and-unzip)
+    - [Create Folder if Not Exists](#create-folder-if-not-exists)
+    - [Get MD5 of File](#get-md5-of-file)
+    - [List Open Ports](#list-open-ports)
+    - [Execute Shell Script from URL Without Downloading a File](#execute-shell-script-from-url-without-downloading-a-file)
+    - [Handle Command Line Arguments](#handle-command-line-arguments)
+    - [Read File Content into a Variable](#read-file-content-into-a-variable)
+    - [Start-Process Examples](#start-process-examples)
+    - [Certificate - Import Certificates Examples](#certificate---import-certificates-examples)
+    - [Proxy - Set Global Proxy Parameters](#proxy---set-global-proxy-parameters)
+    - [Network - Test Network Connection to a URL](#network---test-network-connection-to-a-url)
+    - [Network - Verify DNS Configured](#network---verify-dns-configured)
+    - [Modules - Import a PowerShell Module / Function from a File](#modules---import-a-powershell-module--function-from-a-file)
+    - [Reload PowerShell Session to Refresh Environment Variables](#reload-powershell-session-to-refresh-environment-variables)
+
+  </details>
+- [References](#references)
+
+---
+
 ## PowerShell Core
 
-Built on .NET Core and provides compatibility with scripts and modules targeting versions of PowerShell running on reduced footprint editions of Windows such as Nano Server and Windows IoT.
+Built on **.NET Core**, PowerShell Core provides compatibility with scripts and modules targeting reduced-footprint editions of Windows, such as Nano Server and Windows IoT.
 
-## PowerShell and .Net
+---
 
-Powershell allow you to access *.Net* libraries, meaning that you can consume those libraries using *Powershell* scripts. [Here]( ./iis.html ) for example, I use this capability to configure *IIS* using *PowerShell*.
+## PowerShell and .NET
 
-This can be done is [Add-Type](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/add-type?view=powershell-6) which allows you to define a Microsoft .NET Core class in your PowerShell session.
+PowerShell allows you to access **.NET libraries**, enabling you to consume those libraries using PowerShell scripts. For example, you can configure [IIS using PowerShell](./iis.html).
 
-The site [PInvoke](http://pinvoke.net/) allows you to search for various functions that are available as a C# signature to copy and paste into *PowerShell*
+- Use [`Add-Type`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/add-type?view=powershell-6) to define a .NET class in your session.
+- The site [PInvoke](http://pinvoke.net/) provides C# signatures for various functions, which can be used in PowerShell.
+
+---
 
 ## PowerShell Constrained Language
 
-PowerShell Constrained Language is a language mode of PowerShell designed to support day-to-day administrative tasks, yet restrict access to sensitive language elements that can be used to invoke arbitrary Windows APIs.
-Basically to see if you can run in a powershell with contrained language (More limitation that cannot run commands that involves APIs), you can set the following before running the script: 
+**PowerShell Constrained Language** is a mode designed to support day-to-day administrative tasks while restricting access to sensitive language elements that can invoke arbitrary Windows APIs.
 
-```PowerShell
+To set Constrained Language mode:
+```powershell
 $ExecutionContext.SessionState.LanguageMode = "ConstrainedLanguage"
 ```
 
-If the script fails in "ConstrainedLanguage" and not on "FullLanguage" than the script uses functions that requires "FullLanguage".
+> ?? **Note**: If a script fails in "ConstrainedLanguage" but not in "FullLanguage", it uses functions that require full language mode.
 
-## Commands
+---
 
-`Get-Process`: List running processes.
+## Common Commands
 
-`Start-Process <locaction>`: Start a process.
+Below are frequently used PowerShell commands, each with a brief description:
 
-`Stop-Process <process_name>`: Stop a process. Note: You can get the process and store it in a variable using the command `Get-Process <name>`. (E.g.: `$ceview_process = Get-Process CEView`)
+| Command | Description |
+|---------|-------------|
+| `Get-Process` | List running processes |
+| `Start-Process <location>` | Start a process |
+| `Stop-Process <process_name>` | Stop a process |
+| `<command> \| Select-String -Pattern <filter>` | Filter output (like `grep`) |
+| `Get-WindowsFeature` | List installed Windows features |
+| `Invoke-WebRequest [-OutFile <file_path>] "<url>" [-UseBasicParsing]` | Download a file (like `wget`) |
+| `Write-Host "text"` | Write text to the console (like `echo`) |
+| `[environment]::OSVersion.VersionString` | Get OS version |
+| `Get-Content -Path <file_path>` | Read file content (like `cat`) |
+| `Get-ChildItem -Path <start_path> -Recurse -ErrorAction SilentlyContinue -Force -Filter <find_expression>` | Find files (like `find`) |
+| `Remove-Item -Path <directory> -Recurse` | Remove directory recursively (like `rm -r`) |
+| `Copy-Item -Recurse -Path <source_folder> -Destination <destination_folder>` | Copy folder recursively |
 
-`<command> | Select-String -Pattern <filter>`: Equivalent to *grep*. E.g.: `Get-Process | Select-String -Pattern ceview`
+---
 
-`Get-WindowsFeature`: Inform the windows features installed in the system.
+## How-to Guides
 
-`Invoke-WebRequest [-OutFile <file_path>] "<url>" [-UseBasicParsing]`: Download a file. Equivalent to *wget*. By default, the `Invoke-WebRequest` command will use the *Internet Explorer* to parse the received return. The `UseBasicParsing` parameter can be used when the *Internet Explorer* is not available in the machine.
+### Assign Variable
 
-`Write-Host "text"`: Write a text to the console. Equivalent to *echo*
-
-`[environment]::OSVersion.VersionString`: Return the version of the OS.
-
-`Get-Content -Path <file_path>`: Read the content of a file. Similar to Linux `cat`
-
-`Get-ChildItem -Path <start_path> -Recurse -ErrorAction SilentlyContinue -Force -Filter <find_expression>`: Find a file in sub folders. Equivalent to Linux `find` command
-
-`Remove-Item -Path <directory> -Recurse`: Remove directory recursively. Equivalent to Linux `rm -r` command
-
-`Copy-Item -Recurse -Path <source_folder> -Destination <destination_folder>`: Copy folder recursively
-
-### How-to
-
-#### Assign Variable
-
-```ps1
-#!/usr/bin/env pwsh
+Demonstrates variable assignment and type casting in PowerShell:
+```powershell
 $value = "string value"
-$value              # Displays string value
-
 $value = 1
-$value              # Displays 1
-
 $value = 1 + 1
-$value              # Displays 2
-
 $value = 1.9
-[int32]$value       # Displays 2
-[float]$value       # Displays 1.9
-[string]$value      # Displays 1.9
-[boolean]$value     # Displays True
-[datetime]$value    # Displays January 9 ...
-
+[int32]$value   # 2
+[float]$value   # 1.9
+[string]$value  # 1.9
+[boolean]$value # True
+[datetime]$value # January 9 ...
 $value = '$(1 + 2)'
 Write-Output $value    # Displays $(1 + 2)
-
 $value = "$(1 + 2)"
 Write-Output $value    # Displays 3
 ```
 
-#### Get user input
+### Get User Input
 
-```ps1
-#!/usr/bin/env pwsh
+Prompt for user input:
+```powershell
 $input = Read-Host 'What is your name? '
 Write-Output "Hello $input!"
 ```
 
-#### Reboot a machine remotelly 
+### Reboot a Machine Remotely
 
-```ps1
+```powershell
 net use \\<machine_name> /u:<domain>\<user>
 shutdown /r /f /m \\<machine_name> -t 0
 ```
 
-#### Connect to a remote machine (Remote PowerShell Session)
+### Connect to a Remote Machine (Remote PowerShell Session)
 
-Run Powershell elevated on the local machine.
-
-```ps1
-#!/usr/bin/env pwsh
+```powershell
 # Start the Remote Management Service
 net start WinRM
 
@@ -106,294 +140,168 @@ net start WinRM
 $ip = "<ip_of_the_remote_machine>"
 Set-Item wsman:\localhost\client\TrustedHosts "$ip"
 
-# Or to allow all machines: Set-Item wsman:\localhost\client\TrustedHosts "*"
-# Or to allow multiple machines: Set-Item wsman:\localhost\client\TrustedHosts "$ip1,$ip2,..."
-
 # Open the remote PowerShell session (Remote Machine)
 $user = "$ip\<user_of_the_remote_machine>"
 Enter-PSSession -ComputerName $ip -Credential $user
-
-# Open the remote PowerShell session (Remote Container)
-$container_id = "$(docker inspect --format='{{.Id}}' <container_name>)"
-Enter-PSSession -ContainerId $container_id
-
-# Open the remote PowerShell session (Remote Container) as Administrator
-$container_id = "$(docker inspect --format='{{.Id}}' <container_name>)"
-Enter-PSSession -ContainerId $container_id -RunAsAdministrator
 ```
 
-#### PowerShell - Monitor and Close a process
+### Monitor and Close a Process
 
-The example below monitor and closed the *MyProcess* program.
-
-```ps1
-#!/usr/bin/env pwsh
-# Get the process
+```powershell
 $my_process = Get-Process MyProcess
-
-# Close the process gracefully
 $my_process.CloseMainWindow()
-
-# Return true id the process was closed
 $my_process.HasExited
-
-# Stop Process
 $my_process | Stop-Process
-
-# Force Stop Process
 $my_process | Stop-Process -Force
 ```
 
-#### Add Windows Feature
+### Add Windows Feature
 
-You can get the enabled features using the command:
-
-```ps1
-#!/usr/bin/env pwsh
-# List the enabled features
+List enabled features:
+```powershell
 Get-WindowsFeature
 ```
 
-This will show a list of enabled features and the *feature name*
-
-![](http://tinyurl.com/ya2umltf)
-
-To enable a feature you can use the following command:
-
-```ps1
-#!/usr/bin/env pwsh
-# Install / Enable a specific feature
+Enable a feature:
+```powershell
 Install-WindowsFeature <feature_name>
 ```
 
-#### PowerShell - Edit Registry
+### Edit Registry
 
-The example below set the registry value `[HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD)` to 1
-
-```ps1
-#!/usr/bin/env pwsh
-# Push the current location
+Set a registry value:
+```powershell
 Push-Location
-
-# Go to the registry folder
 Set-Location HKLM:\Software\Microsoft\Fusion
-
-# List the current keys
-Get-ItemProperty .
-
-# Set the EnableLog key to 1
 Set-ItemProperty . EnableLog 1 
-
-# Go bach to the previous location
 Pop-Location
 ```
-
-Optionally you coud do it using a only command:
-
-```ps1
-#!/usr/bin/env pwsh
+Or in one line:
+```powershell
 Set-ItemProperty -Path HKLM:\Software\Microsoft\Fusion -Name EnableLog -Value 1
 ```
 
-#### PowerShell - Configure Proxy
+### Configure Proxy
 
-To allow *Powershell* to work properly behind a proxy you can configure it as following:
-
-
-```ps1
-#!/usr/bin/env pwsh
-# Get the current Powershell proxy configuration
+```powershell
 netsh winhttp show proxy
-
-# Import the proxy configuration available on the Internet Explorer
 netsh winhttp import proxy source=ie
-
-# Set the proxy configuration manually
 netsh winhttp set proxy <proxy_url>:<proxy_port>
 ```
 
-#### PowerShell - Set/Get Environment Variable
+### Set/Get Environment Variable
 
-```ps1
-#!/usr/bin/env pwsh
-# Check if Environment Variable exist
+```powershell
 Test-Path env:my_environment_variable
-
-# Set Environment Variable
 $env:my_environment_variable="test"
-
-# Get Environment Variable
 Get-ChildItem Env:my_environment_variable
 ```
 
-#### Powershell - Change Environment Variable
+### Change Environment Variable
 
-The example below change the environment variable *PATH*
-
-```ps1
-#!/usr/bin/env pwsh
-# Get the current PATH environment variable
+```powershell
 $path = (Get-ItemProperty 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
-
-# Append the additional directory temp
-$path = "${path};C:\temp\"
-
-# Set the PATH environment variable with the new value
+$path = "${path};C:\\temp\\"
 Set-ItemProperty 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $path
 ```
 
-#### PowerShell - Execute commands from CMD
+### Execute Commands from CMD
 
 ```cmd
-# Execute Get-Date Command and Stop in case of error 
 powershell -Command $ErrorActionPreference = 'Stop' ; Get-Date
-
-# Pipe the Date Command (When piping use the syntax " & {<command>}"
 powershell -Command $ErrorActionPreference = 'Stop' ; " & {Get-Date | Write-Host}"
 ```
 
-#### Powershell - Manipulating Services
+### Manipulating Services
 
-```ps1
-#!/usr/bin/env pwsh
-# List all services configuration and status 
+```powershell
 sc.exe query
-
-# List specific service configuration and status 
 sc.exe query <service_name>
-
 ```
 
-#### PowerShell - Find and Replace text in file
+### Find and Replace Text in File
 
-```ps1
-#!/usr/bin/env pwsh
-# Load the File
-$ini = (Get-Content "C:\config.ini")
-
-# Find and replace entry
+```powershell
+$ini = (Get-Content "C:\\config.ini")
 $changed_ini = $ini | ForEach-Object { $_ -replace "Entry=(.*)", "Entry=NewValue" }
-
-# Save the result to back to the file
-$changed_ini | Set-Content "C:\config.ini"
-
-# Replace entry in one line
-(Get-Content "C:\config.ini") | ForEach-Object { $_ -replace "Entry=(.*)", "Entry=NewValue" } | Set-Content "C:\config.ini"
+$changed_ini | Set-Content "C:\\config.ini"
+(Get-Content "C:\\config.ini") | ForEach-Object { $_ -replace "Entry=(.*)", "Entry=NewValue" } | Set-Content "C:\\config.ini"
 ```
 
-#### Powershell - Zip and Unzip 
+### Zip and Unzip
 
-```ps1
-#!/usr/bin/env pwsh
-# Zip files in directory. When unzip the folder will not be created
+```powershell
 Compress-Archive -Path .\test\* -DestinationPath ./test1.zip
-
-# Zip directory. When unzip the folder will be created
 Compress-Archive -Path .\test\ -DestinationPath ./test2.zip
-
-# Unzip
 Expand-Archive -Path .\test1.zip -DestinationPath ./test1
 Expand-Archive -Path .\test2.zip -DestinationPath ./test2
 ```
 
-#### Powershell - Create Folder if does not exist
+### Create Folder if Not Exists
 
-```ps1
-#!/usr/bin/env pwsh
+```powershell
 New-Item -ItemType Directory -Force -Path <path>
 ```
 
-#### Powershell - Get MD5 of file
+### Get MD5 of File
 
-```ps1
-#!/usr/bin/env pwsh
+```powershell
 Get-FileHash <file_path> -Algorithm MD5
 ```
 
-#### PowerShell - List Open Ports
+### List Open Ports
 
-```ps1
-#!/usr/bin/env pwsh
-
-# List all Port
+```powershell
 netstat -an
-
-# List all Port informing the process that is using it (Needs Elevation)
 netstat -ab
-
-# List all Port informing the process that is using it (Needs Elevation)
 netstat -aon
-
-# Find Process that is using a TCP/Port 
 Get-Process -Id (Get-NetTCPConnection -LocalPort <port_number>).OwningProcess
 ```
 
-### PowerShell - Execute shell script from URL without downloading a file 
+### Execute Shell Script from URL Without Downloading a File
 
 - `iwr = Invoke-WebRequest`
 - `iex = Invoke-Expression`
 
-```bash
-# Execute bash without arguments 
+```powershell
 iwr -useb <ps1_url> | iex
-
-# Execute bash that require arguments
 iwr -useb <ps1_url> | iex -<parameter>:<value>
 ```
 
-### PowerShell - Handle Command Line Arguments 
+### Handle Command Line Arguments
 
-In *PowerShell* you can pass parameters by using the `-` character. As for example:
-
-```ps1
-command -parameter1 value1 -parameter2 value2
-command -p1 value1 -parameter2 value2
-```
-
-You can handle the parameter passed by using the *param* session in your *PowerShell* script: 
-
-```ps1
+```powershell
 param (
     [Alias('p1')] [string]$parameter1 = "default_value1",
     [Parameter(Mandatory=$true)][string]$parameter2 = "default_value2",
  )
 ```
 
-### PowerShell - Read file content into a variable 
+### Read File Content into a Variable
 
-```ps1
-# Read all content of test.txt file into a variable
+```powershell
 $content = [IO.File]::ReadAllText(".\test.txt")
 ```
 
-### PowerShell - Start-Process examples
+### Start-Process Examples
 
-```ps1
-# Execute Ping and Show the Stdio + StdError
+```powershell
 $process = Start-Process -FilePath ping -ArgumentList localhost -NoNewWindow -PassThru -Wait
 $process.StandardOutput
 $process.StandardError
-
-# Execute Ping and redirect the STDIO and StdError to a file 
 $process = Start-Process -FilePath ping -ArgumentList localhost -NoNewWindow -PassThru -Wait -RedirectStandardOutput stdout.txt -RedirectStandardError stderr.txt
 ```
 
-### Powershell - Certificate - Import Certificates Examples 
+### Certificate - Import Certificates Examples
 
-Importing Certificate with User Interface
-
-```ps1
-# Imports the certificate from the file into the root store of the current user.
+Import certificate with user interface:
+```powershell
 Import-Certificate -FilePath "<cert_path>" -CertStoreLocation cert:\CurrentUser\Root
-
-#Imports the certificate from the file into the root store of the Local Machine
 Import-Certificate -FilePath "<cert_path>" -CertStoreLocation Cert:\LocalMachine\Root
 ```
 
-Importing Certificate without User Interface 
-
-```ps1
-# Import certificate to the *Root Store* without asking anything to the user
+Import certificate without user interface:
+```powershell
 $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2("<certificate_path (.cer)>")
 $rootStore = Get-Item cert:\LocalMachine\Root
 $rootStore.Open("ReadWrite")
@@ -401,13 +309,9 @@ $rootStore.Add($cert)
 $rootStore.Close()
 ```
 
-### PowerShell - Proxy - Set Global Proxy Parameters 
+### Proxy - Set Global Proxy Parameters
 
-By default, the functions that uses *Web Requests* will use the *default proxy configuration* which is set in the *Internet Explorer Services*. However, on system that does not have the *Internet Explorer*, as for example the *windows servercore*, the *Proxy* will not be set even if the *proxy environment variable (E.g.: http_proxy, https_proxy)* is set. 
-
-You can workaround this by setting the *default parameters values* for the functions that request *web connectivity* as shown below:
-
-```ps1
+```powershell
 if(Test-Connection <proxy_address> -Count 1 -Quiet)
 {
     $global:PSDefaultParameterValues = @{
@@ -418,28 +322,29 @@ if(Test-Connection <proxy_address> -Count 1 -Quiet)
 }
 ```
 
-### PowerShell - Network - Test Network Connection to an URL
+### Network - Test Network Connection to a URL
 
-The function below allows you to test the network connection to an URL. If fails it will return the reason. 
-E.g.: DNS Error: `Test-Connection: Testing connection to computer 'google.com' failed: Cannot resolve the target name.`
-
-```ps1
+```powershell
 Test-Connection <url> -Count 1
 ```
 
-### PowerShell - Network - Verfy DNS configured
+### Network - Verify DNS Configured
 
-```ps1
+```powershell
 Resolve-DnsName -Name $env:COMPUTERNAME -Type A
 ```
 
-### PowerShell - Modules - Import a PowerShell Module / Function that is in a file 
+### Modules - Import a PowerShell Module / Function from a File
 
-```ps1 
+```powershell
 Import-Module <file_path> [-Force]
 ```
 
-## References 
+---
+
+## References
 
 - [PowerShell Constrained Language Mode](https://devblogs.microsoft.com/powershell/powershell-constrained-language-mode/)
+
+---
 
