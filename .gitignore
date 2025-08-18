@@ -26,3 +26,4 @@ tags.temp
 # README commands
 docs/src/style.css
 docs/src/*.html
+/.vs
