@@ -1,128 +1,142 @@
 # Kubernetes
 
-[Kubernetes]( https://kubernetes.io/ ) is an open-source system for automating deployment, scaling, and management of containerized applications.
+[Kubernetes](https://kubernetes.io/) is a powerful open-source platform for automating deployment, scaling, and management of containerized applications. It provides a robust framework to run distributed systems resiliently, handling scaling, failover, and deployment patterns.
 
-## Concepts
+## What is Kubernetes?
+Kubernetes (often abbreviated as K8s) orchestrates containers across a cluster of machines, abstracting away the underlying infrastructure. It enables you to:
+- Deploy and manage applications at scale
+- Automate rollouts and rollbacks
+- Self-heal applications (auto-restart, reschedule, replicate)
+- Expose services via networking primitives
 
-`Cluster`: Cluster is all the Kubernetes network (with several machines)
+## Core Concepts
 
-`Deployment`: Is one or more containers running an application.
+- **Cluster**: A set of machines (nodes) running Kubernetes, managed as a single unit.
+- **Node**: A physical or virtual machine in the cluster.
+- **Pod**: The smallest deployable unit, a Pod encapsulates one or more containers that share storage and networking.
+- **Deployment**: Manages the desired state for Pods, enabling rolling updates and rollbacks.
+- **Service**: An abstraction that exposes a set of Pods as a network service, enabling stable access.
+- **Namespace**: Provides logical isolation for resources within a cluster.
+- **ReplicaSet**: Ensures a specified number of Pod replicas are running at any time.
+- **Resource**: Any Kubernetes object (Pod, Service, Deployment, etc.) managed via the API.
 
-`Services`: Is a container port exposed on the host machine.
+## Best Practices & Recommendations
 
-`Replication Set`:
+- Use a separate cluster per project when possible (especially on Azure; no extra cost for clusters).
+- Always use custom namespaces (avoid the default namespace).
+- Apply resource quotas to control resource usage.
+- Prefer several small VMs over a few large ones for better resilience (watch disk IOPS).
+- Avoid chaining load balancers.
+- Place firewalls outside the cluster to secure outbound connections.
+- Automate node reboots for updates (e.g., with [kured](https://github.com/weaveworks/kured)).
 
-`Pod`: A logical unit that run your application
+## Common kubectl Commands
 
-`Resources`: 
+- Check client and server version:
+  ```shell
+  kubectl version
+  ```
+- Show cluster information:
+  ```shell
+  kubectl cluster-info
+  ```
+- Enable bash completion:
+  ```shell
+  source <(kubectl completion bash)
+  ```
+- List all resources:
+  ```shell
+  kubectl api-resources
+  ```
+- Deploy an image as a new deployment:
+  ```shell
+  kubectl run <deployment_name> --image <image>
+  ```
+- Get deployments, pods, and services:
+  ```shell
+  kubectl get deploy
+  kubectl get pods
+  kubectl get services
+  ```
+- Describe a deployment or pod:
+  ```shell
+  kubectl describe deploy <deployment_name>
+  kubectl describe pod <pod_name>
+  ```
+- Expose a deployment as a service:
+  ```shell
+  kubectl expose deployment <deployment_name> --port=<container_port> --type=NodePort
+  ```
+- Forward a pod port to your local machine (for debugging):
+  ```shell
+  kubectl port-forward <pod_name> <local_port>:<container_port>
+  ```
+- Apply or delete resources from a YAML file:
+  ```shell
+  kubectl apply -f <file.yaml>
+  kubectl delete -f <file.yaml>
+  ```
+- Execute a command inside a pod:
+  ```shell
+  kubectl exec -it <pod_name> -- /bin/sh
+  ```
+- View logs for a pod:
+  ```shell
+  kubectl logs <pod_name>
+  ```
 
-`Namespace`: Logical Hierarchy
+## Quickstart: Running Kubernetes on WSL
 
-`Nodes`: Is the physical machine in the *Kubernetes Cluster*
+### Enable Kubernetes in Docker Desktop
 
-## Recomendations
+![Enable Kubernetes in Docker](./kubernetes/kubernetes_enable_kubernetes_on_docker.png)
 
-### On Azure 
-
-- Separate one cluster per project. There is no additional cost to create cluster.
-
-- Always use *Namespaces* (**Never user default Namespaces**)
-
-- Apply resources quotas 
-
-- To create clusters use small VMs always possible. It is better to have several small machines than few big machines (Due failure). But be sure to do not forget the disk (Max uncached disk IOPS). Bigger the *IOPS* the better.
-
-- Do not put *Load Balancer* in front of other *Load Balancer*
-
-- Put an *Azure Firewall* outside the *Kubernetes Cluster* to avoid hacker to have access to outbound connections
-
-- Microsoft does not reboot the machine. There is a procedure to do it. [Node aout updates and upgrades](http://tinyurl.com/wphp8jw). You should install [kured]() to reboot the nodes for you.
-
-## Commands
-
-`kubectl version`: Check the version of the *Kubernetes Control Client*
-
-`kubectl cluster-info` : Check the information of the *Kubernetes engine*
-
-`source <(kubectl completion bash)`: Get auto completion for bash.
-
-`kubectl run --image <image> <deployment_name>`: Run an image (Deployment). Note: The app name cannot have *_* character.
-
-`kubectl api-resources`: List all resources
-
-`kubectl get deploy`: Get the current status of a deployment.
-
-`kubectl describe deploy <deployment_name>`: Get the details of a deployment.
-
-`kubectl get rs`: Get the status of the Replication Set.
-
-`kubectl get pod`: Return all *Pod* status.
-
-`kubectl port-forward <pod_name> <host_port>:<container_port>`: Forward the container port to the host machine. This is temporary and should be used for debug purposes only.
-
-`kubectl expose deployment <deployment_name> --port=<container_port> --type=NodePort`: Create a *Kubernetes service* exposing the *container port* to all nodes on the *cluster*. 
-
-`kubectl get services`: Get available services.
-
-## How-To
-
-### Install - Run Kubernetes on Windows Subsystem Linux (WSL)
-
-#### Enable Kubernetes on Docker
-
-![](http://tinyurl.com/yabue3r2)
-
-#### Install and Configure Kubernetes Control Client in WSL
+### Install and Configure kubectl in WSL
 
 ```shell
-# Download the current stable version of Kubernetes Control
-curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl 
-
-## Allow executable permission and copy it to the bin folder
-chmod +x ./kubectl 
+# Download kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-## Get the Current Windows Configuration File (Kubernetes Config)
+# Copy your Windows kubeconfig
 mkdir ~/.kube
 cp /mnt/c/Users/<your_user>/.kube/config ~/.kube
 
-## Set Kubernetes Control to use Docker for Windows context 
+# Set context for Docker Desktop
 kubectl config use-context docker-for-desktop
 
-# Check the version of the Client and Server and if they can communicate
+# Test connection
 kubectl version
-
-# Check the Kubernetes Master is running and responding
 kubectl cluster-info
 
-# Setup auto complettion and add it permanentely to the bash shell
+# Enable bash completion
 source <(kubectl completion bash)
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 ```
 
-### Orchestration - Run Image using Kubernetes
-
-On this example we will run the [nginx](https://nginx.org/en/) image as an app name web-server.
+## Example: Deploying and Exposing an App
 
 ```shell
-# Deploy 
-kubectl run --image nginx web-server
+# Deploy nginx as 'web-server'
+kubectl run web-server --image=nginx
 
-# Get Deployment Status
+# Check deployment and pod status
 kubectl get deploy
+kubectl get pods
 
-# Get the detail of the web-server Deployment
-kubectl describe deploy web-server
-
-# Expose the port 80 from the deployment
+# Expose deployment on port 80
 kubectl expose deployment web-server --port=80 --type=NodePort
 
-# Display the Service information
-kubectl get services | grep web-server
+# List services
+kubectl get services
 ```
 
-## References 
+## References
 
+- [Kubernetes Official Documentation](https://kubernetes.io/docs/)
+- [Node auto updates and upgrades](http://tinyurl.com/wphp8jw)
+- [kured - Kubernetes Reboot Daemon](https://github.com/weaveworks/kured)
 - [Video on virtual nodes on Azure](https://mail.google.com/mail/u/0/#inbox/KtbxLxGvZbRdrBpGqffDtFpzzSDrkpLvVB?projector=1)
 
 

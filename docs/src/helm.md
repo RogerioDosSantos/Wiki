@@ -1,46 +1,103 @@
 # Helm
 
-[Helm](https://helm.sh/) helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application. 
-
-## Introduction
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/helm/helm_chart_and_commands.png)
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/helm/helm_chart_ingress.png)
+[Helm](https://helm.sh/) is a package manager for Kubernetes that simplifies the process of defining, installing, and managing applications on Kubernetes clusters. Helm uses a packaging format called charts, which are collections of files that describe a related set of Kubernetes resources. With Helm, you can version, share, and deploy complex applications with ease, making it an essential tool for Kubernetes operators and developers.
 
 ## Concepts
 
-### Helm Charts 
+### Helm Chart
+A **Helm Chart** is a collection of files that describe a set of Kubernetes resources required to run an application, tool, or service. Charts make it easy to deploy and manage applications by packaging all necessary configuration and templates together.
 
-*Helm Charts* are configurations that describe a *deployment*. All configuration files are located into a folder.
+### Release
+A **Release** is an instance of a chart running in a Kubernetes cluster. Each time you install a chart, a new release is created, allowing you to manage multiple deployments of the same application with different configurations.
 
-### Releases 
+### Helm Repository
+A **Helm Repository** is a location where charts are stored and shared. Public repositories, like the stable repository, provide charts for popular applications. You can also create private repositories for your own charts.
 
-Releases is the deployment of a *Helm Chart*
+## Common Commands
 
-### Helm Repository 
+Helm commands are as follows:
 
-*Helm Repository* is a global location that you can find *Helm Charts*. For example on the *stable* repository you can find a *Jenkins Helm Chart* that install *Jenkins* (stable/jenkins).
+- Add a Helm chart repository (e.g., stable charts):
+    ```powershell
+    helm repo add <repo_name> <repo_url>
+    ```
 
-## Commands
+- Update information of available charts from all repositories:
+    ```powershell
+    helm repo update
+    ```
 
-`helm repo add stable https://kubernetes-charts.storage.googleapis.com/`: Add the stable default helm repository
+- Search for a chart in repositories:
+    ```powershell
+    helm search repo <chart>
+    ```
 
-`helm search repo stable [<filter_keyword>]`: Search the stable helm repository. If `<filter_keyword>` is informed, the search will be filtered by it. 
+- Install a chart as a release in your cluster:
+    ```powershell
+    helm install <release_name> <chart> [flags]
+    ```
 
-`helm repo update`: Update the local information of all repositories.
+- List all releases in the current Kubernetes context:
+    ```powershell
+    helm list
+    ```
 
-`az aks get-credentials --resource-group <resource_group_name> --name <kubernetes_cluster_name>` : Helm uses *az* behind the scenes, therefore requires it to be properly connected with the *Kubernetes Cluster*. This command allows the *az* tool to be connected with it.
+- Uninstall a release from the cluster:
+    ```powershell
+    helm uninstall <release_name>
+    ```
 
-`kubectl cluster-info` : Allow you to check if the *az* tool is connected with a *Kubernetes Cluster*
+- Upgrade a release to a new chart version or configuration:
+    ```powershell
+    helm upgrade <release_name> <chart> [flags]
+    ```
 
-`helm install [<release_name>] <chart_name> [--generate-name]`: Install a *Helm Chart* into the *Kubernetes Cluster*. Use `<release_name>` to informe the name of the deployment. In case you want the name to be created automatically you can use the `--generate-name` option. E.g.: `helm install jenkins-test stable/jenkins`
+- Rollback a release to a previous revision:
+    ```powershell
+    helm rollback <release_name> <revision>
+    ```
 
-`helm ls`: List all releases
+- Show the history of a release, including previous revisions:
+    ```powershell
+    helm history <release_name>
+    ```
 
-`helm uninstall <release_name> [--keep-history]`: Uninstall a *release*. If the `--keep-history` is informed, the *release history* will be saved and it can be recovered using `helm rollback` command. 
+- Display all information for a given release, including resources, hooks, and values:
+    ```powershell
+    helm get all <release_name>
+    ```
 
-`helm rollback <release_name>`: Recover / restore a release. 
+- Render chart templates locally and display the output without installing:
+    ```powershell
+    helm template <chart>
+    ```
+
+- Run a series of checks to verify that the chart is well-formed and follows best practices:
+    ```powershell
+    helm lint <chart>
+    ```
+
+- Generate a new chart directory structure with sample files:
+    ```powershell
+    helm create <chart_name>
+    ```
+
+### Kubernetes Cluster Connection
+
+Helm interacts with your Kubernetes cluster using your current kubeconfig context. For Azure Kubernetes Service (AKS), you may need to connect using Azure CLI:
+
+- Connect to your AKS cluster:
+    ```powershell
+    az aks get-credentials --resource-group <resource_group_name> --name <kubernetes_cluster_name>
+    ```
+
+- Check your cluster connection:
+    ```powershell
+    kubectl cluster-info
+    ```
 
 ## References
 
+- [Helm Official Documentation](https://helm.sh/docs/)
 - [Building Helm Charts From the Ground Up](https://www.youtube.com/watch?v=vQX5nokoqrQ)
 - [Implementing Blue/Green strategy](https://medium.com/@saraswatpuneet/blue-green-deployments-using-helm-charts-93ec479c0282)
