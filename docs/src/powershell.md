@@ -341,6 +341,22 @@ Resolve-DnsName -Name $env:COMPUTERNAME -Type A
 Import-Module <file_path> [-Force]
 ```
 
+### Reload PowerShell Session to Refresh Environment Variables
+
+```powershell
+# Clear the current session variables
+Remove-Variable -Name * -ErrorAction Ignore
+
+# Re-import the modules
+Import-Module $PROFILE.AllImportedModules
+
+# Forcing the session to reload the profile
+. $PROFILE
+
+# Verifying the variables are loaded
+Get-Variable
+```
+
 ### Get List of Commands Executed in a Session
 
 You can view the history of commands executed in your current PowerShell session using the following command:
@@ -365,6 +381,18 @@ Invoke-History <Id>
 ```
 
 > **Note:** The history is session-specific and will be cleared when you close the session unless you explicitly save it.
+
+### Capture Commands and Outputs with Custom Logging
+
+To log both the commands you run and their outputs in a PowerShell session, you can use built-in transcript logging:
+
+```powershell
+Start-Transcript -Path "session.log" -Append
+# ...run your commands...
+Stop-Transcript
+```
+
+This will record all input and output to the specified log file.
 
 ---
 
