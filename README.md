@@ -136,6 +136,7 @@
 - [X11 Bridge (Viewer)](./docs/src/docker_viewer_x11_bridge.md)
 - [Security](./docs/src/container_security.md)
 - [Aqua Security](./docs/src/aqua_security.md)
+- [Multipass](./docs/src/multipass.md)
 
 </details>
 

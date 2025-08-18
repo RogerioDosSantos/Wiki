@@ -1,16 +1,39 @@
+# Roger Wiki New Documentation Generation Instructions
+
 Given the following subject: {{subject_name}}
 
-I want to add documentation for explaining the subject to my technical wiki.
+Follow these steps to create and integrate new subject documentation into your technical wiki:
 
-Please do the following:
+---
 
-1. Create an initial documentation file at `docs/src/{{subject_name}}.md` that matches the style and structure of my other tool documentation.
-   - Include:
-     - A brief introduction to {{subject_name}}
-     - Key features
-     - Useful links
-     - A "See Also" section referencing similar subjects
+## 1. Create Initial Documentation File
+- **Location:** `docs/src/{{subject_name}}.md`
+- **Content Requirements:**
+  - Begin with a brief introduction to **{{subject_name}}**.
+  - List key features.
+  - Provide useful links.
+  - Add a **See Also** section referencing similar subjects.
 
-2. Update the main `README.md` (Wiki\README.md) to add an entry for {{subject_name}} under the most appropriate section, following the format of the other entries.
+---
 
-3. Any documentation image should be downloaded and added in the folder `docs/src/{{subject_name}}/` with the filename format `{{subject_name}}-{{image_purpose}}.png`.
+## 2. Update Main Wiki Index
+- **File:** `README.md` (`Wiki/README.md`)
+- **Action:**
+  - Add an entry for **{{subject_name}}** under the most appropriate section.
+  - Follow the format of existing entries.
+
+---
+
+## 3. Add Documentation Images
+- **Directory:** `docs/src/{{subject_name}}/`
+- **Filename Format:** `{{subject_name}}-{{image_purpose}}.png`
+- Download and save any relevant images for the documentation.
+
+---
+
+## 4. Apply Markdown Formatting Standards
+- Format the documentation using the instructions in `ai_prompts/ai_prompt_markdown_documentation_format.md`.
+- Ensure headings, lists, code blocks, and tables are used for clarity and professionalism.
+
+
+---
