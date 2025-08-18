@@ -1,4 +1,4 @@
-# HelmFile
+﻿# HelmFile
 
 [HelmFile](https://github.com/roboll/helmfile) is a declarative tool for deploying and managing collections of Helm charts on Kubernetes. It enables you to define your desired state for multiple Helm releases in a single YAML file, making complex deployments more manageable and repeatable.
 
@@ -12,6 +12,7 @@
 - [How Helmfile Connects to Kubernetes](#how-helmfile-connects-to-kubernetes)
 - [Useful Links](#useful-links)
 - [See Also](#see-also)
+- [Helm Hooks](#helm-hooks)
 
 ---
 
@@ -38,7 +39,7 @@ Below are frequently used Helmfile commands with brief descriptions:
 | `helmfile destroy` | Destroy all releases defined in the file |
 | `helmfile list` | List all releases |
 
-> ?? **Tip**: Run these commands in the directory containing your `helmfile.yaml`.
+> 📌 **Tip**: Run these commands in the directory containing your `helmfile.yaml`.
 
 ---
 
@@ -80,7 +81,7 @@ releases:
 - **releases**: List of Helm releases to manage, each with its own chart, namespace, and values.
 - **values**: Inline values or references to external YAML files for configuration.
 
-> ?? **Reference**: See the [HelmFile Documentation](https://helmfile.readthedocs.io/en/latest/) for more advanced usage and templating options.
+> 📖 **Reference**: See the [HelmFile Documentation](https://helmfile.readthedocs.io/en/latest/) for more advanced usage and templating options.
 
 ---
 
@@ -102,7 +103,7 @@ releases:
 - The `chart` field uses the `git::` prefix, followed by the repository URL, double slashes (`//`) to specify the chart subdirectory, and an optional `?ref=` to specify the branch, tag, or commit.
 - Works with both public and private repositories (authentication may be required for private repos).
 
-> ?? **Reference**: See the [Helmfile Documentation - Remote Charts](https://helmfile.readthedocs.io/en/latest/#remote-charts) for more details and advanced options.
+> 📖 **Reference**: See the [Helmfile Documentation - Remote Charts](https://helmfile.readthedocs.io/en/latest/#remote-charts) for more details and advanced options.
 
 ---
 
@@ -124,7 +125,7 @@ When you run `helmfile sync` or `helmfile apply`, Helmfile uses the current cont
    helmfile apply
    ```
 
-> ?? **Note**: This mechanism ensures that Helmfile and all related Helm operations are executed against the intended Kubernetes environment.
+> 📌 **Note**: This mechanism ensures that Helmfile and all related Helm operations are executed against the intended Kubernetes environment.
 
 ---
 
@@ -141,3 +142,56 @@ When you run `helmfile sync` or `helmfile apply`, Helmfile uses the current cont
 - [Helm](./helm.md)
 - [Kubernetes](./kubernetes.md)
 - [SOPS](https://github.com/mozilla/sops) (for secret management)
+
+---
+
+## Helm Hooks
+
+Helm hooks are special resources in Helm charts that allow you to intervene in the release lifecycle at specific points, such as before or after install, upgrade, or delete operations. Hooks are useful for running jobs, performing database migrations, or executing cleanup tasks that need to happen at precise moments during a release.
+
+### How Helm Hooks Work
+
+![Helm Hooks Lifecycle](./helm/helm_hooks.png)
+
+Hooks are implemented by adding special annotations to Kubernetes manifests in your chart. Helm recognizes these annotations and executes the associated resources at the appropriate lifecycle event.
+
+**Common hook events include:**
+
+| Hook Event           | Description                                      |
+|----------------------|--------------------------------------------------|
+| pre-install          | Runs before any resources are installed          |
+| post-install         | Runs after all resources are installed           |
+| pre-upgrade          | Runs before any resources are upgraded           |
+| post-upgrade         | Runs after all resources are upgraded            |
+| pre-delete           | Runs before any resources are deleted            |
+| post-delete          | Runs after all resources are deleted             |
+| pre-rollback         | Runs before a release rollback                   |
+| post-rollback        | Runs after a release rollback                    |
+
+### Example: Defining a Hook in a Chart
+
+Below is an example of a Kubernetes Job that runs as a `pre-install` hook:
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: my-preinstall-job
+  annotations:
+    "helm.sh/hook": pre-install
+spec:
+  template:
+    spec:
+      containers:
+        - name: preinstall
+          image: busybox
+          command: ["echo", "This runs before install!"]
+      restartPolicy: Never
+```
+
+- The `helm.sh/hook` annotation tells Helm when to execute this resource.
+- You can specify multiple hook events by separating them with commas (e.g., `"helm.sh/hook": pre-install,pre-upgrade"`).
+
+> 📌 **Tip**: Hooks can be used for database migrations, backups, or any task that must run at a specific point in the release lifecycle.
+
+**Learn more:** [Helm Documentation - Hooks](https://helm.sh/docs/topics/charts_hooks/)
