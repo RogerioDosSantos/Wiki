@@ -39,6 +39,7 @@ PowerShell is a powerful command-line shell and scripting language built on .NET
     - [Network - Verify DNS Configured](#network---verify-dns-configured)
     - [Modules - Import a PowerShell Module / Function from a File](#modules---import-a-powershell-module--function-from-a-file)
     - [Reload PowerShell Session to Refresh Environment Variables](#reload-powershell-session-to-refresh-environment-variables)
+    - [Get List of Commands Executed in a Session](#get-list-of-commands-executed-in-a-session)
 
   </details>
 - [References](#references)
@@ -339,6 +340,31 @@ Resolve-DnsName -Name $env:COMPUTERNAME -Type A
 ```powershell
 Import-Module <file_path> [-Force]
 ```
+
+### Get List of Commands Executed in a Session
+
+You can view the history of commands executed in your current PowerShell session using the following command:
+
+```powershell
+Get-History
+```
+
+To display the history with command numbers and details:
+```powershell
+Get-History | Format-Table -AutoSize
+```
+
+To export the session history to a file:
+```powershell
+Get-History | Export-Csv -Path "history.csv" -NoTypeInformation
+```
+
+To re-run a previous command by its ID:
+```powershell
+Invoke-History <Id>
+```
+
+> **Note:** The history is session-specific and will be cleared when you close the session unless you explicitly save it.
 
 ---
 
