@@ -138,6 +138,7 @@
 - [Security](./docs/src/container_security.md)
 - [Aqua Security](./docs/src/aqua_security.md)
 - [Multipass](./docs/src/multipass.md)
+- [Caddy](./docs/src/caddy.md) - Modern web server and reverse proxy with automatic HTTPS
 
 </details>
 
