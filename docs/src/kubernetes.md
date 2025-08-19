@@ -16,7 +16,7 @@ Kubernetes (often abbreviated as K8s) orchestrates containers across a cluster o
 - **Pod**: The smallest deployable unit, a Pod encapsulates one or more containers that share storage and networking.
 - **Deployment**: Manages the desired state for Pods, enabling rolling updates and rollbacks.
 - **Service**: An abstraction that exposes a set of Pods as a network service, enabling stable access.
-- **Namespace**: Provides logical isolation for resources within a cluster.
+- **Namespace**: Namespaces provide logical isolation for resources within a Kubernetes cluster. They allow you to divide cluster resources between multiple users, teams, or environments (such as development, staging, and production). Namespaces help organize resources, apply resource quotas, and manage access control. By default, Kubernetes includes namespaces like `default`, `kube-system`, and `kube-public`.
 - **ReplicaSet**: Ensures a specified number of Pod replicas are running at any time.
 - **Resource**: Any Kubernetes object (Pod, Service, Deployment, etc.) managed via the API.
 
@@ -138,6 +138,13 @@ kubectl get services
 - [Node auto updates and upgrades](http://tinyurl.com/wphp8jw)
 - [kured - Kubernetes Reboot Daemon](https://github.com/weaveworks/kured)
 - [Video on virtual nodes on Azure](https://mail.google.com/mail/u/0/#inbox/KtbxLxGvZbRdrBpGqffDtFpzzSDrkpLvVB?projector=1)
+
+
+
+
+
+
+
 
 
 
