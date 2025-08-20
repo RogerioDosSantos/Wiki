@@ -128,6 +128,7 @@
 - [Docker](./docs/src/docker.md)
 - [Moby](./docs/src/moby.md)
 - [Kubernetes](./docs/src/kubernetes.md)
+  - [kubectl](./docs/src/kubectl.md)
 - [Minikube](./docs/src/minikube.md)
 - [MicroK8s](./docs/src/microk8s.md)
 - [Helm](./docs/src/helm.md)
