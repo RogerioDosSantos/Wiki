@@ -170,6 +170,44 @@ helm test <release_name>
 
 ---
 
+## Persistent Volume Claim (PVC)
+
+A **Persistent Volume Claim (PVC)** is a request for storage by a user in Kubernetes. It allows you to dynamically or statically provision storage resources for your applications, ensuring data persists beyond the lifecycle of individual pods.
+
+### Key Concepts
+
+- **Persistent Volume (PV):** A piece of storage in the cluster, provisioned by an administrator or dynamically provisioned using StorageClasses.
+- **Persistent Volume Claim (PVC):** A user's request for storage, specifying size, access mode, and storage class.
+- **StorageClass:** Defines the type of storage (e.g., SSD, HDD, network storage) and its parameters.
+
+### Example PVC Manifest (`pvc.yaml`)
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard
+```
+
+- `accessModes`: Defines how the volume can be mounted (e.g., `ReadWriteOnce`, `ReadOnlyMany`, `ReadWriteMany`).
+- `resources.requests.storage`: The amount of storage requested.
+- `storageClassName`: The storage class to use for dynamic provisioning.
+
+### Usage in Helm Charts
+
+You can define PVCs in your Helm chart templates and reference them in your application deployments. This ensures your application has persistent storage across pod restarts and upgrades.
+
+> ?? **Tip:** Always check your cluster's available StorageClasses and configure your PVCs accordingly. Use `kubectl get storageclass` to list them.
+
+---
+
 ## References
 
 - [Helm Official Documentation](https://helm.sh/docs/)

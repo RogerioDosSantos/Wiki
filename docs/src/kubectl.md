@@ -122,7 +122,16 @@ kubectl logs -n kube-system -l k8s-app=kube-dns
   kubectl exec -it <pod-name> -- sh
   ```
 
-Replace `<namespace>` and `<pod-name>` with your actual namespace and pod name.
+- Show environment variables of a pod (using env command inside the pod):
+  ```shell
+  kubectl exec <pod-name> -- printenv
+  ```
+  Or, for a specific container in a pod:
+  ```shell
+  kubectl exec <pod-name> -c <container-name> -- printenv
+  ```
+
+Replace `<namespace>`, `<pod-name>`, and `<container-name>` with your actual namespace, pod, and container names.
 
 </details>
 
