@@ -134,6 +134,23 @@ echo "- Starting Service"
 echo "################################"
 ```
 
+## Where to Find the Caddyfile in the Caddy Docker Image
+
+The official Caddy Docker image expects the Caddyfile to be located at:
+
+```
+/etc/caddy/Caddyfile
+```
+
+- You can mount your custom Caddyfile to this location using a Docker volume:
+  ```sh
+  docker run -v $(pwd)/Caddyfile:/etc/caddy/Caddyfile caddy
+  ```
+- By default, if no Caddyfile is provided, Caddy will use its built-in default configuration.
+- For Kubernetes, mount your Caddyfile ConfigMap to `/etc/caddy/Caddyfile` in the container.
+
+> ?? **Tip:** Always check the [official Caddy Docker documentation](https://hub.docker.com/_/caddy) for the latest best practices.
+
 ## Useful Links
 
 - [Caddy Official Website](https://caddyserver.com/)
