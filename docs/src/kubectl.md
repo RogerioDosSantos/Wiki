@@ -131,6 +131,11 @@ kubectl logs -n kube-system -l k8s-app=kube-dns
   kubectl exec <pod-name> -c <container-name> -- printenv
   ```
 
+- Describe a pod (detailed information including environment variables, events, any error in case the pode container does not start, and more):
+  ```shell
+  kubectl describe pod <pod-name>
+  ```
+
 Replace `<namespace>`, `<pod-name>`, and `<container-name>` with your actual namespace, pod, and container names.
 
 </details>
