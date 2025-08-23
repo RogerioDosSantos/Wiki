@@ -8,7 +8,8 @@ Origin (Server) >> master (Work branch) >> Header (Local commits) >> tracked (fi
 
 `git config --global user.name <your name> ` : config your name globally
 
-`git  init ` : Initialize git repository. To init the repository on the server, use the option --bare
+`git  init ` : Initialize git repository. 
+ - The `--bare` option allow you to pull and push information without you need to have a server. This is ideal if you want you content to be in a shared folder (E.g.: Onedrive).
 
 `git add <folder> ` : add content to the git repository
 
