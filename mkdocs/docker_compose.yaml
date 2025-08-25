@@ -7,6 +7,6 @@ services:
     container_name: mkdocs-mermaid
     ports:
       - "8001:8000"
-    volumes:
-      - ../docs/src:/docs/docs
-      - ./mkdocs.yml:/docs/mkdocs.yml
+    # volumes:
+    #   - ../docs/src:/docs/docs
+    #   - ./mkdocs.yml:/docs/mkdocs.yml
