@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: build.docker
     image: rogersantos/wiki:local
-    container_name: rogersantos/wiki
+    container_name: rogersantos-wiki
     ports:
       - "8001:8000"
     # volumes:
