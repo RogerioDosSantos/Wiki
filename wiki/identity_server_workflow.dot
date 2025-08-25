@@ -1,0 +1,28 @@
+
+digraph identity_server_workflow { 
+
+  subgraph components{
+    aize="4,4";
+    node [style="filled,rounded", fillcolor="azure", shape="box"];
+    user [label="User"];
+    service_config [label="Identity Server Config"];
+    client [label="Application (Client)"];
+    authentication_service [label="Authentication Service"];
+    authorization_service [label="Autorization Service"];
+  }
+
+  subgraph statup_sequence{
+    edge [color="blue", fontcolor="blue"];
+    service_config -> authorization_service [label="Register Client\nDefine\nResources and/or Identity scopes"]
+    client -> authentication_service [label="Request Authentication\nRequest\nResources and/or Identity scopes"];
+    authorization_service -> user [label="Request User Approval\nto client access the resource"]
+    user -> authorization_service [label="User Approval (Yes/No)", style="dotted"]
+    authentication_service -> client [label="If Request scope\nnot in the registration\n=>Error (Invalid Client)", style="dotted"];
+    authentication_service -> client [label="If User did not\nprovided access\n=>Error (Access Denied)", style="dotted"];
+    authentication_service -> client [label="If Success\n=>Send Access Token", style="dotted"];
+    client -> authorization_service [label="Register to Server\nrequesting\nResources and/or Identity scopes"]
+    authorization_service -> client [label="Send Identity Token", style="dotted"];
+    authorization_service -> client [label="Send Reflesh Token", style="dotted"];
+  }
+
+}
