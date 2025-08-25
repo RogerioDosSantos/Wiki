@@ -1,3 +1,0 @@
-# TreeSize 
-
-[TreeSize](https://portableapps.com/apps/utilities/treesize-free-portable) tells you where precious disk space has gone. TreeSize Free shows you the size of and drive or folder, including its subfolders. Expand folders in an Explorer-like fashion and see the size of every subfolder. All results can also be drilled down to the file level. Scanning operations run in a thread, so you can already see results while TreeSize Free is working. The disk space tool now also includes the main feature of our discontinued freeware NTFSRatio: TreeSize Free can display the NTFS compression rate and apply the NTFS compression on directory branches.

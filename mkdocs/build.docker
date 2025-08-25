@@ -14,12 +14,12 @@ RUN if [ ! -d /workspace/wiki ]; then \
     # Remove existing /docs/docs before creating symlink
     && mkdir -p /docs \
     && rm -rf /docs/docs \
-    && ln -sf /workspace/wiki/docs/src /docs/docs \
+    && ln -sf /workspace/wiki/src /docs/docs \
     # Create a symlink from /workspace/wiki/mkdocs/mkdocs.yml to /docs/mkdocs.yml
     && ln -sf /workspace/wiki/mkdocs/mkdocs.yml /docs/mkdocs.yml
 
 # B. Add a cron job to pull the repo every 5 minutes
-RUN echo '*/5 * * * * cd /workspace/wiki && git pull && rm -rf /docs/docs && ln -sf /workspace/wiki/docs/src /docs/docs && ln -sf /workspace/wiki/mkdocs/mkdocs.yml /docs/mkdocs.yml >> /var/log/cron-git.log 2>&1' > /etc/cron.d/git-pull \
+RUN echo '*/5 * * * * cd /workspace/wiki && git pull && rm -rf /docs/docs && ln -sf /workspace/wiki/src /docs/docs && ln -sf /workspace/wiki/mkdocs/mkdocs.yml /docs/mkdocs.yml >> /var/log/cron-git.log 2>&1' > /etc/cron.d/git-pull \
     && chmod 0644 /etc/cron.d/git-pull \
     && crontab /etc/cron.d/git-pull
 
