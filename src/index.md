@@ -1,5 +1,10 @@
 # Roger Santos Wiki 
 
+
+<div style="background: linear-gradient(90deg, #2196f3, #21cbf3); color: #fff; padding: 1.2em 1.5em; border-radius: 12px; font-size: 1.5em; font-weight: 600; text-align: center; margin-bottom: 2em; box-shadow: 0 4px 12px rgba(0,0,0,0.1); letter-spacing: 0.5px;">
+  Engineering with impact, leadership with purpose.
+</div>
+
 ## Windows 
 
 - [Windows Terminal Commands]( ./windows_terminal_commands.md )
@@ -39,7 +44,7 @@
     - [Fugitive]( ./fugitive.md )
     - [Doxigen]( ./doxigen.md )
     - [NeoSnippet]( ./neosnippet.md )
-  	- [Marvim](	./marvim.md )
+   	- [Marvim](	./marvim.md )
     - [FZF](./fzf.html)
     - [Grammarous]( ./grammarous.md )
 
