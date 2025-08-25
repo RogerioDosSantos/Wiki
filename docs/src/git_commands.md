@@ -1,4 +1,4 @@
-# Git
+﻿# Git
 
 ## Commands
 
@@ -385,4 +385,43 @@ git diff --name-only HEAD^ HEAD
 # Discard unstaged files
 git checkout -- .
 ```
+
+
+### Initializing a Bare Git Repository (for Server Use)
+
+A **bare repository** is a Git repository that does not have a working directory and is intended to be used as a central repository on a server for collaboration (e.g., as the remote/origin for other developers). 
+It stores only the Git version history and not the checked-out files.
+As for example, you can use your OneDrive, Dropbox, Google Drive, etc. folder as a server repository.
+
+**To initialize a bare repository:**
+```bash
+git init --bare <repository-name>.git
+```
+- This creates a folder ending with `.git` containing only the repository data.
+
+**Example:**
+If you want to create a bare repository inside your OneDrive folder in a sub-folder called `my_bare_repository`:
+```bash
+cd ~/OneDrive
+mkdir my_bare_repository
+cd my_bare_repository
+git init --bare myproject.git
+```
+- The bare repository will be at `~/OneDrive/my_bare_repository/myproject.git`.
+
+**Purpose:**
+- Use as a central server repository for pushing and pulling changes.
+- Cannot edit files directly in a bare repository.
+
+**How to consume (clone and use) the bare repository:**
+```bash
+git clone ~/OneDrive/my_bare_repository/myproject.git
+```
+- Or, from another computer with access to the same OneDrive folder:
+  ```bash
+  git clone /path/to/OneDrive/my_bare_repository/myproject.git
+  ```
+- Developers clone this repository and push/pull changes as needed.
+
+> 📌 **Tip:** Use bare repositories for shared team or production repositories, not for day-to-day development.
 
