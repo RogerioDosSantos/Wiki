@@ -1,170 +1,167 @@
-THis page was migrated to Loop:
-https://home.microsoftpersonalcontent.com/:fl:/g/contentstorage/CSP_01969c6d-64fb-435a-ba12-85dd41dd2e5c/IQLhzrvWDSf5RLZuJyH-aE6xAexdS7c1M0WvEdft7h8z_tk?e=7KScCn&nav=cz0lMkZjb250ZW50c3RvcmFnZSUyRkNTUF8wMTk2OWM2ZC02NGZiLTQzNWEtYmExMi04NWRkNDFkZDJlNWMmZD1iJTIxYlp5V0FmdGtXa082RW9YZFFkMHVYR0xjSGtreGROaEFwR0UxWnVTc0NKT2tRd3hlQ3BQclRaR0k4d1h6YlluVSZmPTAxWVVTTUtKSEJaMjU1TURKSDdGQ0xNM1JIRUg3R1FUVlImYz0lMkYmYT1Mb29wQXBwJnA9JTQwZmx1aWR4JTJGbG9vcC1wYWdlLWNvbnRhaW5lciZ4PSU3QiUyMnclMjIlM0ElMjJUMFJUVUh4b2IyMWxMbTFwWTNKdmMyOW1kSEJsY25OdmJtRnNZMjl1ZEdWdWRDNWpiMjE4WWlGaVdubFhRV1owYTFkclR6WkZiMWhrVVdRd2RWaEhUR05JYTJ0NFpFNW9RWEJIUlRGYWRWTnpRMHBQYTFGM2VHVkRjRkJ5VkZwSFNUaDNXSHBpV1c1VmZEQXhXVlZUVFV0S1JFUlhUbFV6TmpWWVJqUlNSRmxHU2xSSFVsTkZTMUJHV2pVJTNEJTIyJTJDJTIyaSUyMiUzQSUyMjU5OGIyMzQ4LWY5YmEtNDI1My1hNmJmLTcxNDM3YmUyNTc3MCUyMiU3RA%3D%3D
-
-# Roger's Wiki 
+# Roger Santos Wiki 
 
 ## Windows 
 
-- [Windows Terminal Commands]( ./windows_terminal_commands.html )
-- [Windows Shortcuts]( ./windows_shortcuts.html )
-- [Babun]( ./babun.html )
-- [Windows Store]( ./windows_store.html )
-- [WSL]( ./wsl.html )
-- [Credential Manager]( ./credential_manager.html )
-- [MFC]( ./mfc.html )
-- [Windows Event Log]( ./windows_event_log.html )
-- [Explorer]( ./windows_explorer.html )
-- [Nano Server]( ./nano_server.html )
-- [PowerShell]( ./powershell.html )
-- [IIS]( ./iis.html )
-- [Setup and Config]( ./windows_setup_and_config.html )
-- [HTTP.sys]( ./http_sys.html )
-- [COM/DCOM]( ./com_dcom.html )
-- [DLLs]( ./dlls.html )
+- [Windows Terminal Commands]( ./windows_terminal_commands.md )
+- [Windows Shortcuts]( ./windows_shortcuts.md )
+- [Babun]( ./babun.md )
+- [Windows Store]( ./windows_store.md )
+- [WSL]( ./wsl.md )
+- [Credential Manager]( ./credential_manager.md )
+- [MFC]( ./mfc.md )
+- [Windows Event Log]( ./windows_event_log.md )
+- [Explorer]( ./windows_explorer.md )
+- [Nano Server]( ./nano_server.md )
+- [PowerShell]( ./powershell.md )
+- [IIS]( ./iis.md )
+- [Setup and Config]( ./windows_setup_and_config.md )
+- [HTTP.sys]( ./http_sys.md )
+- [COM/DCOM]( ./com_dcom.md )
+- [DLLs]( ./dlls.md )
 - [TreeSize](./treesize.html)
 
 ## Linux 
 
-- [Linux Terminal Commands]( ./linux_terminal_commands.html )
-- [Raspberry Pi]( ./raspberry_pi.html )
-- [curl]( ./curl.html )
-- [Linux Kernel]( ./linux_kernel.html )
-- [Apache Web Server]( ./apache.html )
+- [Linux Terminal Commands]( ./linux_terminal_commands.md )
+- [Raspberry Pi]( ./raspberry_pi.md )
+- [curl]( ./curl.md )
+- [Linux Kernel]( ./linux_kernel.md )
+- [Apache Web Server]( ./apache.md )
 
 ## Vim 
 
-- [Vim Commands]( ./vim_commands.html )
-- [Vim Custom Keys]( ./vim_custom_keys.html )
+- [Vim Commands]( ./vim_commands.md )
+- [Vim Custom Keys]( ./vim_custom_keys.md )
 - Vim Plugins 
-    - [VimWiki](./vimwiki.html )
-    - [Surround]( ./surround.html )
-    - [Syntastic]( ./syntastic.html )
-    - [Fugitive]( ./fugitive.html )
-    - [Doxigen]( ./doxigen.html )
-    - [NeoSnippet]( ./neosnippet.html )
-  	- [Marvim](	./marvim.html )
+    - [VimWiki](./vimwiki.md )
+    - [Surround]( ./surround.md )
+    - [Syntastic]( ./syntastic.md )
+    - [Fugitive]( ./fugitive.md )
+    - [Doxigen]( ./doxigen.md )
+    - [NeoSnippet]( ./neosnippet.md )
+  	- [Marvim](	./marvim.md )
     - [FZF](./fzf.html)
-    - [Grammarous]( ./grammarous.html )
+    - [Grammarous]( ./grammarous.md )
 
 ## Editors, Brownser, Productivity and Develpment Tools
 
-- [Notepad++]( ./notepadpp.html )
-- [Visual Studio]( ./visual_studio.html )
-- [Google Chrome]( ./google_chrome.html )
+- [Notepad++]( ./notepadpp.md )
+- [Visual Studio]( ./visual_studio.md )
+- [Google Chrome]( ./google_chrome.md )
 - [Postman](./postman.html) - HTTP Client and QA Automation
 - [Fiddler](./fiddler.html) - Control and monitor HTTP/HTTPs traffic
 - [Miro](./miro.html) - Cloud White Board tool
-- [Autorest]( ./autrest.html ) - Swagger Client
-- [ShareX]( ./sharex.html ) - Printscreen, sharing tool. Allow publish your screen or video to the cloud services
-- [ngrok]( ./ngrok.html ) - Route a public URL to the localhost
+- [Autorest]( ./autrest.md ) - Swagger Client
+- [ShareX]( ./sharex.md ) - Printscreen, sharing tool. Allow publish your screen or video to the cloud services
+- [ngrok]( ./ngrok.md ) - Route a public URL to the localhost
 
 ## Markdown
 
-- [Markdown Syntax (Pandoc)]( ./pandoc_markdown.html )
-- [Pandoc]( ./pandoc.html )
-- [Gravizo]( ./gravizo.html )
-- [Graphviz]( ./graphviz.html )
-- [Mermaid]( ./mermaid.html )
-- [DocFX]( ./docfx.html )
+- [Markdown Syntax (Pandoc)]( ./pandoc_markdown.md )
+- [Pandoc]( ./pandoc.md )
+- [Gravizo]( ./gravizo.md )
+- [Graphviz]( ./graphviz.md )
+- [Mermaid]( ./mermaid.md )
+- [DocFX]( ./docfx.md )
 
 ## Source Control 
 
-- [Git Commands]( ./git_commands.html )
-- [Git LFS]( ./git_lfs.html )
-- [Git TFS]( ./git_tfs.html )
-- [TFS Online]( ./tfs_online.html )
-- [TFS Client](./tfs_client.html )
-- [GitVersion]( ./git_version.html )
-- [GitReleaseManager]( ./git_release_manager.html )
+- [Git Commands]( ./git_commands.md )
+- [Git LFS]( ./git_lfs.md )
+- [Git TFS]( ./git_tfs.md )
+- [TFS Online]( ./tfs_online.md )
+- [TFS Client](./tfs_client.md )
+- [GitVersion]( ./git_version.md )
+- [GitReleaseManager]( ./git_release_manager.md )
 - [Ungit](./ungit.html)
 
 ## Dev/Ops
 
-- [Jenkins]( ./jenkins.html )
+- [Jenkins]( ./jenkins.md )
 
 ## TMUX 
 
-- [TMUX commands]( ./tmux_commands.html )
+- [TMUX commands]( ./tmux_commands.md )
 - TMUX Plugins
-    - [Tmux Plugin Manager]( ./tmux_plugin_manager.html )
+    - [Tmux Plugin Manager]( ./tmux_plugin_manager.md )
 
 ## Containers and Orchestration
 
-- [Docker]( ./docker.html )
-- [Moby]( ./moby.html )
-- [Kubernetes]( ./kubernetes.html )
-- [Minikube]( ./minikube.html )
-- [Helm]( ./helm.html )
+- [Docker]( ./docker.md )
+- [Moby]( ./moby.md )
+- [Kubernetes]( ./kubernetes.md )
+- [Minikube]( ./minikube.md )
+- [Helm]( ./helm.md )
 - [Headlamp]( ./headlamp.md )
-- [Heroku]( ./heroku.html )
+- [Heroku]( ./heroku.md )
 - [X11 Bridge (Viewer)](./docker_viewer_x11_bridge.html)
 - [Security](./container_security.html)
 - [Aqua Security](./aqua_security.html)
 
 ## Proxies and Reverse Proxies
 
-- [NGINX]( ./nginx.html )
-- [Traefik]( ./traefik.html )
+- [NGINX]( ./nginx.md )
+- [Traefik]( ./traefik.md )
 
 ## Infinit 
 
-- [Infinit Commands]( ./infinit_commands.html )
+- [Infinit Commands]( ./infinit_commands.md )
 
 ## CMake 
 
-- [CMake Commands]( ./cmake_commands.html )
-- [CMake Codding Style]( ./cmake_codding_style.html )
-- [CMake Toolchains]( ./cmake_toolchains.html )
+- [CMake Commands]( ./cmake_commands.md )
+- [CMake Codding Style]( ./cmake_codding_style.md )
+- [CMake Toolchains]( ./cmake_toolchains.md )
 
 ## Cross Compilations
 
-- [CrossTool-ng]( ./crosstool-ng.html )
-- [DockCross]( ./dockcross.html )
+- [CrossTool-ng]( ./crosstool-ng.md )
+- [DockCross]( ./dockcross.md )
 
 ## Package Manager
 
-- [Chocolatey]( ./chocolatey.html )
-- [Conan]( ./conan.html )
-- [Nuget]( ./nuget.html )
+- [Chocolatey]( ./chocolatey.md )
+- [Conan]( ./conan.md )
+- [Nuget]( ./nuget.md )
 
 ## CTags 
 
-- [Ctags Commands]( ./ctags_commands.html )
+- [Ctags Commands]( ./ctags_commands.md )
 
 ## Boost 
 
-- [Boost Tips and Tricks]( ./boost_tips_and_tricks.html )
+- [Boost Tips and Tricks]( ./boost_tips_and_tricks.md )
 
 ## Google Test 
 
-- [Gtest Commands]( ./gtest_commands.html )
+- [Gtest Commands]( ./gtest_commands.md )
 
 ## Frontend Web Development
 
-- [ReactJS]( ./reactjs_commands.html )
-- [AngularJS]( ./angular.html )
-- [Storybook]( ./story_book.html )
+- [ReactJS]( ./reactjs_commands.md )
+- [AngularJS]( ./angular.md )
+- [Storybook]( ./story_book.md )
 
 ## NodeJS 
 
-- [NodeJS Commands]( ./nodejs_commands.html )
+- [NodeJS Commands]( ./nodejs_commands.md )
 
 ## Virtual Box 
 
-- [Virtual Box Commands]( ./virtual_box_commands.html )
+- [Virtual Box Commands]( ./virtual_box_commands.md )
 
 ## Debug Tools 
 
-- [Debugging Techniques Article]( ./debug_techiniques_article.html )
-- [ConqueGDB]( ./conquegdb.html )
-- [Intel Inspector]( ./intel_inspector.html )
-- [Valgrind]( ./valgrind.html )
-- [Application Verifier]( ./application_verifier.html )
-- [Debug Diag]( ./debug_diag.html )
-- [WinDbg]( ./windbg.html )
-- [Perfmon]( ./perfmon.html )
-- [CRT APIs]( ./crt_apis.html )
-- [CDB]( ./cdb.html )
+- [Debugging Techniques Article]( ./debug_techiniques_article.md )
+- [ConqueGDB]( ./conquegdb.md )
+- [Intel Inspector]( ./intel_inspector.md )
+- [Valgrind]( ./valgrind.md )
+- [Application Verifier]( ./application_verifier.md )
+- [Debug Diag]( ./debug_diag.md )
+- [WinDbg]( ./windbg.md )
+- [Perfmon]( ./perfmon.md )
+- [CRT APIs]( ./crt_apis.md )
+- [CDB]( ./cdb.md )
 - [Visual Studio Debugging Tools](./visual_studio_debugging_tools.html)
 - [SOS](./sos.html)
 - [SOSex](./sosex.html)
@@ -173,140 +170,140 @@ https://home.microsoftpersonalcontent.com/:fl:/g/contentstorage/CSP_01969c6d-64f
 
 ## Database 
 
-- [OLE DB]( ./ole_db.html )
-- [Entity Framework]( ./entity_framework.html )
-- [Kusto]( ./kusto.html )
-- [SQLite]( ./sqlite.html )
+- [OLE DB]( ./ole_db.md )
+- [Entity Framework]( ./entity_framework.md )
+- [Kusto]( ./kusto.md )
+- [SQLite]( ./sqlite.md )
 
 ## Programming Languages
 
-- [VBScript]( ./vbscript.html )
-- [Python]( ./python.html )
-- [Regular Expressions]( ./regular_expressions.html )
-- [Erlang]( ./erlang.html )
-- [C++]( ./cplusplus.html )
-- [Jsonnet]( ./jsonnet.html )
+- [VBScript]( ./vbscript.md )
+- [Python]( ./python.md )
+- [Regular Expressions]( ./regular_expressions.md )
+- [Erlang]( ./erlang.md )
+- [C++]( ./cplusplus.md )
+- [Jsonnet]( ./jsonnet.md )
 
 ## .Net 
 
-- [.Net Versions]( ./.net_versions.html )
-- [.Net Core]( ./dotnet_core.html )
-- [GAC]( ./gac.html )
-- [Serilog]( ./serilog.html )
-- [Swashbuckle (Swagger)]( ./swashbuckle.html )
-- [Blazor]( ./blazor.html )
-- [XUnit]( ./xunit.html )
-- [Simple Injector]( ./simple_injector.html )
-- [Data Protection]( ./data_protection.html )
-- [SignalR]( ./signalr.html )
-- [AutoMapper]( ./automapper.html )
-- [Dapper]( ./dapper.html )
+- [.Net Versions]( ./.net_versions.md )
+- [.Net Core]( ./dotnet_core.md )
+- [GAC]( ./gac.md )
+- [Serilog]( ./serilog.md )
+- [Swashbuckle (Swagger)]( ./swashbuckle.md )
+- [Blazor]( ./blazor.md )
+- [XUnit]( ./xunit.md )
+- [Simple Injector]( ./simple_injector.md )
+- [Data Protection]( ./data_protection.md )
+- [SignalR]( ./signalr.md )
+- [AutoMapper]( ./automapper.md )
+- [Dapper]( ./dapper.md )
 
 ## Virtualization 
 
-- [VirtualBox]( ./virtualbox.html )
+- [VirtualBox]( ./virtualbox.md )
 
 ## Windows CE (Compact Embedded) 
 
-- [Windows CE Development Tools]( ./windows_ce_development_tools.html )
+- [Windows CE Development Tools]( ./windows_ce_development_tools.md )
 
 ## Security Development Life cycle (SDL) 
 
-- [BinScope]( ./binscope.html )
-- [GPG]( ./gpg.html )
-- [MOSS]( ./moss.html )
-- [Checkmarks]( ./checkmarks.html )
-- [jwt]( ./jwt.html )
+- [BinScope]( ./binscope.md )
+- [GPG]( ./gpg.md )
+- [MOSS]( ./moss.md )
+- [Checkmarks]( ./checkmarks.md )
+- [jwt]( ./jwt.md )
 
 ## Authentication / Authorization
 
-- [Identity Server]( ./identity_server.html )
-- [Keycloak]( ./keycloak.html )
-- [Auth0]( ./auth0.html )
-- [Single Sign-On (SSO)]( ./sso.html )
-- [SCIM]( ./scim.html )
-- [MSAL (Microsoft Authentication Library)]( ./msal.html )
-- [Certificates]( ./certificates.html )
+- [Identity Server]( ./identity_server.md )
+- [Keycloak]( ./keycloak.md )
+- [Auth0]( ./auth0.md )
+- [Single Sign-On (SSO)]( ./sso.md )
+- [SCIM]( ./scim.md )
+- [MSAL (Microsoft Authentication Library)]( ./msal.md )
+- [Certificates]( ./certificates.md )
 
 ## Network 
 
-- [LDAP]( ./ldap.html )
+- [LDAP]( ./ldap.md )
 - [0MQ](./0mq.html)
-- [OpenSSL]( ./openssl.html )
-- [Wireshark]( ./wireshark.html )
-- [RabbitMQ]( ./rabbit_mq.html )
-- [WiFi6]( ./wifi6.html )
+- [OpenSSL]( ./openssl.md )
+- [Wireshark]( ./wireshark.md )
+- [RabbitMQ]( ./rabbit_mq.md )
+- [WiFi6]( ./wifi6.md )
 
 ## Patterns 
 
-- [Cpp]( ./cpp.html )
-- [Restfull APIs]( ./restfull_apis.html )
+- [Cpp]( ./cpp.md )
+- [Restfull APIs]( ./restfull_apis.md )
 
 ## Cloud Services
 
-- [Amazon Web Services (AWS)]( ./aws.html )
-- [Azure IoT-Edge]( ./iot_edge.html )
-  - [Developing IoT-Edge Module]( ./iot_edge_module_development.html )
-  - [Azure IoT-Edge Linux on Windows]( ./iot_edge_linux_on_windows.html )
-- [Azure Storage]( ./azure_storage.html )
-- [Azure Key Vault]( ./azure_key_vault.html )
-- [Azure Container Instances]( ./azure_container_instances.html )
-- [Azure Active Directory]( ./azure_active_directory.html )
-- [Azure Pipeline]( ./azure_pipeline.html )
-- [Azure App Services]( ./azure_app_services.html )
-- [Azure Monitor (App Insights)]( ./azure_app_insights.html )
-- [Azure DevOps]( ./azure_devops.html )
-- [Azure Bastion]( ./azure_bastion.html )
-- [Microsoft Defender for Cloud's just-in-time (JIT)]( ./azure_jit.html )
+- [Amazon Web Services (AWS)]( ./aws.md )
+- [Azure IoT-Edge]( ./iot_edge.md )
+  - [Developing IoT-Edge Module]( ./iot_edge_module_development.md )
+  - [Azure IoT-Edge Linux on Windows]( ./iot_edge_linux_on_windows.md )
+- [Azure Storage]( ./azure_storage.md )
+- [Azure Key Vault]( ./azure_key_vault.md )
+- [Azure Container Instances]( ./azure_container_instances.md )
+- [Azure Active Directory]( ./azure_active_directory.md )
+- [Azure Pipeline]( ./azure_pipeline.md )
+- [Azure App Services]( ./azure_app_services.md )
+- [Azure Monitor (App Insights)]( ./azure_app_insights.md )
+- [Azure DevOps]( ./azure_devops.md )
+- [Azure Bastion]( ./azure_bastion.md )
+- [Microsoft Defender for Cloud's just-in-time (JIT)]( ./azure_jit.md )
 - M365 (Microsoft 365 Services)
-  - [OneDrive]( ./onedrive.html )
+  - [OneDrive]( ./onedrive.md )
 
 ## Provisioning and deployment
 
-- [Terraform]( ./terraform.html )
-- [Serveless (AWS)]( ./aws_serveless.html )
+- [Terraform]( ./terraform.md )
+- [Serveless (AWS)]( ./aws_serveless.md )
 
 ## Stock Market
 
-- [Stock Indicators]( ./stock_indicators.html )
-- [ETFs]( ./etfs.html )
+- [Stock Indicators]( ./stock_indicators.md )
+- [ETFs]( ./etfs.md )
 
 ## Artificial Intelligence
 
-- [AI tools]( ./ai_tools.html )
+- [AI tools]( ./ai_tools.md )
 
 ## Jargon
 
-- [Acronyms]( ./acronyms.html )
+- [Acronyms]( ./acronyms.md )
 
 ## Aveva
 
-- [InduSoft Web Studio Tips and Tricks]( ./indusoft_web_studio_tips_and_tricks.html )
+- [InduSoft Web Studio Tips and Tricks]( ./indusoft_web_studio_tips_and_tricks.md )
 
 ## Serverless
 
 ### Platforms
 
-- [Fn]( ./fn.html )
-- [OpenFaaS]( ./openfaas.html )
-- [Nuclio]( ./nuclio.html )
-- [Gestalt]( ./gestalt.html )
-- [riff]( ./riff.html )
-- [OpenWhisk]( ./openwhisk.html )
-- [Kubeless]( ./kubeless.html )
+- [Fn]( ./fn.md )
+- [OpenFaaS]( ./openfaas.md )
+- [Nuclio]( ./nuclio.md )
+- [Gestalt]( ./gestalt.md )
+- [riff]( ./riff.md )
+- [OpenWhisk]( ./openwhisk.md )
+- [Kubeless]( ./kubeless.md )
 
 ### Framework
 
-- [Serverless Framework]( ./serverless_framework.html )
+- [Serverless Framework]( ./serverless_framework.md )
 
 ## Videos / Streaming
 
-- [OBS]( ./obs.html )
-- [Videos Library]( ./videos_library.html )
+- [OBS]( ./obs.md )
+- [Videos Library]( ./videos_library.md )
 
 ## License
 
-- [License Types]( ./license_types.html )
+- [License Types]( ./license_types.md )
 - [CodeMeter](./codemeter.html)
 
 ## Business 
