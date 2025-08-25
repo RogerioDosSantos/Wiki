@@ -1,10 +1,10 @@
-
 services:
   mkdocs:
     build: 
       context: .
       dockerfile: build.docker
-    container_name: mkdocs-mermaid
+    image: rogersantos/wiki:local
+    container_name: rogersantos/wiki
     ports:
       - "8001:8000"
     # volumes:
