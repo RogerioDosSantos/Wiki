@@ -1,44 +1,103 @@
-# Azure App Services
+﻿# Azure App Services
 
-## App Services for Container - Troubleshooting with Advanced Tools
+Azure App Services is a fully managed platform for building, deploying, and scaling web apps, APIs, and mobile backends in Microsoft Azure. It supports multiple programming languages and frameworks, providing integrated tools for DevOps, authentication, scaling, and more.
 
-![](http://tinyurl.com/wjzfgdt)
-![](http://tinyurl.com/st854zz)
+---
 
-## App Services Slots - How to use deployment Slots
+## Table of Contents
 
-![](http://tinyurl.com/r7527zs)
+- [Overview](#azure-app-services)
+- [Key Features](#key-features)
+- [App Services for Containers](#app-services-for-containers)
+- [Deployment Slots](#deployment-slots)
+- [Deployment Center](#deployment-center)
+- [How-To](#how-to)
+- [Useful Links](#useful-links)
+- [See Also](#see-also)
 
-- The URL does not change. The slot URL and the Production URL will always be the same
-- On the Slot you can have diferences in code as well diferences in configuration
-- The Slots allows you to define the amount of traffic that is on production to go to the slot 
+---
 
-E.g.: 50% of the traffic is goint to the slot: 
+## Key Features
 
-![](http://tinyurl.com/rk6wv28)
+- **Multi-language support:** .NET, .NET Core, Java, Ruby, Node.js, PHP, or Python
+- **Managed hosting:** Automatic OS patching, load balancing, and scaling
+- **Integrated DevOps:** Continuous deployment from GitHub, Azure DevOps, or any Git repo
+- **Custom domains and SSL:** Easy configuration for secure, branded endpoints
+- **Authentication and authorization:** Built-in integration with Azure Active Directory and social providers
+- **Staging environments:** Deploy and test in slots before going live
+- **Global scale:** Deploy apps in data centers worldwide
+- **Hybrid connectivity:** Connect securely to on-premises resources
 
-- You can access the slots using the production URL by using the following links: `<url>/?x-ms-routing-name=<slot_name>`
+---
 
-![](http://tinyurl.com/vm9mqrl)
+## App Services for Containers
 
-- When you Swap, the slot will be your deployment but the DNS will point to the proper deployment. Active connections will stay on the previous deployment
+Azure App Services supports running containerized applications. Advanced troubleshooting tools are available.
 
-![](http://tinyurl.com/w4ub584)
+> 📌 **Tip**: Use the advanced tools (Kudu) for troubleshooting and diagnostics in containerized App Services.
 
-## App Services deployment center 
+---
 
-It is a centralized way to put your code into an App Service
+## Deployment Slots
 
-In the future will be deployment center.
+Deployment slots allow you to host different versions of your app and swap them with zero downtime.
 
-Basically you can link the deployment center with your source control (E.g.: Git) and once you do a check-in, the deployment center will run your pipeline and deploy it for you. 
+- The URL does not change; both slot and production share the same base URL.
+- Slots can have differences in code and configuration.
+- You can route a percentage of production traffic to a slot (e.g., 50%).
+- Access slots using the production URL with: `<url>/?x-ms-routing-name=<slot_name>`
+- Swapping slots updates the deployment without changing DNS; active connections remain on the previous deployment.
 
-Since you have the deployment on every check-in, the deployment center can redeploy any previous deployment. 
+> 💡 **Note**: Deployment slots are ideal for staged rollouts and A/B testing.
 
-This is an alternative to Slots but does not give 0 downtime deployment since everytime it is redeployed the system will go down
+---
 
-## References 
+## Deployment Center
 
-- [Video explaining Slots](https://www.youtube.com/watch?v=0cgy4GplC4I)
-- [Video explaining Deployment Center](https://www.youtube.com/watch?v=QdI_BJHMadU)
+The Deployment Center is a centralized way to connect your source control (e.g., Git) to your App Service for automated deployments.
+
+- Link to source control for continuous deployment.
+- Redeploy any previous deployment from the center.
+- Unlike slots, redeployments may cause brief downtime.
+
+---
+
+## How-To
+
+### Access the Shell of a Container App
+
+To open a shell session inside an Azure Container App, use the following command:
+
+```sh
+az containerapp exec --name <container-app-name> --resource-group <resource-group> --command "/bin/bash"
+```
+
+> 📌 **Tip**: This is useful for troubleshooting, inspecting files, or running commands directly inside your container app.
+
+---
+
+## Useful Links
+
+| Resource | Description |
+|----------|-------------|
+| [Azure App Service Documentation](https://docs.microsoft.com/en-us/azure/app-service/) | Official Microsoft Docs |
+| [Quickstart: Create a web app](https://docs.microsoft.com/en-us/azure/app-service/quickstart-html) | Step-by-step guide |
+| [Pricing](https://azure.microsoft.com/en-us/pricing/details/app-service/) | App Service pricing |
+| [App Service on GitHub](https://github.com/Azure/app-service) | Source and samples |
+| [Video: Slots](https://www.youtube.com/watch?v=0cgy4GplC4I) | Explains deployment slots |
+| [Video: Deployment Center](https://www.youtube.com/watch?v=QdI_BJHMadU) | Explains deployment center |
+
+---
+
+## See Also
+
+- [Azure Container Instances](./azure_container_instances.md)
+- [Azure Storage](./azure_storage.md)
+- [Azure Key Vault](./azure_key_vault.md)
+- [Azure Pipeline](./azure_pipeline.md)
+- [Amazon Web Services (AWS)](./aws.md)
+
+---
+
+> 📌 **Tip**: Use deployment slots to safely test new versions of your app before swapping into production.
 

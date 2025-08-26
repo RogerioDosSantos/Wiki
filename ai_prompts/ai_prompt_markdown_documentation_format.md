@@ -37,7 +37,7 @@ Follow these instructions to generate clear, professional Markdown documentation
 
 ## 8. Enhance Navigation with Links and Anchors
 - Add internal links and anchors for easy navigation in long documents.
-- Provide a table of contents if the document is lengthy.
+- Do not provide a table of contents. The host of the documentation will generate it automatically.
 
 ## 9. Insert and Describe Images
 - Use Markdown image syntax to embed images.

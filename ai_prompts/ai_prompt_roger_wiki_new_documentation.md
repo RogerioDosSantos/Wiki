@@ -7,7 +7,7 @@ Follow these steps to create and integrate new subject documentation into your t
 ---
 
 ## 1. Create Initial Documentation File
-- **Location:** `docs/src/{{subject_name}}.md`
+- **Location:** `src/{{subject_name}}.md`
 - **Content Requirements:**
   - Begin with a brief introduction to **{{subject_name}}**.
   - List key features.
@@ -17,7 +17,7 @@ Follow these steps to create and integrate new subject documentation into your t
 ---
 
 ## 2. Update Main Wiki Index
-- **File:** `README.md` (`Wiki/README.md`)
+- **File:** `README.md` (`src/index.md`)
 - **Action:**
   - Add an entry for **{{subject_name}}** under the most appropriate section.
   - Follow the format of existing entries.
@@ -25,7 +25,7 @@ Follow these steps to create and integrate new subject documentation into your t
 ---
 
 ## 3. Add Documentation Images
-- **Directory:** `docs/src/{{subject_name}}/`
+- **Directory:** `src/{{subject_name}}/`
 - **Filename Format:** `{{subject_name}}-{{image_purpose}}.png`
 - Download and save any relevant images for the documentation.
 
