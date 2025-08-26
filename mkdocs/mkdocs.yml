@@ -1,5 +1,5 @@
 site_name: Roger Santos Wiki
-site_url: http://localhost:8000/wiki
+# site_url: http://localhost:8000/wiki
 theme:
   name: material
 plugins:
