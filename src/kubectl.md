@@ -14,25 +14,24 @@
 
 ---
 
-## Useful Links
-
-- [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
-- [kubectl Command Reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
-- [Kubernetes Official Documentation](https://kubernetes.io/docs/)
-
----
-
 ## Troubleshooting / How-to
 
 <details>
 <summary><strong>Troubleshoot local network with DNS utilities</strong></summary>
 
 **[Run on host terminal]**
-```shell
-kubectl run -i --tty debian-debug-pod --image=debian --rm --restart=Never -- bash
-```
 
-**[Run inside debian-debug-pod]**
+- **Debian-based debug pod:**
+  ```shell
+  kubectl run -i --tty debian-debug-pod --image=debian --rm --restart=Never -- bash
+  ```
+- **Ubuntu-based debug pod (alternative):**
+  ```shell
+  kubectl run -i --tty ubuntu-debug-pod --image=ubuntu --rm --restart=Never -- bash
+  ```
+  > ?? **Tip:** The Ubuntu image may require you to install troubleshooting tools (like curl, dnsutils, iproute2) after starting the pod, just as with Debian. Use `apt-get update && apt-get install -y dnsutils curl iproute2` inside the pod.
+
+**[Run inside debug pod]**
 ```sh
 apt-get update && apt-get install -y dnsutils curl iproute2
 
@@ -71,8 +70,9 @@ This allows you to use tools like `nslookup`, `dig`, `host`, `curl`, and `ip` fo
    ```
 2. Re-enter the pod with:
    ```shell
-   kubectl exec -it debian-debug-pod -- bash
+   kubectl exec -it <debug-pod-name> -- bash
    ```
+   > ?? **Tip:** Replace `<debug-pod-name>` with either `debian-debug-pod` or `ubuntu-debug-pod` depending on which pod you started.
 
 **Check if CoreDNS pods are running:**
 **[Run on host terminal]**
@@ -148,3 +148,8 @@ Replace `<namespace>`, `<pod-name>`, and `<container-name>` with your actual nam
 - [Kubernetes](./kubernetes.md): The core container orchestration platform.
 - [MicroK8s](./microk8s.md): Lightweight Kubernetes for local development.
 - [Helm](./helm.md): Kubernetes package manager.
+- [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+- [kubectl Command Reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
+- [Kubernetes Official Documentation](https://kubernetes.io/docs/)
+
+---
