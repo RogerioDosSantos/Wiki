@@ -90,6 +90,30 @@ Stops and removes the running MKDocs Docker container.
   - Runs `docker-compose -f docker_compose.yaml down` to stop and remove the container.
   - Prints a confirmation message.
 
+### wiki_split_subject_into_file.ps1
+
+Splits a Markdown file into separate files for each level two heading (##), promoting all heading levels by one in the new files. The original file will keep only a note and a link to the new file for each section.
+
+- **Usage:**
+  - Run via Visual Studio External Tools or directly in PowerShell.
+  - Example command (split all sections):
+    ```
+    -ExecutionPolicy Bypass -File "C:\work\git\Wiki\scripts\powershell\wiki_split_subject_into_file.ps1" -InputFile .\README.md -OutputDir .\src\
+    ```
+  - Example command (split only the section containing a specific line):
+    ```
+    -ExecutionPolicy Bypass -File "C:\work\git\Wiki\scripts\powershell\wiki_split_subject_into_file.ps1" -InputFile .\README.md -OutputDir .\src\ -TargetLine 42
+    ```
+- **Options:**
+  - `-InputFile <path>`: Path to the input Markdown file (required)
+  - `-OutputDir <path>`: Directory where the split files will be created (required)
+  - `-TargetLine <line-number>`: (Optional) Only split the section containing this 1-based line number
+- **What it does:**
+  - For each level two heading (e.g., ## Purpose), creates a new file (e.g., readme_purpose.md) in the output directory.
+  - Promotes all heading levels by one (## becomes #, ### becomes ##, etc.) in the new file.
+  - Replaces the original section content with a note and a link to the new file.
+  - If the output file already exists, appends a timestamp (_YYMMDDHHmmSS) to the filename to avoid overwriting.
+
 ---
 
 ## Using Visual Studio External Tools to Run Clipboard Image Script
@@ -115,6 +139,34 @@ You can configure Visual Studio to run the `wiki_image_from_clipdoard.ps1` scrip
 
 - The script will save the clipboard image to a path like `./src/resources/<filename>/<filename>_line_<line>.png` relative to your project.
 - The script will output the correct Markdown image link and copy it to your clipboard for easy pasting into your documentation.
+
+---
+
+## Using Visual Studio External Tools to Run Markdown Splitting Script
+
+You can configure Visual Studio to run the `wiki_split_subject_into_file.ps1` script as an External Tool for quick Markdown splitting.
+
+### Example External Tool Configuration (Split All Sections)
+
+- **Title:** Split Markdown by Section
+- **Command:** `powershell.exe`
+- **Arguments:** `-ExecutionPolicy Bypass -File "C:\work\git\Wiki\scripts\powershell\wiki_split_subject_into_file.ps1" -InputFile $(ItemPath) -OutputDir .\src\`
+- **Initial Directory:** `$(ItemDir)`
+
+### Example External Tool Configuration (Split Section by Line)
+
+- **Title:** Split Markdown Section by Line
+- **Command:** `powershell.exe`
+- **Arguments:** `-ExecutionPolicy Bypass -File "C:\work\git\Wiki\scripts\powershell\wiki_split_subject_into_file.ps1" -InputFile $(ItemPath) -OutputDir .\src\ -TargetLine $(CurLine)`
+- **Initial Directory:** `$(ItemDir)`
+
+#### Steps to Add the Tool
+
+1. In Visual Studio, go to `Tools` > `External Tools...`.
+2. Click `Add` and fill in the fields as above for the desired mode.
+3. Click `OK` to save.
+
+> **Tip:** You can set a keyboard shortcut for this tool via `Tools` > `Options` > `Environment` > `Keyboard`. Search for `Tools.ExternalCommandN` (where N is the tool's order in the list) and assign your preferred shortcut.
 
 ---
 

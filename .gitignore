@@ -27,3 +27,4 @@ tags.temp
 docs/src/style.css
 docs/src/*.html
 /.vs
+/temp.md
