@@ -6,7 +6,7 @@
 
 *Federated Access Management* builds a trust relationship between *identity providers (IdP)* and *service providers (SP)*. It devolves the responsibility for *authentication* to a *user's home organisation*, and establishes *authorisation* through the secure exchange of information (known as *attributes*) between the two parties.
 
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/sso/federation_example.png)
+![](./resources/sso/federation_example.png)
 
 ### Access Federation 
 

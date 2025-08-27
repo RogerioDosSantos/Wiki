@@ -6,14 +6,14 @@
 
 - Go to the settings 
 
-![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/azure_devops/settings_menu.png )
+![](./resources/azure_devops/settings_menu.png)
 
 - Than services connections >> new service connection 
 
-![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/azure_devops/service_connections.png )
+![](./resources/azure_devops/service_connections.png)
 
 - Select the desired service and follow the configuration for the service: 
 
-![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/azure_devops/service_connections_new.png )
+![](./resources/azure_devops/service_connections_new.png)
 
 

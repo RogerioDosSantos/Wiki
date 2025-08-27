@@ -128,7 +128,7 @@ You can call an interactive built-in, browser-based [Swagger Editor](https://edi
 swagger project edit
 ```
 
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/nodejs/swagger_builtin_editor.png)
+![](./resources/nodejs/swagger_builtin_editor.png)
 
 
 ### Write controller code in Node.js
@@ -158,9 +158,9 @@ app.use(swaggerExpress.runner.swaggerTools.swaggerUi());
 
 This will enable a `docs` entrypoint: 
 
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/nodejs/swagger_docs_entrypoint_code.png)
+![](./resources/nodejs/swagger_docs_entrypoint_code.png)
 
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/nodejs/swagger_docs_entrypoint.png)
+![](./resources/nodejs/swagger_docs_entrypoint.png)
 
 ## How-To 
 

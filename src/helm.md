@@ -36,7 +36,7 @@ This section describes the architecture and several workflows of using Helm in g
 
 The following diagram illustrates the Helm debug and dry-run workflow:
 
-![Helm Debug and Dry-Run Workflow](./helm/helm_debug_dryrun.png)
+![](./resources/helm/helm_debug_dryrun.png)
 
 *This diagram shows how Helm interacts with the Kubernetes API server to render templates and validate configurations without making any changes to the cluster. Once verified, you can proceed with the actual deployment.*
 

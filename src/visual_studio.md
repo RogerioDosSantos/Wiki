@@ -37,7 +37,7 @@ ENTRYPOINT C:\vs_2017_remote_debugger\x86\msvsmon.exe /noauth /anyuser /silent /
 
 Change your Visual Studio project remote debug configuration as follow:
 
-![](http://tinyurl.com/y7yb3s5a)
+![](./resources/visual_studio/visual_studio_line_41.png)
 
 #### Launching the Debug Container
 
@@ -63,7 +63,7 @@ C:\vs_2017_remote_debugger\x86\msvsmon.exe /noauth /anyuser /silent /nostatus /n
 
 On the *Visual Studio* start your application using the *Remote Windows Debugger*:
 
-![](http://tinyurl.com/y8ucfjmn)
+![](./resources/visual_studio/visual_studio_line_67.png)
 
 ### Build C/C++ code on the command line
 
@@ -94,19 +94,19 @@ To connect to a *Database* from *Visual Studio*, follow the steps below:
 
 - On the *Server Explorer* add a new connection:
 
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/connect_database_add_connection.png)
+![](./resources/visual_studio/connect_database_add_connection.png)
 
 - Chose the *Data Source* you want to connect. Example to connect with an Azure SQL Server: 
 
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/connect_database_datasource.png)
+![](./resources/visual_studio/connect_database_datasource.png)
 
 - Configure the connection: 
 
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/connect_database_datasource_configuration.png)
+![](./resources/visual_studio/connect_database_datasource_configuration.png)
 
 - Once connected you are ready to execut SQL commands: 
 
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/connect_database_sql_query.png)
+![](./resources/visual_studio/connect_database_sql_query.png)
 
 
 ### Get environment variable while debuggin C# code 
@@ -116,8 +116,6 @@ To connect to a *Database* from *Visual Studio*, follow the steps below:
 ```cs
 Environment.GetEnvironmentVariables()
 ```
-
-![](http://tinyurl.com/y3pr8cex)
 
 ### Add *Secrets* configured in the *appsettings.json* in the *secrets.json*
 
@@ -136,7 +134,7 @@ Imagine that you have the following configuration in your *appsettings.json*:
 
 You can right click in your project and select *Manage User Secrets*. 
 
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/visual_studio/user_secrets_menu.png)
+![](./resources/visual_studio/user_secrets_menu.png)
 
 There you can add your secret 
 

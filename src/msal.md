@@ -17,15 +17,15 @@ They are OAuth 2.0 and OpenID Connect Library using this library you get:
 
 #### Create an Azure App Registration
 
-![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/msal/app_registration_01.png )
+![](./resources/msal/app_registration_01.png)
 
 #### On the API Permissions and add a Microsoft Graph Permission 
 
-![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/msal/app_registration_02.png )
+![](./resources/msal/app_registration_02.png)
 
 #### On the Authentication add an Mobile and desktop application 
 
-![]( https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/msal/app_registration_03.png )
+![](./resources/msal/app_registration_03.png)
 
 #### Create an *OAuth 2.0* Authorization request 
 

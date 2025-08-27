@@ -10,7 +10,7 @@
 
 - Go to *Azure Portal* and get your *Subscription ID (azure_subscription_id)*:
 
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/azure_active_directory/azure_portal_subscription.png)
+![](./resources/azure_active_directory/azure_portal_subscription.png)
 
 ```shell
 echo "-- Login on Azure (Using User and Password)" 

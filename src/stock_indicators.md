@@ -24,5 +24,5 @@ Moving average convergence divergence (MACD) is a trend-following momentum indic
 
 ## Structure of a Buble
 
-![](https://media.githubusercontent.com/media/RogerioDosSantos/Wiki/master/docs/src/stock_indicators/phase_of_a_stock_bubble.png)
+![](./resources/stock_indicators/phase_of_a_stock_bubble.png)
 

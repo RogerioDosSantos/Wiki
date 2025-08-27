@@ -89,7 +89,7 @@ Kubernetes (often abbreviated as K8s) orchestrates containers across a cluster o
 
 ### Enable Kubernetes in Docker Desktop
 
-![Enable Kubernetes in Docker](./kubernetes/kubernetes_enable_kubernetes_on_docker.png)
+![](./resources/kubernetes/kubernetes_enable_kubernetes_on_docker.png)
 
 ### Install and Configure kubectl in WSL
 
@@ -138,6 +138,20 @@ kubectl get services
 - [Node auto updates and upgrades](http://tinyurl.com/wphp8jw)
 - [kured - Kubernetes Reboot Daemon](https://github.com/weaveworks/kured)
 - [Video on virtual nodes on Azure](https://mail.google.com/mail/u/0/#inbox/KtbxLxGvZbRdrBpGqffDtFpzzSDrkpLvVB?projector=1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
