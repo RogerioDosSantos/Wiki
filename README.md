@@ -52,7 +52,7 @@ docker compose -f mkdocs/docker_compose.yaml up
 
 ## Wiki Utility Scripts
 
-This repository includes several PowerShell scripts to help automate common tasks:
+This repository includes several PowerShell scripts in the `scripts/powershell/` folder to help automate common tasks.
 
 ### wiki_image_from_clipdoard.ps1
 
@@ -62,7 +62,7 @@ Saves an image from the clipboard to a specified path in your documentation and 
   - Run via Visual Studio External Tools or directly in PowerShell.
   - Example External Tool Arguments:
     ```
-    -ExecutionPolicy Bypass -File "C:\work\git\Wiki\wiki_image_from_clipdoard.ps1" -imagePath $(ItemDir)resources\$(ItemFileName)\$(ItemFileName)_line_$(CurLine).png
+    -ExecutionPolicy Bypass -File "C:\work\git\Wiki\scripts\powershell\wiki_image_from_clipdoard.ps1" -imagePath $(ItemDir)resources\$(ItemFileName)\$(ItemFileName)_line_$(CurLine).png
     ```
 - **What it does:**
   - Saves the clipboard image to a path like `./src/resources/<filename>/<filename>_line_<line>.png`.
@@ -100,7 +100,7 @@ You can configure Visual Studio to run the `wiki_image_from_clipdoard.ps1` scrip
 
 - **Title:** Save Clipboard Image to Wiki
 - **Command:** `powershell.exe`
-- **Arguments:** `-ExecutionPolicy Bypass -File "C:\work\git\Wiki\wiki_image_from_clipdoard.ps1" -imagePath $(ItemDir)resources\$(ItemFileName)\$(ItemFileName)_line_$(CurLine).png`
+- **Arguments:** `-ExecutionPolicy Bypass -File "C:\work\git\Wiki\scripts\powershell\wiki_image_from_clipdoard.ps1" -imagePath $(ItemDir)resources\$(ItemFileName)\$(ItemFileName)_line_$(CurLine).png`
 - **Initial Directory:** `$(ItemDir)`
 
 #### Steps to Add the Tool
