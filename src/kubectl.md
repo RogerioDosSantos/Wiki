@@ -43,22 +43,22 @@
   apk add --no-cache bind-tools curl iproute2
   ```
 
-# Check your network configuration
+#### Check your network configuration
 ip addr
 ip route
 
-# Find your search domain (from /etc/resolv.conf)
+#### Find your search domain (from /etc/resolv.conf)
 grep '^search' /etc/resolv.conf
 
-# Use nslookup to resolve a local domain
+#### Use nslookup to resolve a local domain
 nslookup <local-domain>
 
-# Use curl to test access to a local URL
+#### Use curl to test access to a local URL
 curl http://<local-url>
 
-# Use curl to connect to another pod by its service name (example: my-service in the same namespace)
+#### Use curl to connect to another pod by its service name (example: my-service in the same namespace)
 curl http://my-service:8080
-# Or, using the full cluster DNS name (example: my-service in namespace 'foo')
+#### Or, using the full cluster DNS name (example: my-service in namespace 'foo')
 curl http://my-service.foo.svc.cluster.local:8080
 
 **[Run on host terminal]**
