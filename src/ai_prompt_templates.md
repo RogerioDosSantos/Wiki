@@ -12,8 +12,9 @@ They help users communicate their intent clearly to the AI, improving the releva
 
 ## Templates
 
-- [roger_wiki_new_documentation.md](../../ai_prompts/roger_wiki_new_documentation.md): Create a new documentation page in [Roger's Github Wiki](https://github.com/RogerioDosSantos/Wiki)
+You can find examples of AI prompt templates in the following github repository:
 
+- [This Wiki Github Source Code (AI Prompts)](https://github.com/RogerioDosSantos/Wiki/tree/master/ai_prompts)
 
 ## Useful Links
 - [Prompt Engineering Guide](https://www.promptingguide.ai/)
