@@ -23,7 +23,7 @@
 - [HTTP.sys]( ./http_sys.md )
 - [COM/DCOM]( ./com_dcom.md )
 - [DLLs]( ./dlls.md )
-- [TreeSize](./treesize.html)
+- [TreeSize](./treesize.md)
 
 ## Linux 
 
@@ -45,7 +45,7 @@
     - [Doxigen]( ./doxigen.md )
     - [NeoSnippet]( ./neosnippet.md )
    	- [Marvim](	./marvim.md )
-    - [FZF](./fzf.html)
+    - [FZF](./fzf.md)
     - [Grammarous]( ./grammarous.md )
 
 ## Editors, Brownser, Productivity and Develpment Tools
@@ -53,9 +53,9 @@
 - [Notepad++]( ./notepadpp.md )
 - [Visual Studio]( ./visual_studio.md )
 - [Google Chrome]( ./google_chrome.md )
-- [Postman](./postman.html) - HTTP Client and QA Automation
-- [Fiddler](./fiddler.html) - Control and monitor HTTP/HTTPs traffic
-- [Miro](./miro.html) - Cloud White Board tool
+- [Postman](./postman.md) - HTTP Client and QA Automation
+- [Fiddler](./fiddler.md) - Control and monitor HTTP/HTTPs traffic
+- [Miro](./miro.md) - Cloud White Board tool
 - [Autorest]( ./autrest.md ) - Swagger Client
 - [ShareX]( ./sharex.md ) - Printscreen, sharing tool. Allow publish your screen or video to the cloud services
 - [ngrok]( ./ngrok.md ) - Route a public URL to the localhost
@@ -79,7 +79,7 @@
 - [TFS Client](./tfs_client.md )
 - [GitVersion]( ./git_version.md )
 - [GitReleaseManager]( ./git_release_manager.md )
-- [Ungit](./ungit.html)
+- [Ungit](./ungit.md)
 
 ## Dev/Ops
 
@@ -100,9 +100,9 @@
 - [Helm]( ./helm.md )
 - [Headlamp]( ./headlamp.md )
 - [Heroku]( ./heroku.md )
-- [X11 Bridge (Viewer)](./docker_viewer_x11_bridge.html)
-- [Security](./container_security.html)
-- [Aqua Security](./aqua_security.html)
+- [X11 Bridge (Viewer)](./docker_viewer_x11_bridge.md)
+- [Security](./container_security.md)
+- [Aqua Security](./aqua_security.md)
 
 ## Proxies and Reverse Proxies
 
@@ -168,11 +168,11 @@
 - [Perfmon]( ./perfmon.md )
 - [CRT APIs]( ./crt_apis.md )
 - [CDB]( ./cdb.md )
-- [Visual Studio Debugging Tools](./visual_studio_debugging_tools.html)
-- [SOS](./sos.html)
-- [SOSex](./sosex.html)
-- [PerfView](./perfview.html)
-- [Microsoft.Diagnostics.Runtime (CLRMD)](./clrmd.html)
+- [Visual Studio Debugging Tools](./visual_studio_debugging_tools.md)
+- [SOS](./sos.md)
+- [SOSex](./sosex.md)
+- [PerfView](./perfview.md)
+- [Microsoft.Diagnostics.Runtime (CLRMD)](./clrmd.md)
 
 ## Database 
 
@@ -234,7 +234,7 @@
 ## Network 
 
 - [LDAP]( ./ldap.md )
-- [0MQ](./0mq.html)
+- [0MQ](./0mq.md)
 - [OpenSSL]( ./openssl.md )
 - [Wireshark]( ./wireshark.md )
 - [RabbitMQ]( ./rabbit_mq.md )
@@ -310,23 +310,23 @@
 ## License
 
 - [License Types]( ./license_types.md )
-- [CodeMeter](./codemeter.html)
+- [CodeMeter](./codemeter.md)
 
 ## Business 
 
-- [LLC](./llc.html)
-- [Property Rental](./property_rental.html)
+- [LLC](./llc.md)
+- [Property Rental](./property_rental.md)
 
 ## Regulation and Lesgislations
 
-- [GDPR](./gdpr.html)
+- [GDPR](./gdpr.md)
 
 ## Books 
 
-- [DevOps - Handbook](./book_devops_handbook.html)
+- [DevOps - Handbook](./book_devops_handbook.md)
 
 ## Presentations
-- [Quotes](./quotes.html)
+- [Quotes](./quotes.md)
 
 ## Interesting Sites 
 
