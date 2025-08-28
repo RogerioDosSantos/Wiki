@@ -30,6 +30,10 @@ RUN if [ ! -d /workspace/wiki ]; then \
 COPY mkdocs.yml /docs/mkdocs.yml
 RUN sed -i 's/\r$//' /docs/mkdocs.yml && chmod +x /docs/mkdocs.yml
 
+# Copy wiki.version for version logging
+COPY scripts/powershell/wiki.version /wiki.version
+RUN sed -i 's/\r$//' /wiki.version && chmod +x /wiki.version
+
 # B. Add a shell script for cron to call
 COPY sync_wiki.sh /sync_wiki.sh
 RUN sed -i 's/\r$//' /sync_wiki.sh && chmod +x /sync_wiki.sh
