@@ -1,7 +1,7 @@
 FROM squidfunk/mkdocs-material:9.6
 
 RUN apk add --no-cache git cronie \
-    && pip install mkdocs-mermaid2-plugin
+    && pip install mkdocs-mermaid2-plugin mkdocs-graphviz
 
 # A. Clone the repository if not present, otherwise pull latest changes
 RUN if [ ! -d /workspace/wiki ]; then \

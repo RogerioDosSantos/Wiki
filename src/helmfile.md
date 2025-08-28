@@ -151,8 +151,6 @@ Helm hooks are special resources in Helm charts that allow you to intervene in t
 
 ### How Helm Hooks Work
 
-![Helm Hooks](./helm/helm_hooks.png)
-
 Hooks are implemented by adding special annotations to Kubernetes manifests in your chart. Helm recognizes these annotations and executes the associated resources at the appropriate lifecycle event.
 
 **Common hook events include:**

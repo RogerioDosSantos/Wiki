@@ -75,7 +75,5 @@ This setup opens the currently selected file in Notepad++.
 ## See Also
 
 - [Visual Studio](./visual_studio.md)
-- [Visual Studio Extensions](./visual_studio_extensions.md): Enhance Visual Studio with extensions.
-- [Command Line Tools](./command_line_tools.md): Useful command line tools for development.
 
 ---

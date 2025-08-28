@@ -30,7 +30,35 @@ There are 02 types of *scopes*:
 
 ### Workflow
 
-![Identity Server Workflow](./identity_server_workflow.svg)
+```dot
+digraph identity_server_workflow { 
+
+  subgraph components{
+    aize="4,4";
+    node [style="filled,rounded", fillcolor="azure", shape="box"];
+    user [label="User"];
+    service_config [label="Identity Server Config"];
+    client [label="Application (Client)"];
+    authentication_service [label="Authentication Service"];
+    authorization_service [label="Autorization Service"];
+  }
+
+  subgraph statup_sequence{
+    edge [color="blue", fontcolor="blue"];
+    service_config -> authorization_service [label="Register Client\nDefine\nResources and/or Identity scopes"]
+    client -> authentication_service [label="Request Authentication\nRequest\nResources and/or Identity scopes"];
+    authorization_service -> user [label="Request User Approval\nto client access the resource"]
+    user -> authorization_service [label="User Approval (Yes/No)", style="dotted"]
+    authentication_service -> client [label="If Request scope\nnot in the registration\n=>Error (Invalid Client)", style="dotted"];
+    authentication_service -> client [label="If User did not\nprovided access\n=>Error (Access Denied)", style="dotted"];
+    authentication_service -> client [label="If Success\n=>Send Access Token", style="dotted"];
+    client -> authorization_service [label="Register to Server\nrequesting\nResources and/or Identity scopes"]
+    authorization_service -> client [label="Send Identity Token", style="dotted"];
+    authorization_service -> client [label="Send Reflesh Token", style="dotted"];
+  }
+
+}
+```
 
 - Each *client* registered has an unique *client id*
 - *Clients* can authenticate themselves using *secrets* or *certificates* (In this case, the [*certificate thumbprint*](https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate) is used as secret)
@@ -41,19 +69,49 @@ There are 02 types of *scopes*:
 
 Most suitable for *server-side clients* where the *client* can *securely maintain a secret*
 
-![Authorization Code Flow](./identity_server_workflow_authorization_code.svg)
+``` dot
 
-![](http://tinyurl.com/y4qwqbx6)
+digraph identity_server_authorization_code_flow { 
+
+  subgraph components{
+    aize="4,4";
+    node [style="filled,rounded", fillcolor="azure", shape="box"];
+    client [label="Application (Client)"];
+    authorization_service [label="Autorization Service"];
+  }
+
+  subgraph sequence{
+    edge [color="blue", fontcolor="blue"];
+    client -> authorization_service [label="01\nAuthorization Request\nInforming Client ID"]
+    authorization_service -> client [label="02\nAtuhorization Code\n(After authorization consent)", style="dotted"]
+    client -> authorization_service [label="03\nAuthentication with\nClientID and secret\n"]
+    authorization_service -> client [label="04\nIdentity Token\nAccess Token\nReflesh Token (Optional)", style="dotted"]
+  }
+
+}
+```
 
 #### Implicit Flow (Uses Front channel only)
 
 Most suitable for *browser based clients* which cannot sensibly maintain a client secret and cannot therefore authenticate themselves with the *authorization server*
 
-![Implicit Flow](./identity_server_workflow_implicity_flow.svg)
+``` dot
+digraph identity_server_implicit_flow { 
+  subgraph components{
+    aize="4,4";
+    node [style="filled,rounded", fillcolor="azure", shape="box"];
+    client [label="Application (Client)"];
+    authorization_service [label="Autorization Service"];
+  }
+  subgraph sequence{
+    edge [color="blue", fontcolor="blue"];
+    client -> authorization_service [label="01\nAuthorization Request\nInforming Client ID"]
+    authorization_service -> client [label="02\nIdentity Token\nAccess Token\nReflesh Token (Optional)", style="dotted"]
+  }
+}
+```
 
 Because an *authenticated session* exists between the *browser* and the *authorization server* it is possible to resubmit the *authentication request* and receive a new set of *tokens* when the current *access token* expires.
-
-![](http://tinyurl.com/yy2np9cy)
 
 #### Hybrid Flow
 
@@ -63,7 +121,21 @@ Most suitable for native and mobile apps. It is best used combined with [PKCE, (
 
 Used in highly trusted applications if the password is stored
 
-![Resource Owner Flow](./identity_server_workflow_resource_owner_flow.svg)
+``` dot
+digraph identity_server_resource_owner_credentials_flow { 
+  subgraph components{
+    aize="4,4";
+    node [style="filled,rounded", fillcolor="azure", shape="box"];
+    client [label="Application (Client)"];
+    authorization_service [label="Autorization Service"];
+  }
+  subgraph sequence{
+    edge [color="blue", fontcolor="blue"];
+    client -> authorization_service [label="01\nAuthentication Request\nInforming Client ID\nUser Credentials"]
+    authorization_service -> client [label="02\nIdentity Token\nAccess Token\nReflesh Token (Optional)", style="dotted"]
+  }
+}
+```
 
 A *reflesh token* cannot be requested, the client must re-authenticate itself and request another access token when necessary
 
@@ -71,7 +143,21 @@ A *reflesh token* cannot be requested, the client must re-authenticate itself an
 
 Used for highly trusted clients when no other flow can be used.
 
-![Client Credential Flow](./identity_server_workflow_client_credential_flow.svg)
+``` dot
+digraph identity_server_client_credentials_flow { 
+  subgraph components{
+    aize="4,4";
+    node [style="filled,rounded", fillcolor="azure", shape="box"];
+    client [label="Application (Client)"];
+    authorization_service [label="Autorization Service"];
+  }
+  subgraph sequence{
+    edge [color="blue", fontcolor="blue"];
+    client -> authorization_service [label="01\nAuthentication Request\nInforming Client ID\nClient Credentials"]
+    authorization_service -> client [label="02\nIdentity Token\nAccess Token\nReflesh Token (Optional)", style="dotted"]
+  }
+}
+```
 
 A *reflesh token* cannot be requested, the client must re-authenticate itself and request another access token when necessary
 
@@ -87,11 +173,9 @@ It will have 02 parts to use the *Identity Server Framework*:
 
 2- Client: *ASP.NET* application that will talk to the *Server* requesting authorization and validation
 
-![](http://tinyurl.com/y6jnztuc)
 
 In order to provide the proper user access to the *Client*, you have to inform (configure) the *Server* about the *User* and the *Application*.
 
-![](http://tinyurl.com/y29n5wao)
 
 ## Jargons
 
@@ -119,29 +203,27 @@ In order to provide the proper user access to the *Client*, you have to inform (
 
 #### Authorization code flow 
 
-![](http://tinyurl.com/y4kyhjrh)
+``` dot
+digraph identity_server_authorization_code_flow { 
+  subgraph components{
+    aize="4,4";
+    node [style="filled,rounded", fillcolor="azure", shape="box"];
+    client [label="Application (Client)"];
+    authorization_service [label="Autorization Service"];
+  }
+  subgraph sequence{
+    edge [color="blue", fontcolor="blue"];
+    client -> authorization_service [label="01\nAuthorization Request\nInforming Client ID"]
+    authorization_service -> client [label="02\nAtuhorization Code\n(After authorization consent)", style="dotted"]
+    client -> authorization_service [label="03\nAuthentication with\nClientID and secret\n"]
+    authorization_service -> client [label="04\nIdentity Token\nAccess Token\nReflesh Token (Optional)", style="dotted"]
+  }
+}
+```
 
 ### OpenId Connect (OIDC)
 
 It is basically OAuth2 with extensibility to also request an ID token (JWT)
-
-![](http://tinyurl.com/y3w6fyrl)
-
-![](http://tinyurl.com/y2kaekat)
-
-![](http://tinyurl.com/y6an673z)
-
-![](http://tinyurl.com/yxfr3xl7)
-
-![](http://tinyurl.com/y3qtavfn)
-
-![](http://tinyurl.com/y3ma4gyh)
-
-![](http://tinyurl.com/y5c2q4ss)
-
-![](http://tinyurl.com/yxwp3ub4)
-
-![](http://tinyurl.com/y5uhzaz7)
 
 ## How-to 
 

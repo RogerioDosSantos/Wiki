@@ -21,6 +21,3 @@ You can find examples of AI prompt templates in the following github repository:
 - [OpenAI Cookbook: Prompt Engineering](https://github.com/openai/openai-cookbook#prompt-engineering)
 - [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts)
 
-## See Also
-- [Chatbot Design](./chatbot_design.md): Principles and patterns for building conversational agents
-- [Natural Language Processing](./nlp.md): Techniques for processing and understanding human language

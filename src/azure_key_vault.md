@@ -41,8 +41,8 @@ Using *Managed Identity* allows you to create a configuration that can *authenti
 
 #### Allow an *Application* to *Get* and *List* values from *Key-Vault*
 
-- [Create an Application Registration](../stage/azure_active_directory.html) (Create Application Registration (From the Portal) session)
-- [Create a new Application Secret](../stage/azure_active_directory.html) (Create Application Secret (From the Portal) session)
+- [Create an Application Registration](./azure_active_directory.md) (Create Application Registration (From the Portal) session)
+- [Create a new Application Secret](./azure_active_directory.md) (Create Application Secret (From the Portal) session)
 - Go to *Azure Portal* and go to *Azure Active Directory* 
 - Create a *Key-Vault* if it does not exist (Create *Key-Vault* (From the Portal) session)
 - Go to the *Key-Vault*. E.g.: *MyKeyVaultName*
@@ -92,7 +92,7 @@ Your key will be `MyAppName-KeyVault--AzureClientSecret`
 }
 ```
 
-*Note*: See [Visual Studio (Add Secrets configured in the appsettings.json in the secrets.json session)](../stage/visual_studio.html) for how to add the *AzureClientSecret* into the *secrets.json* file.
+*Note*: See [Visual Studio (Add Secrets configured in the appsettings.json in the secrets.json session)](./visual_studio.md) for how to add the *AzureClientSecret* into the *secrets.json* file.
 
 - Create a *PrefixKeyVaultSecretManager.cs* class file with the following code 
 
