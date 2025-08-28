@@ -75,14 +75,14 @@ You can verify the current wiki version inside the running container. This is us
 ### Using Docker
 
 ```sh
-docker exec <container_name> cat /workspace/wiki.version
+docker exec <container_name> cat /wiki.version
 ```
 Replace `<container_name>` with the name of your running container (e.g., `rogersantos-wiki`).
 
 ### Using Kubernetes
 
 ```sh
-kubectl exec -it <pod_name> -- cat /workspace/wiki.version
+kubectl exec -it <pod_name> -- cat /wiki.version
 ```
 Replace `<pod_name>` with the name of your running pod.
 
