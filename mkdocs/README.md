@@ -26,6 +26,7 @@ The setup is containerized using Docker, making it easy to build, serve, and mai
 | `mkdocs.yml`       | MKDocs configuration file                    |
 | `build.docker`     | Dockerfile for custom MKDocs image           |
 | `docker_compose.yaml` | Docker Compose configuration               |
+| `wiki.version`     | Semantic version of the wiki (used in image and logs) |
 
 ---
 
@@ -64,6 +65,28 @@ docker-compose -f docker_compose.yaml down
 Once the container is running, open your browser and navigate to:
 
 [http://localhost:8001](http://localhost:8001)
+
+---
+
+## Checking the Wiki Version in the Container
+
+You can verify the current wiki version inside the running container. This is useful for debugging, CI/CD, or ensuring the correct version is deployed.
+
+### Using Docker
+
+```sh
+docker exec <container_name> cat /workspace/wiki.version
+```
+Replace `<container_name>` with the name of your running container (e.g., `rogersantos-wiki`).
+
+### Using Kubernetes
+
+```sh
+kubectl exec -it <pod_name> -- cat /workspace/wiki.version
+```
+Replace `<pod_name>` with the name of your running pod.
+
+> **Tip:** The wiki version is also logged at container startup if the `LOG_WIKI_VERSION` environment variable is set to `true`.
 
 ---
 

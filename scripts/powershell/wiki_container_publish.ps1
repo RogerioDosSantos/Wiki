@@ -1,6 +1,6 @@
 # Build and publish the wiki Docker image with semantic versioning
 
-$versionFile = Join-Path $PSScriptRoot 'wiki.version'
+$versionFile = Join-Path $PSScriptRoot '..\..\mkdocs\wiki.version'
 if (!(Test-Path $versionFile)) {
     Write-Host "Version file not found, creating with 1.0.0"
     Set-Content $versionFile '1.0.0'
