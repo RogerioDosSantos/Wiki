@@ -23,6 +23,24 @@ When the cron daemon starts, it does **not** immediately execute any scheduled j
 
 ---
 
+## Cron Logging and Output
+
+By default, cron does **not** log job output (stdout or stderr) to the terminal or standard output (stdio). Instead, output is typically emailed to the user (if mail is configured) or can be redirected to a file using shell redirection in the crontab entry. In containerized environments, it is common to redirect cron job output to a log file or to `/proc/1/fd/1` (the container's stdout) for easier access and monitoring.
+
+**Example (redirect output to a log file):**
+```
+* * * * * /path/to/script.sh >> /var/log/myjob.log 2>&1
+```
+
+**Example (redirect output to container stdout):**
+```
+* * * * * /path/to/script.sh >> /proc/1/fd/1 2>&1
+```
+
+> **Tip:** Always explicitly redirect output if you want to capture logs from cron jobs.
+
+---
+
 ## Useful Links
 
 - [Cron Wikipedia](https://en.wikipedia.org/wiki/Cron)
