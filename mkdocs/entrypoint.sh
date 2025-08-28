@@ -7,6 +7,9 @@
 # - Starts crond for scheduled git pulls and doc updates
 # - Starts the MkDocs development server on all interfaces (port 8000)
 
+# Ensure that we have the latest documentation
+/sync_wiki.sh
+
 # Start crond in the background
 crond
 # Start mkdocs server
