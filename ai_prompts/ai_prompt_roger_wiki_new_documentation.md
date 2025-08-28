@@ -12,6 +12,7 @@ Follow these steps to create and integrate new subject documentation into your t
   - Begin with a brief introduction to **{{subject_name}}**.
   - List key features.
   - Provide useful links.
+	- Make sure the links are valid (No broken links), relevant, and up-to-date.
   - Add a **See Also** section referencing similar subjects.
 
 ---

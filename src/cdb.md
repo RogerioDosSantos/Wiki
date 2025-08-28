@@ -1,6 +1,6 @@
 # CDB
 
-[CDB](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/cdb-command-line-options) stands for **Console DeBug** is a *Windows* application equivalent to [Windbg]( ./windbg.html ) however only requires a *console* to run.
+[CDB](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/cdb-command-line-options) stands for **Console DeBug** is a *Windows* application equivalent to [Windbg]( ./windbg.md ) however only requires a *console* to run.
 
 ## Commands
 

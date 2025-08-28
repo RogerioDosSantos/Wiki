@@ -30,7 +30,7 @@ There are 02 types of *scopes*:
 
 ### Workflow
 
-![](./identity_server_workflow.svg)
+![Identity Server Workflow](./identity_server_workflow.svg)
 
 - Each *client* registered has an unique *client id*
 - *Clients* can authenticate themselves using *secrets* or *certificates* (In this case, the [*certificate thumbprint*](https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate) is used as secret)
@@ -41,7 +41,7 @@ There are 02 types of *scopes*:
 
 Most suitable for *server-side clients* where the *client* can *securely maintain a secret*
 
-![](./identity_server_workflow_authorization_code.svg)
+![Authorization Code Flow](./identity_server_workflow_authorization_code.svg)
 
 ![](http://tinyurl.com/y4qwqbx6)
 
@@ -49,7 +49,7 @@ Most suitable for *server-side clients* where the *client* can *securely maintai
 
 Most suitable for *browser based clients* which cannot sensibly maintain a client secret and cannot therefore authenticate themselves with the *authorization server*
 
-![](./identity_server_workflow_implicity_flow.svg)
+![Implicit Flow](./identity_server_workflow_implicity_flow.svg)
 
 Because an *authenticated session* exists between the *browser* and the *authorization server* it is possible to resubmit the *authentication request* and receive a new set of *tokens* when the current *access token* expires.
 
@@ -63,7 +63,7 @@ Most suitable for native and mobile apps. It is best used combined with [PKCE, (
 
 Used in highly trusted applications if the password is stored
 
-![](./identity_server_workflow_resource_owner_flow.svg)
+![Resource Owner Flow](./identity_server_workflow_resource_owner_flow.svg)
 
 A *reflesh token* cannot be requested, the client must re-authenticate itself and request another access token when necessary
 
@@ -71,7 +71,7 @@ A *reflesh token* cannot be requested, the client must re-authenticate itself an
 
 Used for highly trusted clients when no other flow can be used.
 
-![](./identity_server_workflow_client_credential_flow.svg)
+![Client Credential Flow](./identity_server_workflow_client_credential_flow.svg)
 
 A *reflesh token* cannot be requested, the client must re-authenticate itself and request another access token when necessary
 

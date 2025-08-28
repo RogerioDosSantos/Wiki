@@ -2,4 +2,4 @@
 
 ## References
 
-- [choosealicense.com](choosealicense.com)
+- [Choose a License](https://choosealicense.com/): Open source license selection guide.

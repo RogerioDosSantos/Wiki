@@ -54,7 +54,7 @@ Built on **.NET Core**, PowerShell Core provides compatibility with scripts and 
 
 ## PowerShell and .NET
 
-PowerShell allows you to access **.NET libraries**, enabling you to consume those libraries using PowerShell scripts. For example, you can configure [IIS using PowerShell](./iis.html).
+PowerShell allows you to access **.NET libraries**, enabling you to consume those libraries using PowerShell scripts. For example, you can configure [IIS using PowerShell](./iis.md).
 
 - Use [`Add-Type`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/add-type?view=powershell-6) to define a .NET class in your session.
 - The site [PInvoke](http://pinvoke.net/) provides C# signatures for various functions, which can be used in PowerShell.

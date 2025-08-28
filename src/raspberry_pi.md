@@ -4,8 +4,6 @@
 
 The Raspberry PI3 has four external USB ports.  Numbered as shown below:
 
-![]( ../resources/raspberry_pi_ports_170216.png )
-
 If a USB to serial converter is connected to one of those physical ports, then the respective port is mapped to a Linux serial ports as follows:
 
 *2* >> _/dev/serial/by-path/platform-3f980000.usb-usb-0:1.2:1.0-port0_

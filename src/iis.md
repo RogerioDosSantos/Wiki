@@ -106,4 +106,4 @@ iisreset.exe /stop
 iisreset.exe /start
 ```
 
-Look [here]( ./cdb.html ) for more information on how work with *CDB*
+Look [here]( ./cdb.md ) for more information on how work with *CDB*
