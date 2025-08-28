@@ -25,7 +25,7 @@ $imgName = "rogersantos/wiki:$newVersion"
 $imgLatest = "rogersantos/wiki:latest"
 
 # Build using docker compose and custom Dockerfile
-$composeFile = Join-Path $PSScriptRoot 'mkdocs/docker_compose.yaml'
+$composeFile = Join-Path $PSScriptRoot '..\..\mkdocs\docker_compose.yaml'
 docker compose -f $composeFile build --build-arg BUILDKIT_INLINE_CACHE=1 --no-cache
 
 # Tag the built image (docker compose build uses service name, so we need to tag it)
