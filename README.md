@@ -1,8 +1,18 @@
-# Roger Santos Wiki
+﻿# Roger Santos Wiki
 
 A personal and technical documentation 
 This wiki covers a wide range of topics including programming, DevOps, tools, cloud, and more, and is designed for easy navigation, search, and contribution.
-The main link to the wiki site created by this repo can be found at: [https://github.com/RogerioDosSantos/Wiki](https://github.com/RogerioDosSantos/Wiki)
+
+---
+
+## Wiki Links
+
+| Type | Link |
+|------|------|
+| **Source Code (GitHub)** | [https://github.com/RogerioDosSantos/Wiki](https://github.com/RogerioDosSantos/Wiki) |
+| **Deployed Site** | [https://aks-infra-dev.centralus.cloudapp.azure.com/wiki/](https://aks-infra-dev.centralus.cloudapp.azure.com/wiki/) |
+
+---
 
 ## Purpose
 
@@ -133,7 +143,7 @@ You can configure Visual Studio to run the `wiki_image_from_clipdoard.ps1` scrip
 2. Click `Add` and fill in the fields as above.
 3. Click `OK` to save.
 
-> ?? **Tip**: You can set a keyboard shortcut for this tool via `Tools` > `Options` > `Environment` > `Keyboard`. Search for `Tools.ExternalCommandN` (where N is the tool's order in the list) and assign your preferred shortcut.
+> 📌 **Tip**: You can set a keyboard shortcut for this tool via `Tools` > `Options` > `Environment` > `Keyboard`. Search for `Tools.ExternalCommandN` (where N is the tool's order in the list) and assign your preferred shortcut.
 
 #### What This Does
 
