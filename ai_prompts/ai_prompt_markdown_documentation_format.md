@@ -11,6 +11,7 @@ Follow these instructions to generate clear, professional Markdown documentation
 - Use **bold** for important terms or concepts.
 - Use *italic* for supplementary notes or clarifications.
 - Use ~~strikethrough~~ for deprecated or obsolete features.
+- Use *italic* for technical names, services or solutions.
 
 ## 3. Present Data with Tables
 - Use Markdown tables to display comparisons, feature lists, or structured data.
