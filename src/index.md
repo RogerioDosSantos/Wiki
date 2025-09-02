@@ -196,7 +196,7 @@
 
 ## .Net 
 
-- [.Net Versions]( ./.net_versions.md )
+- [.Net Versions]( ./dotnet_versions.md )
 - [.Net Core]( ./dotnet_core.md )
 - [GAC]( ./gac.md )
 - [Serilog]( ./serilog.md )

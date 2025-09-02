@@ -11,7 +11,6 @@ PowerShell is a powerful command-line shell and scripting language built on .NET
 - [Common Commands](#common-commands)
 - <details>
     <summary>How-to Guides</summary>
-    
     - [Assign Variable](#assign-variable)
     - [Get User Input](#get-user-input)
     - [Reboot a Machine Remotely](#reboot-a-machine-remotely)
@@ -33,14 +32,13 @@ PowerShell is a powerful command-line shell and scripting language built on .NET
     - [Handle Command Line Arguments](#handle-command-line-arguments)
     - [Read File Content into a Variable](#read-file-content-into-a-variable)
     - [Start-Process Examples](#start-process-examples)
-    - [Certificate - Import Certificates Examples](#certificate---import-certificates-examples)
-    - [Proxy - Set Global Proxy Parameters](#proxy---set-global-proxy-parameters)
-    - [Network - Test Network Connection to a URL](#network---test-network-connection-to-a-url)
-    - [Network - Verify DNS Configured](#network---verify-dns-configured)
-    - [Modules - Import a PowerShell Module / Function from a File](#modules---import-a-powershell-module--function-from-a-file)
+    - [Certificate - Import Certificates Examples](#certificate-import-certificates-examples)
+    - [Proxy - Set Global Proxy Parameters](#proxy-set-global-proxy-parameters)
+    - [Network - Test Network Connection to a URL](#network-test-network-connection-to-a-url)
+    - [Network - Verify DNS Configured](#network-verify-dns-configured)
+    - [Modules - Import a PowerShell Module / Function from a File](#modules-import-a-powershell-module-function-from-a-file)
     - [Reload PowerShell Session to Refresh Environment Variables](#reload-powershell-session-to-refresh-environment-variables)
     - [Get List of Commands Executed in a Session](#get-list-of-commands-executed-in-a-session)
-
   </details>
 - [References](#references)
 
@@ -202,8 +200,7 @@ Get-ChildItem Env:my_environment_variable
 
 ```powershell
 $path = (Get-ItemProperty 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
-$path = "${path};C:\\temp\\"
-Set-ItemProperty 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $path
+$path = "${path};C:\\temp\\"    Set-ItemProperty 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $path
 ```
 
 ### Execute Commands from CMD
@@ -263,6 +260,7 @@ Get-Process -Id (Get-NetTCPConnection -LocalPort <port_number>).OwningProcess
 
 - `iwr = Invoke-WebRequest`
 - `iex = Invoke-Expression`
+
 
 ```powershell
 iwr -useb <ps1_url> | iex

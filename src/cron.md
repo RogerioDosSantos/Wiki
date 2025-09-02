@@ -53,8 +53,6 @@ By default, cron does **not** log job output (stdout or stderr) to the terminal 
 
 ## See Also
 
-- [Systemd Timers](./systemd.md): Modern alternative for scheduling on systemd-based systems.
 - [at](https://man7.org/linux/man-pages/man1/at.1.html): Schedule a one-time job.
-- [Windows Task Scheduler](./windows_task_scheduler.md): Windows equivalent for scheduled tasks.
 
 ---
