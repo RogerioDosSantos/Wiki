@@ -8,6 +8,7 @@
 ## Windows 
 
 - [Windows Terminal Commands]( ./windows_terminal_commands.md )
+- [PowerToys]( ./powertoys.md )
 - [Windows Shortcuts]( ./windows_shortcuts.md )
 - [Babun]( ./babun.md )
 - [Windows Store]( ./windows_store.md )
