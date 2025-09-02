@@ -20,11 +20,11 @@ RUN if [ ! -d /workspace/wiki ]; then \
       git clone https://github.com/RogerioDosSantos/Wiki.git /workspace/wiki; \
     else \
       cd /workspace/wiki && git pull; \
-    fi \
-    # Remove existing /docs/docs before creating symlink
-    && mkdir -p /docs \
-    && rm -rf /docs/docs \
-    && ln -sf /workspace/wiki/src /docs/docs
+    fi 
+    ## Remove existing /docs/docs before creating symlink
+    #&& mkdir -p /docs \
+    #&& rm -rf /docs/docs \
+    #&& ln -sf /workspace/wiki/src /docs/docs
 
 # Use local mkdocs.yml for configuration (do NOT overwrite with remote)
 COPY mkdocs.yml /docs/mkdocs.yml

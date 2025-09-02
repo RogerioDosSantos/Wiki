@@ -15,6 +15,38 @@ MkDocs is a fast, simple, and modern static site generator that's geared towards
 
 ---
 
+## Displaying Images in MkDocs
+
+To display images in your MkDocs documentation, place your image files inside the documentation source folder (e.g., `docs/resources`).
+
+### Example: Using Images from `docs/resources`
+
+1. **Place your images** in the `docs/resources` folder. For example:
+   - `docs/resources/example.png`
+
+2. **Reference the image in your Markdown file** using a relative path:
+   ```markdown
+   ![](resources/example.png)
+   ```
+   > ?? **Tip:** The path is relative to the documentation source folder (`docs` by default).
+
+3. **Ensure your `mkdocs.yml` is configured correctly**:
+   - The default `docs_dir` is `docs`. If you use a different folder, update `docs_dir` in `mkdocs.yml`:
+     ```yaml
+     docs_dir: docs
+     ```
+
+4. **Extra Static Files (Optional):**
+   - If you want to serve images from a folder outside `docs`, add it to `mkdocs.yml`:
+     ```yaml
+     extra_static_dirs:
+       - resources
+     ```
+
+> ?? **Note:** All image paths must be inside or referenced from the documentation source folder. Case sensitivity matters on Linux.
+
+---
+
 ## Useful Links
 
 - [MkDocs Official Site](https://www.mkdocs.org/)

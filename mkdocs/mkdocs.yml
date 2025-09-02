@@ -1,5 +1,6 @@
 site_name: Roger Santos Wiki
 # site_url: http://localhost:8000/wiki
+docs_dir: /workspace/wiki/src
 theme:
   name: material
 plugins:
