@@ -18,7 +18,5 @@ if git fetch --quiet && ! git diff --quiet HEAD..origin/$(git rev-parse --abbrev
   git pull
   COMMIT_ID=$(git rev-parse HEAD)
   echo "[$NOW][sync_wiki.sh] Updated to commit $COMMIT_ID"
-  #rm -rf /docs/docs
-  #ln -sf /workspace/wiki/src /docs/docs
 fi
 exit 0
