@@ -180,4 +180,55 @@ You can configure Visual Studio to run the `wiki_split_subject_into_file.ps1` sc
 
 ---
 
+---
+
+## Viewing Logs in the Container
+
+You can inspect various logs and the current version from inside the running container or Kubernetes pod:
+
+### A. Cron Logs
+
+View the output of scheduled syncs and git pulls:
+- **Docker:**
+  ```sh
+  docker exec <container_name> tail -f /var/log/cron-git.log
+  ```
+- **Kubernetes:**
+  ```sh
+  kubectl exec -it <pod_name> -- tail -f /var/log/cron-git.log
+  ```
+Replace `<container_name>` with your Docker container name and `<pod_name>` with your Kubernetes pod name.
+
+### B. MkDocs Logs
+
+View the MkDocs server output (site build and serve):
+- **Docker:**
+  ```sh
+  docker logs <container_name>
+  ```
+- **Kubernetes:**
+  ```sh
+  kubectl logs <pod_name>
+  ```
+Or, for live output in Docker:
+  ```sh
+  docker attach <container_name>
+  ```
+
+### C. Wiki Version
+
+Display the current wiki version:
+- **Docker:**
+  ```sh
+  docker exec <container_name> cat /wiki.version
+  ```
+- **Kubernetes:**
+  ```sh
+  kubectl exec -it <pod_name> -- cat /wiki.version
+  ```
+
+> 📌 **Tip:** These commands work for both Docker and Kubernetes environments. Replace the placeholders with your actual container or pod names.
+
+
+
 For more details, see the [documentation site itself](https://github.com/RogerioDosSantos/Wiki)!
