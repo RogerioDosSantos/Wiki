@@ -2,8 +2,7 @@
 
 ---
 
-<details>
-<summary><strong>User Management</strong></summary>
+## User Management
 
 **Run elevated commands:**
 ```shell
@@ -70,12 +69,9 @@ cat /etc/passwd
 cat /etc/group
 ```
 
-</details>
-
 ---
 
-<details>
-<summary><strong>Directories and Files</strong></summary>
+## Directories and Files
 
 **Navigate and manage directories:**
 - Go to a directory and keep the previous directory in memory:
@@ -216,12 +212,9 @@ tree
 $(pwd -P | sed 's/\/mnt\/c\//c:\\\\/' | sed 's/\//\\\\/g')
 ```
 
-</details>
-
 ---
 
-<details>
-<summary><strong>Shell, Programs, and OS</strong></summary>
+## Shell, Programs, and OS
 
 **Stop a program:**
 ```shell
@@ -538,17 +531,12 @@ rsync -vah <source_folder> <destination_folder>
   scp [-r] <username>@<source device (ip)>:<source path> <destination file path>
   ```
 
-</details>
-
 ---
 
-<details>
-<summary><strong>How-to</strong></summary>
+## How-to
 
-<details>
-<summary><strong>How to Check if You Can Use apt-get (or Equivalent) on Your Distro</strong></summary>
+### How to Check if You Can Use apt-get (or Equivalent) on Your Distro
 
-#### How to Check if You Can Use apt-get (or Equivalent) on Your Distro
 To determine if your Linux distribution supports `apt-get` (Debian/Ubuntu) or another package manager, follow these steps:
 
 1. **Check your Linux distribution:**
@@ -582,11 +570,8 @@ To determine if your Linux distribution supports `apt-get` (Debian/Ubuntu) or an
    ```
    If not, use the available package manager from the list above.
 
-</details>
-
-</details>
-
 ---
+
 
 > 📌 **Tip:** For more advanced usage, see the full documentation or use `man <command>` for details on each command.
 
