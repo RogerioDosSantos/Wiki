@@ -280,6 +280,7 @@
 
 ## Artificial Intelligence
 
+- [AI Models](./ai_models.md)
 - [AI tools]( ./ai_tools.md )
 
 ## Jargon
