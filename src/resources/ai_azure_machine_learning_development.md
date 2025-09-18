@@ -207,3 +207,13 @@ MLOps, or Machine Learning Operations, is a set of practices and tools that aim 
 - Data Engineer: Manages data pipelines, ensures data quality, and prepares data for modeling.
 - DevOps Engineer: Automates deployment processes, manages infrastructure, and ensures continuous integration and delivery (CI/CD) of machine learning models.
 
+## Automated Machine Learning (AutoML)
+
+Automated Machine Learning (AutoML) is a process that automates the end-to-end workflow of applying machine learning to real-world problems. AutoML aims to make machine learning more accessible to non-experts by automating tasks such as data preprocessing, feature engineering, model selection, and hyperparameter tuning.
+
+When to use AutoML:
+
+- Limited Expertise: When the team lacks deep expertise in machine learning and wants to leverage automated tools to build models.
+- Rapid Prototyping: When quick experimentation and iteration are needed to explore different models and approaches.
+- Resource Constraints: When there are limited resources (time, computational power) to manually develop and tune models.
+

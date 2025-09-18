@@ -283,6 +283,7 @@
 - [AI Models](./ai_models.md)
 - [AI tools]( ./ai_tools.md )
 - [Azure Machine Learning Development](./ai_azure_machine_learning_development.md)
+- [AI Fundamentals](./resources/ai_fundamentals.md)
 
 ## Jargon
 
