@@ -63,6 +63,8 @@
 - [Autorest]( ./autrest.md ) - Swagger Client
 - [ShareX]( ./sharex.md ) - Printscreen, sharing tool. Allow publish your screen or video to the cloud services
 - [ngrok]( ./ngrok.md ) - Route a public URL to the localhost
+- [Figma]( ./figma.md ) - Collaborative interface design tool
+- [Orchids]( ./orchids.md ) - AI-powered website builder
 
 ## Documentation Tools
 
