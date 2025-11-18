@@ -236,6 +236,7 @@
 - [SCIM]( ./scim.md )
 - [MSAL (Microsoft Authentication Library)]( ./msal.md )
 - [Certificates]( ./certificates.md )
+- [Managed Service Identity]( ./managed_service_identity.md ) - Azure identity management for resources
 
 ## Network 
 
